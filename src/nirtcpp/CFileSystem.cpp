@@ -1123,5 +1123,5 @@ IAttributes* CFileSystem::createEmptyAttributes(video::IVideoDriver* driver)
 }
 
 
-} // end namespace nirt
 } // end namespace io
+} // end namespace nirt

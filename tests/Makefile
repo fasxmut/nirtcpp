@@ -4,6 +4,7 @@ Sources = $(wildcard *.cpp)
 
 CPPFLAGS = -I../include -I../include/nirtcpp -I/usr/X11R6/include -pipe
 CXXFLAGS += -Wall -ansi -pedantic -fno-exceptions
+CXXFLAGS += -std=c++20 # Be compatible with c++17, c++20, c++23. Default to c++20
 ifndef NDEBUG
 CXXFLAGS += -O0 -g -D_DEBUG 
 else

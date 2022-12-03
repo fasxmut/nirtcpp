@@ -78,7 +78,11 @@ LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ) \
 CXXINCS = -I../../include -I../../include/nirtcpp -Izlib -Ijpeglib -Ilibpng
 CPPFLAGS += $(CXXINCS) -DNIRTCPP_EXPORTS=1
 CXXFLAGS += -Wall -pipe -fno-exceptions -fno-rtti
+
+CXXFLAGS += -std=c++20 -U__STRICT_ANSI__ # Be compatible with c++17, c++20, c++23. Defaut to c++17.
 #CXXFLAGS += -std=gnu++11 -U__STRICT_ANSI__
+# Read line 28~30 of CFileSystem.cpp, about __STRICT_ANSI__
+
 ifndef NDEBUG
 CPPFLAGS += -g -D_DEBUG
 else
