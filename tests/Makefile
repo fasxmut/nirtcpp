@@ -2,7 +2,7 @@
 Target = tests
 Sources = $(wildcard *.cpp)
 
-CPPFLAGS = -I../include -I/usr/X11R6/include -pipe
+CPPFLAGS = -I../include -I../include/nirtcpp -I/usr/X11R6/include -pipe
 CXXFLAGS += -Wall -ansi -pedantic -fno-exceptions
 ifndef NDEBUG
 CXXFLAGS += -O0 -g -D_DEBUG 
@@ -18,10 +18,10 @@ all: all_linux
 
 # target specific settings
 all_linux: SYSTEM=Linux
-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../lib/$(SYSTEM) -lNirtcpp -lGL -lXxf86vm -lX11
+all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../lib/$(SYSTEM) -lnirtcpp -lGL -lXxf86vm -lX11
 
 all_win32 clean_win32: SYSTEM=Win32-gcc
-all_win32: LDFLAGS = -L../lib/$(SYSTEM) -lNirtcpp -lopengl32 -lm
+all_win32: LDFLAGS = -L../lib/$(SYSTEM) -lnirtcpp -lopengl32 -lm
 
 all_win32 clean_win32: SUF=.exe
 # name of the binary - only valid for targets which set SYSTEM

@@ -432,7 +432,7 @@ void CGUIEnvironment::OnPostRender( u32 time )
 		core::rect<s32> pos;
 
 		pos.UpperLeftCorner = LastHoveredMousePos;
-		core::dimension2du dim = getSkin()->getFont(EGDF_TOOLTIP)->getDimension(HoveredNoSubelement->getToolTipText().c_str());
+		core::dimension2du dim = getSkin()->getFont(EGDF_TOOLTIP)->getDimension(HoveredNoSubelement->getToolTipText().data());
 		dim.Width += getSkin()->getSize(EGDS_TEXT_DISTANCE_X)*2;
 		dim.Height += getSkin()->getSize(EGDS_TEXT_DISTANCE_Y)*2;
 
@@ -442,7 +442,7 @@ void CGUIEnvironment::OnPostRender( u32 time )
 
 		pos.constrainTo(getAbsolutePosition());
 
-		ToolTip.Element = addStaticText(HoveredNoSubelement->getToolTipText().c_str(), pos, true, true, this, -1, true);
+		ToolTip.Element = addStaticText(HoveredNoSubelement->getToolTipText().data(), pos, true, true, this, -1, true);
 		ToolTip.Element->setOverrideColor(getSkin()->getColor(EGDC_TOOLTIP));
 		ToolTip.Element->setBackgroundColor(getSkin()->getColor(EGDC_TOOLTIP_BACKGROUND));
 		ToolTip.Element->setOverrideFont(getSkin()->getFont(EGDF_TOOLTIP));
@@ -875,10 +875,10 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 		// find node type and create it
 		const core::stringc attrName = reader->getAttributeValue(NIRT_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE);
 
-		node = addGUIElement(attrName.c_str(), node);
+		node = addGUIElement(attrName.data(), node);
 
 		if (!node)
-			os::Printer::log("Could not create GUI element of unknown type", attrName.c_str());
+			os::Printer::log("Could not create GUI element of unknown type", attrName.data());
 	}
 
 	// read attributes
@@ -920,7 +920,7 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 			else
 			{
 				os::Printer::log("Found unknown element in nirtcpp GUI file",
-						core::stringc(reader->getNodeName()).c_str());
+						core::stringc(reader->getNodeName()).data());
 			}
 
 			break;
@@ -960,7 +960,7 @@ void CGUIEnvironment::writeGUIElement(io::IXMLWriter* writer, IGUIElement* node)
 		{
 			name = NIRT_XML_FORMAT_GUI_ELEMENT;
 			writer->writeElement(name, false, NIRT_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE,
-				core::stringw(node->getTypeName()).c_str());
+				core::stringw(node->getTypeName()).data());
 		}
 
 		writer->writeLineBreak();

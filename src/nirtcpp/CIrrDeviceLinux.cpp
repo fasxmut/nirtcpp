@@ -122,7 +122,7 @@ CIrrDeviceLinux::CIrrDeviceLinux(const SNirtcppCreationParameters& param)
 	linuxversion += LinuxInfo.machine;
 
 	Operator = new COSOperator(linuxversion, this);
-	os::Printer::log(linuxversion.c_str(), ELL_INFORMATION);
+	os::Printer::log(linuxversion.data(), ELL_INFORMATION);
 
 	// create keymap
 	createKeyMap();
@@ -306,8 +306,8 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 		if (bestMode != -1)
 		{
 			os::Printer::log("Starting vidmode fullscreen mode...", ELL_INFORMATION);
-			os::Printer::log("hdisplay", core::stringc(modes[bestMode]->hdisplay).c_str(), ELL_INFORMATION);
-			os::Printer::log("vdisplay", core::stringc(modes[bestMode]->vdisplay).c_str(), ELL_INFORMATION);
+			os::Printer::log("hdisplay", core::stringc(modes[bestMode]->hdisplay).data(), ELL_INFORMATION);
+			os::Printer::log("vdisplay", core::stringc(modes[bestMode]->vdisplay).data(), ELL_INFORMATION);
 
 			XF86VidModeSwitchToMode(XDisplay, Screennr, modes[bestMode]);
 			XF86VidModeSetViewPort(XDisplay, Screennr, 0, 0);
@@ -343,8 +343,8 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 		if (bestMode != -1)
 		{
 			os::Printer::log("Starting randr fullscreen mode...", ELL_INFORMATION);
-			os::Printer::log("width", core::stringc(modes[bestMode].width).c_str(), ELL_INFORMATION);
-			os::Printer::log("height", core::stringc(modes[bestMode].height).c_str(), ELL_INFORMATION);
+			os::Printer::log("width", core::stringc(modes[bestMode].width).data(), ELL_INFORMATION);
+			os::Printer::log("height", core::stringc(modes[bestMode].height).data(), ELL_INFORMATION);
 
 			XRRSetScreenConfig(XDisplay,config,DefaultRootWindow(XDisplay),bestMode,OldRandrRotation,CurrentTime);
 			UseXRandR=true;
@@ -455,7 +455,7 @@ bool CIrrDeviceLinux::createWindow()
 	}
 #ifdef _DEBUG
 	else
-		os::Printer::log("Visual chosen", core::stringc(static_cast<u32>(VisualInfo->visualid)).c_str(), ELL_DEBUG);
+		os::Printer::log("Visual chosen", core::stringc(static_cast<u32>(VisualInfo->visualid)).data(), ELL_DEBUG);
 #endif
 
 	// create color map
@@ -667,14 +667,14 @@ bool CIrrDeviceLinux::createInputContext()
 	if ( !XSupportsLocale() )
 	{
 		os::Printer::log("Locale not supported. Falling back to non-i18n input.", ELL_WARNING);
-		setlocale(LC_CTYPE, oldLocale.c_str());
+		setlocale(LC_CTYPE, oldLocale.data());
 		return false;
 	}
 
 	XInputMethod = XOpenIM(XDisplay, NULL, NULL, NULL);
 	if ( !XInputMethod )
 	{
-		setlocale(LC_CTYPE, oldLocale.c_str());
+		setlocale(LC_CTYPE, oldLocale.data());
 		os::Printer::log("XOpenIM failed to create an input method. Falling back to non-i18n input.", ELL_WARNING);
 		return false;
 	}
@@ -701,7 +701,7 @@ bool CIrrDeviceLinux::createInputContext()
 		XInputContext = 0;
 
 		os::Printer::log("XInputMethod has no input style we can use. Falling back to non-i18n input.", ELL_WARNING);
-		setlocale(LC_CTYPE, oldLocale.c_str());
+		setlocale(LC_CTYPE, oldLocale.data());
 		return false;
 	}
 
@@ -712,11 +712,11 @@ bool CIrrDeviceLinux::createInputContext()
 	if (!XInputContext )
 	{
 		os::Printer::log("XInputContext failed to create an input context. Falling back to non-i18n input.", ELL_WARNING);
-		setlocale(LC_CTYPE, oldLocale.c_str());
+		setlocale(LC_CTYPE, oldLocale.data());
 		return false;
 	}
 	XSetICFocus(XInputContext);
-	setlocale(LC_CTYPE, oldLocale.c_str());
+	setlocale(LC_CTYPE, oldLocale.data());
 	return true;
 }
 
@@ -755,17 +755,17 @@ EKEY_CODE CIrrDeviceLinux::getKeyCode(XEvent &event)
 		if ( !mp.X11Key )
 		{
 			keyCode = (EKEY_CODE)event.xkey.keycode;
-			os::Printer::log("No such X11Key, using event keycode", core::stringc(event.xkey.keycode).c_str(), ELL_INFORMATION);
+			os::Printer::log("No such X11Key, using event keycode", core::stringc(event.xkey.keycode).data(), ELL_INFORMATION);
 		}
 		else if (idx == -1)
 		{
 			keyCode = (EKEY_CODE)mp.X11Key;
-			os::Printer::log("EKEY_CODE not found, using orig. X11 keycode", core::stringc(mp.X11Key).c_str(), ELL_INFORMATION);
+			os::Printer::log("EKEY_CODE not found, using orig. X11 keycode", core::stringc(mp.X11Key).data(), ELL_INFORMATION);
 		}
 		else
 		{
 			keyCode = (EKEY_CODE)mp.X11Key;
-			os::Printer::log("EKEY_CODE is 0, using orig. X11 keycode", core::stringc(mp.X11Key).c_str(), ELL_INFORMATION);
+			os::Printer::log("EKEY_CODE is 0, using orig. X11 keycode", core::stringc(mp.X11Key).data(), ELL_INFORMATION);
 		}
  	}
 	return keyCode;
@@ -1047,7 +1047,7 @@ bool CIrrDeviceLinux::run()
 								req->property, req->target,
 								8, // format
 								PropModeReplace,
-								(unsigned char*) Clipboard.c_str(),
+								(unsigned char*) Clipboard.data(),
 								Clipboard.size());
 						respond.xselection.property = req->property;
 					}
@@ -1667,20 +1667,20 @@ bool CIrrDeviceLinux::activateJoysticks(core::array<SJoystickInfo> & joystickInf
 		SJoystickInfo returnInfo;
 		JoystickInfo info;
 
-		info.fd = open(devName.c_str(), O_RDONLY);
+		info.fd = open(devName.data(), O_RDONLY);
 		if (-1 == info.fd)
 		{
 			// ...but Ubuntu and possibly other distros
 			// create the devices in /dev/input
 			devName = "/dev/input/js";
 			devName += joystick;
-			info.fd = open(devName.c_str(), O_RDONLY);
+			info.fd = open(devName.data(), O_RDONLY);
 			if (-1 == info.fd)
 			{
 				// and BSD here
 				devName = "/dev/joy";
 				devName += joystick;
-				info.fd = open(devName.c_str(), O_RDONLY);
+				info.fd = open(devName.data(), O_RDONLY);
 			}
 		}
 
@@ -1725,7 +1725,7 @@ bool CIrrDeviceLinux::activateJoysticks(core::array<SJoystickInfo> & joystickInf
 		char logString[256];
 		(void)sprintf(logString, "Found joystick %u, %u axes, %u buttons '%s'",
 			joystick, joystickInfo[joystick].Axes,
-			joystickInfo[joystick].Buttons, joystickInfo[joystick].Name.c_str());
+			joystickInfo[joystick].Buttons, joystickInfo[joystick].Name.data());
 		os::Printer::log(logString, ELL_INFORMATION);
 	}
 
@@ -1884,7 +1884,7 @@ const c8* CIrrDeviceLinux::getTextFromClipboard() const
 	Window ownerWindow = XGetSelectionOwner (XDisplay, X_ATOM_CLIPBOARD);
 	if ( ownerWindow ==  XWindow )
 	{
-		return Clipboard.c_str();
+		return Clipboard.data();
 	}
 	Clipboard = "";
 	if (ownerWindow != None )
@@ -1920,7 +1920,7 @@ const c8* CIrrDeviceLinux::getTextFromClipboard() const
 		}
 	}
 
-	return Clipboard.c_str();
+	return Clipboard.data();
 
 #else
 	return 0;
@@ -1945,7 +1945,7 @@ Bool PredicateIsEventType(Display *display, XEvent *event, XPointer arg)
 {
 	if ( event && event->type == *(int*)arg )
 	{
-//		os::Printer::log("remove event", core::stringc((int)arg).c_str(), ELL_INFORMATION);
+//		os::Printer::log("remove event", core::stringc((int)arg).data(), ELL_INFORMATION);
 		return True;
 	}
 	return False;

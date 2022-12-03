@@ -594,15 +594,15 @@ bool CFileSystem::changeWorkingDirectoryTo(const io::path& newDirectory)
 
 #if defined(_MSC_VER)
 	#if defined(_NIRT_WCHAR_FILESYSTEM)
-		success = (_wchdir(newDirectory.c_str()) == 0);
+		success = (_wchdir(newDirectory.data()) == 0);
 	#else
-		success = (_chdir(newDirectory.c_str()) == 0);
+		success = (_chdir(newDirectory.data()) == 0);
 	#endif
 #else
 	#if defined(_NIRT_WCHAR_FILESYSTEM)
-		success = (_wchdir(newDirectory.c_str()) == 0);
+		success = (_wchdir(newDirectory.data()) == 0);
 	#else
-		success = (chdir(newDirectory.c_str()) == 0);
+		success = (chdir(newDirectory.data()) == 0);
 	#endif
 #endif
 	}
@@ -619,11 +619,11 @@ io::path CFileSystem::getAbsolutePath(const io::path& filename) const
 	fschar_t *p=0;
 	fschar_t fpath[_MAX_PATH];
 	#if defined(_NIRT_WCHAR_FILESYSTEM )
-		p = _wfullpath(fpath, filename.c_str(), _MAX_PATH);
+		p = _wfullpath(fpath, filename.data(), _MAX_PATH);
 		core::stringw tmp(p);
 		tmp.replace(L'\\', L'/');
 	#else
-		p = _fullpath(fpath, filename.c_str(), _MAX_PATH);
+		p = _fullpath(fpath, filename.data(), _MAX_PATH);
 		core::stringc tmp(p);
 		tmp.replace('\\', '/');
 	#endif
@@ -632,7 +632,7 @@ io::path CFileSystem::getAbsolutePath(const io::path& filename) const
 	c8* p=0;
 	c8 fpath[4096];
 	fpath[0]=0;
-	p = realpath(filename.c_str(), fpath);
+	p = realpath(filename.data(), fpath);
 	if (!p)
 	{
 		// content in fpath is unclear at this point
@@ -880,7 +880,7 @@ IFileList* CFileSystem::createFileList()
 		r->addItem(Path + NIRT_TEXT(".."), 0, 0, true, 0);
 
 		//! We use the POSIX compliant methods instead of scandir
-		DIR* dirHandle=opendir(Path.c_str());
+		DIR* dirHandle=opendir(Path.data());
 		if (dirHandle)
 		{
 			struct dirent *dirEntry;
@@ -965,18 +965,18 @@ bool CFileSystem::existFile(const io::path& filename) const
 
 #if defined(_MSC_VER)
 	#if defined(_NIRT_WCHAR_FILESYSTEM)
-		return (_waccess(filename.c_str(), 0) != -1);
+		return (_waccess(filename.data(), 0) != -1);
 	#else
-		return (_access(filename.c_str(), 0) != -1);
+		return (_access(filename.data(), 0) != -1);
 	#endif
 #elif defined(F_OK)
 	#if defined(_NIRT_WCHAR_FILESYSTEM)
-		return (_waccess(filename.c_str(), F_OK) != -1);
+		return (_waccess(filename.data(), F_OK) != -1);
 	#else
-		return (access(filename.c_str(), F_OK) != -1);
+		return (access(filename.data(), F_OK) != -1);
 	#endif
 #else
-	return (access(filename.c_str(), 0) != -1);
+	return (access(filename.data(), 0) != -1);
 #endif
 }
 

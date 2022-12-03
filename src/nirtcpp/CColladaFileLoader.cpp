@@ -169,7 +169,7 @@ namespace
 		CLightPrefab(const core::stringc& id) : CPrefab(id)
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: loaded light prefab", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: loaded light prefab", Id.data(), ELL_DEBUG);
 			#endif
 		}
 
@@ -180,7 +180,7 @@ namespace
 			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: Constructing light instance", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: Constructing light instance", Id.data(), ELL_DEBUG);
 			#endif
 
 			if ( LightData.Type == ELT_AMBIENT )
@@ -216,7 +216,7 @@ namespace
 			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: Constructing mesh instance", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: Constructing mesh instance", Id.data(), ELL_DEBUG);
 			#endif
 
 			scene::ISceneNode* m = mgr->addMeshSceneNode(Mesh, parent);
@@ -240,7 +240,7 @@ namespace
 			: CPrefab(id), YFov(core::PI / 2.5f), ZNear(1.0f), ZFar(3000.0f)
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: loaded camera prefab", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: loaded camera prefab", Id.data(), ELL_DEBUG);
 			#endif
 		}
 
@@ -254,7 +254,7 @@ namespace
 			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: Constructing camera instance", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: Constructing camera instance", Id.data(), ELL_DEBUG);
 			#endif
 
 			scene::ICameraSceneNode* c = mgr->addCameraSceneNode(parent, core::vector3df(0,0,0), core::vector3df(0,0,100), -1, false);
@@ -279,7 +279,7 @@ namespace
 		CScenePrefab(const core::stringc& id) : CPrefab(id)
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: loaded scene prefab", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: loaded scene prefab", Id.data(), ELL_DEBUG);
 			#endif
 		}
 
@@ -288,7 +288,7 @@ namespace
 			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: Constructing scene instance", Id.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: Constructing scene instance", Id.data(), ELL_DEBUG);
 			#endif
 
 			if (Children.size()==0)
@@ -307,7 +307,7 @@ namespace
 					t+=" ";
 				}
 			#ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA: Transformation", t.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA: Transformation", t.data(), ELL_DEBUG);
 			#endif
 
 				for (u32 i=0; i<Children.size(); ++i)
@@ -421,8 +421,8 @@ IAnimatedMesh* CColladaFileLoader::createMesh(io::IReadFile* file)
 	// meshes have been loaded from the file
 	if (LoadedMeshCount>1 && FirstLoadedMesh)
 	{
-		os::Printer::log("Added COLLADA mesh", FirstLoadedMeshName.c_str());
-		SceneManager->getMeshCache()->addMesh(FirstLoadedMeshName.c_str(), FirstLoadedMesh);
+		os::Printer::log("Added COLLADA mesh", FirstLoadedMeshName.data());
+		SceneManager->getMeshCache()->addMesh(FirstLoadedMeshName.data(), FirstLoadedMesh);
 	}
 
 	// clean up temporary loaded data
@@ -448,7 +448,7 @@ void CColladaFileLoader::skipSection(io::IXMLReaderUTF8* reader, bool reportSkip
 	#ifndef COLLADA_READER_DEBUG
 	if (reportSkipping) // always report in COLLADA_READER_DEBUG mode
 	#endif
-		os::Printer::log("COLLADA skipping section", core::stringc(reader->getNodeName()).c_str(), ELL_DEBUG);
+		os::Printer::log("COLLADA skipping section", core::stringc(reader->getNodeName()).data(), ELL_DEBUG);
 
 	// skip if this element is empty anyway.
 	if (reader->isEmptyElement())
@@ -464,7 +464,7 @@ void CColladaFileLoader::skipSection(io::IXMLReaderUTF8* reader, bool reportSkip
 		{
 			#ifdef COLLADA_READER_DEBUG
 			if (reportSkipping)
-				os::Printer::log("Skipping COLLADA unknown element", core::stringc(reader->getNodeName()).c_str(), ELL_DEBUG);
+				os::Printer::log("Skipping COLLADA unknown element", core::stringc(reader->getNodeName()).data(), ELL_DEBUG);
 			#endif
 
 			++tagCounter;
@@ -483,7 +483,7 @@ void CColladaFileLoader::readColladaSection(io::IXMLReaderUTF8* reader)
 		return;
 
 	// todo: patch level needs to be handled
-	const f32 version = core::fast_atof(core::stringc(reader->getAttributeValue("version")).c_str());
+	const f32 version = core::fast_atof(core::stringc(reader->getAttributeValue("version")).data());
 	Version = core::floor32(version)*10000+core::round32(core::fract(version)*1000.0f);
 	// Version 1.4 can be checked for by if (Version >= 10400)
 
@@ -1545,21 +1545,21 @@ void CColladaFileLoader::readEffect(io::IXMLReaderUTF8* reader, SColladaEffect *
 	}
 
 	video::E_TEXTURE_CLAMP twu = video::ETC_REPEAT;
-	s32 idx = effect->Parameters->findAttribute(wrapsName.c_str());
+	s32 idx = effect->Parameters->findAttribute(wrapsName.data());
 	if ( idx >= 0 )
 		twu = (video::E_TEXTURE_CLAMP)(effect->Parameters->getAttributeAsInt(idx));
 	video::E_TEXTURE_CLAMP twv = video::ETC_REPEAT;
-	idx = effect->Parameters->findAttribute(wraptName.c_str());
+	idx = effect->Parameters->findAttribute(wraptName.data());
 	if ( idx >= 0 )
 		twv = (video::E_TEXTURE_CLAMP)(effect->Parameters->getAttributeAsInt(idx));
 	video::E_TEXTURE_CLAMP twr = video::ETC_REPEAT;
-	idx = effect->Parameters->findAttribute(wrappName.c_str());
+	idx = effect->Parameters->findAttribute(wrappName.data());
 	if ( idx >= 0 )
 		twr = (video::E_TEXTURE_CLAMP)(effect->Parameters->getAttributeAsInt(idx));
 	else
 	{
 		// for downward compatibility with older Nirtcpp collada writer
-		idx = effect->Parameters->findAttribute(wraprName.c_str());
+		idx = effect->Parameters->findAttribute(wraprName.data());
 		if ( idx >= 0 )
 			twr = (video::E_TEXTURE_CLAMP)(effect->Parameters->getAttributeAsInt(idx));
 	}
@@ -1639,15 +1639,15 @@ void CColladaFileLoader::readBindMaterialSection(io::IXMLReaderUTF8* reader, con
 				// bind any pending materials for this node
 				meshbufferReference = id+"/"+meshbufferReference;
 #ifdef COLLADA_READER_DEBUG
-				os::Printer::log((core::stringc("Material binding: ")+meshbufferReference+" "+target).c_str(), ELL_DEBUG);
+				os::Printer::log((core::stringc("Material binding: ")+meshbufferReference+" "+target).data(), ELL_DEBUG);
 #endif
 				if (MaterialsToBind.find(meshbufferReference))
 				{
 					core::array<irr::scene::IMeshBuffer*> & toBind
 						= MeshesToBind[MaterialsToBind[meshbufferReference]];
 #ifdef COLLADA_READER_DEBUG
-				os::Printer::log("Material binding now ",material->Id.c_str(), ELL_DEBUG);
-				os::Printer::log("#meshbuffers",core::stringc(toBind.size()).c_str(), ELL_DEBUG);
+				os::Printer::log("Material binding now ",material->Id.data(), ELL_DEBUG);
+				os::Printer::log("#meshbuffers",core::stringc(toBind.size()).data(), ELL_DEBUG);
 #endif
 					SMesh tmpmesh;
 					for (u32 i = 0; i < toBind.size(); ++i)
@@ -1665,7 +1665,7 @@ void CColladaFileLoader::readBindMaterialSection(io::IXMLReaderUTF8* reader, con
 					if ((material->Transparency!=0.0f) && (material->Transparency!=1.0f))
 					{
 						#ifdef COLLADA_READER_DEBUG
-						os::Printer::log("COLLADA found transparency material", core::stringc(material->Transparency).c_str(), ELL_DEBUG);
+						os::Printer::log("COLLADA found transparency material", core::stringc(material->Transparency).data(), ELL_DEBUG);
 						#endif
 						SceneManager->getMeshManipulator()->setVertexColorAlpha(&tmpmesh, core::floor32(material->Transparency*255.0f));
 					}
@@ -1714,7 +1714,7 @@ void CColladaFileLoader::readGeometry(io::IXMLReaderUTF8* reader)
 				sources.getLast().Id = readId(reader);
 
 				#ifdef COLLADA_READER_DEBUG
-				os::Printer::log("Reading source", sources.getLast().Id.c_str(), ELL_DEBUG);
+				os::Printer::log("Reading source", sources.getLast().Id.data(), ELL_DEBUG);
 				#endif
 			}
 			else
@@ -1733,13 +1733,13 @@ void CColladaFileLoader::readGeometry(io::IXMLReaderUTF8* reader)
 					okToReadArray = (type && (!strcmp("float", type) || !strcmp("int", type))) || floatArraySectionName == nodeName || intArraySectionName == nodeName;
 
 					#ifdef COLLADA_READER_DEBUG
-					os::Printer::log("Read array", sources.getLast().Array.Name.c_str(), ELL_DEBUG);
+					os::Printer::log("Read array", sources.getLast().Array.Name.data(), ELL_DEBUG);
 					#endif
 				}
 				#ifdef COLLADA_READER_DEBUG
 				else
 					os::Printer::log("Warning, array outside source found",
-						readId(reader).c_str(), ELL_DEBUG);
+						readId(reader).data(), ELL_DEBUG);
 				#endif
 
 			}
@@ -1856,8 +1856,8 @@ void CColladaFileLoader::readGeometry(io::IXMLReaderUTF8* reader)
 	// add to scene manager
 	if (LoadedMeshCount)
 	{
-		SceneManager->getMeshCache()->addMesh(filename.c_str(), amesh);
-		os::Printer::log("Added COLLADA mesh", filename.c_str(), ELL_DEBUG);
+		SceneManager->getMeshCache()->addMesh(filename.data(), amesh);
+		os::Printer::log("Added COLLADA mesh", filename.data(), ELL_DEBUG);
 	}
 	else
 	{
@@ -2073,7 +2073,7 @@ void CColladaFileLoader::readPolygonSection(io::IXMLReaderUTF8* reader,
 		if (s == sources.size())
 		{
 			os::Printer::log("COLLADA Warning, polygon input source not found",
-				inp.Source.c_str(), ELL_DEBUG);
+				inp.Source.data(), ELL_DEBUG);
 			inp.Semantic=ECIS_COUNT; // for unknown
 		}
 		else
@@ -2084,7 +2084,7 @@ void CColladaFileLoader::readPolygonSection(io::IXMLReaderUTF8* reader,
 			tmp += inputSemanticNames[inp.Semantic];
 			tmp += " sourceArray:";
 			tmp += inp.Source;
-			os::Printer::log(tmp.c_str(), ELL_DEBUG);
+			os::Printer::log(tmp.data(), ELL_DEBUG);
 			#endif
 		}
 	}
@@ -2804,7 +2804,7 @@ video::ITexture* CColladaFileLoader::getTextureFromImage(core::stringc uri, SCol
 					const u32 size = Images[i].Dimension.Width * Images[i].Dimension.Height;;
 					u32* data = new u32[size]; // we assume RGBA
 					u32* ptrdest = data;
-					const c8* ptrsrc = Images[i].Source.c_str();
+					const c8* ptrsrc = Images[i].Source.data();
 					for (u32 j=0; j<size; ++j)
 					{
 						sscanf(ptrsrc, "%x", ptrdest);
@@ -2812,18 +2812,18 @@ video::ITexture* CColladaFileLoader::getTextureFromImage(core::stringc uri, SCol
 						ptrsrc += 4;
 					}
 					video::IImage* img = driver->createImageFromData(video::ECF_A8R8G8B8, Images[i].Dimension, data, true, true);
-					video::ITexture* tex = driver->addTexture((CurrentlyLoadingMesh+"#"+Images[i].Id).c_str(), img);
+					video::ITexture* tex = driver->addTexture((CurrentlyLoadingMesh+"#"+Images[i].Id).data(), img);
 					img->drop();
 					return tex;
 				}
 				break;
 			}
 		}
-		if (effect && effect->Parameters->getAttributeType(uri.c_str())==io::EAT_STRING)
+		if (effect && effect->Parameters->getAttributeType(uri.data())==io::EAT_STRING)
 		{
-			uri = effect->Parameters->getAttributeAsString(uri.c_str());
+			uri = effect->Parameters->getAttributeAsString(uri.data());
 #ifdef COLLADA_READER_DEBUG
-			os::Printer::log("COLLADA now searching texture", uri.c_str(), ELL_DEBUG);
+			os::Printer::log("COLLADA now searching texture", uri.data(), ELL_DEBUG);
 #endif
 		}
 		else
@@ -2853,28 +2853,28 @@ void CColladaFileLoader::readParameter(io::IXMLReaderUTF8* reader, io::IAttribut
 				if (floatNodeName == reader->getNodeName())
 				{
 					const f32 f = readFloatNode(reader);
-					parameters->addFloat(name.c_str(), f);
+					parameters->addFloat(name.data(), f);
 				}
 				else
 				if (float2NodeName == reader->getNodeName())
 				{
 					f32 f[2];
 					readFloatsInsideElement(reader, f, 2);
-//						Parameters.addVector2d(name.c_str(), core::vector2df(f[0],f[1]));
+//						Parameters.addVector2d(name.data(), core::vector2df(f[0],f[1]));
 				}
 				else
 				if (float3NodeName == reader->getNodeName())
 				{
 					f32 f[3];
 					readFloatsInsideElement(reader, f, 3);
-					parameters->addVector3d(name.c_str(), core::vector3df(f[0],f[1],f[2]));
+					parameters->addVector3d(name.data(), core::vector3df(f[0],f[1],f[2]));
 				}
 				else
 				if ((initFromName == reader->getNodeName()) ||
 					(sourceSectionName == reader->getNodeName()))
 				{
 					reader->read();
-					parameters->addString(name.c_str(), reader->getNodeData());
+					parameters->addString(name.data(), reader->getNodeData());
 				}
 				else
 				if (wrapsName == reader->getNodeName())
@@ -2882,15 +2882,15 @@ void CColladaFileLoader::readParameter(io::IXMLReaderUTF8* reader, io::IAttribut
 					reader->read();
 					const core::stringc val = reader->getNodeData();
 					if (val == "WRAP")
-						parameters->addInt(wrapsName.c_str(), (int)video::ETC_REPEAT);
+						parameters->addInt(wrapsName.data(), (int)video::ETC_REPEAT);
 					else if ( val== "MIRROR")
-						parameters->addInt(wrapsName.c_str(), (int)video::ETC_MIRROR);
+						parameters->addInt(wrapsName.data(), (int)video::ETC_MIRROR);
 					else if ( val== "CLAMP")
-						parameters->addInt(wrapsName.c_str(), (int)video::ETC_CLAMP_TO_EDGE);
+						parameters->addInt(wrapsName.data(), (int)video::ETC_CLAMP_TO_EDGE);
 					else if ( val== "BORDER")
-						parameters->addInt(wrapsName.c_str(), (int)video::ETC_CLAMP_TO_BORDER);
+						parameters->addInt(wrapsName.data(), (int)video::ETC_CLAMP_TO_BORDER);
 					else if ( val== "NONE")
-						parameters->addInt(wrapsName.c_str(), (int)video::ETC_CLAMP_TO_BORDER);
+						parameters->addInt(wrapsName.data(), (int)video::ETC_CLAMP_TO_BORDER);
 				}
 				else
 				if (wraptName == reader->getNodeName())
@@ -2898,15 +2898,15 @@ void CColladaFileLoader::readParameter(io::IXMLReaderUTF8* reader, io::IAttribut
 					reader->read();
 					const core::stringc val = reader->getNodeData();
 					if (val == "WRAP")
-						parameters->addInt(wraptName.c_str(), (int)video::ETC_REPEAT);
+						parameters->addInt(wraptName.data(), (int)video::ETC_REPEAT);
 					else if ( val== "MIRROR")
-						parameters->addInt(wraptName.c_str(), (int)video::ETC_MIRROR);
+						parameters->addInt(wraptName.data(), (int)video::ETC_MIRROR);
 					else if ( val== "CLAMP")
-						parameters->addInt(wraptName.c_str(), (int)video::ETC_CLAMP_TO_EDGE);
+						parameters->addInt(wraptName.data(), (int)video::ETC_CLAMP_TO_EDGE);
 					else if ( val== "BORDER")
-						parameters->addInt(wraptName.c_str(), (int)video::ETC_CLAMP_TO_BORDER);
+						parameters->addInt(wraptName.data(), (int)video::ETC_CLAMP_TO_BORDER);
 					else if ( val== "NONE")
-						parameters->addInt(wraptName.c_str(), (int)video::ETC_CLAMP_TO_BORDER);
+						parameters->addInt(wraptName.data(), (int)video::ETC_CLAMP_TO_BORDER);
 				}
 				else
 				if (minfilterName == reader->getNodeName())

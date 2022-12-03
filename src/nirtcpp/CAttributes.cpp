@@ -94,7 +94,7 @@ void CAttributes::getAttributeAsString(const c8* attributeName, char* target) co
 	if (att)
 	{
 		core::stringc str = att->getString();
-		strcpy(target,str.c_str());
+		strcpy(target,str.data());
 	}
 	else
 		target[0] = 0;
@@ -162,7 +162,7 @@ void CAttributes::getAttributeAsStringW(const c8* attributeName, wchar_t* target
 	if (att)
 	{
 		core::stringw str = att->getStringW();
-		wcscpy(target,str.c_str());
+		wcscpy(target,str.data());
 	}
 	else
 		target[0] = 0;
@@ -591,7 +591,7 @@ const c8* CAttributes::getAttributeName(s32 index) const
 	if ((u32)index >= Attributes.size())
 		return 0;
 
-	return Attributes[index]->Name.c_str();
+	return Attributes[index]->Name.data();
 }
 
 //! Returns the type of an attribute
@@ -1435,121 +1435,121 @@ void CAttributes::readAttributeFromXML(const io::IXMLReader* reader)
 
 	if (element == L"enum")
 	{
-		addEnum(name.c_str(), 0, 0);
+		addEnum(name.data(), 0, 0);
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"binary")
 	{
-		addBinary(name.c_str(), 0, 0);
+		addBinary(name.data(), 0, 0);
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"color")
 	{
-		addColor(name.c_str(), video::SColor());
+		addColor(name.data(), video::SColor());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"colorf")
 	{
-		addColorf(name.c_str(), video::SColorf());
+		addColorf(name.data(), video::SColorf());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"float")
 	{
-		addFloat(name.c_str(), 0);
+		addFloat(name.data(), 0);
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"int")
 	{
-		addInt(name.c_str(), 0);
+		addInt(name.data(), 0);
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"bool")
 	{
-		addBool(name.c_str(), 0);
+		addBool(name.data(), 0);
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"string")
 	{
-		addString(name.c_str(), L"");
+		addString(name.data(), L"");
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"texture")
 	{
-		addTexture(name.c_str(), 0);
+		addTexture(name.data(), 0);
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"vector3d")
 	{
-		addVector3d(name.c_str(), core::vector3df());
+		addVector3d(name.data(), core::vector3df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"vector2d")
 	{
-		addVector2d(name.c_str(), core::vector2df());
+		addVector2d(name.data(), core::vector2df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"position")
 	{
-		addPosition2d(name.c_str(), core::position2di());
+		addPosition2d(name.data(), core::position2di());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"rect")
 	{
-		addRect(name.c_str(), core::rect<s32>());
+		addRect(name.data(), core::rect<s32>());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"matrix")
 	{
-		addMatrix(name.c_str(), core::matrix4());
+		addMatrix(name.data(), core::matrix4());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"quaternion")
 	{
-		addQuaternion(name.c_str(), core::quaternion());
+		addQuaternion(name.data(), core::quaternion());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"box3d")
 	{
-		addBox3d(name.c_str(), core::aabbox3df());
+		addBox3d(name.data(), core::aabbox3df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"plane")
 	{
-		addPlane3d(name.c_str(), core::plane3df());
+		addPlane3d(name.data(), core::plane3df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"triangle")
 	{
-		addTriangle3d(name.c_str(), core::triangle3df());
+		addTriangle3d(name.data(), core::triangle3df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"line2d")
 	{
-		addLine2d(name.c_str(), core::line2df());
+		addLine2d(name.data(), core::line2df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
 	if (element == L"line3d")
 	{
-		addLine3d(name.c_str(), core::line3df());
+		addLine3d(name.data(), core::line3df());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 	else
@@ -1562,9 +1562,9 @@ void CAttributes::readAttributeFromXML(const io::IXMLReader* reader)
 		const core::stringw tmpName(L"value");
 		for (; n<count; ++n)
 		{
-			tmpArray.push_back(reader->getAttributeValue((tmpName+core::stringw(n)).c_str()));
+			tmpArray.push_back(reader->getAttributeValue((tmpName+core::stringw(n)).data()));
 		}
-		addArray(name.c_str(),tmpArray);
+		addArray(name.data(),tmpArray);
 	}
 	else
 	if (element == L"userPointer")
@@ -1575,7 +1575,7 @@ void CAttributes::readAttributeFromXML(const io::IXMLReader* reader)
 	else
 	if (element == L"dimension2d")
 	{
-		addDimension2d(name.c_str(), core::dimension2d<u32>());
+		addDimension2d(name.data(), core::dimension2d<u32>());
 		Attributes.getLast()->setString(reader->getAttributeValue(L"value"));
 	}
 #else
@@ -1598,7 +1598,7 @@ bool CAttributes::write(io::IXMLWriter* writer, bool writeXMLHeader,
 	if (nonDefaultElementName)
 		elementName = nonDefaultElementName;
 
-	writer->writeElement(elementName.c_str(), false);
+	writer->writeElement(elementName.data(), false);
 	writer->writeLineBreak();
 
 	s32 i=0;
@@ -1613,7 +1613,7 @@ bool CAttributes::write(io::IXMLWriter* writer, bool writeXMLHeader,
 
 			// name
 			arraynames.push_back(core::stringw(L"name"));
-			arrayvalues.push_back(core::stringw(Attributes[i]->Name.c_str()) );
+			arrayvalues.push_back(core::stringw(Attributes[i]->Name.data()) );
 
 			// count
 			arraynames.push_back(core::stringw(L"count"));
@@ -1624,7 +1624,7 @@ bool CAttributes::write(io::IXMLWriter* writer, bool writeXMLHeader,
 			const core::stringw tmpName(L"value");
 			for (; n < arrayinput.size(); ++n)
 			{
-				arraynames.push_back((tmpName+core::stringw(n)).c_str());
+				arraynames.push_back((tmpName+core::stringw(n)).data());
 				arrayvalues.push_back(arrayinput[n]);
 			}
 
@@ -1635,14 +1635,14 @@ bool CAttributes::write(io::IXMLWriter* writer, bool writeXMLHeader,
 		{
 			writer->writeElement(
 				Attributes[i]->getTypeString(), true,
-				L"name", core::stringw(Attributes[i]->Name.c_str()).c_str(),
-				L"value", Attributes[i]->getStringW().c_str() );
+				L"name", core::stringw(Attributes[i]->Name.data()).data(),
+				L"value", Attributes[i]->getStringW().data() );
 		}
 
 		writer->writeLineBreak();
 	}
 
-	writer->writeClosingTag(elementName.c_str());
+	writer->writeClosingTag(elementName.data());
 	writer->writeLineBreak();
 
 	return true;

@@ -61,7 +61,7 @@ static bool testShots(video::E_DRIVER_TYPE type)
 			screenshotFilename += "screenshot";
 			screenshotFilename += core::stringc(i);
 			screenshotFilename += ".png";
-			driver->writeImageToFile(img, screenshotFilename.c_str());
+			driver->writeImageToFile(img, screenshotFilename.data());
 		}
 #endif
 
@@ -124,7 +124,7 @@ static bool testShotsOfShots(video::E_DRIVER_TYPE type)
 		irr::core::stringc name("-shotsInShots");
 		name += irr::core::stringc((int)aa);
 		name += ".png";
-		result = takeScreenshotAndCompareAgainstReference(driver, name.c_str());
+		result = takeScreenshotAndCompareAgainstReference(driver, name.data());
 		if ( !result )
 		{
 			logTestString("driver color format: %s\n", video::ColorFormatNames[driver->getColorFormat()]);

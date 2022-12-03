@@ -84,7 +84,7 @@ bool CIrrMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 	infoComment += core::stringw(mesh->getMeshBufferCount());
 	infoComment += L" materials.";
 
-	Writer->writeComment(infoComment.c_str());
+	Writer->writeComment(infoComment.data());
 	Writer->writeLineBreak();
 
 	// write mesh bounding box
@@ -114,8 +114,8 @@ bool CIrrMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 void CIrrMeshWriter::writeBoundingBox(const core::aabbox3df& box)
 {
 	Writer->writeElement(L"boundingBox", true,
-		L"minEdge", getVectorAsStringLine(box.MinEdge).c_str(),
-		L"maxEdge", getVectorAsStringLine(box.MaxEdge).c_str());
+		L"minEdge", getVectorAsStringLine(box.MinEdge).data(),
+		L"maxEdge", getVectorAsStringLine(box.MaxEdge).data());
 }
 
 
@@ -164,8 +164,8 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 	const core::stringw vertexTypeStr = video::sBuiltInVertexTypeNames[buffer->getVertexType()];
 
 	Writer->writeElement(L"vertices", false,
-		L"type", vertexTypeStr.c_str(),
-		L"vertexCount", core::stringw(buffer->getVertexCount()).c_str());
+		L"type", vertexTypeStr.data(),
+		L"vertexCount", core::stringw(buffer->getVertexCount()).data());
 
 	Writer->writeLineBreak();
 
@@ -188,7 +188,7 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 
 				str += getVectorAsStringLine(vtx[j].TCoords);
 
-				Writer->writeText(str.c_str());
+				Writer->writeText(str.data());
 				Writer->writeLineBreak();
 			}
 		}
@@ -210,7 +210,7 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 				str += L" ";
 				str += getVectorAsStringLine(vtx[j].TCoords2);
 
-				Writer->writeText(str.c_str());
+				Writer->writeText(str.data());
 				Writer->writeLineBreak();
 			}
 		}
@@ -234,7 +234,7 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 				str += L" ";
 				str += getVectorAsStringLine(vtx[j].Binormal);
 
-				Writer->writeText(str.c_str());
+				Writer->writeText(str.data());
 				Writer->writeLineBreak();
 			}
 		}
@@ -247,7 +247,7 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 	// write indices
 
 	Writer->writeElement(L"indices", false,
-		L"indexCount", core::stringw(buffer->getIndexCount()).c_str());
+		L"indexCount", core::stringw(buffer->getIndexCount()).data());
 
 	Writer->writeLineBreak();
 
@@ -264,12 +264,12 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 		if(iType == video::EIT_16BIT)
 		{
 			core::stringw str((int)idx16[i]);
-			Writer->writeText(str.c_str());
+			Writer->writeText(str.data());
 		}
 		else
 		{
 			core::stringw str((int)idx32[i]);
-			Writer->writeText(str.c_str());
+			Writer->writeText(str.data());
 		}
 
 		if (i % maxIndicesPerLine == maxIndicesPerLine-1)

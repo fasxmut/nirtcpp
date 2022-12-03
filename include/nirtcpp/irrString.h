@@ -342,7 +342,7 @@ public:
 			array = allocator.allocate(used); //new T[used];
 		}
 
-		const T* p = other.c_str();
+		const T* p = other.data();
 		for (u32 i=0; i<used; ++i, ++p)
 			array[i] = *p;
 
@@ -353,7 +353,7 @@ public:
 	template <class B, class A>
 	string<T,TAlloc>& operator=(const string<B,A>& other)
 	{
-		*this = other.c_str();
+		*this = other.data();
 		return *this;
 	}
 
@@ -522,8 +522,8 @@ public:
 	}
 
 	//! Returns character string
-	/** \return pointer to C-style NUL terminated string. */
-	const T* c_str() const
+	/** \return pointer to NUL terminated string. */
+	const T* data() const
 	{
 		return array;
 	}
@@ -1077,8 +1077,8 @@ public:
 		if (toReplace.size() == 0)
 			return *this;
 
-		const T* other = toReplace.c_str();
-		const T* replace = replaceWith.c_str();
+		const T* other = toReplace.data();
+		const T* replace = replaceWith.data();
 		const u32 other_size = toReplace.size();
 		const u32 replace_size = replaceWith.size();
 
@@ -1274,11 +1274,11 @@ public:
 	string<T,TAlloc>& trim(const string<T,TAlloc> & whitespace = " \t\n\r")
 	{
 		// find start and end of the substring without the specified characters
-		const s32 begin = findFirstCharNotInList(whitespace.c_str(), whitespace.used);
+		const s32 begin = findFirstCharNotInList(whitespace.data(), whitespace.used);
 		if (begin == -1)
 			return (*this="");
 
-		const s32 end = findLastCharNotInList(whitespace.c_str(), whitespace.used);
+		const s32 end = findLastCharNotInList(whitespace.data(), whitespace.used);
 
 		return (*this = subString(begin, (end +1) - begin));
 	}
@@ -1468,7 +1468,7 @@ What the function does exactly depends on the LC_CTYPE of the current c locale.
 \return The number of wide characters written to destination, not including the eventual terminating null character or -1 when conversion failed */
 static inline size_t multibyteToWString(string<wchar_t>& destination, const core::string<c8>& source)
 {
-	return multibyteToWString(destination, source.c_str(), (u32)source.size());
+	return multibyteToWString(destination, source.data(), (u32)source.size());
 }
 
 //! Convert multibyte string to wide-character string

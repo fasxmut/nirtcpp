@@ -148,7 +148,7 @@ namespace scene
 		/** \return Name as character string. */
 		virtual const c8* getName() const
 		{
-			return Name.c_str();
+			return Name.data();
 		}
 
 
@@ -725,7 +725,7 @@ namespace scene
 		{
 			if (!out)
 				return;
-			out->addString("Name", Name.c_str());
+			out->addString("Name", Name.data());
 			out->addInt("Id", ID );
 
 			out->addVector3d("Position", getPosition() );

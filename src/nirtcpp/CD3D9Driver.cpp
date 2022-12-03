@@ -395,7 +395,7 @@ bool CD3D9Driver::initDriver(HWND hwnd, bool pureSoftware)
 	// get caps
 	pID3DDevice->GetDeviceCaps(&Caps);
 
-	os::Printer::log("Currently available Video Memory (kB)", core::stringc(pID3DDevice->GetAvailableTextureMem()/1024).c_str());
+	os::Printer::log("Currently available Video Memory (kB)", core::stringc(pID3DDevice->GetAvailableTextureMem()/1024).data());
 
 	// disable stencilbuffer if necessary
 	if (Params.Stencilbuffer &&
@@ -3000,7 +3000,7 @@ bool CD3D9Driver::reset()
 		}
 		else
 		{
-			os::Printer::log("Resetting failed due to unknown reason", core::stringc((int)hr).c_str(), ELL_WARNING);
+			os::Printer::log("Resetting failed due to unknown reason", core::stringc((int)hr).data(), ELL_WARNING);
 		}
 		return false;
 	}

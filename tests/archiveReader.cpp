@@ -76,8 +76,8 @@ bool testArchive(IFileSystem* fs, const io::path& archiveName)
 	const io::IFileList* fileList = archive->getFileList();
 	for ( u32 f=0; f < fileList->getFileCount(); ++f)
 	{
-		logTestString("File name: %s\n", fileList->getFileName(f).c_str());
-		logTestString("Full path: %s\n", fileList->getFullFileName(f).c_str());
+		logTestString("File name: %s\n", fileList->getFileName(f).data());
+		logTestString("Full path: %s\n", fileList->getFullFileName(f).data());
 		logTestString("ID: %d\n", fileList->getID(f));
 	}
 #endif
@@ -194,8 +194,8 @@ bool testEncryptedZip(IFileSystem* fs)
 	const io::IFileList* fileList = archive->getFileList();
 	for ( u32 f=0; f < fileList->getFileCount(); ++f)
 	{
-		logTestString("%s name: %s\n", fileList->isDirectory(f)?"Directory":"File", fileList->getFileName(f).c_str());
-		logTestString("Full path: %s\n", fileList->getFullFileName(f).c_str());
+		logTestString("%s name: %s\n", fileList->isDirectory(f)?"Directory":"File", fileList->getFileName(f).data());
+		logTestString("Full path: %s\n", fileList->getFullFileName(f).data());
 	}
 	if (fileList->findFile(filename) != -1)
 	{
@@ -309,8 +309,8 @@ bool testSpecialZip(IFileSystem* fs, const char* archiveName, const char* filena
 	const io::IFileList* fileList = archive->getFileList();
 	for ( u32 f=0; f < fileList->getFileCount(); ++f)
 	{
-		logTestString("%s name: %s\n", fileList->isDirectory(f)?"Directory":"File", fileList->getFileName(f).c_str());
-		logTestString("Full path: %s\n", fileList->getFullFileName(f).c_str());
+		logTestString("%s name: %s\n", fileList->isDirectory(f)?"Directory":"File", fileList->getFileName(f).data());
+		logTestString("Full path: %s\n", fileList->getFullFileName(f).data());
 	}
 
 	if (!fs->existFile(filename))
@@ -362,8 +362,8 @@ static bool testMountFile(IFileSystem* fs)
 	const io::IFileList* fileList = fs->createFileList();
 	for ( u32 f=0; f < fileList->getFileCount(); ++f)
 	{
-		logTestString("File name: %s\n", fileList->getFileName(f).c_str());
-		logTestString("Full path: %s\n", fileList->getFullFileName(f).c_str());
+		logTestString("File name: %s\n", fileList->getFileName(f).data());
+		logTestString("Full path: %s\n", fileList->getFullFileName(f).data());
 		logTestString("ID: %d\n", fileList->getID(f));
 	}
 	fileList->drop();
@@ -378,8 +378,8 @@ static bool testMountFile(IFileSystem* fs)
 	fileList = archive->getFileList();
 	for ( u32 f=0; f < fileList->getFileCount(); ++f)
 	{
-		logTestString("File name: %s\n", fileList->getFileName(f).c_str());
-		logTestString("Full path: %s\n", fileList->getFullFileName(f).c_str());
+		logTestString("File name: %s\n", fileList->getFileName(f).data());
+		logTestString("Full path: %s\n", fileList->getFullFileName(f).data());
 		logTestString("ID: %d\n", fileList->getID(f));
 	}
 #endif

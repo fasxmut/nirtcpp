@@ -125,7 +125,7 @@ void CSceneNodeAnimatorFollowSpline::serializeAttributes(io::IAttributes* out, i
 		core::stringc tname = "Point";
 		tname += (int)(i+1);
 
-		out->addVector3d(tname.c_str(), i<Points.size() ? Points[i] : core::vector3df(0,0,0) );
+		out->addVector3d(tname.data(), i<Points.size() ? Points[i] : core::vector3df(0,0,0) );
 	}
 }
 
@@ -147,8 +147,8 @@ void CSceneNodeAnimatorFollowSpline::deserializeAttributes(io::IAttributes* in, 
 		core::stringc pname = "Point";
 		pname += i;
 
-		if (in->existsAttribute(pname.c_str()))
-			Points.push_back(in->getAttributeAsVector3d(pname.c_str()));
+		if (in->existsAttribute(pname.data()))
+			Points.push_back(in->getAttributeAsVector3d(pname.data()));
 		else
 			break;
 	}

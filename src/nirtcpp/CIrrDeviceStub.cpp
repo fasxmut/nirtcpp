@@ -46,7 +46,7 @@ CIrrDeviceStub::CIrrDeviceStub(const SNirtcppCreationParameters& params)
 
 	core::stringc s = "Nirtcpp Engine version ";
 	s.append(getVersion());
-	os::Printer::log(s.c_str(), ELL_INFORMATION);
+	os::Printer::log(s.data(), ELL_INFORMATION);
 
 	checkVersion(params.SDK_version_do_not_use);
 }
@@ -183,7 +183,7 @@ bool CIrrDeviceStub::checkVersion(const char* version)
 		w += ") does not match the version the application was compiled with (";
 		w += version;
 		w += "). This may cause problems.";
-		os::Printer::log(w.c_str(), ELL_WARNING);
+		os::Printer::log(w.data(), ELL_WARNING);
 
 		return false;
 	}

@@ -314,7 +314,7 @@ bool COpenGLShaderMaterialRenderer::checkError(const irr::c8* type)
 #else
 	core::stringc errString("Shaders not supported.");
 #endif
-	os::Printer::log(errString.c_str(), ELL_ERROR);
+	os::Printer::log(errString.data(), ELL_ERROR);
 	return true;
 }
 
@@ -359,10 +359,10 @@ bool COpenGLShaderMaterialRenderer::createPixelShader(const c8* pxsh)
 #ifdef GL_ARB_fragment_program
 		// compile
 		Driver->extGlProgramString(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_FORMAT_ASCII_ARB,
-				shdr.size(), shdr.c_str());
+				shdr.size(), shdr.data());
 #elif defined GL_NV_fragment_program
 		Driver->extGlLoadProgram(GL_FRAGMENT_PROGRAM_NV, PixelShader[i],
-				shdr.size(), shdr.c_str());
+				shdr.size(), shdr.data());
 #endif
 
 		if (checkError("Pixel shader"))

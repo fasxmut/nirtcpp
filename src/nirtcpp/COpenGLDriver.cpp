@@ -2060,22 +2060,22 @@ bool COpenGLDriver::testGLError(int code)
 	case GL_NO_ERROR:
 		return false;
 	case GL_INVALID_ENUM:
-		os::Printer::log("GL_INVALID_ENUM", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_INVALID_ENUM", core::stringc(code).data(), ELL_ERROR); break;
 	case GL_INVALID_VALUE:
-		os::Printer::log("GL_INVALID_VALUE", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_INVALID_VALUE", core::stringc(code).data(), ELL_ERROR); break;
 	case GL_INVALID_OPERATION:
-		os::Printer::log("GL_INVALID_OPERATION", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_INVALID_OPERATION", core::stringc(code).data(), ELL_ERROR); break;
 	case GL_STACK_OVERFLOW:
-		os::Printer::log("GL_STACK_OVERFLOW", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_STACK_OVERFLOW", core::stringc(code).data(), ELL_ERROR); break;
 	case GL_STACK_UNDERFLOW:
-		os::Printer::log("GL_STACK_UNDERFLOW", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_STACK_UNDERFLOW", core::stringc(code).data(), ELL_ERROR); break;
 	case GL_OUT_OF_MEMORY:
-		os::Printer::log("GL_OUT_OF_MEMORY", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_OUT_OF_MEMORY", core::stringc(code).data(), ELL_ERROR); break;
 	case GL_TABLE_TOO_LARGE:
-		os::Printer::log("GL_TABLE_TOO_LARGE", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_TABLE_TOO_LARGE", core::stringc(code).data(), ELL_ERROR); break;
 #if defined(GL_EXT_framebuffer_object)
 	case GL_INVALID_FRAMEBUFFER_OPERATION_EXT:
-		os::Printer::log("GL_INVALID_FRAMEBUFFER_OPERATION", core::stringc(code).c_str(), ELL_ERROR); break;
+		os::Printer::log("GL_INVALID_FRAMEBUFFER_OPERATION", core::stringc(code).data(), ELL_ERROR); break;
 #endif
 	};
 //	NIRT_DEBUG_BREAK_IF(true);
@@ -3033,7 +3033,7 @@ void COpenGLDriver::setRenderStates2DMode(bool alpha, bool texture, bool alphaCh
 //! \return Returns the name of the video driver.
 const wchar_t* COpenGLDriver::getName() const
 {
-	return Name.c_str();
+	return Name.data();
 }
 
 

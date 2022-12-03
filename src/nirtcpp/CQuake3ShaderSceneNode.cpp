@@ -44,7 +44,7 @@ CQuake3ShaderSceneNode::CQuake3ShaderSceneNode(
 		core::stringc dName = "CQuake3ShaderSceneNode ";
 		dName += Shader->name;
 
-		setDebugName( dName.c_str() );
+		setDebugName( dName.data() );
 	#endif
 
 	// name the Scene Node
@@ -264,7 +264,7 @@ E_SCENE_NODE_RENDER_PASS CQuake3ShaderSceneNode::getRenderStage() const
 		ret = ESNRP_TRANSPARENT;
 	}
 	else
-	if (	strstr ( Shader->name.c_str(), "flame" ) ||
+	if (	strstr ( Shader->name.data(), "flame" ) ||
 			group->isDefined( "surfaceparm", "water" ) ||
 			group->isDefined( "sort", "underwater" )
 		)

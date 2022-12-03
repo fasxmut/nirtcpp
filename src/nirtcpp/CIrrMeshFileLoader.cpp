@@ -441,7 +441,7 @@ void CIrrMeshFileLoader::readMeshBuffer(io::IXMLReader* reader, int vertexCount,
 void CIrrMeshFileLoader::skipSection(io::IXMLReader* reader, bool reportSkipping)
 {
 #ifdef _DEBUG
-	os::Printer::log("irrMesh skipping section", core::stringc(reader->getNodeName()).c_str());
+	os::Printer::log("irrMesh skipping section", core::stringc(reader->getNodeName()).data());
 #endif
 
 	// skip if this element is empty anyway.
@@ -458,7 +458,7 @@ void CIrrMeshFileLoader::skipSection(io::IXMLReader* reader, bool reportSkipping
 		{
 			#ifdef _DEBUG
 			if (reportSkipping)
-				os::Printer::log("irrMesh unknown element", core::stringc(reader->getNodeName()).c_str());
+				os::Printer::log("irrMesh unknown element", core::stringc(reader->getNodeName()).data());
 			#endif
 
 			++tagCounter;

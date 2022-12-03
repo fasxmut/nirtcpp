@@ -202,7 +202,7 @@ u32 CTarReader::populateFileList()
 				np++;
 			}
 
-			u32 size = strtoul(sSize.c_str(), NULL, 8);
+			u32 size = strtoul(sSize.data(), NULL, 8);
 
 			if (errno == ERANGE)
 				os::Printer::log("File too large", fullPath, ELL_WARNING);

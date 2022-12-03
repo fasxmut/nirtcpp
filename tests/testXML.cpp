@@ -81,8 +81,8 @@ bool cdata( irr::io::IFileSystem * fs )
 							core::stringc cmpString(compareStrings[count]);
 							
 							// some (unused) variables to ease debugging
-							// const c8* dataRaw = data.c_str();
-							// const c8* cmpRaw = cmpString.c_str();
+							// const c8* dataRaw = data.data();
+							// const c8* cmpRaw = cmpString.data();
 							if ( cmpString != data )
 							{
 								result = false;

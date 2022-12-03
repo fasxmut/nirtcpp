@@ -1412,7 +1412,7 @@ namespace scene
 	{
 		ISceneNode::serializeAttributes(out, options);
 
-		out->addString("Heightmap", HeightmapFile.c_str());
+		out->addString("Heightmap", HeightmapFile.data());
 		out->addFloat("TextureScale1", TCoordScale1);
 		out->addFloat("TextureScale2", TCoordScale2);
 		out->addInt("SmoothFactor", SmoothFactor);
@@ -1432,14 +1432,14 @@ namespace scene
 
 		if (newHeightmap.size() != 0 && newHeightmap != HeightmapFile)
 		{
-			io::IReadFile* file = FileSystem->createAndOpenFile(newHeightmap.c_str());
+			io::IReadFile* file = FileSystem->createAndOpenFile(newHeightmap.data());
 			if (file)
 			{
 				loadHeightMap(file, video::SColor(255,255,255,255), smoothFactor);
 				file->drop();
 			}
 			else
-				os::Printer::log("could not open heightmap", newHeightmap.c_str());
+				os::Printer::log("could not open heightmap", newHeightmap.data());
 		}
 
 		// set possible new scale
@@ -1479,7 +1479,7 @@ namespace scene
 
 		// load file
 
-		io::IReadFile* file = FileSystem->createAndOpenFile(HeightmapFile.c_str());
+		io::IReadFile* file = FileSystem->createAndOpenFile(HeightmapFile.data());
 		if (file)
 		{
 			nb->loadHeightMap(file, video::SColor(255,255,255,255), 0);

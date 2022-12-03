@@ -71,12 +71,12 @@ namespace os
 #if defined (_WIN32_WCE )
 		core::stringw tmp(message);
 		tmp += L"\n";
-		OutputDebugStringW(tmp.c_str());
+		OutputDebugStringW(tmp.data());
 #else
 		core::stringc tmp(message);
 		tmp += "\n";
-		OutputDebugStringA(tmp.c_str());
-		printf("%s", tmp.c_str());
+		OutputDebugStringA(tmp.data());
+		printf("%s", tmp.data());
 #endif
 	}
 
@@ -191,7 +191,7 @@ namespace os
 	void Printer::log(const c8* message, const io::path& hint, ELOG_LEVEL ll)
 	{
 		if (Logger)
-			Logger->log(message, hint.c_str(), ll);
+			Logger->log(message, hint.data(), ll);
 	}
 
 	// our Randomizer is not really os specific, so we

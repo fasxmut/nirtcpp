@@ -22,7 +22,7 @@ public:
 	/** \deprecated Use getOperatingSystemVersion instead. This method will be removed in Nirtcpp 1.9. */
 	NIRT_DEPRECATED const wchar_t* getOperationSystemVersion() const
 	{
-		return core::stringw(getOperatingSystemVersion()).c_str();
+		return core::stringw(getOperatingSystemVersion()).data();
 	}
 
 	//! Copies text to the clipboard

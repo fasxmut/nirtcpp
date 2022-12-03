@@ -513,7 +513,7 @@ public:
 	//! Returns caption of this element.
 	virtual const wchar_t* getText() const
 	{
-		return Text.c_str();
+		return Text.data();
 	}
 
 
@@ -768,7 +768,7 @@ public:
 	/** \return Name as character string. */
 	virtual const c8* getName() const
 	{
-		return Name.c_str();
+		return Name.data();
 	}
 
 
@@ -793,10 +793,10 @@ public:
 	scripting languages, editors, debuggers or xml serialization purposes. */
 	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override
 	{
-		out->addString("Name", Name.c_str());
+		out->addString("Name", Name.data());
 		out->addInt("Id", ID );
 		out->addString("Caption", getText());
-		out->addString("ToolTip", getToolTipText().c_str());
+		out->addString("ToolTip", getToolTipText().data());
 		out->addRect("Rect", DesiredRect);
 		out->addPosition2d("MinSize", core::position2di(MinSize.Width, MinSize.Height));
 		out->addPosition2d("MaxSize", core::position2di(MaxSize.Width, MaxSize.Height));
@@ -820,8 +820,8 @@ public:
 	{
 		setName(in->getAttributeAsString("Name", Name));
 		setID(in->getAttributeAsInt("Id", ID));
-		setText(in->getAttributeAsStringW("Caption", Text).c_str());
-		setToolTipText(in->getAttributeAsStringW("ToolTip").c_str());
+		setText(in->getAttributeAsStringW("Caption", Text).data());
+		setToolTipText(in->getAttributeAsStringW("ToolTip").data());
 		setVisible(in->getAttributeAsBool("Visible", IsVisible));
 		setEnabled(in->getAttributeAsBool("Enabled", IsEnabled));
 		IsTabStop = in->getAttributeAsBool("TabStop", IsTabStop);

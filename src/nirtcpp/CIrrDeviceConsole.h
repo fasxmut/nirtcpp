@@ -300,7 +300,7 @@ namespace gui
 			if (xrclip > 0)
 				tempText[xrclip] = L'\0';
 
-			Device->addPostPresentText(pos.X + xlclip, pos.Y, &(tempText.c_str()[xlclip]));
+			Device->addPostPresentText(pos.X + xlclip, pos.Y, &(tempText.data()[xlclip]));
 		}
 
 		//! Calculates the dimension of some text.

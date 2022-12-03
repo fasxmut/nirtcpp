@@ -299,7 +299,7 @@ s32 CD3D9HLSLMaterialRenderer::getVariableID(bool vertexShader, const c8* name)
 	core::stringc s = "HLSL Variable to get ID not found: '";
 	s += name;
 	s += "'. Available variables are:";
-	os::Printer::log(s.c_str(), ELL_WARNING);
+	os::Printer::log(s.data(), ELL_WARNING);
 	printHLSLVariables(tbl);
 
 	return -1;
@@ -411,7 +411,7 @@ void CD3D9HLSLMaterialRenderer::printHLSLVariables(LPD3DXCONSTANTTABLE table)
 				s += ", count:";
 				s += (int)d.RegisterCount;
 				s += "]";
-				os::Printer::log(s.c_str());
+				os::Printer::log(s.data());
 			}
 		}
 	}

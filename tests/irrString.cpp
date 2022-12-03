@@ -239,7 +239,7 @@ bool testLowerUpper()
 		c.make_lower();
 		if ( c != targetLower[i] )
 		{
-			logTestString("make_lower for stringc failed in test %d %s\n", i, stringsOrig[i].c_str());
+			logTestString("make_lower for stringc failed in test %d %s\n", i, stringsOrig[i].data());
 			return false;
 		}
 
@@ -247,7 +247,7 @@ bool testLowerUpper()
 		c.make_upper();
 		if ( c != targetUpper[i] )
 		{
-			logTestString("make_upper for stringc failed in test %d %s %s\n", i, stringsOrig[i].c_str(), c.c_str());
+			logTestString("make_upper for stringc failed in test %d %s %s\n", i, stringsOrig[i].data(), c.data());
 			return false;
 		}
 
@@ -255,7 +255,7 @@ bool testLowerUpper()
 		c.make_lower();
 		if ( c != irr::core::stringw(targetLower[i]) )
 		{
-			logTestString("make_lower for stringw failed in test %d %s\n", i, stringsOrig[i].c_str());
+			logTestString("make_lower for stringw failed in test %d %s\n", i, stringsOrig[i].data());
 			return false;
 		}
 
@@ -263,7 +263,7 @@ bool testLowerUpper()
 		c.make_upper();
 		if ( c != irr::core::stringw(targetUpper[i]) )
 		{
-			logTestString("make_upper for stringw failed in test %d %s\n", i, stringsOrig[i].c_str());
+			logTestString("make_upper for stringw failed in test %d %s\n", i, stringsOrig[i].data());
 			return false;
 		}
 	}
@@ -345,36 +345,36 @@ bool testIrrString(void)
 		core::stringc empty;
 		assert_log(empty.size()==0);
 		assert_log(empty[0]==0);
-		assert_log(empty.c_str()!=0);
-		assert_log(*(empty.c_str())==0);
+		assert_log(empty.data()!=0);
+		assert_log(*(empty.data())==0);
 		// Assign content
 		empty = "Test";
 		assert_log(empty.size()==4);
 		assert_log(empty[0]=='T');
 		assert_log(empty[3]=='t');
-		assert_log(*(empty.c_str())=='T');
+		assert_log(*(empty.data())=='T');
 		//Assign empty string, should be same as in the beginning
 		empty = "";
 		assert_log(empty.size()==0);
 		assert_log(empty[0]==0);
-		assert_log(*(empty.c_str())==0);
+		assert_log(*(empty.data())==0);
 	}
 	logTestString("Test stringw\n");
 	{
 		core::stringw empty;
 		assert_log(empty.size()==0);
 		assert_log(empty[0]==0);
-		assert_log(empty.c_str()!=0);
-		assert_log(*(empty.c_str())==0);
+		assert_log(empty.data()!=0);
+		assert_log(*(empty.data())==0);
 		empty = L"Test";
 		assert_log(empty.size()==4);
 		assert_log(empty[0]==L'T');
 		assert_log(empty[3]=='t');
-		assert_log(*(empty.c_str())==L'T');
+		assert_log(*(empty.data())==L'T');
 		empty = L"";
 		assert_log(empty.size()==0);
 		assert_log(empty[0]==0);
-		assert_log(*(empty.c_str())==0);
+		assert_log(*(empty.data())==0);
 		assert_log(allExpected &= testSplit());
 	}
 	allExpected &= testAppendStringc();

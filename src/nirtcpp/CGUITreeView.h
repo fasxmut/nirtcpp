@@ -37,14 +37,14 @@ namespace gui
 
 		//! returns the text of the node
 		virtual const wchar_t* getText() const override
-		{ return Text.c_str(); }
+		{ return Text.data(); }
 
 		//! sets the text of the node
 		virtual void setText( const wchar_t* text ) override;
 
 		//! returns the icon text of the node
 		virtual const wchar_t* getIcon() const override
-		{ return Icon.c_str(); }
+		{ return Icon.data(); }
 
 		//! sets the icon text of the node
 		virtual void setIcon( const wchar_t* icon ) override;

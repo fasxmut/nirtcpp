@@ -91,7 +91,7 @@ void CGUIMenu::draw()
 				c = EGDC_GRAY_TEXT;
 
 			if (font)
-				font->draw(Items[i].Text.c_str(), rect,
+				font->draw(Items[i].Text.data(), rect,
 					skin->getColor(c), true, true, &AbsoluteClippingRect);
 		}
 	}
@@ -231,7 +231,7 @@ void CGUIMenu::recalculateSize()
 		}
 		else
 		{
-			Items[i].Dim = font->getDimension(Items[i].Text.c_str());
+			Items[i].Dim = font->getDimension(Items[i].Text.data());
 			Items[i].Dim.Width += 20;
 		}
 

@@ -328,7 +328,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShader(LPCSTR pSrcData,
 			strDllName += (int)D3DX_SDK_VERSION;
 			strDllName += ".dll";
 
-			HMODULE hMod = LoadLibrary(strDllName.c_str());
+			HMODULE hMod = LoadLibrary(strDllName.data());
 			if (hMod)
 				 pFn = (AssembleShaderFunction)GetProcAddress(hMod, "D3DXAssembleShader");
 
@@ -336,7 +336,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShader(LPCSTR pSrcData,
 			{
 				LoadFailed = true;
 				os::Printer::log("Could not load shader function D3DXAssembleShader from dll, shaders disabled",
-					strDllName.c_str(), ELL_ERROR);
+					strDllName.data(), ELL_ERROR);
 			}
 		}
 
@@ -388,7 +388,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShaderFromFile(LPCSTR pSrcF
 			strDllName += (int)D3DX_SDK_VERSION;
 			strDllName += ".dll";
 
-			HMODULE hMod = LoadLibrary(strDllName.c_str());
+			HMODULE hMod = LoadLibrary(strDllName.data());
 			if (hMod)
 				 pFn = (AssembleShaderFromFileFunction)GetProcAddress(hMod, "D3DXAssembleShaderFromFileA");
 
@@ -396,7 +396,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShaderFromFile(LPCSTR pSrcF
 			{
 				LoadFailed = true;
 				os::Printer::log("Could not load shader function D3DXAssembleShaderFromFileA from dll, shaders disabled",
-					strDllName.c_str(), ELL_ERROR);
+					strDllName.data(), ELL_ERROR);
 			}
 		}
 
@@ -449,7 +449,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShader(LPCSTR pSrcData, UINT
 			strDllName += (int)D3DX_SDK_VERSION;
 			strDllName += ".dll";
 
-			HMODULE hMod = LoadLibrary(strDllName.c_str());
+			HMODULE hMod = LoadLibrary(strDllName.data());
 			if (hMod)
 				 pFn = (D3DXCompileShaderFunction)GetProcAddress(hMod, "D3DXCompileShader");
 
@@ -457,7 +457,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShader(LPCSTR pSrcData, UINT
 			{
 				LoadFailed = true;
 				os::Printer::log("Could not load shader function D3DXCompileShader from dll, shaders disabled",
-					strDllName.c_str(), ELL_ERROR);
+					strDllName.data(), ELL_ERROR);
 			}
 		}
 
@@ -509,7 +509,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShaderFromFile(LPCSTR pSrcFi
 			strDllName += (int)D3DX_SDK_VERSION;
 			strDllName += ".dll";
 
-			HMODULE hMod = LoadLibrary(strDllName.c_str());
+			HMODULE hMod = LoadLibrary(strDllName.data());
 			if (hMod)
 				 pFn = (D3DXCompileShaderFromFileFunction)GetProcAddress(hMod, "D3DXCompileShaderFromFileA");
 
@@ -517,7 +517,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShaderFromFile(LPCSTR pSrcFi
 			{
 				LoadFailed = true;
 				os::Printer::log("Could not load shader function D3DXCompileShaderFromFileA from dll, shaders disabled",
-					strDllName.c_str(), ELL_ERROR);
+					strDllName.data(), ELL_ERROR);
 			}
 		}
 

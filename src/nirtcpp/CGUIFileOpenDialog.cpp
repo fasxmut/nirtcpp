@@ -149,7 +149,7 @@ CGUIFileOpenDialog::~CGUIFileOpenDialog()
 //! returns the filename of the selected file. Returns NULL, if no file was selected.
 const wchar_t* CGUIFileOpenDialog::getFileName() const
 {
-	return FileNameW.c_str();
+	return FileNameW.data();
 }
 
 const io::path& CGUIFileOpenDialog::getFileNameP() const
@@ -165,7 +165,7 @@ const io::path& CGUIFileOpenDialog::getDirectoryName() const
 
 const wchar_t* CGUIFileOpenDialog::getDirectoryNameW() const
 {
-	return FileDirectoryFlatW.c_str();
+	return FileDirectoryFlatW.data();
 }
 
 void CGUIFileOpenDialog::setFileName(const irr::io::path& name)
@@ -342,7 +342,7 @@ void CGUIFileOpenDialog::draw()
 
 		IGUIFont* font = skin->getFont(EGDF_WINDOW);
 		if (font)
-			font->draw(Text.c_str(), rect,
+			font->draw(Text.data(), rect,
 					skin->getColor(EGDC_ACTIVE_CAPTION),
 					false, true, &AbsoluteClippingRect);
 	}
@@ -358,7 +358,7 @@ void CGUIFileOpenDialog::serializeAttributes(io::IAttributes* out, io::SAttribut
 {
 	IGUIFileOpenDialog::serializeAttributes(out,options);
 
-	out->addString("StartDirectory", StartDirectory.c_str());
+	out->addString("StartDirectory", StartDirectory.data());
 	out->addBool("RestoreDirectory", (RestoreDirectory.size()!=0));
 }
 
@@ -388,7 +388,7 @@ void CGUIFileOpenDialog::pathToStringW(irr::core::stringw& result, const irr::io
 	core::multibyteToWString(result, p);
 	setlocale(LC_CTYPE, oldLocale);
 #else
-	result = p.c_str();
+	result = p.data();
 #endif
 }
 
@@ -413,7 +413,7 @@ void CGUIFileOpenDialog::fillListBox()
 		for (u32 i=0; i < FileList->getFileCount(); ++i)
 		{
 			pathToStringW(s, FileList->getFileName(i));
-			FileBox->addItem(s.c_str(), skin->getIcon(FileList->isDirectory(i) ? EGDI_DIRECTORY : EGDI_FILE));
+			FileBox->addItem(s.data(), skin->getIcon(FileList->isDirectory(i) ? EGDI_DIRECTORY : EGDI_FILE));
 		}
 	}
 
@@ -421,7 +421,7 @@ void CGUIFileOpenDialog::fillListBox()
 	{
 		setDirectoryName(FileSystem->getWorkingDirectory());
 		pathToStringW(s, FileDirectory);
-		FileNameText->setText(s.c_str());
+		FileNameText->setText(s.data());
 	}
 }
 

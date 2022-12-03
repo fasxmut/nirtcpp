@@ -64,7 +64,7 @@ bool disambiguateTextures(void)
 	assert_log(tex1 == tex3);
 
 	stringc newWd = wd + "/empty/empty";
-	bool changed = device->getFileSystem()->changeWorkingDirectoryTo(newWd.c_str());
+	bool changed = device->getFileSystem()->changeWorkingDirectoryTo(newWd.data());
 	assert_log(changed);
 	ITexture * tex4 = driver->getTexture("../../media/tools.png");
 	assert_log(tex4);
@@ -73,7 +73,7 @@ bool disambiguateTextures(void)
 	assert_log(tex1 != tex4);
 
 	// The working directory must be restored for the other tests to work.
-	changed &= device->getFileSystem()->changeWorkingDirectoryTo(wd.c_str());
+	changed &= device->getFileSystem()->changeWorkingDirectoryTo(wd.data());
 
 	device->closeDevice();
 	device->run();

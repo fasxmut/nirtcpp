@@ -68,7 +68,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 	core::cutFilenameExtension(name,file->getFileName()) += ".mtl";
 	file->write("# exported by Nirtcpp\n",23);
 	file->write("mtllib ",7);
-	file->write(name.c_str(),name.size());
+	file->write(name.data(),name.size());
 	file->write("\n\n",2);
 
 	// write mesh buffers
@@ -83,7 +83,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 		if (buffer && buffer->getVertexCount())
 		{
 			file->write("g grp", 5);
-			file->write(num.c_str(), num.size());
+			file->write(num.data(), num.size());
 			file->write("\n",1);
 
 			u32 j;
@@ -92,21 +92,21 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 			{
 				file->write("v ",2);
 				getVectorAsStringLine(buffer->getPosition(j), num);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 			}
 
 			for (j=0; j<vertexCount; ++j)
 			{
 				file->write("vt ",3);
 				getVectorAsStringLine(buffer->getTCoords(j), num);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 			}
 
 			for (j=0; j<vertexCount; ++j)
 			{
 				file->write("vn ",3);
 				getVectorAsStringLine(buffer->getNormal(j), num);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 			}
 
 			file->write("usemtl mat",10);
@@ -124,7 +124,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 				num = core::stringc(mat.size());
 				mat.push_back(&buffer->getMaterial());
 			}
-			file->write(num.c_str(), num.size());
+			file->write(num.data(), num.size());
 			file->write("\n",1);
 
 			unsigned int idx2=0, idx1=0, idx0 = 0;
@@ -147,27 +147,27 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 
 				file->write("f ",2);
 				num = core::stringc(idx2);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write("/",1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write("/",1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write(" ",1);
 
 				num = core::stringc(idx1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write("/",1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write("/",1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write(" ",1);
 
 				num = core::stringc(idx0);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write("/",1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write("/",1);
-				file->write(num.c_str(), num.size());
+				file->write(num.data(), num.size());
 				file->write(" ",1);
 
 				file->write("\n",1);
@@ -190,20 +190,20 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 		{
 			core::stringc num(i);
 			file->write("newmtl mat",10);
-			file->write(num.c_str(),num.size());
+			file->write(num.data(),num.size());
 			file->write("\n",1);
 
 			getColorAsStringLine(mat[i]->AmbientColor, "Ka", num);
-			file->write(num.c_str(),num.size());
+			file->write(num.data(),num.size());
 			getColorAsStringLine(mat[i]->DiffuseColor, "Kd", num);
-			file->write(num.c_str(),num.size());
+			file->write(num.data(),num.size());
 			getColorAsStringLine(mat[i]->SpecularColor, "Ks", num);
-			file->write(num.c_str(),num.size());
+			file->write(num.data(),num.size());
 			getColorAsStringLine(mat[i]->EmissiveColor, "Ke", num);
-			file->write(num.c_str(),num.size());
+			file->write(num.data(),num.size());
 			num = core::stringc((double)(mat[i]->Shininess/0.128f));
 			file->write("Ns ", 3);
-			file->write(num.c_str(),num.size());
+			file->write(num.data(),num.size());
 			file->write("\n", 1);
 			if (mat[i]->getTexture(0))
 			{
@@ -221,9 +221,9 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 			   		core::stringc tx(tposX);
 			   		core::stringc ty(tposY);
 
-					file->write(tx.c_str(), tx.size());
+					file->write(tx.data(), tx.size());
 					file->write(" ", 1);
-					file->write(ty.c_str(), ty.size());
+					file->write(ty.data(), ty.size());
 					file->write(" ", 1);
 				}
 
@@ -235,9 +235,9 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 					core::stringc sx(tscaleX);
 					core::stringc sy(tscaleY);
 
-					file->write(sx.c_str(), sx.size());
+					file->write(sx.data(), sx.size());
 					file->write(" ", 1);
-					file->write(sy.c_str(), sy.size());
+					file->write(sy.data(), sy.size());
 					file->write(" ", 1);
 				}
 
@@ -246,7 +246,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 				// avoid blanks as .obj cannot handle strings with spaces
 				if (tname.findFirst(' ') != -1)
 					tname = FileSystem->getFileBasename(tname);
-				file->write(tname.c_str(), tname.size());
+				file->write(tname.data(), tname.size());
 				file->write("\n",1);
 			}
 			file->write("\n",1);

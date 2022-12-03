@@ -615,7 +615,7 @@ void CD3D9Texture::generateRenderTarget()
 		params += (unsigned int)InternalFormat;
 		params += " Type: ";
 		params += (unsigned int)Type;
-		os::Printer::log(params.c_str(), irr::ELL_ERROR);
+		os::Printer::log(params.data(), irr::ELL_ERROR);
 	}
 }
 

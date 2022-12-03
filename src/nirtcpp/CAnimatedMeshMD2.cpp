@@ -455,7 +455,7 @@ const c8* CAnimatedMeshMD2::getAnimationName(s32 nr) const
 	if ((u32)nr >= AnimationData.size())
 		return 0;
 
-	return AnimationData[nr].name.c_str();
+	return AnimationData[nr].name.data();
 }
 
 

@@ -390,11 +390,11 @@ irr::core::stringc SJoystickWin32Control::findJoystickName(int index, const JOYC
     core::stringc key = core::stringc(REGSTR_PATH_JOYCONFIG)+ "\\" + caps.szRegKey + "\\" + REGSTR_KEY_JOYCURR;
     HKEY hTopKey = HKEY_LOCAL_MACHINE;
     HKEY hKey;
-    long regresult = RegOpenKeyExA(hTopKey, key.c_str(), 0, KEY_READ, &hKey);
+    long regresult = RegOpenKeyExA(hTopKey, key.data(), 0, KEY_READ, &hKey);
     if (regresult != ERROR_SUCCESS)
     {
         hTopKey = HKEY_CURRENT_USER;
-        regresult = RegOpenKeyExA(hTopKey, key.c_str(), 0, KEY_READ, &hKey);
+        regresult = RegOpenKeyExA(hTopKey, key.data(), 0, KEY_READ, &hKey);
     }
     if (regresult != ERROR_SUCCESS)
         return result;
@@ -403,14 +403,14 @@ irr::core::stringc SJoystickWin32Control::findJoystickName(int index, const JOYC
     char regname[256];
     DWORD regsize = sizeof(regname);
     core::stringc regvalue = core::stringc("Joystick")+core::stringc(index+1) + REGSTR_VAL_JOYOEMNAME;
-    regresult = RegQueryValueExA(hKey, regvalue.c_str(), 0, 0, (LPBYTE)regname, &regsize);
+    regresult = RegQueryValueExA(hKey, regvalue.data(), 0, 0, (LPBYTE)regname, &regsize);
     RegCloseKey(hKey);
     if (regresult != ERROR_SUCCESS)
         return result;
 
     /* open that registry key */
     core::stringc regkey = core::stringc(REGSTR_PATH_JOYOEM) + "\\" + regname;
-    regresult = RegOpenKeyExA(hTopKey, regkey.c_str(), 0, KEY_READ, &hKey);
+    regresult = RegOpenKeyExA(hTopKey, regkey.data(), 0, KEY_READ, &hKey);
     if (regresult != ERROR_SUCCESS)
         return result;
 
@@ -503,7 +503,7 @@ bool SJoystickWin32Control::activateJoysticks(core::array<SJoystickInfo> & joyst
 		char logString[256];
 		(void)sprintf(logString, "Found joystick %d, %d axes, %d buttons '%s'",
 			joystick, joystickInfo[joystick].Axes,
-			joystickInfo[joystick].Buttons, joystickInfo[joystick].Name.c_str());
+			joystickInfo[joystick].Buttons, joystickInfo[joystick].Name.data());
 		os::Printer::log(logString, ELL_INFORMATION);
 	}
 
@@ -992,7 +992,7 @@ CIrrDeviceWin32::CIrrDeviceWin32(const SNirtcppCreationParameters& params)
 	core::stringc winversion;
 	getWindowsVersion(winversion);
 	Operator = new COSOperator(winversion);
-	os::Printer::log(winversion.c_str(), ELL_INFORMATION);
+	os::Printer::log(winversion.data(), ELL_INFORMATION);
 
 	// get handle to exe file
 	HINSTANCE hInstance = GetModuleHandle(0);
@@ -1680,12 +1680,12 @@ void CIrrDeviceWin32::getWindowsVersion(core::stringc& out)
 			sprintf(tmp, "version %lu.%lu %s (Build %lu)",
 					osvi.dwMajorVersion,
 					osvi.dwMinorVersion,
-					irr::core::stringc(osvi.szCSDVersion).c_str(),
+					irr::core::stringc(osvi.szCSDVersion).data(),
 					osvi.dwBuildNumber & 0xFFFF);
 		}
 		else
 		{
-			sprintf(tmp, "%s (Build %lu)", irr::core::stringc(osvi.szCSDVersion).c_str(),
+			sprintf(tmp, "%s (Build %lu)", irr::core::stringc(osvi.szCSDVersion).data(),
 			osvi.dwBuildNumber & 0xFFFF);
 		}
 

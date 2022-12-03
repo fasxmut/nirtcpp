@@ -164,7 +164,7 @@ const wchar_t* CGUIContextMenu::getItemText(u32 idx) const
 	if (idx >= Items.size())
 		return 0;
 
-	return Items[idx].Text.c_str();
+	return Items[idx].Text.data();
 }
 
 
@@ -580,7 +580,7 @@ void CGUIContextMenu::draw()
 				c = EGDC_GRAY_TEXT;
 
 			if (font)
-				font->draw(Items[i].Text.c_str(), rect,
+				font->draw(Items[i].Text.data(), rect,
 					skin->getColor(c), false, true, clip);
 
 			// draw submenu symbol
@@ -637,7 +637,7 @@ void CGUIContextMenu::recalculateSize()
 		}
 		else
 		{
-			Items[i].Dim = font->getDimension(Items[i].Text.c_str());
+			Items[i].Dim = font->getDimension(Items[i].Text.data());
 			Items[i].Dim.Width += 40;
 
 			if (Items[i].Dim.Width > width)
@@ -763,20 +763,20 @@ void CGUIContextMenu::serializeAttributes(io::IAttributes* out, io::SAttributeRe
 	for (u32 i=0; i < Items.size(); ++i)
 	{
 		tmp = "IsSeparator"; tmp += i;
-		out->addBool(tmp.c_str(), Items[i].IsSeparator);
+		out->addBool(tmp.data(), Items[i].IsSeparator);
 
 		if (!Items[i].IsSeparator)
 		{
 			tmp = "Text"; tmp += i;
-			out->addString(tmp.c_str(), Items[i].Text.c_str());
+			out->addString(tmp.data(), Items[i].Text.data());
 			tmp = "CommandID"; tmp += i;
-			out->addInt(tmp.c_str(), Items[i].CommandId);
+			out->addInt(tmp.data(), Items[i].CommandId);
 			tmp = "Enabled"; tmp += i;
-			out->addBool(tmp.c_str(), Items[i].Enabled);
+			out->addBool(tmp.data(), Items[i].Enabled);
 			tmp = "Checked"; tmp += i;
-			out->addBool(tmp.c_str(), Items[i].Checked);
+			out->addBool(tmp.data(), Items[i].Checked);
 			tmp = "AutoChecking"; tmp += i;
-			out->addBool(tmp.c_str(), Items[i].AutoChecking);
+			out->addBool(tmp.data(), Items[i].AutoChecking);
 		}
 	}
 }
@@ -810,31 +810,31 @@ void CGUIContextMenu::deserializeAttributes(io::IAttributes* in, io::SAttributeR
 		bool autochecking=false;
 
 		tmp = "IsSeparator"; tmp += i;
-		if ( in->existsAttribute(tmp.c_str()) && in->getAttributeAsBool(tmp.c_str()) )
+		if ( in->existsAttribute(tmp.data()) && in->getAttributeAsBool(tmp.data()) )
 			addSeparator();
 		else
 		{
 			tmp = "Text"; tmp += i;
-			if ( in->existsAttribute(tmp.c_str()) )
-				txt = in->getAttributeAsStringW(tmp.c_str());
+			if ( in->existsAttribute(tmp.data()) )
+				txt = in->getAttributeAsStringW(tmp.data());
 
 			tmp = "CommandID"; tmp += i;
-			if ( in->existsAttribute(tmp.c_str()) )
-				commandid = in->getAttributeAsInt(tmp.c_str());
+			if ( in->existsAttribute(tmp.data()) )
+				commandid = in->getAttributeAsInt(tmp.data());
 
 			tmp = "Enabled"; tmp += i;
-			if ( in->existsAttribute(tmp.c_str()) )
-				enabled = in->getAttributeAsBool(tmp.c_str());
+			if ( in->existsAttribute(tmp.data()) )
+				enabled = in->getAttributeAsBool(tmp.data());
 
 			tmp = "Checked"; tmp += i;
-			if ( in->existsAttribute(tmp.c_str()) )
-				checked = in->getAttributeAsBool(tmp.c_str());
+			if ( in->existsAttribute(tmp.data()) )
+				checked = in->getAttributeAsBool(tmp.data());
 
  			tmp = "AutoChecking"; tmp += i;
-			if ( in->existsAttribute(tmp.c_str()) )
-				autochecking = in->getAttributeAsBool(tmp.c_str());
+			if ( in->existsAttribute(tmp.data()) )
+				autochecking = in->getAttributeAsBool(tmp.data());
 
- 			addItem(core::stringw(txt.c_str()).c_str(), commandid, enabled, false, checked, autochecking);
+ 			addItem(core::stringw(txt.data()).data(), commandid, enabled, false, checked, autochecking);
 		}
 	}
 

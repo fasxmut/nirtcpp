@@ -341,7 +341,7 @@ bool COpenGLSLMaterialRenderer::createShader(GLenum shaderType, const char* shad
 		{
 			core::stringc typeInfo("shaderType: ");
 			typeInfo += core::stringc((unsigned long)shaderType);
-			os::Printer::log("GLSL (> 2.x) shader failed to compile", typeInfo.c_str(), ELL_ERROR);
+			os::Printer::log("GLSL (> 2.x) shader failed to compile", typeInfo.data(), ELL_ERROR);
 			// check error message and log it
 			GLint maxLength=0;
 			GLint length;
@@ -379,7 +379,7 @@ bool COpenGLSLMaterialRenderer::createShader(GLenum shaderType, const char* shad
 		{
 			core::stringc typeInfo("shaderType: ");
 			typeInfo += core::stringc((unsigned long)shaderType);
-			os::Printer::log("GLSL shader failed to compile", typeInfo.c_str(), ELL_ERROR);
+			os::Printer::log("GLSL shader failed to compile", typeInfo.data(), ELL_ERROR);
 			// check error message and log it
 			GLint maxLength=0;
 			GLsizei length;

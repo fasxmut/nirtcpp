@@ -325,10 +325,10 @@ void CMeshSceneNode::serializeAttributes(io::IAttributes* out, io::SAttributeRea
 		const io::path path = SceneManager->getFileSystem()->getRelativeFilename(
 				SceneManager->getFileSystem()->getAbsolutePath(SceneManager->getMeshCache()->getMeshName(Mesh).getPath()),
 				options->Filename);
-		out->addString("Mesh", path.c_str());
+		out->addString("Mesh", path.data());
 	}
 	else
-		out->addString("Mesh", SceneManager->getMeshCache()->getMeshName(Mesh).getPath().c_str());
+		out->addString("Mesh", SceneManager->getMeshCache()->getMeshName(Mesh).getPath().data());
 	out->addBool("ReadOnlyMaterials", ReadOnlyMaterials);
 }
 
@@ -343,7 +343,7 @@ void CMeshSceneNode::deserializeAttributes(io::IAttributes* in, io::SAttributeRe
 	if (newMeshStr != "" && oldMeshStr != newMeshStr)
 	{
 		IMesh* newMesh = 0;
-		IAnimatedMesh* newAnimatedMesh = SceneManager->getMesh(newMeshStr.c_str());
+		IAnimatedMesh* newAnimatedMesh = SceneManager->getMesh(newMeshStr.data());
 
 		if (newAnimatedMesh)
 			newMesh = newAnimatedMesh->getMesh(0);

@@ -127,7 +127,7 @@ void CXMLWriter::writeElement(const wchar_t* name, bool empty,
 	// write attributes
 	u32 i=0;
 	for (; i < names.size() && i < values.size(); ++i)
-		writeAttribute(names[i].c_str(), values[i].c_str());
+		writeAttribute(names[i].data(), values[i].data());
 
 	// write closing tag
 	if (empty)
@@ -228,7 +228,7 @@ void CXMLWriter::writeText(const wchar_t* text)
 	}
 
 	// write new string
-	File->write(s.c_str(), s.size()*sizeof(wchar_t));
+	File->write(s.data(), s.size()*sizeof(wchar_t));
 	TextWrittenLast = true;
 }
 
@@ -342,7 +342,7 @@ void CXMLWriterUTF8::writeElement(const c8* name, bool empty,
 	// write attributes
 	u32 i=0;
 	for (; i < names.size() && i < values.size(); ++i)
-		writeAttribute(names[i].c_str(), values[i].c_str());
+		writeAttribute(names[i].data(), values[i].data());
 
 	// write closing tag
 	if (empty)
@@ -445,7 +445,7 @@ void CXMLWriterUTF8::writeText(const c8* text)
 	}
 
 	// write new string
-	File->write(s.c_str(), s.size()*sizeof(c8));
+	File->write(s.data(), s.size()*sizeof(c8));
 	TextWrittenLast = true;
 }
 

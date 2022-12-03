@@ -177,7 +177,7 @@ CSoftwareTexture2::CSoftwareTexture2(IImage* image, const io::path& name, u32 fl
 		char buf[256];
 		core::stringw showName(name);
 		snprintf_nirt(buf, sizeof(buf), "Burningvideo: Texture '%ls' reformat %ux%u,%s -> %ux%u,%s",
-			showName.c_str(),
+			showName.data(),
 			OriginalSize.Width, OriginalSize.Height, ColorFormatNames[OriginalColorFormat],
 			optSize.Width, optSize.Height, ColorFormatNames[ColorFormat]
 		);
@@ -341,7 +341,7 @@ void CSoftwareTexture2::regenerateMipMapLevels(void* data)
 	if (0)
 	{
 		char buf[256];
-		const char* name = getName().getPath().c_str();
+		const char* name = getName().getPath().data();
 		int filename = 0;
 		//int ext = -1;
 		i = 0;

@@ -74,9 +74,9 @@ void CReadFile::openFile()
 	}
 
 #if defined ( _NIRT_WCHAR_FILESYSTEM )
-	File = _wfopen(Filename.c_str(), L"rb");
+	File = _wfopen(Filename.data(), L"rb");
 #else
-	File = fopen(Filename.c_str(), "rb");
+	File = fopen(Filename.data(), "rb");
 #endif
 
 	if (File)

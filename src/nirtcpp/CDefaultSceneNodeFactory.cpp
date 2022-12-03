@@ -152,7 +152,7 @@ ESCENE_NODE_TYPE CDefaultSceneNodeFactory::getCreateableSceneNodeType(u32 idx) c
 const c8* CDefaultSceneNodeFactory::getCreateableSceneNodeTypeName(u32 idx) const
 {
 	if (idx<SupportedSceneNodeTypes.size())
-		return SupportedSceneNodeTypes[idx].TypeName.c_str();
+		return SupportedSceneNodeTypes[idx].TypeName.data();
 	else
 		return 0;
 }
@@ -163,7 +163,7 @@ const c8* CDefaultSceneNodeFactory::getCreateableSceneNodeTypeName(ESCENE_NODE_T
 {
 	for (u32 i=0; i<SupportedSceneNodeTypes.size(); ++i)
 		if (SupportedSceneNodeTypes[i].Type == type)
-			return SupportedSceneNodeTypes[i].TypeName.c_str();
+			return SupportedSceneNodeTypes[i].TypeName.data();
 
 	return 0;
 }

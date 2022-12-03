@@ -57,7 +57,7 @@ bool CSceneLoaderIrr::loadScene(io::IReadFile* file, ISceneUserDataSerializer* u
 	io::IXMLReader* reader = FileSystem->createXMLReader(file);
 	if (!reader)
 	{
-		os::Printer::log("Scene is not a valid XML file", file->getFileName().c_str(), ELL_ERROR);
+		os::Printer::log("Scene is not a valid XML file", file->getFileName().data(), ELL_ERROR);
 		return false;
 	}
 
@@ -94,12 +94,12 @@ void CSceneLoaderIrr::readSceneNode(io::IXMLReader* reader, ISceneNode* parent,
 	else if (parent && NIRT_XML_FORMAT_NODE==reader->getNodeName())
 	{
 		// find node type and create it
-		core::stringc attrName = reader->getAttributeValue(NIRT_XML_FORMAT_NODE_ATTR_TYPE.c_str());
+		core::stringc attrName = reader->getAttributeValue(NIRT_XML_FORMAT_NODE_ATTR_TYPE.data());
 
-		node = SceneManager->addSceneNode(attrName.c_str(), parent);
+		node = SceneManager->addSceneNode(attrName.data(), parent);
 
 		if (!node)
-			os::Printer::log("Could not create scene node of unknown type", attrName.c_str());
+			os::Printer::log("Could not create scene node of unknown type", attrName.data());
 	}
 	else
 		node=parent;
@@ -150,7 +150,7 @@ void CSceneLoaderIrr::readSceneNode(io::IXMLReader* reader, ISceneNode* parent,
 			else
 			{
 				os::Printer::log("Found unknown element in nirtcpp scene file",
-						core::stringc(name).c_str());
+						core::stringc(name).data());
 			}
 			break;
 		default:
@@ -226,7 +226,7 @@ void CSceneLoaderIrr::readAnimators(io::IXMLReader* reader, ISceneNode* node)
 				if (node)
 				{
 					core::stringc typeName = attr->getAttributeAsString("Type");
-					ISceneNodeAnimator* anim = SceneManager->createSceneNodeAnimator(typeName.c_str(), node);
+					ISceneNodeAnimator* anim = SceneManager->createSceneNodeAnimator(typeName.data(), node);
 
 					if (anim)
 					{

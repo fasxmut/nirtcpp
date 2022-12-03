@@ -98,7 +98,7 @@ public:
 		if ((u32)idx >= Attributes.size())
 			return 0;
 
-		return Attributes[idx].Name.c_str();
+		return Attributes[idx].Name.data();
 	}
 
 
@@ -108,7 +108,7 @@ public:
 		if ((unsigned int)idx >= Attributes.size())
 			return 0;
 
-		return Attributes[idx].Value.c_str();
+		return Attributes[idx].Value.data();
 	}
 
 
@@ -119,7 +119,7 @@ public:
 		if (!attr)
 			return 0;
 
-		return attr->Value.c_str();
+		return attr->Value.data();
 	}
 
 
@@ -128,9 +128,9 @@ public:
 	{
 		const SAttribute* attr = getAttributeByName(name);
 		if (!attr)
-			return EmptyString.c_str();
+			return EmptyString.data();
 
-		return attr->Value.c_str();
+		return attr->Value.data();
 	}
 
 
@@ -142,8 +142,8 @@ public:
 		if (!attr)
 			return defaultNotFound;
 
-		core::stringc c(attr->Value.c_str());
-		return core::strtol10(c.c_str());
+		core::stringc c(attr->Value.data());
+		return core::strtol10(c.data());
 	}
 
 
@@ -155,7 +155,7 @@ public:
 			return defaultNotFound;
 
 		core::stringc c(attrvalue);
-		return core::strtol10(c.c_str());
+		return core::strtol10(c.data());
 	}
 
 
@@ -166,8 +166,8 @@ public:
 		if (!attr)
 			return defaultNotFound;
 
-		core::stringc c = attr->Value.c_str();
-		return core::fast_atof(c.c_str());
+		core::stringc c = attr->Value.data();
+		return core::fast_atof(c.data());
 	}
 
 
@@ -179,21 +179,21 @@ public:
 			return defaultNotFound;
 
 		core::stringc c = attrvalue;
-		return core::fast_atof(c.c_str());
+		return core::fast_atof(c.data());
 	}
 
 
 	//! Returns the name of the current node.
 	virtual const char_type* getNodeName() const override
 	{
-		return NodeName.c_str();
+		return NodeName.data();
 	}
 
 
 	//! Returns data of the current node.
 	virtual const char_type* getNodeData() const override
 	{
-		return NodeName.c_str();
+		return NodeName.data();
 	}
 
 
@@ -523,7 +523,7 @@ private:
 			int specialChar = -1;
 			for (int i=0; i<(int)SpecialCharacters.size(); ++i)
 			{
-				const char_type* p = &origstr.c_str()[pos]+1;
+				const char_type* p = &origstr.data()[pos]+1;
 
 				if (equalsn(&SpecialCharacters[i][1], p, SpecialCharacters[i].size()-1))
 				{

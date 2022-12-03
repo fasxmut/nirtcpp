@@ -223,7 +223,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		return false;
 	}
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("Loaded header version", core::stringc(pHeader->Version).c_str());
+	os::Printer::log("Loaded header version", core::stringc(pHeader->Version).data());
 #endif
 
 	// get pointers to data
@@ -234,7 +234,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	numVertices = os::Byteswap::byteswap(numVertices);
 #endif
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("Load vertices", core::stringc(numVertices).c_str());
+	os::Printer::log("Load vertices", core::stringc(numVertices).data());
 #endif
 
 	pPtr += sizeof(u16);
@@ -266,7 +266,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	numTriangles = os::Byteswap::byteswap(numTriangles);
 #endif
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("Load Triangles", core::stringc(numTriangles).c_str());
+	os::Printer::log("Load Triangles", core::stringc(numTriangles).data());
 #endif
 	pPtr += sizeof(u16);
 	MS3DTriangle *triangles = new MS3DTriangle[numTriangles];
@@ -305,7 +305,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	numGroups = os::Byteswap::byteswap(numGroups);
 #endif
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("Load Groups", core::stringc(numGroups).c_str());
+	os::Printer::log("Load Groups", core::stringc(numGroups).data());
 #endif
 	pPtr += sizeof(u16);
 
@@ -360,7 +360,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	numMaterials = os::Byteswap::byteswap(numMaterials);
 #endif
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("Load Materials", core::stringc(numMaterials).c_str());
+	os::Printer::log("Load Materials", core::stringc(numMaterials).data());
 #endif
 	pPtr += sizeof(u16);
 
@@ -426,7 +426,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	f32 framesPerSecond = get_unaligned_le_float(pPtr);
 
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("FPS", core::stringc(framesPerSecond).c_str());
+	os::Printer::log("FPS", core::stringc(framesPerSecond).data());
 #endif
 	pPtr += sizeof(float) * 2; // fps and current time
 
@@ -446,7 +446,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	jointCount = os::Byteswap::byteswap(jointCount);
 #endif
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-	os::Printer::log("Joints", core::stringc(jointCount).c_str());
+	os::Printer::log("Joints", core::stringc(jointCount).data());
 #endif
 	pPtr += sizeof(u16);
 	if (pPtr > buffer+fileSize)
@@ -487,9 +487,9 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 
 		jnt->Name = pJoint->Name;
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-		os::Printer::log("Joint", jnt->Name.c_str());
-		os::Printer::log("Rotation keyframes", core::stringc(pJoint->NumRotationKeyframes).c_str());
-		os::Printer::log("Translation keyframes", core::stringc(pJoint->NumTranslationKeyframes).c_str());
+		os::Printer::log("Joint", jnt->Name.data());
+		os::Printer::log("Rotation keyframes", core::stringc(pJoint->NumRotationKeyframes).data());
+		os::Printer::log("Translation keyframes", core::stringc(pJoint->NumTranslationKeyframes).data());
 #endif
 		jnt->LocalMatrix.makeIdentity();
 		jnt->LocalMatrix.setRotationRadians(
@@ -600,7 +600,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		for (u32 j=0; j<4; ++j) // four comment groups
 		{
 #ifdef _NIRT_DEBUG_MS3D_LOADER_
-			os::Printer::log("Skipping comment group", core::stringc(j+1).c_str());
+			os::Printer::log("Skipping comment group", core::stringc(j+1).data());
 #endif
 			u32 numComments = *(u32*)pPtr;
 #ifdef __BIG_ENDIAN__

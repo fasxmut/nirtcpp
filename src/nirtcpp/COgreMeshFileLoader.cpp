@@ -132,7 +132,7 @@ IAnimatedMesh* COgreMeshFileLoader::createMesh(io::IReadFile* file)
 	readString(file, data, Version);
 	if ((Version != "[MeshSerializer_v1.30]") && (Version != "[MeshSerializer_v1.40]") && (Version != "[MeshSerializer_v1.41]"))
 	{
-		os::Printer::log("Unsupported ogre mesh version", Version.c_str(), ELL_INFORMATION);
+		os::Printer::log("Unsupported ogre mesh version", Version.data(), ELL_INFORMATION);
 		return 0;
 	}
 
@@ -938,14 +938,14 @@ bool COgreMeshFileLoader::readColor(io::IReadFile* file, video::SColor& col)
 	if (token!="vertexcolour")
 	{
 		video::SColorf col_f;
-		col_f.r=core::fast_atof(token.c_str());
+		col_f.r=core::fast_atof(token.data());
 		getMaterialToken(file, token);
-		col_f.g=core::fast_atof(token.c_str());
+		col_f.g=core::fast_atof(token.data());
 		getMaterialToken(file, token);
-		col_f.b=core::fast_atof(token.c_str());
+		col_f.b=core::fast_atof(token.data());
 		getMaterialToken(file, token, true);
 		if (token.size())
-			col_f.a=core::fast_atof(token.c_str());
+			col_f.a=core::fast_atof(token.data());
 		else
 			col_f.a=1.0f;
 		if ((col_f.r==0.0f)&&(col_f.g==0.0f)&&(col_f.b==0.0f))
@@ -986,7 +986,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 		{
 			pass.SpecularTokenColor=readColor(file, pass.Material.SpecularColor);
 			getMaterialToken(file, token);
-			pass.Material.Shininess=core::fast_atof(token.c_str());
+			pass.Material.Shininess=core::fast_atof(token.data());
 		}
 		else if (token=="emissive")
 			pass.EmissiveTokenColor=readColor(file, pass.Material.EmissiveColor);
@@ -1048,7 +1048,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 		{
 			getMaterialToken(file, token); // function name
 			getMaterialToken(file, token); // value
-			pass.Material.MaterialTypeParam=core::fast_atof(token.c_str());
+			pass.Material.MaterialTypeParam=core::fast_atof(token.data());
 		}
 		else if (token=="alpha_to_coverage")
 		{
@@ -1089,12 +1089,12 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 		else if (token=="max_lights")
 		{
 			getMaterialToken(file, token);
-			pass.MaxLights=core::strtoul10(token.c_str());
+			pass.MaxLights=core::strtoul10(token.data());
 		}
 		else if (token=="point_size")
 		{
 			getMaterialToken(file, token);
-			pass.PointSize=core::fast_atof(token.c_str());
+			pass.PointSize=core::fast_atof(token.data());
 		}
 		else if (token=="point_sprites")
 		{
@@ -1104,12 +1104,12 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 		else if (token=="point_size_min")
 		{
 			getMaterialToken(file, token);
-			pass.PointSizeMin=core::strtoul10(token.c_str());
+			pass.PointSizeMin=core::strtoul10(token.data());
 		}
 		else if (token=="point_size_max")
 		{
 			getMaterialToken(file, token);
-			pass.PointSizeMax=core::strtoul10(token.c_str());
+			pass.PointSizeMax=core::strtoul10(token.data());
 		}
 		else if (token=="texture_unit")
 		{
@@ -1171,7 +1171,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 				else if (token=="max_anisotropy")
 				{
 					getMaterialToken(file, token);
-					pass.Material.TextureLayer[textureUnit].AnisotropicFilter=(u8)core::strtoul10(token.c_str());
+					pass.Material.TextureLayer[textureUnit].AnisotropicFilter=(u8)core::strtoul10(token.data());
 				}
 				else if (token=="texture_alias")
 				{
@@ -1180,7 +1180,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 				else if (token=="mipmap_bias")
 				{
 					getMaterialToken(file, token);
-					pass.Material.TextureLayer[textureUnit].LODBias=(s8)core::fast_atof(token.c_str());
+					pass.Material.TextureLayer[textureUnit].LODBias=(s8)core::fast_atof(token.data());
 				}
 				else if (token=="colour_op")
 				{ // TODO: Choose correct values
@@ -1306,7 +1306,7 @@ void COgreMeshFileLoader::loadMaterials(io::IReadFile* meshFile)
 		if (token != "material")
 		{
 			if (token.trim().size())
-				os::Printer::log("Unknown material group", token.c_str());
+				os::Printer::log("Unknown material group", token.data());
 			break;
 		}
 
@@ -1315,7 +1315,7 @@ void COgreMeshFileLoader::loadMaterials(io::IReadFile* meshFile)
 
 		getMaterialToken(file, mat.Name);
 #ifdef NIRT_OGRE_LOADER_DEBUG
-	os::Printer::log("Load Material", mat.Name.c_str(), ELL_DEBUG);
+	os::Printer::log("Load Material", mat.Name.data(), ELL_DEBUG);
 #endif
 		getMaterialToken(file, token); //open brace
 		getMaterialToken(file, token);

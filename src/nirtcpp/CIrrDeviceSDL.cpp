@@ -101,7 +101,7 @@ CIrrDeviceSDL::CIrrDeviceSDL(const SNirtcppCreationParameters& param)
 	Operator = new COSOperator(sdlversion);
 	if ( SDLDeviceInstances == 1 )
 	{
-		os::Printer::log(sdlversion.c_str(), ELL_INFORMATION);
+		os::Printer::log(sdlversion.data(), ELL_INFORMATION);
 	}
 
 	// create keymap
@@ -566,7 +566,7 @@ bool CIrrDeviceSDL::activateJoysticks(core::array<SJoystickInfo> & joystickInfo)
 		char logString[256];
 		(void)sprintf(logString, "Found joystick %d, %d axes, %d buttons '%s'",
 		joystick, joystickInfo[joystick].Axes,
-		joystickInfo[joystick].Buttons, joystickInfo[joystick].Name.c_str());
+		joystickInfo[joystick].Buttons, joystickInfo[joystick].Name.data());
 		os::Printer::log(logString, ELL_INFORMATION);
 	}
 
@@ -604,7 +604,7 @@ void CIrrDeviceSDL::sleep(u32 timeMs, bool pauseTimer)
 void CIrrDeviceSDL::setWindowCaption(const wchar_t* text)
 {
 	core::stringc textc = text;
-	SDL_WM_SetCaption( textc.c_str( ), textc.c_str( ) );
+	SDL_WM_SetCaption( textc.data( ), textc.data( ) );
 }
 
 
@@ -723,7 +723,7 @@ video::IVideoModeList* CIrrDeviceSDL::getVideoModeList()
 				{
 					core::stringc strLog("All modes available for bit-depth ");
 					strLog += core::stringc(pixelFormat.BitsPerPixel);
-					os::Printer::log(strLog.c_str());
+					os::Printer::log(strLog.data());
 				}
 				else
 				{

@@ -115,7 +115,7 @@ CWADReader::CWADReader(IReadFile* file, bool ignoreCase, bool ignorePaths)
 	{
 		SWADFileEntry &e = FileList[i];
 		char buf[128];
-		snprintf_nirt ( buf, 128, "c:\\h2\\%s", e.wadFileName.c_str() );
+		snprintf_nirt ( buf, 128, "c:\\h2\\%s", e.wadFileName.data() );
 
 		createDir ( buf );
 		FILE * f = fopen ( buf, "wb" );

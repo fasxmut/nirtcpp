@@ -633,7 +633,7 @@ const c8* CSkinnedMesh::getJointName(u32 number) const
 {
 	if (number >= AllJoints.size())
 		return 0;
-	return AllJoints[number]->Name.c_str();
+	return AllJoints[number]->Name.data();
 }
 
 
@@ -1104,27 +1104,27 @@ void CSkinnedMesh::finalize()
 
 		if ( redundantPosKeys > 0 )
 		{
-			os::Printer::log("Skinned Mesh - redundant position frames kicked", core::stringc(redundantPosKeys).c_str(), ELL_DEBUG);
+			os::Printer::log("Skinned Mesh - redundant position frames kicked", core::stringc(redundantPosKeys).data(), ELL_DEBUG);
 		}
 		if ( unorderedPosKeys > 0 )
 		{
-			irr::os::Printer::log("Skinned Mesh - unsorted position frames kicked", irr::core::stringc(unorderedPosKeys).c_str(), irr::ELL_DEBUG);
+			irr::os::Printer::log("Skinned Mesh - unsorted position frames kicked", irr::core::stringc(unorderedPosKeys).data(), irr::ELL_DEBUG);
 		}
 		if ( redundantScaleKeys > 0 )
 		{
-			os::Printer::log("Skinned Mesh - redundant scale frames kicked", core::stringc(redundantScaleKeys).c_str(), ELL_DEBUG);
+			os::Printer::log("Skinned Mesh - redundant scale frames kicked", core::stringc(redundantScaleKeys).data(), ELL_DEBUG);
 		}
 		if ( unorderedScaleKeys > 0 )
 		{
-			irr::os::Printer::log("Skinned Mesh - unsorted scale frames kicked", irr::core::stringc(unorderedScaleKeys).c_str(), irr::ELL_DEBUG);
+			irr::os::Printer::log("Skinned Mesh - unsorted scale frames kicked", irr::core::stringc(unorderedScaleKeys).data(), irr::ELL_DEBUG);
 		}
 		if ( redundantRotationKeys > 0 )
 		{
-			os::Printer::log("Skinned Mesh - redundant rotation frames kicked", core::stringc(redundantRotationKeys).c_str(), ELL_DEBUG);
+			os::Printer::log("Skinned Mesh - redundant rotation frames kicked", core::stringc(redundantRotationKeys).data(), ELL_DEBUG);
 		}
 		if ( unorderedRotationKeys > 0 )
 		{
-			irr::os::Printer::log("Skinned Mesh - unsorted rotation frames kicked", irr::core::stringc(unorderedRotationKeys).c_str(), irr::ELL_DEBUG);
+			irr::os::Printer::log("Skinned Mesh - unsorted rotation frames kicked", irr::core::stringc(unorderedRotationKeys).data(), irr::ELL_DEBUG);
 		}
 	}
 
@@ -1389,7 +1389,7 @@ void CSkinnedMesh::addJoints(core::array<IBoneSceneNode*> &jointChildSceneNodes,
 	//Create new joints
 	for (u32 i=0; i<AllJoints.size(); ++i)
 	{
-		jointChildSceneNodes.push_back(new CBoneSceneNode(0, smgr, 0, i, AllJoints[i]->Name.c_str()));
+		jointChildSceneNodes.push_back(new CBoneSceneNode(0, smgr, 0, i, AllJoints[i]->Name.data()));
 	}
 
 	//Match up parents

@@ -126,7 +126,7 @@ void CGUIMessageBox::refreshControls()
 	staticRect.LowerRightCorner.Y = staticRect.UpperLeftCorner.Y + skin->getSize(EGDS_MESSAGE_BOX_MAX_TEXT_HEIGHT);
 	if (!StaticText)
 	{
-		StaticText = Environment->addStaticText(MessageText.c_str(), staticRect, false, false, this);
+		StaticText = Environment->addStaticText(MessageText.data(), staticRect, false, false, this);
 
 		StaticText->setWordWrap(true);
 		StaticText->setSubElement(true);
@@ -135,7 +135,7 @@ void CGUIMessageBox::refreshControls()
 	else
 	{
 		StaticText->setRelativePosition(staticRect);
-		StaticText->setText(MessageText.c_str());
+		StaticText->setText(MessageText.data());
 	}
 
 	s32 textHeight  = StaticText->getTextHeight();
@@ -425,7 +425,7 @@ void CGUIMessageBox::serializeAttributes(io::IAttributes* out, io::SAttributeRea
 	out->addBool	("NoButton",		(Flags & EMBF_NO)	!= 0 );
 	out->addTexture	("Texture",			IconTexture);
 
-	out->addString	("MessageText",		MessageText.c_str());
+	out->addString	("MessageText",		MessageText.data());
 }
 
 
@@ -448,7 +448,7 @@ void CGUIMessageBox::deserializeAttributes(io::IAttributes* in, io::SAttributeRe
 	if ( IconTexture )
 		IconTexture->grab();
 
-	MessageText = in->getAttributeAsStringW("MessageText").c_str();
+	MessageText = in->getAttributeAsStringW("MessageText").data();
 
 	CGUIWindow::deserializeAttributes(in,options);
 

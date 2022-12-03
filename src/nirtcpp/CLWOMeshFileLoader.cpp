@@ -564,7 +564,7 @@ bool CLWOMeshFileLoader::readChunks()
 						core::stringc path;
 						size -= readString(path, subsize);
 	#ifdef LWO_READER_DEBUG
-						os::Printer::log("LWO loader: loaded clip", path.c_str());
+						os::Printer::log("LWO loader: loaded clip", path.data());
 	#endif
 						Images.push_back(path);
 					}
@@ -688,7 +688,7 @@ void CLWOMeshFileLoader::readVertexMapping(u32 size)
 	size -= 6;
 	size -= readString(name);
 #ifdef LWO_READER_DEBUG
-	os::Printer::log("LWO loader: Vertex map", name.c_str());
+	os::Printer::log("LWO loader: Vertex map", name.data());
 #endif
 	if (strncmp(type, "TXUV", 4)) // also support RGB, RGBA, WGHT, ...
 	{
@@ -742,7 +742,7 @@ void CLWOMeshFileLoader::readDiscVertexMapping(u32 size)
 	size -= 6;
 	size -= readString(name);
 #ifdef LWO_READER_DEBUG
-	os::Printer::log("LWO loader: Discontinuous vertex map", name.c_str());
+	os::Printer::log("LWO loader: Discontinuous vertex map", name.data());
 #endif
 	if (strncmp(type, "TXUV", 4))
 	{
@@ -856,7 +856,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 	tLWOMaterial* mat=0;
 	size -= readString(name);
 #ifdef LWO_READER_DEBUG
-	os::Printer::log("LWO loader: material name", name.c_str());
+	os::Printer::log("LWO loader: material name", name.data());
 #endif
 	for (u32 i=0; i<Materials.size(); ++i)
 	{
@@ -1087,7 +1087,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 						subsize -= 2;
 					}
 #ifdef LWO_READER_DEBUG
-				os::Printer::log("LWO loader: loading transparency", core::stringc(mat->Transparency).c_str());
+				os::Printer::log("LWO loader: loading transparency", core::stringc(mat->Transparency).data());
 #endif
 				}
 				break;
@@ -1100,7 +1100,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					size -= 4;
 				}
 #ifdef LWO_READER_DEBUG
-				os::Printer::log("LWO loader: loading transparency", core::stringc(mat->Transparency).c_str());
+				os::Printer::log("LWO loader: loading transparency", core::stringc(mat->Transparency).data());
 #endif
 				break;
 			case charsToUIntD('T','R','N','L'):
@@ -1307,7 +1307,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					{
 						size -= readString(mat->Texture[currTexture].Map, size);
 #ifdef LWO_READER_DEBUG
-						os::Printer::log("LWO loader: loading image", mat->Texture[currTexture].Map.c_str());
+						os::Printer::log("LWO loader: loading image", mat->Texture[currTexture].Map.data());
 #endif
 					}
 				}
@@ -1687,7 +1687,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					mat->Texture[currTexture].Axis=(u8)tmp16;
 					size -= 2;
 #ifdef LWO_READER_DEBUG
-					os::Printer::log("LWO loader: loading axis value", core::stringc(tmp16).c_str());
+					os::Printer::log("LWO loader: loading axis value", core::stringc(tmp16).data());
 #endif
 				}
 				break;
@@ -1701,7 +1701,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					if (FormatVersion==2)
 						size -= readVX(mat->Envelope[22]);
 #ifdef LWO_READER_DEBUG
-					os::Printer::log("LWO loader: loading texture center", (core::stringc(center.X)+" "+core::stringc(center.Y)+" "+core::stringc(center.Z)).c_str());
+					os::Printer::log("LWO loader: loading texture center", (core::stringc(center.X)+" "+core::stringc(center.Y)+" "+core::stringc(center.Z)).data());
 #endif
 				}
 				break;
@@ -1713,7 +1713,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					if (FormatVersion==2)
 						size -= readVX(mat->Envelope[22]);
 #ifdef LWO_READER_DEBUG
-					os::Printer::log("LWO loader: loading texture size", (core::stringc(tsize.X)+" "+core::stringc(tsize.Y)+" "+core::stringc(tsize.Z)).c_str());
+					os::Printer::log("LWO loader: loading texture size", (core::stringc(tsize.X)+" "+core::stringc(tsize.Y)+" "+core::stringc(tsize.Z)).data());
 #endif
 				}
 				break;
@@ -1724,7 +1724,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					if (FormatVersion==2)
 						size -= readVX(mat->Envelope[22]);
 #ifdef LWO_READER_DEBUG
-					os::Printer::log("LWO loader: loading texture rotation", (core::stringc(rotation.X)+" "+core::stringc(rotation.Y)+" "+core::stringc(rotation.Z)).c_str());
+					os::Printer::log("LWO loader: loading texture rotation", (core::stringc(rotation.X)+" "+core::stringc(rotation.Y)+" "+core::stringc(rotation.Z)).data());
 #endif
 				}
 				break;
@@ -1733,7 +1733,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					core::stringc tmpname;
 					size -= readString(tmpname);
 #ifdef LWO_READER_DEBUG
-				os::Printer::log("LWO loader: texture reference object", tmpname.c_str());
+				os::Printer::log("LWO loader: texture reference object", tmpname.data());
 #endif
 				}
 				break;
@@ -1865,7 +1865,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 				{
 					size -= readString(mat->Texture[currTexture].UVname);
 #ifdef LWO_READER_DEBUG
-					os::Printer::log("LWO loader: loading material vmap binding",mat->Texture[currTexture].UVname.c_str());
+					os::Printer::log("LWO loader: loading material vmap binding",mat->Texture[currTexture].UVname.data());
 #endif
 				}
 				break;
@@ -1935,7 +1935,7 @@ void CLWOMeshFileLoader::readMat(u32 size)
 					size -= 2;
 #ifdef LWO_READER_DEBUG
 					if (index != 5)
-						os::Printer::log("LWO loader: wrong channel projection type", core::stringc(index).c_str());
+						os::Printer::log("LWO loader: wrong channel projection type", core::stringc(index).data());
 #endif
 					mat->Texture[currTexture].Projection=(u8)index;
 				}
@@ -2102,7 +2102,7 @@ video::ITexture* CLWOMeshFileLoader::loadTexture(const core::stringc& file)
 
 	if (!texture)
 	{
-		os::Printer::log("Could not load texture", file.c_str(), ELL_WARNING);
+		os::Printer::log("Could not load texture", file.data(), ELL_WARNING);
 	}
 
 	return texture;

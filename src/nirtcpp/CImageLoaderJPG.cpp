@@ -114,7 +114,7 @@ void CImageLoaderJPG::output_message(j_common_ptr cinfo)
 
 	irr_jpeg_error_mgr* myerr = (irr_jpeg_error_mgr*)cinfo->err;
 	errMsg += *myerr->filename;
-	os::Printer::log(errMsg.c_str(),temp1, ELL_ERROR);
+	os::Printer::log(errMsg.data(),temp1, ELL_ERROR);
 }
 #endif // _NIRT_COMPILE_WITH_LIBJPEG_
 

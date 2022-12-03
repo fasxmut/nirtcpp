@@ -83,7 +83,7 @@ const wchar_t* CGUIListBox::getListItem(u32 id) const
 	if (id>=Items.size())
 		return 0;
 
-	return Items[id].Text.c_str();
+	return Items[id].Text.data();
 }
 
 
@@ -560,14 +560,14 @@ void CGUIListBox::draw()
 
 				if ( i==Selected && hl )
 				{
-					Font->draw(Items[i].Text.c_str(), textRect,
+					Font->draw(Items[i].Text.data(), textRect,
 						hasItemOverrideColor(i, EGUI_LBC_TEXT_HIGHLIGHT) ?
 						getItemOverrideColor(i, EGUI_LBC_TEXT_HIGHLIGHT) : getItemDefaultColor(EGUI_LBC_TEXT_HIGHLIGHT),
 						false, true, &clientClip);
 				}
 				else
 				{
-					Font->draw(Items[i].Text.c_str(), textRect,
+					Font->draw(Items[i].Text.data(), textRect,
 						hasItemOverrideColor(i, EGUI_LBC_TEXT) ? getItemOverrideColor(i, EGUI_LBC_TEXT) : getItemDefaultColor(EGUI_LBC_TEXT),
 						false, true, &clientClip);
 				}
@@ -693,7 +693,7 @@ void CGUIListBox::serializeAttributes(io::IAttributes* out, io::SAttributeReadWr
 	{
 		core::stringc label("text");
 		label += i;
-		out->addString(label.c_str(), Items[i].Text.c_str() );
+		out->addString(label.data(), Items[i].Text.data() );
 
 		for ( s32 c=0; c < (s32)EGUI_LBC_COUNT; ++c )
 		{
@@ -703,13 +703,13 @@ void CGUIListBox::serializeAttributes(io::IAttributes* out, io::SAttributeReadWr
 			label = useColorLabel; label += i;
 			if ( Items[i].OverrideColors[c].Use )
 			{
-				out->addBool(label.c_str(), true );
+				out->addBool(label.data(), true );
 				label = colorLabel; label += i;
-				out->addColor(label.c_str(), Items[i].OverrideColors[c].Color);
+				out->addColor(label.data(), Items[i].OverrideColors[c].Color);
 			}
 			else
 			{
-				out->addBool(label.c_str(), false );
+				out->addBool(label.data(), false );
 			}
 		}
 	}
@@ -735,9 +735,9 @@ void CGUIListBox::deserializeAttributes(io::IAttributes* in, io::SAttributeReadW
 		ListItem item;
 
 		label += i;
-		item.Text = in->getAttributeAsStringW(label.c_str());
+		item.Text = in->getAttributeAsStringW(label.data());
 
-		addItem(item.Text.c_str(), item.Icon);
+		addItem(item.Text.data(), item.Icon);
 
 		for ( u32 c=0; c < EGUI_LBC_COUNT; ++c )
 		{
@@ -745,11 +745,11 @@ void CGUIListBox::deserializeAttributes(io::IAttributes* in, io::SAttributeReadW
 			if ( !getSerializationLabels((EGUI_LISTBOX_COLOR)c, useColorLabel, colorLabel) )
 				return;
 			label = useColorLabel; label += i;
-			Items[i].OverrideColors[c].Use = in->getAttributeAsBool(label.c_str());
+			Items[i].OverrideColors[c].Use = in->getAttributeAsBool(label.data());
 			if ( Items[i].OverrideColors[c].Use )
 			{
 				label = colorLabel; label += i;
-				Items[i].OverrideColors[c].Color = in->getAttributeAsColor(label.c_str());
+				Items[i].OverrideColors[c].Color = in->getAttributeAsColor(label.data());
 			}
 		}
 	}

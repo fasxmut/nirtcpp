@@ -77,7 +77,7 @@ IAnimatedMesh* CPLYMeshFileLoader::createMesh(io::IReadFile* file)
 	// Currently only supports ASCII meshes
 	if (strcmp(getNextLine(), "ply"))
 	{
-		os::Printer::log("Not a valid PLY file", file->getFileName().c_str(), ELL_ERROR);
+		os::Printer::log("Not a valid PLY file", file->getFileName().data(), ELL_ERROR);
 	}
 	else
 	{

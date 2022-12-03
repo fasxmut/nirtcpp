@@ -427,14 +427,14 @@ namespace scene
 			io::path lmapName = lmprefix;
 			lmapName += "LMAP_";
 			lmapName += io::path(l+1);
-			os::Printer::log("CCSMLoader loading light map", lmapName.c_str());
+			os::Printer::log("CCSMLoader loading light map", lmapName.data());
 
 			video::IImage* lmapImg = driver->createImageFromData(
 				video::ECF_A8R8G8B8,
 				core::dimension2d<u32>(lmap->getWidth(),lmap->getHeight()),
 				lmap->getPixelData());
 
-			driver->addTexture(lmapName.c_str(), lmapImg);
+			driver->addTexture(lmapName.data(), lmapImg);
 			lmapImg->drop();
 		}
 
@@ -717,7 +717,7 @@ namespace scene
 		{
 			const s32 count = pReader->readLong();
 #ifdef _NIRT_DEBUG_CSM_LOADER_
-			os::Printer::log("CSM Version", core::stringc(header.getVersion()).c_str());
+			os::Printer::log("CSM Version", core::stringc(header.getVersion()).data());
 			os::Printer::log("Loading groups. Count", core::stringc(count));
 #endif
 

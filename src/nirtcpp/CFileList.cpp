@@ -88,7 +88,7 @@ u32 CFileList::addItem(const io::path& fullPath, u32 offset, u32 size, bool isDi
 	if (IgnorePaths)
 		entry.FullName = entry.Name;
 
-	//os::Printer::log(Path.c_str(), entry.FullName);
+	//os::Printer::log(Path.data(), entry.FullName);
 
 	Files.push_back(entry);
 

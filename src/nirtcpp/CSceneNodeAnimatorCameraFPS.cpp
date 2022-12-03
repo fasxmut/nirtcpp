@@ -378,9 +378,9 @@ void CSceneNodeAnimatorCameraFPS::serializeAttributes(io::IAttributes* out, io::
 	{
 		core::stringc name("Action");
 		name += core::stringc(i);
-		out->addInt(name.c_str(), (int)KeyMap[i].Action);
+		out->addInt(name.data(), (int)KeyMap[i].Action);
 		name = core::stringc("KeyCode") + core::stringc(i);
-		out->addInt(name.c_str(), (int)KeyMap[i].KeyCode);
+		out->addInt(name.data(), (int)KeyMap[i].KeyCode);
 	}
 }
 
@@ -405,9 +405,9 @@ void CSceneNodeAnimatorCameraFPS::deserializeAttributes(io::IAttributes* in, io:
 			SKeyMap keyMapEntry;
 			core::stringc name("Action");
 			name += core::stringc(i);
-			keyMapEntry.Action = static_cast<EKEY_ACTION>(in->getAttributeAsInt(name.c_str()));
+			keyMapEntry.Action = static_cast<EKEY_ACTION>(in->getAttributeAsInt(name.data()));
 			name = core::stringc("KeyCode") + core::stringc(i);
-			keyMapEntry.KeyCode = static_cast<EKEY_CODE>(in->getAttributeAsInt(name.c_str()));
+			keyMapEntry.KeyCode = static_cast<EKEY_CODE>(in->getAttributeAsInt(name.data()));
 			KeyMap.push_back(keyMapEntry);
 		}
 	}

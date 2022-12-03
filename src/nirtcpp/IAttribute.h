@@ -50,7 +50,7 @@ public:
 	virtual f32 getFloat() const			 { return 0; }
 	virtual video::SColorf getColorf() const { return video::SColorf(1.0f,1.0f,1.0f,1.0f); }
 	virtual video::SColor getColor() const	 { return video::SColor(255,255,255,255); }
-	virtual core::stringc getString() const	 { return core::stringc(getStringW().c_str()); }
+	virtual core::stringc getString() const	 { return core::stringc(getStringW().data()); }
 	virtual core::stringw getStringW() const { return core::stringw(); }
 	virtual core::array<core::stringw> getArray() const { return core::array<core::stringw>(); };
 	virtual bool getBool() const			{ return false; }
@@ -78,7 +78,7 @@ public:
 	virtual void setInt(s32 intValue)		{};
 	virtual void setFloat(f32 floatValue)		{};
 	virtual void setString(const char* text)	{};
-	virtual void setString(const wchar_t* text){ setString(core::stringc(text).c_str()); };
+	virtual void setString(const wchar_t* text){ setString(core::stringc(text).data()); };
 	virtual void setArray(const core::array<core::stringw>& arr )	{};
 	virtual void setColor(video::SColorf color)	{};
 	virtual void setColor(video::SColor color)	{};

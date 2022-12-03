@@ -260,7 +260,7 @@ void COpenGLExtensionHandler::dumpFramebufferFormats() const
 			for (int i=1; i<count; ++i)
 			{
 				memset(vals,0,sizeof(vals));
-#define tmplog(x,y) os::Printer::log(x, core::stringc(y).c_str())
+#define tmplog(x,y) os::Printer::log(x, core::stringc(y).data())
 				const BOOL res = wglGetPixelFormatAttribiv_ARB(hdc,i,0,(UINT)nums,atts,vals);
 				if (FALSE==res)
 					continue;

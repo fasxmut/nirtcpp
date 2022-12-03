@@ -311,7 +311,7 @@ bool danglingTexturePointer()
 
 	// Load a texture from a file
 	// This binds and uploads to OpenGL texture #2.
-	irr::video::ITexture* logo2 = driver->getTexture("../media/nirtcpplogo2.png");
+	irr::video::ITexture* logo2 = driver->getTexture("../media/irrlichtlogo2.png");
 	// Remove the texture from the driver (delete it from hardware)
 	// This leaves CurrentTexture pointing at logo2
 	driver->removeTexture(logo2);
@@ -321,7 +321,7 @@ bool danglingTexturePointer()
 	// COpenGLDriver::setActiveTexture will not bother to call glBindTextures
 	// (thinking that logo3 is the same texture as logo2).
 	// Therefore, the logo3 texture will be uploaded to texture #0, not #2.
-	irr::video::ITexture* logo3 = driver->getTexture("../media/nirtcpplogo3.png");
+	irr::video::ITexture* logo3 = driver->getTexture("../media/irrlichtlogo3.png");
 
 	device->run();
 	{

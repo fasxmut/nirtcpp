@@ -209,7 +209,7 @@ bool GetDMFHeader(const StringList& RawFile, dmfHeader& header)
 	temp = SubdivideString(RawFile[1]," ");//get version
 	StringList temp1=SubdivideString(temp[1],";");
 
-	header.dmfVersion = (float)atof(temp1[0].c_str());//save version
+	header.dmfVersion = (float)atof(temp1[0].data());//save version
 	if (header.dmfVersion < 0.91)
 		return false;//not correct version
 
@@ -218,21 +218,21 @@ bool GetDMFHeader(const StringList& RawFile, dmfHeader& header)
 	header.dmfName=temp[0];//save name
 
 	//set ambient color
-	header.dmfAmbient.set(axtoi(temp[1].c_str()));
+	header.dmfAmbient.set(axtoi(temp[1].data()));
 
 	//set Shadow intensity
-	header.dmfShadow = (float)atof(temp[2].c_str());
+	header.dmfShadow = (float)atof(temp[2].data());
 
 	//set current position
 	int offs=3;
 
 	//set Materials Number
-	header.numMaterials=atoi(RawFile[offs].c_str());
+	header.numMaterials=atoi(RawFile[offs].data());
 	offs+=header.numMaterials;
 	++offs;
 
 	//set Object Number
-	header.numObjects=atoi(RawFile[offs].c_str());
+	header.numObjects=atoi(RawFile[offs].data());
 
 	//retrieve face and vertices number
 	header.numVertices=0;
@@ -250,10 +250,10 @@ bool GetDMFHeader(const StringList& RawFile, dmfHeader& header)
 		StringList wat1=SubdivideString(wat[0],"_");
 
 		++offs;
-		offs += atoi(RawFile[offs].c_str());
+		offs += atoi(RawFile[offs].data());
 		++offs;
 
-		fac=atoi(RawFile[offs].c_str());
+		fac=atoi(RawFile[offs].data());
 
 		if(!(wat1[0]=="water" && wat[2]=="0"))
 			header.numFaces = header.numFaces + fac;
@@ -265,9 +265,9 @@ bool GetDMFHeader(const StringList& RawFile, dmfHeader& header)
 		for(int j=0; j<fac; j++)
 		{
 			if(!(wat1[0] == "water" && wat[2] == "0"))
-				header.numVertices=header.numVertices + atoi(RawFile[offs+j].c_str());
+				header.numVertices=header.numVertices + atoi(RawFile[offs+j].data());
 			else
-				header.numWatVertices=header.numWatVertices + atoi(RawFile[offs + j].c_str());
+				header.numWatVertices=header.numWatVertices + atoi(RawFile[offs + j].data());
 		}
 
 		offs = offs + fac;
@@ -277,14 +277,14 @@ bool GetDMFHeader(const StringList& RawFile, dmfHeader& header)
 	header.numLights=0;
 	temp.clear();
 	temp1.clear();
-	s32 lit = atoi(RawFile[offs].c_str());
+	s32 lit = atoi(RawFile[offs].data());
 
 	for (i=0; i<lit; i++)
 	{
 		offs++;
 		temp=SubdivideString(RawFile[offs],";");
 
-		if(atoi(temp[0].c_str())==1)
+		if(atoi(temp[0].data())==1)
 		{
 			temp1=SubdivideString(temp[18],"_");
 
@@ -330,21 +330,21 @@ bool GetDMFMaterials(const StringList& RawFile,
 		materials[i].pathName.replace('\\','/');
 		materials[i].pathName += "/";
 		// temp[3] is reserved, temp[4] is the number of texture layers
-		materials[i].textureLayers = core::strtoul10(temp[4].c_str());
+		materials[i].textureLayers = core::strtoul10(temp[4].data());
 		// Three values are separated by commas
 		temp1=SubdivideString(temp[5],",");
 
-		materials[i].textureFlag = atoi(temp1[0].c_str());
+		materials[i].textureFlag = atoi(temp1[0].data());
 		materials[i].textureName=temp1[1];
 		materials[i].textureName.replace('\\','/');
-		materials[i].textureBlend = atoi(temp1[2].c_str());
+		materials[i].textureBlend = atoi(temp1[2].data());
 		if(temp.size()>=9)
 		{
 			temp1=SubdivideString(temp[temp.size() - 1],",");
-			materials[i].lightmapFlag=atoi(temp1[0].c_str());
+			materials[i].lightmapFlag=atoi(temp1[0].data());
 			materials[i].lightmapName=temp1[1];
 			materials[i].lightmapName.replace('\\','/');
-			materials[i].lightmapBlend = atoi(temp1[2].c_str());
+			materials[i].lightmapBlend = atoi(temp1[2].data());
 		}
 		else
 		{
@@ -368,12 +368,12 @@ bool GetDMFVerticesFaces(const StringList& RawFile/**<StringList representing a 
 	StringList temp,temp1;
 
 	// skip materials
-	s32 offs = 4 + atoi(RawFile[3].c_str());
+	s32 offs = 4 + atoi(RawFile[3].data());
 
-	const s32 objs = atoi(RawFile[offs].c_str());
+	const s32 objs = atoi(RawFile[offs].data());
 	offs++;
 #ifdef _NIRT_DMF_DEBUG_
-	os::Printer::log("Reading objects", core::stringc(objs).c_str());
+	os::Printer::log("Reading objects", core::stringc(objs).data());
 #endif
 
 	s32 vert_cnt=0, face_cnt=0;
@@ -382,25 +382,25 @@ bool GetDMFVerticesFaces(const StringList& RawFile/**<StringList representing a 
 		StringList wat=SubdivideString(RawFile[offs],";");
 		StringList wat1=SubdivideString(wat[0],"_");
 #ifdef _NIRT_DMF_DEBUG_
-	os::Printer::log("Reading object", wat[0].c_str());
+	os::Printer::log("Reading object", wat[0].data());
 #endif
 
 		offs++;
 		// load vertices
 		core::array<core::vector3df> pos;
-		const u32 posCount = core::strtoul10(RawFile[offs].c_str());
+		const u32 posCount = core::strtoul10(RawFile[offs].data());
 		++offs;
 		pos.reallocate(posCount);
 		for (u32 i=0; i<posCount; ++i)
 		{
-			temp1=SubdivideString(RawFile[offs].c_str(),";");
-			pos.push_back(core::vector3df(core::fast_atof(temp1[0].c_str()),
-					core::fast_atof(temp1[1].c_str()),
-					-core::fast_atof(temp1[2].c_str())));
+			temp1=SubdivideString(RawFile[offs].data(),";");
+			pos.push_back(core::vector3df(core::fast_atof(temp1[0].data()),
+					core::fast_atof(temp1[1].data()),
+					-core::fast_atof(temp1[2].data())));
 			++offs;
 		}
 
-		const u32 numFaces=core::strtoul10(RawFile[offs].c_str());
+		const u32 numFaces=core::strtoul10(RawFile[offs].data());
 		offs++;
 		if(!(wat1[0]=="water" && wat[2]=="0"))
 		{
@@ -409,10 +409,10 @@ bool GetDMFVerticesFaces(const StringList& RawFile/**<StringList representing a 
 				temp=SubdivideString(RawFile[offs+j],";");
 
 				//first value is vertices number for this face
-				const u32 vert=core::strtoul10(temp[0].c_str());
+				const u32 vert=core::strtoul10(temp[0].data());
 				faces[face_cnt].numVerts=vert;
 				//second is material ID
-				faces[face_cnt].materialID=core::strtoul10(temp[1].c_str());
+				faces[face_cnt].materialID=core::strtoul10(temp[1].data());
 				//vertices are ordined
 				faces[face_cnt].firstVert=vert_cnt;
 
@@ -420,13 +420,13 @@ bool GetDMFVerticesFaces(const StringList& RawFile/**<StringList representing a 
 				for(u32 k=0; k<vert; ++k)
 				{
 					//copy position
-					vertices[vert_cnt].pos.set(pos[core::strtoul10(temp[2+k].c_str())]);
+					vertices[vert_cnt].pos.set(pos[core::strtoul10(temp[2+k].data())]);
 					//get uv coords for tex and light if any
-					vertices[vert_cnt].tc.set(core::fast_atof(temp[2+vert+(2*k)].c_str()),
-							core::fast_atof(temp[2+vert+(2*k)+1].c_str()));
+					vertices[vert_cnt].tc.set(core::fast_atof(temp[2+vert+(2*k)].data()),
+							core::fast_atof(temp[2+vert+(2*k)+1].data()));
 					const u32 tmp_sz=temp.size();
-					vertices[vert_cnt].lc.set(core::fast_atof(temp[tmp_sz-(2*vert)+(2*k)].c_str()),
-							core::fast_atof(temp[tmp_sz-(2*vert)+(2*k)+1].c_str()));
+					vertices[vert_cnt].lc.set(core::fast_atof(temp[tmp_sz-(2*vert)+(2*k)].data()),
+							core::fast_atof(temp[tmp_sz-(2*vert)+(2*k)+1].data()));
 					vert_cnt++;
 				}
 
@@ -463,7 +463,7 @@ bool GetDMFWaterMaterials(const StringList& RawFile /**<StringList representing 
 	temp=SubdivideString(RawFile[1]," ");//get version
 	temp1=SubdivideString(temp[1],";");
 
-	if (atof(temp1[0].c_str()) < 0.91)
+	if (atof(temp1[0].data()) < 0.91)
 		return false;//not correct version
 
 	//end checking
@@ -476,7 +476,7 @@ bool GetDMFWaterMaterials(const StringList& RawFile /**<StringList representing 
 		materials[i].materialID=i;
 
 		temp1 = SubdivideString(temp[5],",");
-		materials[i].textureFlag=atoi(temp1[0].c_str());
+		materials[i].textureFlag=atoi(temp1[0].data());
 		temp2 = SubdivideString(temp1[1],"\\");
 
 		materials[i].textureName=temp2.getLast();
@@ -486,7 +486,7 @@ bool GetDMFWaterMaterials(const StringList& RawFile /**<StringList representing 
 		if(a==7)
 		{
 			temp1=SubdivideString(temp[6],",");
-			materials[i].lightmapFlag=atoi(temp1[0].c_str());
+			materials[i].lightmapFlag=atoi(temp1[0].data());
 			temp2=SubdivideString(temp1[1],"\\");
 			materials[i].lightmapName=temp2.getLast();
 		}
@@ -523,16 +523,16 @@ bool GetDMFLights(const StringList& RawFile/**<StringList representing a DMF fil
 	temp=SubdivideString(RawFile[1]," ");//get version
 	temp1=SubdivideString(temp[1],";");
 
-	if (atof(temp1[0].c_str()) < 0.91)
+	if (atof(temp1[0].data()) < 0.91)
 		return false;//not correct version
 
 	//end checking
 
 	temp.clear();
 	temp1.clear();
-	offs=offs + atoi(RawFile[offs].c_str());
+	offs=offs + atoi(RawFile[offs].data());
 	offs++;
-	s32 objs = atoi(RawFile[offs].c_str());
+	s32 objs = atoi(RawFile[offs].data());
 	s32 lit=0;
 	s32 d_lit=0;
 	offs++;
@@ -543,37 +543,37 @@ bool GetDMFLights(const StringList& RawFile/**<StringList representing a DMF fil
 	{
 		offs++;
 
-		offs = offs + atoi(RawFile[offs].c_str());
+		offs = offs + atoi(RawFile[offs].data());
 		offs++;
 
-		offs = offs + atoi(RawFile[offs].c_str());
+		offs = offs + atoi(RawFile[offs].data());
 		offs++;
 	}
 
 	//let's find dynamic lights
-	lit = atoi(RawFile[offs].c_str());
+	lit = atoi(RawFile[offs].data());
 
 	for(i=0;i<lit;i++)
 	{
 		offs++;
 		temp=SubdivideString(RawFile[offs],";");
-		if(atoi(temp[0].c_str())==1)
+		if(atoi(temp[0].data())==1)
 		{
 			temp1=SubdivideString(temp[18],"_");
 			if(temp1[0]=="dynamic")
 			{
-				lights[d_lit].radius = (float)atof(temp[4].c_str());
-				lights[d_lit].pos.set((float)atof(temp[5].c_str()),
-						(float)atof(temp[6].c_str()),
-						(float)-atof(temp[7].c_str()));
+				lights[d_lit].radius = (float)atof(temp[4].data());
+				lights[d_lit].pos.set((float)atof(temp[5].data()),
+						(float)atof(temp[6].data()),
+						(float)-atof(temp[7].data()));
 
 				lights[d_lit].diffuseColor = video::SColorf(
-						video::SColor(255, atoi(temp[10].c_str()), atoi(temp[11].c_str()),
-						atoi(temp[12].c_str())));
+						video::SColor(255, atoi(temp[10].data()), atoi(temp[11].data()),
+						atoi(temp[12].data())));
 
 				lights[d_lit].specularColor = video::SColorf(
-						video::SColor(255, atoi(temp[13].c_str()), atoi(temp[14].c_str()),
-						atoi(temp[15].c_str())));
+						video::SColor(255, atoi(temp[13].data()), atoi(temp[14].data()),
+						atoi(temp[15].data())));
 
 				d_lit++;
 			}
@@ -610,16 +610,16 @@ bool GetDMFWaterPlanes(const StringList& RawFile/**<StringList representing a DM
 	temp=SubdivideString(RawFile[1]," ");//get version
 	temp1=SubdivideString(temp[1],";");
 
-	if (atof(temp1[0].c_str()) < 0.91)
+	if (atof(temp1[0].data()) < 0.91)
 		return false;//not correct version
 
 	//end checking
 
 	temp.clear();
 	temp1.clear();
-	offs=offs+atoi(RawFile[offs].c_str());
+	offs=offs+atoi(RawFile[offs].data());
 	offs++;
-	s32 objs=atoi(RawFile[offs].c_str());
+	s32 objs=atoi(RawFile[offs].data());
 	s32 fac=0,vert=0,tmp_sz=0,vert_cnt=0,face_cnt=0,wat_id=0;
 	core::dimension2d<u32> tilenum(40,40);
 	f32 waveheight=3.0f;
@@ -633,10 +633,10 @@ bool GetDMFWaterPlanes(const StringList& RawFile/**<StringList representing a DM
 		StringList wat1=SubdivideString(wat[0],"_");
 		offs++;
 		offs1=offs;
-		offs=offs+atoi(RawFile[offs].c_str());
+		offs=offs+atoi(RawFile[offs].data());
 		offs++;
 		offs1++;
-		fac=atoi(RawFile[offs].c_str());
+		fac=atoi(RawFile[offs].data());
 		offs++;
 
 		if(wat1[0]=="water" && wat[2]=="0")
@@ -650,24 +650,24 @@ bool GetDMFWaterPlanes(const StringList& RawFile/**<StringList representing a DM
 				switch(j)
 				{
 				case 0:
-					if(atoi(userinfo[0].c_str()))
-						tilenum.Width = atoi(userinfo[0].c_str());
+					if(atoi(userinfo[0].data()))
+						tilenum.Width = atoi(userinfo[0].data());
 				break;
 				case 1:
-					if(atoi(userinfo[1].c_str()))
-						tilenum.Height = atoi(userinfo[1].c_str());
+					if(atoi(userinfo[1].data()))
+						tilenum.Height = atoi(userinfo[1].data());
 				break;
 				case 2:
-					if(atof(userinfo[2].c_str()))
-						waveheight = (float)atof(userinfo[2].c_str());
+					if(atof(userinfo[2].data()))
+						waveheight = (float)atof(userinfo[2].data());
 				break;
 				case 3:
-					if(atof(userinfo[3].c_str()))
-						wavespeed = (float)atof(userinfo[3].c_str());
+					if(atof(userinfo[3].data()))
+						wavespeed = (float)atof(userinfo[3].data());
 				break;
 				case 4:
-					if(atof(userinfo[4].c_str()))
-						wavelength = (float)atof(userinfo[4].c_str());
+					if(atof(userinfo[4].data()))
+						wavelength = (float)atof(userinfo[4].data());
 				break;
 				}
 			}
@@ -685,10 +685,10 @@ bool GetDMFWaterPlanes(const StringList& RawFile/**<StringList representing a DM
 				temp=SubdivideString(RawFile[offs+j],";");
 
 				//first value is vertices number for this face
-				faces[face_cnt].numVerts=atoi(temp[0].c_str());
+				faces[face_cnt].numVerts=atoi(temp[0].data());
 				vert=faces[face_cnt].numVerts;
 				//second is material ID
-				faces[face_cnt].materialID=atoi(temp[1].c_str());
+				faces[face_cnt].materialID=atoi(temp[1].data());
 				//vertices are ordined
 				faces[face_cnt].firstVert=vert_cnt;
 
@@ -696,20 +696,20 @@ bool GetDMFWaterPlanes(const StringList& RawFile/**<StringList representing a DM
 				for(int k=0;k<vert;k++)
 				{
 					//get vertex position
-					temp1=SubdivideString(RawFile[offs1+atoi(temp[2+k].c_str())], ";");
+					temp1=SubdivideString(RawFile[offs1+atoi(temp[2+k].data())], ";");
 
 					//copy x,y,z values
-					vertices[vert_cnt].pos.set((float)atof(temp1[0].c_str()),
-							(float)atof(temp1[1].c_str()),
-							(float)-atof(temp1[2].c_str()));
+					vertices[vert_cnt].pos.set((float)atof(temp1[0].data()),
+							(float)atof(temp1[1].data()),
+							(float)-atof(temp1[2].data()));
 
 					//get uv coords for tex and light if any
-					vertices[vert_cnt].tc.set((float)atof(temp[2+vert+(2*k)].c_str()),
-							(float)atof(temp[2+vert+(2*k)+1].c_str()));
+					vertices[vert_cnt].tc.set((float)atof(temp[2+vert+(2*k)].data()),
+							(float)atof(temp[2+vert+(2*k)+1].data()));
 					tmp_sz=temp.size();
 
-					vertices[vert_cnt].lc.set((float)atof(temp[tmp_sz-(2*vert)+(2*k)].c_str()),
-							(float)atof(temp[tmp_sz-(2*vert)+(2*k)+1].c_str()));
+					vertices[vert_cnt].lc.set((float)atof(temp[tmp_sz-(2*vert)+(2*k)].data()),
+							(float)atof(temp[tmp_sz-(2*vert)+(2*k)+1].data()));
 					++vert_cnt;
 					temp1.clear();
 				}

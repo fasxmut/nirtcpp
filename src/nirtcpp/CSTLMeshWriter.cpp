@@ -69,12 +69,12 @@ bool CSTLMeshWriter::writeMeshBinary(io::IWriteFile* file, scene::IMesh* mesh, s
 	const core::stringc name(SceneManager->getMeshCache()->getMeshName(mesh));
 	const s32 sizeleft = 73-name.size(); // 80 byte header
 	if (sizeleft<0)
-		file->write(name.c_str(),73);
+		file->write(name.data(),73);
 	else
 	{
 		char* buf = new char[80];
 		memset(buf, 0, 80);
-		file->write(name.c_str(),name.size());
+		file->write(name.data(),name.size());
 		file->write(buf,sizeleft);
 		delete [] buf;
 	}
@@ -136,7 +136,7 @@ bool CSTLMeshWriter::writeMeshASCII(io::IWriteFile* file, scene::IMesh* mesh, s3
 
 	file->write("solid ",6);
 	const core::stringc name(SceneManager->getMeshCache()->getMeshName(mesh));
-	file->write(name.c_str(),name.size());
+	file->write(name.data(),name.size());
 	file->write("\n\n",2);
 
 	// write mesh buffers
@@ -174,7 +174,7 @@ bool CSTLMeshWriter::writeMeshASCII(io::IWriteFile* file, scene::IMesh* mesh, s3
 	}
 
 	file->write("endsolid ",9);
-	file->write(name.c_str(),name.size());
+	file->write(name.data(),name.size());
 
 	return true;
 }
@@ -199,17 +199,17 @@ void CSTLMeshWriter::writeFace(io::IWriteFile* file,
 	core::stringc tmp;
 	file->write("facet normal ",13);
 	getVectorAsStringLine(core::plane3df(v1,v2,v3).Normal, tmp);
-	file->write(tmp.c_str(),tmp.size());
+	file->write(tmp.data(),tmp.size());
 	file->write("  outer loop\n",13);
 	file->write("    vertex ",11);
 	getVectorAsStringLine(v1, tmp);
-	file->write(tmp.c_str(),tmp.size());
+	file->write(tmp.data(),tmp.size());
 	file->write("    vertex ",11);
 	getVectorAsStringLine(v2, tmp);
-	file->write(tmp.c_str(),tmp.size());
+	file->write(tmp.data(),tmp.size());
 	file->write("    vertex ",11);
 	getVectorAsStringLine(v3, tmp);
-	file->write(tmp.c_str(),tmp.size());
+	file->write(tmp.data(),tmp.size());
 	file->write("  endloop\n",10);
 	file->write("endfacet\n",9);
 }

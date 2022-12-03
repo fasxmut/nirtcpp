@@ -56,7 +56,7 @@ namespace irr
 		core::stringc s = text;
 		s += ": ";
 		s += hint;
-		log (s.c_str(), ll);
+		log (s.data(), ll);
 	}
 
 	//! Prints out a text into the log
@@ -66,7 +66,7 @@ namespace irr
 			return;
 
 		core::stringc s = text;
-		log(s.c_str(), ll);
+		log(s.data(), ll);
 	}
 
 
@@ -78,7 +78,7 @@ namespace irr
 
 		core::stringc s1 = text;
 		core::stringc s2 = hint;
-		log(s1.c_str(), s2.c_str(), ll);
+		log(s1.data(), s2.data(), ll);
 	}
 
 	//! Prints out a text into the log
@@ -88,7 +88,7 @@ namespace irr
 			return;
 
 		core::stringc s2 = hint;
-		log( text, s2.c_str(), ll);
+		log( text, s2.data(), ll);
 	}
 
 	//! Sets a new event receiver

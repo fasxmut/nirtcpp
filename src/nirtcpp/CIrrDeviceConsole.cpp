@@ -47,7 +47,7 @@ void sighandler(int sig)
 	irr::core::stringc code = "Signal ";
 	code += sig;
 	code += " received";
-	irr::os::Printer::log("Closing console device", code.c_str());
+	irr::os::Printer::log("Closing console device", code.data());
 
 	DeviceToClose->closeDevice();
 }
@@ -406,7 +406,7 @@ bool CIrrDeviceConsole::present(video::IImage* surface, void* windowId, core::re
 	for (u32 y=0; y<OutputBuffer.size(); ++y)
 	{
 		setTextCursorPos(0,y);
-		fprintf(OutFile, "%s", OutputBuffer[y].c_str());
+		fprintf(OutFile, "%s", OutputBuffer[y].data());
 	}
 	return surface != 0;
 }

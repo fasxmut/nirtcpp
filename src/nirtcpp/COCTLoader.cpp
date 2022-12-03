@@ -254,7 +254,7 @@ IAnimatedMesh* COCTLoader::createMesh(io::IReadFile* file)
 			}
 		}
 
-		lig[i] = SceneManager->getVideoDriver()->addTexture(lightmapname.c_str(), tmpImage);
+		lig[i] = SceneManager->getVideoDriver()->addTexture(lightmapname.data(), tmpImage);
 	}
 	tmpImage->drop();
 	SceneManager->getVideoDriver()->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, oldMipMapState);

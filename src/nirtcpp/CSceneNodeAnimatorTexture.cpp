@@ -96,7 +96,7 @@ void CSceneNodeAnimatorTexture::serializeAttributes(io::IAttributes* out, io::SA
 		core::stringc tname = "Texture";
 		tname += (int)(i+1);
 
-		out->addTexture(tname.c_str(), i<Textures.size() ? Textures[i] : 0);
+		out->addTexture(tname.data(), i<Textures.size() ? Textures[i] : 0);
 	}
 }
 
@@ -116,9 +116,9 @@ void CSceneNodeAnimatorTexture::deserializeAttributes(io::IAttributes* in, io::S
 		core::stringc tname = "Texture";
 		tname += (int)i;
 
-		if (in->existsAttribute(tname.c_str()))
+		if (in->existsAttribute(tname.data()))
 		{
-			video::ITexture* tex = in->getAttributeAsTexture(tname.c_str());
+			video::ITexture* tex = in->getAttributeAsTexture(tname.data());
 			if (tex)
 			{
 				tex->grab();

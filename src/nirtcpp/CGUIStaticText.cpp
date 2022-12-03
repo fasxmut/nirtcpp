@@ -96,10 +96,10 @@ void CGUIStaticText::draw()
 				if (HAlign == EGUIA_LOWERRIGHT)
 				{
 					frameRect.UpperLeftCorner.X = frameRect.LowerRightCorner.X -
-						font->getDimension(Text.c_str()).Width;
+						font->getDimension(Text.data()).Width;
 				}
 
-				font->draw(Text.c_str(), frameRect, 
+				font->draw(Text.data(), frameRect, 
 					getActiveColor(),
 					HAlign == EGUIA_CENTER, VAlign == EGUIA_CENTER, (RestrainTextInside ? &AbsoluteClippingRect : NULL));
 			}
@@ -125,10 +125,10 @@ void CGUIStaticText::draw()
 					if (HAlign == EGUIA_LOWERRIGHT)
 					{
 						r.UpperLeftCorner.X = frameRect.LowerRightCorner.X -
-							font->getDimension(BrokenText[i].c_str()).Width;
+							font->getDimension(BrokenText[i].data()).Width;
 					}
 
-					font->draw(BrokenText[i].c_str(), r,
+					font->draw(BrokenText[i].data(), r,
 						getActiveColor(),
 						HAlign == EGUIA_CENTER, false, (RestrainTextInside ? &AbsoluteClippingRect : NULL));
 
@@ -374,8 +374,8 @@ void CGUIStaticText::breakText()
 				{
 					// here comes the next whitespace, look if
 					// we must break the last word to the next line.
-					const s32 whitelgth = font->getDimension(whitespace.c_str()).Width;
-					const s32 wordlgth = font->getDimension(word.c_str()).Width;
+					const s32 whitelgth = font->getDimension(whitespace.data()).Width;
+					const s32 wordlgth = font->getDimension(word.data()).Width;
 
 					if (wordlgth > elWidth)
 					{
@@ -388,7 +388,7 @@ void CGUIStaticText::breakText()
 							core::stringw first  = word.subString(0, where);
 							core::stringw second = word.subString(where, word.size() - where);
 							BrokenText.push_back(line + first + L"-");
-							const s32 secondLength = font->getDimension(second.c_str()).Width;
+							const s32 secondLength = font->getDimension(second.data()).Width;
 
 							length = secondLength;
 							line = second;
@@ -475,8 +475,8 @@ void CGUIStaticText::breakText()
 				{
 					// here comes the next whitespace, look if
 					// we must break the last word to the next line.
-					const s32 whitelgth = font->getDimension(whitespace.c_str()).Width;
-					const s32 wordlgth = font->getDimension(word.c_str()).Width;
+					const s32 whitelgth = font->getDimension(whitespace.data()).Width;
+					const s32 wordlgth = font->getDimension(word.data()).Width;
 
 					if (length && (length + wordlgth + whitelgth > elWidth))
 					{
@@ -558,7 +558,7 @@ s32 CGUIStaticText::getTextHeight() const
 		// TODO: Text can have multiple lines which are not in BrokenText
 		// This is likely not correct. But as I have no time for further
 		// investigation I just fix it for now by return the true height here.
-		return font->getDimension(Text.c_str()).Height;
+		return font->getDimension(Text.data()).Height;
 	}
 }
 
@@ -575,7 +575,7 @@ s32 CGUIStaticText::getTextWidth() const
 
 		for(u32 line = 0; line < BrokenText.size(); ++line)
 		{
-			s32 width = font->getDimension(BrokenText[line].c_str()).Width;
+			s32 width = font->getDimension(BrokenText[line].data()).Width;
 
 			if(width > widest)
 				widest = width;
@@ -585,7 +585,7 @@ s32 CGUIStaticText::getTextWidth() const
 	}
 	else
 	{
-		return font->getDimension(Text.c_str()).Width;
+		return font->getDimension(Text.data()).Width;
 	}
 }
 

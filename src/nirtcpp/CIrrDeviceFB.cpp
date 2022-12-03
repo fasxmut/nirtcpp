@@ -57,7 +57,7 @@ CIrrDeviceFB::CIrrDeviceFB(const SNirtcppCreationParameters& params)
 	linuxversion += FBInfo.machine;
 
 	Operator = new COSOperator(linuxversion);
-	os::Printer::log(linuxversion.c_str(), ELL_INFORMATION);
+	os::Printer::log(linuxversion.data(), ELL_INFORMATION);
 
 	// create window
 	if (params.DriverType != video::EDT_NULL)

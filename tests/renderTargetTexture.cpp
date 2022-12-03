@@ -28,7 +28,7 @@ static bool testWith2DImage(video::E_DRIVER_TYPE driverType)
 
 	logTestString("Testing driver %ls\n", driver->getName());
 
-	video::ITexture *image = driver->getTexture ("../media/nirtcpplogo2.png");
+	video::ITexture *image = driver->getTexture ("../media/irrlichtlogo2.png");
 	video::ITexture *RTT_texture = driver->addRenderTargetTexture (core::dimension2d < u32 > (256, 128));
 
 	smgr->addCameraSceneNode (0, core::vector3df (100, 100, 100),

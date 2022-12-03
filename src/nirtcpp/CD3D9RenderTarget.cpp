@@ -65,7 +65,7 @@ namespace irr
 					message += Driver->ActiveRenderTarget.size();
 					message += " textures per render target.";
 
-					os::Printer::log(message.c_str(), ELL_WARNING);
+					os::Printer::log(message.data(), ELL_WARNING);
 				}
 
 				const u32 size = core::min_(numTextures, static_cast<u32>(Driver->ActiveRenderTarget.size()));

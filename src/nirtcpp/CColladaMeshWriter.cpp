@@ -513,8 +513,8 @@ void CColladaMeshWriter::writeMaterial(const irr::core::stringc& materialname)
 	MaterialsWritten.insert(materialname, true);
 
 	Writer->writeElement("material", false,
-		"id", materialname.c_str(),
-		"name", materialname.c_str());
+		"id", materialname.data(),
+		"name", materialname.data());
 	Writer->writeLineBreak();
 
 	// We don't make a difference between material and effect on export.
@@ -522,7 +522,7 @@ void CColladaMeshWriter::writeMaterial(const irr::core::stringc& materialname)
 	core::stringc strFx(materialname);
 	strFx += "-fx";
 	Writer->writeElement("instance_effect", true,
-		"url", (core::stringc("#") + strFx).c_str());
+		"url", (core::stringc("#") + strFx).data());
 	Writer->writeLineBreak();
 
 	Writer->writeClosingTag("material");
@@ -581,7 +581,7 @@ void CColladaMeshWriter::writeNodeLights(irr::scene::ISceneNode * node)
 		cLight.Name = nameForNode(node);
 		LightNodes.insert(node, cLight);
 
-		Writer->writeElement("light", false, "id", cLight.Name.c_str());
+		Writer->writeElement("light", false, "id", cLight.Name.data());
 		Writer->writeLineBreak();
 
 		Writer->writeElement("technique_common", false);
@@ -594,9 +594,9 @@ void CColladaMeshWriter::writeNodeLights(irr::scene::ISceneNode * node)
 				Writer->writeLineBreak();
 
 				writeColorElement(lightData.DiffuseColor, false);
-				writeNode("constant_attenuation ", core::stringc(lightData.Attenuation.X).c_str());
-				writeNode("linear_attenuation  ", core::stringc(lightData.Attenuation.Y).c_str());
-				writeNode("quadratic_attenuation", core::stringc(lightData.Attenuation.Z).c_str());
+				writeNode("constant_attenuation ", core::stringc(lightData.Attenuation.X).data());
+				writeNode("linear_attenuation  ", core::stringc(lightData.Attenuation.Y).data());
+				writeNode("quadratic_attenuation", core::stringc(lightData.Attenuation.Z).data());
 
 				Writer->writeClosingTag("point");
 				Writer->writeLineBreak();
@@ -608,12 +608,12 @@ void CColladaMeshWriter::writeNodeLights(irr::scene::ISceneNode * node)
 
 				writeColorElement(lightData.DiffuseColor, false);
 
-				writeNode("constant_attenuation ", core::stringc(lightData.Attenuation.X).c_str());
-				writeNode("linear_attenuation  ", core::stringc(lightData.Attenuation.Y).c_str());
-				writeNode("quadratic_attenuation", core::stringc(lightData.Attenuation.Z).c_str());
+				writeNode("constant_attenuation ", core::stringc(lightData.Attenuation.X).data());
+				writeNode("linear_attenuation  ", core::stringc(lightData.Attenuation.Y).data());
+				writeNode("quadratic_attenuation", core::stringc(lightData.Attenuation.Z).data());
 
-				writeNode("falloff_angle", core::stringc(lightData.OuterCone * core::RADTODEG).c_str());
-				writeNode("falloff_exponent", core::stringc(lightData.Falloff).c_str());
+				writeNode("falloff_angle", core::stringc(lightData.OuterCone * core::RADTODEG).data());
+				writeNode("falloff_exponent", core::stringc(lightData.Falloff).data());
 
 				Writer->writeClosingTag("spot");
 				Writer->writeLineBreak();
@@ -658,7 +658,7 @@ void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
 		irr::core::stringc name = nameForNode(node);
 		CameraNodes.insert(cameraNode, name);
 
-		Writer->writeElement("camera", false, "id", name.c_str());
+		Writer->writeElement("camera", false, "id", name.data());
 		Writer->writeLineBreak();
 
 		Writer->writeElement("optics", false);
@@ -682,10 +682,10 @@ void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
 			irr::f32 zNear = projMat[14]*nearMinusFar;
 			irr::f32 zFar = 1.f/projMat[10] + zNear;
 
-			writeNode("xmag", core::stringc(xmag).c_str());
-			writeNode("ymag", core::stringc(ymag).c_str());
-			writeNode("znear", core::stringc(zNear).c_str());
-			writeNode("zfar", core::stringc(zFar).c_str());
+			writeNode("xmag", core::stringc(xmag).data());
+			writeNode("ymag", core::stringc(ymag).data());
+			writeNode("znear", core::stringc(zNear).data());
+			writeNode("zfar", core::stringc(zFar).data());
 
 			Writer->writeClosingTag("orthographic");
 			Writer->writeLineBreak();
@@ -695,10 +695,10 @@ void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
 			Writer->writeElement("perspective", false);
 			Writer->writeLineBreak();
 
-			writeNode("yfov", core::stringc(cameraNode->getFOV()*core::RADTODEG).c_str());
-			writeNode("aspect_ratio", core::stringc(cameraNode->getAspectRatio()).c_str());
-			writeNode("znear", core::stringc(cameraNode->getNearValue()).c_str());
-			writeNode("zfar", core::stringc(cameraNode->getFarValue()).c_str());
+			writeNode("yfov", core::stringc(cameraNode->getFOV()*core::RADTODEG).data());
+			writeNode("aspect_ratio", core::stringc(cameraNode->getAspectRatio()).data());
+			writeNode("znear", core::stringc(cameraNode->getNearValue()).data());
+			writeNode("zfar", core::stringc(cameraNode->getFarValue()).data());
 
 			Writer->writeClosingTag("perspective");
 			Writer->writeLineBreak();
@@ -750,7 +750,7 @@ void CColladaMeshWriter::writeSceneNode(irr::scene::ISceneNode * node )
 
 	// Collada doesn't require to set the id, but some other tools have problems if none exists, so we just add it.
 	irr::core::stringc nameId(nameForNode(node));
-	Writer->writeElement("node", false, "id", nameId.c_str());
+	Writer->writeElement("node", false, "id", nameId.data());
 	Writer->writeLineBreak();
 
 	// DummyTransformationSceneNode don't have rotation, position, scale information
@@ -935,7 +935,7 @@ bool CColladaMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32
 void CColladaMeshWriter::writeMeshInstanceGeometry(const irr::core::stringc& meshname, scene::IMesh* mesh, scene::ISceneNode* node)
 {
 	//<instance_geometry url="#mesh">
-	Writer->writeElement("instance_geometry", false, "url", toRef(meshname).c_str());
+	Writer->writeElement("instance_geometry", false, "url", toRef(meshname).data());
 	Writer->writeLineBreak();
 
 		Writer->writeElement("bind_material", false);
@@ -953,7 +953,7 @@ void CColladaMeshWriter::writeMeshInstanceGeometry(const irr::core::stringc& mes
 				core::stringc strMatTarget = "#";
 				video::SMaterial & material = useNodeMaterials ? node->getMaterial(i) : mesh->getMeshBuffer(i)->getMaterial();
 				strMatTarget += nameForMaterial(material, i, mesh, node);
-				Writer->writeElement("instance_material", false, "symbol", strMatSymbol.c_str(), "target", strMatTarget.c_str());
+				Writer->writeElement("instance_material", false, "symbol", strMatSymbol.data(), "target", strMatTarget.data());
 				Writer->writeLineBreak();
 
 					// TODO: need to handle second UV-set
@@ -977,13 +977,13 @@ void CColladaMeshWriter::writeMeshInstanceGeometry(const irr::core::stringc& mes
 
 void CColladaMeshWriter::writeLightInstance(const irr::core::stringc& lightName)
 {
-	Writer->writeElement("instance_light", true, "url", toRef(lightName).c_str());
+	Writer->writeElement("instance_light", true, "url", toRef(lightName).data());
 	Writer->writeLineBreak();
 }
 
 void CColladaMeshWriter::writeCameraInstance(const irr::core::stringc& cameraName)
 {
-	Writer->writeElement("instance_camera", true, "url", toRef(cameraName).c_str());
+	Writer->writeElement("instance_camera", true, "url", toRef(cameraName).data());
 	Writer->writeLineBreak();
 }
 
@@ -1008,7 +1008,7 @@ void CColladaMeshWriter::writeVector(const irr::core::vector3df& vec)
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	Writer->writeText(WriteBuffer.c_str());
+	Writer->writeText(WriteBuffer.data());
 }
 
 void CColladaMeshWriter::writeUv(const irr::core::vector2df& vec)
@@ -1023,7 +1023,7 @@ void CColladaMeshWriter::writeUv(const irr::core::vector2df& vec)
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	Writer->writeText(WriteBuffer.c_str());
+	Writer->writeText(WriteBuffer.data());
 }
 
 void CColladaMeshWriter::writeColor(const irr::video::SColorf& colorf, bool writeAlpha)
@@ -1049,7 +1049,7 @@ void CColladaMeshWriter::writeColor(const irr::video::SColorf& colorf, bool writ
 		WriteBuffer.eraseTrailingFloatZeros();
 	}
 
-	Writer->writeText(WriteBuffer.c_str());
+	Writer->writeText(WriteBuffer.data());
 }
 
 irr::core::stringc CColladaMeshWriter::toString(const irr::video::ECOLOR_FORMAT format) const
@@ -1341,7 +1341,7 @@ void CColladaMeshWriter::writeAsset()
 	Writer->writeClosingTag("revision");
 	Writer->writeLineBreak();
 
-	Writer->writeElement("unit", true, "meter", core::stringc(getUnitMeter()).eraseTrailingFloatZeros().c_str(), "name", getUnitName().c_str());
+	Writer->writeElement("unit", true, "meter", core::stringc(getUnitMeter()).eraseTrailingFloatZeros().data(), "name", getUnitName().data());
 	Writer->writeLineBreak();
 
 	Writer->writeClosingTag("asset");
@@ -1368,8 +1368,8 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 	EffectsWritten.insert(materialfxname, true);
 
 	Writer->writeElement("effect", false,
-		"id", materialfxname.c_str(),
-		"name", materialfxname.c_str());
+		"id", materialfxname.data(),
+		"name", materialfxname.data());
 	Writer->writeLineBreak();
 	Writer->writeElement("profile_COMMON", false);
 	Writer->writeLineBreak();
@@ -1395,7 +1395,7 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 			//<newparam sid="tex0-surface">
 			irr::core::stringc texSurface(texName);
 			texSurface += "-surface";
-			Writer->writeElement("newparam", false, "sid", texSurface.c_str());
+			Writer->writeElement("newparam", false, "sid", texSurface.data());
 			Writer->writeLineBreak();
 			//  <surface type="2D">
 				Writer->writeElement("surface", false, "type", "2D");
@@ -1404,14 +1404,14 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 		//          <init_from>internal_texturename</init_from>
 					Writer->writeElement("init_from", false);
 					irr::io::path p(FileSystem->getRelativeFilename(layer.Texture->getName().getPath(), Directory));
-					Writer->writeText(toNCName(irr::core::stringc(p)).c_str());	// same ID for internal name as in writeLibraryImages
+					Writer->writeText(toNCName(irr::core::stringc(p)).data());	// same ID for internal name as in writeLibraryImages
 					Writer->writeClosingTag("init_from");
 					Writer->writeLineBreak();
 
 		//          <format>A8R8G8B8</format>
 					Writer->writeElement("format", false);
 					video::ECOLOR_FORMAT format = layer.Texture->getColorFormat();
-					Writer->writeText(toString(format).c_str());
+					Writer->writeText(toString(format).data());
 					Writer->writeClosingTag("format");
 					Writer->writeLineBreak();
 		//      </surface>
@@ -1425,7 +1425,7 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 		//  <newparam sid="tex0-sampler">
 			irr::core::stringc texSampler(texName);
 			texSampler += "-sampler";
-			Writer->writeElement("newparam", false, "sid", texSampler.c_str());
+			Writer->writeElement("newparam", false, "sid", texSampler.data());
 			Writer->writeLineBreak();
 		//      <sampler2D>
 				Writer->writeElement("sampler2D", false);
@@ -1433,37 +1433,37 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 
 		//          <source>tex0-surface</source>
 					Writer->writeElement("source", false);
-					Writer->writeText(texSurface.c_str());
+					Writer->writeText(texSurface.data());
 					Writer->writeClosingTag("source");
 					Writer->writeLineBreak();
 
 		//			<wrap_s>WRAP</wrap_s>
 					Writer->writeElement("wrap_s", false);
-					Writer->writeText(toString((video::E_TEXTURE_CLAMP)layer.TextureWrapU).c_str());
+					Writer->writeText(toString((video::E_TEXTURE_CLAMP)layer.TextureWrapU).data());
 					Writer->writeClosingTag("wrap_s");
 					Writer->writeLineBreak();
 
 		//			<wrap_t>WRAP</wrap_t>
 					Writer->writeElement("wrap_t", false);
-					Writer->writeText(toString((video::E_TEXTURE_CLAMP)layer.TextureWrapV).c_str());
+					Writer->writeText(toString((video::E_TEXTURE_CLAMP)layer.TextureWrapV).data());
 					Writer->writeClosingTag("wrap_t");
 					Writer->writeLineBreak();
 
 		//			<wrap_p>WRAP</wrap_p>	// TODO: Should only be written in Collada 1.5
 					Writer->writeElement("wrap_p", false);
-					Writer->writeText(toString((video::E_TEXTURE_CLAMP)layer.TextureWrapW).c_str());
+					Writer->writeText(toString((video::E_TEXTURE_CLAMP)layer.TextureWrapW).data());
 					Writer->writeClosingTag("wrap_p");
 					Writer->writeLineBreak();
 
 		//			<minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
 					Writer->writeElement("minfilter", false);
-					Writer->writeText(minTexfilterToString(layer.BilinearFilter, layer.TrilinearFilter).c_str());
+					Writer->writeText(minTexfilterToString(layer.BilinearFilter, layer.TrilinearFilter).data());
 					Writer->writeClosingTag("minfilter");
 					Writer->writeLineBreak();
 
 		//			<magfilter>LINEAR</magfilter>
 					Writer->writeElement("magfilter", false);
-					Writer->writeText(magTexfilterToString(layer.BilinearFilter, layer.TrilinearFilter).c_str());
+					Writer->writeText(magTexfilterToString(layer.BilinearFilter, layer.TrilinearFilter).data());
 					Writer->writeClosingTag("magfilter");
 					Writer->writeLineBreak();
 
@@ -1516,7 +1516,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 {
 	core::stringc meshId(meshname);
 
-	Writer->writeElement("geometry", false, "id", meshId.c_str(), "name", meshId.c_str());
+	Writer->writeElement("geometry", false, "id", meshId.data(), "name", meshId.data());
 	Writer->writeLineBreak();
 	Writer->writeElement("mesh");
 	Writer->writeLineBreak();
@@ -1549,14 +1549,14 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 	// write positions
 	core::stringc meshPosId(meshId);
 	meshPosId += "-Pos";
-	Writer->writeElement("source", false, "id", meshPosId.c_str());
+	Writer->writeElement("source", false, "id", meshPosId.data());
 	Writer->writeLineBreak();
 
 		core::stringc vertexCountStr(totalVertexCount*3);
 		core::stringc meshPosArrayId(meshPosId);
 		meshPosArrayId += "-array";
-		Writer->writeElement("float_array", false, "id", meshPosArrayId.c_str(),
-					"count", vertexCountStr.c_str());
+		Writer->writeElement("float_array", false, "id", meshPosArrayId.data(),
+					"count", vertexCountStr.data());
 		Writer->writeLineBreak();
 
 		for (i=0; i<mbCount; ++i)
@@ -1587,8 +1587,8 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 		vertexCountStr = core::stringc(totalVertexCount);
 
-			Writer->writeElement("accessor", false, "source", toRef(meshPosArrayId).c_str(),
-						"count", vertexCountStr.c_str(), "stride", "3");
+			Writer->writeElement("accessor", false, "source", toRef(meshPosArrayId).data(),
+						"count", vertexCountStr.data(), "stride", "3");
 			Writer->writeLineBreak();
 
 				Writer->writeElement("param", true, "name", "X", "type", "float");
@@ -1611,14 +1611,14 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 	core::stringc meshTexCoord0Id(meshId);
 	meshTexCoord0Id += "-TexCoord0";
-	Writer->writeElement("source", false, "id", meshTexCoord0Id.c_str());
+	Writer->writeElement("source", false, "id", meshTexCoord0Id.data());
 	Writer->writeLineBreak();
 
 		vertexCountStr = core::stringc(totalVertexCount*2);
 		core::stringc meshTexCoordArrayId(meshTexCoord0Id);
 		meshTexCoordArrayId += "-array";
-		Writer->writeElement("float_array", false, "id", meshTexCoordArrayId.c_str(),
-					"count", vertexCountStr.c_str());
+		Writer->writeElement("float_array", false, "id", meshTexCoordArrayId.data(),
+					"count", vertexCountStr.data());
 		Writer->writeLineBreak();
 
 		for (i=0; i<mbCount; ++i)
@@ -1649,13 +1649,13 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 		vertexCountStr = core::stringc(totalVertexCount);
 
-			Writer->writeElement("accessor", false, "source", toRef(meshTexCoordArrayId).c_str(),
-						"count", vertexCountStr.c_str(), "stride", "2");
+			Writer->writeElement("accessor", false, "source", toRef(meshTexCoordArrayId).data(),
+						"count", vertexCountStr.data(), "stride", "2");
 			Writer->writeLineBreak();
 
-				Writer->writeElement("param", true, "name", ParamNamesUV[0].c_str(), "type", "float");
+				Writer->writeElement("param", true, "name", ParamNamesUV[0].data(), "type", "float");
 				Writer->writeLineBreak();
-				Writer->writeElement("param", true, "name", ParamNamesUV[1].c_str(), "type", "float");
+				Writer->writeElement("param", true, "name", ParamNamesUV[1].data(), "type", "float");
 				Writer->writeLineBreak();
 
 			Writer->writeClosingTag("accessor");
@@ -1670,14 +1670,14 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 	// write normals
 	core::stringc meshNormalId(meshId);
 	meshNormalId += "-Normal";
-	Writer->writeElement("source", false, "id", meshNormalId.c_str());
+	Writer->writeElement("source", false, "id", meshNormalId.data());
 	Writer->writeLineBreak();
 
 		vertexCountStr = core::stringc(totalVertexCount*3);
 		core::stringc meshNormalArrayId(meshNormalId);
 		meshNormalArrayId += "-array";
-		Writer->writeElement("float_array", false, "id", meshNormalArrayId.c_str(),
-					"count", vertexCountStr.c_str());
+		Writer->writeElement("float_array", false, "id", meshNormalArrayId.data(),
+					"count", vertexCountStr.data());
 		Writer->writeLineBreak();
 
 		for (i=0; i<mbCount; ++i)
@@ -1708,8 +1708,8 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 		vertexCountStr = core::stringc(totalVertexCount);
 
-		Writer->writeElement("accessor", false, "source", toRef(meshNormalArrayId).c_str(),
-									"count", vertexCountStr.c_str(), "stride", "3");
+		Writer->writeElement("accessor", false, "source", toRef(meshNormalArrayId).data(),
+									"count", vertexCountStr.data(), "stride", "3");
 			Writer->writeLineBreak();
 
 				Writer->writeElement("param", true, "name", "X", "type", "float");
@@ -1733,14 +1733,14 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 	meshTexCoord1Id += "-TexCoord1";
 	if (totalTCoords2Count)
 	{
-		Writer->writeElement("source", false, "id", meshTexCoord1Id.c_str());
+		Writer->writeElement("source", false, "id", meshTexCoord1Id.data());
 		Writer->writeLineBreak();
 
 			vertexCountStr = core::stringc(totalTCoords2Count*2);
 			core::stringc meshTexCoord1ArrayId(meshTexCoord1Id);
 			meshTexCoord1ArrayId += "-array";
-			Writer->writeElement("float_array", false, "id", meshTexCoord1ArrayId.c_str(),
-									"count", vertexCountStr.c_str());
+			Writer->writeElement("float_array", false, "id", meshTexCoord1ArrayId.data(),
+									"count", vertexCountStr.data());
 			Writer->writeLineBreak();
 
 			for (i=0; i<mbCount; ++i)
@@ -1784,13 +1784,13 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 			vertexCountStr = core::stringc(totalTCoords2Count);
 
-				Writer->writeElement("accessor", false, "source", toRef(meshTexCoord1ArrayId).c_str(),
-										"count", vertexCountStr.c_str(), "stride", "2");
+				Writer->writeElement("accessor", false, "source", toRef(meshTexCoord1ArrayId).data(),
+										"count", vertexCountStr.data(), "stride", "2");
 				Writer->writeLineBreak();
 
-					Writer->writeElement("param", true, "name", ParamNamesUV[0].c_str(), "type", "float");
+					Writer->writeElement("param", true, "name", ParamNamesUV[0].data(), "type", "float");
 					Writer->writeLineBreak();
-					Writer->writeElement("param", true, "name", ParamNamesUV[1].c_str(), "type", "float");
+					Writer->writeElement("param", true, "name", ParamNamesUV[1].data(), "type", "float");
 					Writer->writeLineBreak();
 
 				Writer->writeClosingTag("accessor");
@@ -1810,10 +1810,10 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 	// write vertices
 	core::stringc meshVtxId(meshId);
 	meshVtxId += "-Vtx";
-	Writer->writeElement("vertices", false, "id", meshVtxId.c_str());
+	Writer->writeElement("vertices", false, "id", meshVtxId.data());
 	Writer->writeLineBreak();
 
-		Writer->writeElement("input", true, "semantic", "POSITION", "source", toRef(meshPosId).c_str());
+		Writer->writeElement("input", true, "semantic", "POSITION", "source", toRef(meshPosId).data());
 		Writer->writeLineBreak();
 
 	Writer->writeClosingTag("vertices");
@@ -1827,7 +1827,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 		if ( buffer->getPrimitiveType() != EPT_TRIANGLES )
 		{
-			os::Printer::log("Collada writer does not support non-triangle meshbuffers. Mesh", meshname.c_str(), ELL_WARNING);
+			os::Printer::log("Collada writer does not support non-triangle meshbuffers. Mesh", meshname.data(), ELL_WARNING);
 			continue;
 		}
 
@@ -1835,15 +1835,15 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 		core::stringc strPolyCount(polyCount);
 		irr::core::stringc strMat(nameForMaterialSymbol(mesh, i));
 
-		Writer->writeElement("triangles", false, "count", strPolyCount.c_str(),
-								"material", strMat.c_str());
+		Writer->writeElement("triangles", false, "count", strPolyCount.data(),
+								"material", strMat.data());
 		Writer->writeLineBreak();
 
-		Writer->writeElement("input", true, "semantic", "VERTEX", "source", toRef(meshVtxId).c_str(), "offset", "0");
+		Writer->writeElement("input", true, "semantic", "VERTEX", "source", toRef(meshVtxId).data(), "offset", "0");
 		Writer->writeLineBreak();
-		Writer->writeElement("input", true, "semantic", "TEXCOORD", "source", toRef(meshTexCoord0Id).c_str(), "offset", "1", "set", "0");
+		Writer->writeElement("input", true, "semantic", "TEXCOORD", "source", toRef(meshTexCoord0Id).data(), "offset", "1", "set", "0");
 		Writer->writeLineBreak();
-		Writer->writeElement("input", true, "semantic", "NORMAL", "source", toRef(meshNormalId).c_str(), "offset", "2");
+		Writer->writeElement("input", true, "semantic", "NORMAL", "source", toRef(meshNormalId).data(), "offset", "2");
 		Writer->writeLineBreak();
 
 		bool has2ndTexCoords = hasSecondTextureCoordinates(buffer->getVertexType());
@@ -1851,7 +1851,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 		{
 			// TODO: when working on second uv-set - my suspicion is that this one should be called "TEXCOORD2"
 			// to allow bind_vertex_input to differentiate the uv-sets.
-			Writer->writeElement("input", true, "semantic", "TEXCOORD", "source", toRef(meshTexCoord1Id).c_str(), "idx", "3");
+			Writer->writeElement("input", true, "semantic", "TEXCOORD", "source", toRef(meshTexCoord1Id).data(), "idx", "3");
 			Writer->writeLineBreak();
 		}
 
@@ -1914,7 +1914,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 			}
 			strP += " ";
 
-			Writer->writeText(strP.c_str());
+			Writer->writeText(strP.data());
 		}
 
 		Writer->writeClosingTag("p");
@@ -1946,11 +1946,11 @@ void CColladaMeshWriter::writeLibraryImages()
 			irr::io::path p(FileSystem->getRelativeFilename(LibraryImages[i]->getName().getPath(), Directory));
 			//<image name="rose01">
 			irr::core::stringc ncname( toNCName(irr::core::stringc(p)) );
-			Writer->writeElement("image", false, "id", ncname.c_str(), "name", ncname.c_str());
+			Writer->writeElement("image", false, "id", ncname.data(), "name", ncname.data());
 			Writer->writeLineBreak();
 			//  <init_from>../flowers/rose01.jpg</init_from>
 				Writer->writeElement("init_from", false);
-				Writer->writeText(pathToURI(p).c_str());
+				Writer->writeText(pathToURI(p).data());
 				Writer->writeClosingTag("init_from");
 				Writer->writeLineBreak();
 	 		//  </image>
@@ -2046,7 +2046,7 @@ void CColladaMeshWriter::writeTextureSampler(s32 textureIdx)
 	sampler += "-sampler";
 
 	// <texture texture="sampler" texcoord="texCoordUv"/>
-	Writer->writeElement("texture", true, "texture", sampler.c_str(), "texcoord", "uv" );
+	Writer->writeElement("texture", true, "texture", sampler.data(), "texcoord", "uv" );
 	Writer->writeLineBreak();
 }
 
@@ -2085,7 +2085,7 @@ void CColladaMeshWriter::writeFxElement(const video::SMaterial & material, E_COL
 			break;
 	}
 
-	Writer->writeElement(fxLabel.c_str(), false);
+	Writer->writeElement(fxLabel.data(), false);
 	Writer->writeLineBreak();
 
 	// write all interesting material parameters
@@ -2143,7 +2143,7 @@ void CColladaMeshWriter::writeFxElement(const video::SMaterial & material, E_COL
 		if ( writeTransparent )
 		{
 			E_COLLADA_TRANSPARENT_FX transparentFx = getProperties()->getTransparentFx(material);
-			writeColorFx(material, "transparent", ECCS_TRANSPARENT, "opaque", toString(transparentFx).c_str());
+			writeColorFx(material, "transparent", ECCS_TRANSPARENT, "opaque", toString(transparentFx).data());
 		}
 
 		if ( writeTransparency  )
@@ -2175,7 +2175,7 @@ void CColladaMeshWriter::writeFxElement(const video::SMaterial & material, E_COL
 	}
 
 
-	Writer->writeClosingTag(fxLabel.c_str());
+	Writer->writeClosingTag(fxLabel.data());
 	Writer->writeLineBreak();
 }
 
@@ -2207,7 +2207,7 @@ void CColladaMeshWriter::writeNode(const c8 * nodeName, const c8 * content)
 void CColladaMeshWriter::writeFloatElement(irr::f32 value)
 {
 	Writer->writeElement("float", false);
-	Writer->writeText(core::stringc((double)value).eraseTrailingFloatZeros().c_str());
+	Writer->writeText(core::stringc((double)value).eraseTrailingFloatZeros().data());
 	Writer->writeClosingTag("float");
 	Writer->writeLineBreak();
 }
@@ -2226,7 +2226,7 @@ void CColladaMeshWriter::writeRotateElement(const irr::core::vector3df& axis, ir
 	txt += " ";
 	txt += irr::core::stringc((double)angle * -1.f);
 	txt.eraseTrailingFloatZeros();
-	Writer->writeText(txt.c_str());
+	Writer->writeText(txt.data());
 	Writer->writeClosingTag("rotate");
 	Writer->writeLineBreak();
 }
@@ -2242,7 +2242,7 @@ void CColladaMeshWriter::writeScaleElement(const irr::core::vector3df& scale)
 	txt += " ";
 	txt += irr::core::stringc(scale.Z);
 	txt.eraseTrailingFloatZeros();
-	Writer->writeText(txt.c_str());
+	Writer->writeText(txt.data());
 	Writer->writeClosingTag("scale");
 	Writer->writeLineBreak();
 }
@@ -2258,7 +2258,7 @@ void CColladaMeshWriter::writeTranslateElement(const irr::core::vector3df& trans
 	txt += " ";
 	txt += irr::core::stringc(translate.Z*-1.f);
 	txt.eraseTrailingFloatZeros();
-	Writer->writeText(txt.c_str());
+	Writer->writeText(txt.data());
 	Writer->writeClosingTag("translate");
 	Writer->writeLineBreak();
 }
@@ -2298,7 +2298,7 @@ void CColladaMeshWriter::writeMatrixElement(const irr::core::matrix4& matrixIrr)
 				txt += " ";
 			txt += irr::core::stringc(matrix[a*4+b]).eraseTrailingFloatZeros();
 		}
-		Writer->writeText(txt.c_str());
+		Writer->writeText(txt.data());
 		Writer->writeLineBreak();
 	}
 

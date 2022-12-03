@@ -67,7 +67,7 @@ inline io::path& getFileNameExtension ( io::path &dest, const io::path &source )
 inline io::path& deletePathFromFilename(io::path& filename)
 {
 	// delete path from filename
-	const fschar_t* s = filename.c_str();
+	const fschar_t* s = filename.data();
 	const fschar_t* p = s + filename.size();
 
 	// search for path separator or beginning

@@ -2334,7 +2334,7 @@ bool CSceneManager::saveScene(io::IXMLWriter* writer, const io::path& currentPat
 	setlocale(LC_NUMERIC, "C");	// float number should to be saved with dots in this format independent of current locale settings.
 
 	writer->writeXMLHeader();
-	writeSceneNode(writer, node, userDataSerializer, currentPath.c_str(), true);
+	writeSceneNode(writer, node, userDataSerializer, currentPath.data(), true);
 
 	setlocale(LC_NUMERIC, oldLocale);
 
@@ -2348,7 +2348,7 @@ bool CSceneManager::loadScene(const io::path& filename, ISceneUserDataSerializer
 	io::IReadFile* file = FileSystem->createAndOpenFile(filename);
 	if (!file)
 	{
-		os::Printer::log("Unable to open scene file", filename.c_str(), ELL_ERROR);
+		os::Printer::log("Unable to open scene file", filename.data(), ELL_ERROR);
 		return false;
 	}
 
@@ -2377,7 +2377,7 @@ bool CSceneManager::loadScene(io::IReadFile* file, ISceneUserDataSerializer* use
 			ret = SceneLoaderList[i]->loadScene(file, userDataSerializer, rootNode);
 
 	if (!ret)
-		os::Printer::log("Could not load scene file, perhaps the format is unsupported", file->getFileName().c_str(), ELL_ERROR);
+		os::Printer::log("Could not load scene file, perhaps the format is unsupported", file->getFileName().data(), ELL_ERROR);
 
 	return ret;
 }
@@ -2395,15 +2395,15 @@ void CSceneManager::writeSceneNode(io::IXMLWriter* writer, ISceneNode* node, ISc
 
 	if (init)
 	{
-		name = NIRT_XML_FORMAT_SCENE.c_str();
+		name = NIRT_XML_FORMAT_SCENE.data();
 		writer->writeElement(name, false);
 		node=this;
 	}
 	else
 	{
-		name = NIRT_XML_FORMAT_NODE.c_str();
-		writer->writeElement(name, false, NIRT_XML_FORMAT_NODE_ATTR_TYPE.c_str(),
-			core::stringw(getSceneNodeTypeName(node->getType())).c_str());
+		name = NIRT_XML_FORMAT_NODE.data();
+		writer->writeElement(name, false, NIRT_XML_FORMAT_NODE_ATTR_TYPE.data(),
+			core::stringw(getSceneNodeTypeName(node->getType())).data());
 	}
 
 	writer->writeLineBreak();
@@ -2564,7 +2564,7 @@ const c8* CSceneManager::getAnimatorTypeName(ESCENE_NODE_ANIMATOR_TYPE type)
 //! Writes attributes of the scene node.
 void CSceneManager::serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const
 {
-	out->addString	("Name", Name.c_str());
+	out->addString	("Name", Name.data());
 	out->addInt	("Id", ID );
 	out->addColorf	("AmbientLight", AmbientLight);
 

@@ -331,7 +331,7 @@ IAnimatedMesh* CMY3DMeshFileLoader::createMesh(io::IReadFile* file)
 				core::stringc msg="Can not find MY3D_TVERTS_ID (";
 				msg.append(core::stringc(tex));
 				msg.append("texture channel), loading failed!");
-				os::Printer::log(msg.c_str(), ELL_ERROR);
+				os::Printer::log(msg.data(), ELL_ERROR);
 				return 0;
 			}
 
@@ -367,7 +367,7 @@ IAnimatedMesh* CMY3DMeshFileLoader::createMesh(io::IReadFile* file)
 				core::stringc msg="Can not find MY3D_TFACES_ID (";
 				msg.append(core::stringc(tex));
 				msg.append("texture channel), loading failed!");
-				os::Printer::log(msg.c_str(), ELL_ERROR);
+				os::Printer::log(msg.data(), ELL_ERROR);
 				return 0;
 			}
 
@@ -701,7 +701,7 @@ video::ITexture* CMY3DMeshFileLoader::readEmbeddedLightmap(io::IReadFile* file, 
 		core::stringc msg="Unknown format of image data (";
 		msg.append(LightMapName);
 		msg.append("), loading failed!");
-		os::Printer::log(msg.c_str(), ELL_ERROR);
+		os::Printer::log(msg.data(), ELL_ERROR);
 		return 0;
 	}
 

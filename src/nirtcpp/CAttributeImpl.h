@@ -1609,7 +1609,7 @@ public:
 
 	virtual core::stringw getStringW() const override
 	{
-		return core::stringw(Value.c_str());
+		return core::stringw(Value.data());
 	}
 
 	virtual void setInt(s32 intValue) override
@@ -1632,7 +1632,7 @@ public:
 
 	virtual const char* getEnum() const override
 	{
-		return Value.c_str();
+		return Value.data();
 	}
 
 	virtual E_ATTRIBUTE_TYPE getType() const override
@@ -1683,17 +1683,17 @@ public:
 	virtual s32 getInt() const override
 	{
 		if (IsStringW)
-			return atoi(core::stringc(ValueW.c_str()).c_str());
+			return atoi(core::stringc(ValueW.data()).data());
 		else
-			return atoi(Value.c_str());
+			return atoi(Value.data());
 	}
 
 	virtual f32 getFloat() const override
 	{
 		if (IsStringW)
-			return core::fast_atof(core::stringc(ValueW.c_str()).c_str());
+			return core::fast_atof(core::stringc(ValueW.data()).data());
 		else
-			return core::fast_atof(Value.c_str());
+			return core::fast_atof(Value.data());
 	}
 
 	virtual bool getBool() const override
@@ -1707,7 +1707,7 @@ public:
 	virtual core::stringc getString() const override
 	{
 		if (IsStringW)
-			return core::stringc(ValueW.c_str());
+			return core::stringc(ValueW.data());
 		else
 			return Value;
 	}
@@ -1716,7 +1716,7 @@ public:
 		if (IsStringW)
 			return ValueW;
 		else
-			return core::stringw(Value.c_str());
+			return core::stringw(Value.data());
 	}
 
 	virtual void setInt(s32 intValue) override
@@ -1771,7 +1771,7 @@ public:
 		const s32 dataSize = maxLength;
 		c8* datac8 = (c8*)(outdata);
 		s32 p = 0;
-		const c8* dataString = Value.c_str();
+		const c8* dataString = Value.data();
 
 		for (s32 i=0; i<dataSize; ++i)
 			datac8[i] = 0;
@@ -1902,7 +1902,7 @@ public:
 			return core::stringw(OverrideName);
 
 		if ( Value )
-			return core::stringw(Value->getName().getPath().c_str());
+			return core::stringw(Value->getName().getPath().data());
 
 		return core::stringw();
 	}
@@ -1914,7 +1914,7 @@ public:
 			return core::stringc(OverrideName);
 
 		if ( Value )
-			return core::stringc(Value->getName().getPath().c_str());
+			return core::stringc(Value->getName().getPath().data());
 
 		return core::stringc();
 	}

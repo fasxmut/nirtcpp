@@ -98,7 +98,7 @@ bool CB3DMeshWriter::writeMesh(io::IWriteFile* file, IMesh* const mesh, s32 flag
     u32 numTexture = texs.size();
     for (u32 i = 0; i < numTexture; i++)
 	{
-        file->write(texs[i].TextureName.c_str(), (size_t)texs[i].TextureName.size() + 1);
+        file->write(texs[i].TextureName.data(), (size_t)texs[i].TextureName.size() + 1);
         file->write(&texs[i].Flags, 7*4);
     }
 
@@ -348,7 +348,7 @@ void CB3DMeshWriter::writeJointChunk(io::IWriteFile* file, ISkinnedMesh* mesh, I
 
 
     core::stringc name = joint->Name;
-    file->write(name.c_str(), name.size());
+    file->write(name.data(), name.size());
     file->write("", 1);
 
     // Position

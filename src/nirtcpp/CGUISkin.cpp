@@ -287,9 +287,9 @@ void CGUISkin::setIcon(EGUI_DEFAULT_ICON icon, u32 index)
 const wchar_t* CGUISkin::getDefaultText(EGUI_DEFAULT_TEXT text) const
 {
 	if ((u32)text < EGDT_COUNT)
-		return Texts[text].c_str();
+		return Texts[text].data();
 	else
-		return Texts[0].c_str();
+		return Texts[0].data();
 }
 
 
@@ -983,7 +983,7 @@ void CGUISkin::serializeAttributes(io::IAttributes* out, io::SAttributeReadWrite
 		out->addInt(GUISkinSizeNames[i], Sizes[i]);
 
 	for (i=0; i<EGDT_COUNT; ++i)
-		out->addString(GUISkinTextNames[i], Texts[i].c_str());
+		out->addString(GUISkinTextNames[i], Texts[i].data());
 
 	for (i=0; i<EGDI_COUNT; ++i)
 		out->addInt(GUISkinIconNames[i], Icons[i]);

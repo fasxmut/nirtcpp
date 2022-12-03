@@ -200,7 +200,7 @@ bool COSOperator::getProcessorSpeedMHz(u32* MHz) const
 			if (pos != -1)
 			{
 				while ( str[++pos] == ' ' );
-				*MHz = core::fast_atof(str.c_str()+pos);
+				*MHz = core::fast_atof(str.data()+pos);
 			}
 		}
 		fclose(file);

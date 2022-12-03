@@ -125,7 +125,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 #ifdef _NIRT_DEBUG_OBJ_LOADER_
 				os::Printer::log("Reading material file",name);
 #endif
-				readMTL(name.c_str(), relPath);
+				readMTL(name.data(), relPath);
 			}
 		}
 			break;
@@ -227,7 +227,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 			IVertexBuffer& mbVertexBuffer = currMtl->Meshbuffer->getVertexBuffer();
 			IIndexBuffer& mbIndexBuffer = currMtl->Meshbuffer->getIndexBuffer();
 			const core::stringc wordBuffer = copyLine(bufPtr, bufEnd);
-			const c8* linePtr = wordBuffer.c_str();
+			const c8* linePtr = wordBuffer.data();
 			const c8* const endPtr = linePtr+wordBuffer.size();
 
 			faceCorners.set_used(0); // fast clear
@@ -250,7 +250,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 					v.Pos = vertexBuffer[Idx[0]];
 				else
 				{
-					os::Printer::log("Invalid vertex index in this line", wordBuffer.c_str(), ELL_ERROR);
+					os::Printer::log("Invalid vertex index in this line", wordBuffer.data(), ELL_ERROR);
 					delete [] buf;
 					return 0;
 				}
@@ -320,7 +320,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 		irr::core::stringc log(degeneratedFaces);
 		log += " degenerated faces removed in ";
 		log += irr::core::stringc(fullName);
-		os::Printer::log(log.c_str(), ELL_INFORMATION);
+		os::Printer::log(log.data(), ELL_INFORMATION);
 	}
 
 	SMesh* mesh = new SMesh();

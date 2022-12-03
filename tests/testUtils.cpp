@@ -150,7 +150,7 @@ bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const ch
 				if ( name1 != name2 )
 				{
 					logTestString("xmlCompareFiles: %s has node %s where %s has node %s\n"
-									, fileName1, name1.c_str(), fileName2, name2.c_str() );
+									, fileName1, name1.data(), fileName2, name2.data() );
 					different = true;
 					break;
 				}
@@ -160,8 +160,8 @@ bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const ch
 				if ( numAttributes1 != numAttributes2 )
 				{
 					logTestString("xmlCompareFiles: %s node %s has %d attributes where %s node %s has %d attributes\n"
-									, fileName1, name1.c_str(), numAttributes1
-									, fileName2, name2.c_str(), numAttributes2);
+									, fileName1, name1.data(), numAttributes1
+									, fileName2, name2.data(), numAttributes2);
 					different = true;
 					break;
 				}
@@ -174,8 +174,8 @@ bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const ch
 					if ( attribName1 != attribName2 )
 					{
 						logTestString("xmlCompareFiles: %s node %s has attribute-name \"%s\" where %s node %s has name \"%s\"\n"
-									, fileName1, name1.c_str(), attribName1.c_str()
-									, fileName2, name2.c_str(), attribName2.c_str());
+									, fileName1, name1.data(), attribName1.data()
+									, fileName2, name2.data(), attribName2.data());
 						different = true;
 						break;
 					}
@@ -185,8 +185,8 @@ bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const ch
 					if ( attribName1 != attribName2 )
 					{
 						logTestString("xmlCompareFiles: %s node %s has attribute-value \"%s\" where %s node %s has value \"%s\"\n"
-									, fileName1, name1.c_str(), attribVal1.c_str()
-									, fileName2, name2.c_str(), attribVal2.c_str());
+									, fileName1, name1.data(), attribVal1.data()
+									, fileName2, name2.data(), attribVal2.data());
 						different = true;
 						break;
 					}
@@ -210,8 +210,8 @@ bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const ch
 				if ( nodeData1 != nodeData2 )
 				{
 					logTestString("xmlCompareFiles: %s has data \"%s\" where %s has data \"%s\"\n"
-									, fileName1, nodeData1.c_str()
-									, fileName2, nodeData2.c_str());
+									, fileName1, nodeData1.data()
+									, fileName2, nodeData2.data());
 					different = true;
 				}
 				break;
@@ -432,12 +432,12 @@ bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
 	irr::core::stringc referenceFilename = "media/";
 	referenceFilename += driverName;
 	referenceFilename += fileName;
-	irr::video::IImage * reference = driver->createImageFromFile(referenceFilename.c_str());
+	irr::video::IImage * reference = driver->createImageFromFile(referenceFilename.data());
 	if (!reference)
 	{
 		logTestString("\n*** Failed to load reference image '%s'\n*** Creating from screenshot - please check this image.\n\n",
-			referenceFilename.c_str());
-		(void)driver->writeImageToFile(screenshot, referenceFilename.c_str());
+			referenceFilename.data());
+		(void)driver->writeImageToFile(screenshot, referenceFilename.data());
 		screenshot->drop();
 		return false;
 	}
@@ -450,8 +450,8 @@ bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
 		irr::core::stringc mismatchFilename = "results/";
 		mismatchFilename += driverName;
 		mismatchFilename += fileName;
-		logTestString("Writing mismatched image to '%s'\n", mismatchFilename.c_str());
-		(void)driver->writeImageToFile(screenshot, mismatchFilename.c_str());
+		logTestString("Writing mismatched image to '%s'\n", mismatchFilename.data());
+		(void)driver->writeImageToFile(screenshot, mismatchFilename.data());
 	}
 
 
@@ -502,7 +502,7 @@ void logTestString(const char * format, ...)
 #if defined (_WIN32_WCE )
 	core::stringw tmp(logString);
 	tmp += L"\n";
-	OutputDebugStringW(tmp.c_str());
+	OutputDebugStringW(tmp.data());
 #else
 	OutputDebugStringA(logString);
 	OutputDebugStringA("\n");

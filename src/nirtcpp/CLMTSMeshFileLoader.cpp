@@ -344,7 +344,7 @@ void CLMTSMeshFileLoader::loadTextures(SMesh* mesh)
 		video::ITexture* tmptex = getMeshTextureLoader() ? getMeshTextureLoader()->getTexture(Textures[t].Filename) : NULL;
 		if ( !tmptex )
 		{
-			os::Printer::log("LMTS WARNING: Texture does not exist", s.c_str(), ELL_WARNING);
+			os::Printer::log("LMTS WARNING: Texture does not exist", s.data(), ELL_WARNING);
 		}
 
 		if (Textures[t].Flags & 0x01)

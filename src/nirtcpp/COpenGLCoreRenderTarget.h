@@ -75,7 +75,7 @@ public:
 				message += static_cast<u32>(ColorAttachment);
 				message += " textures per render target.";
 
-				os::Printer::log(message.c_str(), ELL_WARNING);
+				os::Printer::log(message.data(), ELL_WARNING);
 			}
 
 			Textures.set_used(core::min_(numTextures, static_cast<u32>(ColorAttachment)));

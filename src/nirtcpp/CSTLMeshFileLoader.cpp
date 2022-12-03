@@ -216,11 +216,11 @@ void CSTLMeshFileLoader::getNextVector(io::IReadFile* file, core::vector3df& vec
 		goNextWord(file);
 
 		getNextToken(file);
-		core::fast_atof_move(Token.c_str(), vec.X);
+		core::fast_atof_move(Token.data(), vec.X);
 		getNextToken(file);
-		core::fast_atof_move(Token.c_str(), vec.Y);
+		core::fast_atof_move(Token.data(), vec.Y);
 		getNextToken(file);
-		core::fast_atof_move(Token.c_str(), vec.Z);
+		core::fast_atof_move(Token.data(), vec.Z);
 	}
 	vec.X=-vec.X;
 }

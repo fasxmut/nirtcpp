@@ -1153,7 +1153,7 @@ void C3DSMeshFileLoader::loadMaterials(io::IReadFile* file)
 			if (!texture)
 			{
 				os::Printer::log("Could not load a texture for entry in 3ds file",
-					Materials[i].Filename[0].c_str(), ELL_WARNING);
+					Materials[i].Filename[0].data(), ELL_WARNING);
 			}
 			else
 				m->getMaterial().setTexture(0, texture);
@@ -1165,7 +1165,7 @@ void C3DSMeshFileLoader::loadMaterials(io::IReadFile* file)
 			if (!texture)
 			{
 				os::Printer::log("Could not load a texture for entry in 3ds file",
-					Materials[i].Filename[2].c_str(), ELL_WARNING);
+					Materials[i].Filename[2].data(), ELL_WARNING);
 			}
 			else
 			{
@@ -1180,7 +1180,7 @@ void C3DSMeshFileLoader::loadMaterials(io::IReadFile* file)
 			if (!texture)
 			{
 				os::Printer::log("Could not load a texture for entry in 3ds file",
-					Materials[i].Filename[3].c_str(), ELL_WARNING);
+					Materials[i].Filename[3].data(), ELL_WARNING);
 			}
 			else
 			{
@@ -1196,7 +1196,7 @@ void C3DSMeshFileLoader::loadMaterials(io::IReadFile* file)
 			if (!texture)
 			{
 				os::Printer::log("Could not load a texture for entry in 3ds file",
-					Materials[i].Filename[4].c_str(), ELL_WARNING);
+					Materials[i].Filename[4].data(), ELL_WARNING);
 			}
 			else
 			{

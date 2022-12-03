@@ -124,7 +124,7 @@ bool CGUIFont::load(io::IXMLReader* xml, const io::path& directory)
 				core::stringc rectstr	= xml->getAttributeValue(L"r");
 				wchar_t ch		= xml->getAttributeValue(L"c")[0];
 
-				const c8 *c = rectstr.c_str();
+				const c8 *c = rectstr.data();
 				s32 val;
 				val = 0;
 				while (*c >= '0' && *c <= '9')
@@ -501,7 +501,7 @@ void CGUIFont::draw(const core::stringw& text, const core::rect<s32>& position,
 	core::position2d<s32> offset = position.UpperLeftCorner;
 
 	if (hcenter || vcenter || clip)
-		textDimension = getDimension(text.c_str());
+		textDimension = getDimension(text.data());
 
 	if (hcenter)
 		offset.X += (position.getWidth() - textDimension.Width) >> 1;

@@ -1484,7 +1484,7 @@ IMesh* CQ3LevelMesh::getBrushEntityMesh(quake3::IEntity &ent) const
 	if (!group->isDefined("model"))
 		return 0;
 
-	const char *temp = modnum.c_str() + 1; // We skip the first character.
+	const char *temp = modnum.data() + 1; // We skip the first character.
 	num = core::strtol10(temp);
 
 	return getBrushEntityMesh(num);
@@ -1529,7 +1529,7 @@ const IShader* CQ3LevelMesh::getShader( const c8 * filename, bool fileNameIsVali
 		if ( LoadParam.verbose > 1 )
 		{
 			message = searchName + " found " + Shader[index].name;
-			os::Printer::log("quake3:getShader", message.c_str(), ELL_INFORMATION);
+			os::Printer::log("quake3:getShader", message.data(), ELL_INFORMATION);
 		}
 
 		return &Shader[index];
@@ -1563,12 +1563,12 @@ const IShader* CQ3LevelMesh::getShader( const c8 * filename, bool fileNameIsVali
 	// add file to loaded files
 	ShaderFile.push_back( loadFile );
 
-	if ( !FileSystem->existFile( loadFile.c_str() ) )
+	if ( !FileSystem->existFile( loadFile.data() ) )
 	{
 		if ( LoadParam.verbose > 1 )
 		{
 			message = loadFile + " for " + searchName + " failed ";
-			os::Printer::log("quake3:getShader", message.c_str(), ELL_INFORMATION);
+			os::Printer::log("quake3:getShader", message.data(), ELL_INFORMATION);
 		}
 		return 0;
 	}
@@ -1576,11 +1576,11 @@ const IShader* CQ3LevelMesh::getShader( const c8 * filename, bool fileNameIsVali
 	if ( LoadParam.verbose )
 	{
 		message = loadFile + " for " + searchName;
-		os::Printer::log("quake3:getShader Load shader", message.c_str(), ELL_INFORMATION);
+		os::Printer::log("quake3:getShader Load shader", message.data(), ELL_INFORMATION);
 	}
 
 
-	io::IReadFile *file = FileSystem->createAndOpenFile( loadFile.c_str() );
+	io::IReadFile *file = FileSystem->createAndOpenFile( loadFile.data() );
 	if ( file )
 	{
 		getShader ( file );
@@ -1644,7 +1644,7 @@ void CQ3LevelMesh::InitShader()
 		newDir = "/";
 		newDir += LoadParam.scriptDir;
 		newDir += "/";
-		FileSystem->changeWorkingDirectoryTo ( newDir.c_str() );
+		FileSystem->changeWorkingDirectoryTo ( newDir.data() );
 
 		core::stringc s;
 		io::IFileList *fileList = FileSystem->createFileList ();
@@ -1658,7 +1658,7 @@ void CQ3LevelMesh::InitShader()
 				}
 				else
 				{
-					getShader ( s.c_str () );
+					getShader ( s.data() );
 				}
 			}
 		}
@@ -1756,7 +1756,7 @@ void CQ3LevelMesh::scriptcallback_shader( SVarGroupList *& grouplist,eToken toke
 /*
 	core::stringc s;
 	dumpShader ( s, &element );
-	printf ( s.c_str () );
+	printf ( s.data() );
 */
 	Shader.push_back( element );
 }
@@ -1969,7 +1969,7 @@ void CQ3LevelMesh::loadTextures()
 	video::IImage* lmapImg;
 	for ( t = 0; t < NumLightMaps ; ++t)
 	{
-		sprintf(lightmapname, "%s.lightmap.%d", LevelName.c_str(), t);
+		sprintf(lightmapname, "%s.lightmap.%d", LevelName.data(), t);
 
 		// lightmap is a CTexture::R8G8B8 format
 		lmapImg = Driver->createImageFromData(

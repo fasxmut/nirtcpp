@@ -57,7 +57,7 @@ class ScalableFont : public gui::IGUIFontBitmap
 				if (core::stringw(L"include") == xml->getNodeName())
 				{
 					core::stringc filename = xml->getAttributeValue(L"file");
-					io::IXMLReader* included = Environment->getFileSystem()->createXMLReader(filename.c_str());
+					io::IXMLReader* included = Environment->getFileSystem()->createXMLReader(filename.data());
 					if (included != NULL)
 					{
 						doReadXmlFile(included);
@@ -78,7 +78,7 @@ class ScalableFont : public gui::IGUIFontBitmap
 
 					core::stringw alpha = xml->getAttributeValue(L"hasAlpha");
 
-					//std::cout << "---- Adding font texture " << fn.c_str() << "; alpha=" << alpha.c_str() << std::endl;
+					//std::cout << "---- Adding font texture " << fn.data() << "; alpha=" << alpha.data() << std::endl;
 
 
 					// make sure the sprite bank has enough textures in it
@@ -111,7 +111,7 @@ class ScalableFont : public gui::IGUIFontBitmap
 					core::stringc rectstr   = xml->getAttributeValue(L"r");
 					wchar_t ch = xml->getAttributeValue(L"c")[0];
 
-					const c8 *c = rectstr.c_str();
+					const c8 *c = rectstr.data();
 					s32 val;
 					val = 0;
 					while (*c >= '0' && *c <= '9')
@@ -214,7 +214,7 @@ public:
 
 		setInvisibleCharacters ( L" " );
 
-		io::IXMLReader* reader = env->getFileSystem()->createXMLReader(filename.c_str());
+		io::IXMLReader* reader = env->getFileSystem()->createXMLReader(filename.data());
 		if (reader)
 		{
 			load( reader );

@@ -82,7 +82,7 @@ namespace quake3
 	// string helper.. TODO: move to generic files
 	inline s16 isEqual ( const core::stringc &string, u32 &pos, const c8 * const list[], u16 listSize )
 	{
-		const char * in = string.c_str () + pos;
+		const char * in = string.data() + pos;
 
 		for ( u16 i = 0; i != listSize; ++i )
 		{
@@ -104,7 +104,7 @@ namespace quake3
 
 	inline f32 getAsFloat ( const core::stringc &string, u32 &pos )
 	{
-		const char * in = string.c_str () + pos;
+		const char * in = string.data() + pos;
 
 		f32 value = 0.f;
 		pos += (u32) ( core::fast_atof_move ( in, value ) - in ) + 1;
@@ -558,12 +558,12 @@ namespace quake3
 
 		bool operator == ( const SVariable &other ) const
 		{
-			return 0 == strcmp ( name.c_str(), other.name.c_str () );
+			return 0 == strcmp ( name.data(), other.name.data() );
 		}
 
 		bool operator < ( const SVariable &other ) const
 		{
-			return 0 > strcmp ( name.c_str(), other.name.c_str () );
+			return 0 > strcmp ( name.data(), other.name.data() );
 		}
 
 	};
@@ -579,8 +579,8 @@ namespace quake3
 		{
 			for ( u32 i = 0; i != Variable.size (); ++i )
 			{
-				if ( 0 == strcmp ( Variable[i].name.c_str(), name ) &&
-					(  0 == content || strstr ( Variable[i].content.c_str(), content ) )
+				if ( 0 == strcmp ( Variable[i].name.data(), name ) &&
+					(  0 == content || strstr ( Variable[i].content.data(), content ) )
 					)
 				{
 					return i + 1;
@@ -640,13 +640,13 @@ namespace quake3
 
 		bool operator == (const IShader &other ) const
 		{
-			return 0 == strcmp ( name.c_str(), other.name.c_str () );
+			return 0 == strcmp ( name.data(), other.name.data() );
 			//return name == other.name;
 		}
 
 		bool operator < (const IShader &other ) const
 		{
-			return strcmp ( name.c_str(), other.name.c_str () ) < 0;
+			return strcmp ( name.data(), other.name.data() ) < 0;
 			//return name < other.name;
 		}
 

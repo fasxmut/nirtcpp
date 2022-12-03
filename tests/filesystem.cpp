@@ -11,7 +11,7 @@ static bool testgetAbsoluteFilename(io::IFileSystem* fs)
 	io::path cwd = fs->getWorkingDirectory();
 	if (apath!=(cwd+"/media"))
 	{
-		logTestString("getAbsolutePath failed on existing dir %s\n", apath.c_str());
+		logTestString("getAbsolutePath failed on existing dir %s\n", apath.data());
 		result = false;
 	}
 
@@ -19,14 +19,14 @@ static bool testgetAbsoluteFilename(io::IFileSystem* fs)
 	core::deletePathFromPath(cwd, 1);
 	if (apath!=(cwd+"media/"))
 	{
-		logTestString("getAbsolutePath failed on dir with postfix / %s\n", apath.c_str());
+		logTestString("getAbsolutePath failed on dir with postfix / %s\n", apath.data());
 		result = false;
 	}
 
 	apath = fs->getAbsolutePath ("../nothere.txt");   // file does not exist
 	if (apath!=(cwd+"nothere.txt"))
 	{
-		logTestString("getAbsolutePath failed on non-existing file %s\n", apath.c_str());
+		logTestString("getAbsolutePath failed on non-existing file %s\n", apath.data());
 		result = false;
 	}
 
@@ -41,7 +41,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -50,7 +50,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -58,7 +58,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -67,7 +67,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -76,7 +76,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -85,7 +85,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -94,7 +94,7 @@ static bool testFlattenFilename(io::IFileSystem* fs)
 	fs->flattenFilename(tmpString);
 	if (tmpString != refString)
 	{
-		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.c_str(),refString.c_str());
+		logTestString("flattening destroys path.\n%s!=%s\n", tmpString.data(),refString.data());
 		result = false;
 	}
 
@@ -108,14 +108,14 @@ static bool testgetRelativeFilename(io::IFileSystem* fs)
 	io::path cwd = fs->getWorkingDirectory();
 	if (fs->getRelativeFilename(apath, cwd) != "media")
 	{
-		logTestString("getRelativePath failed on %s\n", apath.c_str());
+		logTestString("getRelativePath failed on %s\n", apath.data());
 		result = false;
 	}
 
 	apath = fs->getAbsolutePath("../media/");
 	if (fs->getRelativeFilename(apath, cwd) != "../media/")
 	{
-		logTestString("getRelativePath failed on %s\n", apath.c_str());
+		logTestString("getRelativePath failed on %s\n", apath.data());
 		result = false;
 	}
 
@@ -155,7 +155,7 @@ bool filesystem(void)
 	}
 
 	// The working directory must be restored for the other tests to work.
-	changed = device->getFileSystem()->changeWorkingDirectoryTo(workingDir.c_str());
+	changed = device->getFileSystem()->changeWorkingDirectoryTo(workingDir.data());
 	assert_log(changed);
 
 	// adding  a folder archive which just should not really change anything

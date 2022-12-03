@@ -95,7 +95,7 @@ bool CPLYMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 		"end_header\n";
 
 	// write header
-	file->write(header.c_str(), header.size());
+	file->write(header.data(), header.size());
 
 	// write vertices
 

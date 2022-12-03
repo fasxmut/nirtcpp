@@ -386,7 +386,7 @@ bool CWGLManager::generateSurface()
 		else
 			ColorFormat = ECF_R5G6B5;
 	}
-	os::Printer::log("Pixel Format", core::stringc(PixelFormat).c_str(), ELL_DEBUG);
+	os::Printer::log("Pixel Format", core::stringc(PixelFormat).data(), ELL_DEBUG);
 	return true;
 }
 

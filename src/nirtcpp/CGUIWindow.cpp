@@ -257,7 +257,7 @@ void CGUIWindow::draw()
 				IGUIFont* font = skin->getFont(EGDF_WINDOW);
 				if (font)
 				{
-					font->draw(Text.c_str(), rect,
+					font->draw(Text.data(), rect,
 							skin->getColor(IsActive ? EGDC_ACTIVE_CAPTION:EGDC_INACTIVE_CAPTION),
 							false, true, &AbsoluteClippingRect);
 				}

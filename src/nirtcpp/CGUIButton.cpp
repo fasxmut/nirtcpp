@@ -326,7 +326,7 @@ void CGUIButton::draw()
 		}
 
 		if (font)
-			font->draw(Text.c_str(), rect,
+			font->draw(Text.data(), rect,
 				getActiveColor(),
 				true, true, &AbsoluteClippingRect);
 	}
@@ -570,9 +570,9 @@ void CGUIButton::serializeAttributes(io::IAttributes* out, io::SAttributeReadWri
 		if ( ButtonImages[i].Texture )
 		{
 			core::stringc name( GUIButtonImageStateNames[i] );
-			out->addTexture(name.c_str(), ButtonImages[i].Texture);
+			out->addTexture(name.data(), ButtonImages[i].Texture);
 			name += "Rect";
-			out->addRect(name.c_str(), ButtonImages[i].SourceRect);
+			out->addRect(name.data(), ButtonImages[i].SourceRect);
 		}
 	}
 
@@ -586,19 +586,19 @@ void CGUIButton::serializeAttributes(io::IAttributes* out, io::SAttributeReadWri
 		{
 			core::stringc nameIndex( GUIButtonStateNames[i] );
 			nameIndex += "Index";
-			out->addInt(nameIndex.c_str(), ButtonSprites[i].Index );
+			out->addInt(nameIndex.data(), ButtonSprites[i].Index );
 
 			core::stringc nameColor( GUIButtonStateNames[i] );
 			nameColor += "Color";
-			out->addColor(nameColor.c_str(), ButtonSprites[i].Color );
+			out->addColor(nameColor.data(), ButtonSprites[i].Color );
 
 			core::stringc nameLoop( GUIButtonStateNames[i] );
 			nameLoop += "Loop";
-			out->addBool(nameLoop.c_str(), ButtonSprites[i].Loop );
+			out->addBool(nameLoop.data(), ButtonSprites[i].Loop );
 
 			core::stringc nameScale( GUIButtonStateNames[i] );
 			nameScale += "Scale";
-			out->addBool(nameScale.c_str(), ButtonSprites[i].Scale );
+			out->addBool(nameScale.data(), ButtonSprites[i].Scale );
 		}
 	}
 
@@ -621,7 +621,7 @@ void CGUIButton::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWr
 
 		setImage((EGUI_BUTTON_IMAGE_STATE)i,
 				in->getAttributeAsTexture(GUIButtonImageStateNames[i], ButtonImages[i].Texture),
-				in->getAttributeAsRect(nameRect.c_str(), ButtonImages[i].SourceRect) );
+				in->getAttributeAsRect(nameRect.data(), ButtonImages[i].SourceRect) );
 	}
 
 	setDrawBorder(in->getAttributeAsBool("Border", DrawBorder));
@@ -632,19 +632,19 @@ void CGUIButton::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWr
 	{
 		core::stringc nameIndex( GUIButtonStateNames[i] );
 		nameIndex += "Index";
-		ButtonSprites[i].Index = in->getAttributeAsInt(nameIndex.c_str(), ButtonSprites[i].Index );
+		ButtonSprites[i].Index = in->getAttributeAsInt(nameIndex.data(), ButtonSprites[i].Index );
 
 		core::stringc nameColor( GUIButtonStateNames[i] );
 		nameColor += "Color";
-		ButtonSprites[i].Color = in->getAttributeAsColor(nameColor.c_str(), ButtonSprites[i].Color );
+		ButtonSprites[i].Color = in->getAttributeAsColor(nameColor.data(), ButtonSprites[i].Color );
 
 		core::stringc nameLoop( GUIButtonStateNames[i] );
 		nameLoop += "Loop";
-		ButtonSprites[i].Loop = in->getAttributeAsBool(nameLoop.c_str(), ButtonSprites[i].Loop );
+		ButtonSprites[i].Loop = in->getAttributeAsBool(nameLoop.data(), ButtonSprites[i].Loop );
 
 		core::stringc nameScale( GUIButtonStateNames[i] );
 		nameScale += "Scale";
-		ButtonSprites[i].Scale = in->getAttributeAsBool(nameScale.c_str(), ButtonSprites[i].Scale );
+		ButtonSprites[i].Scale = in->getAttributeAsBool(nameScale.data(), ButtonSprites[i].Scale );
 	}
 
 	//   setOverrideFont(in->getAttributeAsString("OverrideFont"));

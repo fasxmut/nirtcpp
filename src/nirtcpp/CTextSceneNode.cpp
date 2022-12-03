@@ -80,7 +80,7 @@ void CTextSceneNode::setText(const wchar_t* text)
 //! get the text string
 const wchar_t* CTextSceneNode::getText() const
 {
-	return Text.c_str();
+	return Text.data();
 }
 
 //! sets the color of the text
@@ -276,7 +276,7 @@ void CBillboardTextSceneNode::setText(const wchar_t* text)
 //! get the text string
 const wchar_t* CBillboardTextSceneNode::getText() const
 {
-	return Text.c_str();
+	return Text.data();
 }
 
 //! pre render event

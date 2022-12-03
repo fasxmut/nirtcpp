@@ -105,7 +105,7 @@ IGUIEditBox* CGUISpinBox::getEditBox() const
 void CGUISpinBox::setValue(f32 val)
 {
 	wchar_t str[100];
-	swprintf_nirt(str, 99, FormatString.c_str(), val);
+	swprintf_nirt(str, 99, FormatString.data(), val);
 	EditBox->setText(str);
 	verifyValueRange(getValue());
 }
@@ -121,7 +121,7 @@ f32 CGUISpinBox::getValueFor(const wchar_t* val) const
 	if ( !val )
 		return 0.f;
 	core::stringc tmp(val);
-	return core::fast_atof(tmp.c_str());
+	return core::fast_atof(tmp.data());
 }
 
 void CGUISpinBox::setRange(f32 min, f32 max)
@@ -133,10 +133,10 @@ void CGUISpinBox::setRange(f32 min, f32 max)
 
 	// we have to round the range - otherwise we can get into an infinte setValue/verifyValueRange cycle.
 	wchar_t str[100];
-	swprintf_nirt(str, 99, FormatString.c_str(), RangeMin);
-	RangeMin = core::fast_atof(core::stringc(str).c_str());
-	swprintf_nirt(str, 99, FormatString.c_str(), RangeMax);
-	RangeMax = core::fast_atof(core::stringc(str).c_str());
+	swprintf_nirt(str, 99, FormatString.data(), RangeMin);
+	RangeMin = core::fast_atof(core::stringc(str).data());
+	swprintf_nirt(str, 99, FormatString.data(), RangeMax);
+	RangeMax = core::fast_atof(core::stringc(str).data());
 
 	verifyValueRange(getValue());
 }

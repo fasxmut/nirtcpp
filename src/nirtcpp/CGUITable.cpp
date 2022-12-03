@@ -216,7 +216,7 @@ void CGUITable::setColumnWidth(u32 columnIndex, u32 width)
 {
 	if ( columnIndex < Columns.size() )
 	{
-		const u32 MIN_WIDTH = getActiveFont()->getDimension(Columns[columnIndex].Name.c_str() ).Width + (CellWidthPadding * 2);
+		const u32 MIN_WIDTH = getActiveFont()->getDimension(Columns[columnIndex].Name.data() ).Width + (CellWidthPadding * 2);
 		if ( width < MIN_WIDTH )
 			width = MIN_WIDTH;
 
@@ -339,7 +339,7 @@ const wchar_t* CGUITable::getCellText(u32 rowIndex, u32 columnIndex ) const
 {
 	if ( rowIndex < Rows.size() && columnIndex < Columns.size() )
 	{
-		return Rows[rowIndex].Items[columnIndex].Text.c_str();
+		return Rows[rowIndex].Items[columnIndex].Text.data();
 	}
 
 	return 0;
@@ -938,13 +938,13 @@ void CGUITable::draw()
 				// draw item text
 				if ((s32)i == Selected)
 				{
-					font->draw(Rows[i].Items[j].BrokenText.c_str(), textRect, skin->getColor(isEnabled() ? EGDC_HIGH_LIGHT_TEXT : EGDC_GRAY_TEXT), false, true, &clientClip);
+					font->draw(Rows[i].Items[j].BrokenText.data(), textRect, skin->getColor(isEnabled() ? EGDC_HIGH_LIGHT_TEXT : EGDC_GRAY_TEXT), false, true, &clientClip);
 				}
 				else
 				{
 					if ( !Rows[i].Items[j].IsOverrideColor )	// skin-colors can change
 						Rows[i].Items[j].Color = skin->getColor(EGDC_BUTTON_TEXT);
-					font->draw(Rows[i].Items[j].BrokenText.c_str(), textRect, isEnabled() ? Rows[i].Items[j].Color : skin->getColor(EGDC_GRAY_TEXT), false, true, &clientClip);
+					font->draw(Rows[i].Items[j].BrokenText.data(), textRect, isEnabled() ? Rows[i].Items[j].Color : skin->getColor(EGDC_GRAY_TEXT), false, true, &clientClip);
 				}
 
 				pos += Columns[j].Width;
@@ -963,7 +963,7 @@ void CGUITable::draw()
 
 	for (u32 i = 0 ; i < Columns.size() ; ++i )
 	{
-		const wchar_t* text = Columns[i].Name.c_str();
+		const wchar_t* text = Columns[i].Name.data();
 		u32 colWidth = Columns[i].Width;
 
 		core::rect<s32> columnrect(pos, tableRect.UpperLeftCorner.Y, pos + colWidth, headerBottom);
@@ -1044,7 +1044,7 @@ void CGUITable::breakText(const core::stringw& text, core::stringw& brokenText, 
 		if ( pos > maxLength )
 			break;
 
-		if ( font->getDimension( (line + c).c_str() ).Width > maxLengthDots )
+		if ( font->getDimension( (line + c).data() ).Width > maxLengthDots )
 			lineDots = line;
 
 		line += c[0];
@@ -1147,11 +1147,11 @@ void CGUITable::serializeAttributes(io::IAttributes* out, io::SAttributeReadWrit
 		core::stringc label;
 
 		label = "Column"; label += i; label += "name";
-		out->addString(label.c_str(), Columns[i].Name.c_str() );
+		out->addString(label.data(), Columns[i].Name.data() );
 		label = "Column"; label += i; label += "width";
-		out->addInt(label.c_str(), Columns[i].Width );
+		out->addInt(label.data(), Columns[i].Width );
 		label = "Column"; label += i; label += "OrderingMode";
-		out->addEnum(label.c_str(), Columns[i].OrderingMode, GUIColumnOrderingNames);
+		out->addEnum(label.data(), Columns[i].OrderingMode, GUIColumnOrderingNames);
 	}
 
 	out->addInt("RowCount", Rows.size());
@@ -1161,20 +1161,20 @@ void CGUITable::serializeAttributes(io::IAttributes* out, io::SAttributeReadWrit
 
 		// Height currently not used and could be recalculated anyway
 		//label = "Row"; label += i; label += "height";
-		//out->addInt(label.c_str(), Rows[i].Height );
+		//out->addInt(label.data(), Rows[i].Height );
 
 		//label = "Row"; label += i; label += "ItemCount";
-		//out->addInt(label.c_str(), Rows[i].Items.size());
+		//out->addInt(label.data(), Rows[i].Items.size());
 		u32 c;
 		for ( c=0; c < Rows[i].Items.size(); ++c )
 		{
 			label = "Row"; label += i; label += "cell"; label += c; label += "text";
-			out->addString(label.c_str(), Rows[i].Items[c].Text.c_str() );
+			out->addString(label.data(), Rows[i].Items[c].Text.data() );
 			// core::stringw BrokenText;	// can be recalculated
 			label = "Row"; label += i; label += "cell"; label += c; label += "color";
-			out->addColor(label.c_str(), Rows[i].Items[c].Color );
+			out->addColor(label.data(), Rows[i].Items[c].Color );
 			label = "Row"; label += i; label += "cell"; label += c; label += "IsOverrideColor";
-			out->addColor(label.c_str(), Rows[i].Items[c].IsOverrideColor );
+			out->addColor(label.data(), Rows[i].Items[c].IsOverrideColor );
 			// void *data;	// can't be serialized
 		}
 	}
@@ -1217,13 +1217,13 @@ void CGUITable::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWri
 		Column column;
 
 		label = "Column"; label += i; label += "name";
-		column.Name = in->getAttributeAsStringW(label.c_str());
+		column.Name = in->getAttributeAsStringW(label.data());
 		label = "Column"; label += i; label += "width";
-		column.Width = in->getAttributeAsInt(label.c_str());
+		column.Width = in->getAttributeAsInt(label.data());
 		label = "Column"; label += i; label += "OrderingMode";
 
 		column.OrderingMode = EGCO_NONE;
-		s32 co = in->getAttributeAsEnumeration(label.c_str(), GUIColumnOrderingNames);
+		s32 co = in->getAttributeAsEnumeration(label.data(), GUIColumnOrderingNames);
 		if (co > 0)
 			column.OrderingMode = EGUI_COLUMN_ORDERING(co);
 
@@ -1240,24 +1240,24 @@ void CGUITable::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWri
 
 		// Height currently not used and could be recalculated anyway
 		//label = "Row"; label += i; label += "height";
-		//row.Height = in->getAttributeAsInt(label.c_str() );
+		//row.Height = in->getAttributeAsInt(label.data() );
 
 		Rows.push_back(row);
 
 		//label = "Row"; label += i; label += "ItemCount";
-		//u32 itemCount = in->getAttributeAsInt(label.c_str());
+		//u32 itemCount = in->getAttributeAsInt(label.data());
 		u32 c;
 		for ( c=0; c < columnCount; ++c )
 		{
 			Cell cell;
 
 			label = "Row"; label += i; label += "cell"; label += c; label += "text";
-			cell.Text = in->getAttributeAsStringW(label.c_str());
+			cell.Text = in->getAttributeAsStringW(label.data());
 			breakText( cell.Text, cell.BrokenText, Columns[c].Width );
 			label = "Row"; label += i; label += "cell"; label += c; label += "color";
-			cell.Color = in->getAttributeAsColor(label.c_str());
+			cell.Color = in->getAttributeAsColor(label.data());
 			label = "Row"; label += i; label += "cell"; label += c; label += "IsOverrideColor";
-			cell.IsOverrideColor = in->getAttributeAsBool(label.c_str());
+			cell.IsOverrideColor = in->getAttributeAsBool(label.data());
 
 			cell.Data = NULL;
 

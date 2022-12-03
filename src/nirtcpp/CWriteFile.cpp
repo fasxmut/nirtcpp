@@ -82,9 +82,9 @@ void CWriteFile::openFile(bool append)
 	}
 
 #if defined(_NIRT_WCHAR_FILESYSTEM)
-	File = _wfopen(Filename.c_str(), append ? L"ab" : L"wb");
+	File = _wfopen(Filename.data(), append ? L"ab" : L"wb");
 #else
-	File = fopen(Filename.c_str(), append ? "ab" : "wb");
+	File = fopen(Filename.data(), append ? "ab" : "wb");
 #endif
 
 	if (File)

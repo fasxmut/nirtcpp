@@ -106,7 +106,7 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 
 		//let's get the materials
 #ifdef _NIRT_DMF_DEBUG_
-		os::Printer::log("Loading materials", core::stringc(header.numMaterials).c_str());
+		os::Printer::log("Loading materials", core::stringc(header.numMaterials).data());
 #endif
 		GetDMFMaterials(dmfRawFile, materiali, header.numMaterials);
 
@@ -138,7 +138,7 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 		for (i = 0; i < header.numFaces; i++)
 		{
 #ifdef _NIRT_DMF_DEBUG_
-		os::Printer::log("Polygon with #vertices", core::stringc(faces[i].numVerts).c_str());
+		os::Printer::log("Polygon with #vertices", core::stringc(faces[i].numVerts).data());
 #endif
 			if (faces[i].numVerts < 3)
 				continue;
@@ -271,7 +271,7 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 			//Primary texture is just a color
 			else if(materiali[i].textureFlag==1)
 			{
-				video::SColor color(axtoi(materiali[i].textureName.c_str()));
+				video::SColor color(axtoi(materiali[i].textureName.data()));
 
 				//just for compatibility with older Nirtcpp versions
 				//to support transparent materials

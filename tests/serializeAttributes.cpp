@@ -33,8 +33,8 @@ public:
 	{
 		out->addInt("ValInt", ValInt);
 		out->addFloat("ValFloat", ValFloat);
-		out->addString("ValString", ValString.c_str());
-		out->addString("ValStringW", ValStringW.c_str());
+		out->addString("ValString", ValString.data());
+		out->addString("ValStringW", ValStringW.data());
 		out->addBinary("ValBinary", (void*)ValBinary, BINARY_BLOCK_SIZE);
 		out->addArray("ValStringWArray", ValStringWArray);
 		out->addBool("ValBool", ValBool);
@@ -309,13 +309,13 @@ bool stringSerialization(io::IFileSystem * fs)
 	for ( s32 i=0; i< (s32)attr->getAttributeCount(); ++i )
 	{
 		core::stringw value(attr->getAttributeAsString(i));
-		attr->setAttribute(i, value.c_str() );
+		attr->setAttribute(i, value.data() );
 		core::stringw value2(attr->getAttributeAsString(i));
 
 		if ( value != value2 )
 		{
 			logTestString("old-string: %s new-string: %s for %d.%s in %s:%d\n"
-				, core::stringc(value).c_str(), core::stringc(value2).c_str(), i, attr->getAttributeName(i), __FILE__, __LINE__ );
+				, core::stringc(value).data(), core::stringc(value2).data(), i, attr->getAttributeName(i), __FILE__, __LINE__ );
 			return false;
 		}
 		else

@@ -296,8 +296,8 @@ bool CGUIEditBox::processKey(const SEvent& event)
 				const s32 realmend = MarkBegin < MarkEnd ? MarkEnd : MarkBegin;
 
 				core::stringc s;
-				s = Text.subString(realmbgn, realmend - realmbgn).c_str();
-				Operator->copyToClipboard(s.c_str());
+				s = Text.subString(realmbgn, realmend - realmbgn).data();
+				Operator->copyToClipboard(s.data());
 			}
 			break;
 		case KEY_KEY_X:
@@ -309,8 +309,8 @@ bool CGUIEditBox::processKey(const SEvent& event)
 
 				// copy
 				core::stringc sc;
-				sc = Text.subString(realmbgn, realmend - realmbgn).c_str();
-				Operator->copyToClipboard(sc.c_str());
+				sc = Text.subString(realmbgn, realmend - realmbgn).data();
+				Operator->copyToClipboard(sc.data());
 
 				if (isEnabled())
 				{
@@ -880,7 +880,7 @@ void CGUIEditBox::draw()
 
 
 				// draw normal text
-				font->draw(txtLine->c_str(), CurrentTextRect,
+				font->draw(txtLine->data(), CurrentTextRect,
 					OverrideColorEnabled ? OverrideColor : skin->getColor(EGDC_BUTTON_TEXT),
 					false, true, &localClipRect);
 
@@ -895,7 +895,7 @@ void CGUIEditBox::draw()
 					{
 						// highlight start is on this line
 						s = txtLine->subString(0, realmbgn - startPos);
-						mbegin = font->getDimension(s.c_str()).Width;
+						mbegin = font->getDimension(s.data()).Width;
 
 						// deal with kerning
 						mbegin += font->getKerningWidth(
@@ -908,11 +908,11 @@ void CGUIEditBox::draw()
 					{
 						// highlight end is on this line
 						s2 = txtLine->subString(0, realmend - startPos);
-						mend = font->getDimension(s2.c_str()).Width;
+						mend = font->getDimension(s2.data()).Width;
 						lineEndPos = (s32)s2.size();
 					}
 					else
-						mend = font->getDimension(txtLine->c_str()).Width;
+						mend = font->getDimension(txtLine->data()).Width;
 
 					CurrentTextRect.UpperLeftCorner.X += mbegin;
 					CurrentTextRect.LowerRightCorner.X = CurrentTextRect.UpperLeftCorner.X + mend - mbegin;
@@ -924,7 +924,7 @@ void CGUIEditBox::draw()
 					s = txtLine->subString(lineStartPos, lineEndPos - lineStartPos);
 
 					if (s.size())
-						font->draw(s.c_str(), CurrentTextRect,
+						font->draw(s.data(), CurrentTextRect,
 							OverrideColorEnabled ? OverrideColor : skin->getColor(EGDC_HIGH_LIGHT_TEXT),
 							false, true, &localClipRect);
 
@@ -946,8 +946,8 @@ void CGUIEditBox::draw()
 				startPos = BrokenTextPositions[cursorLine];
 			}
 			s = txtLine->subString(0,CursorPos-startPos);
-			charcursorpos = font->getDimension(s.c_str()).Width +
-				font->getKerningWidth(CursorChar.c_str(), CursorPos-startPos > 0 ? &((*txtLine)[CursorPos-startPos-1]) : 0);
+			charcursorpos = font->getDimension(s.data()).Width +
+				font->getKerningWidth(CursorChar.data(), CursorPos-startPos > 0 ? &((*txtLine)[CursorPos-startPos-1]) : 0);
 
 			if (focus && (CursorBlinkTime == 0 || (os::Timer::getTime() - BlinkStartTime) % (2*CursorBlinkTime) < CursorBlinkTime))
 			{
@@ -957,13 +957,13 @@ void CGUIEditBox::draw()
 				if ( OverwriteMode )
 				{
 					core::stringw character = Text.subString(CursorPos,1);
-					s32 mend = font->getDimension(character.c_str()).Width;
+					s32 mend = font->getDimension(character.data()).Width;
 					//Make sure the cursor box has at least some width to it
 					if ( mend <= 0 )
-						mend = font->getDimension(CursorChar.c_str()).Width;
+						mend = font->getDimension(CursorChar.data()).Width;
 					CurrentTextRect.LowerRightCorner.X = CurrentTextRect.UpperLeftCorner.X + mend;
 					skin->draw2DRectangle(this, skin->getColor(EGDC_HIGH_LIGHT), CurrentTextRect, &localClipRect);
-					font->draw(character.c_str(), CurrentTextRect,
+					font->draw(character.data(), CurrentTextRect,
 								OverrideColorEnabled ? OverrideColor : skin->getColor(EGDC_HIGH_LIGHT_TEXT),
 								false, true, &localClipRect);
 				}
@@ -1174,7 +1174,7 @@ s32 CGUIEditBox::getCursorPos(s32 x, s32 y)
 	if ( !txtLine )
 		return 0;
 
-	s32 idx = font->getCharacterFromPos(txtLine->c_str(), x - CurrentTextRect.UpperLeftCorner.X);
+	s32 idx = font->getCharacterFromPos(txtLine->data(), x - CurrentTextRect.UpperLeftCorner.X);
 
 	// click was on or left of the line
 	if (idx != -1)
@@ -1244,8 +1244,8 @@ void CGUIEditBox::breakText()
 			// here comes the next whitespace, look if
 			// we can break the last word to the next line
 			// We also break whitespace, otherwise cursor would vanish beside the right border.
-			s32 whitelgth = font->getDimension(whitespace.c_str()).Width;
-			s32 worldlgth = font->getDimension(word.c_str()).Width;
+			s32 whitelgth = font->getDimension(whitespace.data()).Width;
+			s32 worldlgth = font->getDimension(word.data()).Width;
 
 			if (WordWrap && length + worldlgth + whitelgth > elWidth && line.size() > 0)
 			{
@@ -1317,11 +1317,11 @@ void CGUIEditBox::setTextRect(s32 line)
 	const u32 lineCount = (WordWrap || MultiLine) ? BrokenText.size() : 1;
 	if (WordWrap || MultiLine)
 	{
-		d = font->getDimension(BrokenText[line].c_str());
+		d = font->getDimension(BrokenText[line].data());
 	}
 	else
 	{
-		d = font->getDimension(Text.c_str());
+		d = font->getDimension(Text.data());
 		d.Height = AbsoluteRect.getHeight();
 	}
 	d.Height += font->getKerningHeight();
@@ -1487,12 +1487,12 @@ void CGUIEditBox::calculateScrollPos()
 	{
 		// get cursor position
 		// get cursor area
-		irr::u32 cursorWidth = font->getDimension(CursorChar.c_str()).Width;
+		irr::u32 cursorWidth = font->getDimension(CursorChar.data()).Width;
 		core::stringw *txtLine = hasBrokenText ? &BrokenText[cursLine] : &Text;
 		s32 cPos = hasBrokenText ? CursorPos - BrokenTextPositions[cursLine] : CursorPos;	// column
-		s32 cStart = font->getDimension(txtLine->subString(0, cPos).c_str()).Width;		// pixels from text-start
+		s32 cStart = font->getDimension(txtLine->subString(0, cPos).data()).Width;		// pixels from text-start
 		s32 cEnd = cStart + cursorWidth;
-		s32 txtWidth = font->getDimension(txtLine->c_str()).Width;
+		s32 txtWidth = font->getDimension(txtLine->data()).Width;
 
 		if ( txtWidth < FrameRect.getWidth() )
 		{
@@ -1642,7 +1642,7 @@ void CGUIEditBox::serializeAttributes(io::IAttributes* out, io::SAttributeReadWr
 	out->addBool  ("PasswordBox", PasswordBox);
 	core::stringw ch = L" ";
 	ch[0] = PasswordChar;
-	out->addString("PasswordChar", ch.c_str());
+	out->addString("PasswordChar", ch.data());
 	out->addEnum  ("HTextAlign", HAlign, GUIAlignmentNames);
 	out->addEnum  ("VTextAlign", VAlign, GUIAlignmentNames);
 

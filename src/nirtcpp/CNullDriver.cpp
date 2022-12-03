@@ -2134,11 +2134,11 @@ io::IAttributes* CNullDriver::createAttributesFromMaterial(const video::SMateria
 		{
 			io::path path = FileSystem->getRelativeFilename(
 				FileSystem->getAbsolutePath(material.getTexture(i)->getName()), options->Filename);
-			attr->addTexture((prefix+core::stringc(i+1)).c_str(), material.getTexture(i), path);
+			attr->addTexture((prefix+core::stringc(i+1)).data(), material.getTexture(i), path);
 		}
 		else
 		{
-			attr->addTexture((prefix+core::stringc(i+1)).c_str(), texture);
+			attr->addTexture((prefix+core::stringc(i+1)).data(), texture);
 		}
 	}
 
@@ -2166,25 +2166,25 @@ io::IAttributes* CNullDriver::createAttributesFromMaterial(const video::SMateria
 	// TODO: Would be nice to have a flag that only serializes rest of texture data when a texture pointer exists.
 	prefix = "BilinearFilter";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addBool((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].BilinearFilter);
+		attr->addBool((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].BilinearFilter);
 	prefix = "TrilinearFilter";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addBool((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].TrilinearFilter);
+		attr->addBool((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].TrilinearFilter);
 	prefix = "AnisotropicFilter";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addInt((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].AnisotropicFilter);
+		attr->addInt((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].AnisotropicFilter);
 	prefix="TextureWrapU";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addEnum((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].TextureWrapU, aTextureClampNames);
+		attr->addEnum((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].TextureWrapU, aTextureClampNames);
 	prefix="TextureWrapV";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addEnum((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].TextureWrapV, aTextureClampNames);
+		attr->addEnum((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].TextureWrapV, aTextureClampNames);
 	prefix="TextureWrapW";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addEnum((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].TextureWrapW, aTextureClampNames);
+		attr->addEnum((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].TextureWrapW, aTextureClampNames);
 	prefix="LODBias";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		attr->addInt((prefix+core::stringc(i+1)).c_str(), material.TextureLayer[i].LODBias);
+		attr->addInt((prefix+core::stringc(i+1)).data(), material.TextureLayer[i].LODBias);
 
 	return attr;
 }
@@ -2218,7 +2218,7 @@ void CNullDriver::fillMaterialStructureFromAttributes(video::SMaterial& outMater
 
 	core::stringc prefix="Texture";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		outMaterial.setTexture(i, attr->getAttributeAsTexture((prefix+core::stringc(i+1)).c_str()));
+		outMaterial.setTexture(i, attr->getAttributeAsTexture((prefix+core::stringc(i+1)).data()));
 
 	outMaterial.Wireframe = attr->getAttributeAsBool("Wireframe", outMaterial.Wireframe);
 	outMaterial.PointCloud = attr->getAttributeAsBool("PointCloud", outMaterial.PointCloud);
@@ -2249,32 +2249,32 @@ void CNullDriver::fillMaterialStructureFromAttributes(video::SMaterial& outMater
 	outMaterial.PolygonOffsetSlopeScale = attr->getAttributeAsFloat("PolygonOffsetSlopeScale", outMaterial.PolygonOffsetSlopeScale);
 
 	prefix = "BilinearFilter";
-	if (attr->existsAttribute(prefix.c_str())) // legacy
-		outMaterial.setFlag(EMF_BILINEAR_FILTER, attr->getAttributeAsBool(prefix.c_str()));
+	if (attr->existsAttribute(prefix.data())) // legacy
+		outMaterial.setFlag(EMF_BILINEAR_FILTER, attr->getAttributeAsBool(prefix.data()));
 	else
 		for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-			outMaterial.TextureLayer[i].BilinearFilter = attr->getAttributeAsBool((prefix+core::stringc(i+1)).c_str(), outMaterial.TextureLayer[i].BilinearFilter);
+			outMaterial.TextureLayer[i].BilinearFilter = attr->getAttributeAsBool((prefix+core::stringc(i+1)).data(), outMaterial.TextureLayer[i].BilinearFilter);
 
 	prefix = "TrilinearFilter";
-	if (attr->existsAttribute(prefix.c_str())) // legacy
-		outMaterial.setFlag(EMF_TRILINEAR_FILTER, attr->getAttributeAsBool(prefix.c_str()));
+	if (attr->existsAttribute(prefix.data())) // legacy
+		outMaterial.setFlag(EMF_TRILINEAR_FILTER, attr->getAttributeAsBool(prefix.data()));
 	else
 		for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-			outMaterial.TextureLayer[i].TrilinearFilter = attr->getAttributeAsBool((prefix+core::stringc(i+1)).c_str(), outMaterial.TextureLayer[i].TrilinearFilter);
+			outMaterial.TextureLayer[i].TrilinearFilter = attr->getAttributeAsBool((prefix+core::stringc(i+1)).data(), outMaterial.TextureLayer[i].TrilinearFilter);
 
 	prefix = "AnisotropicFilter";
-	if (attr->existsAttribute(prefix.c_str())) // legacy
-		outMaterial.setFlag(EMF_ANISOTROPIC_FILTER, attr->getAttributeAsBool(prefix.c_str()));
+	if (attr->existsAttribute(prefix.data())) // legacy
+		outMaterial.setFlag(EMF_ANISOTROPIC_FILTER, attr->getAttributeAsBool(prefix.data()));
 	else
 		for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-			outMaterial.TextureLayer[i].AnisotropicFilter = attr->getAttributeAsInt((prefix+core::stringc(i+1)).c_str(), outMaterial.TextureLayer[i].AnisotropicFilter);
+			outMaterial.TextureLayer[i].AnisotropicFilter = attr->getAttributeAsInt((prefix+core::stringc(i+1)).data(), outMaterial.TextureLayer[i].AnisotropicFilter);
 
 	prefix = "TextureWrap";
-	if (attr->existsAttribute(prefix.c_str())) // legacy
+	if (attr->existsAttribute(prefix.data())) // legacy
 	{
 		for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
 		{
-			outMaterial.TextureLayer[i].TextureWrapU = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+core::stringc(i+1)).c_str(), aTextureClampNames);
+			outMaterial.TextureLayer[i].TextureWrapU = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+core::stringc(i+1)).data(), aTextureClampNames);
 			outMaterial.TextureLayer[i].TextureWrapV = outMaterial.TextureLayer[i].TextureWrapU;
 			outMaterial.TextureLayer[i].TextureWrapW = outMaterial.TextureLayer[i].TextureWrapW;
 		}
@@ -2283,15 +2283,15 @@ void CNullDriver::fillMaterialStructureFromAttributes(video::SMaterial& outMater
 	{
 		for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
 		{
-			outMaterial.TextureLayer[i].TextureWrapU = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+"U"+core::stringc(i+1)).c_str(), aTextureClampNames, outMaterial.TextureLayer[i].TextureWrapU);
-			outMaterial.TextureLayer[i].TextureWrapV = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+"V"+core::stringc(i+1)).c_str(), aTextureClampNames, outMaterial.TextureLayer[i].TextureWrapV);
-			outMaterial.TextureLayer[i].TextureWrapW = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+"W"+core::stringc(i+1)).c_str(), aTextureClampNames, outMaterial.TextureLayer[i].TextureWrapW);
+			outMaterial.TextureLayer[i].TextureWrapU = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+"U"+core::stringc(i+1)).data(), aTextureClampNames, outMaterial.TextureLayer[i].TextureWrapU);
+			outMaterial.TextureLayer[i].TextureWrapV = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+"V"+core::stringc(i+1)).data(), aTextureClampNames, outMaterial.TextureLayer[i].TextureWrapV);
+			outMaterial.TextureLayer[i].TextureWrapW = (E_TEXTURE_CLAMP)attr->getAttributeAsEnumeration((prefix+"W"+core::stringc(i+1)).data(), aTextureClampNames, outMaterial.TextureLayer[i].TextureWrapW);
 		}
 	}
 
 	prefix="LODBias";
 	for (i=0; i<MATERIAL_MAX_TEXTURES; ++i)
-		outMaterial.TextureLayer[i].LODBias = attr->getAttributeAsInt((prefix+core::stringc(i+1)).c_str(), outMaterial.TextureLayer[i].LODBias);
+		outMaterial.TextureLayer[i].LODBias = attr->getAttributeAsInt((prefix+core::stringc(i+1)).data(), outMaterial.TextureLayer[i].LODBias);
 }
 
 
@@ -2342,7 +2342,7 @@ u32 CNullDriver::getMaterialRendererCount() const
 const char* CNullDriver::getMaterialRendererName(u32 idx) const
 {
 	if ( idx < MaterialRenderers.size() )
-		return MaterialRenderers[idx].Name.c_str();
+		return MaterialRenderers[idx].Name.data();
 
 	return 0;
 }
@@ -2666,7 +2666,7 @@ void CNullDriver::printVersion()
 {
 	core::stringw namePrint = L"Using renderer: ";
 	namePrint += getName();
-	os::Printer::log(namePrint.c_str(), ELL_INFORMATION);
+	os::Printer::log(namePrint.data(), ELL_INFORMATION);
 }
 
 

@@ -598,7 +598,7 @@ void COctreeSceneNode::serializeAttributes(io::IAttributes* out, io::SAttributeR
 	ISceneNode::serializeAttributes(out, options);
 
 	out->addInt("MinimalPolysPerNode", MinimalPolysPerNode);
-	out->addString("Mesh", MeshName.c_str());
+	out->addString("Mesh", MeshName.data());
 }
 
 
@@ -615,7 +615,7 @@ void COctreeSceneNode::deserializeAttributes(io::IAttributes* in, io::SAttribute
 	if (newMeshStr == "")
 		newMeshStr = MeshName;
 
-	IAnimatedMesh* newAnimatedMesh = SceneManager->getMesh(newMeshStr.c_str());
+	IAnimatedMesh* newAnimatedMesh = SceneManager->getMesh(newMeshStr.data());
 
 	if (newAnimatedMesh)
 		newMesh = newAnimatedMesh->getMesh(0);
