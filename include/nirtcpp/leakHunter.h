@@ -61,7 +61,7 @@ namespace irr
 
 		private:
 			// NOTE: We don't do additional grab()/drop()'s here as we want to supervise reference counted objects and not affect them otherwise.
-			IRRLICHT_API static irr::core::array<const IReferenceCounted*> ReferenceCountedObjects;
+			NIRTCPP_API static irr::core::array<const IReferenceCounted*> ReferenceCountedObjects;
 	};
 } // end namespace irr
 

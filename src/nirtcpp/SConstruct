@@ -84,7 +84,7 @@ def createEnvironment() :
     irrlichtversion = None
     try :
         configfile = open( os.path.join("include", "IrrCompileConfig.h"), "r" )
-        irrlichtversion = re.search("#define(.*)IRRLICHT_SDK_VERSION(.*)", configfile.read())
+        irrlichtversion = re.search("#define(.*)NIRTCPP_SDK_VERSION(.*)", configfile.read())
         configfile.close()
     except :
 	    pass
@@ -124,7 +124,7 @@ def getLibraryBuildEnvironment(env) :
     
     # define global options
     envlib.AppendUnique(CPPPATH             = ["include", envlib["irr_srclibrary"], os.path.join(envlib["irr_srclibrary"], "zlib"), os.path.join(envlib["irr_srclibrary"], "jpeglib"), os.path.join(envlib["irr_srclibrary"], "libpng")])
-    envlib.AppendUnique(CPPDEFINES          = ["IRRLICHT_EXPORTS"])
+    envlib.AppendUnique(CPPDEFINES          = ["NIRTCPP_EXPORTS"])
     if envlib["buildtype"] == "debug" :
         envlib.AppendUnique(CPPDEFINES      = ["_DEBUG"])
     

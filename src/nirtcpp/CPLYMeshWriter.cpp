@@ -54,7 +54,7 @@ bool CPLYMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 		header += "format ascii 1.0\n";
 
 	header +=  "comment Irrlicht Engine ";
-	header +=  IRRLICHT_SDK_VERSION;
+	header +=  NIRTCPP_SDK_VERSION;
 
 	// get vertex and triangle counts
 	u32 VertexCount   = 0;

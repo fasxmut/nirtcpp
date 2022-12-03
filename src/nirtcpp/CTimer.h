@@ -93,7 +93,7 @@ namespace irr
 
 		//! Advances the virtual time
 		/** Makes the virtual timer update the time value based on the real time. This is
-		called automatically when calling IrrlichtDevice::run(), but you can call it manually
+		called automatically when calling NirtcppDevice::run(), but you can call it manually
 		if you don't use this method. */
 		virtual void tick() IRR_OVERRIDE
 		{

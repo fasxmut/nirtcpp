@@ -6,13 +6,13 @@
 #define IRR_COMPILE_CONFIG_H_INCLUDED
 
 //! Irrlicht SDK Version
-#define IRRLICHT_VERSION_MAJOR 1
-#define IRRLICHT_VERSION_MINOR 9
-#define IRRLICHT_VERSION_REVISION 0
+#define NIRTCPP_VERSION_MAJOR 1
+#define NIRTCPP_VERSION_MINOR 9
+#define NIRTCPP_VERSION_REVISION 0
 // This flag will be defined only in SVN, the official release code will have
 // it undefined
-#define IRRLICHT_VERSION_SVN alpha
-#define IRRLICHT_SDK_VERSION "1.9.0"
+#define NIRTCPP_VERSION_SVN alpha
+#define NIRTCPP_SDK_VERSION "1.9.0"
 
 #include <stdio.h> // TODO: Although included elsewhere this is required at least for mingw
 
@@ -764,9 +764,9 @@ currently only supports zip archives, though. */
 precision will be lower but speed higher. currently X86 only
 */
 #if !defined(_IRR_OSX_PLATFORM_) && !defined(_IRR_SOLARIS_PLATFORM_)
-	//#define IRRLICHT_FAST_MATH
-	#ifdef NO_IRRLICHT_FAST_MATH
-	#undef IRRLICHT_FAST_MATH
+	//#define NIRTCPP_FAST_MATH
+	#ifdef NO_NIRTCPP_FAST_MATH
+	#undef NIRTCPP_FAST_MATH
 	#endif
 #endif
 
@@ -777,13 +777,13 @@ precision will be lower but speed higher. currently X86 only
 // To build Irrlicht as a static library, you must define _IRR_STATIC_LIB_ in both the
 // Irrlicht build, *and* in the user application, before #including <irrlicht.h>
 #ifndef _IRR_STATIC_LIB_
-#ifdef IRRLICHT_EXPORTS
-#define IRRLICHT_API __declspec(dllexport)
+#ifdef NIRTCPP_EXPORTS
+#define NIRTCPP_API __declspec(dllexport)
 #else
-#define IRRLICHT_API __declspec(dllimport)
-#endif // IRRLICHT_EXPORT
+#define NIRTCPP_API __declspec(dllimport)
+#endif // NIRTCPP_EXPORT
 #else
-#define IRRLICHT_API
+#define NIRTCPP_API
 #endif // _IRR_STATIC_LIB_
 
 // Declare the calling convention.
@@ -796,10 +796,10 @@ precision will be lower but speed higher. currently X86 only
 #else // _IRR_WINDOWS_API_
 
 // Force symbol export in shared libraries built with gcc.
-#if (__GNUC__ >= 4) && !defined(_IRR_STATIC_LIB_) && defined(IRRLICHT_EXPORTS)
-#define IRRLICHT_API __attribute__ ((visibility("default")))
+#if (__GNUC__ >= 4) && !defined(_IRR_STATIC_LIB_) && defined(NIRTCPP_EXPORTS)
+#define NIRTCPP_API __attribute__ ((visibility("default")))
 #else
-#define IRRLICHT_API
+#define NIRTCPP_API
 #endif
 
 #define IRRCALLCONV

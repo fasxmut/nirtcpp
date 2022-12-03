@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in irrlicht.h
 
-#ifndef IRR_I_IRRLICHT_DEVICE_H_INCLUDED
-#define IRR_I_IRRLICHT_DEVICE_H_INCLUDED
+#ifndef IRR_I_NIRTCPP_DEVICE_H_INCLUDED
+#define IRR_I_NIRTCPP_DEVICE_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "dimension2d.h"
@@ -44,7 +44,7 @@ namespace irr
 	this class.  There should be only one instance of this class at any
 	time.
 	*/
-	class IrrlichtDevice : public virtual IReferenceCounted
+	class NirtcppDevice : public virtual IReferenceCounted
 	{
 	public:
 
@@ -52,7 +52,7 @@ namespace irr
 		/** Also increments the virtual timer by calling
 		ITimer::tick();. You can prevent this
 		by calling ITimer::stop(); before and ITimer::start() after
-		calling IrrlichtDevice::run(). Returns false if device wants
+		calling NirtcppDevice::run(). Returns false if device wants
 		to be deleted. Use it in this way:
 		\code
 		while(device->run())
@@ -191,7 +191,7 @@ namespace irr
 		virtual video::ECOLOR_FORMAT getColorFormat() const = 0;
 
 		//! Notifies the device that it should close itself.
-		/** IrrlichtDevice::run() will always return false after closeDevice() was called. */
+		/** NirtcppDevice::run() will always return false after closeDevice() was called. */
 		virtual void closeDevice() = 0;
 
 		//! Get the version of the engine.

@@ -40,7 +40,7 @@ Version 1.4 - 12 March 2005
   from:
 	CLMTSMeshFileLoader(io::IFileSystem* fs, video::IVideoDriver* driver)
   to:
-	CLMTSMeshFileLoader(IrrlichtDevice* device)
+	CLMTSMeshFileLoader(NirtcppDevice* device)
 
 Version 1.3 - 15 February 2005
 - Fixed bug that prevented loading more than one different lmts files.

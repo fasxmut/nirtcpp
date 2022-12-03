@@ -26,8 +26,8 @@
   in the jpeglib, the zlib and libPng for further information.
 */
 
-#ifndef IRRLICHT_H_INCLUDED
-#define IRRLICHT_H_INCLUDED
+#ifndef NIRTCPP_H_INCLUDED
+#define NIRTCPP_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 #include "aabbox3d.h"
@@ -127,7 +127,7 @@
 #include "irrArray.h"
 #include "IRandomizer.h"
 #include "IRenderTarget.h"
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 #include "irrList.h"
 #include "irrMap.h"
 #include "irrMath.h"
@@ -233,7 +233,7 @@
  * int main()
  * {
  *	// start up the engine
- *	IrrlichtDevice *device = createDevice(video::EDT_OPENGL,
+ *	NirtcppDevice *device = createDevice(video::EDT_OPENGL,
  *		core::dimension2d<u32>(640,480));
  *
  *	video::IVideoDriver* driver = device->getVideoDriver();
@@ -323,10 +323,10 @@ namespace irr
 	\param vsync: Specifies vertical synchronization: If set to true, the driver will wait
 	for the vertical retrace period, otherwise not.
 	\param receiver: A user created event receiver.
-	\return Returns pointer to the created IrrlichtDevice or null if the
+	\return Returns pointer to the created NirtcppDevice or null if the
 	device could not be created.
 	*/
-	extern "C" IRRLICHT_API IrrlichtDevice* IRRCALLCONV createDevice(
+	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDevice(
 		video::E_DRIVER_TYPE driverType = video::EDT_SOFTWARE,
 		// parentheses are necessary for some compilers
 		const core::dimension2d<u32>& windowSize = (core::dimension2d<u32>(640,480)),
@@ -337,7 +337,7 @@ namespace irr
 		IEventReceiver* receiver = 0);
 
 	//! typedef for Function Pointer
-	typedef IrrlichtDevice* (IRRCALLCONV *funcptr_createDevice )(
+	typedef NirtcppDevice* (IRRCALLCONV *funcptr_createDevice )(
 			video::E_DRIVER_TYPE driverType,
 			const core::dimension2d<u32>& windowSize,
 			u32 bits,
@@ -353,13 +353,13 @@ namespace irr
 	handle in which the device should be created.
 	\param parameters: Structure containing advanced parameters for the creation of the device.
 	See irr::SIrrlichtCreationParameters for details.
-	\return Returns pointer to the created IrrlichtDevice or null if the
+	\return Returns pointer to the created NirtcppDevice or null if the
 	device could not be created. */
-	extern "C" IRRLICHT_API IrrlichtDevice* IRRCALLCONV createDeviceEx(
+	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(
 		const SIrrlichtCreationParameters& parameters);
 
 	//! typedef for Function Pointer
-	typedef IrrlichtDevice* (IRRCALLCONV *funcptr_createDeviceEx )( const SIrrlichtCreationParameters& parameters );
+	typedef NirtcppDevice* (IRRCALLCONV *funcptr_createDeviceEx )( const SIrrlichtCreationParameters& parameters );
 
 
 	// THE FOLLOWING IS AN EMPTY LIST OF ALL SUB NAMESPACES

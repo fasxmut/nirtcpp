@@ -296,7 +296,7 @@ namespace video
 		NOTE: Do not set it below 1 or above the value of _IRR_MATERIAL_MAX_TEXTURES_.
 		NOTE: Going below 4 is usually not worth it.
 	*/
-	IRRLICHT_API extern u32 MATERIAL_MAX_TEXTURES_USED;
+	NIRTCPP_API extern u32 MATERIAL_MAX_TEXTURES_USED;
 
 	//! Struct for holding parameters for a material renderer
 	// Note for implementors: Serialization is in CNullDriver
@@ -768,7 +768,7 @@ namespace video
 	};
 
 	//! global const identity Material
-	IRRLICHT_API extern SMaterial IdentityMaterial;
+	NIRTCPP_API extern SMaterial IdentityMaterial;
 } // end namespace video
 } // end namespace irr
 

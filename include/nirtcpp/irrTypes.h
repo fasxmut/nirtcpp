@@ -219,7 +219,7 @@ virtual void somefunc() IRR_OVERRIDE;
 #endif
 
 // memory debugging
-#if defined(_DEBUG) && defined(IRRLICHT_EXPORTS) && defined(_MSC_VER) && \
+#if defined(_DEBUG) && defined(NIRTCPP_EXPORTS) && defined(_MSC_VER) && \
 	(_MSC_VER > 1299) && !defined(IRR_DONT_DO_MEMORY_DEBUGGING_HERE) && !defined(_WIN32_WCE)
 
 	#define CRTDBG_MAP_ALLOC

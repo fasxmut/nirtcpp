@@ -1,21 +1,21 @@
 VERSION_MAJOR = 1
 VERSION_MINOR = 9
 VERSION_RELEASE = 0
-# Irrlicht Engine 1.9.0
+# Nirtcpp Engine 1.9.0
 # Makefile for Linux
 #
 # To use, just run:
 #
 # make
 #
-# This will compile Irrlicht, create a static lib (libIrrlicht.a), and copy it
+# This will compile nirtcpp, create a static lib (libnirtcpp.a), and copy it
 # into the subdirectory lib/Linux. That's all.
 #
 # If you switch any settings (like debug/release/static/shared) then first run:
 #
 # make clean
 #
-# If you want Irrlicht to be compiled as shared lib (libIrrlicht.so.versionnumber), then run:
+# If you want nirtcpp to be compiled as shared lib (libnirtcpp.so.versionnumber), then run:
 #
 # make sharedlib
 # make install
@@ -66,7 +66,7 @@ LIBPNGOBJ = libpng/png.o libpng/pngerror.o libpng/pngget.o libpng/pngmem.o libpn
 LIBAESGM = aesGladman/aescrypt.o aesGladman/aeskey.o aesGladman/aestab.o aesGladman/fileenc.o aesGladman/hmac.o aesGladman/prng.o aesGladman/pwd2key.o aesGladman/sha1.o aesGladman/sha2.o
 BZIP2OBJ = bzip2/blocksort.o bzip2/huffman.o bzip2/crctable.o bzip2/randtable.o bzip2/bzcompress.o bzip2/decompress.o bzip2/bzlib.o
 
-# Next variable is for additional scene nodes etc. of customized Irrlicht versions
+# Next variable is for additional scene nodes etc. of customized Nirtcpp versions
 EXTRAOBJ =
 LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ) \
 	$(IRRVIDEOOBJ) $(IRRSWRENDEROBJ) $(IRRBURNINGOBJ) $(IRRIOOBJ) $(IRROTHEROBJ) \
@@ -75,8 +75,8 @@ LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ) \
 
 ###############
 #Compiler flags
-CXXINCS = -I../../include -Izlib -Ijpeglib -Ilibpng
-CPPFLAGS += $(CXXINCS) -DIRRLICHT_EXPORTS=1
+CXXINCS = -I../../include -I../../include/nirtcpp -Izlib -Ijpeglib -Ilibpng
+CPPFLAGS += $(CXXINCS) -DNIRTCPP_EXPORTS=1
 CXXFLAGS += -Wall -pipe -fno-exceptions -fno-rtti
 #CXXFLAGS += -std=gnu++11 -U__STRICT_ANSI__
 ifndef NDEBUG
@@ -100,10 +100,10 @@ endif
 
 #Linux specific options
 staticlib sharedlib install: SYSTEM = Linux
-STATIC_LIB = libIrrlicht.a
+STATIC_LIB = libnirtcpp.a
 LIB_PATH = ../../lib/$(SYSTEM)
 INSTALL_DIR = /usr/local/lib
-sharedlib install: SHARED_LIB = libIrrlicht.so
+sharedlib install: SHARED_LIB = libnirtcpp.so
 sharedlib: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm
 staticlib sharedlib: CXXINCS += -I/usr/X11R6/include
 
@@ -111,14 +111,14 @@ staticlib sharedlib: CXXINCS += -I/usr/X11R6/include
 staticlib_osx sharedlib_osx install_osx: SYSTEM = MacOSX
 staticlib_osx sharedlib_osx: IRROTHEROBJ += MacOSX/CIrrDeviceMacOSX.o MacOSX/OSXClipboard.o MacOSX/AppDelegate.o
 staticlib_osx sharedlib_osx: CXXINCS += -IMacOSX -I/usr/X11R6/include
-sharedlib_osx install_osx: SHARED_LIB = libIrrlicht.dylib
+sharedlib_osx install_osx: SHARED_LIB = libnirtcpp.dylib
 staticlib_osx sharedlib_osx: LDFLAGS += --no-export-all-symbols --add-stdcall-alias
 sharedlib_osx: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm
 # for non-X11 app
 #sharedlib_osx: LDFLAGS += -framework cocoa -framework carbon -framework opengl -framework IOKit
 
 #Windows specific options
-IRRLICHT_DLL := ../../bin/Win32-gcc/Irrlicht.dll
+NIRTCPP_DLL := ../../bin/Win32-gcc/nirtcpp.dll
 sharedlib_win32 staticlib_win32: SYSTEM = Win32-gcc
 sharedlib_win32: LDFLAGS += -lgdi32 -lopengl32 -ld3dx9d -lwinmm -Wl,--add-stdcall-alias
 #sharedlib_win32: LDFLAGS += -lSDL
@@ -133,16 +133,16 @@ SHARED_FULLNAME = $(SHARED_LIB).$(VERSION)
 SONAME = $(SHARED_LIB).$(VERSION_MAJOR).$(VERSION_MINOR)
 
 ####################
-# All target, builds Irrlicht as static lib (libIrrlicht.a) and copies it into lib/Linux
+# All target, builds nirtcpp as static lib (libnirtcpp.a) and copies it into lib/Linux
 all linux: staticlib
 
-# Builds Irrlicht as shared lib (libIrrlicht.so.versionNumber) and copies it into lib/Linux
+# Builds nirtcpp as shared lib (libnirtcpp.so.versionNumber) and copies it into lib/Linux
 sharedlib: $(LINKOBJ)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -Wl,-soname,$(SONAME) -o $(SHARED_FULLNAME) $^ $(LDFLAGS)
 	mkdir -p $(LIB_PATH)
 	cp $(SHARED_FULLNAME) $(LIB_PATH)
 
-# Builds Irrlicht as static lib (libIrrlicht.a)
+# Builds nirtcpp as static lib (libnirtcpp.a)
 $(STATIC_LIB): $(LINKOBJ)
 	$(AR) rs $@ $^
 
@@ -151,32 +151,32 @@ staticlib staticlib_osx: $(STATIC_LIB)
 	mkdir -p $(LIB_PATH)
 	cp $^ $(LIB_PATH)
 
-# Builds Irrlicht as dll (Irrlicht.dll) into ../../bin/Win32-gcc
+# Builds nirtcpp as dll (nirtcpp.dll) into ../../bin/Win32-gcc
 all_win32 win32: sharedlib_win32
-sharedlib_win32: $(IRRLICHT_DLL)
-../../bin/Win32-gcc/Irrlicht.dll: $(LINKOBJ)
+sharedlib_win32: $(NIRTCPP_DLL)
+../../bin/Win32-gcc/nirtcpp.dll: $(LINKOBJ)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -o $@ $^ $(LDFLAGS) -Wl,--out-implib,../../lib/Win32-gcc/$(STATIC_LIB)
 # Copies static lib into /lib/Win32-gcc
 staticlib_win32: $(STATIC_LIB)
 	cp $^ $(LIB_PATH)
 
-# Builds Irrlicht as shared lib (libIrrlicht.so.versionNumber) and copies it into /lib/MacOSX
+# Builds nirtcpp as shared lib (libnirtcpp.so.versionNumber) and copies it into /lib/MacOSX
 sharedlib_osx: $(LINKOBJ)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -dynamiclib -Wl,-install_name,$(SONAME) -o $(SHARED_FULLNAME) $^ $(LDFLAGS)
 	cp $(SHARED_FULLNAME) $(LIB_PATH)
 
-# Installs Irrlicht if it was created as shared lib
+# Installs nirtcpp if it was created as shared lib
 install install_osx:
-	$(RM) -r $(INSTALL_DIR)/../include/irrlicht
-	mkdir -p $(INSTALL_DIR)/../include/irrlicht
-	cp ../../include/*.h $(INSTALL_DIR)/../include/irrlicht/
+	$(RM) -r $(INSTALL_DIR)/../include/nirtcpp
+	mkdir -p $(INSTALL_DIR)/../include/nirtcpp
+	cp ../../include/nirtcpp/*.h $(INSTALL_DIR)/../include/nirtcpp/
 	cp $(LIB_PATH)/$(SHARED_FULLNAME) $(INSTALL_DIR)
 	cd $(INSTALL_DIR) && ln -s -f $(SHARED_FULLNAME) $(SONAME)
 	cd $(INSTALL_DIR) && ln -s -f $(SONAME) $(SHARED_LIB)
 #	ldconfig -n $(INSTALL_DIR)
 
 TAGS:
-	ctags *.cpp ../../include/*.h *.h
+	ctags *.cpp ../../include/nirtcpp/*.h *.h
 
 # Create dependency files for automatic recompilation
 %.d:%.cpp
@@ -195,13 +195,13 @@ ifneq ($(MAKECMDGOALS),clean)
 endif
 
 help:
-	@echo "Available targets for Irrlicht"
-	@echo " sharedlib: Build shared library Irrlicht.so for Linux"
-	@echo " staticlib: Build static library Irrlicht.a for Linux"
+	@echo "Available targets for nirtcpp"
+	@echo " sharedlib: Build shared library nirtcpp.so for Linux"
+	@echo " staticlib: Build static library nirtcpp.a for Linux"
 	@echo " install: Copy shared library to /usr/local/lib"
 	@echo ""
-	@echo " sharedlib_win32: Build shared library Irrlicht.dll for Windows"
-	@echo " staticlib_win32: Build static library Irrlicht.a for Windows"
+	@echo " sharedlib_win32: Build shared library nirtcpp.dll for Windows"
+	@echo " staticlib_win32: Build static library nirtcpp.a for Windows"
 	@echo ""
 	@echo " clean: Clean up directory"
 

@@ -47,7 +47,7 @@ namespace irr
 		EIDT_CONSOLE,
 
 		//! This selection allows Irrlicht to choose the best device from the ones available.
-		/** If this selection is chosen then Irrlicht will try to use the IrrlichtDevice native
+		/** If this selection is chosen then Irrlicht will try to use the NirtcppDevice native
 		to your operating system. If this is unavailable then the X11, SDL and then console device
 		will be tried. This ensures that Irrlicht will run even if your platform is unsupported,
 		although it may not be able to render anything. */

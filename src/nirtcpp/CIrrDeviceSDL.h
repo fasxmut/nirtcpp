@@ -11,7 +11,7 @@
 
 #ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
 
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 #include "CIrrDeviceStub.h"
 #include "IImagePresenter.h"
 #include "ICursorControl.h"

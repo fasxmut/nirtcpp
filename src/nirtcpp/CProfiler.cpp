@@ -7,7 +7,7 @@
 
 namespace irr
 {
-IRRLICHT_API IProfiler& IRRCALLCONV getProfiler()
+NIRTCPP_API IProfiler& IRRCALLCONV getProfiler()
 {
 	static CProfiler profiler;
 	return profiler;

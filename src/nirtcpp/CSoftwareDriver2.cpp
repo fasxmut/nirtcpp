@@ -787,7 +787,7 @@ bool CBurningVideoDriver::queryFeature(E_VIDEO_DRIVER_FEATURE feature) const
 #endif
 
 #if defined(SOFTWARE_DRIVER_2_2D_AS_3D)
-#if defined(IRRLICHT_FREE_CANVAS)
+#if defined(NIRTCPP_FREE_CANVAS)
 	case EVDF_VIEWPORT_SCALE_GUI:
 		on = 1;
 		break;
@@ -1226,7 +1226,7 @@ static const sVec4 NDCPlane[6 + 2] =
 	burning_setbit32( flag, (-v->Pos.y - v->Pos.w ) <= 0.f, 32 );
 
 */
-#ifdef IRRLICHT_FAST_MATH
+#ifdef NIRTCPP_FAST_MATH
 
 REALINLINE size_t CBurningVideoDriver::clipToFrustumTest(const s4DVertex* v) const
 {
@@ -4484,7 +4484,7 @@ ITexture* CBurningVideoDriver::createDeviceDependentTexture(const io::path& name
 		| ((TextureCreationFlags & ETCF_AUTO_GENERATE_MIP_MAPS) ? CSoftwareTexture2::GEN_MIPMAP_AUTO : 0)
 #endif
 		| ((TextureCreationFlags & ETCF_ALLOW_NON_POWER_2) ? CSoftwareTexture2::ALLOW_NPOT : 0)
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 		| ((TextureCreationFlags & ETCF_IMAGE_IS_LINEAR) ? CSoftwareTexture2::IMAGE_IS_LINEAR : 0)
 		| ((TextureCreationFlags & ETCF_TEXTURE_IS_LINEAR) ? CSoftwareTexture2::TEXTURE_IS_LINEAR : 0)
 #endif

@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cstdio>
 #include "EDriverTypes.h"
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 
 namespace irr
 {
@@ -25,7 +25,7 @@ namespace irr
         
         for (i=irr::video::EDT_COUNT; i>0; --i)
         {
-            if ( allDrivers || irr::IrrlichtDevice::isDriverSupported(irr::video::E_DRIVER_TYPE(i-1)) )
+            if ( allDrivers || irr::NirtcppDevice::isDriverSupported(irr::video::E_DRIVER_TYPE(i-1)) )
             {
                 printf(" (%c) %s\n", c, irr::video::DRIVER_TYPE_NAMES[i-1]);
 				++c;
@@ -38,7 +38,7 @@ namespace irr
         
         for (i=irr::video::EDT_COUNT; i>0; --i)
         {
-			if ( allDrivers || irr::IrrlichtDevice::isDriverSupported(irr::video::E_DRIVER_TYPE(i-1)) )
+			if ( allDrivers || irr::NirtcppDevice::isDriverSupported(irr::video::E_DRIVER_TYPE(i-1)) )
 			{
 				if (userSelection == c)
 					return irr::video::E_DRIVER_TYPE(i-1);
@@ -54,7 +54,7 @@ namespace irr
 		For using an alternative camera in the examples.
 		Try to translate the viewpoint (Maya internal CameraRotation)
 	*/
-	static inline void switchToMayaCamera(IrrlichtDevice* device)
+	static inline void switchToMayaCamera(NirtcppDevice* device)
 	{
 #if 1
 		return;

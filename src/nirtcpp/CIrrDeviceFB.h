@@ -12,7 +12,7 @@
 
 #include "CIrrDeviceStub.h"
 #include "SIrrCreationParameters.h"
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 #include "IImagePresenter.h"
 #include "ICursorControl.h"
 

@@ -12,19 +12,19 @@ namespace core
 {
 
 
-// IRRLICHT_FAST_MATH functions which I wanted to kick out because they return
+// NIRTCPP_FAST_MATH functions which I wanted to kick out because they return
 // wrong results. But last time I proposed that I've been asked to keep them for 
 // Burnings software renderer. So to avoid changing that accidentally or messing up
 // it's speed I'll keep them around, but only as internal header.
 // They should not be used otherwise any longer.
 
-	// Some examples for unexpected results when using this with IRRLICHT_FAST_MATH:
+	// Some examples for unexpected results when using this with NIRTCPP_FAST_MATH:
 	// Input 1, expected 1, got 0
 	// Input 3, expected 3, got 2
 	// Input -1.40129846e-45, expected -1, got 0
 	REALINLINE s32 floor32_fast(f32 x)
 	{
-#ifdef IRRLICHT_FAST_MATH
+#ifdef NIRTCPP_FAST_MATH
 		const f32 h = 0.5f;
 
 		s32 t;
@@ -53,13 +53,13 @@ namespace core
 #endif
 	}
 	
-	// Some examples for unexpected results when using this with IRRLICHT_FAST_MATH:
+	// Some examples for unexpected results when using this with NIRTCPP_FAST_MATH:
 	// Input 1.40129846e-45, expected 1, got 0
 	// Input -1, expected -1, got 0
 	// Input -3, expected -3, got -2
 	REALINLINE s32 ceil32_fast ( f32 x )
 	{
-#ifdef IRRLICHT_FAST_MATH
+#ifdef NIRTCPP_FAST_MATH
 		const f32 h = 0.5f;
 
 		s32 t;
@@ -88,14 +88,14 @@ namespace core
 #endif
 	}	
 	
-	// Some examples for unexpected results when using this with IRRLICHT_FAST_MATH:
+	// Some examples for unexpected results when using this with NIRTCPP_FAST_MATH:
 	// Input 0.5, expected 1, got 0
 	// Input 2.5, expected 3, got 2
 	// Input -1.40129846e-45, expected -nan(ind), got -inf
 	// Input -2.80259693e-45, expected -nan(ind), got -inf	
 	REALINLINE s32 round32_fast(f32 x)
 	{
-#if defined(IRRLICHT_FAST_MATH)
+#if defined(NIRTCPP_FAST_MATH)
 		s32 t;
 
 #if defined(_MSC_VER) && !defined(_WIN64)

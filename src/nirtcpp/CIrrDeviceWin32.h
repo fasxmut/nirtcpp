@@ -9,7 +9,7 @@
 #ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
 
 #include "CIrrDeviceStub.h"
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 #include "IImagePresenter.h"
 
 #define WIN32_LEAN_AND_MEAN

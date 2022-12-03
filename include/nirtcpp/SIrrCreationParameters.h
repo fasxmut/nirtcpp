@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in irrlicht.h
 
-#ifndef IRR_IRRLICHT_CREATION_PARAMETERS_H_INCLUDED
-#define IRR_IRRLICHT_CREATION_PARAMETERS_H_INCLUDED
+#ifndef IRR_NIRTCPP_CREATION_PARAMETERS_H_INCLUDED
+#define IRR_NIRTCPP_CREATION_PARAMETERS_H_INCLUDED
 
 #include "EDriverTypes.h"
 #include "EDeviceTypes.h"
@@ -48,12 +48,12 @@ namespace irr
 			DisplayAdapter(0),
 			DriverMultithreaded(false),
 			UsePerformanceTimer(true),
-			SDK_version_do_not_use(IRRLICHT_SDK_VERSION)
+			SDK_version_do_not_use(NIRTCPP_SDK_VERSION)
 		{
 		}
 
 		SIrrlichtCreationParameters(const SIrrlichtCreationParameters& other) :
-			SDK_version_do_not_use(IRRLICHT_SDK_VERSION)
+			SDK_version_do_not_use(NIRTCPP_SDK_VERSION)
 		{*this = other;}
 
 		SIrrlichtCreationParameters& operator=(const SIrrlichtCreationParameters& other)
@@ -237,7 +237,7 @@ namespace irr
 		\endcode
 		Instead of this, you can also simply use your own message loop
 		using GetMessage, DispatchMessage and whatever. Calling
-		IrrlichtDevice::run() will cause Irrlicht to dispatch messages
+		NirtcppDevice::run() will cause Irrlicht to dispatch messages
 		internally too.  You need not call Device->run() if you want to
 		do your own message dispatching loop, but Irrlicht will not be
 		able to fetch user input then and you have to do it on your own
@@ -273,7 +273,7 @@ namespace irr
 
 		//! Specifies the logging level used in the logging interface.
 		/** The default value is ELL_INFORMATION. You can access the ILogger interface
-		later on from the IrrlichtDevice with getLogger() and set another level.
+		later on from the NirtcppDevice with getLogger() and set another level.
 		But if you need more or less logging information already from device creation,
 		then you have to change it here.
 		*/
@@ -297,7 +297,7 @@ namespace irr
 		bool UsePerformanceTimer;
 
 		//! Don't use or change this parameter.
-		/** Always set it to IRRLICHT_SDK_VERSION, which is done by default.
+		/** Always set it to NIRTCPP_SDK_VERSION, which is done by default.
 		This is needed for sdk version checks. */
 		const c8* const SDK_version_do_not_use;
 	};

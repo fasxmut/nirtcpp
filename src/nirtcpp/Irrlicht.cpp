@@ -41,7 +41,7 @@ static const char* const copyright = "Irrlicht Engine (c) 2002-2017 Nikolaus Geb
 namespace irr
 {
 	//! stub for calling createDeviceEx
-	IRRLICHT_API IrrlichtDevice* IRRCALLCONV createDevice(video::E_DRIVER_TYPE driverType,
+	NIRTCPP_API NirtcppDevice* IRRCALLCONV createDevice(video::E_DRIVER_TYPE driverType,
 			const core::dimension2d<u32>& windowSize,
 			u32 bits, bool fullscreen,
 			bool stencilbuffer, bool vsync, IEventReceiver* res)
@@ -60,10 +60,10 @@ namespace irr
 		return createDeviceEx(p);
 	}
 
-	extern "C" IRRLICHT_API IrrlichtDevice* IRRCALLCONV createDeviceEx(const SIrrlichtCreationParameters& params)
+	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(const SIrrlichtCreationParameters& params)
 	{
 
-		IrrlichtDevice* dev = 0;
+		NirtcppDevice* dev = 0;
 
 #ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
 		if (params.DeviceType == EIDT_WIN32 || (!dev && params.DeviceType == EIDT_BEST))

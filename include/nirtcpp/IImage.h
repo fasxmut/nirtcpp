@@ -29,7 +29,7 @@ public:
 	//! constructor
 	IImage(ECOLOR_FORMAT format, const core::dimension2d<u32>& size, bool deleteMemory) :
 		Format(format), Size(size), Data(0), MipMapsData(0), BytesPerPixel(0), Pitch(0), DeleteMemory(deleteMemory), DeleteMipMapsMemory(false)
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 		,Format_sRGB(1)
 #endif
 	{
@@ -53,7 +53,7 @@ public:
 		return Format;
 	}
 
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 	//! Texture is linear/sRGB (should be part of ColorFormat: default yes)
 	int get_sRGB() const
 	{
@@ -594,7 +594,7 @@ protected:
 	bool DeleteMipMapsMemory;
 
 	core::irrAllocator<u8> Allocator;
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 	int Format_sRGB;
 #endif
 };

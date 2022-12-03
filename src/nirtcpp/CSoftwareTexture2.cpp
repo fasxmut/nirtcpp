@@ -101,7 +101,7 @@ CSoftwareTexture2::CSoftwareTexture2(IImage* image, const io::path& name, u32 fl
 	OriginalColorFormat = image->getColorFormat();
 
 
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 	if (Flags & IMAGE_IS_LINEAR) image->set_sRGB(0);
 #else
 
@@ -145,7 +145,7 @@ CSoftwareTexture2::CSoftwareTexture2(IImage* image, const io::path& name, u32 fl
 	if (OriginalSize == optSize)
 	{
 		MipMap[0] = new CImage(ColorFormat, image->getDimension());
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 		MipMap[0]->set_sRGB((Flags & TEXTURE_IS_LINEAR) ? 0 : image->get_sRGB());
 #endif
 		if (!isCompressed && image->getData())
@@ -154,7 +154,7 @@ CSoftwareTexture2::CSoftwareTexture2(IImage* image, const io::path& name, u32 fl
 	else
 	{
 		MipMap[0] = new CImage(ColorFormat, optSize);
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 		MipMap[0]->set_sRGB((Flags & TEXTURE_IS_LINEAR) ? 0 : image->get_sRGB());
 #endif
 		if (!isCompressed)
@@ -242,7 +242,7 @@ void CSoftwareTexture2::regenerateMipMapLevels(void* data)
 				break;
 
 			MipMap[i] = new CImage(ColorFormat, newSize);
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 			MipMap[i]->set_sRGB(MipMap[i - 1]->get_sRGB());
 #endif
 			//MipMap[i]->fill ( 0xFFFF4040 );
@@ -682,7 +682,7 @@ void Resample_subSampling(eBlitter op, video::IImage* dst, const core::rect<s32>
 	if (clipTest(sc, srcRect, src_clip) || !srcData) return;
 	const video::ECOLOR_FORMAT srcFormat = src->getColorFormat();
 
-#if defined(IRRLICHT_sRGB)
+#if defined(NIRTCPP_sRGB)
 	const int dst_sRGB = dst->get_sRGB();
 	const int src_sRGB = src->get_sRGB();
 #else

@@ -24,7 +24,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-D_USRDLL" />
-					<Add option="-DIRRLICHT_EXPORTS" />
+					<Add option="-DNIRTCPP_EXPORTS" />
 					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
 					<Add option="-D__GNUWIN32__" />
 					<Add directory="..\..\include" />
@@ -65,7 +65,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-D_USRDLL" />
-					<Add option="-DIRRLICHT_EXPORTS" />
+					<Add option="-DNIRTCPP_EXPORTS" />
 					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
 					<Add option="-D__GNUWIN32__" />
 					<Add directory="..\..\include" />
@@ -108,7 +108,7 @@
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-D_USRDLL" />
-					<Add option="-DIRRLICHT_EXPORTS" />
+					<Add option="-DNIRTCPP_EXPORTS" />
 					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
 					<Add option="-D__GNUWIN32__" />
 					<Add directory="..\..\include" />
@@ -539,7 +539,7 @@
 		<Unit filename="..\..\include\IXMLReader.h" />
 		<Unit filename="..\..\include\IXMLWriter.h" />
 		<Unit filename="..\..\include\IrrCompileConfig.h" />
-		<Unit filename="..\..\include\IrrlichtDevice.h" />
+		<Unit filename="..\..\include\NirtcppDevice.h" />
 		<Unit filename="..\..\include\Keycodes.h" />
 		<Unit filename="..\..\include\S3DVertex.h" />
 		<Unit filename="..\..\include\SAnimatedMesh.h" />

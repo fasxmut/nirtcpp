@@ -504,7 +504,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReader* IRRCALLCONV createIrrXMLReader(const char* filename);
+	NIRTCPP_API IrrXMLReader* IRRCALLCONV createIrrXMLReader(const char* filename);
 
 	//! Creates an instance of an UFT-8 or ASCII character xml parser.
 	/** This means that all character data will be returned in 8 bit ASCII or UTF-8. The file to read can
@@ -516,7 +516,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReader* IRRCALLCONV createIrrXMLReader(FILE* file);
+	NIRTCPP_API IrrXMLReader* IRRCALLCONV createIrrXMLReader(FILE* file);
 
 	//! Creates an instance of an UFT-8 or ASCII character xml parser.
 	/** This means that all character data will be returned in 8 bit ASCII or UTF-8. The file to read can
@@ -531,7 +531,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReader* IRRCALLCONV createIrrXMLReader(IFileReadCallBack* callback,
+	NIRTCPP_API IrrXMLReader* IRRCALLCONV createIrrXMLReader(IFileReadCallBack* callback,
 																bool deleteCallback = false);
 
 	//! Creates an instance of an UFT-16 xml parser.
@@ -544,7 +544,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReaderUTF16* IRRCALLCONV createIrrXMLReaderUTF16(const char* filename);
+	NIRTCPP_API IrrXMLReaderUTF16* IRRCALLCONV createIrrXMLReaderUTF16(const char* filename);
 
 	//! Creates an instance of an UFT-16 xml parser.
 	/** This means that all character data will be returned in UTF-16. The file to read can
@@ -556,7 +556,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReaderUTF16* IRRCALLCONV createIrrXMLReaderUTF16(FILE* file);
+	NIRTCPP_API IrrXMLReaderUTF16* IRRCALLCONV createIrrXMLReaderUTF16(FILE* file);
 
 	//! Creates an instance of an UFT-16 xml parser.
 	/** This means that all character data will be returned in UTF-16. The file to read can
@@ -571,7 +571,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReaderUTF16* IRRCALLCONV createIrrXMLReaderUTF16(IFileReadCallBack* callback,
+	NIRTCPP_API IrrXMLReaderUTF16* IRRCALLCONV createIrrXMLReaderUTF16(IFileReadCallBack* callback,
 																		bool deleteCallback = false);
 
 
@@ -584,7 +584,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(const char* filename);
+	NIRTCPP_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(const char* filename);
 
 	//! Creates an instance of an UFT-32 xml parser.
 	/** This means that all character data will be returned in UTF-32. The file to read can
@@ -596,7 +596,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(FILE* file);
+	NIRTCPP_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(FILE* file);
 
 	//! Creates an instance of an UFT-32 xml parser.
 	/** This means that
@@ -612,7 +612,7 @@ namespace io
 	\return Returns a pointer to the created xml parser. This pointer should be
 	deleted using 'delete' after no longer needed. Returns 0 if an error occurred
 	and the file could not be opened. */
-	IRRLICHT_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(IFileReadCallBack* callback,
+	NIRTCPP_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(IFileReadCallBack* callback,
 																		bool deleteCallback = false);
 
 #endif // _IRR_COMPILE_WITH_XML_

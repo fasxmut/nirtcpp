@@ -224,7 +224,7 @@ private:
 If you want to get internal profiling information about the engine itself
 you will have to re-compile the engine with _IRR_COMPILE_WITH_PROFILING_ enabled.
 But you can use the profiler for profiling your own projects without that. */
-IRRLICHT_API IProfiler& IRRCALLCONV getProfiler();
+NIRTCPP_API IProfiler& IRRCALLCONV getProfiler();
 
 //! Class where the objects profile their own life-time.
 /** This is a comfort wrapper around the IProfiler start/stop mechanism which is easier to use

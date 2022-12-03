@@ -132,7 +132,7 @@
     <ClInclude Include="..\..\include\leakHunter.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\IrrlichtDevice.h">
+    <ClInclude Include="..\..\include\NirtcppDevice.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\irrTypes.h">

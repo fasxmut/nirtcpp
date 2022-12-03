@@ -18,7 +18,7 @@ namespace irr
 {
 //! constructor
 CIrrDeviceStub::CIrrDeviceStub(const SIrrlichtCreationParameters& params)
-: IrrlichtDevice(), VideoDriver(0), GUIEnvironment(0), SceneManager(0),
+: NirtcppDevice(), VideoDriver(0), GUIEnvironment(0), SceneManager(0),
 	Timer(0), CursorControl(0), UserReceiver(params.EventReceiver),
 	Logger(0), Operator(0), Randomizer(0), FileSystem(0),
 	InputReceivingSceneManager(0), VideoModeList(0), ContextManager(0),
@@ -149,7 +149,7 @@ ITimer* CIrrDeviceStub::getTimer()
 //! Returns the version of the engine.
 const char* CIrrDeviceStub::getVersion() const
 {
-	return IRRLICHT_SDK_VERSION;
+	return NIRTCPP_SDK_VERSION;
 }
 
 //! \return Returns a pointer to the mouse cursor control interface.

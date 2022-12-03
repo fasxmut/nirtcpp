@@ -14,7 +14,7 @@ namespace video
 {
 
 	//! A list of all available video modes.
-	/** You can get a list via IrrlichtDevice::getVideoModeList(). 
+	/** You can get a list via NirtcppDevice::getVideoModeList(). 
 	You only need the null device (EDT_NULL) to get the video-modes. */
 	class IVideoModeList : public virtual IReferenceCounted
 	{

@@ -384,7 +384,7 @@ namespace core
 
 	//! code is taken from IceFPU
 	//! Integer representation of a floating-point value.
-#ifdef IRRLICHT_FAST_MATH
+#ifdef NIRTCPP_FAST_MATH
 	#define IR(x)			((u32&)(x))
 #else
 	inline u32 IR(f32 x) {inttofloat tmp; tmp.f=x; return tmp.u;}
@@ -394,7 +394,7 @@ namespace core
 	#define AIR(x)			(IR(x)&0x7fffffff)
 
 	//! Floating-point representation of an integer value.
-#ifdef IRRLICHT_FAST_MATH
+#ifdef NIRTCPP_FAST_MATH
 	#define FR(x)			((f32&)(x))
 #else
 	inline f32 FR(u32 x) {inttofloat tmp; tmp.u=x; return tmp.f;}
@@ -406,7 +406,7 @@ namespace core
 	//! integer representation of 255.0
 	#define IEEE_255_0		0x437f0000
 
-#ifdef IRRLICHT_FAST_MATH
+#ifdef NIRTCPP_FAST_MATH
 	#define	F32_LOWER_0(f)		(F32_AS_U32(f) >  F32_SIGN_BIT)
 	#define	F32_LOWER_EQUAL_0(f)	(F32_AS_S32(f) <= F32_VALUE_0)
 	#define	F32_GREATER_0(f)	(F32_AS_S32(f) >  F32_VALUE_0)
@@ -526,7 +526,7 @@ namespace core
 	// calculate: 1 / sqrtf ( x )
 	REALINLINE f32 reciprocal_squareroot(const f32 f)
 	{
-#if defined ( IRRLICHT_FAST_MATH )
+#if defined ( NIRTCPP_FAST_MATH )
 		// NOTE: Unlike comment below says I found inaccuracies already at 4'th significant bit.
 		// p.E: Input 1, expected 1, got 0.999755859
 
@@ -561,7 +561,7 @@ namespace core
 	// calculate: 1 / x
 	REALINLINE f32 reciprocal( const f32 f )
 	{
-#if defined (IRRLICHT_FAST_MATH)
+#if defined (NIRTCPP_FAST_MATH)
 		// NOTE: Unlike with 1.f / f the values very close to 0 return -nan instead of inf
 
 		// SSE Newton-Raphson reciprocal estimate, accurate to 23 significant
@@ -604,7 +604,7 @@ namespace core
 	// calculate: 1 / x, low precision allowed
 	REALINLINE f32 reciprocal_approxim ( const f32 f )
 	{
-#if defined( IRRLICHT_FAST_MATH)
+#if defined( NIRTCPP_FAST_MATH)
 
 		// SSE Newton-Raphson reciprocal estimate, accurate to 23 significant
 		// bi ts of the mantissa
@@ -677,7 +677,7 @@ namespace core
 } // end namespace core
 } // end namespace irr
 
-#ifndef IRRLICHT_FAST_MATH
+#ifndef NIRTCPP_FAST_MATH
 	using irr::core::IR;
 	using irr::core::FR;
 #endif

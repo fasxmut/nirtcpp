@@ -1541,7 +1541,7 @@ namespace scene
 		getMesh(), the mesh will be available in all other scene
 		managers too, without loading.
 		The original/main scene manager will still be there and
-		accessible via IrrlichtDevice::getSceneManager(). If you need
+		accessible via NirtcppDevice::getSceneManager(). If you need
 		input event in this new scene manager, for example for FPS
 		cameras, you'll need to forward input to this manually: Just
 		implement an IEventReceiver and call

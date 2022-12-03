@@ -10,7 +10,7 @@
 #ifdef _IRR_COMPILE_WITH_X11_DEVICE_
 
 #include "CIrrDeviceStub.h"
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 #include "IImagePresenter.h"
 #include "ICursorControl.h"
 #include "os.h"

@@ -5,7 +5,7 @@
 #ifndef IRR_C_IRR_DEVICE_STUB_H_INCLUDED
 #define IRR_C_IRR_DEVICE_STUB_H_INCLUDED
 
-#include "IrrlichtDevice.h"
+#include "NirtcppDevice.h"
 #include "IImagePresenter.h"
 #include "SIrrCreationParameters.h"
 #include "CVideoModeList.h"
@@ -49,7 +49,7 @@ namespace irr
 
 
 	//! Stub for an Irrlicht Device implementation
-	class CIrrDeviceStub : public IrrlichtDevice
+	class CIrrDeviceStub : public NirtcppDevice
 	{
 	public:
 

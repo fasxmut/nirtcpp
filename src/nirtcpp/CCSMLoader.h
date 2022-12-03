@@ -10,7 +10,7 @@
 // - Replaced all dependencies to STL and stdio with irr:: methods/constructs.
 // - Moved everything into namespace irr::scene
 // - Replaced logging with Irrlicht's internal logger.
-// - Removed dependency to IrrlichtDevice
+// - Removed dependency to NirtcppDevice
 // - Moved all internal structures into CCSMLoader.cpp
 // - Made the texture root parameter dependent on a ISceneManager string parameter
 // - removed exceptions
