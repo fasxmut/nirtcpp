@@ -8,7 +8,7 @@
 #include "irrTypes.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -73,6 +73,6 @@ typedef u32 SVertexIndex;
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -7,7 +7,7 @@
 #include "IMesh.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -196,5 +196,5 @@ void CParticleAnimatedMeshSceneNodeEmitter::setAnimatedMeshSceneNode( IAnimatedM
 }
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

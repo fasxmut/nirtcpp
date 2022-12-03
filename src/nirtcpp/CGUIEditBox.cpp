@@ -22,7 +22,7 @@
 	numerical
 */
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -341,7 +341,7 @@ bool CGUIEditBox::processKey(const SEvent& event)
 				const c8* p = Operator->getTextFromClipboard();
 				if (p)
 				{
-					irr::core::stringw widep;
+					nirt::core::stringw widep;
 					core::multibyteToWString(widep, p);
 
 					if (MarkBegin == MarkEnd)
@@ -1061,13 +1061,13 @@ wchar_t CGUIEditBox::getCursorChar() const
 }
 
 //! Set the blinktime for the cursor. 2x blinktime is one full cycle.
-void CGUIEditBox::setCursorBlinkTime(irr::u32 timeMs)
+void CGUIEditBox::setCursorBlinkTime(nirt::u32 timeMs)
 {
 	CursorBlinkTime = timeMs;
 }
 
 //! Get the cursor blinktime
-irr::u32 CGUIEditBox::getCursorBlinkTime() const
+nirt::u32 CGUIEditBox::getCursorBlinkTime() const
 {
 	return CursorBlinkTime;
 }
@@ -1076,7 +1076,7 @@ bool CGUIEditBox::processMouse(const SEvent& event)
 {
 	switch(event.MouseInput.Event)
 	{
-	case irr::EMIE_LMOUSE_LEFT_UP:
+	case nirt::EMIE_LMOUSE_LEFT_UP:
 		if (Environment->hasFocus(this))
 		{
 			CursorPos = getCursorPos(event.MouseInput.X, event.MouseInput.Y);
@@ -1089,7 +1089,7 @@ bool CGUIEditBox::processMouse(const SEvent& event)
 			return true;
 		}
 		break;
-	case irr::EMIE_MOUSE_MOVED:
+	case nirt::EMIE_MOUSE_MOVED:
 		{
 			if (MouseMarking)
 			{
@@ -1487,7 +1487,7 @@ void CGUIEditBox::calculateScrollPos()
 	{
 		// get cursor position
 		// get cursor area
-		irr::u32 cursorWidth = font->getDimension(CursorChar.data()).Width;
+		nirt::u32 cursorWidth = font->getDimension(CursorChar.data()).Width;
 		core::stringw *txtLine = hasBrokenText ? &BrokenText[cursLine] : &Text;
 		s32 cPos = hasBrokenText ? CursorPos - BrokenTextPositions[cursLine] : CursorPos;	// column
 		s32 cStart = font->getDimension(txtLine->subString(0, cPos).data()).Width;		// pixels from text-start
@@ -1523,9 +1523,9 @@ void CGUIEditBox::calculateScrollPos()
 	// calculate vertical scrolling
 	if (hasBrokenText)
 	{
-		irr::u32 lineHeight = font->getDimension(L"A").Height + font->getKerningHeight();
+		nirt::u32 lineHeight = font->getDimension(L"A").Height + font->getKerningHeight();
 		// only up to 1 line fits?
-		if ( lineHeight >= (irr::u32)FrameRect.getHeight() )
+		if ( lineHeight >= (nirt::u32)FrameRect.getHeight() )
 		{
 			VScrollPos = 0;
 			setTextRect(cursLine);
@@ -1680,7 +1680,7 @@ void CGUIEditBox::deserializeAttributes(io::IAttributes* in, io::SAttributeReadW
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

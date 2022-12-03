@@ -5,7 +5,7 @@
 #ifndef NIRT_KEY_CODES_H_INCLUDED
 #define NIRT_KEY_CODES_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 
 	enum EKEY_CODE
@@ -168,6 +168,6 @@ namespace irr
 		KEY_KEY_CODES_COUNT  = 0x100 // this is not a key, but the amount of keycodes there are.
 	};
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

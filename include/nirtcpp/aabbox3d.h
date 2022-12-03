@@ -9,7 +9,7 @@
 #include "plane3d.h"
 #include "line3d.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -363,7 +363,7 @@ class aabbox3d
 	typedef aabbox3d<s32> aabbox3di;
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

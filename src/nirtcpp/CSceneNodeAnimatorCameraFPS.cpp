@@ -10,7 +10,7 @@
 #include "ICameraSceneNode.h"
 #include "ISceneNodeAnimatorCollisionResponse.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -48,11 +48,11 @@ CSceneNodeAnimatorCameraFPS::CSceneNodeAnimatorCameraFPS(gui::ICursorControl* cu
 	if (!keyMapArray || !keyMapSize)
 	{
 		// create default key map
-		KeyMap.push_back(SKeyMap(EKA_MOVE_FORWARD, irr::KEY_UP));
-		KeyMap.push_back(SKeyMap(EKA_MOVE_BACKWARD, irr::KEY_DOWN));
-		KeyMap.push_back(SKeyMap(EKA_STRAFE_LEFT, irr::KEY_LEFT));
-		KeyMap.push_back(SKeyMap(EKA_STRAFE_RIGHT, irr::KEY_RIGHT));
-		KeyMap.push_back(SKeyMap(EKA_JUMP_UP, irr::KEY_KEY_J));
+		KeyMap.push_back(SKeyMap(EKA_MOVE_FORWARD, nirt::KEY_UP));
+		KeyMap.push_back(SKeyMap(EKA_MOVE_BACKWARD, nirt::KEY_DOWN));
+		KeyMap.push_back(SKeyMap(EKA_STRAFE_LEFT, nirt::KEY_LEFT));
+		KeyMap.push_back(SKeyMap(EKA_STRAFE_RIGHT, nirt::KEY_RIGHT));
+		KeyMap.push_back(SKeyMap(EKA_JUMP_UP, nirt::KEY_KEY_J));
 	}
 	else
 	{
@@ -415,5 +415,5 @@ void CSceneNodeAnimatorCameraFPS::deserializeAttributes(io::IAttributes* in, io:
 
 
 } // namespace scene
-} // namespace irr
+} // namespace nirt
 

@@ -7,7 +7,7 @@
 
 #include "IMeshLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -39,6 +39,6 @@ private:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_C_MD2_MESH_LOADER_H_INCLUDED

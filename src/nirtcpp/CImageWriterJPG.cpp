@@ -26,7 +26,7 @@ extern "C"
 }
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -184,11 +184,11 @@ static bool writeJPEGFile(io::IWriteFile* file, IImage* image, u32 quality)
 
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_LIBJPEG_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -222,7 +222,7 @@ bool CImageWriterJPG::writeImage(io::IWriteFile *file, IImage *image, u32 qualit
 }
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif
 

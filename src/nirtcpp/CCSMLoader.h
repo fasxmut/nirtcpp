@@ -7,8 +7,8 @@
 // to Saurav Mohapatra for his work on this and that he gave me his permission to
 // add it into Nirtcpp.
 // I did some changes to Saurav Mohapatra's loader, so I'm writing this down here:
-// - Replaced all dependencies to STL and stdio with irr:: methods/constructs.
-// - Moved everything into namespace irr::scene
+// - Replaced all dependencies to STL and stdio with nirt:: methods/constructs.
+// - Moved everything into namespace nirt::scene
 // - Replaced logging with Nirtcpp's internal logger.
 // - Removed dependency to NirtcppDevice
 // - Moved all internal structures into CCSMLoader.cpp
@@ -30,7 +30,7 @@
 // The IrrCSM library features the following capabilities
 //
 //  * Loads the .csm 4.0 and 4.1 files transparently
-//  * Presents the loaded file as irr::scene::IAnimatedMesh for easy creation of IOctreeSceneNode
+//  * Presents the loaded file as nirt::scene::IAnimatedMesh for easy creation of IOctreeSceneNode
 //  * Loads the textures given the correct texture root. hence map and textures can be in separate directories
 //
 // For more information go to http://www.geocities.com/standard_template/irrcsm/downloads.html
@@ -44,7 +44,7 @@
 #include "IFileSystem.h"
 #include "IMeshLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {

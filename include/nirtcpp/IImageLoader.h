@@ -11,7 +11,7 @@
 #include "path.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -60,6 +60,6 @@ public:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

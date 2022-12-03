@@ -8,7 +8,7 @@
 #include "irrMath.h"
 #include "dimension2d.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -217,14 +217,14 @@ public:
 
 		if ( Y > 0)
 			if (X > 0)
-				return atan((irr::f64)Y/(irr::f64)X) * RADTODEG64;
+				return atan((nirt::f64)Y/(nirt::f64)X) * RADTODEG64;
 			else
-				return 180.0-atan((irr::f64)Y/-(irr::f64)X) * RADTODEG64;
+				return 180.0-atan((nirt::f64)Y/-(nirt::f64)X) * RADTODEG64;
 		else
 			if (X > 0)
-				return 360.0-atan(-(irr::f64)Y/(irr::f64)X) * RADTODEG64;
+				return 360.0-atan(-(nirt::f64)Y/(nirt::f64)X) * RADTODEG64;
 			else
-				return 180.0+atan(-(irr::f64)Y/-(irr::f64)X) * RADTODEG64;
+				return 180.0+atan(-(nirt::f64)Y/-(nirt::f64)X) * RADTODEG64;
 	}
 
 	//! Calculates the angle of this vector in degrees in the counter trigonometric sense.
@@ -412,6 +412,6 @@ public:
 	bool dimension2d<T>::operator==(const vector2d<T>& other) const { return Width == other.X && Height == other.Y; }
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -7,7 +7,7 @@
 
 #include "IGUIElement.h"
 
-namespace irr
+namespace nirt
 {
 class IProfiler;
 
@@ -73,10 +73,10 @@ namespace gui
 		virtual bool getFrozen() const = 0;
 
 		//! Filters prevents data that doesn't achieve the conditions from being displayed
-		virtual void setFilters(irr::u32 minCalls = 0, irr::u32 minTimeSum = 0, irr::f32 minTimeAverage = 0.f, irr::u32 minTimeMax = 0) = 0;
+		virtual void setFilters(nirt::u32 minCalls = 0, nirt::u32 minTimeSum = 0, nirt::f32 minTimeAverage = 0.f, nirt::u32 minTimeMax = 0) = 0;
 	};
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif

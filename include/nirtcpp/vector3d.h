@@ -7,7 +7,7 @@
 
 #include "irrMath.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -494,6 +494,6 @@ namespace core
 	vector3d<T> operator*(const S scalar, const vector3d<T>& vector) { return vector*scalar; }
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif

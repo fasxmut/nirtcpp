@@ -8,7 +8,7 @@
 #include "S3DVertex.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -192,5 +192,5 @@ ISceneNode* CVolumeLightSceneNode::clone(ISceneNode* newParent, ISceneManager* n
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

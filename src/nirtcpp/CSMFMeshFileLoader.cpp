@@ -15,12 +15,12 @@
 #include "os.h"
 #include "IVideoDriver.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
 
-CSMFMeshFileLoader::CSMFMeshFileLoader(irr::io::IFileSystem* fs, video::IVideoDriver* driver)
+CSMFMeshFileLoader::CSMFMeshFileLoader(nirt::io::IFileSystem* fs, video::IVideoDriver* driver)
 {
 	TextureLoader = new CMeshTextureLoader( fs, driver );
 }
@@ -236,7 +236,7 @@ void BinaryFile::read(io::IReadFile* file, core::stringc &outString, bool bigEnd
 
 } // namespace io
 
-} // namespace irr
+} // namespace nirt
 
 #endif // compile with SMF loader
 

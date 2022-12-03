@@ -5,7 +5,7 @@
 #include "CTriangleBBSelector.h"
 #include "ISceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -25,7 +25,7 @@ CTriangleBBSelector::CTriangleBBSelector(ISceneNode* node)
 void CTriangleBBSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::matrix4* transform, bool useNodeTransform, 
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	fillTriangles();
 
@@ -37,7 +37,7 @@ void CTriangleBBSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::aabbox3d<f32>& box,
 					const core::matrix4* transform, bool useNodeTransform, 
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	fillTriangles();
 	return CTriangleSelector::getTriangles(triangles, arraySize, outTriangleCount, box, transform, useNodeTransform, outTriangleInfo);
@@ -47,7 +47,7 @@ void CTriangleBBSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::line3d<f32>& line,
 					const core::matrix4* transform, bool useNodeTransform, 
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	fillTriangles();
 	return CTriangleSelector::getTriangles(triangles, arraySize, outTriangleCount, line, transform, useNodeTransform, outTriangleInfo);
@@ -86,4 +86,4 @@ void CTriangleBBSelector::fillTriangles() const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt

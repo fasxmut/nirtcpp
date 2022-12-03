@@ -10,7 +10,7 @@
 #include "IMeshTextureLoader.h"
 #include "SVertexIndex.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -124,6 +124,6 @@ protected:
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

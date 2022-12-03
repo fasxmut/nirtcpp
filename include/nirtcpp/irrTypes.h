@@ -12,7 +12,7 @@
 	#include <limits.h>
 #endif
 
-namespace irr
+namespace nirt
 {
 
 //! 8 bit unsigned variable.
@@ -113,7 +113,7 @@ typedef float				f32;
 typedef double				f64;
 
 
-} // end namespace irr
+} // end namespace nirt
 
 
 #include <wchar.h>
@@ -151,7 +151,7 @@ typedef unsigned short wchar_t;
 #define snprintf_nirt snprintf
 #endif // _NIRT_WINDOWS_API_
 
-namespace irr
+namespace nirt
 {
 
 //! Type name for character type used by the filesystem.
@@ -168,7 +168,7 @@ strings
 	#define NIRT_TEXT(X) X
 #endif
 
-} // end namespace irr
+} // end namespace nirt
 
 //! define a break macro for debugging.
 #if defined(_DEBUG)
@@ -229,7 +229,7 @@ For functions:		template<class T> NIRT_DEPRECATED void test4(void) {}
 /** some compilers can create those by directly writing the
 code like 'code', but some generate warnings so we use this macro here */
 #define MAKE_NIRT_ID(c0, c1, c2, c3) \
-		((irr::u32)(irr::u8)(c0) | ((irr::u32)(irr::u8)(c1) << 8) | \
-		((irr::u32)(irr::u8)(c2) << 16) | ((irr::u32)(irr::u8)(c3) << 24 ))
+		((nirt::u32)(nirt::u8)(c0) | ((nirt::u32)(nirt::u8)(c1) << 8) | \
+		((nirt::u32)(nirt::u8)(c2) << 16) | ((nirt::u32)(nirt::u8)(c3) << 24 ))
 
 #endif // NIRT_TYPES_H_INCLUDED

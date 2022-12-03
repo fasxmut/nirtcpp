@@ -11,7 +11,7 @@
 #include "SKeyMap.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -139,6 +139,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_C_SCENE_NODE_ANIMATOR_CAMERA_FPS_H_INCLUDED

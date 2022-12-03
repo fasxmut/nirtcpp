@@ -133,7 +133,7 @@ DUMMY -		This 404 bytes of data should be set to 0. This makes the Header exactl
 #include "irrString.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -645,7 +645,7 @@ IImageLoader* createImageLoaderRGB()
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

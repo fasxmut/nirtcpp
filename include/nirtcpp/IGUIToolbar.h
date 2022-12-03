@@ -7,7 +7,7 @@
 
 #include "IGUIElement.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -34,6 +34,6 @@ namespace gui
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif

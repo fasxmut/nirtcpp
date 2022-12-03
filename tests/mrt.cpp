@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 //! Tests rendering MRTs
 static bool testWithDriver(video::E_DRIVER_TYPE driverType)

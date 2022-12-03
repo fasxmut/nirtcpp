@@ -9,7 +9,7 @@
 
 #include "SIrrCreationParameters.h"
 
-namespace irr
+namespace nirt
 {
 	class CIrrDeviceWin32;
 	class CIrrDeviceLinux;
@@ -24,7 +24,7 @@ namespace irr
 
 #include "COpenGLExtensionHandler.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -348,7 +348,7 @@ namespace video
 				const io::path& name, const ECOLOR_FORMAT format = ECF_UNKNOWN) override;
 
 		//! Creates a render target texture for a cubemap
-		ITexture* addRenderTargetTextureCubemap(const irr::u32 sideLen,
+		ITexture* addRenderTargetTextureCubemap(const nirt::u32 sideLen,
 				const io::path& name, const ECOLOR_FORMAT format) override;
 
 		virtual bool setRenderTargetEx(IRenderTarget* target, u16 clearFlag, SColor clearColor = SColor(255,0,0,0),
@@ -392,7 +392,7 @@ namespace video
 		virtual bool queryTextureFormat(ECOLOR_FORMAT format) const override;
 
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
-		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const override;
+		virtual bool needsTransparentRenderPass(const nirt::video::SMaterial& material) const override;
 
 		//! Convert E_PRIMITIVE_TYPE to OpenGL equivalent
 		GLenum primitiveTypeToGL(scene::E_PRIMITIVE_TYPE type) const;
@@ -526,7 +526,7 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif // _NIRT_COMPILE_WITH_OPENGL_

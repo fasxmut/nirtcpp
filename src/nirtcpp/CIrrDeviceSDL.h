@@ -19,7 +19,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_syswm.h>
 
-namespace irr
+namespace nirt
 {
 
 	class CIrrDeviceSDL : public CIrrDeviceStub, video::IImagePresenter
@@ -225,7 +225,7 @@ namespace irr
 		SDL_SysWMinfo Info;
 	};
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SDL_DEVICE_
 #endif // NIRT_C_NIRT_DEVICE_SDL_H_INCLUDED

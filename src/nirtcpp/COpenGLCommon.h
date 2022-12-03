@@ -172,7 +172,7 @@ typedef char GLchar;
 // To check if this header is in the current compile unit (different GL driver implementations use different "GLCommon" headers in Nirtcpp)
 #define NIRT_COMPILE_GL_COMMON
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

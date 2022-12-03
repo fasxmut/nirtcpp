@@ -8,7 +8,7 @@
 #include "IBillboardSceneNode.h"
 #include "SMeshBuffer.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -70,7 +70,7 @@ public:
 			video::SColor& bottomColor) const override;
 
 	//! Get the real boundingbox used by the billboard (which depends on the active camera)
-	virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) override;
+	virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const nirt::scene::ICameraSceneNode* camera) override;
 
 	//! Get the amount of mesh buffers.
 	virtual u32 getMeshBufferCount() const override
@@ -99,7 +99,7 @@ public:
 	virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) override;
 
 protected:
-	void updateMesh(const irr::scene::ICameraSceneNode* camera);
+	void updateMesh(const nirt::scene::ICameraSceneNode* camera);
 
 private:
 
@@ -120,6 +120,6 @@ private:
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -34,7 +34,7 @@ static MatrixTest MTest;
 
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -2396,7 +2396,7 @@ namespace core
 	NIRTCPP_API extern const matrix4 IdentityMatrix;
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

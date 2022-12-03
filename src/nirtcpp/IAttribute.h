@@ -26,7 +26,7 @@
 #include "EAttributes.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -111,6 +111,6 @@ public:
 };
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif

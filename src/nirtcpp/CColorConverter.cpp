@@ -7,7 +7,7 @@
 #include "os.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -810,4 +810,4 @@ void CColorConverter::convert_viaFormat(const void* sP, ECOLOR_FORMAT sF, u32 sN
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt

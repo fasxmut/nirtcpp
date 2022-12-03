@@ -7,7 +7,7 @@
 #include "ITexture.h"
 #include "IVideoDriver.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -2090,4 +2090,4 @@ public:
 // todo: CGUIFontAttribute
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt

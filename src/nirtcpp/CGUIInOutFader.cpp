@@ -9,7 +9,7 @@
 #include "IVideoDriver.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -172,7 +172,7 @@ void CGUIInOutFader::deserializeAttributes(io::IAttributes* in, io::SAttributeRe
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

@@ -30,7 +30,7 @@
 
 #include <linux/input.h>
 
-namespace irr
+namespace nirt
 {
 
 //! constructor
@@ -233,8 +233,8 @@ bool CIrrDeviceFB::run()
 			perror("Read input event");
 		if (ev.type == EV_KEY)
 		{
-			irr::SEvent irrevent;
-			irrevent.EventType = irr::EET_KEY_INPUT_EVENT;
+			nirt::SEvent irrevent;
+			irrevent.EventType = nirt::EET_KEY_INPUT_EVENT;
 			irrevent.KeyInput.PressedDown = true;
 
 			switch (ev.code)
@@ -399,7 +399,7 @@ E_DEVICE_TYPE CIrrDeviceFB::getType() const
 }
 
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_USE_FB_DEVICE_
 

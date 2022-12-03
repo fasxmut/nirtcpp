@@ -4,7 +4,7 @@
 #ifndef NIRT_E_FOCUS_FLAGS_H_INCLUDED
 #define NIRT_E_FOCUS_FLAGS_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -32,6 +32,6 @@ enum EFOCUS_FLAG
 };
 
 } // namespace gui
-} // namespace irr
+} // namespace nirt
 
 #endif

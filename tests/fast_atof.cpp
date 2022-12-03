@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 //! This was an older Nirtcpp implementation, tested against for reference.

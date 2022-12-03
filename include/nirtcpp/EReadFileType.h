@@ -7,7 +7,7 @@
 
 #include "irrTypes.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -28,6 +28,6 @@ namespace io
 		EFIT_UNKNOWN        = MAKE_NIRT_ID('u','n','k','n')
 	};
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif

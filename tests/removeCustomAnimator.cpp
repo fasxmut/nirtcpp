@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace scene;
 
@@ -24,7 +24,7 @@ class CustomAnimator : public ISceneNodeAnimator
  * http://nirtcpp.sourceforge.net/phpBB2/viewtopic.php?t=32271 */
 bool removeCustomAnimator(void)
 {
-	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2du(160, 120));
+	NirtcppDevice * device = nirt::createDevice(video::EDT_NULL, dimension2du(160, 120));
 	assert_log(device);
 	if(!device)
 		return false;

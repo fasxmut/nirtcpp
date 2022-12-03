@@ -12,7 +12,7 @@
 #include "ITriangleSelector.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -41,18 +41,18 @@ public:
 	//! Gets all triangles.
 	void getTriangles(core::triangle3df* triangles, s32 arraySize, s32& outTriangleCount,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
 
 	//! Gets all triangles which lie within a specific bounding box.
 	void getTriangles(core::triangle3df* triangles, s32 arraySize, s32& outTriangleCount,
 		const core::aabbox3d<f32>& box, const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
 
 	//! Gets all triangles which have or may have contact with a 3d line.
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::line3d<f32>& line,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
 
 	//! Returns amount of all available triangles in this selector
 	virtual s32 getTriangleCount() const override;
@@ -97,6 +97,6 @@ private:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_C_TERRAIN_TRIANGLE_SELECTOR_H

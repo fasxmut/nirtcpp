@@ -46,7 +46,7 @@
 #else
 
 // linux/joystick.h includes linux/input.h, which #defines values for various KEY_FOO keys.
-// These override the irr::KEY_FOO equivalents, which stops key handling from working.
+// These override the nirt::KEY_FOO equivalents, which stops key handling from working.
 // As a workaround, defining _INPUT_H stops linux/input.h from being included; it
 // doesn't actually seem to be necessary except to pull in sys/ioctl.h.
 #define _INPUT_H
@@ -57,15 +57,15 @@
 
 #endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
-namespace irr
+namespace nirt
 {
 	namespace video
 	{
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
-		IVideoDriver* createOpenGLDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
+		IVideoDriver* createOpenGLDriver(const nirt::SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
 #endif
 	}
-} // end namespace irr
+} // end namespace nirt
 
 namespace
 {
@@ -84,7 +84,7 @@ namespace
 #endif
 };
 
-namespace irr
+namespace nirt
 {
 //! constructor
 CIrrDeviceLinux::CIrrDeviceLinux(const SNirtcppCreationParameters& param)
@@ -839,17 +839,17 @@ bool CIrrDeviceLinux::run()
 				break;
 
 			case MotionNotify:
-				irrevent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				irrevent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
+				irrevent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				irrevent.MouseInput.Event = nirt::EMIE_MOUSE_MOVED;
 				irrevent.MouseInput.X = event.xbutton.x;
 				irrevent.MouseInput.Y = event.xbutton.y;
 				irrevent.MouseInput.Control = (event.xkey.state & ControlMask) != 0;
 				irrevent.MouseInput.Shift = (event.xkey.state & ShiftMask) != 0;
 
 				// mouse button states
-				irrevent.MouseInput.ButtonStates = (event.xbutton.state & Button1Mask) ? irr::EMBSM_LEFT : 0;
-				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button3Mask) ? irr::EMBSM_RIGHT : 0;
-				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button2Mask) ? irr::EMBSM_MIDDLE : 0;
+				irrevent.MouseInput.ButtonStates = (event.xbutton.state & Button1Mask) ? nirt::EMBSM_LEFT : 0;
+				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button3Mask) ? nirt::EMBSM_RIGHT : 0;
+				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button2Mask) ? nirt::EMBSM_MIDDLE : 0;
 
 				postEventFromUser(irrevent);
 				break;
@@ -857,7 +857,7 @@ bool CIrrDeviceLinux::run()
 			case ButtonPress:
 			case ButtonRelease:
 
-				irrevent.EventType = irr::EET_MOUSE_INPUT_EVENT;
+				irrevent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
 				irrevent.MouseInput.X = event.xbutton.x;
 				irrevent.MouseInput.Y = event.xbutton.y;
 				irrevent.MouseInput.Control = (event.xkey.state & ControlMask) != 0;
@@ -867,30 +867,30 @@ bool CIrrDeviceLinux::run()
 				// This sets the state which the buttons had _prior_ to the event.
 				// So unlike on Windows the button which just got changed has still the old state here.
 				// We handle that below by flipping the corresponding bit later.
-				irrevent.MouseInput.ButtonStates = (event.xbutton.state & Button1Mask) ? irr::EMBSM_LEFT : 0;
-				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button3Mask) ? irr::EMBSM_RIGHT : 0;
-				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button2Mask) ? irr::EMBSM_MIDDLE : 0;
+				irrevent.MouseInput.ButtonStates = (event.xbutton.state & Button1Mask) ? nirt::EMBSM_LEFT : 0;
+				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button3Mask) ? nirt::EMBSM_RIGHT : 0;
+				irrevent.MouseInput.ButtonStates |= (event.xbutton.state & Button2Mask) ? nirt::EMBSM_MIDDLE : 0;
 
-				irrevent.MouseInput.Event = irr::EMIE_COUNT;
+				irrevent.MouseInput.Event = nirt::EMIE_COUNT;
 
 				switch(event.xbutton.button)
 				{
 				case  Button1:
 					irrevent.MouseInput.Event =
-						(event.type == ButtonPress) ? irr::EMIE_LMOUSE_PRESSED_DOWN : irr::EMIE_LMOUSE_LEFT_UP;
-					irrevent.MouseInput.ButtonStates ^= irr::EMBSM_LEFT;
+						(event.type == ButtonPress) ? nirt::EMIE_LMOUSE_PRESSED_DOWN : nirt::EMIE_LMOUSE_LEFT_UP;
+					irrevent.MouseInput.ButtonStates ^= nirt::EMBSM_LEFT;
 					break;
 
 				case  Button3:
 					irrevent.MouseInput.Event =
-						(event.type == ButtonPress) ? irr::EMIE_RMOUSE_PRESSED_DOWN : irr::EMIE_RMOUSE_LEFT_UP;
-					irrevent.MouseInput.ButtonStates ^= irr::EMBSM_RIGHT;
+						(event.type == ButtonPress) ? nirt::EMIE_RMOUSE_PRESSED_DOWN : nirt::EMIE_RMOUSE_LEFT_UP;
+					irrevent.MouseInput.ButtonStates ^= nirt::EMBSM_RIGHT;
 					break;
 
 				case  Button2:
 					irrevent.MouseInput.Event =
-						(event.type == ButtonPress) ? irr::EMIE_MMOUSE_PRESSED_DOWN : irr::EMIE_MMOUSE_LEFT_UP;
-					irrevent.MouseInput.ButtonStates ^= irr::EMBSM_MIDDLE;
+						(event.type == ButtonPress) ? nirt::EMIE_MMOUSE_PRESSED_DOWN : nirt::EMIE_MMOUSE_LEFT_UP;
+					irrevent.MouseInput.ButtonStates ^= nirt::EMBSM_MIDDLE;
 					break;
 
 				case  Button4:
@@ -910,7 +910,7 @@ bool CIrrDeviceLinux::run()
 					break;
 				}
 
-				if (irrevent.MouseInput.Event != irr::EMIE_COUNT)
+				if (irrevent.MouseInput.Event != nirt::EMIE_COUNT)
 				{
 					postEventFromUser(irrevent);
 
@@ -952,7 +952,7 @@ bool CIrrDeviceLinux::run()
 					}
 				}
 
-				irrevent.EventType = irr::EET_KEY_INPUT_EVENT;
+				irrevent.EventType = nirt::EET_KEY_INPUT_EVENT;
 				irrevent.KeyInput.PressedDown = false;
 				irrevent.KeyInput.Char = 0;	// on release that's undefined
 				irrevent.KeyInput.Control = (event.xkey.state & ControlMask) != 0;
@@ -1008,7 +1008,7 @@ bool CIrrDeviceLinux::run()
 						irrevent.KeyInput.Char = tmp.wbuf[0];
 					}
 
-					irrevent.EventType = irr::EET_KEY_INPUT_EVENT;
+					irrevent.EventType = nirt::EET_KEY_INPUT_EVENT;
 					irrevent.KeyInput.PressedDown = true;
 					irrevent.KeyInput.Control = (event.xkey.state & ControlMask) != 0;
 					irrevent.KeyInput.Shift = (event.xkey.state & ShiftMask) != 0;
@@ -1028,7 +1028,7 @@ bool CIrrDeviceLinux::run()
 					else
 					{
 						// we assume it's a user message
-						irrevent.EventType = irr::EET_USER_EVENT;
+						irrevent.EventType = nirt::EET_USER_EVENT;
 						irrevent.UserEvent.UserData1 = static_cast<size_t>(event.xclient.data.l[0]);
 						irrevent.UserEvent.UserData2 = static_cast<size_t>(event.xclient.data.l[1]);
 						postEventFromUser(irrevent);
@@ -1283,7 +1283,7 @@ void CIrrDeviceLinux::setResizable(bool resize)
 }
 
 //! Resize the render window.
-void CIrrDeviceLinux::setWindowSize(const irr::core::dimension2d<u32>& size)
+void CIrrDeviceLinux::setWindowSize(const nirt::core::dimension2d<u32>& size)
 {
 #ifdef _NIRT_COMPILE_WITH_X11_
 	if (CreationParams.DriverType == video::EDT_NULL || CreationParams.Fullscreen )
@@ -1697,7 +1697,7 @@ bool CIrrDeviceLinux::activateJoysticks(core::array<SJoystickInfo> & joystickInf
 #endif
 
 		(void)memset(&info.persistentData, 0, sizeof(info.persistentData));
-		info.persistentData.EventType = irr::EET_JOYSTICK_INPUT_EVENT;
+		info.persistentData.EventType = nirt::EET_JOYSTICK_INPUT_EVENT;
 		info.persistentData.JoystickEvent.Joystick = ActiveJoysticks.size();
 
 		// There's no obvious way to determine which (if any) axes represent a POV
@@ -1915,7 +1915,7 @@ const c8* CIrrDeviceLinux::getTextFromClipboard() const
 										bytesLeft, 0, AnyPropertyType, &type, &format,
 										&numItems, &dummy, &data);
 			if (result == Success)
-				Clipboard = (irr::c8*)data;
+				Clipboard = (nirt::c8*)data;
 			XFree (data);
 		}
 	}
@@ -2025,7 +2025,7 @@ void CIrrDeviceLinux::initXInput2()
 
 #ifdef _NIRT_COMPILE_WITH_X11_
 
-Cursor CIrrDeviceLinux::TextureToMonochromeCursor(irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
+Cursor CIrrDeviceLinux::TextureToMonochromeCursor(nirt::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
 	XImage * sourceImage = XCreateImage(XDisplay, VisualInfo->visual,
 										1, // depth,
@@ -2113,7 +2113,7 @@ Cursor CIrrDeviceLinux::TextureToMonochromeCursor(irr::video::ITexture * tex, co
 }
 
 #ifdef _NIRT_LINUX_XCURSOR_
-Cursor CIrrDeviceLinux::TextureToARGBCursor(irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
+Cursor CIrrDeviceLinux::TextureToARGBCursor(nirt::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
 	XcursorImage * image = XcursorImageCreate (sourceRect.getWidth(), sourceRect.getHeight());
 	image->xhot = hotspot.X;
@@ -2152,7 +2152,7 @@ Cursor CIrrDeviceLinux::TextureToARGBCursor(irr::video::ITexture * tex, const co
 }
 #endif // #ifdef _NIRT_LINUX_XCURSOR_
 
-Cursor CIrrDeviceLinux::TextureToCursor(irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
+Cursor CIrrDeviceLinux::TextureToCursor(nirt::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
 #ifdef _NIRT_LINUX_XCURSOR_
 	return TextureToARGBCursor( tex, sourceRect, hotspot );
@@ -2287,9 +2287,9 @@ gui::ECURSOR_ICON CIrrDeviceLinux::CCursorControl::addIcon(const gui::SCursorSpr
 		cX11.FrameTime = icon.SpriteBank->getSprites()[icon.SpriteId].frameTime;
 		for ( u32 i=0; i < icon.SpriteBank->getSprites()[icon.SpriteId].Frames.size(); ++i )
 		{
-			irr::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
-			irr::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
-			irr::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
+			nirt::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
+			nirt::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
+			nirt::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
 			Cursor cursor = Device->TextureToCursor(icon.SpriteBank->getTexture(texId), rectIcon, icon.HotSpot);
 			cX11.Frames.push_back( CursorFrameX11(cursor) );
 		}
@@ -2318,9 +2318,9 @@ void CIrrDeviceLinux::CCursorControl::changeIcon(gui::ECURSOR_ICON iconId, const
 		cX11.FrameTime = icon.SpriteBank->getSprites()[icon.SpriteId].frameTime;
 		for ( u32 i=0; i < icon.SpriteBank->getSprites()[icon.SpriteId].Frames.size(); ++i )
 		{
-			irr::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
-			irr::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
-			irr::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
+			nirt::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
+			nirt::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
+			nirt::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
 			Cursor cursor = Device->TextureToCursor(icon.SpriteBank->getTexture(texId), rectIcon, icon.HotSpot);
 			cX11.Frames.push_back( CursorFrameX11(cursor) );
 		}
@@ -2330,7 +2330,7 @@ void CIrrDeviceLinux::CCursorControl::changeIcon(gui::ECURSOR_ICON iconId, const
 #endif
 }
 
-irr::core::dimension2di CIrrDeviceLinux::CCursorControl::getSupportedIconSize() const
+nirt::core::dimension2di CIrrDeviceLinux::CCursorControl::getSupportedIconSize() const
 {
 	// this returns the closest match that is smaller or same size, so we just pass a value which should be large enough for cursors
 	unsigned int width=0, height=0;

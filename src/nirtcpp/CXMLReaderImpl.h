@@ -17,7 +17,7 @@
 #endif // _DEBUG
 
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -496,7 +496,7 @@ private:
 	{
 		if (name)
 		{
-			for (irr::u32 i=0; i<Attributes.size(); ++i)
+			for (nirt::u32 i=0; i<Attributes.size(); ++i)
 				if (Attributes[i].Name == name)
 					return &Attributes[i];
 		}

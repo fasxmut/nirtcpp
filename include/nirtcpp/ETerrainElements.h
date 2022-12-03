@@ -5,7 +5,7 @@
 #ifndef NIRT_E_TERRAIN_ELEMENTS_H
 #define NIRT_E_TERRAIN_ELEMENTS_H
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -30,6 +30,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

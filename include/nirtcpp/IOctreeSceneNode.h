@@ -7,7 +7,7 @@
 
 #include "IMeshSceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -50,7 +50,7 @@ enum EOCTREE_POLYGON_CHECKS
 };
 
 //! A scene node displaying a static mesh
-class IOctreeSceneNode : public irr::scene::IMeshSceneNode
+class IOctreeSceneNode : public nirt::scene::IMeshSceneNode
 {
 public:
 
@@ -76,6 +76,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -4,7 +4,7 @@
 #include "testUtils.h"
 #include <nirtcpp.h>
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 static bool testSelfAssignment()
@@ -205,7 +205,7 @@ bool testInsert()
 
 bool testLowerUpper()
 {
-	irr::core::array <irr::core::stringc> stringsOrig, targetLower, targetUpper;
+	nirt::core::array <nirt::core::stringc> stringsOrig, targetLower, targetUpper;
 	stringsOrig.push_back("abc");
 	targetLower.push_back("abc");
 	targetUpper.push_back("ABC");
@@ -233,9 +233,9 @@ bool testLowerUpper()
 	targetUpper.push_back("ßÄÖÜ");
 	*/
 
-	for ( irr::u32 i=0; i<stringsOrig.size(); ++i )
+	for ( nirt::u32 i=0; i<stringsOrig.size(); ++i )
 	{
-		irr::core::stringc c = stringsOrig[i];
+		nirt::core::stringc c = stringsOrig[i];
 		c.make_lower();
 		if ( c != targetLower[i] )
 		{
@@ -251,17 +251,17 @@ bool testLowerUpper()
 			return false;
 		}
 
-		irr::core::stringw w = irr::core::stringw(stringsOrig[i]);
+		nirt::core::stringw w = nirt::core::stringw(stringsOrig[i]);
 		c.make_lower();
-		if ( c != irr::core::stringw(targetLower[i]) )
+		if ( c != nirt::core::stringw(targetLower[i]) )
 		{
 			logTestString("make_lower for stringw failed in test %d %s\n", i, stringsOrig[i].data());
 			return false;
 		}
 
-		c = irr::core::stringw(stringsOrig[i]);
+		c = nirt::core::stringw(stringsOrig[i]);
 		c.make_upper();
-		if ( c != irr::core::stringw(targetUpper[i]) )
+		if ( c != nirt::core::stringw(targetUpper[i]) )
 		{
 			logTestString("make_upper for stringw failed in test %d %s\n", i, stringsOrig[i].data());
 			return false;
@@ -273,17 +273,17 @@ bool testLowerUpper()
 
 bool testFindFunctions()
 {
-	irr::core::stringc dot(".");
-	irr::s32 p = dot.findFirst(0);
+	nirt::core::stringc dot(".");
+	nirt::s32 p = dot.findFirst(0);
 	if ( p >= 0 )
 		return false;
 
-	irr::core::stringc empty("");
+	nirt::core::stringc empty("");
 	p = empty.findLastCharNotInList("x",1);
 	if ( p >= 0 )
 		return false;
 
-	irr::core::stringc lastX("max");
+	nirt::core::stringc lastX("max");
 	p = lastX.findLastCharNotInList("x",1);
 	if ( p != 1 )
 		return false;

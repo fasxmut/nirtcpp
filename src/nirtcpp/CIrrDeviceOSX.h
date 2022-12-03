@@ -21,20 +21,20 @@
 
 #include <map>
 
-namespace irr
+namespace nirt
 {
     class CIrrDeviceMacOSX;
 }
 
 @interface CIrrDelegateOSX : NSObject
 
-- (id)initWithDevice:(irr::CIrrDeviceMacOSX*)device;
+- (id)initWithDevice:(nirt::CIrrDeviceMacOSX*)device;
 - (void)terminate:(id)sender;
 - (BOOL)isQuit;
 
 @end
 
-namespace irr
+namespace nirt
 {
 	class CIrrDeviceMacOSX : public CIrrDeviceStub, video::IImagePresenter
 	{
@@ -235,8 +235,8 @@ namespace irr
 		bool createWindow();
 		void initKeycodes();
 		void storeMouseLocation();
-		void postMouseEvent(void *event, irr::SEvent &ievent);
-		void postKeyEvent(void *event, irr::SEvent &ievent, bool pressed);
+		void postMouseEvent(void *event, nirt::SEvent &ievent);
+		void postKeyEvent(void *event, nirt::SEvent &ievent, bool pressed);
 		void pollJoysticks();
 
 		NSWindow* Window;
@@ -257,7 +257,7 @@ namespace irr
 	};
 
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_OSX_DEVICE_
 #endif // __C_NIRT_DEVICE_MACOSX_H_INCLUDED__

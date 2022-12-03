@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 static bool manyTextures(video::E_DRIVER_TYPE driverType)
@@ -26,10 +26,10 @@ static bool manyTextures(video::E_DRIVER_TYPE driverType)
 	mesh->Vertices.reallocate(4);
 	mesh->Indices.reallocate(6);
 
-	mesh->Vertices.push_back(video::S3DVertex2TCoords(-50,50,80,irr::video::SColor(255,100,100,100),0,1,0,1));
-	mesh->Vertices.push_back(video::S3DVertex2TCoords(50,50,80,irr::video::SColor(255,100,100,100),1,1,1,1));
-	mesh->Vertices.push_back(video::S3DVertex2TCoords(50,-50,80,irr::video::SColor(255,100,100,100),1,0,1,0));
-	mesh->Vertices.push_back(video::S3DVertex2TCoords(-50,-50,80,irr::video::SColor(255,100,100,100),0,0,0,0));
+	mesh->Vertices.push_back(video::S3DVertex2TCoords(-50,50,80,nirt::video::SColor(255,100,100,100),0,1,0,1));
+	mesh->Vertices.push_back(video::S3DVertex2TCoords(50,50,80,nirt::video::SColor(255,100,100,100),1,1,1,1));
+	mesh->Vertices.push_back(video::S3DVertex2TCoords(50,-50,80,nirt::video::SColor(255,100,100,100),1,0,1,0));
+	mesh->Vertices.push_back(video::S3DVertex2TCoords(-50,-50,80,nirt::video::SColor(255,100,100,100),0,0,0,0));
 
 	mesh->Indices.push_back(0);
 	mesh->Indices.push_back(1);
@@ -146,7 +146,7 @@ static bool renderAndRemove(video::E_DRIVER_TYPE driverType)
 	img = smgr->addCubeSceneNode();
 	img->setMaterialTexture(0, texture);
 
-	driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, irr::video::SColor (255, 0, 255, 0));
+	driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, nirt::video::SColor (255, 0, 255, 0));
 	smgr->drawAll();
 	driver->endScene();
 
@@ -160,7 +160,7 @@ static bool renderAndRemove(video::E_DRIVER_TYPE driverType)
 
 static bool testTextureMatrixInMixedScenes(video::E_DRIVER_TYPE driverType)
 {
-	irr::NirtcppDevice* device = createDevice(driverType, dimension2du(160,120));
+	nirt::NirtcppDevice* device = createDevice(driverType, dimension2du(160,120));
 	if (!device)
 		return true;
 
@@ -218,7 +218,7 @@ static bool testTextureMatrixInMixedScenes(video::E_DRIVER_TYPE driverType)
 // animated texture matrix test.
 static bool textureMatrix(video::E_DRIVER_TYPE driverType)
 {
-	irr::NirtcppDevice* device = createDevice(driverType, dimension2du(160,120));
+	nirt::NirtcppDevice* device = createDevice(driverType, dimension2du(160,120));
 	if (!device)
 		return true;
 
@@ -300,18 +300,18 @@ bool danglingTexturePointer()
 // the Nirtcpp logo).
 
 	// This is only a problem in the OpenGL driver
-	irr::NirtcppDevice* device = irr::createDevice(irr::video::EDT_OPENGL,
-		irr::core::dimension2d<irr::u32>(160, 120));
+	nirt::NirtcppDevice* device = nirt::createDevice(nirt::video::EDT_OPENGL,
+		nirt::core::dimension2d<nirt::u32>(160, 120));
 	if (!device)
 		return true;
 
-	irr::video::IVideoDriver* driver = device->getVideoDriver();
+	nirt::video::IVideoDriver* driver = device->getVideoDriver();
 
 	stabilizeScreenBackground(driver);
 
 	// Load a texture from a file
 	// This binds and uploads to OpenGL texture #2.
-	irr::video::ITexture* logo2 = driver->getTexture("../media/irrlichtlogo2.png");
+	nirt::video::ITexture* logo2 = driver->getTexture("../media/irrlichtlogo2.png");
 	// Remove the texture from the driver (delete it from hardware)
 	// This leaves CurrentTexture pointing at logo2
 	driver->removeTexture(logo2);
@@ -321,20 +321,20 @@ bool danglingTexturePointer()
 	// COpenGLDriver::setActiveTexture will not bother to call glBindTextures
 	// (thinking that logo3 is the same texture as logo2).
 	// Therefore, the logo3 texture will be uploaded to texture #0, not #2.
-	irr::video::ITexture* logo3 = driver->getTexture("../media/irrlichtlogo3.png");
+	nirt::video::ITexture* logo3 = driver->getTexture("../media/irrlichtlogo3.png");
 
 	device->run();
 	{
-		driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, irr::video::SColor(255,100,101,140));
+		driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, nirt::video::SColor(255,100,101,140));
 
 		// This is required to trigger the white appearance (this unbinds the
 		// texture, forcing draw2DImage to rebind the logo3 texture (#2)).
-		driver->setMaterial(irr::video::SMaterial());
+		driver->setMaterial(nirt::video::SMaterial());
 
 		// Since logo3 was uploaded to #0, not #2, this will bind texture #2,
 		// which has never been written to. OpenGL considers an empty texture
 		// to be white.
-		driver->draw2DImage(logo3, irr::core::position2d<irr::s32>(20, 20));
+		driver->draw2DImage(logo3, nirt::core::position2d<nirt::s32>(20, 20));
 
 		driver->endScene();
 	}

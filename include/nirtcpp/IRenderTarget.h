@@ -9,7 +9,7 @@
 #include "EDriverTypes.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

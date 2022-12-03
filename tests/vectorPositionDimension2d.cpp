@@ -6,7 +6,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 

@@ -12,7 +12,7 @@
 #include "CSkinnedMesh.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -867,6 +867,6 @@ core::stringc CMS3DMeshFileLoader::stripPathFromString(const core::stringc& inSt
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

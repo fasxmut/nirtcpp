@@ -26,12 +26,12 @@
 
 static int SDLDeviceInstances = 0;
 
-namespace irr
+namespace nirt
 {
 	namespace video
 	{
 		#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
-		IVideoDriver* createDirectX9Driver(const irr::SNirtcppCreationParameters& params,
+		IVideoDriver* createDirectX9Driver(const nirt::SNirtcppCreationParameters& params,
 			io::IFileSystem* io, HWND window);
 		#endif
 
@@ -41,10 +41,10 @@ namespace irr
 		#endif
 	} // end namespace video
 
-} // end namespace irr
+} // end namespace nirt
 
 
-namespace irr
+namespace nirt
 {
 
 //! constructor
@@ -293,8 +293,8 @@ bool CIrrDeviceSDL::run()
 		switch ( SDL_event.type )
 		{
 		case SDL_MOUSEMOTION:
-			irrevent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-			irrevent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
+			irrevent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+			irrevent.MouseInput.Event = nirt::EMIE_MOUSE_MOVED;
 			MouseX = irrevent.MouseInput.X = SDL_event.motion.x;
 			MouseY = irrevent.MouseInput.Y = SDL_event.motion.y;
 			irrevent.MouseInput.ButtonStates = MouseButtonStates;
@@ -305,67 +305,67 @@ bool CIrrDeviceSDL::run()
 		case SDL_MOUSEBUTTONDOWN:
 		case SDL_MOUSEBUTTONUP:
 
-			irrevent.EventType = irr::EET_MOUSE_INPUT_EVENT;
+			irrevent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
 			irrevent.MouseInput.X = SDL_event.button.x;
 			irrevent.MouseInput.Y = SDL_event.button.y;
 
-			irrevent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
+			irrevent.MouseInput.Event = nirt::EMIE_MOUSE_MOVED;
 
 			switch(SDL_event.button.button)
 			{
 			case SDL_BUTTON_LEFT:
 				if (SDL_event.type == SDL_MOUSEBUTTONDOWN)
 				{
-					irrevent.MouseInput.Event = irr::EMIE_LMOUSE_PRESSED_DOWN;
-					MouseButtonStates |= irr::EMBSM_LEFT;
+					irrevent.MouseInput.Event = nirt::EMIE_LMOUSE_PRESSED_DOWN;
+					MouseButtonStates |= nirt::EMBSM_LEFT;
 				}
 				else
 				{
-					irrevent.MouseInput.Event = irr::EMIE_LMOUSE_LEFT_UP;
-					MouseButtonStates &= !irr::EMBSM_LEFT;
+					irrevent.MouseInput.Event = nirt::EMIE_LMOUSE_LEFT_UP;
+					MouseButtonStates &= !nirt::EMBSM_LEFT;
 				}
 				break;
 
 			case SDL_BUTTON_RIGHT:
 				if (SDL_event.type == SDL_MOUSEBUTTONDOWN)
 				{
-					irrevent.MouseInput.Event = irr::EMIE_RMOUSE_PRESSED_DOWN;
-					MouseButtonStates |= irr::EMBSM_RIGHT;
+					irrevent.MouseInput.Event = nirt::EMIE_RMOUSE_PRESSED_DOWN;
+					MouseButtonStates |= nirt::EMBSM_RIGHT;
 				}
 				else
 				{
-					irrevent.MouseInput.Event = irr::EMIE_RMOUSE_LEFT_UP;
-					MouseButtonStates &= ~irr::EMBSM_RIGHT;
+					irrevent.MouseInput.Event = nirt::EMIE_RMOUSE_LEFT_UP;
+					MouseButtonStates &= ~nirt::EMBSM_RIGHT;
 				}
 				break;
 
 			case SDL_BUTTON_MIDDLE:
 				if (SDL_event.type == SDL_MOUSEBUTTONDOWN)
 				{
-					irrevent.MouseInput.Event = irr::EMIE_MMOUSE_PRESSED_DOWN;
-					MouseButtonStates |= irr::EMBSM_MIDDLE;
+					irrevent.MouseInput.Event = nirt::EMIE_MMOUSE_PRESSED_DOWN;
+					MouseButtonStates |= nirt::EMBSM_MIDDLE;
 				}
 				else
 				{
-					irrevent.MouseInput.Event = irr::EMIE_MMOUSE_LEFT_UP;
-					MouseButtonStates &= ~irr::EMBSM_MIDDLE;
+					irrevent.MouseInput.Event = nirt::EMIE_MMOUSE_LEFT_UP;
+					MouseButtonStates &= ~nirt::EMBSM_MIDDLE;
 				}
 				break;
 
 			case SDL_BUTTON_WHEELUP:
-				irrevent.MouseInput.Event = irr::EMIE_MOUSE_WHEEL;
+				irrevent.MouseInput.Event = nirt::EMIE_MOUSE_WHEEL;
 				irrevent.MouseInput.Wheel = 1.0f;
 				break;
 
 			case SDL_BUTTON_WHEELDOWN:
-				irrevent.MouseInput.Event = irr::EMIE_MOUSE_WHEEL;
+				irrevent.MouseInput.Event = nirt::EMIE_MOUSE_WHEEL;
 				irrevent.MouseInput.Wheel = -1.0f;
 				break;
 			}
 
 			irrevent.MouseInput.ButtonStates = MouseButtonStates;
 
-			if (irrevent.MouseInput.Event != irr::EMIE_MOUSE_MOVED)
+			if (irrevent.MouseInput.Event != nirt::EMIE_MOUSE_MOVED)
 			{
 				postEventFromUser(irrevent);
 
@@ -407,7 +407,7 @@ bool CIrrDeviceSDL::run()
 					break;
 				}
 #endif
-				irrevent.EventType = irr::EET_KEY_INPUT_EVENT;
+				irrevent.EventType = nirt::EET_KEY_INPUT_EVENT;
 				irrevent.KeyInput.Char = SDL_event.key.keysym.unicode;
 				irrevent.KeyInput.Key = key;
 				irrevent.KeyInput.PressedDown = (SDL_event.type == SDL_KEYDOWN);
@@ -438,7 +438,7 @@ bool CIrrDeviceSDL::run()
 			break;
 
 		case SDL_USEREVENT:
-			irrevent.EventType = irr::EET_USER_EVENT;
+			irrevent.EventType = nirt::EET_USER_EVENT;
 			irrevent.UserEvent.UserData1 = reinterpret_cast<uintptr_t>(SDL_event.user.data1);
 			irrevent.UserEvent.UserData2 = reinterpret_cast<uintptr_t>(SDL_event.user.data2);
 
@@ -997,7 +997,7 @@ void CIrrDeviceSDL::createKeyMap()
 	KeyMap.sort();
 }
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SDL_DEVICE_
 

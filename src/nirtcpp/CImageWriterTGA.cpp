@@ -12,7 +12,7 @@
 #include "irrString.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -139,7 +139,7 @@ bool CImageWriterTGA::writeImage(io::IWriteFile *file, IImage *image,u32 param) 
 }
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif
 

@@ -7,7 +7,7 @@
 
 #include "IParticleAffector.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -34,6 +34,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // __I_PARTICLE_FADE_OUT_AFFECTOR_H_INCLUDED__

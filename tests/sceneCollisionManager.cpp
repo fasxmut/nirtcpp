@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace scene;
 using namespace video;
@@ -442,7 +442,7 @@ static bool compareGetSceneNodeFromRayBBWithBBIntersectsWithLine(NirtcppDevice *
 /** Test functionality of the sceneCollisionManager */
 bool sceneCollisionManager(void)
 {
-	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(160, 120));
+	NirtcppDevice * device = nirt::createDevice(video::EDT_NULL, dimension2d<u32>(160, 120));
 	assert_log(device);
 	if(!device)
 		return false;

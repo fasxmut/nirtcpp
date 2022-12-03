@@ -5,8 +5,8 @@
 
 #include <iostream>
 
-using namespace irr;
-using namespace irr::core;
+using namespace nirt;
+using namespace nirt::core;
 
 #define EXPECT( condition, value, name) if( condition != value) \
 	{ std::cout<< name << ": test failed"<< std::endl; return false;}

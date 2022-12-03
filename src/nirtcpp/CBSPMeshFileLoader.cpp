@@ -8,7 +8,7 @@
 #include "CBSPMeshFileLoader.h"
 #include "CQ3LevelMesh.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -101,7 +101,7 @@ IAnimatedMesh* CBSPMeshFileLoader::createMesh(io::IReadFile* file)
 }
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BSP_LOADER_
 

@@ -10,24 +10,24 @@
 #include "EDriverTypes.h"
 #include "NirtcppDevice.h"
 
-namespace irr
+namespace nirt
 {
     
     //! ask user for driver
-    static irr::video::E_DRIVER_TYPE driverChoiceConsole(bool allDrivers=false)
+    static nirt::video::E_DRIVER_TYPE driverChoiceConsole(bool allDrivers=false)
     {
 #if defined (_NIRT_IPHONE_PLATFORM_) || defined (_NIRT_ANDROID_PLATFORM_)
-        return irr::video::EDT_OGLES2;
+        return nirt::video::EDT_OGLES2;
 #else
         printf("Please select the driver you want:\n");
-        irr::u32 i=0;
+        nirt::u32 i=0;
         char c  = 'a';
         
-        for (i=irr::video::EDT_COUNT; i>0; --i)
+        for (i=nirt::video::EDT_COUNT; i>0; --i)
         {
-            if ( allDrivers || irr::NirtcppDevice::isDriverSupported(irr::video::E_DRIVER_TYPE(i-1)) )
+            if ( allDrivers || nirt::NirtcppDevice::isDriverSupported(nirt::video::E_DRIVER_TYPE(i-1)) )
             {
-                printf(" (%c) %s\n", c, irr::video::DRIVER_TYPE_NAMES[i-1]);
+                printf(" (%c) %s\n", c, nirt::video::DRIVER_TYPE_NAMES[i-1]);
 				++c;
             }
         }
@@ -36,17 +36,17 @@ namespace irr
         std::cin >> userSelection;
         c = 'a';
         
-        for (i=irr::video::EDT_COUNT; i>0; --i)
+        for (i=nirt::video::EDT_COUNT; i>0; --i)
         {
-			if ( allDrivers || irr::NirtcppDevice::isDriverSupported(irr::video::E_DRIVER_TYPE(i-1)) )
+			if ( allDrivers || nirt::NirtcppDevice::isDriverSupported(nirt::video::E_DRIVER_TYPE(i-1)) )
 			{
 				if (userSelection == c)
-					return irr::video::E_DRIVER_TYPE(i-1);
+					return nirt::video::E_DRIVER_TYPE(i-1);
 				++c;
 			}
         }
 
-        return irr::video::EDT_COUNT;
+        return nirt::video::EDT_COUNT;
 #endif
     }
     
@@ -86,6 +86,6 @@ namespace irr
 #endif
 	}
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

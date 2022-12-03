@@ -10,7 +10,7 @@
 // necessary for older compilers
 #include <memory.h>
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -108,7 +108,7 @@ public:
 #define DEBUG_CLIENTBLOCK new( _CLIENT_BLOCK, __FILE__, __LINE__)
 #endif
 
-//! defines an allocation strategy (used only by irr::array so far)
+//! defines an allocation strategy (used only by nirt::array so far)
 enum eAllocStrategy
 {
 	ALLOC_STRATEGY_SAFE    = 0,	// increase size by 1
@@ -118,7 +118,7 @@ enum eAllocStrategy
 
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

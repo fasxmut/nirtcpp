@@ -22,7 +22,7 @@
 #include "ICameraSceneNode.h"
 #include "ISceneManager.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -112,12 +112,12 @@ f32 CColladaMeshWriterProperties::getIndexOfRefraction(const video::SMaterial& m
 	return -1.f;
 }
 
-bool CColladaMeshWriterProperties::isExportable(const irr::scene::ISceneNode * node) const
+bool CColladaMeshWriterProperties::isExportable(const nirt::scene::ISceneNode * node) const
 {
 	return node && node->isVisible();
 }
 
-IMesh* CColladaMeshWriterProperties::getMesh(irr::scene::ISceneNode * node)
+IMesh* CColladaMeshWriterProperties::getMesh(nirt::scene::ISceneNode * node)
 {
 	if ( !node )
 		return 0;
@@ -163,21 +163,21 @@ CColladaMeshWriterNames::CColladaMeshWriterNames(IColladaMeshWriter * writer)
 {
 }
 
-irr::core::stringc CColladaMeshWriterNames::nameForMesh(const scene::IMesh* mesh, int instance)
+nirt::core::stringc CColladaMeshWriterNames::nameForMesh(const scene::IMesh* mesh, int instance)
 {
-	irr::core::stringc name("mesh");
+	nirt::core::stringc name("mesh");
 	name += nameForPtr(mesh);
 	if ( instance > 0 )
 	{
 		name += "i";
-		name += irr::core::stringc(instance);
+		name += nirt::core::stringc(instance);
 	}
 	return ColladaMeshWriter->toNCName(name);
 }
 
-irr::core::stringc CColladaMeshWriterNames::nameForNode(const scene::ISceneNode* node)
+nirt::core::stringc CColladaMeshWriterNames::nameForNode(const scene::ISceneNode* node)
 {
-	irr::core::stringc name;
+	nirt::core::stringc name;
 	// Prefix, because xs:ID can't start with a number, also nicer name
 	if ( node && node->getType() == ESNT_LIGHT )
 		name = "light";
@@ -186,12 +186,12 @@ irr::core::stringc CColladaMeshWriterNames::nameForNode(const scene::ISceneNode*
 	name += nameForPtr(node);
 	if ( node )
 	{
-		name += irr::core::stringc(node->getName());
+		name += nirt::core::stringc(node->getName());
 	}
 	return ColladaMeshWriter->toNCName(name);
 }
 
-irr::core::stringc CColladaMeshWriterNames::nameForMaterial(const video::SMaterial & material, int materialId, const scene::IMesh* mesh, const scene::ISceneNode* node)
+nirt::core::stringc CColladaMeshWriterNames::nameForMaterial(const video::SMaterial & material, int materialId, const scene::IMesh* mesh, const scene::ISceneNode* node)
 {
 	core::stringc strMat("mat");
 
@@ -200,7 +200,7 @@ irr::core::stringc CColladaMeshWriterNames::nameForMaterial(const video::SMateri
 	{
 		strMat += "node";
 		strMat += nameForPtr(node);
-		strMat += irr::core::stringc(node->getName());
+		strMat += nirt::core::stringc(node->getName());
 	}
 	strMat += "mesh";
 	strMat += nameForPtr(mesh);
@@ -208,11 +208,11 @@ irr::core::stringc CColladaMeshWriterNames::nameForMaterial(const video::SMateri
 	return ColladaMeshWriter->toNCName(strMat);
 }
 
-irr::core::stringc CColladaMeshWriterNames::nameForPtr(const void* ptr) const
+nirt::core::stringc CColladaMeshWriterNames::nameForPtr(const void* ptr) const
 {
 	c8 buf[32];
 	snprintf_nirt(buf, 32, "%p", ptr);
-	return irr::core::stringc(buf);
+	return nirt::core::stringc(buf);
 }
 
 
@@ -422,7 +422,7 @@ bool CColladaMeshWriter::writeScene(io::IWriteFile* file, scene::ISceneNode* roo
 	return true;
 }
 
-void CColladaMeshWriter::makeMeshNames(irr::scene::ISceneNode * node)
+void CColladaMeshWriter::makeMeshNames(nirt::scene::ISceneNode * node)
 {
 	if ( !node || !getProperties() || !getProperties()->isExportable(node) || !getNameGenerator())
 		return;
@@ -445,12 +445,12 @@ void CColladaMeshWriter::makeMeshNames(irr::scene::ISceneNode * node)
 	}
 }
 
-void CColladaMeshWriter::writeNodeMaterials(irr::scene::ISceneNode * node)
+void CColladaMeshWriter::writeNodeMaterials(nirt::scene::ISceneNode * node)
 {
 	if ( !node || !getProperties() || !getProperties()->isExportable(node) )
 		return;
 
-	core::array<irr::core::stringc> materialNames;
+	core::array<nirt::core::stringc> materialNames;
 
 	IMesh* mesh = getProperties()->getMesh(node);
 	if ( mesh )
@@ -506,7 +506,7 @@ void CColladaMeshWriter::writeNodeMaterials(irr::scene::ISceneNode * node)
 	}
 }
 
-void CColladaMeshWriter::writeMaterial(const irr::core::stringc& materialname)
+void CColladaMeshWriter::writeMaterial(const nirt::core::stringc& materialname)
 {
 	if ( MaterialsWritten.find(materialname) )
 		return;
@@ -529,7 +529,7 @@ void CColladaMeshWriter::writeMaterial(const irr::core::stringc& materialname)
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeNodeEffects(irr::scene::ISceneNode * node)
+void CColladaMeshWriter::writeNodeEffects(nirt::scene::ISceneNode * node)
 {
 	if ( !node || !getProperties() || !getProperties()->isExportable(node) || !getNameGenerator() )
 		return;
@@ -553,7 +553,7 @@ void CColladaMeshWriter::writeNodeEffects(irr::scene::ISceneNode * node)
 			for (u32 i=0; i<node->getMaterialCount(); ++i)
 			{
 				video::SMaterial & material = node->getMaterial(i);
-				irr::core::stringc materialfxname(nameForMaterial(material, i, mesh, node));
+				nirt::core::stringc materialfxname(nameForMaterial(material, i, mesh, node));
 				materialfxname += "-fx";
 				writeMaterialEffect(materialfxname, material);
 			}
@@ -567,7 +567,7 @@ void CColladaMeshWriter::writeNodeEffects(irr::scene::ISceneNode * node)
 	}
 }
 
-void CColladaMeshWriter::writeNodeLights(irr::scene::ISceneNode * node)
+void CColladaMeshWriter::writeNodeLights(nirt::scene::ISceneNode * node)
 {
 	if ( !node || !getProperties() || !getProperties()->isExportable(node))
 		return;
@@ -647,7 +647,7 @@ void CColladaMeshWriter::writeNodeLights(irr::scene::ISceneNode * node)
 	}
 }
 
-void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
+void CColladaMeshWriter::writeNodeCameras(nirt::scene::ISceneNode * node)
 {
 	if ( !node || !getProperties() || !getProperties()->isExportable(node) )
 		return;
@@ -655,7 +655,7 @@ void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
 	if ( isCamera(node) )
 	{
 		ICameraSceneNode * cameraNode = static_cast<ICameraSceneNode*>(node);
-		irr::core::stringc name = nameForNode(node);
+		nirt::core::stringc name = nameForNode(node);
 		CameraNodes.insert(cameraNode, name);
 
 		Writer->writeElement("camera", false, "id", name.data());
@@ -672,15 +672,15 @@ void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
 			Writer->writeElement("orthographic", false);
 			Writer->writeLineBreak();
 
-			irr::core::matrix4 projMat( cameraNode->getProjectionMatrix() );
-			irr::f32 xmag = 2.f/projMat[0];
-			irr::f32 ymag = 2.f/projMat[5];
+			nirt::core::matrix4 projMat( cameraNode->getProjectionMatrix() );
+			nirt::f32 xmag = 2.f/projMat[0];
+			nirt::f32 ymag = 2.f/projMat[5];
 
 			// Note that Nirtcpp camera does not update near/far when setting the projection matrix,
 			// so we have to calculate that here (at least currently - maybe camera code will be updated at some time).
-			irr::f32 nearMinusFar = -1.f/projMat[10];
-			irr::f32 zNear = projMat[14]*nearMinusFar;
-			irr::f32 zFar = 1.f/projMat[10] + zNear;
+			nirt::f32 nearMinusFar = -1.f/projMat[10];
+			nirt::f32 zNear = projMat[14]*nearMinusFar;
+			nirt::f32 zFar = 1.f/projMat[10] + zNear;
 
 			writeNode("xmag", core::stringc(xmag).data());
 			writeNode("ymag", core::stringc(ymag).data());
@@ -743,13 +743,13 @@ void CColladaMeshWriter::writeAllMeshGeometries()
 	}
 }
 
-void CColladaMeshWriter::writeSceneNode(irr::scene::ISceneNode * node )
+void CColladaMeshWriter::writeSceneNode(nirt::scene::ISceneNode * node )
 {
 	if ( !node || !getProperties() || !getProperties()->isExportable(node) )
 		return;
 
 	// Collada doesn't require to set the id, but some other tools have problems if none exists, so we just add it.
-	irr::core::stringc nameId(nameForNode(node));
+	nirt::core::stringc nameId(nameForNode(node));
 	Writer->writeElement("node", false, "id", nameId.data());
 	Writer->writeLineBreak();
 
@@ -776,7 +776,7 @@ void CColladaMeshWriter::writeSceneNode(irr::scene::ISceneNode * node )
 	{
 		writeTranslateElement( node->getPosition() );
 
-		irr::core::vector3df rot(node->getRotation());
+		nirt::core::vector3df rot(node->getRotation());
 		core::quaternion quat(rot*core::DEGTORAD);
 		f32 angle;
 		core::vector3df axis;
@@ -882,7 +882,7 @@ bool CColladaMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32
 	Writer->writeElement("library_geometries", false);
 	Writer->writeLineBreak();
 
-	irr::core::stringc meshname(nameForMesh(mesh, 0));
+	nirt::core::stringc meshname(nameForMesh(mesh, 0));
 	writeMeshGeometry(meshname, mesh);
 
 	Writer->writeClosingTag("library_geometries");
@@ -932,7 +932,7 @@ bool CColladaMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32
 	return true;
 }
 
-void CColladaMeshWriter::writeMeshInstanceGeometry(const irr::core::stringc& meshname, scene::IMesh* mesh, scene::ISceneNode* node)
+void CColladaMeshWriter::writeMeshInstanceGeometry(const nirt::core::stringc& meshname, scene::IMesh* mesh, scene::ISceneNode* node)
 {
 	//<instance_geometry url="#mesh">
 	Writer->writeElement("instance_geometry", false, "url", toRef(meshname).data());
@@ -949,7 +949,7 @@ void CColladaMeshWriter::writeMeshInstanceGeometry(const irr::core::stringc& mes
 			bool useNodeMaterials = node && node->getMaterialCount() == mesh->getMeshBufferCount();
 			for (u32 i=0; i<mesh->getMeshBufferCount(); ++i)
 			{
-				irr::core::stringc strMatSymbol(nameForMaterialSymbol(mesh, i));
+				nirt::core::stringc strMatSymbol(nameForMaterialSymbol(mesh, i));
 				core::stringc strMatTarget = "#";
 				video::SMaterial & material = useNodeMaterials ? node->getMaterial(i) : mesh->getMeshBuffer(i)->getMaterial();
 				strMatTarget += nameForMaterial(material, i, mesh, node);
@@ -975,13 +975,13 @@ void CColladaMeshWriter::writeMeshInstanceGeometry(const irr::core::stringc& mes
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeLightInstance(const irr::core::stringc& lightName)
+void CColladaMeshWriter::writeLightInstance(const nirt::core::stringc& lightName)
 {
 	Writer->writeElement("instance_light", true, "url", toRef(lightName).data());
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeCameraInstance(const irr::core::stringc& cameraName)
+void CColladaMeshWriter::writeCameraInstance(const nirt::core::stringc& cameraName)
 {
 	Writer->writeElement("instance_camera", true, "url", toRef(cameraName).data());
 	Writer->writeLineBreak();
@@ -992,7 +992,7 @@ bool CColladaMeshWriter::hasSecondTextureCoordinates(video::E_VERTEX_TYPE type) 
 	return type == video::EVT_2TCOORDS;
 }
 
-void CColladaMeshWriter::writeVector(const irr::core::vector3df& vec)
+void CColladaMeshWriter::writeVector(const nirt::core::vector3df& vec)
 {
 	c8 tmpbuf[255];
 
@@ -1011,7 +1011,7 @@ void CColladaMeshWriter::writeVector(const irr::core::vector3df& vec)
 	Writer->writeText(WriteBuffer.data());
 }
 
-void CColladaMeshWriter::writeUv(const irr::core::vector2df& vec)
+void CColladaMeshWriter::writeUv(const nirt::core::vector2df& vec)
 {
 	c8 tmpbuf[255];
 
@@ -1026,7 +1026,7 @@ void CColladaMeshWriter::writeUv(const irr::core::vector2df& vec)
 	Writer->writeText(WriteBuffer.data());
 }
 
-void CColladaMeshWriter::writeColor(const irr::video::SColorf& colorf, bool writeAlpha)
+void CColladaMeshWriter::writeColor(const nirt::video::SColorf& colorf, bool writeAlpha)
 {
 	c8 tmpbuf[255];
 
@@ -1052,19 +1052,19 @@ void CColladaMeshWriter::writeColor(const irr::video::SColorf& colorf, bool writ
 	Writer->writeText(WriteBuffer.data());
 }
 
-irr::core::stringc CColladaMeshWriter::toString(const irr::video::ECOLOR_FORMAT format) const
+nirt::core::stringc CColladaMeshWriter::toString(const nirt::video::ECOLOR_FORMAT format) const
 {
 	switch ( format )
 	{
-		case video::ECF_A1R5G5B5:	return irr::core::stringc("A1R5G5B5");
-		case video::ECF_R5G6B5:		return irr::core::stringc("R5G6B5");
-		case video::ECF_R8G8B8:		return irr::core::stringc("R8G8B8");
-		case video::ECF_A8R8G8B8:	return irr::core::stringc("A8R8G8B8");
-		default:					return irr::core::stringc("");
+		case video::ECF_A1R5G5B5:	return nirt::core::stringc("A1R5G5B5");
+		case video::ECF_R5G6B5:		return nirt::core::stringc("R5G6B5");
+		case video::ECF_R8G8B8:		return nirt::core::stringc("R8G8B8");
+		case video::ECF_A8R8G8B8:	return nirt::core::stringc("A8R8G8B8");
+		default:					return nirt::core::stringc("");
 	}
 }
 
-irr::core::stringc CColladaMeshWriter::toString(const irr::video::E_TEXTURE_CLAMP clamp) const
+nirt::core::stringc CColladaMeshWriter::toString(const nirt::video::E_TEXTURE_CLAMP clamp) const
 {
 	switch ( clamp )
 	{
@@ -1084,7 +1084,7 @@ irr::core::stringc CColladaMeshWriter::toString(const irr::video::E_TEXTURE_CLAM
 	return core::stringc("NONE");
 }
 
-irr::core::stringc CColladaMeshWriter::toString(const irr::scene::E_COLLADA_TRANSPARENT_FX transparent) const
+nirt::core::stringc CColladaMeshWriter::toString(const nirt::scene::E_COLLADA_TRANSPARENT_FX transparent) const
 {
 	if ( transparent & ECOF_RGB_ZERO )
 		return core::stringc("RGB_ZERO");
@@ -1092,9 +1092,9 @@ irr::core::stringc CColladaMeshWriter::toString(const irr::scene::E_COLLADA_TRAN
 		return core::stringc("A_ONE");
 }
 
-irr::core::stringc CColladaMeshWriter::toRef(const irr::core::stringc& source) const
+nirt::core::stringc CColladaMeshWriter::toRef(const nirt::core::stringc& source) const
 {
-	irr::core::stringc ref("#");
+	nirt::core::stringc ref("#");
 	ref += source;
 	return ref;
 }
@@ -1109,29 +1109,29 @@ bool CColladaMeshWriter::isCamera(const scene::ISceneNode* node) const
 	return false;
 }
 
-irr::core::stringc CColladaMeshWriter::nameForMesh(const scene::IMesh* mesh, int instance) const
+nirt::core::stringc CColladaMeshWriter::nameForMesh(const scene::IMesh* mesh, int instance) const
 {
 	IColladaMeshWriterNames * nameGenerator = getNameGenerator();
 	if ( nameGenerator )
 	{
 		return nameGenerator->nameForMesh(mesh, instance);
 	}
-	return irr::core::stringc("missing_name_generator");
+	return nirt::core::stringc("missing_name_generator");
 }
 
-irr::core::stringc CColladaMeshWriter::nameForNode(const scene::ISceneNode* node) const
+nirt::core::stringc CColladaMeshWriter::nameForNode(const scene::ISceneNode* node) const
 {
 	IColladaMeshWriterNames * nameGenerator = getNameGenerator();
 	if ( nameGenerator )
 	{
 		return nameGenerator->nameForNode(node);
 	}
-	return irr::core::stringc("missing_name_generator");
+	return nirt::core::stringc("missing_name_generator");
 }
 
-irr::core::stringc CColladaMeshWriter::nameForMaterial(const video::SMaterial & material, int materialId, const scene::IMesh* mesh, const scene::ISceneNode* node)
+nirt::core::stringc CColladaMeshWriter::nameForMaterial(const video::SMaterial & material, int materialId, const scene::IMesh* mesh, const scene::ISceneNode* node)
 {
-	irr::core::stringc matName;
+	nirt::core::stringc matName;
 	if ( getExportSMaterialsOnlyOnce() )
 	{
 		matName = findCachedMaterialName(material);
@@ -1145,7 +1145,7 @@ irr::core::stringc CColladaMeshWriter::nameForMaterial(const video::SMaterial & 
 		matName = nameGenerator->nameForMaterial(material, materialId, mesh, node);
 	}
 	else
-		matName = irr::core::stringc("missing_name_generator");
+		matName = nirt::core::stringc("missing_name_generator");
 
 	if ( getExportSMaterialsOnlyOnce() )
 		MaterialNameCache.push_back (MaterialName(material, matName));
@@ -1153,24 +1153,24 @@ irr::core::stringc CColladaMeshWriter::nameForMaterial(const video::SMaterial & 
 }
 
 // Each mesh-material has one symbol which is replaced on instantiation
-irr::core::stringc CColladaMeshWriter::nameForMaterialSymbol(const scene::IMesh* mesh, int materialId) const
+nirt::core::stringc CColladaMeshWriter::nameForMaterialSymbol(const scene::IMesh* mesh, int materialId) const
 {
 	c8 buf[100];
 	snprintf_nirt(buf, 100, "mat_symb_%p_%d", mesh, materialId);
-	return irr::core::stringc(buf);
+	return nirt::core::stringc(buf);
 }
 
-irr::core::stringc CColladaMeshWriter::findCachedMaterialName(const irr::video::SMaterial& material) const
+nirt::core::stringc CColladaMeshWriter::findCachedMaterialName(const nirt::video::SMaterial& material) const
 {
 	for ( u32 i=0; i<MaterialNameCache.size(); ++i )
 	{
 		if ( MaterialNameCache[i].Material == material )
 			return MaterialNameCache[i].Name;
 	}
-	return irr::core::stringc();
+	return nirt::core::stringc();
 }
 
-irr::core::stringc CColladaMeshWriter::minTexfilterToString(bool bilinear, bool trilinear) const
+nirt::core::stringc CColladaMeshWriter::minTexfilterToString(bool bilinear, bool trilinear) const
 {
 	if ( trilinear )
 		return core::stringc("LINEAR_MIPMAP_LINEAR");
@@ -1180,7 +1180,7 @@ irr::core::stringc CColladaMeshWriter::minTexfilterToString(bool bilinear, bool 
 	return core::stringc("NONE");
 }
 
-inline irr::core::stringc CColladaMeshWriter::magTexfilterToString(bool bilinear, bool trilinear) const
+inline nirt::core::stringc CColladaMeshWriter::magTexfilterToString(bool bilinear, bool trilinear) const
 {
 	if ( bilinear || trilinear )
 		return core::stringc("LINEAR");
@@ -1226,9 +1226,9 @@ bool CColladaMeshWriter::isXmlNameChar(c8 c) const
 }
 
 // Restrict the characters to a set of allowed characters in xs:NCName.
-irr::core::stringc CColladaMeshWriter::toNCName(const irr::core::stringc& oldString, const irr::core::stringc& prefix) const
+nirt::core::stringc CColladaMeshWriter::toNCName(const nirt::core::stringc& oldString, const nirt::core::stringc& prefix) const
 {
-	irr::core::stringc result(prefix);	// help to ensure id starts with a valid char and reduce chance of name-conflicts
+	nirt::core::stringc result(prefix);	// help to ensure id starts with a valid char and reduce chance of name-conflicts
 	if ( oldString.empty() )
 		return result;
 
@@ -1236,7 +1236,7 @@ irr::core::stringc CColladaMeshWriter::toNCName(const irr::core::stringc& oldStr
 
 	// We replace all characters not allowed by a replacement char
 	const c8 REPLACMENT = '-';
-	for ( irr::u32 i=1; i < result.size(); ++i )
+	for ( nirt::u32 i=1; i < result.size(); ++i )
 	{
 		if ( result[i] == ':' || !isXmlNameChar(result[i]) )
 		{
@@ -1246,7 +1246,7 @@ irr::core::stringc CColladaMeshWriter::toNCName(const irr::core::stringc& oldStr
 	return result;
 }
 
-const irr::core::stringc* CColladaMeshWriter::findGeometryNameForNode(ISceneNode* node)
+const nirt::core::stringc* CColladaMeshWriter::findGeometryNameForNode(ISceneNode* node)
 {
 	IMesh* mesh = getProperties()->getMesh(node);
 	if ( !mesh )
@@ -1261,9 +1261,9 @@ const irr::core::stringc* CColladaMeshWriter::findGeometryNameForNode(ISceneNode
 }
 
 // Restrict the characters to a set of allowed characters in xs:anyURI
-irr::core::stringc CColladaMeshWriter::pathToURI(const irr::io::path& path) const
+nirt::core::stringc CColladaMeshWriter::pathToURI(const nirt::io::path& path) const
 {
-	irr::core::stringc result;
+	nirt::core::stringc result;
 
 	// is this a relative path?
 	if ( path.size() > 1
@@ -1348,7 +1348,7 @@ void CColladaMeshWriter::writeAsset()
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeMeshMaterials(scene::IMesh* mesh, irr::core::array<irr::core::stringc> * materialNamesOut)
+void CColladaMeshWriter::writeMeshMaterials(scene::IMesh* mesh, nirt::core::array<nirt::core::stringc> * materialNamesOut)
 {
 	u32 i;
 	for (i=0; i<mesh->getMeshBufferCount(); ++i)
@@ -1361,7 +1361,7 @@ void CColladaMeshWriter::writeMeshMaterials(scene::IMesh* mesh, irr::core::array
 	}
 }
 
-void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialfxname, const video::SMaterial & material)
+void CColladaMeshWriter::writeMaterialEffect(const nirt::core::stringc& materialfxname, const video::SMaterial & material)
 {
 	if ( EffectsWritten.find(materialfxname) )
 		return;
@@ -1388,12 +1388,12 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 			if ( LibraryImages.linear_search(layer.Texture) < 0 )
 					LibraryImages.push_back( layer.Texture );
 
-			irr::core::stringc texName("tex");
-			texName += irr::core::stringc(t);
+			nirt::core::stringc texName("tex");
+			texName += nirt::core::stringc(t);
 
 			// write texture surface
 			//<newparam sid="tex0-surface">
-			irr::core::stringc texSurface(texName);
+			nirt::core::stringc texSurface(texName);
 			texSurface += "-surface";
 			Writer->writeElement("newparam", false, "sid", texSurface.data());
 			Writer->writeLineBreak();
@@ -1403,8 +1403,8 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 
 		//          <init_from>internal_texturename</init_from>
 					Writer->writeElement("init_from", false);
-					irr::io::path p(FileSystem->getRelativeFilename(layer.Texture->getName().getPath(), Directory));
-					Writer->writeText(toNCName(irr::core::stringc(p)).data());	// same ID for internal name as in writeLibraryImages
+					nirt::io::path p(FileSystem->getRelativeFilename(layer.Texture->getName().getPath(), Directory));
+					Writer->writeText(toNCName(nirt::core::stringc(p)).data());	// same ID for internal name as in writeLibraryImages
 					Writer->writeClosingTag("init_from");
 					Writer->writeLineBreak();
 
@@ -1423,7 +1423,7 @@ void CColladaMeshWriter::writeMaterialEffect(const irr::core::stringc& materialf
 
 			// write texture sampler
 		//  <newparam sid="tex0-sampler">
-			irr::core::stringc texSampler(texName);
+			nirt::core::stringc texSampler(texName);
 			texSampler += "-sampler";
 			Writer->writeElement("newparam", false, "sid", texSampler.data());
 			Writer->writeLineBreak();
@@ -1506,13 +1506,13 @@ void CColladaMeshWriter::writeMeshEffects(scene::IMesh* mesh)
 	for (u32 i=0; i<mesh->getMeshBufferCount(); ++i)
 	{
 		video::SMaterial & material = mesh->getMeshBuffer(i)->getMaterial();
-		irr::core::stringc materialfxname(nameForMaterial(material, i, mesh, NULL));
+		nirt::core::stringc materialfxname(nameForMaterial(material, i, mesh, NULL));
 		materialfxname += "-fx";
 		writeMaterialEffect(materialfxname, material);
 	}
 }
 
-void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, scene::IMesh* mesh)
+void CColladaMeshWriter::writeMeshGeometry(const nirt::core::stringc& meshname, scene::IMesh* mesh)
 {
 	core::stringc meshId(meshname);
 
@@ -1543,7 +1543,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 			needsTangents = mesh->getMeshBuffer(i)->getVertexType() == video::EVT_TANGENTS;
 	}
 
-	const irr::u32 mbCount = mesh->getMeshBufferCount();
+	const nirt::u32 mbCount = mesh->getMeshBufferCount();
 	SComponentGlobalStartPos* globalIndices = new SComponentGlobalStartPos[mbCount];
 
 	// write positions
@@ -1833,7 +1833,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 		const u32 polyCount = buffer->getPrimitiveCount();
 		core::stringc strPolyCount(polyCount);
-		irr::core::stringc strMat(nameForMaterialSymbol(mesh, i));
+		nirt::core::stringc strMat(nameForMaterialSymbol(mesh, i));
 
 		Writer->writeElement("triangles", false, "count", strPolyCount.data(),
 								"material", strMat.data());
@@ -1941,11 +1941,11 @@ void CColladaMeshWriter::writeLibraryImages()
 		Writer->writeElement("library_images", false);
 		Writer->writeLineBreak();
 
-		for ( irr::u32 i=0; i<LibraryImages.size(); ++i )
+		for ( nirt::u32 i=0; i<LibraryImages.size(); ++i )
 		{
-			irr::io::path p(FileSystem->getRelativeFilename(LibraryImages[i]->getName().getPath(), Directory));
+			nirt::io::path p(FileSystem->getRelativeFilename(LibraryImages[i]->getName().getPath(), Directory));
 			//<image name="rose01">
-			irr::core::stringc ncname( toNCName(irr::core::stringc(p)) );
+			nirt::core::stringc ncname( toNCName(nirt::core::stringc(p)) );
 			Writer->writeElement("image", false, "id", ncname.data(), "name", ncname.data());
 			Writer->writeLineBreak();
 			//  <init_from>../flowers/rose01.jpg</init_from>
@@ -2041,8 +2041,8 @@ video::SColor CColladaMeshWriter::getColorMapping(const video::SMaterial & mater
 
 void CColladaMeshWriter::writeTextureSampler(s32 textureIdx)
 {
-	irr::core::stringc sampler("tex");
-	sampler += irr::core::stringc(textureIdx);
+	nirt::core::stringc sampler("tex");
+	sampler += nirt::core::stringc(textureIdx);
 	sampler += "-sampler";
 
 	// <texture texture="sampler" texcoord="texCoordUv"/>
@@ -2181,7 +2181,7 @@ void CColladaMeshWriter::writeFxElement(const video::SMaterial & material, E_COL
 
 void CColladaMeshWriter::writeColorFx(const video::SMaterial & material, const c8 * colorname, E_COLLADA_COLOR_SAMPLER cs, const c8* attr1Name, const c8* attr1Value)
 {
-	irr::s32 idx = getCheckedTextureIdx(material, cs);
+	nirt::s32 idx = getCheckedTextureIdx(material, cs);
 	E_COLLADA_NIRT_COLOR colType = idx < 0 ? getProperties()->getColorMapping(material, cs) : ECIC_NONE;
 	if ( idx >= 0 || colType != ECIC_NONE )
 	{
@@ -2204,7 +2204,7 @@ void CColladaMeshWriter::writeNode(const c8 * nodeName, const c8 * content)
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeFloatElement(irr::f32 value)
+void CColladaMeshWriter::writeFloatElement(nirt::f32 value)
 {
 	Writer->writeElement("float", false);
 	Writer->writeText(core::stringc((double)value).eraseTrailingFloatZeros().data());
@@ -2212,58 +2212,58 @@ void CColladaMeshWriter::writeFloatElement(irr::f32 value)
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeRotateElement(const irr::core::vector3df& axis, irr::f32 angle)
+void CColladaMeshWriter::writeRotateElement(const nirt::core::vector3df& axis, nirt::f32 angle)
 {
 	Writer->writeElement("rotate", false);
-	irr::core::stringc txt(axis.X);
+	nirt::core::stringc txt(axis.X);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc(axis.Y);
+	txt += nirt::core::stringc(axis.Y);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc(axis.Z * -1.f);
+	txt += nirt::core::stringc(axis.Z * -1.f);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc((double)angle * -1.f);
+	txt += nirt::core::stringc((double)angle * -1.f);
 	txt.eraseTrailingFloatZeros();
 	Writer->writeText(txt.data());
 	Writer->writeClosingTag("rotate");
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeScaleElement(const irr::core::vector3df& scale)
+void CColladaMeshWriter::writeScaleElement(const nirt::core::vector3df& scale)
 {
 	Writer->writeElement("scale", false);
-	irr::core::stringc txt(scale.X);
+	nirt::core::stringc txt(scale.X);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc(scale.Y);
+	txt += nirt::core::stringc(scale.Y);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc(scale.Z);
+	txt += nirt::core::stringc(scale.Z);
 	txt.eraseTrailingFloatZeros();
 	Writer->writeText(txt.data());
 	Writer->writeClosingTag("scale");
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeTranslateElement(const irr::core::vector3df& translate)
+void CColladaMeshWriter::writeTranslateElement(const nirt::core::vector3df& translate)
 {
 	Writer->writeElement("translate", false);
-	irr::core::stringc txt(translate.X);
+	nirt::core::stringc txt(translate.X);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc(translate.Y);
+	txt += nirt::core::stringc(translate.Y);
 	txt.eraseTrailingFloatZeros();
 	txt += " ";
-	txt += irr::core::stringc(translate.Z*-1.f);
+	txt += nirt::core::stringc(translate.Z*-1.f);
 	txt.eraseTrailingFloatZeros();
 	Writer->writeText(txt.data());
 	Writer->writeClosingTag("translate");
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeLookAtElement(const irr::core::vector3df& eyePos, const irr::core::vector3df& targetPos, const irr::core::vector3df& upVector)
+void CColladaMeshWriter::writeLookAtElement(const nirt::core::vector3df& eyePos, const nirt::core::vector3df& targetPos, const nirt::core::vector3df& upVector)
 {
 	Writer->writeElement("lookat", false);
 
@@ -2275,9 +2275,9 @@ void CColladaMeshWriter::writeLookAtElement(const irr::core::vector3df& eyePos, 
 	Writer->writeLineBreak();
 }
 
-void CColladaMeshWriter::writeMatrixElement(const irr::core::matrix4& matrixIrr)
+void CColladaMeshWriter::writeMatrixElement(const nirt::core::matrix4& matrixIrr)
 {
-	irr::core::matrix4 matrix(matrixIrr.getTransposed());	// transposed because row/lines are written other way round in Collada
+	nirt::core::matrix4 matrix(matrixIrr.getTransposed());	// transposed because row/lines are written other way round in Collada
 	// Convert to right-handed
 	matrix[2] *= -1.f;
 	matrix[6] *= -1.f;
@@ -2291,12 +2291,12 @@ void CColladaMeshWriter::writeMatrixElement(const irr::core::matrix4& matrixIrr)
 
 	for ( int a=0; a<4; ++a )
 	{
-		irr::core::stringc txt;
+		nirt::core::stringc txt;
 		for ( int b=0; b<4; ++b )
 		{
 			if ( b > 0 )
 				txt += " ";
-			txt += irr::core::stringc(matrix[a*4+b]).eraseTrailingFloatZeros();
+			txt += nirt::core::stringc(matrix[a*4+b]).eraseTrailingFloatZeros();
 		}
 		Writer->writeText(txt.data());
 		Writer->writeLineBreak();

@@ -15,7 +15,7 @@
 #define NIRT_DEBUG_NPK_READER
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -271,7 +271,7 @@ void CNPKReader::readString(core::stringc& name)
 
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif // __NIRT_COMPILE_WITH_NPK_ARCHIVE_LOADER_
 

@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 static bool testLines(line2df const & line1,
@@ -273,9 +273,9 @@ bool line2dIntersectWith(void)
 bool getClosestPoint(void)
 {
 	// testcase that fails when integers are handled like floats
-	irr::core::line2di line(-283, -372, 374, 289);
-	irr::core::vector2di p1 = line.getClosestPoint( irr::core::vector2di(290,372) );
-	irr::core::vector2di p2 = line.getClosestPoint( irr::core::vector2di(135,372) );
+	nirt::core::line2di line(-283, -372, 374, 289);
+	nirt::core::vector2di p1 = line.getClosestPoint( nirt::core::vector2di(290,372) );
+	nirt::core::vector2di p2 = line.getClosestPoint( nirt::core::vector2di(135,372) );
 	if( p1 == p2 )
 	{
 		logTestString("getClosestPoint failed\n");

@@ -7,7 +7,7 @@
 
 #include "ISceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -35,7 +35,7 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif

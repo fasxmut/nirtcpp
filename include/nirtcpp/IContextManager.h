@@ -8,7 +8,7 @@
 #include "SExposedVideoData.h"
 #include "SIrrCreationParameters.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -43,7 +43,7 @@ namespace video
 		/** This is mostly used internally by IVideoDriver::beginScene().
 			But if you want to switch threads which access your OpenGL driver you will have to
 			call this function as follows:
-			Old thread gives up context with: activateContext(irr::video::SExposedVideoData());
+			Old thread gives up context with: activateContext(nirt::video::SExposedVideoData());
 			New thread takes over context with: activateContext(videoDriver->getExposedVideoData());
 			Note that only 1 thread at a time may access an OpenGL context.	*/
 		virtual bool activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero=false) =0;
@@ -53,7 +53,7 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif

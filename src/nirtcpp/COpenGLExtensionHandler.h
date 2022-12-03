@@ -17,7 +17,7 @@
 
 #include "COpenGLCoreFeature.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

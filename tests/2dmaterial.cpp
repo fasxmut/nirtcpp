@@ -1,6 +1,6 @@
 #include "testUtils.h"
 #include <map>
-using namespace irr;
+using namespace nirt;
 
 namespace
 {
@@ -12,7 +12,7 @@ class ScalableFont : public gui::IGUIFontBitmap
 	float m_scale;
 	struct TextureInfo
 	{
-		irr::core::stringc m_file_name;
+		nirt::core::stringc m_file_name;
 		bool m_has_alpha;
 		float m_scale;
 
@@ -842,7 +842,7 @@ static bool addBlend2d(video::E_DRIVER_TYPE type)
 // at the bottom left is not.
 static bool moreFilterTests(video::E_DRIVER_TYPE type)
 {
-	NirtcppDevice* device = irr::createDevice(type, core::dimension2du(160,120));
+	NirtcppDevice* device = nirt::createDevice(type, core::dimension2du(160,120));
 	if (!device)
 		return true;
 
@@ -871,16 +871,16 @@ static bool moreFilterTests(video::E_DRIVER_TYPE type)
 	driver->getMaterial2D().TextureLayer[0].TrilinearFilter=true;
 
 	{
-		driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, irr::video::SColor(255,255,255,255));
+		driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, nirt::video::SColor(255,255,255,255));
 
 		// all three logos should be with filtering
 		driver->enableMaterial2D();
 
 		driver->getMaterial2D().setTexture(0, 0);
-		driver->draw2DImage(tex, irr::core::rect<irr::s32>(64, 64, 128, 128), irr::core::rect<irr::s32>(0, 0, 88, 31));
+		driver->draw2DImage(tex, nirt::core::rect<nirt::s32>(64, 64, 128, 128), nirt::core::rect<nirt::s32>(0, 0, 88, 31));
 
 		driver->getMaterial2D().setTexture(0, tex);
-		driver->draw2DImage(tex, irr::core::rect<irr::s32>(64, 0, 128, 64), irr::core::rect<irr::s32>(0, 0, 88, 31));
+		driver->draw2DImage(tex, nirt::core::rect<nirt::s32>(64, 0, 128, 64), nirt::core::rect<nirt::s32>(0, 0, 88, 31));
 
 		gui->drawAll();
 

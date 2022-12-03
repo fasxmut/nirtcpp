@@ -13,7 +13,7 @@
 
 #include "SMaterial.h"
 
-namespace irr {
+namespace nirt {
 namespace scene {
 
 struct SB3dChunkHeader
@@ -66,6 +66,6 @@ struct SB3dMaterial
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -11,7 +11,7 @@
 #include "os.h" // for logging
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -156,7 +156,7 @@ bool CImageWriterPCX::writeImage(io::IWriteFile *file, IImage *image,u32 param) 
 }
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif
 

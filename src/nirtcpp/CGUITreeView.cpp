@@ -15,7 +15,7 @@
 #include "CGUIScrollBar.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -852,7 +852,7 @@ void CGUITreeView::draw()
 	updateScrollBarSize(skin->getSize(EGDS_SCROLLBAR_SIZE));
 	recalculateItemHeight(); // if the font changed
 
-	irr::video::IVideoDriver* driver = Environment->getVideoDriver();
+	nirt::video::IVideoDriver* driver = Environment->getVideoDriver();
 
 	core::rect<s32>* clipRect = 0;
 	if( Clip )
@@ -1155,7 +1155,7 @@ IGUIScrollBar* CGUITreeView::getHorizontalScrollBar() const
 }
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif // _NIRT_COMPILE_WITH_GUI_

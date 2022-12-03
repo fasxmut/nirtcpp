@@ -228,7 +228,7 @@
  *
  * \code
  * #include <nirtcpp.h>
- * using namespace irr;
+ * using namespace nirt;
  *
  * int main()
  * {
@@ -269,7 +269,7 @@
  * }
  * \endcode
  *
- * Nirtcpp can load a lot of file formats automatically, see irr::scene::ISceneManager::getMesh()
+ * Nirtcpp can load a lot of file formats automatically, see nirt::scene::ISceneManager::getMesh()
  * for a detailed list. So if you would like to replace the simple blue screen background by
  * a cool Quake 3 Map, optimized by an octree, just insert this code
  * somewhere before the while loop:
@@ -306,7 +306,7 @@
 #include "SIrrCreationParameters.h"
 
 //! Everything in the Nirtcpp Engine can be found in this namespace.
-namespace irr
+namespace nirt
 {
 	//! Creates an Nirtcpp device. The Nirtcpp device is the root object for using the engine.
 	/** If you need more parameters to be passed to the creation of the Nirtcpp Engine device,
@@ -352,7 +352,7 @@ namespace irr
 	Use this function only if you wish to specify advanced parameters like a window
 	handle in which the device should be created.
 	\param parameters: Structure containing advanced parameters for the creation of the device.
-	See irr::SNirtcppCreationParameters for details.
+	See nirt::SNirtcppCreationParameters for details.
 	\return Returns pointer to the created NirtcppDevice or null if the
 	device could not be created. */
 	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(

@@ -13,7 +13,7 @@
 #include "IDynamicMeshBuffer.h"
 #include "path.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -203,7 +203,7 @@ namespace scene
 		virtual void scaleTexture(f32 scale = 1.0f, f32 scale2 = 0.0f) override;
 
 		//! Force node to use a fixed LOD level at the borders of the terrain.
-		virtual void setFixedBorderLOD(irr::s32 borderLOD)  override
+		virtual void setFixedBorderLOD(nirt::s32 borderLOD)  override
 		{
 			FixedBorderLOD = borderLOD;
 		}
@@ -329,6 +329,6 @@ namespace scene
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_C_TERRAIN_SCENE_NODE_H

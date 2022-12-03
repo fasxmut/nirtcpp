@@ -9,7 +9,7 @@
 #include "IMesh.h"
 #include "IImage.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -242,6 +242,6 @@ public:
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_I_GEOMETRY_CREATOR_H_INCLUDED

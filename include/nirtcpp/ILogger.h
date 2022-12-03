@@ -7,7 +7,7 @@
 
 #include "IReferenceCounted.h"
 
-namespace irr
+namespace nirt
 {
 
 //! Possible log levels.

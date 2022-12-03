@@ -13,7 +13,7 @@
 
 #include "COpenGLDriver.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -285,7 +285,7 @@ void COpenGLNormalMapRenderer::OnSetConstants(IMaterialRendererServices* service
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace scene;
 using namespace video;
@@ -72,7 +72,7 @@ private:
 	jumping it back again. */
 bool collisionResponseAnimator(void)
 {
-	NirtcppDevice * device = irr::createDevice(video::EDT_NULL);
+	NirtcppDevice * device = nirt::createDevice(video::EDT_NULL);
 	assert_log(device);
 	if(!device)
 		return false;

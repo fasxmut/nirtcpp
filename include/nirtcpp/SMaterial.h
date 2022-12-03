@@ -13,7 +13,7 @@
 #include "EMaterialFlags.h"
 #include "SMaterialLayer.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -182,7 +182,7 @@ namespace video
 	to coverage.
 	Some drivers don't support a per-material setting of the anti-aliasing
 	modes. In those cases, FSAA/multisampling is defined by the device mode
-	chosen upon creation via irr::SIrrCreationParameters.
+	chosen upon creation via nirt::SIrrCreationParameters.
 	*/
 	enum E_ANTI_ALIASING_MODE
 	{
@@ -770,6 +770,6 @@ namespace video
 	//! global const identity Material
 	NIRTCPP_API extern SMaterial IdentityMaterial;
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

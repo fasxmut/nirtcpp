@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 // Tests skinned meshes.
 bool skinnedMesh(void)

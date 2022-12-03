@@ -17,7 +17,7 @@
 
 #define ARROW_PAD 15
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -856,7 +856,7 @@ void CGUITable::draw()
 	if (!IsVisible)
 		return;
 
-	irr::video::IVideoDriver* driver = Environment->getVideoDriver();
+	nirt::video::IVideoDriver* driver = Environment->getVideoDriver();
 
 	IGUISkin* skin = Environment->getSkin();
 	if (!skin)
@@ -1290,7 +1290,7 @@ void CGUITable::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWri
 }
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

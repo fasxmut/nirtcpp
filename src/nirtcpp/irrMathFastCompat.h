@@ -6,7 +6,7 @@
 
 #include "irrMath.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -121,6 +121,6 @@ namespace core
 	}	
 	
 } // end namespace core
-} // end namespace irr	
+} // end namespace nirt	
 
 #endif // __NIRT_FAST_MATH_COMPAT_H_INCLUDED__

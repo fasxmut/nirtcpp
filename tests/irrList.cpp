@@ -1,7 +1,7 @@
 #include "testUtils.h"
 #include <nirtcpp.h>
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 // list has no operator== currently so we have to check manually

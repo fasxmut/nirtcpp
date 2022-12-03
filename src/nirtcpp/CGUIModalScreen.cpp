@@ -10,7 +10,7 @@
 #include "IVideoDriver.h"
 #include "IGUISkin.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -249,7 +249,7 @@ void CGUIModalScreen::deserializeAttributes(io::IAttributes* in, io::SAttributeR
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

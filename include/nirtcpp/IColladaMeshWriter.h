@@ -10,7 +10,7 @@
 #include "IAnimatedMesh.h"
 #include "SMaterial.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -135,12 +135,12 @@ namespace scene
 
 		//! Should node be used in scene export? (only needed for scene-writing, ignored in mesh-writing)
 		//! By default all visible nodes are exported.
-		virtual bool isExportable(const irr::scene::ISceneNode * node) const = 0;
+		virtual bool isExportable(const nirt::scene::ISceneNode * node) const = 0;
 
 		//! Return the mesh for the given node. If it has no mesh or shouldn't export it's mesh
 		//! you can return 0 in which case only the transformation matrix of the node will be used.
 		// TODO: Function is not const because there is no const getMesh() function for several Nirtcpp nodes.
-		virtual IMesh* getMesh(irr::scene::ISceneNode * node) = 0;
+		virtual IMesh* getMesh(nirt::scene::ISceneNode * node) = 0;
 
 		//! Return if the node has it's own material overwriting the mesh-materials
 		/** Usually true except for mesh-nodes which have isReadOnlyMaterials set.
@@ -172,7 +172,7 @@ namespace scene
 		\param instance When E_COLLADA_GEOMETRY_WRITING is not ECGI_PER_MESH then
 		several instances of the same mesh can be written and this counts them.
 		*/
-		virtual irr::core::stringc nameForMesh(const scene::IMesh* mesh, int instance) = 0;
+		virtual nirt::core::stringc nameForMesh(const scene::IMesh* mesh, int instance) = 0;
 
 		//! Return a unique name for the given node
 		/** Note that names really must be unique here per node-pointer, so
@@ -181,7 +181,7 @@ namespace scene
 		the xs:NCName standard to be valid, you can run them through
 		IColladaMeshWriter::toNCName to ensure that.
 		*/
-		virtual irr::core::stringc nameForNode(const scene::ISceneNode* node) = 0;
+		virtual nirt::core::stringc nameForNode(const scene::ISceneNode* node) = 0;
 
 		//! Return a name for the material
 		/** There is one material created in the writer for each unique name.
@@ -194,7 +194,7 @@ namespace scene
 		Names must follow the xs:NCName standard to be valid, you can run them
 		through IColladaMeshWriter::toNCName to ensure that.
 		*/
-		virtual irr::core::stringc nameForMaterial(const video::SMaterial & material, int materialId, const scene::IMesh* mesh, const scene::ISceneNode* node) = 0;
+		virtual nirt::core::stringc nameForMaterial(const video::SMaterial & material, int materialId, const scene::IMesh* mesh, const scene::ISceneNode* node) = 0;
 	};
 
 
@@ -276,20 +276,20 @@ namespace scene
 		/**
 		\param meter: Real-world meters to use per unit. Default 1 unit = 1 meter. For 1 unit = 1cm you would set to 0.01
 		\param name: Name to use for distance unit. Default is "meter".	*/
-		virtual void setUnit(irr::f32 meter, const irr::core::stringc& name)
+		virtual void setUnit(nirt::f32 meter, const nirt::core::stringc& name)
 		{
 			UnitMeter = meter;
 			UnitName = name;
 		}
 
 		//! Return real world meters to use per unit for all elements and objects
-		virtual irr::f32 getUnitMeter() const
+		virtual nirt::f32 getUnitMeter() const
 		{
 			return UnitMeter;
 		}
 
 		//! Return name to use for distance units. Like p.E. "meter".
-		virtual irr::core::stringc getUnitName() const 
+		virtual nirt::core::stringc getUnitName() const 
 		{
 			return UnitName;
 		}
@@ -315,7 +315,7 @@ namespace scene
 
 		//! Make certain there is only one collada material generated per Nirtcpp material
 		/** Checks before creating a collada material-name if an identical
-		irr:::video::SMaterial has been exported already. If so don't export it with
+		nirt:::video::SMaterial has been exported already. If so don't export it with
 		another name. This is set by default and leads to way smaller .dae files.
 		Note that if you need to disable this flag for some reason you can still
 		get a similar effect using the IColladaMeshWriterNames::nameForMaterial
@@ -385,13 +385,13 @@ namespace scene
 
 		//! Restrict the characters of oldString a set of allowed characters in xs:NCName and add the prefix.
 		/** A tool function to help when using a custom name generator to generative valid names for collada names and id's. */
-		virtual irr::core::stringc toNCName(const irr::core::stringc& oldString, const irr::core::stringc& prefix=irr::core::stringc("_NC_")) const = 0;
+		virtual nirt::core::stringc toNCName(const nirt::core::stringc& oldString, const nirt::core::stringc& prefix=nirt::core::stringc("_NC_")) const = 0;
 
 		//! After export you can find out which name had been used for writing the geometry for this node.
 		/** The name comes from IColladaMeshWriterNames::nameForMesh, but you can't access the node there.
 		\return Either a pointer to the name or NULL */
 		// TODO: Function is not const because there is no const getMesh() function for several Nirtcpp nodes.
-		virtual const irr::core::stringc* findGeometryNameForNode(ISceneNode* node) = 0;
+		virtual const nirt::core::stringc* findGeometryNameForNode(ISceneNode* node) = 0;
 
 		//! Change param name used for UV's.
 		/** Param names for UV's have a name. By default it's "U" and "V".
@@ -433,7 +433,7 @@ namespace scene
 		}
 
 	protected:
-		irr::core::stringc ParamNamesUV[2];
+		nirt::core::stringc ParamNamesUV[2];
 
 	private:
 		IColladaMeshWriterProperties * Properties;
@@ -444,8 +444,8 @@ namespace scene
 		bool WriteDefaultScene;
 		bool ExportSMaterialOnce;
 		video::SColorf AmbientLight;
-		irr::f32 UnitMeter;
-		irr::core::stringc UnitName;
+		nirt::f32 UnitMeter;
+		nirt::core::stringc UnitName;
 		E_COLLADA_GEOMETRY_WRITING GeometryWriting;
 	};
 

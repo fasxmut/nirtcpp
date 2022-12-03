@@ -18,7 +18,7 @@
 #define _NIRT_DEBUG_3DS_LOADER_
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1367,7 +1367,7 @@ void C3DSMeshFileLoader::readString(io::IReadFile* file, ChunkData& data, core::
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_3DS_LOADER_
 

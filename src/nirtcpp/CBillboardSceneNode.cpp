@@ -10,7 +10,7 @@
 #include "ICameraSceneNode.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -92,7 +92,7 @@ void CBillboardSceneNode::render()
 	}
 }
 
-void CBillboardSceneNode::updateMesh(const irr::scene::ICameraSceneNode* camera)
+void CBillboardSceneNode::updateMesh(const nirt::scene::ICameraSceneNode* camera)
 {
 	// billboard looks toward camera
 	core::vector3df pos = getAbsolutePosition();
@@ -147,7 +147,7 @@ const core::aabbox3d<f32>& CBillboardSceneNode::getBoundingBox() const
 	return BBoxSafe;
 }
 
-const core::aabbox3d<f32>& CBillboardSceneNode::getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera)
+const core::aabbox3d<f32>& CBillboardSceneNode::getTransformedBillboardBoundingBox(const nirt::scene::ICameraSceneNode* camera)
 {
 	updateMesh(camera);
 	return Buffer->BoundingBox;
@@ -316,6 +316,6 @@ ISceneNode* CBillboardSceneNode::clone(ISceneNode* newParent, ISceneManager* new
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_

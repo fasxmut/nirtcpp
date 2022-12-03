@@ -250,7 +250,7 @@ struct ALIGN(16) sVec4
 		return x * other.x + y * other.y + z * other.z;
 	}
 
-	REALINLINE f32 dot(const irr::core::vector3df& other) const
+	REALINLINE f32 dot(const nirt::core::vector3df& other) const
 	{
 		return x * other.X + y * other.Y + z * other.Z;
 	}
@@ -434,7 +434,7 @@ struct ALIGN(16) sVec4
 };
 
 //shader
-inline void irr::video::sVec2::operator=(const sVec4& b)
+inline void nirt::video::sVec2::operator=(const sVec4& b)
 {
 	x = b.x;
 	y = b.y;

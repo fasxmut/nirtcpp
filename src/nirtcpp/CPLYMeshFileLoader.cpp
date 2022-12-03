@@ -14,7 +14,7 @@
 #include "fast_atof.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -815,7 +815,7 @@ u32 CPLYMeshFileLoader::getInt(E_PLY_PROPERTY_TYPE t)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_PLY_LOADER_
 

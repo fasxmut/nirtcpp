@@ -15,7 +15,7 @@
 #include "COpenGLCoreTexture.h"
 #include "COpenGLCoreCacheHandler.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -60,7 +60,7 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_OPENGL_
 #endif

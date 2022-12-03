@@ -8,7 +8,7 @@
 #include "SColor.h"
 #include "vector3d.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -96,6 +96,6 @@ struct SLight
 };
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

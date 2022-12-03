@@ -7,7 +7,7 @@
 
 #include "SoftwareDriver2_helper.h"
 
-namespace irr
+namespace nirt
 {
 
 //! f18 - fixpoint 14.18 limit to 16k Textures

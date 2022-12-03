@@ -26,7 +26,7 @@
 #ifdef _DEBUG
 #define COLLADA_READER_DEBUG
 #endif
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1404,7 +1404,7 @@ void CColladaFileLoader::readEffect(io::IXMLReaderUTF8* reader, SColladaEffect *
 				#ifdef COLLADA_READER_DEBUG
 				os::Printer::log("COLLADA reading effect part", reader->getNodeName(), ELL_DEBUG);
 				#endif
-				effect->Mat.setFlag(irr::video::EMF_GOURAUD_SHADING,
+				effect->Mat.setFlag(nirt::video::EMF_GOURAUD_SHADING,
 					phongNode == reader->getNodeName() ||
 					blinnNode == reader->getNodeName());
 				while(reader->read())
@@ -1509,7 +1509,7 @@ void CColladaFileLoader::readEffect(io::IXMLReaderUTF8* reader, SColladaEffect *
 					os::Printer::log("Setting double sided flag for effect.", ELL_DEBUG);
 					#endif
 
-					effect->Mat.setFlag(irr::video::EMF_BACK_FACE_CULLING,false);
+					effect->Mat.setFlag(nirt::video::EMF_BACK_FACE_CULLING,false);
 				}
 			}
 			else
@@ -1540,7 +1540,7 @@ void CColladaFileLoader::readEffect(io::IXMLReaderUTF8* reader, SColladaEffect *
 		effect->Mat.DiffuseColor = effect->Mat.AmbientColor;
 	if ((effect->Transparency != 0.0f) && (effect->Transparency != 1.0f))
 	{
-		effect->Mat.MaterialType = irr::video::EMT_TRANSPARENT_VERTEX_ALPHA;
+		effect->Mat.MaterialType = nirt::video::EMT_TRANSPARENT_VERTEX_ALPHA;
 		effect->Mat.ZWriteEnable = video::EZW_OFF;
 	}
 
@@ -1643,7 +1643,7 @@ void CColladaFileLoader::readBindMaterialSection(io::IXMLReaderUTF8* reader, con
 #endif
 				if (MaterialsToBind.find(meshbufferReference))
 				{
-					core::array<irr::scene::IMeshBuffer*> & toBind
+					core::array<nirt::scene::IMeshBuffer*> & toBind
 						= MeshesToBind[MaterialsToBind[meshbufferReference]];
 #ifdef COLLADA_READER_DEBUG
 				os::Printer::log("Material binding now ",material->Id.data(), ELL_DEBUG);
@@ -1795,7 +1795,7 @@ void CColladaFileLoader::readGeometry(io::IXMLReaderUTF8* reader)
 					#ifdef COLLADA_READER_DEBUG
 					os::Printer::log("Setting double sided flag for mesh.", ELL_DEBUG);
 					#endif
-					amesh->setMaterialFlag(irr::video::EMF_BACK_FACE_CULLING,false);
+					amesh->setMaterialFlag(nirt::video::EMF_BACK_FACE_CULLING,false);
 				}
 			}
 			else
@@ -2352,7 +2352,7 @@ void CColladaFileLoader::readPolygonSection(io::IXMLReaderUTF8* reader,
 	if (!MaterialsToBind.find(meshbufferReference))
 	{
 		MaterialsToBind[meshbufferReference] = MeshesToBind.size();
-		MeshesToBind.push_back(core::array<irr::scene::IMeshBuffer*>());
+		MeshesToBind.push_back(core::array<nirt::scene::IMeshBuffer*>());
 	}
 	MeshesToBind[MaterialsToBind[meshbufferReference]].push_back(buffer);
 
@@ -2959,7 +2959,7 @@ core::matrix4 CColladaFileLoader::flipZAxis(const core::matrix4& m)
 	return matrix;
 }
 
-void CColladaFileLoader::unescape(irr::core::stringc& uri)
+void CColladaFileLoader::unescape(nirt::core::stringc& uri)
 {
 	u32 len = uri.size();
 	for (u32 i=0; i<len-1; ++i)
@@ -2974,7 +2974,7 @@ void CColladaFileLoader::unescape(irr::core::stringc& uri)
 
 			for (u32 e = 0; e < EscapeCharsAnyURI.size(); ++e)
 			{
-				const irr::core::stringc& escapeString = EscapeCharsAnyURI[e].Escape;
+				const nirt::core::stringc& escapeString = EscapeCharsAnyURI[e].Escape;
 				const u32 escapeLen = escapeString.size();
 				bool equals = true;
 				for ( u32 c = 1; c<escapeLen; ++c)	// string compare (and we already know first on fits as always '%')
@@ -3002,7 +3002,7 @@ void CColladaFileLoader::unescape(irr::core::stringc& uri)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_COLLADA_LOADER_
 

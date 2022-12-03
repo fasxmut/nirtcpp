@@ -12,7 +12,7 @@
 #include <wchar.h>
 
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -341,7 +341,7 @@ void CGUISpinBox::deserializeAttributes(io::IAttributes* in, io::SAttributeReadW
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

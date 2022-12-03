@@ -1,6 +1,6 @@
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace io;
 
@@ -338,7 +338,7 @@ bool serializeAttributes()
 {
 	bool result = true;
 
-	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
+	NirtcppDevice * device = nirt::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
 	assert(device);
 	if(!device)
 	{

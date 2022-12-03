@@ -7,7 +7,7 @@
 #include "IrrCompileConfig.h"
 #include "limits.h"
 
-namespace irr
+namespace nirt
 {
 #ifdef _NIRT_COMPILE_WITH_PROFILING_
     enum EPROFILE_ID
@@ -33,6 +33,6 @@ namespace irr
 		EPID_OC_CALCPOLYS
     };
 #endif
-} // end namespace irr
+} // end namespace nirt
 
 #endif // E_PROFILE_IDS_H_INCLUDED__

@@ -10,7 +10,7 @@
 #include "SColor.h"
 #include "rect.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -136,6 +136,6 @@ public:
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_I_GUI_SPRITE_BANK_H_INCLUDED

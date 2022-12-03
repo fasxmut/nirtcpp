@@ -38,7 +38,7 @@ static const char* const copyright = "Nirtcpp Engine (c) 2002-2017 Nikolaus Gebh
 #include "CIrrDeviceConsole.h"
 #endif
 
-namespace irr
+namespace nirt
 {
 	//! stub for calling createDeviceEx
 	NIRTCPP_API NirtcppDevice* IRRCALLCONV createDevice(video::E_DRIVER_TYPE driverType,
@@ -109,7 +109,7 @@ namespace irr
 namespace core
 {
 	const matrix4 IdentityMatrix(matrix4::EM4CONST_IDENTITY);
-	irr::core::stringc LOCALE_DECIMAL_POINTS(".");
+	nirt::core::stringc LOCALE_DECIMAL_POINTS(".");
 }
 
 namespace video
@@ -118,7 +118,7 @@ namespace video
 	u32 MATERIAL_MAX_TEXTURES_USED = MATERIAL_MAX_TEXTURES;
 }
 
-} // end namespace irr
+} // end namespace nirt
 
 
 #if defined(_NIRT_WINDOWS_API_) && !defined(_NIRT_STATIC_LIB_)

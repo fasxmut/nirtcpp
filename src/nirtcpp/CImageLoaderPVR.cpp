@@ -11,7 +11,7 @@
 #include "CImage.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

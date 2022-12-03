@@ -5,7 +5,7 @@
 #ifndef NIRT_E_ATTRIBUTES_H_INCLUDED
 #define NIRT_E_ATTRIBUTES_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -96,6 +96,6 @@ enum E_ATTRIBUTE_TYPE
 };
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif

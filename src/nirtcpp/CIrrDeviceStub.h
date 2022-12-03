@@ -11,7 +11,7 @@
 #include "CVideoModeList.h"
 #include "IContextManager.h"
 
-namespace irr
+namespace nirt
 {
 	// lots of prototypes:
 	class ILogger;
@@ -41,7 +41,7 @@ namespace irr
 		IVideoDriver* createSoftwareDriver(const core::dimension2d<u32>& windowSize,
 				bool fullscreen, io::IFileSystem* io,
 				video::IImagePresenter* presenter);
-		IVideoDriver* createBurningVideoDriver(const irr::SNirtcppCreationParameters& params,
+		IVideoDriver* createBurningVideoDriver(const nirt::SNirtcppCreationParameters& params,
 				io::IFileSystem* io, video::IImagePresenter* presenter);
 		IVideoDriver* createNullDriver(io::IFileSystem* io, const core::dimension2d<u32>& screenSize);
 	}
@@ -140,7 +140,7 @@ namespace irr
 		virtual void clearSystemMessages() override;
 
 		//! Resize the render window.
-		virtual void setWindowSize(const irr::core::dimension2d<u32>& size) override {}
+		virtual void setWindowSize(const nirt::core::dimension2d<u32>& size) override {}
 
 	protected:
 
@@ -189,6 +189,6 @@ namespace irr
 		bool Close;
 	};
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

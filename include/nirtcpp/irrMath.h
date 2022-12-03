@@ -13,18 +13,18 @@
 #include <limits.h> // For INT_MAX / UINT_MAX
 
 #if defined(_NIRT_SOLARIS_PLATFORM_) || defined(__BORLANDC__) || defined (__BCPLUSPLUS__) || defined (_WIN32_WCE)
-	#define sqrtf(X) (irr::f32)sqrt((irr::f64)(X))
-	#define sinf(X) (irr::f32)sin((irr::f64)(X))
-	#define cosf(X) (irr::f32)cos((irr::f64)(X))
-	#define asinf(X) (irr::f32)asin((irr::f64)(X))
-	#define acosf(X) (irr::f32)acos((irr::f64)(X))
-	#define atan2f(X,Y) (irr::f32)atan2((irr::f64)(X),(irr::f64)(Y))
-	#define ceilf(X) (irr::f32)ceil((irr::f64)(X))
-	#define floorf(X) (irr::f32)floor((irr::f64)(X))
-	#define powf(X,Y) (irr::f32)pow((irr::f64)(X),(irr::f64)(Y))
-	#define fmodf(X,Y) (irr::f32)fmod((irr::f64)(X),(irr::f64)(Y))
-	#define fabsf(X) (irr::f32)fabs((irr::f64)(X))
-	#define logf(X) (irr::f32)log((irr::f64)(X))
+	#define sqrtf(X) (nirt::f32)sqrt((nirt::f64)(X))
+	#define sinf(X) (nirt::f32)sin((nirt::f64)(X))
+	#define cosf(X) (nirt::f32)cos((nirt::f64)(X))
+	#define asinf(X) (nirt::f32)asin((nirt::f64)(X))
+	#define acosf(X) (nirt::f32)acos((nirt::f64)(X))
+	#define atan2f(X,Y) (nirt::f32)atan2((nirt::f64)(X),(nirt::f64)(Y))
+	#define ceilf(X) (nirt::f32)ceil((nirt::f64)(X))
+	#define floorf(X) (nirt::f32)floor((nirt::f64)(X))
+	#define powf(X,Y) (nirt::f32)pow((nirt::f64)(X),(nirt::f64)(Y))
+	#define fmodf(X,Y) (nirt::f32)fmod((nirt::f64)(X),(nirt::f64)(Y))
+	#define fabsf(X) (nirt::f32)fabs((nirt::f64)(X))
+	#define logf(X) (nirt::f32)log((nirt::f64)(X))
 #endif
 
 #ifndef FLT_MAX
@@ -35,7 +35,7 @@
 #define FLT_MIN 1.17549435e-38F
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -269,8 +269,8 @@ namespace core
 		// Portable sign-extraction
 		bool sign() const { return (i >> 31) != 0; }
 
-		irr::s32 i;
-		irr::f32 f;
+		nirt::s32 i;
+		nirt::f32 f;
 	};
 
 	//! We compare the difference in ULP's (spacing between floating-point numbers, aka ULP=1 means there exists no float between).
@@ -675,11 +675,11 @@ namespace core
 	}
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #ifndef NIRTCPP_FAST_MATH
-	using irr::core::IR;
-	using irr::core::FR;
+	using nirt::core::IR;
+	using nirt::core::FR;
 #endif
 
 #endif

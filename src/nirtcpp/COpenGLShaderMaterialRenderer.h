@@ -13,7 +13,7 @@
 
 #include "COpenGLCommon.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -64,7 +64,7 @@ protected:
 
 	bool createPixelShader(const c8* pxsh);
 	bool createVertexShader(const c8* vtxsh);
-	bool checkError(const irr::c8* type);
+	bool checkError(const nirt::c8* type);
 
 	COpenGLDriver* Driver;
 	IShaderConstantSetCallBack* CallBack;
@@ -90,7 +90,7 @@ protected:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 #endif

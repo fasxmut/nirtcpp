@@ -12,7 +12,7 @@
 #include "line3d.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -37,16 +37,16 @@ struct SCollisionTriangleRange
 	/**
 	\param triangleIndex Index to an element inside the array of triangles returned by ITriangleSelector::getTriangles
 	*/
-	bool isIndexInRange(irr::u32 triangleIndex) const
+	bool isIndexInRange(nirt::u32 triangleIndex) const
 	{
 		return triangleIndex >= RangeStart && triangleIndex < RangeStart+RangeSize;
 	}
 
 	//! First index in the returned triangle array for which this struct is valid
-	irr::u32 RangeStart;
+	nirt::u32 RangeStart;
 
 	//! Number of elements in the returned triangle array for which this struct is valid (starting with RangeStart)
-	irr::u32 RangeSize;
+	nirt::u32 RangeSize;
 
 	//! Real selector which contained those triangles (useful when working with MetaTriangleSelector)
 	const ITriangleSelector* Selector;
@@ -59,7 +59,7 @@ struct SCollisionTriangleRange
 	const IMeshBuffer* MeshBuffer;
 
 	//! Index of selected material in the SceneNode. Usually only valid when MeshBuffer is also set, otherwise always 0
-	irr::u32 MaterialIndex;
+	nirt::u32 MaterialIndex;
 };
 
 //! Interface to return triangles with specific properties.
@@ -100,7 +100,7 @@ public:
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::matrix4* transform=0,
 		bool useNodeTransform=true,
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo=0) const = 0;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo=0) const = 0;
 
 	//! Gets the triangles for one associated node which may lie within a specific bounding box.
 	/**
@@ -130,7 +130,7 @@ public:
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::aabbox3d<f32>& box,
 		const core::matrix4* transform=0, bool useNodeTransform=true,
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo=0) const = 0;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo=0) const = 0;
 
 	//! Gets the triangles for one associated node which have or may have contact with a 3d line.
 	/**
@@ -160,7 +160,7 @@ public:
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::line3d<f32>& line,
 		const core::matrix4* transform=0, bool useNodeTransform=true,
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo=0) const = 0;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo=0) const = 0;
 
 	//! Get number of TriangleSelectors that are part of this one
 	/** Only useful for MetaTriangleSelector, others return 1
@@ -190,6 +190,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

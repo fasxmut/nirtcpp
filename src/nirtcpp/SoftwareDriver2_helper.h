@@ -15,7 +15,7 @@ History:
 #include "SMaterial.h"
 
 
-namespace irr
+namespace nirt
 {
 
 // supporting different packed pixel needs many defines...
@@ -1322,6 +1322,6 @@ static inline int tiny_isequal(const char* s1, const char* s2, size_t n)
 #define tiny_istoken(a, b) tiny_isequal(a,b,sizeof(a)-1) != 0
 
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

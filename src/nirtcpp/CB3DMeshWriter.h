@@ -14,7 +14,7 @@
 
 
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {

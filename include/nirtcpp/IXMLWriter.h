@@ -8,7 +8,7 @@
 #include "IReferenceCounted.h"
 #include "irrXML.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -21,6 +21,6 @@ namespace io
 	typedef IIrrXMLWriter<c8, IReferenceCounted> IXMLWriterUTF8;
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif

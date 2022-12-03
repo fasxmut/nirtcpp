@@ -1,6 +1,6 @@
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace video;
 
 bool rounding()

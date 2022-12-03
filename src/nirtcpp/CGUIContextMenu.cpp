@@ -13,7 +13,7 @@
 #include "IGUISpriteBank.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -682,11 +682,11 @@ void CGUIContextMenu::recalculateSize()
                 }
 
                 // if it would be drawn below bottom border, move it up, but not further than to top.
-                irr::s32 belowBottom = getAbsolutePosition().UpperLeftCorner.Y+subRect.LowerRightCorner.Y - rectRoot.LowerRightCorner.Y;
+                nirt::s32 belowBottom = getAbsolutePosition().UpperLeftCorner.Y+subRect.LowerRightCorner.Y - rectRoot.LowerRightCorner.Y;
                 if ( belowBottom > 0 )
 				{
-					irr::s32 belowTop = getAbsolutePosition().UpperLeftCorner.Y+subRect.UpperLeftCorner.Y;
-					irr::s32 moveUp = belowBottom <  belowTop ? belowBottom : belowTop;
+					nirt::s32 belowTop = getAbsolutePosition().UpperLeftCorner.Y+subRect.UpperLeftCorner.Y;
+					nirt::s32 moveUp = belowBottom <  belowTop ? belowBottom : belowTop;
 					subRect.UpperLeftCorner.Y -= moveUp;
 					subRect.LowerRightCorner.Y -= moveUp;
 				}

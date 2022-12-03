@@ -6,9 +6,9 @@
 #define NIRT_DIMENSION2D_H_INCLUDED
 
 #include "irrTypes.h"
-#include "irrMath.h" // for irr::core::equals()
+#include "irrMath.h" // for nirt::core::equals()
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -218,7 +218,7 @@ namespace core
 
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

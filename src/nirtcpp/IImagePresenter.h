@@ -7,7 +7,7 @@
 
 #include "IImage.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -30,6 +30,6 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -9,7 +9,7 @@
 #include "coreutil.h"
 #include "EReadFileType.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -55,6 +55,6 @@ namespace io
 	IReadFile* createLimitReadFile(const io::path& fileName, IReadFile* alreadyOpenedFile, long pos, long areaSize);
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -10,7 +10,7 @@
 #include "irrArray.h"
 #include "aabbox3d.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -30,7 +30,7 @@ public:
 	CTriangleSelector(const IMesh* mesh, ISceneNode* node, bool separateMeshbuffers);
 
 	//! Constructs a selector based on a meshbuffer
-	CTriangleSelector(const IMeshBuffer* meshBuffer, irr::u32 materialIndex, ISceneNode* node);
+	CTriangleSelector(const IMeshBuffer* meshBuffer, nirt::u32 materialIndex, ISceneNode* node);
 
 	//! Constructs a selector based on an animated mesh scene node
 	//!\param node An animated mesh scene node, which must have a valid mesh
@@ -42,18 +42,18 @@ public:
 	//! Gets all triangles.
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize, s32& outTriangleCount,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
 
 	//! Gets all triangles which lie within a specific bounding box.
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize, s32& outTriangleCount,
 		const core::aabbox3d<f32>& box, const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
 
 	//! Gets all triangles which have or may have contact with a 3d line.
 	virtual void getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::line3d<f32>& line,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const override;
 
 	//! Returns amount of all available triangles in this selector
 	virtual s32 getTriangleCount() const override;
@@ -91,19 +91,19 @@ protected:
 	//! since the last time it was updated.
 	virtual void update(void) const;
 
-	irr::core::array<SCollisionTriangleRange> BufferRanges;
+	nirt::core::array<SCollisionTriangleRange> BufferRanges;
 
 	ISceneNode* SceneNode;
 	mutable core::array<core::triangle3df> Triangles; // (mutable for CTriangleBBSelector)
 	mutable core::aabbox3df BoundingBox; // Allows for trivial rejection
 
 	const IMeshBuffer* MeshBuffer;	// non-zero when the selector is for a single meshbuffer
-	irr::u32 MaterialIndex;		// Only set when MeshBuffer is non-zero
+	nirt::u32 MaterialIndex;		// Only set when MeshBuffer is non-zero
 	IAnimatedMeshSceneNode* AnimatedNode;
 	mutable u32 LastMeshFrame;
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

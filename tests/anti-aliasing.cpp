@@ -1,6 +1,6 @@
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 static bool testLineRendering(video::E_DRIVER_TYPE type)
 {

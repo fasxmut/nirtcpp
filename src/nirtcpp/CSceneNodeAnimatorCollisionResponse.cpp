@@ -8,7 +8,7 @@
 #include "ICameraSceneNode.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -306,5 +306,5 @@ bool CSceneNodeAnimatorCollisionResponse::getAnimateTarget () const
 }
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

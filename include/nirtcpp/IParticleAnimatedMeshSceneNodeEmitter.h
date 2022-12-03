@@ -8,7 +8,7 @@
 #include "IParticleEmitter.h"
 #include "IAnimatedMeshSceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -47,6 +47,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_I_PARTICLE_ANIMATED_MESH_SCENE_NODE_EMITTER_H_INCLUDED

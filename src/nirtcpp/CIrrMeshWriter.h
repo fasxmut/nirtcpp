@@ -11,7 +11,7 @@
 #include "IFileSystem.h"
 #include "IXMLWriter.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace scene

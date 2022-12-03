@@ -7,10 +7,10 @@
 bool exports(void)
 {
 	logTestString("Checking whether IdentityMatrix is exported.\n");
-	irr::core::matrix4 identity = irr::core::IdentityMatrix;
+	nirt::core::matrix4 identity = nirt::core::IdentityMatrix;
 	(void)identity; // Satisfy the compiler that it's used.
 
-	irr::video::SMaterial id = irr::video::IdentityMaterial;
+	nirt::video::SMaterial id = nirt::video::IdentityMaterial;
 	(void)id; // Satisfy the compiler that it's used.
 	// If it built, we're done.
 	return true;

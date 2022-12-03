@@ -10,7 +10,7 @@
 #include "os.h"
 #include "coreutil.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -190,7 +190,7 @@ IReadFile* CPakReader::createAndOpenFile(u32 index)
 }
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif // __NIRT_COMPILE_WITH_PAK_ARCHIVE_LOADER_
 

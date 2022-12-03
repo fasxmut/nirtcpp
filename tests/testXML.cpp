@@ -3,10 +3,10 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
-bool simple_xml( irr::io::IFileSystem * fs )
+bool simple_xml( nirt::io::IFileSystem * fs )
 {
 	io::IXMLReaderUTF8* reader = fs->createXMLReaderUTF8("media/test.xml");
 	if (!reader)
@@ -39,7 +39,7 @@ bool simple_xml( irr::io::IFileSystem * fs )
 }
 
 // CDATA should return everything between "![CDATA[" and "]]>" as it's in the file
-bool cdata( irr::io::IFileSystem * fs )
+bool cdata( nirt::io::IFileSystem * fs )
 {
 	io::IXMLReaderUTF8* reader = fs->createXMLReaderUTF8("media/cdata.xml");
 	if (!reader)
@@ -104,7 +104,7 @@ bool cdata( irr::io::IFileSystem * fs )
 	return result;
 }
 
-bool attributeValues(irr::io::IFileSystem * fs)
+bool attributeValues(nirt::io::IFileSystem * fs)
 {
 	io::IXMLReaderUTF8* reader = fs->createXMLReaderUTF8("media/attributes.xml");
 	if (!reader)

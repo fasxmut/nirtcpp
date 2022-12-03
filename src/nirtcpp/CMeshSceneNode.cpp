@@ -17,7 +17,7 @@
 #include "IShadowVolumeSceneNode.h"
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -425,5 +425,5 @@ ISceneNode* CMeshSceneNode::clone(ISceneNode* newParent, ISceneManager* newManag
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

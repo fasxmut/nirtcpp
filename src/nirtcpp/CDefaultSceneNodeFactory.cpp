@@ -16,7 +16,7 @@
 #include "IMeshSceneNode.h"
 #include "IOctreeSceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -180,5 +180,5 @@ ESCENE_NODE_TYPE CDefaultSceneNodeFactory::getTypeFromName(const c8* name) const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

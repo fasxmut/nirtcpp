@@ -15,7 +15,7 @@
 #include "IReadFile.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -114,7 +114,7 @@ private:
 };
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

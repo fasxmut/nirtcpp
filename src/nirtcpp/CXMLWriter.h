@@ -12,7 +12,7 @@
 #include <wchar.h>
 #include "IWriteFile.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -147,7 +147,7 @@ namespace io
 	};
 
 
-} // end namespace irr
+} // end namespace nirt
 } // end namespace io
 
 #endif // _NIRT_COMPILE_WITH_XML_

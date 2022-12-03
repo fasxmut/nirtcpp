@@ -18,7 +18,7 @@
 #include "IRenderTarget.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -512,7 +512,7 @@ ITexture* CNullDriver::addTextureCubemap(const io::path& name, IImage* imagePosX
 	return t;
 }
 
-ITexture* CNullDriver::addTextureCubemap(const irr::u32 sideLen, const io::path& name, ECOLOR_FORMAT format)
+ITexture* CNullDriver::addTextureCubemap(const nirt::u32 sideLen, const io::path& name, ECOLOR_FORMAT format)
 {
 	if ( 0 == sideLen )
 		return 0;
@@ -900,7 +900,7 @@ void CNullDriver::draw2DImageBatch(const video::ITexture* texture,
 				SColor color,
 				bool useAlphaChannelOfTexture)
 {
-	const irr::u32 drawCount = core::min_<u32>(positions.size(), sourceRects.size());
+	const nirt::u32 drawCount = core::min_<u32>(positions.size(), sourceRects.size());
 
 	for (u32 i=0; i<drawCount; ++i)
 	{
@@ -2101,9 +2101,9 @@ void CNullDriver::swapMaterialRenderers(u32 idx1, u32 idx2, bool swapNames)
 {
 	if ( idx1 < MaterialRenderers.size() && idx2 < MaterialRenderers.size() )
 	{
-		irr::core::swap(MaterialRenderers[idx1].Renderer, MaterialRenderers[idx2].Renderer);
+		nirt::core::swap(MaterialRenderers[idx1].Renderer, MaterialRenderers[idx2].Renderer);
 		if ( swapNames )
-			irr::core::swap(MaterialRenderers[idx1].Name, MaterialRenderers[idx2].Name);
+			nirt::core::swap(MaterialRenderers[idx1].Name, MaterialRenderers[idx2].Name);
 	}
 }
 
@@ -2146,7 +2146,7 @@ io::IAttributes* CNullDriver::createAttributesFromMaterial(const video::SMateria
 	attr->addBool("PointCloud", material.PointCloud);
 	attr->addBool("GouraudShading", material.GouraudShading);
 	attr->addBool("Lighting", material.Lighting);
-	attr->addEnum("ZWriteEnable", (irr::s32)material.ZWriteEnable, video::ZWriteNames);
+	attr->addEnum("ZWriteEnable", (nirt::s32)material.ZWriteEnable, video::ZWriteNames);
 	attr->addInt("ZBuffer", material.ZBuffer);
 	attr->addBool("BackfaceCulling", material.BackfaceCulling);
 	attr->addBool("FrontfaceCulling", material.FrontfaceCulling);
@@ -2636,7 +2636,7 @@ ITexture* CNullDriver::addRenderTargetTexture(const core::dimension2d<u32>& size
 	return 0;
 }
 
-ITexture* CNullDriver::addRenderTargetTextureCubemap(const irr::u32 sideLen,
+ITexture* CNullDriver::addRenderTargetTextureCubemap(const nirt::u32 sideLen,
 				const io::path& name, const ECOLOR_FORMAT format)
 {
 	return 0;
@@ -2746,7 +2746,7 @@ core::dimension2du CNullDriver::getMaxTextureSize() const
 	return core::dimension2du(0x10000,0x10000); // maybe large enough
 }
 
-bool CNullDriver::needsTransparentRenderPass(const irr::video::SMaterial& material) const
+bool CNullDriver::needsTransparentRenderPass(const nirt::video::SMaterial& material) const
 {
 	// TODO: I suspect it would be nice if the material had an enum for further control.
 	//		Especially it probably makes sense to allow disabling transparent render pass as soon as material.ZWriteEnable is on.

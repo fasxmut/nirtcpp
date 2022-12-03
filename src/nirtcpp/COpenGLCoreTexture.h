@@ -22,7 +22,7 @@
 	#define NIRT_OPENGL_HAS_glGenerateMipmap
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -449,7 +449,7 @@ public:
 
 protected:
 
-	void * getLockImageData(irr::u32 miplevel) const
+	void * getLockImageData(nirt::u32 miplevel) const
 	{
 		if ( KeepImage && MipLevelStored > 0
 			&& LockImage->getMipMapsData(MipLevelStored) )

@@ -15,7 +15,7 @@
 #include "IFileSystem.h"
 #include "CFileList.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -224,7 +224,7 @@ namespace io
 
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif // __NIRT_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
 #endif // NIRT_C_ZIP_READER_H_INCLUDED

@@ -8,7 +8,7 @@
 #include "rect.h"
 #include "irrTypes.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -39,6 +39,6 @@ public:
 };
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif

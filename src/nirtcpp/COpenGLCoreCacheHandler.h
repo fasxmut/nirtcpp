@@ -12,7 +12,7 @@
 #include "SMaterial.h"
 #include "ITexture.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -586,7 +586,7 @@ public:
 	//! Compare material to current cache and update it when there are differences
 	// Some material renderers do change the cache beyond the original material settings
 	// This corrects the material to represent the current cache state again.
-	void correctCacheMaterial(irr::video::SMaterial& material)
+	void correctCacheMaterial(nirt::video::SMaterial& material)
 	{
 		// Fix textures which got removed
 		for ( u32 i=0; i < MATERIAL_MAX_TEXTURES; ++i )

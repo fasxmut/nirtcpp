@@ -20,7 +20,7 @@
 #include "IShadowVolumeSceneNode.h"
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -457,8 +457,8 @@ void CQuake3ShaderSceneNode::render()
 
 			deb_m.Lighting = true;
 /*
-			irr::video::SColorHSL color;
-			irr::video::SColor rgb(0);
+			nirt::video::SColorHSL color;
+			nirt::video::SColor rgb(0);
 			color.Hue = i * colCycle * core::DEGTORAD;
 			color.Saturation = 1.f;
 			color.Luminance = 0.5f;
@@ -1379,7 +1379,7 @@ video::SMaterial& CQuake3ShaderSceneNode::getMaterial(u32 i)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

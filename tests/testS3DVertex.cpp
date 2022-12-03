@@ -1,7 +1,7 @@
 #include "testUtils.h"
 #include "nirtcpp.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace video;
 

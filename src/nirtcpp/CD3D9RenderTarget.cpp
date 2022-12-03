@@ -13,7 +13,7 @@
 #include "CD3D9Driver.h"
 #include "CD3D9Texture.h"
 
-namespace irr
+namespace nirt
 {
 	namespace video
 	{

@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 static bool testLightTypes(video::E_DRIVER_TYPE driverType)
 {

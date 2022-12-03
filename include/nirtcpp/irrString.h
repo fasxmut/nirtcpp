@@ -12,7 +12,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -1519,7 +1519,7 @@ static size_t multibyteToWString(string<wchar_t>& destination, const char* sourc
 
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

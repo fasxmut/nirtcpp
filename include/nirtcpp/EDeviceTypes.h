@@ -5,7 +5,7 @@
 #ifndef NIRT_E_DEVICE_TYPES_H_INCLUDED
 #define NIRT_E_DEVICE_TYPES_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 
 	//! An enum for the different device types supported by the Nirtcpp Engine.
@@ -54,6 +54,6 @@ namespace irr
 		EIDT_BEST
 	};
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_E_DEVICE_TYPES_H_INCLUDED

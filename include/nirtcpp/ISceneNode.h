@@ -19,7 +19,7 @@
 #include "irrList.h"
 #include "IAttributes.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -575,7 +575,7 @@ namespace scene
 
 
 		//! Sets if debug data like bounding boxes should be drawn.
-		/** A bitwise OR of the types from @ref irr::scene::E_DEBUG_SCENE_TYPE.
+		/** A bitwise OR of the types from @ref nirt::scene::E_DEBUG_SCENE_TYPE.
 		Please note that not all scene nodes support all debug data types.
 		\param state The debug data visibility state to be used. */
 		virtual void setDebugDataVisible(u32 state)
@@ -585,7 +585,7 @@ namespace scene
 
 		//! Returns if debug data like bounding boxes are drawn.
 		/** \return A bitwise OR of the debug data values from
-		@ref irr::scene::E_DEBUG_SCENE_TYPE that are currently visible. */
+		@ref nirt::scene::E_DEBUG_SCENE_TYPE that are currently visible. */
 		u32 isDebugDataVisible() const
 		{
 			return DebugDataVisible;
@@ -690,7 +690,7 @@ namespace scene
 				else if ( UpdateAbsolutePosBehavior == ESNUA_TRANSFORM_POSITION )
 				{
 					AbsoluteTransformation = getRelativeTransformation();
-					Parent->getAbsoluteTransformation().transformVect(reinterpret_cast<irr::core::vector3df&>(AbsoluteTransformation[12]));
+					Parent->getAbsoluteTransformation().transformVect(reinterpret_cast<nirt::core::vector3df&>(AbsoluteTransformation[12]));
 				}
 			}
 			else
@@ -901,6 +901,6 @@ namespace scene
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -18,7 +18,7 @@
 #include "CD3D9HLSLMaterialRenderer.h"
 #include "SIrrCreationParameters.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -1535,7 +1535,7 @@ void CD3D9Driver::draw2DImageBatch(const video::ITexture* texture,
 
 	setRenderStates2DMode(color.getAlpha()<255, true, useAlphaChannelOfTexture);
 
-	const irr::u32 drawCount = core::min_<u32>(positions.size(), sourceRects.size());
+	const nirt::u32 drawCount = core::min_<u32>(positions.size(), sourceRects.size());
 
 	core::array<S3DVertex> vtx(drawCount * 4);
 	core::array<u16> indices(drawCount * 6);
@@ -3305,7 +3305,7 @@ ITexture* CD3D9Driver::addRenderTargetTexture(const core::dimension2d<u32>& size
 	return tex;
 }
 
-ITexture* CD3D9Driver::addRenderTargetTextureCubemap(const irr::u32 sideLen,
+ITexture* CD3D9Driver::addRenderTargetTextureCubemap(const nirt::u32 sideLen,
 	const io::path& name, const ECOLOR_FORMAT format)
 {
 	if ( IImage::isCompressedFormat(format) )
@@ -3407,7 +3407,7 @@ IImage* CD3D9Driver::createScreenShot(video::ECOLOR_FORMAT format, video::E_REND
 		return 0;
 	}
 
-	irr::core::dimension2d<u32> shotSize;
+	nirt::core::dimension2d<u32> shotSize;
 	shotSize.Width = core::min_( ScreenSize.Width, (u32)(clientRect.right-clientRect.left) );
 	shotSize.Height = core::min_( ScreenSize.Height, (u32)(clientRect.bottom-clientRect.top) );
 
@@ -3606,7 +3606,7 @@ bool CD3D9Driver::queryTextureFormat(ECOLOR_FORMAT format) const
 	return getD3DFormatFromColorFormat(format) != D3DFMT_UNKNOWN;
 }
 
-bool CD3D9Driver::needsTransparentRenderPass(const irr::video::SMaterial& material) const
+bool CD3D9Driver::needsTransparentRenderPass(const nirt::video::SMaterial& material) const
 {
 	return CNullDriver::needsTransparentRenderPass(material) || material.isAlphaBlendOperation();
 }
@@ -3783,13 +3783,13 @@ void CD3D9CallBridge::setBlend(bool enable)
 }
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -3812,5 +3812,5 @@ IVideoDriver* createDirectX9Driver(const SNirtcppCreationParameters& params,
 #endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 

@@ -1,6 +1,6 @@
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 static bool withSphere(video::E_DRIVER_TYPE type)
 {

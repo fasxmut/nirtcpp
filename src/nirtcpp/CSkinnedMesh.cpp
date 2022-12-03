@@ -15,13 +15,13 @@ namespace
 	// Frames must always be increasing, so we remove objects where this isn't the case
 	// return number of kicked keys
 	template <class T> // T = objects containing a "frame" variable
-	irr::u32 dropBadKeys(irr::core::array<T>& array)
+	nirt::u32 dropBadKeys(nirt::core::array<T>& array)
 	{
 		if (array.size()<2)
 			return 0;
 
-		irr::u32 n=1;	// new index
-		for(irr::u32 j=1;j<array.size();++j)
+		nirt::u32 n=1;	// new index
+		for(nirt::u32 j=1;j<array.size();++j)
 		{
 			if (array[j].frame < array[n-1].frame)
 				continue; //bad frame, unneeded and may cause problems
@@ -29,7 +29,7 @@ namespace
 				array[n] = array[j];
 			++n;
 		}
-		irr::u32 d = array.size()-n; // remove already copied keys
+		nirt::u32 d = array.size()-n; // remove already copied keys
 		if ( d > 0 )
 		{
 			array.erase(n, d);
@@ -40,14 +40,14 @@ namespace
 	// drop identical middle keys - we only need the first and last
 	// return number of kicked keys
 	template <class T, typename Cmp> // Cmp = comparison for keys of type T
-	irr::u32 dropMiddleKeys(irr::core::array<T>& array, Cmp & cmp)
+	nirt::u32 dropMiddleKeys(nirt::core::array<T>& array, Cmp & cmp)
 	{
 		if ( array.size() < 3 )
 			return 0;
 
-		irr::u32 s = 0; 	// old index for current key
-		irr::u32 n = 1;	// new index for next key
-		for(irr::u32 j=1;j<array.size();++j)
+		nirt::u32 s = 0; 	// old index for current key
+		nirt::u32 n = 1;	// new index for next key
+		for(nirt::u32 j=1;j<array.size();++j)
 		{
 			if ( cmp(array[j], array[s]) )
 				continue;	// same key, handle later
@@ -60,7 +60,7 @@ namespace
 		if ( array.size() > s+1 ) // identical keys at the array end?
 			array[n++] = array[array.size()-1]; // keep the last
 
-		irr::u32 d = array.size()-n; // remove already copied keys
+		nirt::u32 d = array.size()-n; // remove already copied keys
 		if ( d > 0 )
 		{
 			array.erase(n, d);
@@ -68,23 +68,23 @@ namespace
 		return d;
 	}
 
-	bool identicalPos(const irr::scene::ISkinnedMesh::SPositionKey& a, const irr::scene::ISkinnedMesh::SPositionKey& b)
+	bool identicalPos(const nirt::scene::ISkinnedMesh::SPositionKey& a, const nirt::scene::ISkinnedMesh::SPositionKey& b)
 	{
 		return a.position == b.position;
 	}
 
-	bool identicalScale(const irr::scene::ISkinnedMesh::SScaleKey& a, const irr::scene::ISkinnedMesh::SScaleKey& b)
+	bool identicalScale(const nirt::scene::ISkinnedMesh::SScaleKey& a, const nirt::scene::ISkinnedMesh::SScaleKey& b)
 	{
 		return a.scale == b.scale;
 	}
 
-	bool identicalRotation(const irr::scene::ISkinnedMesh::SRotationKey& a, const irr::scene::ISkinnedMesh::SRotationKey& b)
+	bool identicalRotation(const nirt::scene::ISkinnedMesh::SRotationKey& a, const nirt::scene::ISkinnedMesh::SRotationKey& b)
 	{
 		return a.rotation == b.rotation;
 	}
 };
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1017,12 +1017,12 @@ void CSkinnedMesh::finalize()
 
 	if (HasAnimation)
 	{
-		irr::u32 redundantPosKeys = 0;
-		irr::u32 unorderedPosKeys = 0;
-		irr::u32 redundantScaleKeys = 0;
-		irr::u32 unorderedScaleKeys = 0;
-		irr::u32 redundantRotationKeys = 0;
-		irr::u32 unorderedRotationKeys = 0;
+		nirt::u32 redundantPosKeys = 0;
+		nirt::u32 unorderedPosKeys = 0;
+		nirt::u32 redundantScaleKeys = 0;
+		nirt::u32 unorderedScaleKeys = 0;
+		nirt::u32 redundantRotationKeys = 0;
+		nirt::u32 unorderedRotationKeys = 0;
 
 		//--- optimize and check keyframes ---
 		for(i=0;i<AllJoints.size();++i)
@@ -1108,7 +1108,7 @@ void CSkinnedMesh::finalize()
 		}
 		if ( unorderedPosKeys > 0 )
 		{
-			irr::os::Printer::log("Skinned Mesh - unsorted position frames kicked", irr::core::stringc(unorderedPosKeys).data(), irr::ELL_DEBUG);
+			nirt::os::Printer::log("Skinned Mesh - unsorted position frames kicked", nirt::core::stringc(unorderedPosKeys).data(), nirt::ELL_DEBUG);
 		}
 		if ( redundantScaleKeys > 0 )
 		{
@@ -1116,7 +1116,7 @@ void CSkinnedMesh::finalize()
 		}
 		if ( unorderedScaleKeys > 0 )
 		{
-			irr::os::Printer::log("Skinned Mesh - unsorted scale frames kicked", irr::core::stringc(unorderedScaleKeys).data(), irr::ELL_DEBUG);
+			nirt::os::Printer::log("Skinned Mesh - unsorted scale frames kicked", nirt::core::stringc(unorderedScaleKeys).data(), nirt::ELL_DEBUG);
 		}
 		if ( redundantRotationKeys > 0 )
 		{
@@ -1124,7 +1124,7 @@ void CSkinnedMesh::finalize()
 		}
 		if ( unorderedRotationKeys > 0 )
 		{
-			irr::os::Printer::log("Skinned Mesh - unsorted rotation frames kicked", irr::core::stringc(unorderedRotationKeys).data(), irr::ELL_DEBUG);
+			nirt::os::Printer::log("Skinned Mesh - unsorted rotation frames kicked", nirt::core::stringc(unorderedRotationKeys).data(), nirt::ELL_DEBUG);
 		}
 	}
 
@@ -1151,7 +1151,7 @@ void CSkinnedMesh::finalize()
 		BoundingBox.reset(0,0,0);
 	else
 	{
-		irr::core::aabbox3df bb(LocalBuffers[0]->BoundingBox);
+		nirt::core::aabbox3df bb(LocalBuffers[0]->BoundingBox);
 		LocalBuffers[0]->Transformation.transformBoxEx(bb);
 		BoundingBox.reset(bb);
 
@@ -1323,7 +1323,7 @@ void CSkinnedMesh::recoverJointsFromMesh(core::array<IBoneSceneNode*> &jointChil
 			node->setPosition(joint->Animatedposition);
 			core::quaternion qrot = joint->Animatedrotation;
 			qrot.W *= -1.f;	// Animation system uses right-handed rotations? Argh... 
-			irr::core::vector3df euler;
+			nirt::core::vector3df euler;
 			qrot.toEuler(euler);
 			euler *= core::RADTODEG;
 			node->setRotation(euler);
@@ -1520,7 +1520,7 @@ void CSkinnedMesh::calculateTangents(
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 

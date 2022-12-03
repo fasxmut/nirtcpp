@@ -26,7 +26,7 @@
 
 #include "fast_atof.h"
 
-namespace irr
+namespace nirt
 {
 
 #if defined(_NIRT_COMPILE_WITH_X11_DEVICE_)

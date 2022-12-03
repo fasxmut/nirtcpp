@@ -13,7 +13,7 @@
 
 #include "COpenGLShaderMaterialRenderer.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -44,7 +44,7 @@ protected:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 #endif

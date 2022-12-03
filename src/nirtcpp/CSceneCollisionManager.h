@@ -9,7 +9,7 @@
 #include "ISceneManager.h"
 #include "IVideoDriver.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -109,7 +109,7 @@ namespace scene
 			core::vector3df intersectionPoint;
 
 			core::triangle3df intersectionTriangle;
-			irr::scene::ISceneNode* node;
+			nirt::scene::ISceneNode* node;
 			s32 triangleHits;
 
 			f32 slidingSpeed;
@@ -147,6 +147,6 @@ namespace scene
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

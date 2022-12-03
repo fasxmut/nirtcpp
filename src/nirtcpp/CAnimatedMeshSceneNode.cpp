@@ -23,7 +23,7 @@
 #include "quaternion.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1123,4 +1123,4 @@ ISceneNode* CAnimatedMeshSceneNode::clone(ISceneNode* newParent, ISceneManager* 
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt

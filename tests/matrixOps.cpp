@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace scene;
 using namespace video;
@@ -176,15 +176,15 @@ bool rotations(void)
 	assert_log(result);
 
 	// corner cases
-    rot1.setRotationDegrees(irr::core::vector3df(180.0f, 0.f, 0.f));
+    rot1.setRotationDegrees(nirt::core::vector3df(180.0f, 0.f, 0.f));
     vec1=rot1.getRotationDegrees();
 	result &= (vec1.equals(core::vector3df(180.0f, 0.f, 0.f), 0.000002f));
 	assert_log(result);
-    rot1.setRotationDegrees(irr::core::vector3df(0.f, 180.0f, 0.f));
+    rot1.setRotationDegrees(nirt::core::vector3df(0.f, 180.0f, 0.f));
     vec1=rot1.getRotationDegrees();
 	result &= (vec1.equals(core::vector3df(180.0f, 360, 180.0f), 0.000002f));
 	assert_log(result);
-    rot1.setRotationDegrees(irr::core::vector3df(0.f, 0.f, 180.0f));
+    rot1.setRotationDegrees(nirt::core::vector3df(0.f, 0.f, 180.0f));
     vec1=rot1.getRotationDegrees();
 	result &= (vec1.equals(core::vector3df(0.f, 0.f, 180.0f), 0.000002f));
 	assert_log(result);
@@ -206,14 +206,14 @@ bool isOrthogonal(void)
 	matrix4 rotationMatrix;
 	if (!rotationMatrix.isOrthogonal())
 	{
-		logTestString("irr::core::matrix4::isOrthogonal() failed with Identity.\n");
+		logTestString("nirt::core::matrix4::isOrthogonal() failed with Identity.\n");
 		return false;
 	}
 
 	rotationMatrix.setRotationDegrees(vector3df(90, 0, 0));
 	if (!rotationMatrix.isOrthogonal())
 	{
-		logTestString("irr::core::matrix4::isOrthogonal() failed with rotation.\n");
+		logTestString("nirt::core::matrix4::isOrthogonal() failed with rotation.\n");
 		return false;
 	}
 
@@ -221,7 +221,7 @@ bool isOrthogonal(void)
 	translationMatrix.setTranslation(vector3df(0, 3, 0));
 	if (translationMatrix.isOrthogonal())
 	{
-		logTestString("irr::core::matrix4::isOrthogonal() failed with translation.\n");
+		logTestString("nirt::core::matrix4::isOrthogonal() failed with translation.\n");
 		return false;
 	}
 
@@ -229,14 +229,14 @@ bool isOrthogonal(void)
 	scaleMatrix.setScale(vector3df(1, 2, 3));
 	if (!scaleMatrix.isOrthogonal())
 	{
-		logTestString("irr::core::matrix4::isOrthogonal() failed with scale.\n");
+		logTestString("nirt::core::matrix4::isOrthogonal() failed with scale.\n");
 		return false;
 	}
 
 	return true;
 }
 
-bool checkMatrixRotation(irr::core::matrix4& m, const vector3df& vector, const vector3df& expectedResult)
+bool checkMatrixRotation(nirt::core::matrix4& m, const vector3df& vector, const vector3df& expectedResult)
 {
 	vector3df v(vector);
 	m.rotateVect(v);
@@ -355,7 +355,7 @@ bool setRotationAxis()
 }
 
 // Note: pretty high tolerance needed
-bool check_getRotationDegreesWithScale2(const core::matrix4& m, const irr::core::vector3df& scale, irr::f32 tolerance = 0.01f)
+bool check_getRotationDegreesWithScale2(const core::matrix4& m, const nirt::core::vector3df& scale, nirt::f32 tolerance = 0.01f)
 {
 	core::vector3df rot = m.getRotationDegrees(scale);
 
@@ -384,7 +384,7 @@ bool check_getRotationDegreesWithScale2(const core::matrix4& m, const irr::core:
 }
 
 // This can only work if the matrix is pure scale or pure rotation
-bool check_getRotationDegreesWithScale(const core::matrix4& m, irr::f32 tolerance = 0.001f)
+bool check_getRotationDegreesWithScale(const core::matrix4& m, nirt::f32 tolerance = 0.001f)
 {
 	core::vector3df scale = m.getScale();
 	return check_getRotationDegreesWithScale2(m, scale, tolerance);
@@ -408,9 +408,9 @@ bool decompose()
 	result &= check_getRotationDegreesWithScale(m1);
 
 	// check pure scaling/90° rotations and 0 values
-	for ( irr::f32 i = -2.f; i <= 2.f; i += 1.f )
-		for ( irr::f32 j = -2.f; j <= 2.f; j += 1.f )
-			for ( irr::f32 k = -2.f; k <= 2.f; k += 1.f )
+	for ( nirt::f32 i = -2.f; i <= 2.f; i += 1.f )
+		for ( nirt::f32 j = -2.f; j <= 2.f; j += 1.f )
+			for ( nirt::f32 k = -2.f; k <= 2.f; k += 1.f )
 			{
 				m1 = core::matrix4();
 				m1[0] = i;
@@ -424,9 +424,9 @@ bool decompose()
 			}
 
 	// check some rotations (note that we avoid the 0 case - which won't work)
-	for ( irr::f32 i = -180.f; i <= 360.f; i += 30.1f )
-		for ( irr::f32 j = -120.f; j <= 200.f; j += 44.4f )
-			for ( irr::f32 k = -10.f; k <= 180.f; k += 33.3f )
+	for ( nirt::f32 i = -180.f; i <= 360.f; i += 30.1f )
+		for ( nirt::f32 j = -120.f; j <= 200.f; j += 44.4f )
+			for ( nirt::f32 k = -10.f; k <= 180.f; k += 33.3f )
 			{
 				m1 = core::matrix4();
 				m1.setRotationDegrees(core::vector3df(i,j,k));

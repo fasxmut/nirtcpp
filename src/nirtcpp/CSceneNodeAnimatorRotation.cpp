@@ -4,7 +4,7 @@
 
 #include "CSceneNodeAnimatorRotation.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -76,5 +76,5 @@ ISceneNodeAnimator* CSceneNodeAnimatorRotation::createClone(ISceneNode* node, IS
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

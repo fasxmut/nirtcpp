@@ -9,7 +9,7 @@
 #include "SColor.h"
 #include "irrMath.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -460,6 +460,6 @@ const c8* CAnimatedMeshMD2::getAnimationName(s32 nr) const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_MD2_LOADER_

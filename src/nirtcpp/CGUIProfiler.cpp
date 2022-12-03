@@ -10,7 +10,7 @@
 #include "IGUIEnvironment.h"
 #include "CProfiler.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -316,7 +316,7 @@ bool CGUIProfiler::getFrozen() const
 	return Frozen;
 }
 
-void CGUIProfiler::setFilters(irr::u32 minCalls, irr::u32 minTimeSum, irr::f32 minTimeAverage, irr::u32 minTimeMax)
+void CGUIProfiler::setFilters(nirt::u32 minCalls, nirt::u32 minTimeSum, nirt::f32 minTimeAverage, nirt::u32 minTimeMax)
 {
 	MinCalls = minCalls;
 	MinTimeSum = minTimeSum;
@@ -325,7 +325,7 @@ void CGUIProfiler::setFilters(irr::u32 minCalls, irr::u32 minTimeSum, irr::f32 m
 }
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif // _NIRT_COMPILE_WITH_GUI_

@@ -50,8 +50,8 @@
 #define AES_DECRYPT /* if support for decryption is needed          */
 #define AES_ERR_CHK /* for parameter checks & error return codes    */
 
-typedef irr::u8 aes_08t;
-typedef irr::u32 aes_32t;
+typedef nirt::u8 aes_08t;
+typedef nirt::u32 aes_32t;
 
 #define AES_BLOCK_SIZE  16  /* the AES block size in bytes          */
 #define N_COLS           4  /* the number of columns in the state   */

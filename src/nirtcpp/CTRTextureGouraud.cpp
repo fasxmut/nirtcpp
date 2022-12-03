@@ -6,7 +6,7 @@
 
 #ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -440,11 +440,11 @@ void CTRTextureGouraud::drawIndexedTriangleList(S2DVertex* vertices, s32 vertexC
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SOFTWARE_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -461,6 +461,6 @@ ITriangleRenderer* createTriangleRendererTextureGouraud(IZBuffer* zbuffer)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 

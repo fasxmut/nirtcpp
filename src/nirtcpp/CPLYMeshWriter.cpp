@@ -12,7 +12,7 @@
 #include "IMeshBuffer.h"
 #include "IWriteFile.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {

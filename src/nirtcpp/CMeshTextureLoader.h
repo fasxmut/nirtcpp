@@ -3,7 +3,7 @@
 
 #include "IMeshTextureLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -20,34 +20,34 @@ namespace scene
 class CMeshTextureLoader : public IMeshTextureLoader
 {
 public:
-	CMeshTextureLoader(irr::io::IFileSystem* fs, irr::video::IVideoDriver* driver);
+	CMeshTextureLoader(nirt::io::IFileSystem* fs, nirt::video::IVideoDriver* driver);
 
 	//! Set a custom texture path.
     /**	This is the first path the texture-loader should search.  */
-	virtual void setTexturePath(const irr::io::path& path)  override;
+	virtual void setTexturePath(const nirt::io::path& path)  override;
 
 	//! Get the current custom texture path.
-	virtual const irr::io::path& getTexturePath() const  override;
+	virtual const nirt::io::path& getTexturePath() const  override;
 
 	//! Get the texture by searching for it in all paths that makes sense for the given textureName.
 	/** Usually you do not have to use this method, it is used internally by IMeshLoader's.
 	\param textureName Texturename as used in the mesh-format
 	\return Pointer to the texture. Returns 0 if loading failed.*/
-	virtual irr::video::ITexture* getTexture(const irr::io::path& textureName)  override;
+	virtual nirt::video::ITexture* getTexture(const nirt::io::path& textureName)  override;
 
 	//! Meshloaders will search paths relative to the meshFile.
 	/** Usually you do not have to use this method, it is used internally by IMeshLoader's.
 		Any values you set here will likely be overwritten internally. */
-	virtual void setMeshFile(const irr::io::IReadFile* meshFile) override;
+	virtual void setMeshFile(const nirt::io::IReadFile* meshFile) override;
 
 	//! Meshloaders will try to look relative to the path of the materialFile
 	/** Usually you do not have to use this method, it is used internally by IMeshLoader's.
 	Any values you set here will likely be overwritten internally.	*/
-	virtual void setMaterialFile(const irr::io::IReadFile* materialFile) override;
+	virtual void setMaterialFile(const nirt::io::IReadFile* materialFile) override;
 
 protected:
 	// make certain path's have a certain internal format
-	void preparePath(irr::io::path& directory)
+	void preparePath(nirt::io::path& directory)
 	{
 		if (!directory.empty())
 		{
@@ -61,21 +61,21 @@ protected:
 	}
 
 	// Save the texturename when it's a an existing file
-	bool checkTextureName( const irr::io::path& filename);
+	bool checkTextureName( const nirt::io::path& filename);
 
 private:
-	irr::io::IFileSystem * FileSystem;
-	irr::video::IVideoDriver* VideoDriver;
-	irr::io::path TexturePath;
-	const irr::io::IReadFile* MeshFile;
-	irr::io::path MeshPath;
-	const irr::io::IReadFile* MaterialFile;
-	irr::io::path MaterialPath;
-	irr::io::path TextureName;
+	nirt::io::IFileSystem * FileSystem;
+	nirt::video::IVideoDriver* VideoDriver;
+	nirt::io::path TexturePath;
+	const nirt::io::IReadFile* MeshFile;
+	nirt::io::path MeshPath;
+	const nirt::io::IReadFile* MaterialFile;
+	nirt::io::path MaterialPath;
+	nirt::io::path TextureName;
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

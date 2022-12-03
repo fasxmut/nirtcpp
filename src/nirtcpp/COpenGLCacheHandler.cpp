@@ -8,7 +8,7 @@
 
 #include "COpenGLDriver.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

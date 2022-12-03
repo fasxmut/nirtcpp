@@ -16,7 +16,7 @@
 #endif
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -419,6 +419,6 @@ void CD3D9HLSLMaterialRenderer::printHLSLVariables(LPD3DXCONSTANTTABLE table)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_DIRECT3D_9_

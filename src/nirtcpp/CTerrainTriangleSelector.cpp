@@ -10,7 +10,7 @@
 #include "CTerrainSceneNode.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -82,7 +82,7 @@ void CTerrainTriangleSelector::setTriangleData(ITerrainSceneNode* node, s32 LOD)
 void CTerrainTriangleSelector::getTriangles(core::triangle3df* triangles,
 			s32 arraySize, s32& outTriangleCount,
 			const core::matrix4* transform, bool useNodeTransform, 
-			irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+			nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	s32 count = TrianglePatches.TotalTriangles;
 
@@ -129,7 +129,7 @@ void CTerrainTriangleSelector::getTriangles(core::triangle3df* triangles,
 		s32 arraySize, s32& outTriangleCount,
 		const core::aabbox3d<f32>& box, 
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	s32 count = TrianglePatches.TotalTriangles;
 
@@ -176,7 +176,7 @@ void CTerrainTriangleSelector::getTriangles(core::triangle3df* triangles,
 void CTerrainTriangleSelector::getTriangles(core::triangle3df* triangles,
 		s32 arraySize, s32& outTriangleCount, const core::line3d<f32>& line,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	const s32 count = core::min_((s32)TrianglePatches.TotalTriangles, arraySize);
 
@@ -266,6 +266,6 @@ const ITriangleSelector* CTerrainTriangleSelector::getSelector(u32 index) const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_

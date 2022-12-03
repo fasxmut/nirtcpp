@@ -5,7 +5,7 @@
 #ifndef NIRT_E_MATERIAL_FLAGS_H_INCLUDED
 #define NIRT_E_MATERIAL_FLAGS_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -94,6 +94,6 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_E_MATERIAL_FLAGS_H_INCLUDED

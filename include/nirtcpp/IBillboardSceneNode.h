@@ -7,7 +7,7 @@
 
 #include "ISceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -74,7 +74,7 @@ public:
 	    So we don't know the real boundingboxes before that. Which would be too late for culling.
 	    That is why the usual getBoundingBox will return a "safe" boundingbox which is guaranteed
 	    to contain the billboard. While this function can return the real one. */
-	virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) = 0;
+	virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const nirt::scene::ICameraSceneNode* camera) = 0;
 
 	//! Get the amount of mesh buffers.
 	/** \return Amount of mesh buffers (IMeshBuffer) in this mesh. */
@@ -89,6 +89,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

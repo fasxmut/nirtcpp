@@ -70,7 +70,7 @@
 #endif
 
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -627,11 +627,11 @@ void CTRTextureDetailMap2::drawTriangle(const s4DVertex* burning_restrict a, con
 }
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -648,6 +648,6 @@ IBurningShader* createTriangleRendererTextureDetailMap2(CBurningVideoDriver* dri
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 

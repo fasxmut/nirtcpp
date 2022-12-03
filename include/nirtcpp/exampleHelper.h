@@ -8,7 +8,7 @@
 #include "IrrCompileConfig.h"
 #include "path.h"
 
-namespace irr
+namespace nirt
 {
 
 static io::path getExampleMediaPath()
@@ -20,6 +20,6 @@ static io::path getExampleMediaPath()
 #endif
 }
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

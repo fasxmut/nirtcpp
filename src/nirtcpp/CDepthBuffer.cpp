@@ -8,7 +8,7 @@
 
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -149,11 +149,11 @@ const core::dimension2d<u32>& CStencilBuffer::getSize() const
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -180,7 +180,7 @@ IStencilBuffer* createStencilBuffer(const core::dimension2d<u32>& size, u32 bit)
 }
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 

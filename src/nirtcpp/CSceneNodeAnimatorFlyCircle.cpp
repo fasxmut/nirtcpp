@@ -4,7 +4,7 @@
 
 #include "CSceneNodeAnimatorFlyCircle.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -103,5 +103,5 @@ ISceneNodeAnimator* CSceneNodeAnimatorFlyCircle::createClone(ISceneNode* node, I
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

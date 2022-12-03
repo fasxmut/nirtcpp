@@ -14,7 +14,7 @@
 #include "IVideoDriver.h"
 #include "IFileSystem.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -35,10 +35,10 @@ namespace scene
 		const double sr = sin(angle);
 		const double cr = cos(angle);
 
-		quaternion[0] = (irr::f32)(sr*cp*cy-cr*sp*sy); // X
-		quaternion[1] = (irr::f32)(cr*sp*cy+sr*cp*sy); // Y
-		quaternion[2] = (irr::f32)(cr*cp*sy-sr*sp*cy); // Z
-		quaternion[3] = (irr::f32)(cr*cp*cy+sr*sp*sy); // W
+		quaternion[0] = (nirt::f32)(sr*cp*cy-cr*sp*sy); // X
+		quaternion[1] = (nirt::f32)(cr*sp*cy+sr*cp*sy); // Y
+		quaternion[2] = (nirt::f32)(cr*cp*sy-sr*sp*cy); // Z
+		quaternion[3] = (nirt::f32)(cr*cp*cy+sr*sp*sy); // W
 	}
 
 	void QuaternionMatrix( const vec4_hl quaternion, f32 (*matrix)[4] )
@@ -1673,7 +1673,7 @@ void CAnimatedMeshHalfLife::setBoundingBox(const core::aabbox3df& box)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_MD3_LOADER_
 

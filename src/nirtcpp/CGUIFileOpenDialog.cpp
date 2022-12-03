@@ -17,7 +17,7 @@
 #include "IFileList.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -168,13 +168,13 @@ const wchar_t* CGUIFileOpenDialog::getDirectoryNameW() const
 	return FileDirectoryFlatW.data();
 }
 
-void CGUIFileOpenDialog::setFileName(const irr::io::path& name)
+void CGUIFileOpenDialog::setFileName(const nirt::io::path& name)
 {
 	FileName = name;
 	pathToStringW(FileNameW, FileName);
 }
 
-void CGUIFileOpenDialog::setDirectoryName(const irr::io::path& name)
+void CGUIFileOpenDialog::setDirectoryName(const nirt::io::path& name)
 {
 	FileDirectory = name;
 	FileDirectoryFlat = name;
@@ -380,7 +380,7 @@ void CGUIFileOpenDialog::deserializeAttributes(io::IAttributes* in, io::SAttribu
 	IGUIFileOpenDialog::deserializeAttributes(in,options);
 }
 
-void CGUIFileOpenDialog::pathToStringW(irr::core::stringw& result, const irr::io::path& p)
+void CGUIFileOpenDialog::pathToStringW(nirt::core::stringw& result, const nirt::io::path& p)
 {
 #ifndef _NIRT_WCHAR_FILESYSTEM
 	char* oldLocale = setlocale(LC_CTYPE, NULL);
@@ -449,6 +449,6 @@ void CGUIFileOpenDialog::sendCancelEvent()
 }
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_

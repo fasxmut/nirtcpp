@@ -7,7 +7,7 @@
 
 #include "irrTypes.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -34,6 +34,6 @@ const c8* const GUIAlignmentNames[] =
 };
 
 } // namespace gui
-} // namespace irr
+} // namespace nirt
 
 #endif // NIRT_E_GUI_ALIGNMENT_H_INCLUDED

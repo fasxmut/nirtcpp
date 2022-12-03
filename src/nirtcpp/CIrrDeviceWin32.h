@@ -23,7 +23,7 @@
 #define GET_Y_LPARAM(lp) ((int)(short)HIWORD(lp))
 #endif
 
-namespace irr
+namespace nirt
 {
 	struct SJoystickWin32Control;
 
@@ -78,7 +78,7 @@ namespace irr
 		virtual void setResizable(bool resize=false) override;
 
 		//! Resize the render window.
-		virtual void setWindowSize(const irr::core::dimension2d<u32>& size) override;
+		virtual void setWindowSize(const nirt::core::dimension2d<u32>& size) override;
 
 		//! Minimizes the window.
 		virtual void minimizeWindow() override;
@@ -129,7 +129,7 @@ namespace irr
 		static bool isWindowsVistaOrGreater();
 
 		// convert an Nirtcpp texture to a windows cursor
-		HCURSOR TextureToCursor(HWND hwnd, irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot);
+		HCURSOR TextureToCursor(HWND hwnd, nirt::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot);
 
 		//! Implementation of the win32 cursor control
 		class CCursorControl : public gui::ICursorControl
@@ -441,7 +441,7 @@ namespace irr
 		SJoystickWin32Control* JoyControl;
 	};
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 #endif // NIRT_C_NIRT_DEVICE_WIN32_H_INCLUDED

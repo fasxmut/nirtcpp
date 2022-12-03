@@ -11,7 +11,7 @@
 #include "ILogger.h"
 #include "position2d.h"
 
-namespace irr
+namespace nirt
 {
 	class IEventReceiver;
 
@@ -303,6 +303,6 @@ namespace irr
 	};
 
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -11,7 +11,7 @@
 #include "dimension2d.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -107,7 +107,7 @@ bool CImageWriterPPM::writeImage(io::IWriteFile *file, IImage *image, u32 param)
 
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif
 

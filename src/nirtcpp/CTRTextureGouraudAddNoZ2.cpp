@@ -69,7 +69,7 @@
 #endif
 
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -627,11 +627,11 @@ void CTRTextureGouraudAddNoZ2::drawTriangle(const s4DVertex* burning_restrict a,
 }
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -662,6 +662,6 @@ IBurningShader* createTRTextureGouraudAddNoZ2(CBurningVideoDriver* driver)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 

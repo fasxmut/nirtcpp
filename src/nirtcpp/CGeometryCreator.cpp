@@ -10,7 +10,7 @@
 #include "IVideoDriver.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -988,7 +988,7 @@ IMesh* CGeometryCreator::createConeMesh(f32 radius, f32 length, u32 tesselation,
 	return mesh;
 }
 
-irr::scene::IMesh* CGeometryCreator::createTorusMesh(irr::f32 majorRadius, irr::f32 minorRadius, irr::u32 majorSegments, irr::u32 minorSegments, f32 angleStart, f32 angleEnd, int capEnds) const
+nirt::scene::IMesh* CGeometryCreator::createTorusMesh(nirt::f32 majorRadius, nirt::f32 minorRadius, nirt::u32 majorSegments, nirt::u32 minorSegments, f32 angleStart, f32 angleEnd, int capEnds) const
 {
 	if ( majorRadius == 0.f || minorRadius == 0.f )
 		return 0;
@@ -1035,7 +1035,7 @@ irr::scene::IMesh* CGeometryCreator::createTorusMesh(irr::f32 majorRadius, irr::
 	const f32 radStepMinor = TWO_PI / minorSegments;
 
 	// vertices
-	for ( irr::u32 major = 0; major < majorLines; ++major)
+	for ( nirt::u32 major = 0; major < majorLines; ++major)
 	{
 		const f32 radMajor = radStart + major*radStepMajor;
 		const f32 cosMajor = cosf(radMajor);
@@ -1044,7 +1044,7 @@ irr::scene::IMesh* CGeometryCreator::createTorusMesh(irr::f32 majorRadius, irr::
 		// points of major circle
 		const core::vector3df pm(majorRadius*cosMajor, 0.f, majorRadius * sinMajor);
 
-		for ( irr::u32 minor = 0; minor < minorLines; ++minor)
+		for ( nirt::u32 minor = 0; minor < minorLines; ++minor)
 		{
 			const f32 radMinor = minor*radStepMinor;
 			const f32 cosMinor = cosf(radMinor);
@@ -1056,11 +1056,11 @@ irr::scene::IMesh* CGeometryCreator::createTorusMesh(irr::f32 majorRadius, irr::
 	}
 
 	// indices
-	for ( irr::u32 major = 0; major < majorSegments; ++major)
+	for ( nirt::u32 major = 0; major < majorSegments; ++major)
 	{
-		for ( irr::u32 minor = 0; minor < minorSegments; ++minor)
+		for ( nirt::u32 minor = 0; minor < minorSegments; ++minor)
 		{
-			const irr::u16 i = major*minorLines+minor;
+			const nirt::u16 i = major*minorLines+minor;
 			buffer->Indices.push_back(i+1);
 			buffer->Indices.push_back(i+minorLines);
 			buffer->Indices.push_back(i);
@@ -1079,8 +1079,8 @@ irr::scene::IMesh* CGeometryCreator::createTorusMesh(irr::f32 majorRadius, irr::
 		const core::vector2df uv(radStart/TWO_PI, 0.5f);
 		buffer->Vertices.push_back( video::S3DVertex(p*majorRadius, n, color, uv) );
 
-		const irr::u16 i=buffer->Vertices.size()-1;
-		for ( irr::u32 minor = 0; minor < minorSegments; ++minor)
+		const nirt::u16 i=buffer->Vertices.size()-1;
+		for ( nirt::u32 minor = 0; minor < minorSegments; ++minor)
 		{
 			buffer->Indices.push_back(minor+1);
 			buffer->Indices.push_back(minor);
@@ -1096,9 +1096,9 @@ irr::scene::IMesh* CGeometryCreator::createTorusMesh(irr::f32 majorRadius, irr::
 		const core::vector2df uv(radEnd/TWO_PI, 0.5f);
 		buffer->Vertices.push_back( video::S3DVertex(p*majorRadius, n, color, uv) );
 
-		const irr::u16 i=buffer->Vertices.size()-1;
-		const irr::u16 k=i-numCapVertices;
-		for ( irr::u32 minor = 0; minor < minorSegments; ++minor)
+		const nirt::u16 i=buffer->Vertices.size()-1;
+		const nirt::u16 k=i-numCapVertices;
+		for ( nirt::u32 minor = 0; minor < minorSegments; ++minor)
 		{
 			buffer->Indices.push_back(k-minor-1);
 			buffer->Indices.push_back(k-minor);
@@ -1275,5 +1275,5 @@ IMesh* CGeometryCreator::createVolumeLightMesh(
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

@@ -9,7 +9,7 @@
 #include "S3DVertex.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -256,5 +256,5 @@ ISceneNode* CSkyBoxSceneNode::clone(ISceneNode* newParent, ISceneManager* newMan
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

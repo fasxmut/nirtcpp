@@ -12,7 +12,7 @@
 #include "os.h"
 #include "S3DVertex.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -950,11 +950,11 @@ bool CSoftwareDriver::queryTextureFormat(ECOLOR_FORMAT format) const
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SOFTWARE_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -972,5 +972,5 @@ IVideoDriver* createSoftwareDriver(const core::dimension2d<u32>& windowSize, boo
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 

@@ -7,7 +7,7 @@
 
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -39,7 +39,7 @@ COctreeTriangleSelector::COctreeTriangleSelector(const IMesh* mesh,
 	}
 }
 
-COctreeTriangleSelector::COctreeTriangleSelector(const IMeshBuffer* meshBuffer, irr::u32 materialIndex, ISceneNode* node, s32 minimalPolysPerNode)
+COctreeTriangleSelector::COctreeTriangleSelector(const IMeshBuffer* meshBuffer, nirt::u32 materialIndex, ISceneNode* node, s32 minimalPolysPerNode)
 	: CTriangleSelector(meshBuffer, materialIndex, node)
 	, Root(0), NodeCount(0)
 	, MinimalPolysPerNode(minimalPolysPerNode)
@@ -148,7 +148,7 @@ void COctreeTriangleSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::aabbox3d<f32>& box,
 					const core::matrix4* transform, bool useNodeTransform,
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	core::matrix4 mat(core::matrix4::EM4CONST_NOTHING);
 	core::aabbox3d<f32> invbox = box;
@@ -232,7 +232,7 @@ void COctreeTriangleSelector::getTrianglesFromOctree(
 void COctreeTriangleSelector::getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::line3d<f32>& line,
 		const core::matrix4* transform, bool useNodeTransform,
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 #if 0
 	core::aabbox3d<f32> box(line.start);
@@ -324,4 +324,4 @@ void COctreeTriangleSelector::getTrianglesFromOctree(SOctreeNode* node,
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt

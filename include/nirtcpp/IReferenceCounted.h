@@ -11,7 +11,7 @@
 	#include "leakHunter.h"
 #endif
 
-namespace irr
+namespace nirt
 {
 
 	//! Base class of most objects of the Nirtcpp Engine.
@@ -174,6 +174,6 @@ namespace irr
 		mutable s32 ReferenceCounter;
 	};
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -8,7 +8,7 @@
 
 #include "IAttributes.h"
 
-namespace irr
+namespace nirt
 {
 	namespace scene
 	{

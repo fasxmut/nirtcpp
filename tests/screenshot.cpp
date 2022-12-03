@@ -3,9 +3,9 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
-static irr::u8 aa = 0;	// AntiAlias used in testShotsInShots
+static nirt::u8 aa = 0;	// AntiAlias used in testShotsInShots
 
 // Tests screenshots features
 static bool testShots(video::E_DRIVER_TYPE type)
@@ -56,7 +56,7 @@ static bool testShots(video::E_DRIVER_TYPE type)
 		// and maybe a texture using the full color spectrum.
 		if ( img )
 		{
-			irr::core::stringc screenshotFilename = "results/";
+			nirt::core::stringc screenshotFilename = "results/";
 			screenshotFilename += shortDriverName(driver);
 			screenshotFilename += "screenshot";
 			screenshotFilename += core::stringc(i);
@@ -121,8 +121,8 @@ static bool testShotsOfShots(video::E_DRIVER_TYPE type)
 		driver->endScene();
 		img->drop();
 
-		irr::core::stringc name("-shotsInShots");
-		name += irr::core::stringc((int)aa);
+		nirt::core::stringc name("-shotsInShots");
+		name += nirt::core::stringc((int)aa);
 		name += ".png";
 		result = takeScreenshotAndCompareAgainstReference(driver, name.data());
 		if ( !result )

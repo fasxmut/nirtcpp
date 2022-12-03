@@ -22,7 +22,7 @@
 #endif
 #include <d3d9.h>
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -270,7 +270,7 @@ namespace video
 				const io::path& name, const ECOLOR_FORMAT format = ECF_UNKNOWN) override;
 
 		//! Creates a render target texture for a cubemap
-		ITexture* addRenderTargetTextureCubemap(const irr::u32 sideLen,
+		ITexture* addRenderTargetTextureCubemap(const nirt::u32 sideLen,
 				const io::path& name, const ECOLOR_FORMAT format) override;
 
 		virtual void clearBuffers(u16 flag, SColor color = SColor(255,0,0,0), f32 depth = 1.f, u8 stencil = 0) override;
@@ -304,7 +304,7 @@ namespace video
 		virtual bool queryTextureFormat(ECOLOR_FORMAT format) const override;
 
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
-		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const override;
+		virtual bool needsTransparentRenderPass(const nirt::video::SMaterial& material) const override;
 
 		//! Get the current color format of the color buffer
 		/** \return Color format of the color buffer as D3D color value. */
@@ -504,7 +504,7 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 #endif // NIRT_C_VIDEO_DIRECTX_9_H_INCLUDED

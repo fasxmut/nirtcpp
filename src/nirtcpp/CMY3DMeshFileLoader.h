@@ -36,7 +36,7 @@
 #include "irrString.h"
 #include "ISceneManager.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -125,7 +125,7 @@ private:
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif // __CMY3D_MESH_FILE_LOADER_H_INCLUDED__

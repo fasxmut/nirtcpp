@@ -15,7 +15,7 @@
 #include "IMeshCache.h"
 #include "IWriteFile.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {

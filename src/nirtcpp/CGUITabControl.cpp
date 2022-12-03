@@ -13,7 +13,7 @@
 #include "rect.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -1052,7 +1052,7 @@ void CGUITabControl::deserializeAttributes(io::IAttributes* in, io::SAttributeRe
 }
 
 
-} // end namespace irr
+} // end namespace nirt
 } // end namespace gui
 
 #endif // _NIRT_COMPILE_WITH_GUI_

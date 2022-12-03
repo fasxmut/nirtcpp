@@ -25,7 +25,7 @@
 #include "CParticleScaleAffector.h"
 #include "SViewFrustum.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -572,7 +572,7 @@ void CParticleSystemSceneNode::setVisible(bool isVisible)
 //! Sets the size of all particles.
 void CParticleSystemSceneNode::setParticleSize(const core::dimension2d<f32> &size)
 {
-	os::Printer::log("setParticleSize is deprecated, use setMinStartSize/setMaxStartSize in emitter.", irr::ELL_WARNING);
+	os::Printer::log("setParticleSize is deprecated, use setMinStartSize/setMaxStartSize in emitter.", nirt::ELL_WARNING);
 	//A bit of a hack, but better here than in the particle code
 	if (Emitter)
 	{
@@ -781,6 +781,6 @@ void CParticleSystemSceneNode::deserializeAttributes(io::IAttributes* in, io::SA
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_PARTICLES_

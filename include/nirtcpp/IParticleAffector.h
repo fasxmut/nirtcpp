@@ -8,7 +8,7 @@
 #include "IAttributeExchangingObject.h"
 #include "SParticle.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -65,6 +65,6 @@ protected:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

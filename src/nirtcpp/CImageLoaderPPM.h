@@ -13,7 +13,7 @@
 #include "irrString.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -47,7 +47,7 @@ private:
 };
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 #endif

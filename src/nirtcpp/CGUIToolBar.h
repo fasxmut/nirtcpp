@@ -10,7 +10,7 @@
 
 #include "IGUIToolbar.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -44,7 +44,7 @@ namespace gui
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

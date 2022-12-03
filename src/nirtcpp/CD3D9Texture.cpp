@@ -10,7 +10,7 @@
 #include "CD3D9Driver.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -598,13 +598,13 @@ void CD3D9Texture::generateRenderTarget()
 	if (FAILED(hr))
 	{
 		if (D3DERR_INVALIDCALL == hr)
-			os::Printer::log("Could not create render target texture", "Invalid Call", irr::ELL_ERROR);
+			os::Printer::log("Could not create render target texture", "Invalid Call", nirt::ELL_ERROR);
 		else if (D3DERR_OUTOFVIDEOMEMORY == hr)
-			os::Printer::log("Could not create render target texture", "Out of Video Memory", irr::ELL_ERROR);
+			os::Printer::log("Could not create render target texture", "Out of Video Memory", nirt::ELL_ERROR);
 		else if (E_OUTOFMEMORY == hr)
-			os::Printer::log("Could not create render target texture", "Out of Memory", irr::ELL_ERROR);
+			os::Printer::log("Could not create render target texture", "Out of Memory", nirt::ELL_ERROR);
 		else
-			os::Printer::log("Could not create render target texture", irr::ELL_ERROR);
+			os::Printer::log("Could not create render target texture", nirt::ELL_ERROR);
 		core::stringc params("Width:");
 		params += (unsigned int)Size.Width;
 		params += " Height: ";
@@ -615,7 +615,7 @@ void CD3D9Texture::generateRenderTarget()
 		params += (unsigned int)InternalFormat;
 		params += " Type: ";
 		params += (unsigned int)Type;
-		os::Printer::log(params.data(), irr::ELL_ERROR);
+		os::Printer::log(params.data(), nirt::ELL_ERROR);
 	}
 }
 

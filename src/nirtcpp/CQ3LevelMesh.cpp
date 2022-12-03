@@ -17,7 +17,7 @@
 //#define TJUNCTION_SOLVER_ROUND
 //#define TJUNCTION_SOLVER_0125
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -2077,6 +2077,6 @@ E_ANIMATED_MESH_TYPE CQ3LevelMesh::getMeshType() const
 }
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BSP_LOADER_

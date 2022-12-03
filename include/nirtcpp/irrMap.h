@@ -8,7 +8,7 @@
 #include "irrTypes.h"
 #include "irrMath.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -1076,6 +1076,6 @@ class map
 };
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_MAP_H_INCLUDED

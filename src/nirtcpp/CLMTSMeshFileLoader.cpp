@@ -79,7 +79,7 @@ Version 1.0 - 29 July 2004
 #include "ISceneManager.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -375,6 +375,6 @@ void CLMTSMeshFileLoader::loadTextures(SMesh* mesh)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_LMTS_LOADER_

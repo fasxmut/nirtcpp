@@ -12,7 +12,7 @@
 #include "os.h"
 #include "IGUISkin.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace gui
@@ -165,7 +165,7 @@ void CGUIMeshViewer::draw()
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

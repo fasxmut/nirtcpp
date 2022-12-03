@@ -11,7 +11,7 @@
 #include "fast_atof.h"
 #include "CXMLReaderImpl.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -180,6 +180,6 @@ NIRTCPP_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(
 
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_XML_

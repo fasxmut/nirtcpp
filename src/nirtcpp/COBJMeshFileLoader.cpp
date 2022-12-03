@@ -18,7 +18,7 @@
 #include "coreutil.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -100,11 +100,11 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 	bool mtlChanged=false;
 	bool useGroups = !SceneManager->getParameters()->getAttributeAsBool(OBJ_LOADER_IGNORE_GROUPS);
 	bool useMaterials = !SceneManager->getParameters()->getAttributeAsBool(OBJ_LOADER_IGNORE_MATERIAL_FILES);
-	irr::u32 lineNr = 1;	// only counts non-empty lines, still useful in debugging to locate errors
+	nirt::u32 lineNr = 1;	// only counts non-empty lines, still useful in debugging to locate errors
 	core::array<int> faceCorners;
 	faceCorners.reallocate(32); // should be large enough
 	const core::stringc TAG_OFF = "off";
-	irr::u32 degeneratedFaces = 0;
+	nirt::u32 degeneratedFaces = 0;
 
 	while(bufPtr != bufEnd)
 	{
@@ -246,7 +246,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 				u32 wlength = copyWord(vertexWord, linePtr, WORD_BUFFER_LENGTH, endPtr);
 				// this function will also convert obj's 1-based index to c++'s 0-based index
 				retrieveVertexIndices(vertexWord, Idx, vertexWord+wlength+1, vertexBuffer.size(), textureCoordBuffer.size(), normalsBuffer.size());
-				if ( -1 != Idx[0] && Idx[0] < (irr::s32)vertexBuffer.size() )
+				if ( -1 != Idx[0] && Idx[0] < (nirt::s32)vertexBuffer.size() )
 					v.Pos = vertexBuffer[Idx[0]];
 				else
 				{
@@ -254,11 +254,11 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 					delete [] buf;
 					return 0;
 				}
-				if ( -1 != Idx[1] && Idx[1] < (irr::s32)textureCoordBuffer.size() )
+				if ( -1 != Idx[1] && Idx[1] < (nirt::s32)textureCoordBuffer.size() )
 					v.TCoords = textureCoordBuffer[Idx[1]];
 				else
 					v.TCoords.set(0.0f,0.0f);
-				if ( -1 != Idx[2] && Idx[2] < (irr::s32)normalsBuffer.size() )
+				if ( -1 != Idx[2] && Idx[2] < (nirt::s32)normalsBuffer.size() )
 					v.Normal = normalsBuffer[Idx[2]];
 				else
 				{
@@ -317,9 +317,9 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 
 	if ( degeneratedFaces > 0 )
 	{
-		irr::core::stringc log(degeneratedFaces);
+		nirt::core::stringc log(degeneratedFaces);
 		log += " degenerated faces removed in ";
-		log += irr::core::stringc(fullName);
+		log += nirt::core::stringc(fullName);
 		os::Printer::log(log.data(), ELL_INFORMATION);
 	}
 
@@ -979,7 +979,7 @@ void COBJMeshFileLoader::cleanUp()
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_OBJ_LOADER_
 

@@ -6,7 +6,7 @@
 #include "IAnimatedMesh.h"
 #include "IMesh.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -174,5 +174,5 @@ void CMeshCache::clearUnusedMeshes()
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

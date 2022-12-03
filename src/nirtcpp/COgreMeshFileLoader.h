@@ -18,7 +18,7 @@
 #include "quaternion.h"
 #include "CSkinnedMesh.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -263,6 +263,6 @@ private:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

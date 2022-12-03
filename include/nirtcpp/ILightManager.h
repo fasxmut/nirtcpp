@@ -10,7 +10,7 @@
 #include "irrArray.h"
 #include "ISceneManager.h" // for E_SCENE_NODE_RENDER_PASS, could probably move that to own header?
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -61,6 +61,6 @@ namespace scene
 		virtual void OnNodePostRender(ISceneNode* node) {};
 	};
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

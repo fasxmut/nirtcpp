@@ -4,7 +4,7 @@
 
 #include "CMetaTriangleSelector.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -39,10 +39,10 @@ s32 CMetaTriangleSelector::getTriangleCount() const
 //! Gets all triangles.
 void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	s32 outWritten = 0;
-	irr::u32 outTriangleInfoSize = outTriangleInfo ? outTriangleInfo->size() : 0;
+	nirt::u32 outTriangleInfoSize = outTriangleInfo ? outTriangleInfo->size() : 0;
 	for (u32 i=0; i<TriangleSelectors.size(); ++i)
 	{
 		s32 t = 0;
@@ -51,7 +51,7 @@ void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 array
 
 		if ( outTriangleInfo )
 		{
-			irr::u32 newTriangleInfoSize = outTriangleInfo->size();
+			nirt::u32 newTriangleInfoSize = outTriangleInfo->size();
 			for ( u32 ti=outTriangleInfoSize; ti<newTriangleInfoSize; ++ti )
 			{
 				(*outTriangleInfo)[ti].RangeStart += outWritten;
@@ -72,10 +72,10 @@ void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 array
 void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::aabbox3d<f32>& box,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	s32 outWritten = 0;
-	irr::u32 outTriangleInfoSize = outTriangleInfo ? outTriangleInfo->size() : 0;
+	nirt::u32 outTriangleInfoSize = outTriangleInfo ? outTriangleInfo->size() : 0;
 	for (u32 i=0; i<TriangleSelectors.size(); ++i)
 	{
 		s32 t = 0;
@@ -84,7 +84,7 @@ void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 array
 
 		if ( outTriangleInfo )
 		{
-			irr::u32 newTriangleInfoSize = outTriangleInfo->size();
+			nirt::u32 newTriangleInfoSize = outTriangleInfo->size();
 			for ( u32 ti=outTriangleInfoSize; ti<newTriangleInfoSize; ++ti )
 			{
 				(*outTriangleInfo)[ti].RangeStart += outWritten;
@@ -105,10 +105,10 @@ void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 array
 void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 arraySize,
 		s32& outTriangleCount, const core::line3d<f32>& line,
 		const core::matrix4* transform, bool useNodeTransform, 
-		irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+		nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	s32 outWritten = 0;
-	irr::u32 outTriangleInfoSize = outTriangleInfo ? outTriangleInfo->size() : 0;
+	nirt::u32 outTriangleInfoSize = outTriangleInfo ? outTriangleInfo->size() : 0;
 	for (u32 i=0; i<TriangleSelectors.size(); ++i)
 	{
 		s32 t = 0;
@@ -117,7 +117,7 @@ void CMetaTriangleSelector::getTriangles(core::triangle3df* triangles, s32 array
 
 		if ( outTriangleInfo )
 		{
-			irr::u32 newTriangleInfoSize = outTriangleInfo->size();
+			nirt::u32 newTriangleInfoSize = outTriangleInfo->size();
 			for ( u32 ti=outTriangleInfoSize; ti<newTriangleInfoSize; ++ti )
 			{
 				(*outTriangleInfo)[ti].RangeStart += outWritten;
@@ -221,5 +221,5 @@ const ITriangleSelector* CMetaTriangleSelector::getSelector(u32 index) const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

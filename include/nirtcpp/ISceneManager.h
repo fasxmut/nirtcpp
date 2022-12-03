@@ -21,7 +21,7 @@
 #include "ISkinnedMesh.h"
 #include "IXMLWriter.h"
 
-namespace irr
+namespace nirt
 {
 	struct SKeyMap;
 	struct SEvent;
@@ -1297,7 +1297,7 @@ namespace scene
 		\param materialIndex If you pass a material index that index can be returned by the triangle selector.
 		\para node: Scene node of which transformation is used.
 		*/
-		virtual ITriangleSelector* createTriangleSelector(const IMeshBuffer* meshBuffer, irr::u32 materialIndex, ISceneNode* node) = 0;
+		virtual ITriangleSelector* createTriangleSelector(const IMeshBuffer* meshBuffer, nirt::u32 materialIndex, ISceneNode* node) = 0;
 
 		//! Creates a simple ITriangleSelector, based on an animated mesh scene node.
 		/** Details of the mesh associated with the node will be extracted internally.
@@ -1369,7 +1369,7 @@ namespace scene
 		\return The selector, or null if not successful.
 		If you no longer need the selector, you should call ITriangleSelector::drop().
 		See IReferenceCounted::drop() for more information. */
-		virtual ITriangleSelector* createOctreeTriangleSelector(IMeshBuffer* meshBuffer, irr::u32 materialIndex,
+		virtual ITriangleSelector* createOctreeTriangleSelector(IMeshBuffer* meshBuffer, nirt::u32 materialIndex,
 			ISceneNode* node, s32 minimalPolysPerNode=32) = 0;
 
 		//! //! Creates a Triangle Selector, optimized by an octree.
@@ -1694,6 +1694,6 @@ namespace scene
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

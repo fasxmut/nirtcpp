@@ -8,7 +8,7 @@
 #include "IAnimatedMeshSceneNode.h"
 #include "SSkinMeshBuffer.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -49,7 +49,7 @@ CTriangleSelector::CTriangleSelector(const IMesh* mesh, ISceneNode* node, bool s
 	createFromMesh(mesh, separateMeshbuffers);
 }
 
-CTriangleSelector::CTriangleSelector(const IMeshBuffer* meshBuffer, irr::u32 materialIndex, ISceneNode* node)
+CTriangleSelector::CTriangleSelector(const IMeshBuffer* meshBuffer, nirt::u32 materialIndex, ISceneNode* node)
 	: SceneNode(node), MeshBuffer(meshBuffer), MaterialIndex(materialIndex), AnimatedNode(0), LastMeshFrame(0)
 {
 	#ifdef _DEBUG
@@ -263,7 +263,7 @@ void CTriangleSelector::update(void) const
 void CTriangleSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::matrix4* transform, bool useNodeTransform, 
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	// Update my triangles if necessary
 	update();
@@ -301,7 +301,7 @@ void CTriangleSelector::getTriangles(core::triangle3df* triangles,
 		}
 		else
 		{
-			irr::u32 rangeIndex = 0;
+			nirt::u32 rangeIndex = 0;
 			for (u32 i=0; i<cnt; )
 			{
 				while ( i >= (BufferRanges[rangeIndex].RangeStart + BufferRanges[rangeIndex].RangeSize) )
@@ -331,7 +331,7 @@ void CTriangleSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::aabbox3d<f32>& box,
 					const core::matrix4* transform, bool useNodeTransform, 
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	// Update my triangles if necessary
 	update();
@@ -368,7 +368,7 @@ void CTriangleSelector::getTriangles(core::triangle3df* triangles,
 
 	if ( outTriangleInfo && !BufferRanges.empty() )
 	{
-		irr::u32 activeRange = 0;
+		nirt::u32 activeRange = 0;
 		SCollisionTriangleRange triRange;
 		triRange.Selector = this;
 		triRange.SceneNode = SceneNode;
@@ -450,7 +450,7 @@ void CTriangleSelector::getTriangles(core::triangle3df* triangles,
 					s32 arraySize, s32& outTriangleCount,
 					const core::line3d<f32>& line,
 					const core::matrix4* transform, bool useNodeTransform, 
-					irr::core::array<SCollisionTriangleRange>* outTriangleInfo) const
+					nirt::core::array<SCollisionTriangleRange>* outTriangleInfo) const
 {
 	// Update my triangles if necessary
 	update();
@@ -505,4 +505,4 @@ const ITriangleSelector* CTriangleSelector::getSelector(u32 index) const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt

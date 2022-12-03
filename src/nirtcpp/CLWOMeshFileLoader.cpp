@@ -16,7 +16,7 @@
 #include "IVideoDriver.h"
 #include "IMeshManipulator.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -2110,6 +2110,6 @@ video::ITexture* CLWOMeshFileLoader::loadTexture(const core::stringc& file)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_LWO_LOADER_

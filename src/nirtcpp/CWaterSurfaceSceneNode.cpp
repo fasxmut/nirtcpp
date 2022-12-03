@@ -12,7 +12,7 @@
 #include "SMesh.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -135,6 +135,6 @@ f32 CWaterSurfaceSceneNode::addWave(const core::vector3df &source, f32 time) con
 }
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_

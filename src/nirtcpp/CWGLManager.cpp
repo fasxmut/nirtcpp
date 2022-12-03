@@ -15,7 +15,7 @@
 	#pragma comment(lib, "OpenGL32.lib")
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

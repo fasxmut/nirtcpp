@@ -8,7 +8,7 @@
 #include "CXMLReaderImpl.h"
 #include "IReadFile.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -72,12 +72,12 @@ namespace io
 } // end namespace
 #else // not _NIRT_COMPILE_WITH_XML_
 #include "os.h"
-namespace irr
+namespace nirt
 {
 
 void noXML()
 {
-	irr::os::Printer::log("XML support disabled in IrrCompileConfig.", irr::ELL_ERROR);
+	nirt::os::Printer::log("XML support disabled in IrrCompileConfig.", nirt::ELL_ERROR);
 }
 
 } // end namespace

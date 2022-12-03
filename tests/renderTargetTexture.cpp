@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 //! Tests rendering RTTs with draw2DImage
 /** This test is very special in its setup, problematic situation was found by stefbuet. */

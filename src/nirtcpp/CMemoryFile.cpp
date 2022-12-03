@@ -5,7 +5,7 @@
 #include "CMemoryFile.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -183,5 +183,5 @@ IWriteFile* createMemoryWriteFile(void* memory, long size, const io::path& fileN
 
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 

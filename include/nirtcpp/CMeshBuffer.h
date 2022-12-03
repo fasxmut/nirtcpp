@@ -8,7 +8,7 @@
 #include "irrArray.h"
 #include "IMeshBuffer.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -123,7 +123,7 @@ namespace scene
 			if (!Vertices.empty())
 			{
 				BoundingBox.reset(Vertices[0].Pos);
-				const irr::u32 vsize = Vertices.size();
+				const nirt::u32 vsize = Vertices.size();
 				for (u32 i=1; i<vsize; ++i)
 					BoundingBox.addInternalPoint(Vertices[i].Pos);
 			}
@@ -377,6 +377,6 @@ namespace scene
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

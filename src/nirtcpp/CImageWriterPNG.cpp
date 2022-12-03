@@ -20,7 +20,7 @@
 #endif // _NIRT_USE_NON_SYSTEM_LIB_PNG_
 #endif // _NIRT_COMPILE_WITH_LIBPNG_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -216,7 +216,7 @@ bool CImageWriterPNG::writeImage(io::IWriteFile* file, IImage* image,u32 param) 
 }
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif
 

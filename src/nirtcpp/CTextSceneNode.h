@@ -12,7 +12,7 @@
 #include "ISceneCollisionManager.h"
 #include "SMesh.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -143,7 +143,7 @@ namespace scene
 			topEdgeWidth = Size.Width;
 		}
 
-		virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) override;
+		virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const nirt::scene::ICameraSceneNode* camera) override;
 
 		//! Get the amount of mesh buffers.
 		virtual u32 getMeshBufferCount() const override
@@ -158,7 +158,7 @@ namespace scene
 		}
 
 	protected:
-		void updateMesh(const irr::scene::ICameraSceneNode* camera);
+		void updateMesh(const nirt::scene::ICameraSceneNode* camera);
 
 	private:
 
@@ -186,6 +186,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

@@ -11,7 +11,7 @@
 #include "position2d.h"
 #include "line3d.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace scene
@@ -39,7 +39,7 @@ namespace scene
 		const IMeshBuffer* MeshBuffer;
 
 		//! Index of selected material of the triangle in the SceneNode. Usually only valid when MeshBuffer is also set, otherwise always 0
-		irr::u32 MaterialIndex;
+		nirt::u32 MaterialIndex;
 
 		SCollisionHit() : TriangleSelector(0), Node(0), MeshBuffer(0), MaterialIndex(0)
 		{}
@@ -279,6 +279,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

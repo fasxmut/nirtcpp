@@ -16,7 +16,7 @@
 #include "IShadowVolumeSceneNode.h"
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -200,7 +200,7 @@ void CCubeSceneNode::serializeAttributes(io::IAttributes* out, io::SAttributeRea
 	ISceneNode::serializeAttributes(out, options);
 
 	out->addFloat("Size", Size);
-	out->addEnum("MeshType", (irr::s32)MeshType, CubeMeshTypeNames);
+	out->addEnum("MeshType", (nirt::s32)MeshType, CubeMeshTypeNames);
 }
 
 
@@ -208,7 +208,7 @@ void CCubeSceneNode::serializeAttributes(io::IAttributes* out, io::SAttributeRea
 void CCubeSceneNode::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options)
 {
 	f32 newSize = in->getAttributeAsFloat("Size", Size);
-	ECUBE_MESH_TYPE newMeshType = (ECUBE_MESH_TYPE)in->getAttributeAsEnumeration("MeshType", CubeMeshTypeNames, (irr::s32)MeshType);
+	ECUBE_MESH_TYPE newMeshType = (ECUBE_MESH_TYPE)in->getAttributeAsEnumeration("MeshType", CubeMeshTypeNames, (nirt::s32)MeshType);
 	newSize = core::max_(newSize, 0.0001f);
 	if (newSize != Size || newMeshType != MeshType)
 	{
@@ -245,6 +245,6 @@ ISceneNode* CCubeSceneNode::clone(ISceneNode* newParent, ISceneManager* newManag
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_CUBE_SCENENODE_

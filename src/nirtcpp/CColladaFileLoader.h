@@ -15,7 +15,7 @@
 #include "irrMap.h"
 #include "CAttributes.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -345,7 +345,7 @@ private:
 	core::matrix4 flipZAxis(const core::matrix4& m);
 
 	//! replace escape characters with the unescaped ones
-	void unescape(irr::core::stringc& uri);
+	void unescape(nirt::core::stringc& uri);
 
 	scene::ISceneManager* SceneManager;
 	io::IFileSystem* FileSystem;
@@ -369,22 +369,22 @@ private:
 	//! meshbuffer reference ("geomid/matname") -> index into MeshesToBind
 	core::map<core::stringc,u32> MaterialsToBind;
 	//! Array of buffers for each material binding
-	core::array< core::array<irr::scene::IMeshBuffer*> > MeshesToBind;
+	core::array< core::array<nirt::scene::IMeshBuffer*> > MeshesToBind;
 
 	bool CreateInstances;
 
 	struct EscapeCharacterURL
 	{
-		EscapeCharacterURL(irr::c8 c, const irr::c8* e)
+		EscapeCharacterURL(nirt::c8 c, const nirt::c8* e)
 			: Character(c)
 		{
 			Escape = e;
 		}
 
-		irr::c8 Character;		// unescaped (like ' ')
-		irr::core::stringc Escape;	// escaped (like '%20')
+		nirt::c8 Character;		// unescaped (like ' ')
+		nirt::core::stringc Escape;	// escaped (like '%20')
 	};
-	irr::core::array<EscapeCharacterURL> EscapeCharsAnyURI;
+	nirt::core::array<EscapeCharacterURL> EscapeCharsAnyURI;
 };
 
 
@@ -404,6 +404,6 @@ public:
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

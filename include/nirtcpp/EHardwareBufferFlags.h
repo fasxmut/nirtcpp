@@ -5,7 +5,7 @@
 #ifndef NIRT_E_HARDWARE_BUFFER_FLAGS_INCLUDED
 #define NIRT_E_HARDWARE_BUFFER_FLAGS_INCLUDED
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -38,6 +38,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

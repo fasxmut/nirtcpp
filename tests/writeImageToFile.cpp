@@ -7,7 +7,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace scene;
 using namespace video;
@@ -53,7 +53,7 @@ bool writeImageToFile(void)
 	const char * referenceFilename = 0;
 	video::ECOLOR_FORMAT format;
 
-	irr::video::IImage * screenshot = driver->createScreenShot(video::ECF_R8G8B8);
+	nirt::video::IImage * screenshot = driver->createScreenShot(video::ECF_R8G8B8);
 	if (!screenshot)
 	{
 		logTestString("Failed to take screenshot\n");
@@ -64,7 +64,7 @@ bool writeImageToFile(void)
 	format = screenshot->getColorFormat();
 	if (format != video::ECF_R8G8B8)
 	{
-		irr::video::IImage * fixedScreenshot = driver->createImage(video::ECF_R8G8B8, screenshot->getDimension());
+		nirt::video::IImage * fixedScreenshot = driver->createImage(video::ECF_R8G8B8, screenshot->getDimension());
 		screenshot->copyTo(fixedScreenshot);
 		screenshot->drop();
 		screenshot = 0;

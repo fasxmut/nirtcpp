@@ -10,7 +10,7 @@
 
 #include "IGUIProfiler.h"
 
-namespace irr
+namespace nirt
 {
 
 class IProfiler;
@@ -66,7 +66,7 @@ namespace gui
 		virtual bool getFrozen() const override;
 
 		//! Filters prevents data that doesn't achieve the conditions from being displayed
-		virtual void setFilters(irr::u32 minCalls, irr::u32 minTimeSum, irr::f32 minTimeAverage, irr::u32 minTimeMax) override;
+		virtual void setFilters(nirt::u32 minCalls, nirt::u32 minTimeSum, nirt::f32 minTimeAverage, nirt::u32 minTimeMax) override;
 
 		virtual IGUIElement* getElementFromPoint(const core::position2d<s32>& point) override
 		{
@@ -84,22 +84,22 @@ namespace gui
 		void rebuildColumns();
 
 		IProfiler * Profiler;
-		irr::gui::IGUITable* DisplayTable;
-		irr::u32 CurrentGroupIdx;
-		irr::s32 CurrentGroupPage;
-		irr::s32 NumGroupPages;
+		nirt::gui::IGUITable* DisplayTable;
+		nirt::u32 CurrentGroupIdx;
+		nirt::s32 CurrentGroupPage;
+		nirt::s32 NumGroupPages;
 		bool DrawBackground;
 		bool Frozen;
 		bool UnfreezeOnce;
 		bool ShowGroupsTogether;
-		irr::u32 MinCalls;
-		irr::u32 MinTimeSum;
-		irr::f32 MinTimeAverage;
-		irr::u32 MinTimeMax;
+		nirt::u32 MinCalls;
+		nirt::u32 MinTimeSum;
+		nirt::f32 MinTimeAverage;
+		nirt::u32 MinTimeMax;
 	};
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

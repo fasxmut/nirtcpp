@@ -114,7 +114,7 @@
 #define rotr32(x,n)   (((x) >> n) | ((x) << (32 - n)))
 
 #if !defined(bswap_32)
-#define bswap_32(x) irr::os::Byteswap::byteswap(x)
+#define bswap_32(x) nirt::os::Byteswap::byteswap(x)
 #endif
 
 #if (PLATFORM_BYTE_ORDER == BRG_LITTLE_ENDIAN)

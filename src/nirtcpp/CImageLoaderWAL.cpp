@@ -14,7 +14,7 @@
 #include "IReadFile.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -63,7 +63,7 @@ bool CImageLoaderLMP::isALoadableFileExtension(const io::path& filename) const
 }
 
 
-bool CImageLoaderLMP::isALoadableFileFormat(irr::io::IReadFile* file) const
+bool CImageLoaderLMP::isALoadableFileFormat(nirt::io::IReadFile* file) const
 {
 	return false;
 }
@@ -71,7 +71,7 @@ bool CImageLoaderLMP::isALoadableFileFormat(irr::io::IReadFile* file) const
 /*!
 	Quake1, Quake2, Hallife lmp texture
 */
-IImage* CImageLoaderLMP::loadImage(irr::io::IReadFile* file) const
+IImage* CImageLoaderLMP::loadImage(nirt::io::IReadFile* file) const
 {
 	SLMPHeader header;
 
@@ -99,7 +99,7 @@ IImage* CImageLoaderLMP::loadImage(irr::io::IReadFile* file) const
 
 IImageLoader* createImageLoaderLMP()
 {
-	return new irr::video::CImageLoaderLMP();
+	return new nirt::video::CImageLoaderLMP();
 }
 
 #endif
@@ -152,7 +152,7 @@ bool CImageLoaderWAL2::isALoadableFileExtension(const io::path& filename) const
 }
 
 
-bool CImageLoaderWAL2::isALoadableFileFormat(irr::io::IReadFile* file) const
+bool CImageLoaderWAL2::isALoadableFileFormat(nirt::io::IReadFile* file) const
 {
 	return false;
 }
@@ -160,7 +160,7 @@ bool CImageLoaderWAL2::isALoadableFileFormat(irr::io::IReadFile* file) const
 /*
 	Halflite Texture WAD
 */
-IImage* CImageLoaderWAL2::loadImage(irr::io::IReadFile* file) const
+IImage* CImageLoaderWAL2::loadImage(nirt::io::IReadFile* file) const
 {
 	miptex_halflife header;
 
@@ -228,7 +228,7 @@ bool CImageLoaderWAL::isALoadableFileExtension(const io::path& filename) const
 }
 
 
-bool CImageLoaderWAL::isALoadableFileFormat(irr::io::IReadFile* file) const
+bool CImageLoaderWAL::isALoadableFileFormat(nirt::io::IReadFile* file) const
 {
 	return false;
 }
@@ -237,7 +237,7 @@ bool CImageLoaderWAL::isALoadableFileFormat(irr::io::IReadFile* file) const
 /*!
 	quake2
 */
-IImage* CImageLoaderWAL::loadImage(irr::io::IReadFile* file) const
+IImage* CImageLoaderWAL::loadImage(nirt::io::IReadFile* file) const
 {
 	miptex_quake2 header;
 
@@ -267,16 +267,16 @@ IImage* CImageLoaderWAL::loadImage(irr::io::IReadFile* file) const
 
 IImageLoader* createImageLoaderWAL()
 {
-	return new irr::video::CImageLoaderWAL();
+	return new nirt::video::CImageLoaderWAL();
 }
 
 IImageLoader* createImageLoaderHalfLife()
 {
-	return new irr::video::CImageLoaderWAL2();
+	return new nirt::video::CImageLoaderWAL2();
 }
 
 #endif
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 

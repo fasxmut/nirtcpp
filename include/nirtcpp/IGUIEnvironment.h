@@ -15,7 +15,7 @@
 #include "IXMLWriter.h"
 #include "path.h"
 
-namespace irr
+namespace nirt
 {
 	class IOSOperator;
 	class IEventReceiver;
@@ -665,6 +665,6 @@ public:
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif

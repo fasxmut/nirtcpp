@@ -14,7 +14,7 @@
 #include "IGUIEditBox.h"
 #include "IFileSystem.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -54,11 +54,11 @@ namespace gui
 
 	protected:
 
-		void setFileName(const irr::io::path& name);
-		void setDirectoryName(const irr::io::path& name);
+		void setFileName(const nirt::io::path& name);
+		void setDirectoryName(const nirt::io::path& name);
 
 		//! Ensure filenames are converted correct depending on wide-char settings
-		void pathToStringW(irr::core::stringw& result, const irr::io::path& p);
+		void pathToStringW(nirt::core::stringw& result, const nirt::io::path& p);
 
 		//! fills the listbox with files.
 		void fillListBox();
@@ -91,7 +91,7 @@ namespace gui
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

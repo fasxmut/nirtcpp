@@ -5,7 +5,7 @@
 #include "CGUIImageList.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -90,4 +90,4 @@ void CGUIImageList::draw( s32 index, const core::position2d<s32>& destPos,
 }
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt

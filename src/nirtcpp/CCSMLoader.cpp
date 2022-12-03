@@ -24,7 +24,7 @@
 #define _NIRT_DEBUG_CSM_LOADER_
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {

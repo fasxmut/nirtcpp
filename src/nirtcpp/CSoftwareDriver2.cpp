@@ -19,7 +19,7 @@
 // Matrix now here
 
 template <class T>
-bool mat33_transposed_inverse(irr::core::CMatrix4<T>& out, const irr::core::CMatrix4<T>& M)
+bool mat33_transposed_inverse(nirt::core::CMatrix4<T>& out, const nirt::core::CMatrix4<T>& M)
 {
 	const T* burning_restrict m = M.pointer();
 
@@ -64,7 +64,7 @@ bool mat33_transposed_inverse(irr::core::CMatrix4<T>& out, const irr::core::CMat
 
 #if 0
 template <class T>
-bool mat44_transposed_inverse(irr::core::CMatrix4<T>& out, const irr::core::CMatrix4<T>& M)
+bool mat44_transposed_inverse(nirt::core::CMatrix4<T>& out, const nirt::core::CMatrix4<T>& M)
 {
 	const T* burning_restrict m = M.pointer();
 
@@ -110,7 +110,7 @@ bool mat44_transposed_inverse(irr::core::CMatrix4<T>& out, const irr::core::CMat
 
 // difference to CMatrix4<T>::getInverse . higher precision in determinant. return identity on failure
 template <class T>
-bool mat44_inverse(irr::core::CMatrix4<T>& out, const irr::core::CMatrix4<T>& M)
+bool mat44_inverse(nirt::core::CMatrix4<T>& out, const nirt::core::CMatrix4<T>& M)
 {
 	const T* burning_restrict m = M.pointer();
 
@@ -156,7 +156,7 @@ bool mat44_inverse(irr::core::CMatrix4<T>& out, const irr::core::CMatrix4<T>& M)
 
 // void CMatrix4<T>::transformVec4(T *out, const T * in) const
 template <class T>
-inline void transformVec4Vec4(const irr::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
+inline void transformVec4Vec4(const nirt::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
 {
 	const T* burning_restrict M = m.pointer();
 
@@ -167,7 +167,7 @@ inline void transformVec4Vec4(const irr::core::CMatrix4<T>& m, T* burning_restri
 }
 
 template <class T>
-inline void transformVec3Vec3(const irr::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
+inline void transformVec3Vec3(const nirt::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
 {
 	const T* burning_restrict M = m.pointer();
 	out[0] = in[0] * M[0] + in[1] * M[4] + in[2] * M[8] + M[12];
@@ -178,7 +178,7 @@ inline void transformVec3Vec3(const irr::core::CMatrix4<T>& m, T* burning_restri
 #if 0
 // void CMatrix4<T>::transformVect(T *out, const core::vector3df &in) const
 template <class T>
-inline void transformVec3Vec4(const irr::core::CMatrix4<T>& m, T* burning_restrict out, const core::vector3df& in)
+inline void transformVec3Vec4(const nirt::core::CMatrix4<T>& m, T* burning_restrict out, const core::vector3df& in)
 {
 	const T* burning_restrict M = m.pointer();
 	out[0] = in.X * M[0] + in.Y * M[4] + in.Z * M[8] + M[12];
@@ -189,7 +189,7 @@ inline void transformVec3Vec4(const irr::core::CMatrix4<T>& m, T* burning_restri
 #endif
 
 template <class T>
-inline void rotateMat44Vec3Vec4(const irr::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
+inline void rotateMat44Vec3Vec4(const nirt::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
 {
 	const T* burning_restrict M = m.pointer();
 
@@ -201,7 +201,7 @@ inline void rotateMat44Vec3Vec4(const irr::core::CMatrix4<T>& m, T* burning_rest
 }
 
 template <class T>
-inline void rotateMat33Vec3Vec4(const irr::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
+inline void rotateMat33Vec3Vec4(const nirt::core::CMatrix4<T>& m, T* burning_restrict out, const T* burning_restrict in)
 {
 	const T* burning_restrict M = m.pointer();
 
@@ -213,10 +213,10 @@ inline void rotateMat33Vec3Vec4(const irr::core::CMatrix4<T>& m, T* burning_rest
 
 #if 0
 template <class T>
-irr::video::sVec4 operator* (const irr::core::CMatrix4<T>& m, const irr::core::vector3df& in)
+nirt::video::sVec4 operator* (const nirt::core::CMatrix4<T>& m, const nirt::core::vector3df& in)
 {
 	const T* burning_restrict M = m.pointer();
-	return irr::video::sVec4(
+	return nirt::video::sVec4(
 		in.X * M[0] + in.Y * M[4] + in.Z * M[8] + M[12],
 		in.X * M[1] + in.Y * M[5] + in.Z * M[9] + M[13],
 		in.X * M[2] + in.Y * M[6] + in.Z * M[10] + M[14],
@@ -224,10 +224,10 @@ irr::video::sVec4 operator* (const irr::core::CMatrix4<T>& m, const irr::core::v
 }
 
 template <class T>
-irr::video::sVec4 operator* (const irr::core::vector3df& in, const irr::core::CMatrix4<T>& m)
+nirt::video::sVec4 operator* (const nirt::core::vector3df& in, const nirt::core::CMatrix4<T>& m)
 {
 	const T* burning_restrict M = m.pointer();
-	return irr::video::sVec4(
+	return nirt::video::sVec4(
 		in.X * M[0] + in.Y * M[1] + in.Z * M[2] + M[3],
 		in.X * M[4] + in.Y * M[5] + in.Z * M[6] + M[7],
 		in.X * M[8] + in.Y * M[9] + in.Z * M[10] + M[11],
@@ -236,11 +236,11 @@ irr::video::sVec4 operator* (const irr::core::vector3df& in, const irr::core::CM
 #endif
 
 template <class T>
-irr::video::sVec4 operator* (const irr::core::CMatrix4<T>& m, const irr::video::sVec4& v)
+nirt::video::sVec4 operator* (const nirt::core::CMatrix4<T>& m, const nirt::video::sVec4& v)
 {
 	const T* burning_restrict M = m.pointer();
 	const float* burning_restrict in = &v.x;
-	return irr::video::sVec4(
+	return nirt::video::sVec4(
 		in[0] * M[0] + in[1] * M[4] + in[2] * M[8] + in[3] * M[12],
 		in[0] * M[1] + in[1] * M[5] + in[2] * M[9] + in[3] * M[13],
 		in[0] * M[2] + in[1] * M[6] + in[2] * M[10] + in[3] * M[14],
@@ -248,18 +248,18 @@ irr::video::sVec4 operator* (const irr::core::CMatrix4<T>& m, const irr::video::
 }
 
 template <class T>
-irr::video::sVec4 operator* (const irr::video::sVec4& v, const irr::core::CMatrix4<T>& m)
+nirt::video::sVec4 operator* (const nirt::video::sVec4& v, const nirt::core::CMatrix4<T>& m)
 {
 	const T* burning_restrict M = m.pointer();
 	const float* burning_restrict in = &v.x;
-	return irr::video::sVec4(
+	return nirt::video::sVec4(
 		in[0] * M[0] + in[1] * M[1] + in[2] * M[2] + in[3] * M[3],
 		in[0] * M[4] + in[1] * M[5] + in[2] * M[6] + in[3] * M[7],
 		in[0] * M[8] + in[1] * M[9] + in[2] * M[10] + in[3] * M[11],
 		in[0] * M[12] + in[1] * M[13] + in[2] * M[14] + in[3] * M[15]);
 }
 
-static inline float dot(const irr::video::sVec4& a, const irr::video::sVec4& b)
+static inline float dot(const nirt::video::sVec4& a, const nirt::video::sVec4& b)
 {
 	return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
 }
@@ -270,28 +270,28 @@ static inline float inversesqrt(const float x )
 }
 
 
-static inline irr::video::sVec4 operator-(const irr::video::sVec4& a)
+static inline nirt::video::sVec4 operator-(const nirt::video::sVec4& a)
 {
-	return irr::video::sVec4(-a.x, -a.y, -a.z, -a.w);
+	return nirt::video::sVec4(-a.x, -a.y, -a.z, -a.w);
 }
 
-static inline irr::video::sVec4 normalize(const irr::video::sVec4& a)
+static inline nirt::video::sVec4 normalize(const nirt::video::sVec4& a)
 {
 	float l = a.x * a.x + a.y * a.y + a.z * a.z + a.w * a.w;
 	if (l < 0.00000001f)
-		return irr::video::sVec4(0.f, 0.f, 1.f, 1.f);
+		return nirt::video::sVec4(0.f, 0.f, 1.f, 1.f);
 	l = 1.f / sqrtf(l);
-	return irr::video::sVec4(a.x * l, a.y * l, a.z * l, a.w * l);
+	return nirt::video::sVec4(a.x * l, a.y * l, a.z * l, a.w * l);
 }
 
 // sVec3 xyz
-static inline irr::video::sVec4 cross(const irr::video::sVec4& a, const irr::video::sVec4& b)
+static inline nirt::video::sVec4 cross(const nirt::video::sVec4& a, const nirt::video::sVec4& b)
 {
-	return irr::video::sVec4(a.y * b.z - b.y * a.z, a.z * b.x - b.z * a.x, a.x * b.y - b.x * a.y, 0.f);
+	return nirt::video::sVec4(a.y * b.z - b.y * a.z, a.z * b.x - b.z * a.x, a.x * b.y - b.x * a.y, 0.f);
 }
 
 
-void irr::video::sVec4::setA8R8G8B8(const u32 argb)
+void nirt::video::sVec4::setA8R8G8B8(const u32 argb)
 {
 	//error term necessary. cancels out(somehow) at 255 argb((tofixpoint(r/w)+fix_0.5)
 	static const f32 is = 1.f / (255.f);
@@ -354,7 +354,7 @@ static inline void burning_setbit(size_t& state, int condition, size_t mask)
 
 
 // IImage::fill
-static void image_fill(irr::video::IImage* image, const irr::video::SColor& color, const interlaced_control interlaced)
+static void image_fill(nirt::video::IImage* image, const nirt::video::SColor& color, const interlaced_control interlaced)
 {
 	if (0 == image)
 		return;
@@ -363,20 +363,20 @@ static void image_fill(irr::video::IImage* image, const irr::video::SColor& colo
 
 	switch (image->getColorFormat())
 	{
-	case irr::video::ECF_A1R5G5B5:
+	case nirt::video::ECF_A1R5G5B5:
 		c = color.toA1R5G5B5();
 		c |= c << 16;
 		break;
 	default:
 		break;
 	}
-	irr::memset32_interlaced(image->getData(), c, image->getPitch(), image->getDimension().Height, interlaced);
+	nirt::memset32_interlaced(image->getData(), c, image->getPitch(), image->getDimension().Height, interlaced);
 }
 
 
 
 //setup Antialias. v0.52 uses as Interlaced
-void get_scale(interlaced_control& o, const irr::SNirtcppCreationParameters& params)
+void get_scale(interlaced_control& o, const nirt::SNirtcppCreationParameters& params)
 {
 	o.raw = 0;
 	o.bypass = 1;
@@ -462,7 +462,7 @@ void get_scale(interlaced_control& o, const irr::SNirtcppCreationParameters& par
 			o.tex_scalex,
 			o.tex_scaley
 		);
-		irr::os::Printer::log(buf, irr::ELL_NONE);
+		nirt::os::Printer::log(buf, nirt::ELL_NONE);
 	}
 }
 
@@ -472,20 +472,20 @@ void get_scale(interlaced_control& o, const irr::SNirtcppCreationParameters& par
 #include <ICameraSceneNode.h>
 #include <ISceneManager.h>
 #include <EDriverTypes.h>
-void switch_between_ortho_and_perspective_projection(irr::NirtcppDevice* device, irr::video::E_DRIVER_TYPE driverType)
+void switch_between_ortho_and_perspective_projection(nirt::NirtcppDevice* device, nirt::video::E_DRIVER_TYPE driverType)
 {
 	//switch between ortho and perspective projection
-	irr::scene::ICameraSceneNode* cam = device->getSceneManager()->addCameraSceneNode();
-	cam->setPosition(irr::core::vector3df(300, 250, -300));
-	cam->setTarget(irr::core::vector3df(0, 20, 0));
-	if (1 || driverType != irr::video::EDT_BURNINGSVIDEO)
+	nirt::scene::ICameraSceneNode* cam = device->getSceneManager()->addCameraSceneNode();
+	cam->setPosition(nirt::core::vector3df(300, 250, -300));
+	cam->setTarget(nirt::core::vector3df(0, 20, 0));
+	if (1 || driverType != nirt::video::EDT_BURNINGSVIDEO)
 	{
-		cam->setProjectionMatrix(irr::core::matrix4().buildProjectionMatrixOrthoLH(120, 90, 0.9f, 5000.f, driverType != irr::video::EDT_OPENGL), true);
+		cam->setProjectionMatrix(nirt::core::matrix4().buildProjectionMatrixOrthoLH(120, 90, 0.9f, 5000.f, driverType != nirt::video::EDT_OPENGL), true);
 	}
 	else
 	{
-		irr::f32 w = (2.f * 0.9f) / (2.f / 120.f * (cam->getTarget() - cam->getPosition()).getLength());
-		cam->setProjectionMatrix(irr::core::matrix4().buildProjectionMatrixPerspectiveLH(w, w * (90.f / 120.f), 0.9f, 5000.f, driverType != irr::video::EDT_OPENGL), true);
+		nirt::f32 w = (2.f * 0.9f) / (2.f / 120.f * (cam->getTarget() - cam->getPosition()).getLength());
+		cam->setProjectionMatrix(nirt::core::matrix4().buildProjectionMatrixPerspectiveLH(w, w * (90.f / 120.f), 0.9f, 5000.f, driverType != nirt::video::EDT_OPENGL), true);
 	}
 }
 
@@ -493,18 +493,18 @@ void switch_between_ortho_and_perspective_projection(irr::NirtcppDevice* device,
 	For using an alternative camera in the examples.
 	Try to translate the viewpoint (Maya internal CameraRotation)
 */
-static inline void switchToMayaCamera(irr::NirtcppDevice* device)
+static inline void switchToMayaCamera(nirt::NirtcppDevice* device)
 {
 	if (!device) return;
 
-	irr::scene::ICameraSceneNode* camera = device->getSceneManager()->getActiveCamera();
+	nirt::scene::ICameraSceneNode* camera = device->getSceneManager()->getActiveCamera();
 	if (!camera || camera->getID() == 54321) return;
 
 
-	irr::core::vector3df target = camera->getTarget() - camera->getPosition();
-	irr::core::vector3df relativeRotation = target.getHorizontalAngle();
+	nirt::core::vector3df target = camera->getTarget() - camera->getPosition();
+	nirt::core::vector3df relativeRotation = target.getHorizontalAngle();
 
-	irr::scene::ICameraSceneNode* maya = device->getSceneManager()->addCameraSceneNodeMaya(
+	nirt::scene::ICameraSceneNode* maya = device->getSceneManager()->addCameraSceneNodeMaya(
 		0, -1500, 1000, 1500,
 		54321,
 		target.getLength(),
@@ -536,7 +536,7 @@ void fpu_exception(int on)
 burning_namespace_start
 
 //! constructor
-CBurningVideoDriver::CBurningVideoDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
+CBurningVideoDriver::CBurningVideoDriver(const nirt::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
 	: CNullDriver(io, params.WindowSize), BackBuffer(0), Presenter(presenter),
 	WindowId(0), SceneSourceRect(0),
 	RenderTargetTexture(0), RenderTargetSurface(0), CurrentShader(0),
@@ -3161,7 +3161,7 @@ void CBurningVideoDriver::assignHardwareLight(SBurningShaderLight& l, const SLig
 	}
 
 	//which means ETS_VIEW, nirtcpp openGL
-	setTransform(ETS_WORLD, irr::core::IdentityMatrix);
+	setTransform(ETS_WORLD, nirt::core::IdentityMatrix);
 	transform_calc(ETS_MODEL_VIEW);
 	//transform_calc(ETS_NORMAL);
 
@@ -4630,7 +4630,7 @@ bool CBurningVideoDriver::queryTextureFormat(ECOLOR_FORMAT format) const
 }
 
 #if !defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
-bool CBurningVideoDriver::needsTransparentRenderPass(const irr::video::SMaterial& material) const
+bool CBurningVideoDriver::needsTransparentRenderPass(const nirt::video::SMaterial& material) const
 {
 	return CNullDriver::needsTransparentRenderPass(material) || material.isAlphaBlendOperation(); // || material.isTransparent();
 }
@@ -4824,7 +4824,7 @@ burning_namespace_end
 burning_namespace_start
 
 //! creates a video driver
-IVideoDriver* createBurningVideoDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
+IVideoDriver* createBurningVideoDriver(const nirt::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
 {
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CBurningVideoDriver(params, io, presenter);

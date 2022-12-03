@@ -9,7 +9,7 @@
 #include "vector2d.h"
 #include "SColor.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -278,6 +278,6 @@ inline u32 getVertexPitchFromType(E_VERTEX_TYPE vertexType)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

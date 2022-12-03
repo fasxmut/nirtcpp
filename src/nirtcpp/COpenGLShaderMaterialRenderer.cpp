@@ -15,7 +15,7 @@
 #include "COpenGLCacheHandler.h"
 #include "COpenGLMaterialRenderer.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -287,7 +287,7 @@ bool COpenGLShaderMaterialRenderer::isTransparent() const
 
 
 // This method needs a properly cleaned error state before the checked instruction is called
-bool COpenGLShaderMaterialRenderer::checkError(const irr::c8* type)
+bool COpenGLShaderMaterialRenderer::checkError(const nirt::c8* type)
 {
 #if defined(GL_ARB_vertex_program) || defined(GL_NV_vertex_program) || defined(GL_ARB_fragment_program) || defined(GL_NV_fragment_program)
 	GLenum g = glGetError();
@@ -416,7 +416,7 @@ bool COpenGLShaderMaterialRenderer::createVertexShader(const c8* vtxsh)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

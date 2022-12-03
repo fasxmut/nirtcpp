@@ -20,7 +20,7 @@
 #include <linux/fb.h>
 #include <linux/kd.h>
 
-namespace irr
+namespace nirt
 {
 	class CIrrDeviceFB : public CIrrDeviceStub, public video::IImagePresenter
 	{
@@ -208,7 +208,7 @@ namespace irr
 	};
 
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_USE_FB_DEVICE_
 #endif // NIRT_C_NIRT_DEVICE_FB_H_INCLUDED

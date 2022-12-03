@@ -23,7 +23,7 @@
 #include "glxext.h"
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

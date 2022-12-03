@@ -11,7 +11,7 @@
 
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 	class IReferenceCounted;
 
@@ -38,7 +38,7 @@ namespace irr
 			}
 
 			//! Access all objects which are currently reference counted.
-			static inline irr::core::array<const IReferenceCounted*> getReferenceCountedObjects()
+			static inline nirt::core::array<const IReferenceCounted*> getReferenceCountedObjects()
 			{
 				return ReferenceCountedObjects;
 			}
@@ -51,19 +51,19 @@ namespace irr
 
 			static inline void removeObject(const IReferenceCounted* object)
 			{
-				irr::s32 idx = ReferenceCountedObjects.linear_search(object );
+				nirt::s32 idx = ReferenceCountedObjects.linear_search(object );
 				if ( idx >= 0 )
 				{
-					irr::core::swap( ReferenceCountedObjects[idx], ReferenceCountedObjects.getLast() );
+					nirt::core::swap( ReferenceCountedObjects[idx], ReferenceCountedObjects.getLast() );
 					ReferenceCountedObjects.erase( ReferenceCountedObjects.size()-1 );
 				}
 			}
 
 		private:
 			// NOTE: We don't do additional grab()/drop()'s here as we want to supervise reference counted objects and not affect them otherwise.
-			NIRTCPP_API static irr::core::array<const IReferenceCounted*> ReferenceCountedObjects;
+			NIRTCPP_API static nirt::core::array<const IReferenceCounted*> ReferenceCountedObjects;
 	};
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_LEAK_HUNTER_
 

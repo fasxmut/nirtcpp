@@ -8,7 +8,7 @@
 #if defined(_NIRT_COMPILE_WITH_BURNINGSVIDEO_) && 0
 
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -1124,10 +1124,10 @@ void CBurningShader_Raster_Reference::drawTriangle(const s4DVertex* burning_rest
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -1142,7 +1142,7 @@ IBurningShader* createTriangleRendererReference(CBurningVideoDriver* driver)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 

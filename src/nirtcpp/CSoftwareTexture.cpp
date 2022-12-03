@@ -9,7 +9,7 @@
 #include "CSoftwareDriver.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -164,7 +164,7 @@ ITexture* CSoftwareRenderTarget::getTexture() const
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SOFTWARE_
 

@@ -16,7 +16,7 @@
 #include "CDynamicMeshBuffer.h"
 #include "SMeshBufferLightMap.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -193,21 +193,21 @@ IMeshBuffer* CIrrMeshFileLoader::readMeshBuffer(io::IXMLReader* reader)
 
 				insideVertexSection = true;
 
-				video::E_INDEX_TYPE itype = (vertexCount > 65536)?irr::video::EIT_32BIT:irr::video::EIT_16BIT;
+				video::E_INDEX_TYPE itype = (vertexCount > 65536)?nirt::video::EIT_32BIT:nirt::video::EIT_16BIT;
 				if (vertexTypeName1 == vertexType)
 				{
-					buffer = new CDynamicMeshBuffer(irr::video::EVT_STANDARD, itype);
+					buffer = new CDynamicMeshBuffer(nirt::video::EVT_STANDARD, itype);
 
 				}
 				else
 				if (vertexTypeName2 == vertexType)
 				{
-					buffer = new CDynamicMeshBuffer(irr::video::EVT_2TCOORDS, itype);
+					buffer = new CDynamicMeshBuffer(nirt::video::EVT_2TCOORDS, itype);
 				}
 				else
 				if (vertexTypeName3 == vertexType)
 				{
-					buffer = new CDynamicMeshBuffer(irr::video::EVT_TANGENTS, itype);
+					buffer = new CDynamicMeshBuffer(nirt::video::EVT_TANGENTS, itype);
 				}
 				buffer->getVertexBuffer().reallocate(vertexCount);
 				buffer->Material = material;
@@ -551,6 +551,6 @@ void CIrrMeshFileLoader::readFloatsInsideElement(io::IXMLReader* reader, f32* fl
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_

@@ -20,7 +20,7 @@
 #include "SExposedVideoData.h"
 #include "SOverrideMaterial.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -145,7 +145,7 @@ namespace video
 	the Nirtcpp Engine: All rendering and texture manipulation is done with
 	this interface. You are able to use the Nirtcpp Engine by only
 	invoking methods of this interface if you like to, although the
-	irr::scene::ISceneManager interface provides a lot of powerful classes
+	nirt::scene::ISceneManager interface provides a lot of powerful classes
 	and methods to make the programmer's life easier.
 	*/
 	class IVideoDriver : public virtual IReferenceCounted
@@ -370,7 +370,7 @@ namespace video
 		that the driver may choose to create the texture in another
 		color format.
 		\return Pointer to the newly created texture. 	*/
-		virtual ITexture* addTextureCubemap(const irr::u32 sideLen, const io::path& name, ECOLOR_FORMAT format = ECF_A8R8G8B8) = 0;
+		virtual ITexture* addTextureCubemap(const nirt::u32 sideLen, const io::path& name, ECOLOR_FORMAT format = ECF_A8R8G8B8) = 0;
 
 		//! Adds a new render target texture to the texture cache.
 		/** \param size Size of the texture, in pixels. Width and
@@ -397,7 +397,7 @@ namespace video
 		\return Pointer to the created texture or 0 if the texture
 		could not be created. This pointer should not be dropped. See
 		IReferenceCounted::drop() for more information. */
-		virtual ITexture* addRenderTargetTextureCubemap(const irr::u32 sideLen,
+		virtual ITexture* addRenderTargetTextureCubemap(const nirt::u32 sideLen,
 				const io::path& name = "rt", const ECOLOR_FORMAT format = ECF_UNKNOWN) =0;
 
 		//! Removes a texture from the texture cache and deletes it.
@@ -1529,11 +1529,11 @@ namespace video
 		virtual bool queryTextureFormat(ECOLOR_FORMAT format) const = 0;
 
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
-		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const = 0;
+		virtual bool needsTransparentRenderPass(const nirt::video::SMaterial& material) const = 0;
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif

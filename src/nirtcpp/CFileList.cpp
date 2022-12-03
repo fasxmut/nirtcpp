@@ -9,7 +9,7 @@
 
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -158,6 +158,6 @@ const io::path& CFileList::getPath() const
 }
 
 
-} // end namespace irr
+} // end namespace nirt
 } // end namespace io
 

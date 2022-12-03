@@ -12,7 +12,7 @@
 #include "irrArray.h"
 #include "IOSOperator.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -122,10 +122,10 @@ namespace gui
 
 		//! Set the blinktime for the cursor. 2x blinktime is one full cycle.
 		//** \param timeMs Blinktime in milliseconds. When set to 0 the cursor is constantly on without blinking */
-		virtual void setCursorBlinkTime(irr::u32 timeMs) override;
+		virtual void setCursorBlinkTime(nirt::u32 timeMs) override;
 
 		//! Get the cursor blinktime
-		virtual irr::u32 getCursorBlinkTime() const override;
+		virtual nirt::u32 getCursorBlinkTime() const override;
 
 		//! Sets whether the edit box is a password box. Setting this to true will
 		/** disable MultiLine, WordWrap and the ability to copy with ctrl+c or ctrl+x
@@ -182,7 +182,7 @@ namespace gui
 		IOSOperator* Operator;
 
 		u32 BlinkStartTime;
-		irr::u32 CursorBlinkTime;
+		nirt::u32 CursorBlinkTime;
 		core::stringw CursorChar; // IGUIFont::draw needs stringw instead of wchar_t
 		s32 CursorPos;
 		s32 HScrollPos, VScrollPos; // scroll position in characters
@@ -200,7 +200,7 @@ namespace gui
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 #endif // NIRT_C_GUI_EDIT_BOX_H_INCLUDED

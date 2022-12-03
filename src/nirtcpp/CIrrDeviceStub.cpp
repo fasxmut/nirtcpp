@@ -14,7 +14,7 @@
 #include "irrString.h"
 #include "IRandomizer.h"
 
-namespace irr
+namespace nirt
 {
 //! constructor
 CIrrDeviceStub::CIrrDeviceStub(const SNirtcppCreationParameters& params)
@@ -197,7 +197,7 @@ u32 CIrrDeviceStub::checkSuccessiveClicks(s32 mouseX, s32 mouseY, EMOUSE_INPUT_E
 {
 	const s32 MAX_MOUSEMOVE = 3;
 
-	irr::u32 clickTime = getTimer()->getRealTime();
+	nirt::u32 clickTime = getTimer()->getRealTime();
 
 	if ( (clickTime-MouseMultiClicks.LastClickTime) < MouseMultiClicks.DoubleClickTime
 		&& core::abs_(MouseMultiClicks.LastClick.X - mouseX ) <= MAX_MOUSEMOVE
@@ -434,5 +434,5 @@ void CIrrDeviceStub::clearSystemMessages()
 
 
 
-} // end namespace irr
+} // end namespace nirt
 

@@ -22,7 +22,7 @@
 #include "irrString.h"
 #include "ISceneManager.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -110,7 +110,7 @@ IAnimatedMesh* COCTLoader::createMesh(io::IReadFile* file)
 		file->read(&id, sizeof(id));
 		if ( id >= header.numTextures )
 		{
-			os::Printer::log("COCTLoader: Invalid texture id", irr::ELL_WARNING);
+			os::Printer::log("COCTLoader: Invalid texture id", nirt::ELL_WARNING);
 			id = i;
 		}
 		file->read(&textures[id], sizeof(octTexture));
@@ -121,7 +121,7 @@ IAnimatedMesh* COCTLoader::createMesh(io::IReadFile* file)
 		file->read(&id, sizeof(id));
 		if ( id >= header.numLightmaps )
 		{
-			os::Printer::log("COCTLoader: Invalid lightmap id", irr::ELL_WARNING);
+			os::Printer::log("COCTLoader: Invalid lightmap id", nirt::ELL_WARNING);
 			id = i;
 		}
 		file->read(&lightmaps[id], sizeof(octLightmap));
@@ -340,7 +340,7 @@ bool COCTLoader::isALoadableFileExtension(const io::path& filename) const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_OCT_LOADER_
 

@@ -16,7 +16,7 @@
 #pragma warning( disable: 4996)
 #endif
 
-using namespace irr;
+using namespace nirt;
 
 bool binaryCompareFiles(const char * fileName1, const char * fileName2)
 {
@@ -86,7 +86,7 @@ bool binaryCompareFiles(const char * fileName1, const char * fileName2)
 	return filesAreIdentical;
 }
 
-bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const char * fileName2)
+bool xmlCompareFiles(nirt::io::IFileSystem * fs, const char * fileName1, const char * fileName2)
 {
 	if (!fileName1 || !fileName2)
 		return false;
@@ -252,8 +252,8 @@ bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const ch
 /** \param image1 The first image to compare.
 	\param image2 The second image to compare.
 	\return The match, from 0.f to 100.f */
-static float fuzzyCompareImages(irr::video::IImage * image1,
-								irr::video::IImage * image2)
+static float fuzzyCompareImages(nirt::video::IImage * image1,
+								nirt::video::IImage * image2)
 {
 	assert(image1);
 	assert(image2);
@@ -313,15 +313,15 @@ static float fuzzyCompareImages(irr::video::IImage * image1,
 /** \param image1 The first image to compare.
 	\param image2 The second image to compare.
 	\return The match, from 0.f to 100.f */
-float fuzzyCompareImages(irr::video::IVideoDriver * driver,
+float fuzzyCompareImages(nirt::video::IVideoDriver * driver,
 		const char * fileName1, const char * fileName2)
 {
 	assert(fileName1);
 	assert(fileName2);
-	irr::video::IImage * img1 = driver->createImageFromFile(fileName1);
+	nirt::video::IImage * img1 = driver->createImageFromFile(fileName1);
 	if (!img1)
 		return 0;
-	irr::video::IImage * img2 = driver->createImageFromFile(fileName2);
+	nirt::video::IImage * img2 = driver->createImageFromFile(fileName2);
 	const float result = fuzzyCompareImages(img1, img2);
 	logTestString("Image match: %f%%\n", result);
 	img1->drop();
@@ -330,22 +330,22 @@ float fuzzyCompareImages(irr::video::IVideoDriver * driver,
 	return result;
 }
 
-void stabilizeScreenBackground(irr::video::IVideoDriver * driver,
-		irr::video::SColor color)
+void stabilizeScreenBackground(nirt::video::IVideoDriver * driver,
+		nirt::video::SColor color)
 {
 	for(int i = 0; i < 10000; ++i) 
 	{
 		driver->beginScene(video::ECBF_COLOR | video::ECBF_DEPTH, color);
 		driver->endScene();
 
-		irr::video::IImage * screenshot = driver->createScreenShot();
+		nirt::video::IImage * screenshot = driver->createScreenShot();
 		if (!screenshot)
 			return;
 
 		const video::ECOLOR_FORMAT format = screenshot->getColorFormat();
 		if (format != video::ECF_R8G8B8)
 		{
-			irr::video::IImage * fixedScreenshot = driver->createImage(video::ECF_R8G8B8, screenshot->getDimension());
+			nirt::video::IImage * fixedScreenshot = driver->createImage(video::ECF_R8G8B8, screenshot->getDimension());
 			screenshot->copyTo(fixedScreenshot);
 			screenshot->drop();
 
@@ -383,9 +383,9 @@ void stabilizeScreenBackground(irr::video::IVideoDriver * driver,
 	logTestString("stabilizeScreenBackground failed\n");
 }
 
-irr::core::stringc shortDriverName(irr::video::IVideoDriver * driver)
+nirt::core::stringc shortDriverName(nirt::video::IVideoDriver * driver)
 {
-	irr::core::stringc driverName = driver->getName();
+	nirt::core::stringc driverName = driver->getName();
 
 	// For OpenGL and Burning, chop the version number out. Other drivers have more stable version numbers.
 	// TA: Sorry Rogerborg. burnings video also has the version number inside;-)
@@ -398,11 +398,11 @@ irr::core::stringc shortDriverName(irr::video::IVideoDriver * driver)
 	return driverName;
 }
 
-bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
+bool takeScreenshotAndCompareAgainstReference(nirt::video::IVideoDriver * driver,
 					const char * fileName,
-					irr::f32 requiredMatch)
+					nirt::f32 requiredMatch)
 {
-	irr::video::IImage * screenshot = driver->createScreenShot();
+	nirt::video::IImage * screenshot = driver->createScreenShot();
 	if (!screenshot)
 	{
 		logTestString("Failed to take screenshot\n");
@@ -413,7 +413,7 @@ bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
 	const video::ECOLOR_FORMAT format = screenshot->getColorFormat();
 	if (format != video::ECF_R8G8B8)
 	{
-		irr::video::IImage * fixedScreenshot = driver->createImage(video::ECF_R8G8B8, screenshot->getDimension());
+		nirt::video::IImage * fixedScreenshot = driver->createImage(video::ECF_R8G8B8, screenshot->getDimension());
 		screenshot->copyTo(fixedScreenshot);
 		screenshot->drop();
 
@@ -427,12 +427,12 @@ bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
 		screenshot = fixedScreenshot;
 	}
 
-	irr::core::stringc driverName = shortDriverName(driver);
+	nirt::core::stringc driverName = shortDriverName(driver);
 
-	irr::core::stringc referenceFilename = "media/";
+	nirt::core::stringc referenceFilename = "media/";
 	referenceFilename += driverName;
 	referenceFilename += fileName;
-	irr::video::IImage * reference = driver->createImageFromFile(referenceFilename.data());
+	nirt::video::IImage * reference = driver->createImageFromFile(referenceFilename.data());
 	if (!reference)
 	{
 		logTestString("\n*** Failed to load reference image '%s'\n*** Creating from screenshot - please check this image.\n\n",
@@ -447,7 +447,7 @@ bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
 
 	if (match < requiredMatch)
 	{
-		irr::core::stringc mismatchFilename = "results/";
+		nirt::core::stringc mismatchFilename = "results/";
 		mismatchFilename += driverName;
 		mismatchFilename += fileName;
 		logTestString("Writing mismatched image to '%s'\n", mismatchFilename.data());

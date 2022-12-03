@@ -7,7 +7,7 @@
 
 #include "IBillboardSceneNode.h"
 
-namespace irr
+namespace nirt
 {
 
 namespace gui
@@ -71,6 +71,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

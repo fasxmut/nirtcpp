@@ -19,7 +19,7 @@
 #define NIRT_OGRE_LOADER_DEBUG
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1601,7 +1601,7 @@ void COgreMeshFileLoader::clearMeshes()
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_OGRE_LOADER_
 

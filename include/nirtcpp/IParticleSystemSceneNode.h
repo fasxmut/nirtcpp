@@ -18,7 +18,7 @@
 #include "IParticleRotationAffector.h"
 #include "dimension2d.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -96,7 +96,7 @@ public:
 	//! Bitflags to change the particle behavior
 	/**
 	\param flags A combination of ::EParticleBehavior bit-flags. Default is 0.	*/
-	virtual void setParticleBehavior(irr::u32 flags)
+	virtual void setParticleBehavior(nirt::u32 flags)
 	{
 		ParticleBehavior = flags;
 	}
@@ -105,7 +105,7 @@ public:
 	//! Gets how particles behave in different situations
 	/**
 	\return A combination of ::EParticleBehavior flags */
-	virtual irr::u32 getParticleBehavior() const
+	virtual nirt::u32 getParticleBehavior() const
 	{
 		return ParticleBehavior;
 	}
@@ -567,6 +567,6 @@ protected:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

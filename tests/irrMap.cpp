@@ -1,7 +1,7 @@
 #include "testUtils.h"
 #include <nirtcpp.h>
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 // map has no operator== currently so we have to check manually
@@ -14,7 +14,7 @@ static bool compareMaps(core::map<KeyType,ValueType> & a, core::map<KeyType,Valu
 	// can't test allocator because we have no access to it here
 	typename core::map<KeyType, ValueType>::Iterator iterA = a.getIterator();
 	typename core::map<KeyType, ValueType>::Iterator iterB = b.getIterator();
-	for ( ; !iterA.atEnd(); iterA++, iterB++ )	// TODO: only iter++, no ++iter in irr::map
+	for ( ; !iterA.atEnd(); iterA++, iterB++ )	// TODO: only iter++, no ++iter in nirt::map
 	{
 		if ( iterA->getValue() != iterB->getValue() )
 			return false;
@@ -31,11 +31,11 @@ static bool testSwap()
 	for ( int i=0; i<99; ++i )
 	{
 		map1[i] = i;
-		copy1[i] = i;	// TODO: whatever the reason - irr::map does not want operator= so we have to assign to identical values
+		copy1[i] = i;	// TODO: whatever the reason - nirt::map does not want operator= so we have to assign to identical values
 		if ( i < 10 )	// we want also different container sizes
 		{
 			map2[i] = 99-i;
-			copy2[i] = 99-i;	// TODO: whatever the reason - irr::map does not want operator= so we have to assign to identical values
+			copy2[i] = 99-i;	// TODO: whatever the reason - nirt::map does not want operator= so we have to assign to identical values
 		}
 	}
 	map1.swap(map2);

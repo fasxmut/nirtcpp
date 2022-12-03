@@ -11,7 +11,7 @@
 #include "os.h"
 #include "irrMath.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -351,13 +351,13 @@ bool CSceneCollisionManager::getCollisionPoint(SCollisionHit& hitResult, const c
 	Triangles.set_used(totalcnt);
 
 	s32 cnt = 0;
-	irr::core::array<SCollisionTriangleRange> outTriangleInfo;
+	nirt::core::array<SCollisionTriangleRange> outTriangleInfo;
 	selector->getTriangles(Triangles.pointer(), totalcnt, cnt, ray, 0, true, &outTriangleInfo);
 
 	const core::vector3df linevect = ray.getVector().normalize();
 	core::vector3df intersection;
 	f32 nearest = FLT_MAX;
-	irr::s32 foundIndex = -1;
+	nirt::s32 foundIndex = -1;
 	const f32 raylength = ray.getLengthSQ();
 
 	const f32 minX = core::min_(ray.start.X, ray.end.X);
@@ -402,7 +402,7 @@ bool CSceneCollisionManager::getCollisionPoint(SCollisionHit& hitResult, const c
 
 	if ( foundIndex >= 0 )
 	{
-		for ( irr::u32 t=0; t<outTriangleInfo.size(); ++t )
+		for ( nirt::u32 t=0; t<outTriangleInfo.size(); ++t )
 		{
 			if ( outTriangleInfo[t].isIndexInRange(foundIndex) )
 			{
@@ -790,12 +790,12 @@ core::vector3df CSceneCollisionManager::collideWithWorld(s32 recursionDepth,
 					1.0f / colData.eRadius.Y,
 					1.0f / colData.eRadius.Z));
 
-	irr::core::array<SCollisionTriangleRange> outTriangleInfo;
+	nirt::core::array<SCollisionTriangleRange> outTriangleInfo;
 	s32 triangleCnt = 0;
 	colData.selector->getTriangles(Triangles.pointer(), totalTriangleCnt, triangleCnt, box, &scaleMatrix, true, &outTriangleInfo);
 
 	// Find closest intersection
-	irr::s32 nearestTriangleIndex = -1;
+	nirt::s32 nearestTriangleIndex = -1;
 	for (s32 i=0; i<triangleCnt; ++i)
 	{
 		if(testTriangleIntersection(&colData, Triangles[i]))
@@ -805,7 +805,7 @@ core::vector3df CSceneCollisionManager::collideWithWorld(s32 recursionDepth,
 	}
 	if ( nearestTriangleIndex >= 0 )
 	{
-		for ( irr::u32 t=0; t<outTriangleInfo.size(); ++t )
+		for ( nirt::u32 t=0; t<outTriangleInfo.size(); ++t )
 		{
 			if ( outTriangleInfo[t].isIndexInRange(nearestTriangleIndex) )
 			{
@@ -979,5 +979,5 @@ inline bool CSceneCollisionManager::getLowestRoot(f32 a, f32 b, f32 c, f32 maxR,
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

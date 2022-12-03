@@ -7,7 +7,7 @@
 
 #ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -338,11 +338,11 @@ public:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SOFTWARE_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -358,5 +358,5 @@ ITriangleRenderer* createTriangleRendererTextureGouraudWire(IZBuffer* zbuffer)
 }
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 

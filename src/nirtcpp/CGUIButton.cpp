@@ -11,7 +11,7 @@
 #include "IGUIFont.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -466,7 +466,7 @@ video::SColor CGUIButton::getOverrideColor() const
 	return OverrideColor;
 }
 
-irr::video::SColor CGUIButton::getActiveColor() const
+nirt::video::SColor CGUIButton::getActiveColor() const
 {
 	if ( OverrideColorEnabled )
 		return OverrideColor;
@@ -654,7 +654,7 @@ void CGUIButton::deserializeAttributes(io::IAttributes* in, io::SAttributeReadWr
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

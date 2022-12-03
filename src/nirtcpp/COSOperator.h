@@ -7,7 +7,7 @@
 
 #include "IOSOperator.h"
 
-namespace irr
+namespace nirt
 {
 
 class CIrrDeviceLinux;

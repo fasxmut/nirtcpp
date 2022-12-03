@@ -12,7 +12,7 @@
 #include "IGUIFont.h"
 #include "CGUIButton.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -182,7 +182,7 @@ IGUIButton* CGUIToolBar::addButton(s32 id, const wchar_t* text,const wchar_t* to
 }
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

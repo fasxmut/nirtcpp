@@ -288,8 +288,8 @@ typedef float ipoltype;
 #define burning_create(s) burning_create_indirect(s)
 
 // don't want intend on namespaces (autoformat)
-#define burning_namespace_start namespace irr { namespace video {
-#define burning_namespace_end } /* end namespace video*/ } /* end namespace irr */
+#define burning_namespace_start namespace nirt { namespace video {
+#define burning_namespace_end } /* end namespace video*/ } /* end namespace nirt */
 
 #if defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
 
@@ -307,7 +307,7 @@ typedef float ipoltype;
 #define E_CUBE_SURFACE int
 #define ECFN_DISABLED 0
 
-namespace irr {
+namespace nirt {
 	namespace video {
 
 		//! Enum for the flags of clear buffer

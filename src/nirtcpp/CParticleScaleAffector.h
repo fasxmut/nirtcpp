@@ -10,7 +10,7 @@
 
 #include "IParticleAffector.h"
 
-namespace irr
+namespace nirt
 {
 	namespace scene
 	{

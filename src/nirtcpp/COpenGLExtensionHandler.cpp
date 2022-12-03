@@ -10,7 +10,7 @@
 #include "SMaterial.h"
 #include "fast_atof.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

@@ -15,7 +15,7 @@
 #include "IDynamicMeshBuffer.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -178,12 +178,12 @@ namespace scene
 		/** This can be useful when several TerrainSceneNodes are connected.
 		\param borderLOD When >= 0 all patches at the 4 borders will use the 
 		given LOD. When < 0 borders are just regular patches (that's default).	*/
-		virtual void setFixedBorderLOD(irr::s32 borderLOD=0) = 0;
+		virtual void setFixedBorderLOD(nirt::s32 borderLOD=0) = 0;
 
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif // NIRT_I_TERRAIN_SCENE_NODE_H

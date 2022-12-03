@@ -814,7 +814,7 @@ precision will be lower but speed higher. currently X86 only
 	#undef _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 #endif
 
-//! Define __NIRT_HAS_S64 if the irr::s64 type should be enable (needs long long, available on most platforms, but not part of ISO C++ 98)
+//! Define __NIRT_HAS_S64 if the nirt::s64 type should be enable (needs long long, available on most platforms, but not part of ISO C++ 98)
 #define __NIRT_HAS_S64
 #ifdef NO__NIRT_HAS_S64
 #undef __NIRT_HAS_S64

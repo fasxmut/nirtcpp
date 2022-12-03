@@ -22,7 +22,7 @@
 #endif
 //#define BETTER_MESHBUFFER_SPLITTING_FOR_X
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -760,7 +760,7 @@ bool CXMeshFileLoader::parseDataObjectMesh(SXMesh &mesh)
 
 	// read vertices
 	mesh.Vertices.set_used(nVertices);
-	irr::video::S3DVertex vertex;	// set_used doesn't call constructor, so we initalize it explicit here
+	nirt::video::S3DVertex vertex;	// set_used doesn't call constructor, so we initalize it explicit here
 	vertex.Color = 0xFFFFFFFF;
 	for (u32 n=0; n<nVertices; ++n)
 	{
@@ -1655,7 +1655,7 @@ bool CXMeshFileLoader::parseDataObjectAnimationTicksPerSecond()
 		return false;
 	}
 
-	AnimatedMesh->setAnimationSpeed(static_cast<irr::f32>(ticks));
+	AnimatedMesh->setAnimationSpeed(static_cast<nirt::f32>(ticks));
 
 	return true;
 }
@@ -2453,7 +2453,7 @@ bool CXMeshFileLoader::readMatrix(core::matrix4& mat)
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_X_LOADER_
 

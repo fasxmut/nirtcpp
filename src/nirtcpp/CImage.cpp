@@ -9,7 +9,7 @@
 #include "os.h"
 #include "SoftwareDriver2_helper.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -139,7 +139,7 @@ void CImage::copyTo(IImage* target, const core::position2d<s32>& pos)
 		CColorConverter::canConvertFormat(Format, target->getColorFormat()))
 	{
 		// No fast blitting, but copyToScaling uses other color conversions and might work
-		irr::core::dimension2du dim(target->getDimension());
+		nirt::core::dimension2du dim(target->getDimension());
 		copyToScaling(target->getData(), dim.Width, dim.Height, target->getColorFormat(), target->getPitch());
 	}
 }
@@ -372,7 +372,7 @@ void CImage::flip(bool topBottom, bool leftRight)
 			u8* l2 = data+(dim.Height-1-i)*pitch;
 			for ( u32 b=0; b<pitch; ++b)
 			{
-				irr::u8 dummy = *l1;
+				nirt::u8 dummy = *l1;
 				*l1 = *l2;
 				*l2 = dummy;
 				++l1;
@@ -391,7 +391,7 @@ void CImage::flip(bool topBottom, bool leftRight)
 			{
 				for ( u32 b=0; b<bpp; ++b)
 				{
-					irr::u8 dummy = l1[b];
+					nirt::u8 dummy = l1[b];
 					l1[b] = l2[b];
 					l2[b] = dummy;
 				}
@@ -445,4 +445,4 @@ inline SColor CImage::getPixelBox( const s32 x, const s32 y, const s32 fx, const
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt

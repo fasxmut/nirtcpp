@@ -15,7 +15,7 @@
 #include "SLight.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -154,9 +154,9 @@ u32 CShadowVolumeSceneNode::createEdgesAndCaps(const core::vector3df& light, boo
 			m.Lighting = false;
 			SceneManager->getVideoDriver()->setMaterial(m);
 #ifdef NIRT_USE_REVERSE_EXTRUDED
-			SceneManager->getVideoDriver()->draw3DTriangle(core::triangle3df(v0+lightDir0,v1+lightDir0,v2+lightDir0), irr::video::SColor(255,255, 0, 0));
+			SceneManager->getVideoDriver()->draw3DTriangle(core::triangle3df(v0+lightDir0,v1+lightDir0,v2+lightDir0), nirt::video::SColor(255,255, 0, 0));
 #else
-			SceneManager->getVideoDriver()->draw3DTriangle(core::triangle3df(v0-lightDir0,v1-lightDir0,v2-lightDir0), irr::video::SColor(255,255, 0, 0));
+			SceneManager->getVideoDriver()->draw3DTriangle(core::triangle3df(v0-lightDir0,v1-lightDir0,v2-lightDir0), nirt::video::SColor(255,255, 0, 0));
 #endif
 		}
 #endif
@@ -410,7 +410,7 @@ void CShadowVolumeSceneNode::render()
 	SViewFrustum frust;
 	if ( checkFarPlaneClipping )
 	{
-		const irr::scene::ICameraSceneNode* camera = SceneManager->getActiveCamera();
+		const nirt::scene::ICameraSceneNode* camera = SceneManager->getActiveCamera();
 		if ( camera )
 		{
 			frust = *camera->getViewFrustum();
@@ -526,6 +526,6 @@ void CShadowVolumeSceneNode::calculateAdjacency()
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_

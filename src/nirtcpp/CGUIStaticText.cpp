@@ -11,7 +11,7 @@
 #include "IVideoDriver.h"
 #include "rect.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -254,7 +254,7 @@ video::SColor CGUIStaticText::getOverrideColor() const
 }
 
 
-irr::video::SColor CGUIStaticText::getActiveColor() const
+nirt::video::SColor CGUIStaticText::getActiveColor() const
 {
 	if ( OverrideColorEnabled )
 		return OverrideColor;
@@ -636,7 +636,7 @@ void CGUIStaticText::deserializeAttributes(io::IAttributes* in, io::SAttributeRe
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_GUI_
 

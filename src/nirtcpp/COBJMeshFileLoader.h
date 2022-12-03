@@ -12,7 +12,7 @@
 #include "CDynamicMeshBuffer.h"
 #include "irrMap.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -47,7 +47,7 @@ private:
 			, Meshbuffer(0), Bumpiness (1.0f), Illumination(0),
 			RecalculateNormals(false)
 		{
-			Meshbuffer = new CDynamicMeshBuffer(irr::video::EVT_STANDARD, IndexType);
+			Meshbuffer = new CDynamicMeshBuffer(nirt::video::EVT_STANDARD, IndexType);
 			Meshbuffer->Material.Shininess = 0.0f;
 			Meshbuffer->Material.AmbientColor = video::SColorf(0.2f, 0.2f, 0.2f, 1.0f).toSColor();
 			Meshbuffer->Material.DiffuseColor = video::SColorf(0.8f, 0.8f, 0.8f, 1.0f).toSColor();
@@ -59,12 +59,12 @@ private:
 			Bumpiness(o.Bumpiness), Illumination(o.Illumination),
 			RecalculateNormals(false)
 		{
-			Meshbuffer = new CDynamicMeshBuffer(irr::video::EVT_STANDARD, IndexType);
+			Meshbuffer = new CDynamicMeshBuffer(nirt::video::EVT_STANDARD, IndexType);
 			Meshbuffer->Material = o.Meshbuffer->Material;
 		}
 
 		core::map<video::S3DVertex, int> VertMap;
-		irr::video::E_INDEX_TYPE IndexType;
+		nirt::video::E_INDEX_TYPE IndexType;
 		scene::CDynamicMeshBuffer *Meshbuffer;
 		core::stringc Name;
 		core::stringc Group;
@@ -119,6 +119,6 @@ private:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

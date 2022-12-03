@@ -7,14 +7,14 @@
 
 #include "IIndexBuffer.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
 
 	class CIndexBuffer : public IIndexBuffer
 	{
-		// Virtual function wrapper around irr::core::array
+		// Virtual function wrapper around nirt::core::array
 		class IIndexList
 		{
 		public:
@@ -219,6 +219,6 @@ namespace scene
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

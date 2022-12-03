@@ -4,7 +4,7 @@
 
 #include "CLogger.h"
 
-namespace irr
+namespace nirt
 {
 
 	CLogger::CLogger(IEventReceiver* r)
@@ -98,5 +98,5 @@ namespace irr
 	}
 
 
-} // end namespace irr
+} // end namespace nirt
 

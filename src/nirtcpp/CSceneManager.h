@@ -14,7 +14,7 @@
 #include "CAttributes.h"
 #include "ILightManager.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -351,7 +351,7 @@ namespace scene
 		virtual ITriangleSelector* createTriangleSelector(IMesh* mesh, ISceneNode* node, bool separateMeshbuffers) override;
 
 		//! Creates a simple ITriangleSelector, based on a meshbuffer.
-		virtual ITriangleSelector* createTriangleSelector(const IMeshBuffer* meshBuffer, irr::u32 materialIndex, ISceneNode* node) override;
+		virtual ITriangleSelector* createTriangleSelector(const IMeshBuffer* meshBuffer, nirt::u32 materialIndex, ISceneNode* node) override;
 
 		//! Creates a simple ITriangleSelector, based on an animated mesh scene node.
 		//! Details of the mesh associated with the node will be extracted internally.
@@ -365,7 +365,7 @@ namespace scene
 			ISceneNode* node, s32 minimalPolysPerNode) override;
 
 		//! Creates a simple ITriangleSelector, based on a meshbuffer.
-		virtual ITriangleSelector* createOctreeTriangleSelector(IMeshBuffer* meshBuffer, irr::u32 materialIndex,
+		virtual ITriangleSelector* createOctreeTriangleSelector(IMeshBuffer* meshBuffer, nirt::u32 materialIndex,
 			ISceneNode* node, s32 minimalPolysPerNode=32) override;
 
 		//! Creates a simple dynamic ITriangleSelector, based on a axis aligned bounding box.

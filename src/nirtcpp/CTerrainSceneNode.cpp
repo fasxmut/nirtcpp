@@ -27,7 +27,7 @@
 #include "SMesh.h"
 #include "CDynamicMeshBuffer.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1513,6 +1513,6 @@ namespace scene
 	}
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_

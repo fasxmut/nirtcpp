@@ -5,7 +5,7 @@
 #include "irrTypes.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -376,4 +376,4 @@ void wcharToUtf8(const wchar_t *in, char *out, const u64 len)
 }
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt

@@ -12,7 +12,7 @@
 #include "irrAllocator.h"
 #include <string.h>
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -236,7 +236,7 @@ public:
 		So if you just get level 1 you also have the data for all other levels.
 		There is no level 0 - use getData to get the original image data.
 	*/
-	void* getMipMapsData(irr::u32 mipLevel=1) const
+	void* getMipMapsData(nirt::u32 mipLevel=1) const
 	{
 		if ( MipMapsData && mipLevel > 0)
 		{
@@ -601,6 +601,6 @@ protected:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

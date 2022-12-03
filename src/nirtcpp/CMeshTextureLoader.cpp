@@ -2,12 +2,12 @@
 #include "IFileSystem.h"
 #include "IVideoDriver.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
 
-CMeshTextureLoader::CMeshTextureLoader(irr::io::IFileSystem* fs, irr::video::IVideoDriver* driver)
+CMeshTextureLoader::CMeshTextureLoader(nirt::io::IFileSystem* fs, nirt::video::IVideoDriver* driver)
 : FileSystem(fs)
 , VideoDriver(driver)
 , MeshFile(0)
@@ -16,19 +16,19 @@ CMeshTextureLoader::CMeshTextureLoader(irr::io::IFileSystem* fs, irr::video::IVi
 }
 
 //! Set a custom texture path.
-void CMeshTextureLoader::setTexturePath(const irr::io::path& path)
+void CMeshTextureLoader::setTexturePath(const nirt::io::path& path)
 {
 	TexturePath = path;
 	preparePath(TexturePath);
 }
 
 //! Get the current custom texture path.
-const irr::io::path& CMeshTextureLoader::getTexturePath() const
+const nirt::io::path& CMeshTextureLoader::getTexturePath() const
 {
 	return TexturePath;
 }
 
-bool CMeshTextureLoader::checkTextureName( const irr::io::path& filename)
+bool CMeshTextureLoader::checkTextureName( const nirt::io::path& filename)
 {
 	if (FileSystem->existFile(filename))
 	{
@@ -40,13 +40,13 @@ bool CMeshTextureLoader::checkTextureName( const irr::io::path& filename)
 }
 
 //! Get the texture by searching for it in all paths that makes sense for the given textureName.
-irr::video::ITexture* CMeshTextureLoader::getTexture(const irr::io::path& textureName)
+nirt::video::ITexture* CMeshTextureLoader::getTexture(const nirt::io::path& textureName)
 {
 	if ( textureName.empty() || !FileSystem || !VideoDriver)
 		return NULL;
 
 	// Pre-process texture filename.
-	irr::io::path simplifiedTexName(textureName);
+	nirt::io::path simplifiedTexName(textureName);
 	simplifiedTexName.replace(NIRT_TEXT('\\'),NIRT_TEXT('/'));
 
 	// user defined texture path
@@ -108,7 +108,7 @@ irr::video::ITexture* CMeshTextureLoader::getTexture(const irr::io::path& textur
 }
 
 //! Meshloaders will search paths relative to the meshFile.
-void CMeshTextureLoader::setMeshFile(const irr::io::IReadFile* meshFile)
+void CMeshTextureLoader::setMeshFile(const nirt::io::IReadFile* meshFile)
 {
 	// no grab (would need a weak_ptr)
 	MeshFile = meshFile;
@@ -116,7 +116,7 @@ void CMeshTextureLoader::setMeshFile(const irr::io::IReadFile* meshFile)
 }
 
 //! Meshloaders will try to look relative to the path of the materialFile
-void CMeshTextureLoader::setMaterialFile(const irr::io::IReadFile* materialFile)
+void CMeshTextureLoader::setMaterialFile(const nirt::io::IReadFile* materialFile)
 {
 	// no grab (would need a weak_ptr)
 	MaterialFile = materialFile;
@@ -124,4 +124,4 @@ void CMeshTextureLoader::setMaterialFile(const irr::io::IReadFile* materialFile)
 }
 
 } // end namespace scnene
-} // end namespace irr
+} // end namespace nirt

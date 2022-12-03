@@ -1,6 +1,6 @@
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 using namespace io;
 
@@ -124,7 +124,7 @@ static bool testgetRelativeFilename(io::IFileSystem* fs)
 
 bool filesystem(void)
 {
-	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
+	NirtcppDevice * device = nirt::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
 	assert_log(device);
 	if(!device)
 		return false;

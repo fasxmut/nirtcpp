@@ -7,7 +7,7 @@
 
 #include "IXMLReader.h"
 
-namespace irr
+namespace nirt
 {
 #ifdef _NIRT_COMPILE_WITH_XML_
 namespace io
@@ -19,7 +19,7 @@ namespace io
 
 	//! creates an IXMLReader
 	IXMLReaderUTF8* createIXMLReaderUTF8(IReadFile* file);
-} // end namespace irr
+} // end namespace nirt
 #else // _NIRT_COMPILE_WITH_XML_
 	//! print a message that Nirtcpp is compiled without _NIRT_COMPILE_WITH_XML_
 	void noXML();

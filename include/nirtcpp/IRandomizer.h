@@ -7,7 +7,7 @@
 
 #include "IReferenceCounted.h"
 
-namespace irr
+namespace nirt
 {
 
 //! Interface for generating random numbers
@@ -28,6 +28,6 @@ public:
 	virtual s32 randMax() const =0;
 };
 
-} // end namespace irr
+} // end namespace nirt
 
 #endif

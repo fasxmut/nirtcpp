@@ -24,7 +24,7 @@
 
 // v3.15 - May 16, 2005
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -880,7 +880,7 @@ const core::array<ISceneNode*>& CMY3DMeshFileLoader::getChildNodes() const
 
 
 } // end namespace scnene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_MY3D_LOADER_
 

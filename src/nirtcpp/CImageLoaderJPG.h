@@ -24,7 +24,7 @@ extern "C" {
 #endif // _NIRT_COMPILE_WITH_LIBJPEG_
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -105,7 +105,7 @@ private:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif

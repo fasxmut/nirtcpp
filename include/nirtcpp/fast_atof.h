@@ -8,7 +8,7 @@
 #include "irrMath.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -20,9 +20,9 @@ namespace core
 	//! But if you don't have that choice you can set this to ".,".
 	//! WARNING: This is not thread-safe, so don't change while there's a chance 
 	//! of another thread using fast_atof functions at the same time.
-	// TODO: This should probably also be used in irr::core::string, but
+	// TODO: This should probably also be used in nirt::core::string, but
 	// the float-to-string code used there has to be rewritten first.
-	NIRTCPP_API extern irr::core::stringc LOCALE_DECIMAL_POINTS;
+	NIRTCPP_API extern nirt::core::stringc LOCALE_DECIMAL_POINTS;
 
 #define NIRT_ATOF_TABLE_SIZE 17
 // we write [NIRT_ATOF_TABLE_SIZE] here instead of [] to work around a swig bug
@@ -375,6 +375,6 @@ inline float fast_atof(const char* floatAsString, const char** out=0)
 }
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif

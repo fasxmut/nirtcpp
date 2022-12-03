@@ -8,15 +8,15 @@
 #include "aabbox3d.h"
 #include "IMesh.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
 	//! Interface for an animated mesh.
 	/** There are already simple implementations of this interface available so
 	you don't have to implement this interface on your own if you need to:
-	You might want to use irr::scene::SAnimatedMesh, irr::scene::SMesh,
-	irr::scene::SMeshBuffer etc. */
+	You might want to use nirt::scene::SAnimatedMesh, nirt::scene::SMesh,
+	nirt::scene::SMeshBuffer etc. */
 	class IAnimatedMesh : public IMesh
 	{
 	public:
@@ -68,6 +68,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

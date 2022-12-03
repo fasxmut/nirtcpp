@@ -5,7 +5,7 @@
 #ifndef NIRT_E_MESSAGE_BOX_FLAGS_H_INCLUDED
 #define NIRT_E_MESSAGE_BOX_FLAGS_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -30,6 +30,6 @@ enum EMESSAGE_BOX_FLAG
 };
 
 } // namespace gui
-} // namespace irr
+} // namespace nirt
 
 #endif

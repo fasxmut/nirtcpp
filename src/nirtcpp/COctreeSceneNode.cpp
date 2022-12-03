@@ -22,7 +22,7 @@
 #include "EProfileIDs.h"
 #include "IProfiler.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -672,6 +672,6 @@ bool COctreeSceneNode::isReadOnlyMaterials() const
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_OCTREE_SCENENODE_

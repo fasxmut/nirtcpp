@@ -74,7 +74,7 @@
 #if (PLATFORM_BYTE_ORDER == BRG_BIG_ENDIAN)
 #define swap_b32(x) (x)
 #else
-#define swap_b32(x) irr::os::Byteswap::byteswap(x)
+#define swap_b32(x) nirt::os::Byteswap::byteswap(x)
 #endif
 
 #define SHA1_MASK   (SHA1_BLOCK_SIZE - 1)

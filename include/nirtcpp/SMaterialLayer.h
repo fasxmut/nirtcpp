@@ -8,7 +8,7 @@
 #include "matrix4.h"
 #include "irrAllocator.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -216,7 +216,7 @@ namespace video
 
 	private:
 		friend class SMaterial;
-		irr::core::irrAllocator<irr::core::matrix4> MatrixAllocator;
+		nirt::core::irrAllocator<nirt::core::matrix4> MatrixAllocator;
 
 		//! Texture Matrix
 		/** Do not access this element directly as the internal
@@ -225,6 +225,6 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // S_MATERIAL_LAYER_H_INCLUDED

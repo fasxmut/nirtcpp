@@ -7,7 +7,7 @@
 
 #include "irrTypes.h"
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -64,7 +64,7 @@ inline void heapsort(T* array_, s32 size)
 }
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

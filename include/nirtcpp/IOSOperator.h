@@ -8,7 +8,7 @@
 #include "IReferenceCounted.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 
 //! The Operating system operator provides operation system specific methods and information.

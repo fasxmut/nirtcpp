@@ -33,7 +33,7 @@
 	#define bswap_32(X) ( (((X)&0x000000FF)<<24) | (((X)&0xFF000000) >> 24) | (((X)&0x0000FF00) << 8) | (((X) &0x00FF0000) >> 8))
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace os
 {
@@ -61,7 +61,7 @@ namespace os
 #include <time.h>
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace os
 {
@@ -139,7 +139,7 @@ namespace os
 #include <time.h>
 #include <sys/time.h>
 
-namespace irr
+namespace nirt
 {
 namespace os
 {
@@ -348,6 +348,6 @@ namespace os
 	}
 
 } // end namespace os
-} // end namespace irr
+} // end namespace nirt
 
 

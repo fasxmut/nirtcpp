@@ -7,7 +7,7 @@
 
 #include "CMeshSceneNode.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -55,6 +55,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

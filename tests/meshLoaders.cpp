@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 // Tests mesh loading features and the mesh cache.
 /** This won't test render results. Currently, not all mesh loaders are tested. */

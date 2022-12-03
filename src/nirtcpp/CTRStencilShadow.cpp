@@ -70,7 +70,7 @@
 #endif
 
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -676,11 +676,11 @@ void CTRStencilShadow::drawTriangle(const s4DVertex* burning_restrict a, const s
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -699,7 +699,7 @@ IBurningShader* createTRStencilShadow(CBurningVideoDriver* driver)
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 

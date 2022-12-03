@@ -5,7 +5,7 @@
 #include "CLimitReadFile.h"
 #include "irrString.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -123,5 +123,5 @@ IReadFile* createLimitReadFile(const io::path& fileName, IReadFile* alreadyOpene
 
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 

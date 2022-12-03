@@ -24,7 +24,7 @@
 #include <SDL/SDL.h>
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -3616,7 +3616,7 @@ bool COpenGLDriver::queryTextureFormat(ECOLOR_FORMAT format) const
 	return getColorFormatParameters(format, dummyInternalFormat, dummyPixelFormat, dummyPixelType, &dummyConverter);
 }
 
-bool COpenGLDriver::needsTransparentRenderPass(const irr::video::SMaterial& material) const
+bool COpenGLDriver::needsTransparentRenderPass(const nirt::video::SMaterial& material) const
 {
 	return CNullDriver::needsTransparentRenderPass(material) || material.isAlphaBlendOperation();
 }
@@ -3802,7 +3802,7 @@ ITexture* COpenGLDriver::addRenderTargetTexture(const core::dimension2d<u32>& si
 }
 
 //! Creates a render target texture for a cubemap
-ITexture* COpenGLDriver::addRenderTargetTextureCubemap(const irr::u32 sideLen, const io::path& name, const ECOLOR_FORMAT format)
+ITexture* COpenGLDriver::addRenderTargetTextureCubemap(const nirt::u32 sideLen, const io::path& name, const ECOLOR_FORMAT format)
 {
 	if ( IImage::isCompressedFormat(format) )
 		return 0;
@@ -4441,7 +4441,7 @@ COpenGLCacheHandler* COpenGLDriver::getCacheHandler() const
 
 #endif // _NIRT_COMPILE_WITH_OPENGL_
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

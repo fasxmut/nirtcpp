@@ -20,7 +20,7 @@
 
 #include "irrTypes.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -131,7 +131,7 @@ struct SMyRLEHeader
 } // end namespace
 
 //-----------------------------------------------------------------------------
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -438,7 +438,7 @@ int rle_decode (
 }
 
 } //end namespace core
-} //end namespace irr
+} //end namespace nirt
 
 
 #endif // NIRT_C_MY3D_HELPER_H_INCLUDED

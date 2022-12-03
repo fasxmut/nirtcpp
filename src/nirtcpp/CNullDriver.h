@@ -26,7 +26,7 @@
 #pragma warning( disable: 4996)
 #endif
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -102,7 +102,7 @@ namespace video
 		virtual ITexture* addTextureCubemap(const io::path& name, IImage* imagePosX, IImage* imageNegX, IImage* imagePosY,
 			IImage* imageNegY, IImage* imagePosZ, IImage* imageNegZ) override;
 
-		virtual ITexture* addTextureCubemap(const irr::u32 sideLen, const io::path& name, ECOLOR_FORMAT format = ECF_A8R8G8B8) override;
+		virtual ITexture* addTextureCubemap(const nirt::u32 sideLen, const io::path& name, ECOLOR_FORMAT format = ECF_A8R8G8B8) override;
 
 		virtual bool setRenderTargetEx(IRenderTarget* target, u16 clearFlag, SColor clearColor = SColor(255,0,0,0),
 			f32 clearDepth = 1.f, u8 clearStencil = 0) override;
@@ -322,7 +322,7 @@ namespace video
 			const io::path& name, const ECOLOR_FORMAT format = ECF_UNKNOWN) override;
 
 		//! Creates a render target texture for a cubemap
-		ITexture* addRenderTargetTextureCubemap(const irr::u32 sideLen,
+		ITexture* addRenderTargetTextureCubemap(const nirt::u32 sideLen,
 				const io::path& name, const ECOLOR_FORMAT format) override;
 
 		//! Creates an 1bit alpha channel of the texture based of an color key.
@@ -668,7 +668,7 @@ namespace video
 		virtual core::dimension2du getMaxTextureSize() const override;
 
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
-		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const override;
+		virtual bool needsTransparentRenderPass(const nirt::video::SMaterial& material) const override;
 
 		//! Color conversion convenience function
 		/** Convert an image (as array of pixels) from source to destination
@@ -904,6 +904,6 @@ namespace video
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

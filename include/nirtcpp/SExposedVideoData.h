@@ -11,7 +11,7 @@ struct IDirect3DDevice9;
 struct IDirect3D8;
 struct IDirect3DDevice8;
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -83,6 +83,6 @@ struct SExposedVideoData
 };
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif

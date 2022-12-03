@@ -8,7 +8,7 @@
 #include "IReferenceCounted.h"
 #include "path.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -56,6 +56,6 @@ public:
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

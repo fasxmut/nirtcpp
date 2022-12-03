@@ -207,7 +207,7 @@
 
 #include <locale.h>
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -1962,7 +1962,7 @@ ITriangleSelector* CSceneManager::createTriangleSelector(IMesh* mesh, ISceneNode
 	return new CTriangleSelector(mesh, node, separateMeshbuffers);
 }
 
-ITriangleSelector* CSceneManager::createTriangleSelector(const IMeshBuffer* meshBuffer, irr::u32 materialIndex, ISceneNode* node)
+ITriangleSelector* CSceneManager::createTriangleSelector(const IMeshBuffer* meshBuffer, nirt::u32 materialIndex, ISceneNode* node)
 {
 	if ( !meshBuffer)
 		return 0;
@@ -2000,7 +2000,7 @@ ITriangleSelector* CSceneManager::createOctreeTriangleSelector(IMesh* mesh,
 	return new COctreeTriangleSelector(mesh, node, minimalPolysPerNode);
 }
 
-ITriangleSelector* CSceneManager::createOctreeTriangleSelector(IMeshBuffer* meshBuffer, irr::u32 materialIndex,
+ITriangleSelector* CSceneManager::createOctreeTriangleSelector(IMeshBuffer* meshBuffer, nirt::u32 materialIndex,
 			ISceneNode* node, s32 minimalPolysPerNode)
 {
 	if ( !meshBuffer)
@@ -2704,5 +2704,5 @@ ISceneManager* createSceneManager(video::IVideoDriver* driver,
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

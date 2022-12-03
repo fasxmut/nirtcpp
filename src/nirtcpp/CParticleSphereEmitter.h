@@ -12,7 +12,7 @@
 #include "irrArray.h"
 #include "aabbox3d.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -136,7 +136,7 @@ private:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_PARTICLES_
 

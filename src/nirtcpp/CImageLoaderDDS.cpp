@@ -55,7 +55,7 @@
 #define DDSCAPS2_CUBEMAP_NEGATIVEZ  0x00008000
 #define DDSCAPS2_VOLUME             0x00200000
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -881,7 +881,7 @@ IImageLoader* createImageLoaderDDS()
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

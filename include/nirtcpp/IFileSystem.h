@@ -10,7 +10,7 @@
 #include "IXMLWriter.h"
 #include "IFileArchive.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -393,6 +393,6 @@ public:
 
 
 } // end namespace io
-} // end namespace irr
+} // end namespace nirt
 
 #endif

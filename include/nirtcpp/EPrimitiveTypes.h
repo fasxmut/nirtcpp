@@ -5,7 +5,7 @@
 #ifndef NIRT_E_PRIMITIVE_TYPES_H_INCLUDED
 #define NIRT_E_PRIMITIVE_TYPES_H_INCLUDED
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -55,6 +55,6 @@ namespace scene
 	};
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif

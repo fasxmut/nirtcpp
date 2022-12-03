@@ -14,7 +14,7 @@
 #include "SIrrCreationParameters.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -23,7 +23,7 @@ namespace video
 	public:
 
 		//! constructor
-		CBurningVideoDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter);
+		CBurningVideoDriver(const nirt::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter);
 
 		//! destructor
 		virtual ~CBurningVideoDriver();
@@ -225,7 +225,7 @@ namespace video
 
 #if !defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
-		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const override;
+		virtual bool needsTransparentRenderPass(const nirt::video::SMaterial& material) const override;
 #endif
 
 		IDepthBuffer * getDepthBuffer () { return DepthBuffer; }
@@ -477,7 +477,7 @@ protected:
 	};
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 
 #endif

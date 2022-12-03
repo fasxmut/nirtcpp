@@ -20,7 +20,7 @@
 // - For uses of getMatrix() you have to use quaternion::getMatrix_transposed instead.
 // #define NIRT_TEST_BROKEN_QUATERNION_USE
 
-namespace irr
+namespace nirt
 {
 namespace core
 {
@@ -753,6 +753,6 @@ inline core::quaternion& quaternion::rotationFromTo(const vector3df& from, const
 
 
 } // end namespace core
-} // end namespace irr
+} // end namespace nirt
 
 #endif

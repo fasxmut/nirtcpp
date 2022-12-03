@@ -14,7 +14,7 @@
 #include "IrrCompileConfig.h"
 #include "IImageLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -34,12 +34,12 @@ namespace video
 #include "irrunpack.h"
 
 //! An Nirtcpp image loader for Quake1,2 engine lmp textures/palette
-class CImageLoaderLMP : public irr::video::IImageLoader
+class CImageLoaderLMP : public nirt::video::IImageLoader
 {
 public:
 	virtual bool isALoadableFileExtension(const io::path& filename) const override;
-	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const override;
-	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const override;
+	virtual bool isALoadableFileFormat(nirt::io::IReadFile* file) const override;
+	virtual nirt::video::IImage* loadImage(nirt::io::IReadFile* file) const override;
 };
 
 #endif
@@ -47,21 +47,21 @@ public:
 #ifdef _NIRT_COMPILE_WITH_WAL_LOADER_
 
 //! An Nirtcpp image loader for quake2 wal engine textures
-class CImageLoaderWAL : public irr::video::IImageLoader
+class CImageLoaderWAL : public nirt::video::IImageLoader
 {
 public:
 	virtual bool isALoadableFileExtension(const io::path& filename) const override;
-	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const override;
-	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const override;
+	virtual bool isALoadableFileFormat(nirt::io::IReadFile* file) const override;
+	virtual nirt::video::IImage* loadImage(nirt::io::IReadFile* file) const override;
 };
 
 //! An Nirtcpp image loader for Halflife 1 engine textures
-class CImageLoaderWAL2 : public irr::video::IImageLoader
+class CImageLoaderWAL2 : public nirt::video::IImageLoader
 {
 public:
 	virtual bool isALoadableFileExtension(const io::path& filename) const override;
-	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const override;
-	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const override;
+	virtual bool isALoadableFileFormat(nirt::io::IReadFile* file) const override;
+	virtual nirt::video::IImage* loadImage(nirt::io::IReadFile* file) const override;
 };
 
 // byte-align structures

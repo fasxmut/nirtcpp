@@ -6,10 +6,10 @@
 
 #ifdef _NIRT_COMPILE_WITH_LEAK_HUNTER_
 
-namespace irr
+namespace nirt
 {
-	 irr::core::array<const IReferenceCounted*> LeakHunter::ReferenceCountedObjects;
-} // end namespace irr
+	 nirt::core::array<const IReferenceCounted*> LeakHunter::ReferenceCountedObjects;
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_LEAK_HUNTER_
 

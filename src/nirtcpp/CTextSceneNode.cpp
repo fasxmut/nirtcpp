@@ -11,7 +11,7 @@
 #include "os.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -302,13 +302,13 @@ void CBillboardTextSceneNode::OnAnimate(u32 timeMs)
 	mat.transformBoxEx(BBox);
 }
 
-const core::aabbox3d<f32>& CBillboardTextSceneNode::getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera)
+const core::aabbox3d<f32>& CBillboardTextSceneNode::getTransformedBillboardBoundingBox(const nirt::scene::ICameraSceneNode* camera)
 {
 	updateMesh(camera);
 	return Mesh->getBoundingBox();
 }
 
-void CBillboardTextSceneNode::updateMesh(const irr::scene::ICameraSceneNode* camera)
+void CBillboardTextSceneNode::updateMesh(const nirt::scene::ICameraSceneNode* camera)
 {
 	// get text width
 	f32 textLength = 0.f;
@@ -527,5 +527,5 @@ void CBillboardTextSceneNode::getColor(video::SColor & topColor, video::SColor &
 
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 

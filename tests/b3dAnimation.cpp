@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 
 // Tests B3D animations.
 bool b3dAnimation(void)
@@ -34,7 +34,7 @@ bool b3dAnimation(void)
 		node1->setMaterialFlag(video::EMF_LIGHTING, false);
 		node1->setAnimationSpeed(0.f);
 		node1->setCurrentFrame(10.f);
-		node1->setDebugDataVisible(irr::scene::EDS_BBOX_BUFFERS);
+		node1->setDebugDataVisible(nirt::scene::EDS_BBOX_BUFFERS);
 	}
 
 	scene::IAnimatedMeshSceneNode* node2 = smgr->addAnimatedMeshSceneNode(mesh);

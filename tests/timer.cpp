@@ -1,6 +1,6 @@
 #include "testUtils.h"
 
-using namespace irr;
+using namespace nirt;
 using namespace core;
 
 // Test the functionality of the Nirtcpp timer
@@ -54,7 +54,7 @@ bool testTimer(void)
 	if (startVirtual != timer->getTime())
 		logTestString("Warning: Virtual timer did not progress. Maybe the time slices are too coarse to see.\n");
 
-	irr::ITimer::RealTimeDate date = timer->getRealTimeAndDate();
+	nirt::ITimer::RealTimeDate date = timer->getRealTimeAndDate();
 	logTestString("Real time and date. %d.%d.%d at %d:%d:%d\n", date.Day, date.Month, date.Year, date.Hour, date.Minute, date.Second);
 	logTestString("This is day %d of the year and weekday %d. The current time zone has daylight saving %s\n", date.Yearday, date.Weekday, date.IsDST?"enabled":"disabled");
 

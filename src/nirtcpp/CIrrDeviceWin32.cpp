@@ -42,21 +42,21 @@
 #include "CWGLManager.h"
 #endif
 
-namespace irr
+namespace nirt
 {
 	namespace video
 	{
 #ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
-		IVideoDriver* createDirectX9Driver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, HWND window);
+		IVideoDriver* createDirectX9Driver(const nirt::SNirtcppCreationParameters& params, io::IFileSystem* io, HWND window);
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
-		IVideoDriver* createOpenGLDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
+		IVideoDriver* createOpenGLDriver(const nirt::SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
 #endif
 	}
-} // end namespace irr
+} // end namespace nirt
 
-namespace irr
+namespace nirt
 {
     struct SJoystickWin32Control
     {
@@ -92,7 +92,7 @@ namespace irr
 
         void pollJoysticks();
         bool activateJoysticks(core::array<SJoystickInfo> & joystickInfo);
-        irr::core::stringc findJoystickName(int index, const JOYCAPS &caps) const;
+        nirt::core::stringc findJoystickName(int index, const JOYCAPS &caps) const;
     };
 
 
@@ -227,7 +227,7 @@ void SJoystickWin32Control::pollJoysticks()
 		{
 			SEvent event;
 
-			event.EventType = irr::EET_JOYSTICK_INPUT_EVENT;
+			event.EventType = nirt::EET_JOYSTICK_INPUT_EVENT;
 			event.JoystickEvent.Joystick = (u8)joystick;
 
 			event.JoystickEvent.POV = (u16)info.rgdwPOV[0];
@@ -328,7 +328,7 @@ void SJoystickWin32Control::pollJoysticks()
 		{
 			SEvent event;
 
-			event.EventType = irr::EET_JOYSTICK_INPUT_EVENT;
+			event.EventType = nirt::EET_JOYSTICK_INPUT_EVENT;
 			event.JoystickEvent.Joystick = (u8)joystick;
 
 			event.JoystickEvent.POV = (u16)info.dwPOV;
@@ -379,13 +379,13 @@ void SJoystickWin32Control::pollJoysticks()
 
 /** This function is ported from SDL and released under zlib-license:
   * Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org> */
-irr::core::stringc SJoystickWin32Control::findJoystickName(int index, const JOYCAPS &caps) const
+nirt::core::stringc SJoystickWin32Control::findJoystickName(int index, const JOYCAPS &caps) const
 {
 #if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
     // As a default use the name given in the joystick structure.
     // It is always the same name, independent of joystick.
-    irr::core::stringc result(caps.szPname);
+    nirt::core::stringc result(caps.szPname);
 
     core::stringc key = core::stringc(REGSTR_PATH_JOYCONFIG)+ "\\" + caps.szRegKey + "\\" + REGSTR_KEY_JOYCURR;
     HKEY hTopKey = HKEY_LOCAL_MACHINE;
@@ -513,7 +513,7 @@ bool SJoystickWin32Control::activateJoysticks(core::array<SJoystickInfo> & joyst
 	return false;
 #endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 }
-} // end namespace irr
+} // end namespace nirt
 
 // Get the codepage from the locale language id
 // Based on the table from http://www.science.co.il/Language/Locale-Codes.asp?s=decimal
@@ -680,19 +680,19 @@ namespace
 	struct SEnvMapper
 	{
 		HWND hWnd;
-		irr::CIrrDeviceWin32* irrDev;
+		nirt::CIrrDeviceWin32* irrDev;
 	};
 	// NOTE: This is global. We can have more than one Nirtcpp Device at same time.
-	irr::core::array<SEnvMapper> EnvMap;
+	nirt::core::array<SEnvMapper> EnvMap;
 
 	HKL KEYBOARD_INPUT_HKL=0;
 	unsigned int KEYBOARD_INPUT_CODEPAGE = 1252;
 }
 
-irr::CIrrDeviceWin32* getDeviceFromHWnd(HWND hWnd)
+nirt::CIrrDeviceWin32* getDeviceFromHWnd(HWND hWnd)
 {
-	const irr::u32 end = EnvMap.size();
-	for ( irr::u32 i=0; i < end; ++i )
+	const nirt::u32 end = EnvMap.size();
+	for ( nirt::u32 i=0; i < end; ++i )
 	{
 		const SEnvMapper& env = EnvMap[i];
 		if ( env.hWnd == hWnd )
@@ -712,31 +712,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	#define WHEEL_DELTA 120
 	#endif
 
-	irr::CIrrDeviceWin32* dev = 0;
-	irr::SEvent event;
+	nirt::CIrrDeviceWin32* dev = 0;
+	nirt::SEvent event;
 
-	static irr::s32 ClickCount=0;
+	static nirt::s32 ClickCount=0;
 	if (GetCapture() != hWnd && ClickCount > 0)
 		ClickCount = 0;
 
 
 	struct messageMap
 	{
-		irr::s32 group;
+		nirt::s32 group;
 		UINT winMessage;
-		irr::s32 irrMessage;
+		nirt::s32 irrMessage;
 	};
 
 	static messageMap mouseMap[] =
 	{
-		{0, WM_LBUTTONDOWN, irr::EMIE_LMOUSE_PRESSED_DOWN},
-		{1, WM_LBUTTONUP,   irr::EMIE_LMOUSE_LEFT_UP},
-		{0, WM_RBUTTONDOWN, irr::EMIE_RMOUSE_PRESSED_DOWN},
-		{1, WM_RBUTTONUP,   irr::EMIE_RMOUSE_LEFT_UP},
-		{0, WM_MBUTTONDOWN, irr::EMIE_MMOUSE_PRESSED_DOWN},
-		{1, WM_MBUTTONUP,   irr::EMIE_MMOUSE_LEFT_UP},
-		{2, WM_MOUSEMOVE,   irr::EMIE_MOUSE_MOVED},
-		{3, WM_MOUSEWHEEL,  irr::EMIE_MOUSE_WHEEL},
+		{0, WM_LBUTTONDOWN, nirt::EMIE_LMOUSE_PRESSED_DOWN},
+		{1, WM_LBUTTONUP,   nirt::EMIE_LMOUSE_LEFT_UP},
+		{0, WM_RBUTTONDOWN, nirt::EMIE_RMOUSE_PRESSED_DOWN},
+		{1, WM_RBUTTONUP,   nirt::EMIE_RMOUSE_LEFT_UP},
+		{0, WM_MBUTTONDOWN, nirt::EMIE_MMOUSE_PRESSED_DOWN},
+		{1, WM_MBUTTONUP,   nirt::EMIE_MMOUSE_LEFT_UP},
+		{2, WM_MOUSEMOVE,   nirt::EMIE_MOUSE_MOVED},
+		{3, WM_MOUSEWHEEL,  nirt::EMIE_MOUSE_WHEEL},
 		{-1, 0, 0}
 	};
 
@@ -763,8 +763,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 		}
 
-		event.EventType = irr::EET_MOUSE_INPUT_EVENT;
-		event.MouseInput.Event = (irr::EMOUSE_INPUT_EVENT) m->irrMessage;
+		event.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+		event.MouseInput.Event = (nirt::EMOUSE_INPUT_EVENT) m->irrMessage;
 		event.MouseInput.X = (short)LOWORD(lParam);
 		event.MouseInput.Y = (short)HIWORD(lParam);
 		event.MouseInput.Shift = ((LOWORD(wParam) & MK_SHIFT) != 0);
@@ -773,12 +773,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		event.MouseInput.ButtonStates = wParam & ( MK_LBUTTON | MK_RBUTTON);
 		// middle and extra buttons
 		if (wParam & MK_MBUTTON)
-			event.MouseInput.ButtonStates |= irr::EMBSM_MIDDLE;
+			event.MouseInput.ButtonStates |= nirt::EMBSM_MIDDLE;
 #if(_WIN32_WINNT >= 0x0500)
 		if (wParam & MK_XBUTTON1)
-			event.MouseInput.ButtonStates |= irr::EMBSM_EXTRA1;
+			event.MouseInput.ButtonStates |= nirt::EMBSM_EXTRA1;
 		if (wParam & MK_XBUTTON2)
-			event.MouseInput.ButtonStates |= irr::EMBSM_EXTRA2;
+			event.MouseInput.ButtonStates |= nirt::EMBSM_EXTRA2;
 #endif
 		event.MouseInput.Wheel = 0.f;
 
@@ -790,7 +790,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			ClientToScreen(hWnd, &p);
 			event.MouseInput.X -= p.x;
 			event.MouseInput.Y -= p.y;
-			event.MouseInput.Wheel = ((irr::f32)((short)HIWORD(wParam))) / (irr::f32)WHEEL_DELTA;
+			event.MouseInput.Wheel = ((nirt::f32)((short)HIWORD(wParam))) / (nirt::f32)WHEEL_DELTA;
 		}
 
 		dev = getDeviceFromHWnd(hWnd);
@@ -798,17 +798,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			dev->postEventFromUser(event);
 
-			if ( event.MouseInput.Event >= irr::EMIE_LMOUSE_PRESSED_DOWN && event.MouseInput.Event <= irr::EMIE_MMOUSE_PRESSED_DOWN )
+			if ( event.MouseInput.Event >= nirt::EMIE_LMOUSE_PRESSED_DOWN && event.MouseInput.Event <= nirt::EMIE_MMOUSE_PRESSED_DOWN )
 			{
-				irr::u32 clicks = dev->checkSuccessiveClicks(event.MouseInput.X, event.MouseInput.Y, event.MouseInput.Event);
+				nirt::u32 clicks = dev->checkSuccessiveClicks(event.MouseInput.X, event.MouseInput.Y, event.MouseInput.Event);
 				if ( clicks == 2 )
 				{
-					event.MouseInput.Event = (irr::EMOUSE_INPUT_EVENT)(irr::EMIE_LMOUSE_DOUBLE_CLICK + event.MouseInput.Event-irr::EMIE_LMOUSE_PRESSED_DOWN);
+					event.MouseInput.Event = (nirt::EMOUSE_INPUT_EVENT)(nirt::EMIE_LMOUSE_DOUBLE_CLICK + event.MouseInput.Event-nirt::EMIE_LMOUSE_PRESSED_DOWN);
 					dev->postEventFromUser(event);
 				}
 				else if ( clicks == 3 )
 				{
-					event.MouseInput.Event = (irr::EMOUSE_INPUT_EVENT)(irr::EMIE_LMOUSE_TRIPLE_CLICK + event.MouseInput.Event-irr::EMIE_LMOUSE_PRESSED_DOWN);
+					event.MouseInput.Event = (nirt::EMOUSE_INPUT_EVENT)(nirt::EMIE_LMOUSE_TRIPLE_CLICK + event.MouseInput.Event-nirt::EMIE_LMOUSE_PRESSED_DOWN);
 					dev->postEventFromUser(event);
 				}
 			}
@@ -836,28 +836,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			BYTE allKeys[256];
 
-			event.EventType = irr::EET_KEY_INPUT_EVENT;
-			event.KeyInput.Key = (irr::EKEY_CODE)wParam;
+			event.EventType = nirt::EET_KEY_INPUT_EVENT;
+			event.KeyInput.Key = (nirt::EKEY_CODE)wParam;
 			event.KeyInput.PressedDown = (message==WM_KEYDOWN || message == WM_SYSKEYDOWN);
 
 			const UINT MY_MAPVK_VSC_TO_VK_EX = 3; // MAPVK_VSC_TO_VK_EX should be in SDK according to MSDN, but isn't in mine.
-			if ( event.KeyInput.Key == irr::KEY_SHIFT )
+			if ( event.KeyInput.Key == nirt::KEY_SHIFT )
 			{
 				// this will fail on systems before windows NT/2000/XP, not sure _what_ will return there instead.
-				event.KeyInput.Key = (irr::EKEY_CODE)MapVirtualKey( ((lParam>>16) & 255), MY_MAPVK_VSC_TO_VK_EX );
+				event.KeyInput.Key = (nirt::EKEY_CODE)MapVirtualKey( ((lParam>>16) & 255), MY_MAPVK_VSC_TO_VK_EX );
 			}
-			if ( event.KeyInput.Key == irr::KEY_CONTROL )
+			if ( event.KeyInput.Key == nirt::KEY_CONTROL )
 			{
-				event.KeyInput.Key = (irr::EKEY_CODE)MapVirtualKey( ((lParam>>16) & 255), MY_MAPVK_VSC_TO_VK_EX );
+				event.KeyInput.Key = (nirt::EKEY_CODE)MapVirtualKey( ((lParam>>16) & 255), MY_MAPVK_VSC_TO_VK_EX );
 				// some keyboards will just return LEFT for both - left and right keys. So also check extend bit.
 				if (lParam & 0x1000000)
-					event.KeyInput.Key = irr::KEY_RCONTROL;
+					event.KeyInput.Key = nirt::KEY_RCONTROL;
 			}
-			if ( event.KeyInput.Key == irr::KEY_MENU )
+			if ( event.KeyInput.Key == nirt::KEY_MENU )
 			{
-				event.KeyInput.Key = (irr::EKEY_CODE)MapVirtualKey( ((lParam>>16) & 255), MY_MAPVK_VSC_TO_VK_EX );
+				event.KeyInput.Key = (nirt::EKEY_CODE)MapVirtualKey( ((lParam>>16) & 255), MY_MAPVK_VSC_TO_VK_EX );
 				if (lParam & 0x1000000)
-					event.KeyInput.Key = irr::KEY_RMENU;
+					event.KeyInput.Key = nirt::KEY_RMENU;
 			}
 
 			GetKeyboardState(allKeys);
@@ -946,7 +946,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_USER:
-		event.EventType = irr::EET_USER_EVENT;
+		event.EventType = nirt::EET_USER_EVENT;
 		event.UserEvent.UserData1 = static_cast<size_t>(wParam);
 		event.UserEvent.UserData2 = static_cast<size_t>(lParam);
 		dev = getDeviceFromHWnd(hWnd);
@@ -976,7 +976,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 }
 
 
-namespace irr
+namespace nirt
 {
 
 //! constructor
@@ -1268,7 +1268,7 @@ void CIrrDeviceWin32::resizeIfNecessary()
 		sprintf(tmp, "Resizing window (%ld %ld)", r.right, r.bottom);
 		os::Printer::log(tmp);
 
-		getVideoDriver()->OnResize(irr::core::dimension2du((u32)r.right, (u32)r.bottom));
+		getVideoDriver()->OnResize(nirt::core::dimension2du((u32)r.right, (u32)r.bottom));
 		getWin32CursorControl()->OnResize(getVideoDriver()->getScreenSize());
 	}
 
@@ -1663,11 +1663,11 @@ void CIrrDeviceWin32::getWindowsVersion(core::stringc& out)
 			RegCloseKey( hKey );
 
 
-			if (irr::core::stringc("WINNT").equals_ignore_case(szProductType))
+			if (nirt::core::stringc("WINNT").equals_ignore_case(szProductType))
 				out.append("Professional ");
-			if (irr::core::stringc("LANMANNT").equals_ignore_case(szProductType))
+			if (nirt::core::stringc("LANMANNT").equals_ignore_case(szProductType))
 				out.append("Server ");
-			if (irr::core::stringc("SERVERNT").equals_ignore_case(szProductType))
+			if (nirt::core::stringc("SERVERNT").equals_ignore_case(szProductType))
 				out.append("Advanced Server ");
 		}
 
@@ -1680,12 +1680,12 @@ void CIrrDeviceWin32::getWindowsVersion(core::stringc& out)
 			sprintf(tmp, "version %lu.%lu %s (Build %lu)",
 					osvi.dwMajorVersion,
 					osvi.dwMinorVersion,
-					irr::core::stringc(osvi.szCSDVersion).data(),
+					nirt::core::stringc(osvi.szCSDVersion).data(),
 					osvi.dwBuildNumber & 0xFFFF);
 		}
 		else
 		{
-			sprintf(tmp, "%s (Build %lu)", irr::core::stringc(osvi.szCSDVersion).data(),
+			sprintf(tmp, "%s (Build %lu)", nirt::core::stringc(osvi.szCSDVersion).data(),
 			osvi.dwBuildNumber & 0xFFFF);
 		}
 
@@ -1726,7 +1726,7 @@ void CIrrDeviceWin32::OnResized()
 }
 
 //! Resize the render window.
-void CIrrDeviceWin32::setWindowSize(const irr::core::dimension2d<u32>& size)
+void CIrrDeviceWin32::setWindowSize(const nirt::core::dimension2d<u32>& size)
 {
 	if (ExternalWindow || !getVideoDriver() || CreationParams.Fullscreen)
 		return;
@@ -1978,7 +1978,7 @@ bool CIrrDeviceWin32::isWindowsVistaOrGreater()
 
 // Convert an Nirtcpp texture to a Windows cursor
 // Based on http://www.codeguru.com/cpp/w-p/win32/cursors/article.php/c4529/
-HCURSOR CIrrDeviceWin32::TextureToCursor(HWND hwnd, irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
+HCURSOR CIrrDeviceWin32::TextureToCursor(HWND hwnd, nirt::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
 	//
 	// create the bitmaps needed for cursors from the texture
@@ -2129,9 +2129,9 @@ gui::ECURSOR_ICON CIrrDeviceWin32::CCursorControl::addIcon(const gui::SCursorSpr
 
 		for ( u32 i=0; i < icon.SpriteBank->getSprites()[icon.SpriteId].Frames.size(); ++i )
 		{
-			irr::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
-			irr::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
-			irr::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
+			nirt::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
+			nirt::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
+			nirt::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
 
 			HCURSOR hc = Device->TextureToCursor(HWnd, icon.SpriteBank->getTexture(texId), rectIcon, icon.HotSpot);
 			cW32.Frames.push_back( CursorFrameW32(hc) );
@@ -2159,9 +2159,9 @@ void CIrrDeviceWin32::CCursorControl::changeIcon(gui::ECURSOR_ICON iconId, const
 		cW32.FrameTime = icon.SpriteBank->getSprites()[icon.SpriteId].frameTime;
 		for ( u32 i=0; i < icon.SpriteBank->getSprites()[icon.SpriteId].Frames.size(); ++i )
 		{
-			irr::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
-			irr::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
-			irr::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
+			nirt::u32 texId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].textureNumber;
+			nirt::u32 rectId = icon.SpriteBank->getSprites()[icon.SpriteId].Frames[i].rectNumber;
+			nirt::core::rect<s32> rectIcon = icon.SpriteBank->getPositions()[rectId];
 
 			HCURSOR hc = Device->TextureToCursor(HWnd, icon.SpriteBank->getTexture(texId), rectIcon, icon.HotSpot);
 			cW32.Frames.push_back( CursorFrameW32(hc) );

@@ -9,7 +9,7 @@
 #include "irrString.h"
 #include "coreutil.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -39,6 +39,6 @@ public:
 };
 
 } // namespace video
-} // namespace irr
+} // namespace nirt
 
 #endif // NIRT_I_IMAGE_WRITER_H_INCLUDED

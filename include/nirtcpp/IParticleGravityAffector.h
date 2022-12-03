@@ -7,7 +7,7 @@
 
 #include "IParticleAffector.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -35,6 +35,6 @@ public:
 };
 
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_I_PARTICLE_GRAVITY_AFFECTOR_H_INCLUDED

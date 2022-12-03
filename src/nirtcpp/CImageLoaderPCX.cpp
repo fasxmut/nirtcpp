@@ -14,7 +14,7 @@
 #include "irrString.h"
 
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -75,7 +75,7 @@ IImage* CImageLoaderPCX::loadImage(io::IReadFile* file) const
 	if ((header.BitsPerPixel != 8) && (header.BitsPerPixel != 4) && (header.BitsPerPixel != 1))
 	{
 		os::Printer::log("Unsupported bits per pixel in PCX file.",
-			file->getFileName(), irr::ELL_WARNING);
+			file->getFileName(), nirt::ELL_WARNING);
 		return 0;
 	}
 
@@ -223,7 +223,7 @@ IImageLoader* createImageLoaderPCX()
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 

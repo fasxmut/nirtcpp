@@ -10,7 +10,7 @@
 #include "irrString.h"
 #include "IrrCompileConfig.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -466,7 +466,7 @@ void CXMLWriterUTF8::writeLineBreak()
 
 }
 
-} // end namespace irr
+} // end namespace nirt
 } // end namespace io
 
 #endif // _NIRT_COMPILE_WITH_XML_

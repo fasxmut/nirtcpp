@@ -7,7 +7,7 @@
 
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-namespace irr
+namespace nirt
 {
 
 namespace video
@@ -91,7 +91,7 @@ void burning_shader_class::OnSetMaterialBurning(const SBurningShaderMaterial& ma
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 

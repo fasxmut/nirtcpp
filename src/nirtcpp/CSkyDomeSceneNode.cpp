@@ -12,7 +12,7 @@
 #include "IAnimatedMesh.h"
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -259,6 +259,6 @@ ISceneNode* CSkyDomeSceneNode::clone(ISceneNode* newParent, ISceneManager* newMa
 
 
 } // namespace scene
-} // namespace irr
+} // namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_

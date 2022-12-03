@@ -8,7 +8,7 @@
 #include "IFileSystem.h"
 #include "irrArray.h"
 
-namespace irr
+namespace nirt
 {
 namespace io
 {
@@ -172,7 +172,7 @@ private:
 };
 
 
-} // end namespace irr
+} // end namespace nirt
 } // end namespace io
 
 #endif

@@ -25,7 +25,7 @@
 #define TestWithAllDrivers(X) \
 	logTestString("Running test " #X "\n"); \
 	for (u32 i=1; i<video::EDT_COUNT; ++i) \
-		if (video::E_DRIVER_TYPE(i) != video::DEPRECATED_EDT_DIRECT3D8_NO_LONGER_EXISTS && irr::NirtcppDevice::isDriverSupported((irr::video::E_DRIVER_TYPE)i)) \
+		if (video::E_DRIVER_TYPE(i) != video::DEPRECATED_EDT_DIRECT3D8_NO_LONGER_EXISTS && nirt::NirtcppDevice::isDriverSupported((nirt::video::E_DRIVER_TYPE)i)) \
 		{\
 			SLOW_SWITCH; \
 			result &= X(video::E_DRIVER_TYPE(i));\
@@ -35,7 +35,7 @@
 	SLOW_SWITCH; \
 	logTestString("Running test " #X "\n"); \
 	for (u32 i=video::EDT_DIRECT3D9; i<video::EDT_COUNT; ++i) \
-		if (irr::NirtcppDevice::isDriverSupported((irr::video::E_DRIVER_TYPE)i)) \
+		if (nirt::NirtcppDevice::isDriverSupported((nirt::video::E_DRIVER_TYPE)i)) \
 		{\
 			SLOW_SWITCH; \
 			result &= X(video::E_DRIVER_TYPE(i));\
@@ -61,14 +61,14 @@ extern bool binaryCompareFiles(const char * fileName1, const char * fileName2);
 	\param fileName1 The first file for comparison.
 	\param fileName2 The second file for comparison.
 	\return true if the files are identical, false on any error or difference. */
-extern bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const char * fileName2);
+extern bool xmlCompareFiles(nirt::io::IFileSystem * fs, const char * fileName1, const char * fileName2);
 
 //! Compare two images, returning the degree to which they match.
 /** \param driver The Nirtcpp video driver.
 	\param fileName1 The first image to compare.
 	\param fileName2 The second image to compare.
 	\return The match, from 0.f to 100.f */
-extern float fuzzyCompareImages(irr::video::IVideoDriver * driver,
+extern float fuzzyCompareImages(nirt::video::IVideoDriver * driver,
 		const char * fileName1, const char * fileName2);
 
 //! Take a screenshot and compare it against a reference screenshot in the tests/media subdirectory
@@ -78,15 +78,15 @@ extern float fuzzyCompareImages(irr::video::IVideoDriver * driver,
 	in order to be considered a match.
 	\return true if the screenshot was taken and is identical to the reference image of the same name
 	in the tests/media directory, false on any error or difference. */
-extern bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * driver,
+extern bool takeScreenshotAndCompareAgainstReference(nirt::video::IVideoDriver * driver,
 													const char * fileName,
-													irr::f32 requiredMatch = 99.f);
+													nirt::f32 requiredMatch = 99.f);
 
 //! Stabilize the screen background eg. eliminate problems like an aero transparency effects etc.
 /** \param driver The Nirtcpp video driver.
 	\return true if required color is the same as a window background color. */
-extern void stabilizeScreenBackground(irr::video::IVideoDriver * driver,
-													irr::video::SColor color = irr::video::SColor(255, 255, 255, 255));
+extern void stabilizeScreenBackground(nirt::video::IVideoDriver * driver,
+													nirt::video::SColor color = nirt::video::SColor(255, 255, 255, 255));
 
 
 //! Opens a test log file, deleting any existing contents.
@@ -105,6 +105,6 @@ extern void closeTestLog();
 extern void logTestString(const char * format, ...);
 
 //! Return a drivername for the driver which is useable in filenames
-extern irr::core::stringc shortDriverName(irr::video::IVideoDriver * driver);
+extern nirt::core::stringc shortDriverName(nirt::video::IVideoDriver * driver);
 
 #endif // _TEST_UTILS_H_

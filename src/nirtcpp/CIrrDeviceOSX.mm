@@ -63,16 +63,16 @@ struct JoystickComponent
 
 struct JoystickInfo
 {
-	irr::core::array <JoystickComponent> axisComp;
-	irr::core::array <JoystickComponent> buttonComp;
-	irr::core::array <JoystickComponent> hatComp;
+	nirt::core::array <JoystickComponent> axisComp;
+	nirt::core::array <JoystickComponent> buttonComp;
+	nirt::core::array <JoystickComponent> hatComp;
 
 	int hats;
 	int axes;
 	int buttons;
 	int numActiveJoysticks;
 
-	irr::SEvent persistentData;
+	nirt::SEvent persistentData;
 
 	IOHIDDeviceInterface ** interface;
 	bool removed;
@@ -88,12 +88,12 @@ struct JoystickInfo
 		buttonComp.clear();
 		hatComp.clear();
 
-		persistentData.EventType = irr::EET_JOYSTICK_INPUT_EVENT;
+		persistentData.EventType = nirt::EET_JOYSTICK_INPUT_EVENT;
 		persistentData.JoystickEvent.POV = 65535;
 		persistentData.JoystickEvent.ButtonStates = 0;
 	}
 };
-irr::core::array<JoystickInfo> ActiveJoysticks;
+nirt::core::array<JoystickInfo> ActiveJoysticks;
 
 //helper functions for init joystick
 static IOReturn closeJoystickDevice (JoystickInfo* joyInfo)
@@ -108,11 +108,11 @@ static IOReturn closeJoystickDevice (JoystickInfo* joyInfo)
 			/* do nothing as device was not opened, thus can't be closed */
 		}
 		else if (kIOReturnSuccess != result)
-			irr::os::Printer::log("IOHIDDeviceInterface failed to close", irr::ELL_ERROR);
+			nirt::os::Printer::log("IOHIDDeviceInterface failed to close", nirt::ELL_ERROR);
 		/* release the interface */
 		result = (*(joyInfo->interface))->Release (joyInfo->interface);
 		if (kIOReturnSuccess != result)
-			irr::os::Printer::log("IOHIDDeviceInterface failed to release", irr::ELL_ERROR);
+			nirt::os::Printer::log("IOHIDDeviceInterface failed to release", nirt::ELL_ERROR);
 		joyInfo->interface = NULL;
 	}
 	return result;
@@ -228,10 +228,10 @@ static void joystickTopLevelElementHandler (const void * value, void * parameter
 		return;
 	refCF = CFDictionaryGetValue ((CFDictionaryRef)value, CFSTR(kIOHIDElementUsagePageKey));
 	if (!CFNumberGetValue ((CFNumberRef)refCF, kCFNumberLongType, &((JoystickInfo *) parameter)->usagePage))
-		irr::os::Printer::log("CFNumberGetValue error retrieving JoystickInfo->usagePage", irr::ELL_ERROR);
+		nirt::os::Printer::log("CFNumberGetValue error retrieving JoystickInfo->usagePage", nirt::ELL_ERROR);
 	refCF = CFDictionaryGetValue ((CFDictionaryRef)value, CFSTR(kIOHIDElementUsageKey));
 	if (!CFNumberGetValue ((CFNumberRef)refCF, kCFNumberLongType, &((JoystickInfo *) parameter)->usage))
-		irr::os::Printer::log("CFNumberGetValue error retrieving JoystickInfo->usage", irr::ELL_ERROR);
+		nirt::os::Printer::log("CFNumberGetValue error retrieving JoystickInfo->usage", nirt::ELL_ERROR);
 }
 
 static void getJoystickDeviceInfo (io_object_t hidDevice, CFMutableDictionaryRef hidProperties, JoystickInfo *joyInfo)
@@ -260,7 +260,7 @@ static void getJoystickDeviceInfo (io_object_t hidDevice, CFMutableDictionaryRef
 			if (refCF)
 			{
 				if (!CFStringGetCString ((CFStringRef)refCF, joyInfo->joystickName, 256, CFStringGetSystemEncoding ()))
-					irr::os::Printer::log("CFStringGetCString error getting joyInfo->joystickName", irr::ELL_ERROR);
+					nirt::os::Printer::log("CFStringGetCString error getting joyInfo->joystickName", nirt::ELL_ERROR);
 			}
 
 			/* get usage page and usage */
@@ -268,11 +268,11 @@ static void getJoystickDeviceInfo (io_object_t hidDevice, CFMutableDictionaryRef
 			if (refCF)
 			{
 				if (!CFNumberGetValue ((CFNumberRef)refCF, kCFNumberLongType, &joyInfo->usagePage))
-					irr::os::Printer::log("CFNumberGetValue error getting joyInfo->usagePage", irr::ELL_ERROR);
+					nirt::os::Printer::log("CFNumberGetValue error getting joyInfo->usagePage", nirt::ELL_ERROR);
 				refCF = CFDictionaryGetValue (hidProperties, CFSTR(kIOHIDPrimaryUsageKey));
 				if (refCF)
 					if (!CFNumberGetValue ((CFNumberRef)refCF, kCFNumberLongType, &joyInfo->usage))
-						irr::os::Printer::log("CFNumberGetValue error getting joyInfo->usage", irr::ELL_ERROR);
+						nirt::os::Printer::log("CFNumberGetValue error getting joyInfo->usage", nirt::ELL_ERROR);
 			}
 
 			if (NULL == refCF) /* get top level element HID usage page or usage */
@@ -290,12 +290,12 @@ static void getJoystickDeviceInfo (io_object_t hidDevice, CFMutableDictionaryRef
 			CFRelease (usbProperties);
 		}
 		else
-			irr::os::Printer::log("IORegistryEntryCreateCFProperties failed to create usbProperties", irr::ELL_ERROR);
+			nirt::os::Printer::log("IORegistryEntryCreateCFProperties failed to create usbProperties", nirt::ELL_ERROR);
 
 		if (kIOReturnSuccess != IOObjectRelease (parent2))
-			irr::os::Printer::log("IOObjectRelease failed to release parent2", irr::ELL_ERROR);
+			nirt::os::Printer::log("IOObjectRelease failed to release parent2", nirt::ELL_ERROR);
 		if (kIOReturnSuccess != IOObjectRelease (parent1))
-			irr::os::Printer::log("IOObjectRelease failed to release parent1", irr::ELL_ERROR);
+			nirt::os::Printer::log("IOObjectRelease failed to release parent1", nirt::ELL_ERROR);
 	}
 }
 
@@ -465,23 +465,23 @@ long GetDictionaryLong(CFDictionaryRef theDict, const void* key)
 	return value;
 }
 
-namespace irr
+namespace nirt
 {
 	namespace video
 	{
 		IVideoDriver* createOpenGLDriver(const SNirtcppCreationParameters& param, io::IFileSystem* io, IContextManager* contextManager);
 	}
-} // end namespace irr
+} // end namespace nirt
 
 static bool firstLaunch = true;
 
 @implementation CIrrDelegateOSX
 {
-    irr::CIrrDeviceMacOSX* Device;
+    nirt::CIrrDeviceMacOSX* Device;
     bool Quit;
 }
 
-- (id)initWithDevice:(irr::CIrrDeviceMacOSX*)device
+- (id)initWithDevice:(nirt::CIrrDeviceMacOSX*)device
 {
     self = [super init];
     
@@ -554,7 +554,7 @@ static bool firstLaunch = true;
 
 @end
 
-namespace irr
+namespace nirt
 {
 //! constructor
 CIrrDeviceMacOSX::CIrrDeviceMacOSX(const SNirtcppCreationParameters& param)
@@ -839,11 +839,11 @@ void CIrrDeviceMacOSX::setResize(int width, int height)
 		DeviceHeight = (s32)driverFrame.size.height;
 
 		//SceneManager ( Camera ) should react with reset, otherwise sticky mouse
-		irr::SEvent	ievent;
-		ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-		MouseButtonStates &= ~irr::EMBSM_LEFT;
+		nirt::SEvent	ievent;
+		ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+		MouseButtonStates &= ~nirt::EMBSM_LEFT;
 		ievent.MouseInput.ButtonStates = MouseButtonStates;
-		ievent.MouseInput.Event = irr::EMIE_LMOUSE_LEFT_UP;
+		ievent.MouseInput.Event = nirt::EMIE_LMOUSE_LEFT_UP;
 		ievent.MouseInput.Control = false;
 		ievent.MouseInput.Shift = false;
 		
@@ -943,7 +943,7 @@ bool CIrrDeviceMacOSX::run()
 	NSAutoreleasePool* Pool = [[NSAutoreleasePool alloc] init];
 
 	NSEvent *event;
-	irr::SEvent	ievent;
+	nirt::SEvent	ievent;
 
 	os::Timer::tick();
 	storeMouseLocation();
@@ -964,14 +964,14 @@ bool CIrrDeviceMacOSX::run()
 				break;
 
 			case NSFlagsChanged:
-				ievent.EventType = irr::EET_KEY_INPUT_EVENT;
+				ievent.EventType = nirt::EET_KEY_INPUT_EVENT;
 				ievent.KeyInput.Shift = ([(NSEvent *)event modifierFlags] & NSShiftKeyMask) != 0;
 				ievent.KeyInput.Control = ([(NSEvent *)event modifierFlags] & NSControlKeyMask) != 0;
 
 				if (IsShiftDown != ievent.KeyInput.Shift)
 				{
-					ievent.KeyInput.Char = irr::KEY_SHIFT;
-					ievent.KeyInput.Key = irr::KEY_SHIFT;
+					ievent.KeyInput.Char = nirt::KEY_SHIFT;
+					ievent.KeyInput.Key = nirt::KEY_SHIFT;
 					ievent.KeyInput.PressedDown = ievent.KeyInput.Shift;
 
 					IsShiftDown = ievent.KeyInput.Shift;
@@ -981,8 +981,8 @@ bool CIrrDeviceMacOSX::run()
 
 				if (IsControlDown != ievent.KeyInput.Control)
 				{
-					ievent.KeyInput.Char = irr::KEY_CONTROL;
-					ievent.KeyInput.Key = irr::KEY_CONTROL;
+					ievent.KeyInput.Char = nirt::KEY_CONTROL;
+					ievent.KeyInput.Key = nirt::KEY_CONTROL;
 					ievent.KeyInput.PressedDown = ievent.KeyInput.Control;
 
 					IsControlDown = ievent.KeyInput.Control;
@@ -994,34 +994,34 @@ bool CIrrDeviceMacOSX::run()
 				break;
 
 			case NSLeftMouseDown:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				ievent.MouseInput.Event = irr::EMIE_LMOUSE_PRESSED_DOWN;
-				MouseButtonStates |= irr::EMBSM_LEFT;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				ievent.MouseInput.Event = nirt::EMIE_LMOUSE_PRESSED_DOWN;
+				MouseButtonStates |= nirt::EMBSM_LEFT;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
 				postMouseEvent(event,ievent);
 				break;
 
 			case NSLeftMouseUp:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				MouseButtonStates &= ~irr::EMBSM_LEFT;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				MouseButtonStates &= ~nirt::EMBSM_LEFT;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
-				ievent.MouseInput.Event = irr::EMIE_LMOUSE_LEFT_UP;
+				ievent.MouseInput.Event = nirt::EMIE_LMOUSE_LEFT_UP;
 				postMouseEvent(event,ievent);
 				break;
 
 			case NSOtherMouseDown:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				ievent.MouseInput.Event = irr::EMIE_MMOUSE_PRESSED_DOWN;
-				MouseButtonStates |= irr::EMBSM_MIDDLE;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				ievent.MouseInput.Event = nirt::EMIE_MMOUSE_PRESSED_DOWN;
+				MouseButtonStates |= nirt::EMBSM_MIDDLE;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
 				postMouseEvent(event,ievent);
 				break;
 
 			case NSOtherMouseUp:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				MouseButtonStates &= ~irr::EMBSM_MIDDLE;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				MouseButtonStates &= ~nirt::EMBSM_MIDDLE;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
-				ievent.MouseInput.Event = irr::EMIE_MMOUSE_LEFT_UP;
+				ievent.MouseInput.Event = nirt::EMIE_MMOUSE_LEFT_UP;
 				postMouseEvent(event,ievent);
 				break;
 
@@ -1029,31 +1029,31 @@ bool CIrrDeviceMacOSX::run()
 			case NSLeftMouseDragged:
 			case NSRightMouseDragged:
 			case NSOtherMouseDragged:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				ievent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				ievent.MouseInput.Event = nirt::EMIE_MOUSE_MOVED;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
 				postMouseEvent(event,ievent);
 				break;
 
 			case NSRightMouseDown:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				ievent.MouseInput.Event = irr::EMIE_RMOUSE_PRESSED_DOWN;
-				MouseButtonStates |= irr::EMBSM_RIGHT;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				ievent.MouseInput.Event = nirt::EMIE_RMOUSE_PRESSED_DOWN;
+				MouseButtonStates |= nirt::EMBSM_RIGHT;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
 				postMouseEvent(event,ievent);
 				break;
 
 			case NSRightMouseUp:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				ievent.MouseInput.Event = irr::EMIE_RMOUSE_LEFT_UP;
-				MouseButtonStates &= ~irr::EMBSM_RIGHT;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				ievent.MouseInput.Event = nirt::EMIE_RMOUSE_LEFT_UP;
+				MouseButtonStates &= ~nirt::EMBSM_RIGHT;
 				ievent.MouseInput.ButtonStates = MouseButtonStates;
 				postMouseEvent(event,ievent);
 				break;
 
 			case NSScrollWheel:
-				ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-				ievent.MouseInput.Event = irr::EMIE_MOUSE_WHEEL;
+				ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+				ievent.MouseInput.Event = nirt::EMIE_MOUSE_WHEEL;
 				ievent.MouseInput.Wheel = [(NSEvent *)event deltaY];
 				if (ievent.MouseInput.Wheel < 1.0f)
 					ievent.MouseInput.Wheel *= 10.0f;
@@ -1153,7 +1153,7 @@ bool CIrrDeviceMacOSX::isWindowMinimized() const
 }
 
 
-void CIrrDeviceMacOSX::postKeyEvent(void *event,irr::SEvent &ievent,bool pressed)
+void CIrrDeviceMacOSX::postKeyEvent(void *event,nirt::SEvent &ievent,bool pressed)
 {
 	NSString *str;
 	std::map<int,int>::const_iterator iter;
@@ -1179,7 +1179,7 @@ void CIrrDeviceMacOSX::postKeyEvent(void *event,irr::SEvent &ievent,bool pressed
 			// workaround for period character
 			if (c == 0x2E)
 			{
-				mkey = irr::KEY_PERIOD;
+				mkey = nirt::KEY_PERIOD;
 				mchar = '.';
 			}
 			else
@@ -1201,8 +1201,8 @@ void CIrrDeviceMacOSX::postKeyEvent(void *event,irr::SEvent &ievent,bool pressed
 			}
 		}
 
-		ievent.EventType = irr::EET_KEY_INPUT_EVENT;
-		ievent.KeyInput.Key = (irr::EKEY_CODE)mkey;
+		ievent.EventType = nirt::EET_KEY_INPUT_EVENT;
+		ievent.KeyInput.Key = (nirt::EKEY_CODE)mkey;
 		ievent.KeyInput.PressedDown = pressed;
 		ievent.KeyInput.Shift = ([(NSEvent *)event modifierFlags] & NSShiftKeyMask) != 0;
 		ievent.KeyInput.Control = ([(NSEvent *)event modifierFlags] & NSControlKeyMask) != 0;
@@ -1218,7 +1218,7 @@ void CIrrDeviceMacOSX::postKeyEvent(void *event,irr::SEvent &ievent,bool pressed
 }
 
 
-void CIrrDeviceMacOSX::postMouseEvent(void *event,irr::SEvent &ievent)
+void CIrrDeviceMacOSX::postMouseEvent(void *event,nirt::SEvent &ievent)
 {
 	bool post = true;
 
@@ -1280,9 +1280,9 @@ void CIrrDeviceMacOSX::storeMouseLocation()
 		if (curr.X != x || curr.Y != y)
 		{
 			// In fullscreen mode, events are not sent regularly so rely on polling
-			irr::SEvent ievent;
-			ievent.EventType = irr::EET_MOUSE_INPUT_EVENT;
-			ievent.MouseInput.Event = irr::EMIE_MOUSE_MOVED;
+			nirt::SEvent ievent;
+			ievent.EventType = nirt::EET_MOUSE_INPUT_EVENT;
+			ievent.MouseInput.Event = nirt::EMIE_MOUSE_MOVED;
 			ievent.MouseInput.X = x;
 			ievent.MouseInput.Y = y;
 			postEventFromUser(ievent);
@@ -1343,119 +1343,119 @@ void CIrrDeviceMacOSX::setWindow(NSWindow* window)
 
 void CIrrDeviceMacOSX::initKeycodes()
 {
-	KeyCodes[kVK_UpArrow] = irr::KEY_UP;
-	KeyCodes[kVK_DownArrow] = irr::KEY_DOWN;
-	KeyCodes[kVK_LeftArrow] = irr::KEY_LEFT;
-	KeyCodes[kVK_RightArrow] = irr::KEY_RIGHT;
-	KeyCodes[kVK_F1]	= irr::KEY_F1;
-	KeyCodes[kVK_F2]	= irr::KEY_F2;
-	KeyCodes[kVK_F3]	= irr::KEY_F3;
-	KeyCodes[kVK_F4]	= irr::KEY_F4;
-	KeyCodes[kVK_F5]	= irr::KEY_F5;
-	KeyCodes[kVK_F6]	= irr::KEY_F6;
-	KeyCodes[kVK_F7]	= irr::KEY_F7;
-	KeyCodes[kVK_F8]	= irr::KEY_F8;
-	KeyCodes[kVK_F9]	= irr::KEY_F9;
-	KeyCodes[kVK_F10]	= irr::KEY_F10;
-	KeyCodes[kVK_F11]	= irr::KEY_F11;
-	KeyCodes[kVK_F12]	= irr::KEY_F12;
-	KeyCodes[kVK_F13]	= irr::KEY_F13;
-	KeyCodes[kVK_F14]	= irr::KEY_F14;
-	KeyCodes[kVK_F15]	= irr::KEY_F15;
-	KeyCodes[kVK_F16]	= irr::KEY_F16;
-	KeyCodes[kVK_F17]	= irr::KEY_F17;
-	KeyCodes[kVK_F18]	= irr::KEY_F18;
-	KeyCodes[kVK_F19]	= irr::KEY_F19;
-	KeyCodes[kVK_F20]	= irr::KEY_F20;
-	KeyCodes[kVK_Home]	= irr::KEY_HOME;
-	KeyCodes[kVK_End]	= irr::KEY_END;
-	KeyCodes[NSInsertFunctionKey] = irr::KEY_INSERT;
-	KeyCodes[kVK_ForwardDelete] = irr::KEY_DELETE;
-	KeyCodes[kVK_Help] = irr::KEY_HELP;
-	KeyCodes[NSSelectFunctionKey] = irr::KEY_SELECT;
-	KeyCodes[NSPrintFunctionKey] = irr::KEY_PRINT;
-	KeyCodes[NSExecuteFunctionKey] = irr::KEY_EXECUT;
-	KeyCodes[NSPrintScreenFunctionKey] = irr::KEY_SNAPSHOT;
-	KeyCodes[NSPauseFunctionKey] = irr::KEY_PAUSE;
-	KeyCodes[NSScrollLockFunctionKey] = irr::KEY_SCROLL;
-	KeyCodes[kVK_Delete] = irr::KEY_BACK;
-	KeyCodes[kVK_Tab] = irr::KEY_TAB;
-	KeyCodes[kVK_Return] = irr::KEY_RETURN;
-	KeyCodes[kVK_Escape] = irr::KEY_ESCAPE;
-	KeyCodes[kVK_Control] = irr::KEY_CONTROL;
-	KeyCodes[kVK_RightControl] = irr::KEY_RCONTROL;
-	KeyCodes[kVK_Command] = irr::KEY_MENU;
-	KeyCodes[kVK_Shift] = irr::KEY_SHIFT;
-	KeyCodes[kVK_RightShift] = irr::KEY_RSHIFT;
-	KeyCodes[kVK_Space] = irr::KEY_SPACE;
+	KeyCodes[kVK_UpArrow] = nirt::KEY_UP;
+	KeyCodes[kVK_DownArrow] = nirt::KEY_DOWN;
+	KeyCodes[kVK_LeftArrow] = nirt::KEY_LEFT;
+	KeyCodes[kVK_RightArrow] = nirt::KEY_RIGHT;
+	KeyCodes[kVK_F1]	= nirt::KEY_F1;
+	KeyCodes[kVK_F2]	= nirt::KEY_F2;
+	KeyCodes[kVK_F3]	= nirt::KEY_F3;
+	KeyCodes[kVK_F4]	= nirt::KEY_F4;
+	KeyCodes[kVK_F5]	= nirt::KEY_F5;
+	KeyCodes[kVK_F6]	= nirt::KEY_F6;
+	KeyCodes[kVK_F7]	= nirt::KEY_F7;
+	KeyCodes[kVK_F8]	= nirt::KEY_F8;
+	KeyCodes[kVK_F9]	= nirt::KEY_F9;
+	KeyCodes[kVK_F10]	= nirt::KEY_F10;
+	KeyCodes[kVK_F11]	= nirt::KEY_F11;
+	KeyCodes[kVK_F12]	= nirt::KEY_F12;
+	KeyCodes[kVK_F13]	= nirt::KEY_F13;
+	KeyCodes[kVK_F14]	= nirt::KEY_F14;
+	KeyCodes[kVK_F15]	= nirt::KEY_F15;
+	KeyCodes[kVK_F16]	= nirt::KEY_F16;
+	KeyCodes[kVK_F17]	= nirt::KEY_F17;
+	KeyCodes[kVK_F18]	= nirt::KEY_F18;
+	KeyCodes[kVK_F19]	= nirt::KEY_F19;
+	KeyCodes[kVK_F20]	= nirt::KEY_F20;
+	KeyCodes[kVK_Home]	= nirt::KEY_HOME;
+	KeyCodes[kVK_End]	= nirt::KEY_END;
+	KeyCodes[NSInsertFunctionKey] = nirt::KEY_INSERT;
+	KeyCodes[kVK_ForwardDelete] = nirt::KEY_DELETE;
+	KeyCodes[kVK_Help] = nirt::KEY_HELP;
+	KeyCodes[NSSelectFunctionKey] = nirt::KEY_SELECT;
+	KeyCodes[NSPrintFunctionKey] = nirt::KEY_PRINT;
+	KeyCodes[NSExecuteFunctionKey] = nirt::KEY_EXECUT;
+	KeyCodes[NSPrintScreenFunctionKey] = nirt::KEY_SNAPSHOT;
+	KeyCodes[NSPauseFunctionKey] = nirt::KEY_PAUSE;
+	KeyCodes[NSScrollLockFunctionKey] = nirt::KEY_SCROLL;
+	KeyCodes[kVK_Delete] = nirt::KEY_BACK;
+	KeyCodes[kVK_Tab] = nirt::KEY_TAB;
+	KeyCodes[kVK_Return] = nirt::KEY_RETURN;
+	KeyCodes[kVK_Escape] = nirt::KEY_ESCAPE;
+	KeyCodes[kVK_Control] = nirt::KEY_CONTROL;
+	KeyCodes[kVK_RightControl] = nirt::KEY_RCONTROL;
+	KeyCodes[kVK_Command] = nirt::KEY_MENU;
+	KeyCodes[kVK_Shift] = nirt::KEY_SHIFT;
+	KeyCodes[kVK_RightShift] = nirt::KEY_RSHIFT;
+	KeyCodes[kVK_Space] = nirt::KEY_SPACE;
 
-	KeyCodes[kVK_ANSI_A] = irr::KEY_KEY_A;
-	KeyCodes[kVK_ANSI_B] = irr::KEY_KEY_B;
-	KeyCodes[kVK_ANSI_C] = irr::KEY_KEY_C;
-	KeyCodes[kVK_ANSI_D] = irr::KEY_KEY_D;
-	KeyCodes[kVK_ANSI_E] = irr::KEY_KEY_E;
-	KeyCodes[kVK_ANSI_F] = irr::KEY_KEY_F;
-	KeyCodes[kVK_ANSI_G] = irr::KEY_KEY_G;
-	KeyCodes[kVK_ANSI_H] = irr::KEY_KEY_H;
-	KeyCodes[kVK_ANSI_I] = irr::KEY_KEY_I;
-	KeyCodes[kVK_ANSI_J] = irr::KEY_KEY_J;
-	KeyCodes[kVK_ANSI_K] = irr::KEY_KEY_K;
-	KeyCodes[kVK_ANSI_L] = irr::KEY_KEY_L;
-	KeyCodes[kVK_ANSI_M] = irr::KEY_KEY_M;
-	KeyCodes[kVK_ANSI_N] = irr::KEY_KEY_N;
-	KeyCodes[kVK_ANSI_O] = irr::KEY_KEY_O;
-	KeyCodes[kVK_ANSI_P] = irr::KEY_KEY_P;
-	KeyCodes[kVK_ANSI_Q] = irr::KEY_KEY_Q;
-	KeyCodes[kVK_ANSI_R] = irr::KEY_KEY_R;
-	KeyCodes[kVK_ANSI_S] = irr::KEY_KEY_S;
-	KeyCodes[kVK_ANSI_T] = irr::KEY_KEY_T;
-	KeyCodes[kVK_ANSI_U] = irr::KEY_KEY_U;
-	KeyCodes[kVK_ANSI_V] = irr::KEY_KEY_V;
-	KeyCodes[kVK_ANSI_W] = irr::KEY_KEY_W;
-	KeyCodes[kVK_ANSI_X] = irr::KEY_KEY_X;
-	KeyCodes[kVK_ANSI_X] = irr::KEY_KEY_X;
-	KeyCodes[kVK_ANSI_Y] = irr::KEY_KEY_Y;
-	KeyCodes[kVK_ANSI_Z] = irr::KEY_KEY_Z;
+	KeyCodes[kVK_ANSI_A] = nirt::KEY_KEY_A;
+	KeyCodes[kVK_ANSI_B] = nirt::KEY_KEY_B;
+	KeyCodes[kVK_ANSI_C] = nirt::KEY_KEY_C;
+	KeyCodes[kVK_ANSI_D] = nirt::KEY_KEY_D;
+	KeyCodes[kVK_ANSI_E] = nirt::KEY_KEY_E;
+	KeyCodes[kVK_ANSI_F] = nirt::KEY_KEY_F;
+	KeyCodes[kVK_ANSI_G] = nirt::KEY_KEY_G;
+	KeyCodes[kVK_ANSI_H] = nirt::KEY_KEY_H;
+	KeyCodes[kVK_ANSI_I] = nirt::KEY_KEY_I;
+	KeyCodes[kVK_ANSI_J] = nirt::KEY_KEY_J;
+	KeyCodes[kVK_ANSI_K] = nirt::KEY_KEY_K;
+	KeyCodes[kVK_ANSI_L] = nirt::KEY_KEY_L;
+	KeyCodes[kVK_ANSI_M] = nirt::KEY_KEY_M;
+	KeyCodes[kVK_ANSI_N] = nirt::KEY_KEY_N;
+	KeyCodes[kVK_ANSI_O] = nirt::KEY_KEY_O;
+	KeyCodes[kVK_ANSI_P] = nirt::KEY_KEY_P;
+	KeyCodes[kVK_ANSI_Q] = nirt::KEY_KEY_Q;
+	KeyCodes[kVK_ANSI_R] = nirt::KEY_KEY_R;
+	KeyCodes[kVK_ANSI_S] = nirt::KEY_KEY_S;
+	KeyCodes[kVK_ANSI_T] = nirt::KEY_KEY_T;
+	KeyCodes[kVK_ANSI_U] = nirt::KEY_KEY_U;
+	KeyCodes[kVK_ANSI_V] = nirt::KEY_KEY_V;
+	KeyCodes[kVK_ANSI_W] = nirt::KEY_KEY_W;
+	KeyCodes[kVK_ANSI_X] = nirt::KEY_KEY_X;
+	KeyCodes[kVK_ANSI_X] = nirt::KEY_KEY_X;
+	KeyCodes[kVK_ANSI_Y] = nirt::KEY_KEY_Y;
+	KeyCodes[kVK_ANSI_Z] = nirt::KEY_KEY_Z;
 
-	KeyCodes[kVK_ANSI_0] = irr::KEY_KEY_0;
-	KeyCodes[kVK_ANSI_1] = irr::KEY_KEY_1;
-	KeyCodes[kVK_ANSI_2] = irr::KEY_KEY_2;
-	KeyCodes[kVK_ANSI_3] = irr::KEY_KEY_3;
-	KeyCodes[kVK_ANSI_4] = irr::KEY_KEY_4;
-	KeyCodes[kVK_ANSI_5] = irr::KEY_KEY_5;
-	KeyCodes[kVK_ANSI_6] = irr::KEY_KEY_6;
-	KeyCodes[kVK_ANSI_7] = irr::KEY_KEY_7;
-	KeyCodes[kVK_ANSI_8] = irr::KEY_KEY_8;
-	KeyCodes[kVK_ANSI_9] = irr::KEY_KEY_9;
+	KeyCodes[kVK_ANSI_0] = nirt::KEY_KEY_0;
+	KeyCodes[kVK_ANSI_1] = nirt::KEY_KEY_1;
+	KeyCodes[kVK_ANSI_2] = nirt::KEY_KEY_2;
+	KeyCodes[kVK_ANSI_3] = nirt::KEY_KEY_3;
+	KeyCodes[kVK_ANSI_4] = nirt::KEY_KEY_4;
+	KeyCodes[kVK_ANSI_5] = nirt::KEY_KEY_5;
+	KeyCodes[kVK_ANSI_6] = nirt::KEY_KEY_6;
+	KeyCodes[kVK_ANSI_7] = nirt::KEY_KEY_7;
+	KeyCodes[kVK_ANSI_8] = nirt::KEY_KEY_8;
+	KeyCodes[kVK_ANSI_9] = nirt::KEY_KEY_9;
 
-	KeyCodes[kVK_ANSI_Slash] = irr::KEY_DIVIDE;
-	KeyCodes[kVK_ANSI_Comma] = irr::KEY_COMMA;
-	KeyCodes[kVK_ANSI_Period] = irr::KEY_PERIOD;
-	KeyCodes[kVK_PageUp] = irr::KEY_PRIOR;
-	KeyCodes[kVK_PageDown] = irr::KEY_NEXT;
+	KeyCodes[kVK_ANSI_Slash] = nirt::KEY_DIVIDE;
+	KeyCodes[kVK_ANSI_Comma] = nirt::KEY_COMMA;
+	KeyCodes[kVK_ANSI_Period] = nirt::KEY_PERIOD;
+	KeyCodes[kVK_PageUp] = nirt::KEY_PRIOR;
+	KeyCodes[kVK_PageDown] = nirt::KEY_NEXT;
 
-	KeyCodes[kVK_ANSI_Keypad0] = irr::KEY_NUMPAD0;
-	KeyCodes[kVK_ANSI_Keypad1] = irr::KEY_NUMPAD1;
-	KeyCodes[kVK_ANSI_Keypad2] = irr::KEY_NUMPAD2;
-	KeyCodes[kVK_ANSI_Keypad3] = irr::KEY_NUMPAD3;
-	KeyCodes[kVK_ANSI_Keypad4] = irr::KEY_NUMPAD4;
-	KeyCodes[kVK_ANSI_Keypad5] = irr::KEY_NUMPAD5;
-	KeyCodes[kVK_ANSI_Keypad6] = irr::KEY_NUMPAD6;
-	KeyCodes[kVK_ANSI_Keypad7] = irr::KEY_NUMPAD7;
-	KeyCodes[kVK_ANSI_Keypad8] = irr::KEY_NUMPAD8;
-	KeyCodes[kVK_ANSI_Keypad9] = irr::KEY_NUMPAD9;
+	KeyCodes[kVK_ANSI_Keypad0] = nirt::KEY_NUMPAD0;
+	KeyCodes[kVK_ANSI_Keypad1] = nirt::KEY_NUMPAD1;
+	KeyCodes[kVK_ANSI_Keypad2] = nirt::KEY_NUMPAD2;
+	KeyCodes[kVK_ANSI_Keypad3] = nirt::KEY_NUMPAD3;
+	KeyCodes[kVK_ANSI_Keypad4] = nirt::KEY_NUMPAD4;
+	KeyCodes[kVK_ANSI_Keypad5] = nirt::KEY_NUMPAD5;
+	KeyCodes[kVK_ANSI_Keypad6] = nirt::KEY_NUMPAD6;
+	KeyCodes[kVK_ANSI_Keypad7] = nirt::KEY_NUMPAD7;
+	KeyCodes[kVK_ANSI_Keypad8] = nirt::KEY_NUMPAD8;
+	KeyCodes[kVK_ANSI_Keypad9] = nirt::KEY_NUMPAD9;
 
-	KeyCodes[kVK_ANSI_KeypadDecimal] = irr::KEY_DECIMAL;
-	KeyCodes[kVK_ANSI_KeypadMultiply] = irr::KEY_MULTIPLY;
-	KeyCodes[kVK_ANSI_KeypadPlus] = irr::KEY_PLUS;
-	KeyCodes[kVK_ANSI_KeypadClear] = irr::KEY_OEM_CLEAR;
-	KeyCodes[kVK_ANSI_KeypadDivide] = irr::KEY_DIVIDE;
-	KeyCodes[kVK_ANSI_KeypadEnter] = irr::KEY_RETURN;
-	KeyCodes[kVK_ANSI_KeypadMinus] = irr::KEY_SUBTRACT;
+	KeyCodes[kVK_ANSI_KeypadDecimal] = nirt::KEY_DECIMAL;
+	KeyCodes[kVK_ANSI_KeypadMultiply] = nirt::KEY_MULTIPLY;
+	KeyCodes[kVK_ANSI_KeypadPlus] = nirt::KEY_PLUS;
+	KeyCodes[kVK_ANSI_KeypadClear] = nirt::KEY_OEM_CLEAR;
+	KeyCodes[kVK_ANSI_KeypadDivide] = nirt::KEY_DIVIDE;
+	KeyCodes[kVK_ANSI_KeypadEnter] = nirt::KEY_RETURN;
+	KeyCodes[kVK_ANSI_KeypadMinus] = nirt::KEY_SUBTRACT;
 
-	KeyCodes[kVK_ANSI_LeftBracket] = irr::KEY_OEM_4;
-	KeyCodes[kVK_ANSI_Backslash] = irr::KEY_OEM_5;
-	KeyCodes[kVK_ANSI_RightBracket] = irr::KEY_OEM_6;
+	KeyCodes[kVK_ANSI_LeftBracket] = nirt::KEY_OEM_4;
+	KeyCodes[kVK_ANSI_Backslash] = nirt::KEY_OEM_5;
+	KeyCodes[kVK_ANSI_RightBracket] = nirt::KEY_OEM_6;
 }
 
 

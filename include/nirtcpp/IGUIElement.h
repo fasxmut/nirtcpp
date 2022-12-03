@@ -15,7 +15,7 @@
 #include "IAttributes.h"
 #include "IGUIEnvironment.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -1062,6 +1062,6 @@ protected:
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif

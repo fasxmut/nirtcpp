@@ -11,7 +11,7 @@
 
 #include "IImageLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

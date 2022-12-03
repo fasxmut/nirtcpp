@@ -16,7 +16,7 @@
 
 #include <d3d9.h>
 
-namespace irr
+namespace nirt
 {
 	namespace video
 	{

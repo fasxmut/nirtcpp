@@ -15,7 +15,7 @@
 
 #include "IImageLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -38,7 +38,7 @@ public:
 
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif
 #endif

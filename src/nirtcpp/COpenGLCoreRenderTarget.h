@@ -11,7 +11,7 @@
 
 #include "IRenderTarget.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {

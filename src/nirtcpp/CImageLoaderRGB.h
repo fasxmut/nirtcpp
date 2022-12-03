@@ -26,7 +26,7 @@
 
 #include "IImageLoader.h"
 
-namespace irr
+namespace nirt
 {
 namespace video
 {
@@ -157,7 +157,7 @@ private:
 };
 
 } // end namespace video
-} // end namespace irr
+} // end namespace nirt
 
 #endif // _NIRT_COMPILE_WITH_RGB_LOADER_
 #endif // NIRT_C_IMAGE_LOADER_RGB_H_INCLUDED

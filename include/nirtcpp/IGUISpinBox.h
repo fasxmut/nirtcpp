@@ -7,7 +7,7 @@
 
 #include "IGUIElement.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {
@@ -99,6 +99,6 @@ namespace gui
 
 
 } // end namespace gui
-} // end namespace irr
+} // end namespace nirt
 
 #endif // NIRT_I_GUI_SPIN_BOX_H_INCLUDED

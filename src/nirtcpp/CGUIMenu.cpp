@@ -13,7 +13,7 @@
 
 #include "os.h"
 
-namespace irr
+namespace nirt
 {
 namespace gui
 {

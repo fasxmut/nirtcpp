@@ -11,7 +11,7 @@
 #include "IVideoDriver.h"
 #include "coreutil.h"
 
-namespace irr
+namespace nirt
 {
 namespace scene
 {
@@ -868,6 +868,6 @@ namespace quake3
 
 } // end namespace quake3
 } // end namespace scene
-} // end namespace irr
+} // end namespace nirt
 
 #endif
