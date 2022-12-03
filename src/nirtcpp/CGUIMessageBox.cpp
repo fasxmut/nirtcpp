@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CGUIMessageBox.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUISkin.h"
 #include "IGUIEnvironment.h"
@@ -459,5 +459,5 @@ void CGUIMessageBox::deserializeAttributes(io::IAttributes* in, io::SAttributeRe
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 

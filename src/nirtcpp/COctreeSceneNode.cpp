@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_OCTREE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
 
 #include "COctreeSceneNode.h"
 #include "Octree.h"
@@ -14,11 +14,11 @@
 #include "IAnimatedMesh.h"
 #include "IMaterialRenderer.h"
 #include "os.h"
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 #include "CShadowVolumeSceneNode.h"
 #else
 #include "IShadowVolumeSceneNode.h"
-#endif // _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 #include "EProfileIDs.h"
 #include "IProfiler.h"
 
@@ -40,13 +40,13 @@ COctreeSceneNode::COctreeSceneNode(ISceneNode* parent, ISceneManager* mgr,
 	setDebugName("COctreeSceneNode");
 #endif
 
-	IRR_PROFILE(
+	NIRT_PROFILE(
 		static bool initProfile = false;
 		if (!initProfile )
 		{
 			initProfile = true;
-			getProfiler().add(EPID_OC_RENDER, L"render octnode", L"Irrlicht scene");
-			getProfiler().add(EPID_OC_CALCPOLYS, L"calc octnode", L"Irrlicht scene");
+			getProfiler().add(EPID_OC_RENDER, L"render octnode", L"Nirtcpp scene");
+			getProfiler().add(EPID_OC_CALCPOLYS, L"calc octnode", L"Nirtcpp scene");
 		}
  	)
 }
@@ -132,7 +132,7 @@ void renderMeshBuffer(video::IVideoDriver* driver, EOCTREENODE_VBO useVBO, typen
 //! renders the node.
 void COctreeSceneNode::render()
 {
-	IRR_PROFILE(CProfileScope psRender(EPID_OC_RENDER);)
+	NIRT_PROFILE(CProfileScope psRender(EPID_OC_RENDER);)
 	video::IVideoDriver* driver = SceneManager->getVideoDriver();
 
 	if (!driver)
@@ -166,7 +166,7 @@ void COctreeSceneNode::render()
 	{
 	case video::EVT_STANDARD:
 		{
-			IRR_PROFILE(getProfiler().start(EPID_OC_CALCPOLYS));
+			NIRT_PROFILE(getProfiler().start(EPID_OC_CALCPOLYS));
 			switch ( PolygonChecks )
 			{
 				case EOPC_BOX:
@@ -176,7 +176,7 @@ void COctreeSceneNode::render()
 					StdOctree->calculatePolys(frust);
 					break;
 			}
-			IRR_PROFILE(getProfiler().stop(EPID_OC_CALCPOLYS));
+			NIRT_PROFILE(getProfiler().stop(EPID_OC_CALCPOLYS));
 
 			const Octree<video::S3DVertex>::SIndexData* d = StdOctree->getIndexData();
 
@@ -199,7 +199,7 @@ void COctreeSceneNode::render()
 		break;
 	case video::EVT_2TCOORDS:
 		{
-			IRR_PROFILE(getProfiler().start(EPID_OC_CALCPOLYS));
+			NIRT_PROFILE(getProfiler().start(EPID_OC_CALCPOLYS));
 			switch ( PolygonChecks )
 			{
 				case EOPC_BOX:
@@ -209,7 +209,7 @@ void COctreeSceneNode::render()
 					LightMapOctree->calculatePolys(frust);
 					break;
 			}
-			IRR_PROFILE(getProfiler().stop(EPID_OC_CALCPOLYS));
+			NIRT_PROFILE(getProfiler().stop(EPID_OC_CALCPOLYS));
 
 			const Octree<video::S3DVertex2TCoords>::SIndexData* d = LightMapOctree->getIndexData();
 
@@ -234,7 +234,7 @@ void COctreeSceneNode::render()
 		break;
 	case video::EVT_TANGENTS:
 		{
-			IRR_PROFILE(getProfiler().start(EPID_OC_CALCPOLYS));
+			NIRT_PROFILE(getProfiler().start(EPID_OC_CALCPOLYS));
 			switch ( PolygonChecks )
 			{
 				case EOPC_BOX:
@@ -244,7 +244,7 @@ void COctreeSceneNode::render()
 					TangentsOctree->calculatePolys(frust);
 					break;
 			}
-			IRR_PROFILE(getProfiler().stop(EPID_OC_CALCPOLYS));
+			NIRT_PROFILE(getProfiler().stop(EPID_OC_CALCPOLYS));
 
 			const Octree<video::S3DVertexTangents>::SIndexData* d =  TangentsOctree->getIndexData();
 
@@ -342,7 +342,7 @@ EOCTREE_POLYGON_CHECKS COctreeSceneNode::getPolygonChecks() const
 IShadowVolumeSceneNode* COctreeSceneNode::addShadowVolumeSceneNode(
 		const IMesh* shadowMesh, s32 id, bool zfailmethod, f32 infinity)
 {
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_ 
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_ 
 	if (!SceneManager->getVideoDriver()->queryFeature(video::EVDF_STENCIL_BUFFER))
 		return 0;
 
@@ -674,4 +674,4 @@ bool COctreeSceneNode::isReadOnlyMaterials() const
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_OCTREE_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_OCTREE_SCENENODE_

@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // This file was written by Saurav Mohapatra and modified by Nikolaus Gebhardt.
 // See CCSMLoader.h for details.
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_CSM_LOADER_
+#ifdef _NIRT_COMPILE_WITH_CSM_LOADER_
 
 #include "CCSMLoader.h"
 #include "CMeshTextureLoader.h"
@@ -21,7 +21,7 @@
 #include "SMeshBufferLightMap.h"
 
 #ifdef _DEBUG
-#define _IRR_DEBUG_CSM_LOADER_
+#define _NIRT_DEBUG_CSM_LOADER_
 #endif
 
 namespace irr
@@ -405,11 +405,11 @@ namespace scene
 		CSMFile csmFile;
 		csmFile.load(&reader);
 
-		return createIrrlichtMesh(&csmFile, file->getFileName());
+		return createNirtcppMesh(&csmFile, file->getFileName());
 	}
 
 
-	scene::IMesh* CCSMLoader::createIrrlichtMesh(const CSMFile* csmFile, const io::path& lmprefix)
+	scene::IMesh* CCSMLoader::createNirtcppMesh(const CSMFile* csmFile, const io::path& lmprefix)
 	{
 		if ( getMeshTextureLoader() )
 		{
@@ -716,7 +716,7 @@ namespace scene
 		//groups
 		{
 			const s32 count = pReader->readLong();
-#ifdef _IRR_DEBUG_CSM_LOADER_
+#ifdef _NIRT_DEBUG_CSM_LOADER_
 			os::Printer::log("CSM Version", core::stringc(header.getVersion()).c_str());
 			os::Printer::log("Loading groups. Count", core::stringc(count));
 #endif
@@ -735,7 +735,7 @@ namespace scene
 		{
 			//visgroups
 			const s32 count = pReader->readLong();
-#ifdef _IRR_DEBUG_CSM_LOADER_
+#ifdef _NIRT_DEBUG_CSM_LOADER_
 			os::Printer::log("Loading visgroups. Count", core::stringc(count));
 #endif
 
@@ -751,7 +751,7 @@ namespace scene
 		//lightmaps
 		{
 			const s32 count = pReader->readLong();
-#ifdef _IRR_DEBUG_CSM_LOADER_
+#ifdef _NIRT_DEBUG_CSM_LOADER_
 			os::Printer::log("Loading lightmaps. Count", core::stringc(count));
 #endif
 
@@ -767,7 +767,7 @@ namespace scene
 		//meshes
 		{
 			const s32 count = pReader->readLong();
-#ifdef _IRR_DEBUG_CSM_LOADER_
+#ifdef _NIRT_DEBUG_CSM_LOADER_
 			os::Printer::log("Loading meshes. Count", core::stringc(count));
 #endif
 
@@ -783,7 +783,7 @@ namespace scene
 		//entities
 		{
 			const s32 count = pReader->readLong();
-#ifdef _IRR_DEBUG_CSM_LOADER_
+#ifdef _NIRT_DEBUG_CSM_LOADER_
 			os::Printer::log("Loading entitites. Count", core::stringc(count));
 #endif
 
@@ -797,7 +797,7 @@ namespace scene
 		}
 
 		//camera data
-#ifdef _IRR_DEBUG_CSM_LOADER_
+#ifdef _NIRT_DEBUG_CSM_LOADER_
 		os::Printer::log("Loading camera data.");
 #endif
 		cameraData.load(pReader);
@@ -856,4 +856,4 @@ namespace scene
 } // end namespace
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_CSM_LOADER_
+#endif // _NIRT_COMPILE_WITH_CSM_LOADER_

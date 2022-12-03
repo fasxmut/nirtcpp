@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CImageWriterJPG.h"
 
-#ifdef _IRR_COMPILE_WITH_JPG_WRITER_
+#ifdef _NIRT_COMPILE_WITH_JPG_WRITER_
 
 #include "CColorConverter.h"
 #include "IWriteFile.h"
@@ -12,11 +12,11 @@
 #include "irrString.h"
 #include "os.h"
 
-#ifdef _IRR_COMPILE_WITH_LIBJPEG_
+#ifdef _NIRT_COMPILE_WITH_LIBJPEG_
 #include <stdio.h> // required for jpeglib.h
 extern "C"
 {
-#ifndef _IRR_USE_NON_SYSTEM_JPEG_LIB_
+#ifndef _NIRT_USE_NON_SYSTEM_JPEG_LIB_
 	#include <jpeglib.h>
 	#include <jerror.h>
 #else
@@ -186,7 +186,7 @@ static bool writeJPEGFile(io::IWriteFile* file, IImage* image, u32 quality)
 } // namespace video
 } // namespace irr
 
-#endif // _IRR_COMPILE_WITH_LIBJPEG_
+#endif // _NIRT_COMPILE_WITH_LIBJPEG_
 
 namespace irr
 {
@@ -214,7 +214,7 @@ bool CImageWriterJPG::isAWriteableFileExtension(const io::path& filename) const
 
 bool CImageWriterJPG::writeImage(io::IWriteFile *file, IImage *image, u32 quality) const
 {
-#ifndef _IRR_COMPILE_WITH_LIBJPEG_
+#ifndef _NIRT_COMPILE_WITH_LIBJPEG_
 	return false;
 #else
 	return writeJPEGFile(file, image, quality);

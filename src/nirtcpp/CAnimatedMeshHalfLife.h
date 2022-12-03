@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_ANIMATED_MESH_HALFLIFE_H_INCLUDED
-#define IRR_C_ANIMATED_MESH_HALFLIFE_H_INCLUDED
+#ifndef NIRT_C_ANIMATED_MESH_HALFLIFE_H_INCLUDED
+#define NIRT_C_ANIMATED_MESH_HALFLIFE_H_INCLUDED
 
 #include "IAnimatedMesh.h"
 #include "ISceneManager.h"
@@ -488,33 +488,33 @@ namespace scene
 		bool loadModelFile( io::IReadFile* file, ISceneManager * smgr );
 
 		//IAnimatedMesh
-		virtual u32 getFrameCount() const IRR_OVERRIDE;
-		virtual IMesh* getMesh(s32 frame, s32 detailLevel, s32 startFrameLoop, s32 endFrameLoop) IRR_OVERRIDE;
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
-		virtual E_ANIMATED_MESH_TYPE getMeshType() const IRR_OVERRIDE;
+		virtual u32 getFrameCount() const override;
+		virtual IMesh* getMesh(s32 frame, s32 detailLevel, s32 startFrameLoop, s32 endFrameLoop) override;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
+		virtual E_ANIMATED_MESH_TYPE getMeshType() const override;
 		void renderModel ( u32 param, video::IVideoDriver * driver, const core::matrix4 &absoluteTransformation);
 
 		//! returns amount of mesh buffers.
-		virtual u32 getMeshBufferCount() const IRR_OVERRIDE;
+		virtual u32 getMeshBufferCount() const override;
 		//! returns pointer to a mesh buffer
-		virtual IMeshBuffer* getMeshBuffer(u32 nr) const IRR_OVERRIDE;
+		virtual IMeshBuffer* getMeshBuffer(u32 nr) const override;
 		//! Returns pointer to a mesh buffer which fits a material
-		virtual IMeshBuffer* getMeshBuffer( const video::SMaterial &material) const IRR_OVERRIDE;
+		virtual IMeshBuffer* getMeshBuffer( const video::SMaterial &material) const override;
 
-		virtual void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool newvalue) IRR_OVERRIDE;
+		virtual void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool newvalue) override;
 
 		//! set the hardware mapping hint, for driver
-		virtual void setHardwareMappingHint(E_HARDWARE_MAPPING newMappingHint, E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX) IRR_OVERRIDE;
+		virtual void setHardwareMappingHint(E_HARDWARE_MAPPING newMappingHint, E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX) override;
 
 		//! flags the meshbuffer as changed, reloads hardware buffers
-		virtual void setDirty(E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX) IRR_OVERRIDE;
+		virtual void setDirty(E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX) override;
 
 		//! set user axis aligned bounding box
-		virtual void setBoundingBox(const core::aabbox3df& box) IRR_OVERRIDE;
+		virtual void setBoundingBox(const core::aabbox3df& box) override;
 
 		//! Gets the default animation speed of the animated mesh.
 		/** \return Amount of frames per second. If the amount is 0, it is a static, non animated mesh. */
-		virtual f32 getAnimationSpeed() const IRR_OVERRIDE
+		virtual f32 getAnimationSpeed() const override
 		{
 			return FramesPerSecond;
 		}
@@ -522,7 +522,7 @@ namespace scene
 		//! Gets the frame count of the animated mesh.
 		/** \param fps Frames per second to play the animation with. If the amount is 0, it is not animated.
 		The actual speed is set in the scene node the mesh is instantiated in.*/
-		virtual void setAnimationSpeed(f32 fps) IRR_OVERRIDE
+		virtual void setAnimationSpeed(f32 fps) override
 		{
 			FramesPerSecond=fps;
 		}
@@ -609,14 +609,14 @@ namespace scene
 
 		//! returns true if the file maybe is able to be loaded by this class
 		/** based on the file extension (e.g. ".bsp") */
-		virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+		virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 		//! creates/loads an animated mesh from the file.
 		/** \return Pointer to the created mesh. Returns 0 if loading failed.
 		If you no longer need the mesh, you should call IAnimatedMesh::drop().
 		See IReferenceCounted::drop() for more information.
 		*/
-		virtual IAnimatedMesh* createMesh(io::IReadFile* file) IRR_OVERRIDE;
+		virtual IAnimatedMesh* createMesh(io::IReadFile* file) override;
 
 	private:
 		scene::ISceneManager* SceneManager;

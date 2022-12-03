@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_3D_VERTEX_H_INCLUDED
 #define S_3D_VERTEX_H_INCLUDED
@@ -17,7 +17,7 @@ namespace video
 //! Enumeration for all vertex types there are.
 enum E_VERTEX_TYPE
 {
-	//! Standard vertex type used by the Irrlicht engine, video::S3DVertex.
+	//! Standard vertex type used by the Nirtcpp engine, video::S3DVertex.
 	EVT_STANDARD = 0,
 
 	//! Vertex with two texture coordinates, video::S3DVertex2TCoords.
@@ -40,7 +40,7 @@ const char* const sBuiltInVertexTypeNames[] =
 	0
 };
 
-//! standard vertex used by the Irrlicht engine.
+//! standard vertex used by the Nirtcpp engine.
 struct S3DVertex
 {
 	//! default constructor

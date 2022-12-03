@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // I (Nikolaus Gebhardt) did some few changes to Jonas Petersen's original loader:
 // - removed setTexturePath() and replaced with the ISceneManager::getStringParameter()-stuff.
 // - added EAMT_LMTS enumeration value
 // Thanks a lot to Jonas Petersen for his work
-// on this and that he gave me his permission to add it into Irrlicht.
+// on this and that he gave me his permission to add it into Nirtcpp.
 /*
 
 CLMTSMeshFileLoader.h
@@ -18,8 +18,8 @@ Version 1.5 - 15 March 2005
 
 */
 
-#ifndef IRR_C_LMTS_MESH_FILE_LOADER_H_INCLUDED
-#define IRR_C_LMTS_MESH_FILE_LOADER_H_INCLUDED
+#ifndef NIRT_C_LMTS_MESH_FILE_LOADER_H_INCLUDED
+#define NIRT_C_LMTS_MESH_FILE_LOADER_H_INCLUDED
 
 #include "IMeshLoader.h"
 #include "SMesh.h"
@@ -40,9 +40,9 @@ public:
 
 	virtual ~CLMTSMeshFileLoader();
 
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
-	virtual IAnimatedMesh* createMesh(io::IReadFile* file) IRR_OVERRIDE;
+	virtual IAnimatedMesh* createMesh(io::IReadFile* file) override;
 
 private:
 	void constructMesh(SMesh* mesh);
@@ -106,4 +106,4 @@ private:
 } // end namespace scene
 } // end namespace irr
 
-#endif // IRR_C_LMTS_MESH_FILE_LOADER_H_INCLUDED
+#endif // NIRT_C_LMTS_MESH_FILE_LOADER_H_INCLUDED

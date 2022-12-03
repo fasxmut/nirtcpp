@@ -2,7 +2,7 @@
 // No rights reserved: this software is in the public domain.
 
 #include "testUtils.h"
-#include <irrlicht.h>
+#include <nirtcpp.h>
 
 using namespace irr;
 using namespace core;

@@ -12,7 +12,7 @@ using namespace video;
 //! Check that EMT_TRANSPARENT_ALPHA_CHANNEL_REF works as expected
 bool testTransparentAlphaChannelRef(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
+	NirtcppDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true;
 
@@ -64,7 +64,7 @@ bool testTransparentAlphaChannelRef(video::E_DRIVER_TYPE driverType)
 //! Check that EMT_TRANSPARENT_ALPHA_CHANNEL works as expected
 bool testTransparentAlphaChannel(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
+	NirtcppDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true;
 
@@ -116,7 +116,7 @@ bool testTransparentAlphaChannel(video::E_DRIVER_TYPE driverType)
 //! Check that EMT_TRANSPARENT_VERTEX_ALPHA works as expected
 bool testTransparentVertexAlpha(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
+	NirtcppDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true;
 
@@ -175,7 +175,7 @@ bool testTransparentVertexAlpha(video::E_DRIVER_TYPE driverType)
 //! Check that EMT_TRANSPARENT_REFLECTION_2_LAYER works as expected
 bool testTransparentReflection2Layer(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
+	NirtcppDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true;
 
@@ -237,7 +237,7 @@ bool testTransparentReflection2Layer(video::E_DRIVER_TYPE driverType)
 //! Check that EMT_TRANSPARENT_ADD_COLOR works as expected
 bool testTransparentAddColor(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
+	NirtcppDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true;
 
@@ -288,7 +288,7 @@ bool testTransparentAddColor(video::E_DRIVER_TYPE driverType)
 
 bool testTransparentVertexAlphaMore(E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice(driverType, dimension2d<u32>(160, 120));
+	NirtcppDevice *device = createDevice(driverType, dimension2d<u32>(160, 120));
 	if (!device)
 		return true;
 

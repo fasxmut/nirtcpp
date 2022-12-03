@@ -1,9 +1,9 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 
 #include "CGUIProfiler.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUITable.h"
 #include "IGUIScrollBar.h"
@@ -328,4 +328,4 @@ void CGUIProfiler::setFilters(irr::u32 minCalls, irr::u32 minTimeSum, irr::f32 m
 } // end namespace irr
 
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_

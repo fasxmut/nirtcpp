@@ -7,10 +7,10 @@
 #include <assert.h>
 #include <stdarg.h>
 
-#if defined(_MSC_VER)  || defined(_IRR_WINDOWS_API_)
+#if defined(_MSC_VER)  || defined(_NIRT_WINDOWS_API_)
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <windows.h> // For OutputDebugString()
-#endif // _MSC_VER || _IRR_WINDOWS_API_
+#endif // _MSC_VER || _NIRT_WINDOWS_API_
 
 #ifdef _MSC_VER
 #pragma warning( disable: 4996)
@@ -498,7 +498,7 @@ void logTestString(const char * format, ...)
 	vsprintf(logString, format, arguments);
 	va_end(arguments);
 
-#if defined(_IRR_WINDOWS_API_)
+#if defined(_NIRT_WINDOWS_API_)
 #if defined (_WIN32_WCE )
 	core::stringw tmp(logString);
 	tmp += L"\n";

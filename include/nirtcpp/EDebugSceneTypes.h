@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_DEBUG_SCENE_TYPES_H_INCLUDED
-#define IRR_E_DEBUG_SCENE_TYPES_H_INCLUDED
+#ifndef NIRT_E_DEBUG_SCENE_TYPES_H_INCLUDED
+#define NIRT_E_DEBUG_SCENE_TYPES_H_INCLUDED
 
 namespace irr
 {
@@ -45,4 +45,4 @@ namespace scene
 } // end namespace scene
 } // end namespace irr
 
-#endif // IRR_E_DEBUG_SCENE_TYPES_H_INCLUDED
+#endif // NIRT_E_DEBUG_SCENE_TYPES_H_INCLUDED

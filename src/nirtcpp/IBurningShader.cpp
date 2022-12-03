@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 #include "SoftwareDriver2_compile_config.h"
 #include "IBurningShader.h"
@@ -30,7 +30,7 @@ void IBurningShader::constructor_IBurningShader(CBurningVideoDriver* driver, E_M
 	if (((unsigned long long) & scan & 15) || ((unsigned long long) & line & 15))
 	{
 		os::Printer::log("BurningVideo Shader not 16 byte aligned", ELL_ERROR);
-		IRR_DEBUG_BREAK_IF(1);
+		NIRT_DEBUG_BREAK_IF(1);
 	}
 #endif
 
@@ -507,4 +507,4 @@ IVideoDriver* IBurningShader::getVideoDriver()
 
 burning_namespace_end
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_

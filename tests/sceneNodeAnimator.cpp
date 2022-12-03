@@ -10,7 +10,7 @@ using namespace scene;
 /** Test functionality of the ISceneNodeAnimator implementations. */
 bool sceneNodeAnimator(void)
 {
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(160, 120));
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(160, 120));
 	assert_log(device);
 	if(!device)
 		return false;

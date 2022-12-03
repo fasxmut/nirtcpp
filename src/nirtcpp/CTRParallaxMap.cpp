@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 #include "CSoftwareDriver2.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 // compile flag for this file
 #undef USE_ZBUFFER
@@ -107,12 +107,12 @@ public:
 	~CBurningParallaxMap();
 
 	//! draws an indexed triangle list
-	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) IRR_OVERRIDE;
-	virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) IRR_OVERRIDE;
+	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) override;
+	virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) override;
 	virtual void OnSetMaterial(const video::SMaterial& material,
 		const video::SMaterial& lastMaterial,
-		bool resetAllRenderstates, video::IMaterialRendererServices* services) IRR_OVERRIDE;
-	virtual void OnSetConstants(IMaterialRendererServices* services, s32 userData) IRR_OVERRIDE;
+		bool resetAllRenderstates, video::IMaterialRendererServices* services) override;
+	virtual void OnSetConstants(IMaterialRendererServices* services, s32 userData) override;
 private:
 	void fragmentShader();
 	f32 CurrentScale;
@@ -1163,18 +1163,18 @@ void CBurningParallaxMap::OnSetConstants(IMaterialRendererServices* services, s3
 
 burning_namespace_end
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 burning_namespace_start
 
 
 IBurningShader* createTRParallaxMap(CBurningVideoDriver* driver, s32& outMaterialTypeNr, E_MATERIAL_TYPE baseMaterial)
 {
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CBurningParallaxMap(driver, outMaterialTypeNr, baseMaterial);
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 burning_namespace_end

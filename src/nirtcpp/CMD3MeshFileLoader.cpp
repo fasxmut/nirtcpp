@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_MD3_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MD3_LOADER_
 
 #include "CMD3MeshFileLoader.h"
 #include "CAnimatedMeshMD3.h"
@@ -50,4 +50,4 @@ IAnimatedMesh* CMD3MeshFileLoader::createMesh(io::IReadFile* file)
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_MD3_LOADER_
+#endif // _NIRT_COMPILE_WITH_MD3_LOADER_

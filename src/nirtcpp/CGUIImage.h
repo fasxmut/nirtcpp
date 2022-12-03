@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_IMAGE_H_INCLUDED
-#define IRR_C_GUI_IMAGE_H_INCLUDED
+#ifndef NIRT_C_GUI_IMAGE_H_INCLUDED
+#define NIRT_C_GUI_IMAGE_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIImage.h"
 
@@ -26,61 +26,61 @@ namespace gui
 		virtual ~CGUIImage();
 
 		//! sets an image
-		virtual void setImage(video::ITexture* image) IRR_OVERRIDE;
+		virtual void setImage(video::ITexture* image) override;
 
 		//! Gets the image texture
-		virtual video::ITexture* getImage() const IRR_OVERRIDE;
+		virtual video::ITexture* getImage() const override;
 
 		//! sets the color of the image
-		virtual void setColor(video::SColor color) IRR_OVERRIDE;
+		virtual void setColor(video::SColor color) override;
 
 		//! sets if the image should scale to fit the element
-		virtual void setScaleImage(bool scale) IRR_OVERRIDE;
+		virtual void setScaleImage(bool scale) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
 		//! sets if the image should use its alpha channel to draw itself
-		virtual void setUseAlphaChannel(bool use) IRR_OVERRIDE;
+		virtual void setUseAlphaChannel(bool use) override;
 
 		//! Gets the color of the image
-		virtual video::SColor getColor() const IRR_OVERRIDE;
+		virtual video::SColor getColor() const override;
 
 		//! Returns true if the image is scaled to fit, false if not
-		virtual bool isImageScaled() const IRR_OVERRIDE;
+		virtual bool isImageScaled() const override;
 
 		//! Returns true if the image is using the alpha channel, false if not
-		virtual bool isAlphaChannelUsed() const IRR_OVERRIDE;
+		virtual bool isAlphaChannelUsed() const override;
 
 		//! Sets the source rectangle of the image. By default the full image is used.
-		virtual void setSourceRect(const core::rect<s32>& sourceRect) IRR_OVERRIDE;
+		virtual void setSourceRect(const core::rect<s32>& sourceRect) override;
 
 		//! Returns the customized source rectangle of the image to be used.
-		virtual core::rect<s32> getSourceRect() const IRR_OVERRIDE;
+		virtual core::rect<s32> getSourceRect() const override;
 
 		//! Restrict drawing-area.
-		virtual void setDrawBounds(const core::rect<f32>& drawBoundUVs) IRR_OVERRIDE;
+		virtual void setDrawBounds(const core::rect<f32>& drawBoundUVs) override;
 
 		//! Get drawing-area restrictions.
-		virtual core::rect<f32> getDrawBounds() const IRR_OVERRIDE;
+		virtual core::rect<f32> getDrawBounds() const override;
 
 		//! Sets whether to draw a background color (EGDC_3D_DARK_SHADOW) when no texture is set
-		virtual void setDrawBackground(bool draw) IRR_OVERRIDE
+		virtual void setDrawBackground(bool draw) override
 		{
 			DrawBackground = draw;
 		}
 
 		//! Checks if a background is drawn when no texture is set
-		virtual bool isDrawBackgroundEnabled() const  IRR_OVERRIDE
+		virtual bool isDrawBackgroundEnabled() const  override
 		{
 			return DrawBackground;
 		}
 
 		//! Writes attributes of the element.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 		//! Reads attributes of the element
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 	protected:
 		void checkBounds(core::rect<s32>& rect)
@@ -108,6 +108,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
-#endif // IRR_C_GUI_IMAGE_H_INCLUDED
+#endif // NIRT_C_GUI_IMAGE_H_INCLUDED

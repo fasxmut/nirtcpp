@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_CONTEXT_MENU_H_INCLUDED
-#define IRR_C_GUI_CONTEXT_MENU_H_INCLUDED
+#ifndef NIRT_C_GUI_CONTEXT_MENU_H_INCLUDED
+#define NIRT_C_GUI_CONTEXT_MENU_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIContextMenu.h"
 #include "irrString.h"
@@ -32,91 +32,91 @@ namespace gui
 		virtual ~CGUIContextMenu();
 
 		//! set behavior when menus are closed
-		virtual void setCloseHandling(ECONTEXT_MENU_CLOSE onClose) IRR_OVERRIDE;
+		virtual void setCloseHandling(ECONTEXT_MENU_CLOSE onClose) override;
 
 		//! get current behavior when the menue will be closed
-		virtual ECONTEXT_MENU_CLOSE getCloseHandling() const IRR_OVERRIDE;
+		virtual ECONTEXT_MENU_CLOSE getCloseHandling() const override;
 
 		//! Returns amount of menu items
-		virtual u32 getItemCount() const IRR_OVERRIDE;
+		virtual u32 getItemCount() const override;
 
 		//! Adds a menu item.
 		virtual u32 addItem(const wchar_t* text, s32 commandid,
-				bool enabled, bool hasSubMenu, bool checked, bool autoChecking) IRR_OVERRIDE;
+				bool enabled, bool hasSubMenu, bool checked, bool autoChecking) override;
 
 		//! Insert a menu item at specified position.
 		virtual u32 insertItem(u32 idx, const wchar_t* text, s32 commandId, bool enabled,
-			bool hasSubMenu, bool checked, bool autoChecking) IRR_OVERRIDE;
+			bool hasSubMenu, bool checked, bool autoChecking) override;
 
 		//! Find a item which has the given CommandId starting from given index
-		virtual s32 findItemWithCommandId(s32 commandId, u32 idxStartSearch) const IRR_OVERRIDE;
+		virtual s32 findItemWithCommandId(s32 commandId, u32 idxStartSearch) const override;
 
 		//! Adds a separator item to the menu
-		virtual void addSeparator() IRR_OVERRIDE;
+		virtual void addSeparator() override;
 
 		//! Returns text of the menu item.
-		virtual const wchar_t* getItemText(u32 idx) const IRR_OVERRIDE;
+		virtual const wchar_t* getItemText(u32 idx) const override;
 
 		//! Sets text of the menu item.
-		virtual void setItemText(u32 idx, const wchar_t* text) IRR_OVERRIDE;
+		virtual void setItemText(u32 idx, const wchar_t* text) override;
 
 		//! Returns if a menu item is enabled
-		virtual bool isItemEnabled(u32 idx) const IRR_OVERRIDE;
+		virtual bool isItemEnabled(u32 idx) const override;
 
 		//! Sets if the menu item should be enabled.
-		virtual void setItemEnabled(u32 idx, bool enabled) IRR_OVERRIDE;
+		virtual void setItemEnabled(u32 idx, bool enabled) override;
 
 		//! Returns if a menu item is checked
-		virtual bool isItemChecked(u32 idx) const IRR_OVERRIDE;
+		virtual bool isItemChecked(u32 idx) const override;
 
 		//! Sets if the menu item should be checked.
-		virtual void setItemChecked(u32 idx, bool enabled) IRR_OVERRIDE;
+		virtual void setItemChecked(u32 idx, bool enabled) override;
 
 		//! Removes a menu item
-		virtual void removeItem(u32 idx) IRR_OVERRIDE;
+		virtual void removeItem(u32 idx) override;
 
 		//! Removes all menu items
-		virtual void removeAllItems() IRR_OVERRIDE;
+		virtual void removeAllItems() override;
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent& event) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
 		//! Returns the selected item in the menu
-		virtual s32 getSelectedItem() const IRR_OVERRIDE;
+		virtual s32 getSelectedItem() const override;
 
 		//! Returns a pointer to the submenu of an item.
 		//! \return Pointer to the submenu of an item.
-		virtual IGUIContextMenu* getSubMenu(u32 idx) const IRR_OVERRIDE;
+		virtual IGUIContextMenu* getSubMenu(u32 idx) const override;
 
 		//! Sets the visible state of this element.
-		virtual void setVisible(bool visible) IRR_OVERRIDE;
+		virtual void setVisible(bool visible) override;
 
 		//! should the element change the checked status on clicking
-		virtual void setItemAutoChecking(u32 idx, bool autoChecking) IRR_OVERRIDE;
+		virtual void setItemAutoChecking(u32 idx, bool autoChecking) override;
 
 		//! does the element change the checked status on clicking
-		virtual bool getItemAutoChecking(u32 idx) const IRR_OVERRIDE;
+		virtual bool getItemAutoChecking(u32 idx) const override;
 
 		//! Returns command id of a menu item
-		virtual s32 getItemCommandId(u32 idx) const IRR_OVERRIDE;
+		virtual s32 getItemCommandId(u32 idx) const override;
 
 		//! Sets the command id of a menu item
-		virtual void setItemCommandId(u32 idx, s32 id) IRR_OVERRIDE;
+		virtual void setItemCommandId(u32 idx, s32 id) override;
 
 		//! Adds a sub menu from an element that already exists.
 		virtual void setSubMenu(u32 index, CGUIContextMenu* menu);
 
 		//! When an eventparent is set it receives events instead of the usual parent element
-		virtual void setEventParent(IGUIElement *parent) IRR_OVERRIDE;
+		virtual void setEventParent(IGUIElement *parent) override;
 
 		//! Writes attributes of the element.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 		//! Reads attributes of the element
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 	protected:
 
@@ -168,6 +168,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
-#endif // IRR_C_GUI_CONTEXT_MENU_H_INCLUDED
+#endif // NIRT_C_GUI_CONTEXT_MENU_H_INCLUDED

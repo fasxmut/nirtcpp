@@ -1,4 +1,4 @@
-// This file is part of the "Irrlicht Engine".
+// This file is part of the "Nirtcpp Engine".
 // Written by Reinhard Ostermeier, reinhard@nospam.r-ostermeier.de
 // Expanded by burningwater
 // Bugfixes by Michael Zeilfelder
@@ -6,7 +6,7 @@
 
 #include "CGUITreeView.h"
 
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUISkin.h"
 #include "IGUIEnvironment.h"
@@ -1095,10 +1095,10 @@ void CGUITreeView::draw()
 	IGUIElement::draw();
 }
 
-//! Sets the font which should be used as icon font. This font is set to the Irrlicht engine
+//! Sets the font which should be used as icon font. This font is set to the Nirtcpp engine
 //! built-in-font by default. Icons can be displayed in front of every list item.
 //! An icon is a string, displayed with the icon font. When using the build-in-font of the
-//! Irrlicht engine as icon font, the icon strings defined in GUIIcons.h can be used.
+//! Nirtcpp engine as icon font, the icon strings defined in GUIIcons.h can be used.
 void CGUITreeView::setIconFont( IGUIFont* font )
 {
 	s32	height;
@@ -1158,4 +1158,4 @@ IGUIScrollBar* CGUITreeView::getHorizontalScrollBar() const
 } // end namespace irr
 
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_

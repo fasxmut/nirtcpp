@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_T_MESH_BUFFER_H_INCLUDED
-#define IRR_T_MESH_BUFFER_H_INCLUDED
+#ifndef NIRT_T_MESH_BUFFER_H_INCLUDED
+#define NIRT_T_MESH_BUFFER_H_INCLUDED
 
 #include "irrArray.h"
 #include "IMeshBuffer.h"
@@ -31,7 +31,7 @@ namespace scene
 
 		//! Get material of this meshbuffer
 		/** \return Material of this buffer */
-		virtual const video::SMaterial& getMaterial() const IRR_OVERRIDE
+		virtual const video::SMaterial& getMaterial() const override
 		{
 			return Material;
 		}
@@ -39,7 +39,7 @@ namespace scene
 
 		//! Get material of this meshbuffer
 		/** \return Material of this buffer */
-		virtual video::SMaterial& getMaterial() IRR_OVERRIDE
+		virtual video::SMaterial& getMaterial() override
 		{
 			return Material;
 		}
@@ -47,7 +47,7 @@ namespace scene
 
 		//! Get pointer to vertices
 		/** \return Pointer to vertices. */
-		virtual const void* getVertices() const IRR_OVERRIDE
+		virtual const void* getVertices() const override
 		{
 			return Vertices.const_pointer();
 		}
@@ -55,7 +55,7 @@ namespace scene
 
 		//! Get pointer to vertices
 		/** \return Pointer to vertices. */
-		virtual void* getVertices() IRR_OVERRIDE
+		virtual void* getVertices() override
 		{
 			return Vertices.pointer();
 		}
@@ -63,21 +63,21 @@ namespace scene
 
 		//! Get number of vertices
 		/** \return Number of vertices. */
-		virtual u32 getVertexCount() const IRR_OVERRIDE
+		virtual u32 getVertexCount() const override
 		{
 			return Vertices.size();
 		}
 
 		//! Get type of index data which is stored in this meshbuffer.
 		/** \return Index type of this buffer. */
-		virtual video::E_INDEX_TYPE getIndexType() const IRR_OVERRIDE
+		virtual video::E_INDEX_TYPE getIndexType() const override
 		{
 			return video::EIT_16BIT;
 		}
 
 		//! Get pointer to indices
 		/** \return Pointer to indices. */
-		virtual const u16* getIndices() const IRR_OVERRIDE
+		virtual const u16* getIndices() const override
 		{
 			return Indices.const_pointer();
 		}
@@ -85,7 +85,7 @@ namespace scene
 
 		//! Get pointer to indices
 		/** \return Pointer to indices. */
-		virtual u16* getIndices() IRR_OVERRIDE
+		virtual u16* getIndices() override
 		{
 			return Indices.pointer();
 		}
@@ -93,7 +93,7 @@ namespace scene
 
 		//! Get number of indices
 		/** \return Number of indices. */
-		virtual u32 getIndexCount() const IRR_OVERRIDE
+		virtual u32 getIndexCount() const override
 		{
 			return Indices.size();
 		}
@@ -101,7 +101,7 @@ namespace scene
 
 		//! Get the axis aligned bounding box
 		/** \return Axis aligned bounding box of this buffer. */
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override
 		{
 			return BoundingBox;
 		}
@@ -110,7 +110,7 @@ namespace scene
 		//! Set the axis aligned bounding box
 		/** \param box New axis aligned bounding box for this buffer. */
 		//! set user axis aligned bounding box
-		virtual void setBoundingBox(const core::aabbox3df& box) IRR_OVERRIDE
+		virtual void setBoundingBox(const core::aabbox3df& box) override
 		{
 			BoundingBox = box;
 		}
@@ -118,7 +118,7 @@ namespace scene
 
 		//! Recalculate the bounding box.
 		/** should be called if the mesh changed. */
-		virtual void recalculateBoundingBox() IRR_OVERRIDE
+		virtual void recalculateBoundingBox() override
 		{
 			if (!Vertices.empty())
 			{
@@ -135,55 +135,55 @@ namespace scene
 
 		//! Get type of vertex data stored in this buffer.
 		/** \return Type of vertex data. */
-		virtual video::E_VERTEX_TYPE getVertexType() const IRR_OVERRIDE
+		virtual video::E_VERTEX_TYPE getVertexType() const override
 		{
 			return T::getType();
 		}
 
 		//! returns position of vertex i
-		virtual const core::vector3df& getPosition(u32 i) const IRR_OVERRIDE
+		virtual const core::vector3df& getPosition(u32 i) const override
 		{
 			return Vertices[i].Pos;
 		}
 
 		//! returns position of vertex i
-		virtual core::vector3df& getPosition(u32 i) IRR_OVERRIDE
+		virtual core::vector3df& getPosition(u32 i) override
 		{
 			return Vertices[i].Pos;
 		}
 
 		//! returns normal of vertex i
-		virtual const core::vector3df& getNormal(u32 i) const IRR_OVERRIDE
+		virtual const core::vector3df& getNormal(u32 i) const override
 		{
 			return Vertices[i].Normal;
 		}
 
 		//! returns normal of vertex i
-		virtual core::vector3df& getNormal(u32 i) IRR_OVERRIDE
+		virtual core::vector3df& getNormal(u32 i) override
 		{
 			return Vertices[i].Normal;
 		}
 
 		//! returns texture coord of vertex i
-		virtual const core::vector2df& getTCoords(u32 i) const IRR_OVERRIDE
+		virtual const core::vector2df& getTCoords(u32 i) const override
 		{
 			return Vertices[i].TCoords;
 		}
 
 		//! returns texture coord of vertex i
-		virtual core::vector2df& getTCoords(u32 i) IRR_OVERRIDE
+		virtual core::vector2df& getTCoords(u32 i) override
 		{
 			return Vertices[i].TCoords;
 		}
 
 		//! returns color of vertex i
-		virtual video::SColor& getColor(u32 i) IRR_OVERRIDE
+		virtual video::SColor& getColor(u32 i) override
 		{
 			return Vertices[i].Color;
 		}
 
 		//! returns color of vertex i
-		virtual const video::SColor& getColor(u32 i) const IRR_OVERRIDE
+		virtual const video::SColor& getColor(u32 i) const override
 		{
 			return Vertices[i].Color;
 		}
@@ -193,7 +193,7 @@ namespace scene
 		or the main buffer is of standard type. Otherwise, behavior is
 		undefined.
 		*/
-		virtual void append(const void* const vertices, u32 numVertices, const u16* const indices, u32 numIndices) IRR_OVERRIDE
+		virtual void append(const void* const vertices, u32 numVertices, const u16* const indices, u32 numIndices) override
 		{
 			if (vertices == getVertices())
 				return;
@@ -222,7 +222,7 @@ namespace scene
 		undefined.
 		\param other Meshbuffer to be appended to this one.
 		*/
-		virtual void append(const IMeshBuffer* const other) IRR_OVERRIDE
+		virtual void append(const IMeshBuffer* const other) override
 		{
 			/*
 			if (this==other)
@@ -248,19 +248,19 @@ namespace scene
 
 
 		//! get the current hardware mapping hint
-		virtual E_HARDWARE_MAPPING getHardwareMappingHint_Vertex() const IRR_OVERRIDE
+		virtual E_HARDWARE_MAPPING getHardwareMappingHint_Vertex() const override
 		{
 			return MappingHint_Vertex;
 		}
 
 		//! get the current hardware mapping hint
-		virtual E_HARDWARE_MAPPING getHardwareMappingHint_Index() const IRR_OVERRIDE
+		virtual E_HARDWARE_MAPPING getHardwareMappingHint_Index() const override
 		{
 			return MappingHint_Index;
 		}
 
 		//! set the hardware mapping hint, for driver
-		virtual void setHardwareMappingHint( E_HARDWARE_MAPPING NewMappingHint, E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX ) IRR_OVERRIDE
+		virtual void setHardwareMappingHint( E_HARDWARE_MAPPING NewMappingHint, E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX ) override
 		{
 			if (Buffer==EBT_VERTEX_AND_INDEX || Buffer==EBT_VERTEX)
 				MappingHint_Vertex=NewMappingHint;
@@ -269,19 +269,19 @@ namespace scene
 		}
 
 		//! Describe what kind of primitive geometry is used by the meshbuffer
-		virtual void setPrimitiveType(E_PRIMITIVE_TYPE type) IRR_OVERRIDE
+		virtual void setPrimitiveType(E_PRIMITIVE_TYPE type) override
 		{
 			PrimitiveType = type;
 		}
 
 		//! Get the kind of primitive geometry which is used by the meshbuffer
-		virtual E_PRIMITIVE_TYPE getPrimitiveType() const IRR_OVERRIDE
+		virtual E_PRIMITIVE_TYPE getPrimitiveType() const override
 		{
 			return PrimitiveType;
 		}
 
 		//! flags the mesh as changed, reloads hardware buffers
-		virtual void setDirty(E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX) IRR_OVERRIDE
+		virtual void setDirty(E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX) override
 		{
 			if (Buffer==EBT_VERTEX_AND_INDEX ||Buffer==EBT_VERTEX)
 				++ChangedID_Vertex;
@@ -291,20 +291,20 @@ namespace scene
 
 		//! Get the currently used ID for identification of changes.
 		/** This shouldn't be used for anything outside the VideoDriver. */
-		virtual u32 getChangedID_Vertex() const IRR_OVERRIDE {return ChangedID_Vertex;}
+		virtual u32 getChangedID_Vertex() const override {return ChangedID_Vertex;}
 
 		//! Get the currently used ID for identification of changes.
 		/** This shouldn't be used for anything outside the VideoDriver. */
-		virtual u32 getChangedID_Index() const IRR_OVERRIDE {return ChangedID_Index;}
+		virtual u32 getChangedID_Index() const override {return ChangedID_Index;}
 
 		//! Returns type of the class implementing the IMeshBuffer
-		virtual EMESH_BUFFER_TYPE getType() const  IRR_OVERRIDE
+		virtual EMESH_BUFFER_TYPE getType() const  override
 		{
 			return getTypeT();
 		}
 
 		//! Create copy of the meshbuffer
-		virtual IMeshBuffer* createClone(int cloneFlags) const IRR_OVERRIDE
+		virtual IMeshBuffer* createClone(int cloneFlags) const override
 		{
 			CMeshBuffer<T> * clone = new CMeshBuffer<T>();
 

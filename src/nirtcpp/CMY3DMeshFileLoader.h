@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // This file was originally written by ZDimitor.
 // I (Nikolaus Gebhardt) did some few changes to this:
@@ -10,10 +10,10 @@
 // - added EAMT_MY3D file type
 // - fixed a memory leak when decompressing RLE data.
 // - cleaned multi character constant problems with gcc
-// - removed octree child scene node generation because irrlicht is now able to draw
+// - removed octree child scene node generation because nirtcpp is now able to draw
 //   scene nodes with transparent and sold materials in them at the same time. (see changes.txt)
 // Thanks a lot to ZDimitor for his work on this and that he gave me
-// his permission to add it into Irrlicht.
+// his permission to add it into Nirtcpp.
 
 //--------------------------------------------------------------------------------
 // This tool created by ZDimitor everyone can use it as wants
@@ -73,9 +73,9 @@ public:
 	CMY3DMeshFileLoader(ISceneManager *scmgr, io::IFileSystem* fs);
 	virtual ~CMY3DMeshFileLoader();
 
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
-	virtual IAnimatedMesh* createMesh(io::IReadFile* file) IRR_OVERRIDE;
+	virtual IAnimatedMesh* createMesh(io::IReadFile* file) override;
 
 	//! getting access to the nodes (with transparent material), creating
 	//! while loading .my3d file

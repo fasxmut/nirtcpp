@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 #include "SoftwareDriver2_compile_config.h"
 #include "SoftwareDriver2_helper.h"
@@ -176,7 +176,7 @@ CSoftwareTexture2::CSoftwareTexture2(IImage* image, const io::path& name, u32 fl
 	{
 		char buf[256];
 		core::stringw showName(name);
-		snprintf_irr(buf, sizeof(buf), "Burningvideo: Texture '%ls' reformat %ux%u,%s -> %ux%u,%s",
+		snprintf_nirt(buf, sizeof(buf), "Burningvideo: Texture '%ls' reformat %ux%u,%s -> %ux%u,%s",
 			showName.c_str(),
 			OriginalSize.Width, OriginalSize.Height, ColorFormatNames[OriginalColorFormat],
 			optSize.Width, optSize.Height, ColorFormatNames[ColorFormat]
@@ -353,7 +353,7 @@ void CSoftwareTexture2::regenerateMipMapLevels(void* data)
 		}
 		if (original_mip0)
 		{
-			snprintf_irr(buf, sizeof(buf), "mip/%s_org.png", name + filename);
+			snprintf_nirt(buf, sizeof(buf), "mip/%s_org.png", name + filename);
 			Driver->writeImageToFile((IImage*)original_mip0, buf);
 		}
 		if (array_size(MipMap) >= 1 && MipMap[1])
@@ -361,7 +361,7 @@ void CSoftwareTexture2::regenerateMipMapLevels(void* data)
 			{
 				if (MipMap[i])
 				{
-					snprintf_irr(buf, sizeof(buf), "mip/%s_%02d.png", name + filename, (s32)i);
+					snprintf_nirt(buf, sizeof(buf), "mip/%s_%02d.png", name + filename, (s32)i);
 					Driver->writeImageToFile(MipMap[i], buf);
 				}
 			}
@@ -830,4 +830,4 @@ void Resample_subSampling(eBlitter op, video::IImage* dst, const core::rect<s32>
 
 burning_namespace_end
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_

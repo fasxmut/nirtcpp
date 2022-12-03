@@ -3,7 +3,7 @@
 
 #include "testUtils.h"
 
-//! Tests that symbols exported from Irrlicht can be used by the user app.
+//! Tests that symbols exported from Nirtcpp can be used by the user app.
 bool exports(void)
 {
 	logTestString("Checking whether IdentityMatrix is exported.\n");

@@ -1,9 +1,9 @@
 // Copyright (C) 2009-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_DRIVER_CHOICE_H_INCLUDED
-#define IRR_E_DRIVER_CHOICE_H_INCLUDED
+#ifndef NIRT_E_DRIVER_CHOICE_H_INCLUDED
+#define NIRT_E_DRIVER_CHOICE_H_INCLUDED
 
 #include <iostream>
 #include <cstdio>
@@ -16,7 +16,7 @@ namespace irr
     //! ask user for driver
     static irr::video::E_DRIVER_TYPE driverChoiceConsole(bool allDrivers=false)
     {
-#if defined (_IRR_IPHONE_PLATFORM_) || defined (_IRR_ANDROID_PLATFORM_)
+#if defined (_NIRT_IPHONE_PLATFORM_) || defined (_NIRT_ANDROID_PLATFORM_)
         return irr::video::EDT_OGLES2;
 #else
         printf("Please select the driver you want:\n");

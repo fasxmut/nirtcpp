@@ -1,12 +1,12 @@
 // Copyright (C) 2014 Lauri Kasanen
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 // TODO: replace printf's by logging messages
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_B3D_WRITER_
+#ifdef _NIRT_COMPILE_WITH_B3D_WRITER_
 
 #include "CB3DMeshWriter.h"
 #include "os.h"
@@ -306,7 +306,7 @@ bool CB3DMeshWriter::writeMesh(io::IWriteFile* file, IMesh* const mesh, s32 flag
             const u32 flags = 0;
             f32 fps = skinnedMesh->getAnimationSpeed();
 
-            /* B3D file format use integer as keyframe, so there is some potential issues if the model use float as keyframe (Irrlicht use float) with a low animation FPS value
+            /* B3D file format use integer as keyframe, so there is some potential issues if the model use float as keyframe (Nirtcpp use float) with a low animation FPS value
             So we define a minimum animation FPS value to multiply the frame and FPS value if the FPS of the animation is too low to store the keyframe with integers */
             const int minimumAnimationFPS = 60;
 
@@ -551,5 +551,5 @@ void CB3DMeshWriter::writeSizeFrom(io::IWriteFile* file, const u32 from, const u
 } // end namespace
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_B3D_WRITER_
+#endif // _NIRT_COMPILE_WITH_B3D_WRITER_
 

@@ -1,10 +1,10 @@
 // Copyright (C) 2007-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CImageLoaderPPM.h"
 
-#ifdef _IRR_COMPILE_WITH_PPM_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PPM_LOADER_
 
 #include "IReadFile.h"
 #include "CColorConverter.h"

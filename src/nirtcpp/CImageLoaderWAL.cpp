@@ -1,7 +1,7 @@
 // Copyright (C) 2004 Murphy McCauley
 // Copyright (C) 2007-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CImageLoaderWAL.h"
 
@@ -19,7 +19,7 @@ namespace irr
 namespace video
 {
 
-#ifdef _IRR_COMPILE_WITH_LMP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_LMP_LOADER_
 
 // Palette quake2 colormap.h, 768 byte, last is transparent
 static const u32 colormap_h[256] = {
@@ -104,7 +104,7 @@ IImageLoader* createImageLoaderLMP()
 
 #endif
 
-#ifdef _IRR_COMPILE_WITH_WAL_LOADER_
+#ifdef _NIRT_COMPILE_WITH_WAL_LOADER_
 
 // Palette quake2 demo pics/colormap.pcx, last is transparent
 static const u32 colormap_pcx[256] = {

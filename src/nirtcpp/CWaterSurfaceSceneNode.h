@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_WATER_SURFACE_SCENE_NODE_H_INCLUDED
-#define IRR_C_WATER_SURFACE_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_WATER_SURFACE_SCENE_NODE_H_INCLUDED
+#define NIRT_C_WATER_SURFACE_SCENE_NODE_H_INCLUDED
 
 #include "CMeshSceneNode.h"
 
@@ -27,22 +27,22 @@ namespace scene
 		virtual ~CWaterSurfaceSceneNode();
 
 		//! frame registration
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! animated update
-		virtual void OnAnimate(u32 timeMs) IRR_OVERRIDE;
+		virtual void OnAnimate(u32 timeMs) override;
 
 		//! Update mesh
-		virtual void setMesh(IMesh* mesh) IRR_OVERRIDE;
+		virtual void setMesh(IMesh* mesh) override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_WATER_SURFACE; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_WATER_SURFACE; }
 
 		//! Writes attributes of the scene node.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 		//! Reads attributes of the scene node.
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 	private:
 

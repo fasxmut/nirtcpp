@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CXMLReader.h"
 
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 #include "CXMLReaderImpl.h"
 #include "IReadFile.h"
 
@@ -12,7 +12,7 @@ namespace irr
 {
 namespace io
 {
-	//! Irrlicht implementation of the file read callback for the xml parser
+	//! Nirtcpp implementation of the file read callback for the xml parser
 	class CIrrXMLFileReadCallBack : public IFileReadCallBack
 	{
 	public:
@@ -31,13 +31,13 @@ namespace io
 		}
 
 		//! Reads an amount of bytes from the file.
-		virtual int read(void* buffer, int sizeToRead) IRR_OVERRIDE
+		virtual int read(void* buffer, int sizeToRead) override
 		{
 			return (int)ReadFile->read(buffer, sizeToRead);
 		}
 
 		//! Returns size of file in bytes
-		virtual long getSize() const IRR_OVERRIDE
+		virtual long getSize() const override
 		{
 			return ReadFile->getSize();
 		}
@@ -70,7 +70,7 @@ namespace io
 
 } // end namespace
 } // end namespace
-#else // not _IRR_COMPILE_WITH_XML_
+#else // not _NIRT_COMPILE_WITH_XML_
 #include "os.h"
 namespace irr
 {
@@ -81,4 +81,4 @@ void noXML()
 }
 
 } // end namespace
-#endif // _IRR_COMPILE_WITH_XML_
+#endif // _NIRT_COMPILE_WITH_XML_

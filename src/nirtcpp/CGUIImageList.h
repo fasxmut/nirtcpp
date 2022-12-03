@@ -1,8 +1,8 @@
-// This file is part of the "Irrlicht Engine".
+// This file is part of the "Nirtcpp Engine".
 // written by Reinhard Ostermeier, reinhard@nospam.r-ostermeier.de
 
-#ifndef IRR_C_GUI_IMAGE_LIST_H_INCLUDED
-#define IRR_C_GUI_IMAGE_LIST_H_INCLUDED
+#ifndef NIRT_C_GUI_IMAGE_LIST_H_INCLUDED
+#define NIRT_C_GUI_IMAGE_LIST_H_INCLUDED
 
 #include "IGUIImageList.h"
 #include "IVideoDriver.h"
@@ -38,16 +38,16 @@ public:
 	//! \param clip: Optional pointer to a rectangle against which the text will be clipped.
 	//! If the pointer is null, no clipping will be done.
 	virtual void draw( s32 index, const core::position2d<s32>& destPos,
-		const core::rect<s32>* clip = 0 ) IRR_OVERRIDE;
+		const core::rect<s32>* clip = 0 ) override;
 
 	//! Returns the count of Images in the list.
 	//! \return Returns the count of Images in the list.
-	virtual s32 getImageCount() const IRR_OVERRIDE
+	virtual s32 getImageCount() const override
 	{ return ImageCount; }
 
 	//! Returns the size of the images in the list.
 	//! \return Returns the size of the images in the list.
-	virtual core::dimension2d<s32> getImageSize() const IRR_OVERRIDE
+	virtual core::dimension2d<s32> getImageSize() const override
 	{ return ImageSize; }
 
 private:

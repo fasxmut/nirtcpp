@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_CURSOR_CONTROL_H_INCLUDED
-#define IRR_I_CURSOR_CONTROL_H_INCLUDED
+#ifndef NIRT_I_CURSOR_CONTROL_H_INCLUDED
+#define NIRT_I_CURSOR_CONTROL_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "position2d.h"
@@ -19,7 +19,7 @@ namespace gui
 	//! Default icons for cursors
 	enum ECURSOR_ICON
 	{
-		// Following cursors might be system specific, or might use an Irrlicht icon-set. No guarantees so far.
+		// Following cursors might be system specific, or might use an Nirtcpp icon-set. No guarantees so far.
 		ECI_NORMAL,	// arrow
 		ECI_CROSS,	// Crosshair
 		ECI_HAND,	// Hand
@@ -85,10 +85,10 @@ namespace gui
 		ECPB_NONE = 0,
 
 		//! On X11 try caching cursor updates as XQueryPointer calls can be expensive.
-		/** Update cursor positions only when the irrlicht timer has been updated or the timer is stopped.
+		/** Update cursor positions only when the nirtcpp timer has been updated or the timer is stopped.
 			This means you usually get one cursor update per device->run() which will be fine in most cases.
 			See this forum-thread for a more detailed explanation:
-			http://irrlicht.sourceforge.net/forum/viewtopic.php?f=7&t=45525
+			http://nirtcpp.sourceforge.net/forum/viewtopic.php?f=7&t=45525
 		*/
 		ECPB_X11_CACHE_UPDATES = 1
 	};

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SCENE_NODE_ANIMATOR_FACTORY_H_INCLUDED
-#define IRR_I_SCENE_NODE_ANIMATOR_FACTORY_H_INCLUDED
+#ifndef NIRT_I_SCENE_NODE_ANIMATOR_FACTORY_H_INCLUDED
+#define NIRT_I_SCENE_NODE_ANIMATOR_FACTORY_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "ESceneNodeAnimatorTypes.h"
@@ -16,7 +16,7 @@ namespace scene
 	class ISceneNodeAnimator;
 
 	//! Interface for dynamic creation of scene node animators
-	/** To be able to add custom scene node animators to Irrlicht and to make it possible for the
+	/** To be able to add custom scene node animators to Nirtcpp and to make it possible for the
 	scene manager to save and load those external animators, simply implement this
 	interface and register it in you scene manager via ISceneManager::registerSceneNodeAnimatorFactory.
 	Note: When implementing your own scene node factory, don't call ISceneNodeManager::grab() to

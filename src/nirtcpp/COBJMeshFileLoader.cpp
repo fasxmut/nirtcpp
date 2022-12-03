@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_OBJ_LOADER_
+#ifdef _NIRT_COMPILE_WITH_OBJ_LOADER_
 
 #include "COBJMeshFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -24,7 +24,7 @@ namespace scene
 {
 
 #ifdef _DEBUG
-#define _IRR_DEBUG_OBJ_LOADER_
+#define _NIRT_DEBUG_OBJ_LOADER_
 #endif
 
 static const u32 WORD_BUFFER_LENGTH = 512;
@@ -117,12 +117,12 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 				// Bit fuzzy definition. Some doc (http://paulbourke.net) says there can be more then one file and they are separated by spaces
 				// Other doc (Wikipedia) says it's one file. Which does allow loading mtl files with spaces in the name.
 				// Other tools I tested seem to go with the Wikipedia definition
-				// Irrlicht did just use first word in Irrlicht 1.8, but with 1.9 we switch to allowing filenames with spaces
+				// Nirtcpp did just use first word in Nirtcpp 1.8, but with 1.9 we switch to allowing filenames with spaces
 				// If this turns out to cause troubles we can maybe try to catch those cases by looking for ".mtl " inside the string
 				const c8 * inBuf = goNextWord(bufPtr, bufEnd, false);
 				core::stringc name = copyLine(inBuf, bufEnd);
 
-#ifdef _IRR_DEBUG_OBJ_LOADER_
+#ifdef _NIRT_DEBUG_OBJ_LOADER_
 				os::Printer::log("Reading material file",name);
 #endif
 				readMTL(name.c_str(), relPath);
@@ -163,7 +163,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 			{
 				c8 grp[WORD_BUFFER_LENGTH];
 				bufPtr = goAndCopyNextWord(grp, bufPtr, WORD_BUFFER_LENGTH, bufEnd);
-#ifdef _IRR_DEBUG_OBJ_LOADER_
+#ifdef _NIRT_DEBUG_OBJ_LOADER_
 	os::Printer::log("Loaded group start",grp, ELL_DEBUG);
 #endif
 				if (useGroups)
@@ -181,7 +181,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 			{
 				c8 smooth[WORD_BUFFER_LENGTH];
 				bufPtr = goAndCopyNextWord(smooth, bufPtr, WORD_BUFFER_LENGTH, bufEnd);
-#ifdef _IRR_DEBUG_OBJ_LOADER_
+#ifdef _NIRT_DEBUG_OBJ_LOADER_
 	os::Printer::log("Loaded smoothing group start",smooth, ELL_DEBUG);
 #endif
 				if (TAG_OFF==smooth)
@@ -198,7 +198,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 			{
 				c8 matName[WORD_BUFFER_LENGTH];
 				bufPtr = goAndCopyNextWord(matName, bufPtr, WORD_BUFFER_LENGTH, bufEnd);
-#ifdef _IRR_DEBUG_OBJ_LOADER_
+#ifdef _NIRT_DEBUG_OBJ_LOADER_
 	os::Printer::log("Loaded material start",matName, ELL_DEBUG);
 #endif
 				mtlName=matName;
@@ -981,5 +981,5 @@ void COBJMeshFileLoader::cleanUp()
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_OBJ_LOADER_
+#endif // _NIRT_COMPILE_WITH_OBJ_LOADER_
 

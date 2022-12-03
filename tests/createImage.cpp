@@ -8,7 +8,7 @@ bool testImageCreation()
 {
 	// create device
 
-	IrrlichtDevice *device = createDevice(video::EDT_SOFTWARE, core::dimension2d<u32>(160,120));
+	NirtcppDevice *device = createDevice(video::EDT_SOFTWARE, core::dimension2d<u32>(160,120));
 
 	if (device == 0)
 		return true; // could not create selected driver.
@@ -61,7 +61,7 @@ bool testImageCreation()
 
 bool testImageFormats()
 {
-	IrrlichtDevice *device = createDevice(video::EDT_BURNINGSVIDEO, core::dimension2d<u32>(256,128));
+	NirtcppDevice *device = createDevice(video::EDT_BURNINGSVIDEO, core::dimension2d<u32>(256,128));
 
 	if (device == 0)
 		return true; // could not create selected driver.

@@ -47,7 +47,7 @@ irr::video::ITexture* CMeshTextureLoader::getTexture(const irr::io::path& textur
 
 	// Pre-process texture filename.
 	irr::io::path simplifiedTexName(textureName);
-	simplifiedTexName.replace(IRR_TEXT('\\'),IRR_TEXT('/'));
+	simplifiedTexName.replace(NIRT_TEXT('\\'),NIRT_TEXT('/'));
 
 	// user defined texture path
 	if ( !TexturePath.empty() )
@@ -103,7 +103,7 @@ irr::video::ITexture* CMeshTextureLoader::getTexture(const irr::io::path& textur
 	if ( checkTextureName(FileSystem->getFileBasename(simplifiedTexName)) )
 		return VideoDriver->getTexture(TextureName);
 
-	TextureName = IRR_TEXT("");
+	TextureName = NIRT_TEXT("");
 	return NULL;
 }
 
@@ -112,7 +112,7 @@ void CMeshTextureLoader::setMeshFile(const irr::io::IReadFile* meshFile)
 {
 	// no grab (would need a weak_ptr)
 	MeshFile = meshFile;
-	MeshPath = IRR_TEXT("");	// do a lazy evaluation later
+	MeshPath = NIRT_TEXT("");	// do a lazy evaluation later
 }
 
 //! Meshloaders will try to look relative to the path of the materialFile
@@ -120,7 +120,7 @@ void CMeshTextureLoader::setMaterialFile(const irr::io::IReadFile* materialFile)
 {
 	// no grab (would need a weak_ptr)
 	MaterialFile = materialFile;
-	MaterialPath = IRR_TEXT("");	// do a lazy evaluation later
+	MaterialPath = NIRT_TEXT("");	// do a lazy evaluation later
 }
 
 } // end namespace scnene

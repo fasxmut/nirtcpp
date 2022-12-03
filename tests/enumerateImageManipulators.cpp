@@ -9,7 +9,7 @@ using namespace video;
 
 bool enumerateImageManipulators(void)
 {
-    IrrlichtDevice *device = createDevice(video::EDT_NULL);
+    NirtcppDevice *device = createDevice(video::EDT_NULL);
     if (!device)
         return false;
 

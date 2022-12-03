@@ -1,12 +1,12 @@
 // Copyright (C) 2005-2006 Etienne Petitjean
 // Copyright (C) 2007-2012 Christian Stehno
 // Copyright (C) 2013-2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_OSX_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_OSX_DEVICE_
 
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/gl.h>
@@ -26,7 +26,7 @@
 #include <sys/utsname.h>
 #include "COSOperator.h"
 #include "CColorConverter.h"
-#include "irrlicht.h"
+#include "nirtcpp.h"
 #include <algorithm>
 
 #include <wchar.h>
@@ -34,7 +34,7 @@
 
 #include "CNSOGLManager.h"
 
-#if defined _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
 #include <IOKit/IOKitLib.h>
 #include <IOKit/IOCFPlugIn.h>
@@ -299,7 +299,7 @@ static void getJoystickDeviceInfo (io_object_t hidDevice, CFMutableDictionaryRef
 	}
 }
 
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
 // only OSX 10.5 seems to not need these defines...
 #if !defined(__MAC_10_5) || defined(__MAC_10_6)
@@ -469,7 +469,7 @@ namespace irr
 {
 	namespace video
 	{
-		IVideoDriver* createOpenGLDriver(const SIrrlichtCreationParameters& param, io::IFileSystem* io, IContextManager* contextManager);
+		IVideoDriver* createOpenGLDriver(const SNirtcppCreationParameters& param, io::IFileSystem* io, IContextManager* contextManager);
 	}
 } // end namespace irr
 
@@ -557,7 +557,7 @@ static bool firstLaunch = true;
 namespace irr
 {
 //! constructor
-CIrrDeviceMacOSX::CIrrDeviceMacOSX(const SIrrlichtCreationParameters& param)
+CIrrDeviceMacOSX::CIrrDeviceMacOSX(const SNirtcppCreationParameters& param)
 	: CIrrDeviceStub(param), Window(NULL), Display(NULL),
 	DeviceWidth(0), DeviceHeight(0),
 	ScreenWidth(0), ScreenHeight(0), MouseButtonStates(0),
@@ -635,7 +635,7 @@ CIrrDeviceMacOSX::~CIrrDeviceMacOSX()
 	SetSystemUIMode(kUIModeNormal, kUIOptionAutoShowMenuBar);
 #endif
 	closeDevice();
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	for (u32 joystick = 0; joystick < ActiveJoysticks.size(); ++joystick)
 	{
 		if (ActiveJoysticks[joystick].interface)
@@ -819,7 +819,7 @@ void CIrrDeviceMacOSX::setResize(int width, int height)
 	DeviceWidth = width;
 	DeviceHeight = height;
 
-#if defined(_IRR_COMPILE_WITH_OPENGL_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_)
 	// update the size of the opengl rendering context
 	if (CreationParams.DriverType == video::EDT_OPENGL)
     {
@@ -862,7 +862,7 @@ void CIrrDeviceMacOSX::createDriver()
 	switch (CreationParams.DriverType)
 	{
 		case video::EDT_SOFTWARE:
-#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 			VideoDriver = video::createSoftwareDriver(CreationParams.WindowSize, CreationParams.Fullscreen, FileSystem, this);
 			SoftwareRendererType = 2;
 			if (Window)
@@ -875,7 +875,7 @@ void CIrrDeviceMacOSX::createDriver()
 			break;
 
 		case video::EDT_BURNINGSVIDEO:
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 			VideoDriver = video::createBurningVideoDriver(CreationParams, FileSystem, this);
 			SoftwareRendererType = 1;
 			if (Window)
@@ -890,7 +890,7 @@ void CIrrDeviceMacOSX::createDriver()
 			break;
 
 		case video::EDT_OPENGL:
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
             {
                 video::SExposedVideoData data;
                 data.OpenGLOSX.Window = Window;
@@ -1300,7 +1300,7 @@ void CIrrDeviceMacOSX::setMouseLocation(int x,int y)
 
 	if (Window != NULL)
 	{
-		// Irrlicht window exists
+		// Nirtcpp window exists
 		p.x = (float) x;
 		p.y = (float) (DeviceHeight - y);
 		p = [Window convertBaseToScreen:p];
@@ -1689,19 +1689,19 @@ bool CIrrDeviceMacOSX::present_v0(video::IImage* surface, void* windowId, core::
 #endif
 
 
-#if defined (_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined (_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 static void joystickRemovalCallback(void * target,
 		IOReturn result, void * refcon, void * sender)
 {
 	JoystickInfo *joy = (JoystickInfo *) refcon;
 	joy->removed = 1;
 }
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
 
 bool CIrrDeviceMacOSX::activateJoysticks(core::array<SJoystickInfo> & joystickInfo)
 {
-#if defined (_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined (_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	ActiveJoysticks.clear();
 	joystickInfo.clear();
 
@@ -1835,14 +1835,14 @@ bool CIrrDeviceMacOSX::activateJoysticks(core::array<SJoystickInfo> & joystickIn
 	result = IOObjectRelease (hidIterator);
 
 	return true;
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
 	return false;
 }
 
 void CIrrDeviceMacOSX::pollJoysticks()
 {
-#if defined (_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined (_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	if(0 == ActiveJoysticks.size())
 		return;
 
@@ -1924,7 +1924,7 @@ void CIrrDeviceMacOSX::pollJoysticks()
 		if (found)
 			postEventFromUser(ActiveJoysticks[joystick].persistentData);
 	}
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 }
 
 video::IVideoModeList* CIrrDeviceMacOSX::getVideoModeList()
@@ -1989,5 +1989,5 @@ video::IVideoModeList* CIrrDeviceMacOSX::getVideoModeList()
 
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_OSX_DEVICE_
+#endif // _NIRT_COMPILE_WITH_OSX_DEVICE_
 

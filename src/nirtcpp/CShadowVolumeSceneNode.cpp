@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
 #include "CShadowVolumeSceneNode.h"
 #include "ISceneManager.h"
@@ -114,7 +114,7 @@ void CShadowVolumeSceneNode::createShadowVolume(const core::vector3df& light, bo
 // while they seem to look OK on first view either way on other drivers. Only tested with z-fail so far.
 // Maybe errors only show up close to near/far plane on other drivers as otherwise the stencil-buffer-count 
 // is probably ending up with same value anyway 
-#define IRR_USE_REVERSE_EXTRUDED
+#define NIRT_USE_REVERSE_EXTRUDED
 
 u32 CShadowVolumeSceneNode::createEdgesAndCaps(const core::vector3df& light, bool isDirectional,
 					SShadowVolume* svp, core::aabbox3d<f32>* bb)
@@ -141,7 +141,7 @@ u32 CShadowVolumeSceneNode::createEdgesAndCaps(const core::vector3df& light, boo
 		{
 			lightDir0 = (v0-light).normalize();
 		}
-#ifdef IRR_USE_REVERSE_EXTRUDED
+#ifdef NIRT_USE_REVERSE_EXTRUDED
 		FaceData[i]=core::triangle3df(v2,v1,v0).isFrontFacing(lightDir0);	// actually the back-facing polygons
 #else
 		FaceData[i]=core::triangle3df(v0,v1,v2).isFrontFacing(lightDir0);
@@ -153,7 +153,7 @@ u32 CShadowVolumeSceneNode::createEdgesAndCaps(const core::vector3df& light, boo
 			video::SMaterial m;
 			m.Lighting = false;
 			SceneManager->getVideoDriver()->setMaterial(m);
-#ifdef IRR_USE_REVERSE_EXTRUDED
+#ifdef NIRT_USE_REVERSE_EXTRUDED
 			SceneManager->getVideoDriver()->draw3DTriangle(core::triangle3df(v0+lightDir0,v1+lightDir0,v2+lightDir0), irr::video::SColor(255,255, 0, 0));
 #else
 			SceneManager->getVideoDriver()->draw3DTriangle(core::triangle3df(v0-lightDir0,v1-lightDir0,v2-lightDir0), irr::video::SColor(255,255, 0, 0));
@@ -528,4 +528,4 @@ void CShadowVolumeSceneNode::calculateAdjacency()
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_

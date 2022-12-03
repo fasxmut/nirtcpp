@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SCENE_PARAMETERS_H_INCLUDED
-#define IRR_I_SCENE_PARAMETERS_H_INCLUDED
+#ifndef NIRT_I_SCENE_PARAMETERS_H_INCLUDED
+#define NIRT_I_SCENE_PARAMETERS_H_INCLUDED
 
 #include "irrTypes.h"
 
@@ -18,8 +18,8 @@ namespace irr
 {
 namespace scene
 {
-	//! Name of the parameter for changing how Irrlicht handles the ZWrite flag for transparent (blending) materials
-	/** The default behavior in Irrlicht is to disable writing to the
+	//! Name of the parameter for changing how Nirtcpp handles the ZWrite flag for transparent (blending) materials
+	/** The default behavior in Nirtcpp is to disable writing to the
 	z-buffer for all really transparent, i.e. blending materials. This
 	avoids problems with intersecting faces, but can also break renderings.
 	If transparent materials should use the SMaterial flag for ZWriteEnable
@@ -140,7 +140,7 @@ namespace scene
 
 
 	//! Flag to ignore the b3d file's mipmapping flag
-	/** Instead Irrlicht's texture creation flag is used. Use it like this:
+	/** Instead Nirtcpp's texture creation flag is used. Use it like this:
 	\code
 	SceneManager->getParameters()->setAttribute(scene::B3D_LOADER_IGNORE_MIPMAP_FLAG, true);
 	\endcode
@@ -158,7 +158,7 @@ namespace scene
 	//! Flag set as parameter when the scene manager is used as editor
 	/** In this way special animators like deletion animators can be stopped from
 	deleting scene nodes for example */
-	const c8* const IRR_SCENE_MANAGER_IS_EDITOR = "IRR_Editor";
+	const c8* const NIRT_SCENE_MANAGER_IS_EDITOR = "NIRT_Editor";
 
 	//! Name of the parameter for setting the length of debug normals.
 	/** Use it like this:

@@ -1,5 +1,5 @@
 #include "testUtils.h"
-#include "irrlicht.h"
+#include "nirtcpp.h"
 
 using namespace irr;
 using namespace core;
@@ -9,7 +9,7 @@ using namespace video;
 bool testSorting()
 {
 	// Some test-values which did fail in the past.
-	// See http://irrlicht.sourceforge.net/phpBB2/viewtopic.php?t=33391&highlight=
+	// See http://nirtcpp.sourceforge.net/phpBB2/viewtopic.php?t=33391&highlight=
 	core::map<video::S3DVertex, int> testmap;
 	video::S3DVertex v;
 	v.Pos = core::vector3df(1.000000f, -1.000000f, 1.000000f);

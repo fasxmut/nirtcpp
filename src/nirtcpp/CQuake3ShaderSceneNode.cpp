@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Thomas Alten / Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 
 #include "CQuake3ShaderSceneNode.h"
 #include "ISceneManager.h"
@@ -14,7 +14,7 @@
 #include "IMeshManipulator.h"
 #include "SMesh.h"
 #include "IMaterialRenderer.h"
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 #include "CShadowVolumeSceneNode.h"
 #else
 #include "IShadowVolumeSceneNode.h"
@@ -378,7 +378,7 @@ void CQuake3ShaderSceneNode::render()
 			material.ZWriteEnable = drawCount == 0 ? video::EZW_AUTO : video::EZW_OFF;
 		}
 
-		//resolve quake3 blendfunction to irrlicht Material Type
+		//resolve quake3 blendfunction to nirtcpp Material Type
 		SBlendFunc blendfunc ( video::EMFN_MODULATE_1X );
 		getBlendFunc( group->get( "blendfunc" ), blendfunc );
 		getBlendFunc( group->get( "alphafunc" ), blendfunc );
@@ -521,7 +521,7 @@ bool CQuake3ShaderSceneNode::removeChild(ISceneNode* child)
 IShadowVolumeSceneNode* CQuake3ShaderSceneNode::addShadowVolumeSceneNode(
 		const IMesh* shadowMesh, s32 id, bool zfailmethod, f32 infinity)
 {
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 	if (!SceneManager->getVideoDriver()->queryFeature(video::EVDF_STENCIL_BUFFER))
 		return 0;
 

@@ -151,7 +151,7 @@ bool attributeValues(irr::io::IFileSystem * fs)
 /** Tests for XML handling */
 bool testXML(void)
 {
-	IrrlichtDevice *device = createDevice(video::EDT_NULL, dimension2du(400, 200));
+	NirtcppDevice *device = createDevice(video::EDT_NULL, dimension2du(400, 200));
 
 	bool result = true;
 

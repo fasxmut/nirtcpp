@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CColorConverter.h"
 #include "SColor.h"
@@ -717,7 +717,7 @@ void CColorConverter::convert_viaFormat(const void* sP, ECOLOR_FORMAT sF, u32 sN
 				case ECF_R8G8B8:
 					convert_A1R5G5B5toR8G8B8(sP, sN, dP);
 				break;
-				IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+				NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 					os::Printer::log("CColorConverter::convert_viaFormat method doesn't support compressed images.", ELL_WARNING);
 				break;
 #ifndef _DEBUG
@@ -741,7 +741,7 @@ void CColorConverter::convert_viaFormat(const void* sP, ECOLOR_FORMAT sF, u32 sN
 				case ECF_R8G8B8:
 					convert_R5G6B5toR8G8B8(sP, sN, dP);
 				break;
-				IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+				NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 					os::Printer::log("CColorConverter::convert_viaFormat method doesn't support compressed images.", ELL_WARNING);
 				break;
 #ifndef _DEBUG
@@ -765,7 +765,7 @@ void CColorConverter::convert_viaFormat(const void* sP, ECOLOR_FORMAT sF, u32 sN
 				case ECF_R8G8B8:
 					convert_A8R8G8B8toR8G8B8(sP, sN, dP);
 				break;
-				IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+				NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 					os::Printer::log("CColorConverter::convert_viaFormat method doesn't support compressed images.", ELL_WARNING);
 				break;
 #ifndef _DEBUG
@@ -789,7 +789,7 @@ void CColorConverter::convert_viaFormat(const void* sP, ECOLOR_FORMAT sF, u32 sN
 				case ECF_R8G8B8:
 					convert_R8G8B8toR8G8B8(sP, sN, dP);
 				break;
-				IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+				NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 					os::Printer::log("CColorConverter::convert_viaFormat method doesn't support compressed images.", ELL_WARNING);
 				break;
 #ifndef _DEBUG
@@ -798,7 +798,7 @@ void CColorConverter::convert_viaFormat(const void* sP, ECOLOR_FORMAT sF, u32 sN
 #endif
 			}
 		break;
-		IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+		NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 			os::Printer::log("CColorConverter::convert_viaFormat method doesn't support compressed images.", ELL_WARNING);
 			break;
 #ifndef _DEBUG

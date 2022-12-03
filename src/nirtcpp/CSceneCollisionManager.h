@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SCENE_COLLISION_MANAGER_H_INCLUDED
-#define IRR_C_SCENE_COLLISION_MANAGER_H_INCLUDED
+#ifndef NIRT_C_SCENE_COLLISION_MANAGER_H_INCLUDED
+#define NIRT_C_SCENE_COLLISION_MANAGER_H_INCLUDED
 
 #include "ISceneCollisionManager.h"
 #include "ISceneManager.h"
@@ -28,22 +28,22 @@ namespace scene
 		//! Returns the scene node, which is currently visible at the given
 		//! screen coordinates, viewed from the currently active camera.
 		virtual ISceneNode* getSceneNodeFromScreenCoordinatesBB(const core::position2d<s32>& pos,
-				s32 idBitMask=0, bool bNoDebugObjects=false, ISceneNode* root=0) IRR_OVERRIDE;
+				s32 idBitMask=0, bool bNoDebugObjects=false, ISceneNode* root=0) override;
 
 		//! Returns the nearest scene node which collides with a 3d ray and
 		//! whose id matches a bitmask.
 		virtual ISceneNode* getSceneNodeFromRayBB(const core::line3d<f32>& ray,
 						s32 idBitMask=0, bool bNoDebugObjects=false,
-						ISceneNode* root=0) IRR_OVERRIDE;
+						ISceneNode* root=0) override;
 
 		//! Returns the scene node, at which the given camera is looking at and
 		//! which id matches the bitmask.
 		virtual ISceneNode* getSceneNodeFromCameraBB(const ICameraSceneNode* camera,
-				s32 idBitMask=0, bool bNoDebugObjects = false) IRR_OVERRIDE;
+				s32 idBitMask=0, bool bNoDebugObjects = false) override;
 
 		//! Finds the nearest collision point of a line and lots of triangles, if there is one.
 		virtual bool getCollisionPoint(SCollisionHit& hitResult, const core::line3d<f32>& ray,
-				ITriangleSelector* selector)  IRR_OVERRIDE;
+				ITriangleSelector* selector)  override;
 
 		//! Collides a moving ellipsoid with a 3d world with gravity and returns
 		//! the resulting new position of the ellipsoid.
@@ -57,15 +57,15 @@ namespace scene
 			bool& outFalling,
 			ISceneNode*& outNode,
 			f32 slidingSpeed,
-			const core::vector3df& gravityDirectionAndSpeed) IRR_OVERRIDE;
+			const core::vector3df& gravityDirectionAndSpeed) override;
 
 		//! Returns a 3d ray which would go through the 2d screen coordinates.
 		virtual core::line3d<f32> getRayFromScreenCoordinates(
-			const core::position2d<s32> & pos, const ICameraSceneNode* camera = 0) IRR_OVERRIDE;
+			const core::position2d<s32> & pos, const ICameraSceneNode* camera = 0) override;
 
 		//! Calculates 2d screen position from a 3d position.
 		virtual core::position2d<s32> getScreenCoordinatesFrom3DPosition(
-			const core::vector3df & pos, const ICameraSceneNode* camera=0, bool useViewPort=false) IRR_OVERRIDE;
+			const core::vector3df & pos, const ICameraSceneNode* camera=0, bool useViewPort=false) override;
 
 		//! Gets the scene node and nearest collision point for a ray based on
 		//! the nodes' id bitmasks, bounding boxes and triangle selectors.
@@ -74,7 +74,7 @@ namespace scene
 								const core::line3df& ray,
 								s32 idBitMask = 0,
 								ISceneNode * collisionRootNode = 0,
-								bool noDebugObjects = false)  IRR_OVERRIDE;
+								bool noDebugObjects = false)  override;
 
 	private:
 

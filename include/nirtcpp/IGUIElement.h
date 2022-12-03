@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_ELEMENT_H_INCLUDED
-#define IRR_I_GUI_ELEMENT_H_INCLUDED
+#ifndef NIRT_I_GUI_ELEMENT_H_INCLUDED
+#define NIRT_I_GUI_ELEMENT_H_INCLUDED
 
 #include "IAttributeExchangingObject.h"
 #include "irrList.h"
@@ -546,7 +546,7 @@ public:
 
 
 	//! Called if an event happened.
-	virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE
+	virtual bool OnEvent(const SEvent& event) override
 	{
 		return Parent ? Parent->OnEvent(event) : false;
 	}
@@ -791,7 +791,7 @@ public:
 	//! Writes attributes of the scene node.
 	/** Implement this to expose the attributes of your scene node for
 	scripting languages, editors, debuggers or xml serialization purposes. */
-	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE
+	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override
 	{
 		out->addString("Name", Name.c_str());
 		out->addInt("Id", ID );
@@ -816,7 +816,7 @@ public:
 	//! Reads attributes of the scene node.
 	/** Implement this to set the attributes of your scene node for
 	scripting languages, editors, debuggers or xml deserialization purposes. */
-	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE
+	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override
 	{
 		setName(in->getAttributeAsString("Name", Name));
 		setID(in->getAttributeAsInt("Id", ID));

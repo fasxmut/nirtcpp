@@ -1,8 +1,8 @@
 // Copyright (C) 2013 Patryk Nadrowski
 // Heavily based on the DDS loader implemented by Thomas Alten
 // and DDS loader from IrrSpintz implemented by Thomas Ince
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 /*
 	Based on Code from Copyright (c) 2003 Randy Reddig
@@ -14,7 +14,7 @@
 
 #include "CImageLoaderDDS.h"
 
-#if defined(_IRR_COMPILE_WITH_DDS_LOADER_) || defined(_IRR_COMPILE_WITH_DDS_DECODER_LOADER_)
+#if defined(_NIRT_COMPILE_WITH_DDS_LOADER_) || defined(_NIRT_COMPILE_WITH_DDS_DECODER_LOADER_)
 
 #include "IReadFile.h"
 #include "os.h"
@@ -113,7 +113,7 @@ s32 DDSGetInfo(ddsHeader* dds, s32* width, s32* height, eDDSPixelFormat* pf)
 }
 
 
-#ifdef _IRR_COMPILE_WITH_DDS_DECODER_LOADER_
+#ifdef _NIRT_COMPILE_WITH_DDS_DECODER_LOADER_
 
 /*
 DDSDecompressARGB8888()
@@ -714,7 +714,7 @@ IImage* CImageLoaderDDS::loadImage(io::IReadFile* file) const
 		if (header.MipMapCount > 0 && (header.Flags & DDSD_MIPMAPCOUNT))
 			mipMapCount = header.MipMapCount;
 
-#ifdef _IRR_COMPILE_WITH_DDS_DECODER_LOADER_
+#ifdef _NIRT_COMPILE_WITH_DDS_DECODER_LOADER_
 		u32 newSize = file->getSize() - sizeof(ddsHeader);
 		u8* memFile = new u8[newSize];
 		file->read(memFile, newSize);

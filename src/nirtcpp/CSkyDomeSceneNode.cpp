@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Code for this scene node has been contributed by Anders la Cour-Harbo (alc)
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_SKYDOME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
 #include "CSkyDomeSceneNode.h"
 #include "IVideoDriver.h"
 #include "ISceneManager.h"
@@ -261,4 +261,4 @@ ISceneNode* CSkyDomeSceneNode::clone(ISceneNode* newParent, ISceneManager* newMa
 } // namespace scene
 } // namespace irr
 
-#endif // _IRR_COMPILE_WITH_SKYDOME_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_

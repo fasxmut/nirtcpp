@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_POINT_2D_H_INCLUDED
-#define IRR_POINT_2D_H_INCLUDED
+#ifndef NIRT_POINT_2D_H_INCLUDED
+#define NIRT_POINT_2D_H_INCLUDED
 
 #include "irrMath.h"
 #include "dimension2d.h"
@@ -15,7 +15,7 @@ namespace core
 
 
 //! 2d vector template class with lots of operators and methods.
-/** As of Irrlicht 1.6, this class supersedes position2d, which should
+/** As of Nirtcpp 1.6, this class supersedes position2d, which should
 	be considered deprecated. */
 template <class T>
 class vector2d
@@ -62,14 +62,14 @@ public:
 
 	T& operator [](u32 index)
 	{
-		IRR_DEBUG_BREAK_IF(index>1) // access violation
+		NIRT_DEBUG_BREAK_IF(index>1) // access violation
 
 		return *(&X+index);
 	}
 
 	const T& operator [](u32 index) const
 	{
-		IRR_DEBUG_BREAK_IF(index>1) // access violation
+		NIRT_DEBUG_BREAK_IF(index>1) // access violation
 
 		return *(&X+index);
 	}

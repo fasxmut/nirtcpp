@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SURFACE_LOADER_H_INCLUDED
-#define IRR_I_SURFACE_LOADER_H_INCLUDED
+#ifndef NIRT_I_SURFACE_LOADER_H_INCLUDED
+#define NIRT_I_SURFACE_LOADER_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "IImage.h"
@@ -21,7 +21,7 @@ namespace video
 {
 
 //! Class which is able to create a image from a file.
-/** If you want the Irrlicht Engine be able to load textures of
+/** If you want the Nirtcpp Engine be able to load textures of
 currently unsupported file formats (e.g .gif), then implement
 this and add your new Surface loader with
 IVideoDriver::addExternalImageLoader() to the engine. */

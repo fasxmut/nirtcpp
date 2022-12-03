@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_SKIN_H_INCLUDED
-#define IRR_C_GUI_SKIN_H_INCLUDED
+#ifndef NIRT_C_GUI_SKIN_H_INCLUDED
+#define NIRT_C_GUI_SKIN_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUISkin.h"
 #include "irrString.h"
@@ -30,49 +30,49 @@ namespace gui
 		virtual ~CGUISkin();
 
 		//! returns default color
-		virtual video::SColor getColor(EGUI_DEFAULT_COLOR color) const IRR_OVERRIDE;
+		virtual video::SColor getColor(EGUI_DEFAULT_COLOR color) const override;
 
 		//! sets a default color
-		virtual void setColor(EGUI_DEFAULT_COLOR which, video::SColor newColor) IRR_OVERRIDE;
+		virtual void setColor(EGUI_DEFAULT_COLOR which, video::SColor newColor) override;
 
 		//! returns size for the given size type
-		virtual s32 getSize(EGUI_DEFAULT_SIZE size) const IRR_OVERRIDE;
+		virtual s32 getSize(EGUI_DEFAULT_SIZE size) const override;
 
 		//! sets a default size
-		virtual void setSize(EGUI_DEFAULT_SIZE which, s32 size) IRR_OVERRIDE;
+		virtual void setSize(EGUI_DEFAULT_SIZE which, s32 size) override;
 
 		//! returns the default font
-		virtual IGUIFont* getFont(EGUI_DEFAULT_FONT which=EGDF_DEFAULT) const IRR_OVERRIDE;
+		virtual IGUIFont* getFont(EGUI_DEFAULT_FONT which=EGDF_DEFAULT) const override;
 
 		//! sets a default font
-		virtual void setFont(IGUIFont* font, EGUI_DEFAULT_FONT which=EGDF_DEFAULT) IRR_OVERRIDE;
+		virtual void setFont(IGUIFont* font, EGUI_DEFAULT_FONT which=EGDF_DEFAULT) override;
 
 		//! sets the sprite bank used for drawing icons
-		virtual void setSpriteBank(IGUISpriteBank* bank) IRR_OVERRIDE;
+		virtual void setSpriteBank(IGUISpriteBank* bank) override;
 
 		//! gets the sprite bank used for drawing icons
-		virtual IGUISpriteBank* getSpriteBank() const IRR_OVERRIDE;
+		virtual IGUISpriteBank* getSpriteBank() const override;
 
 		//! Returns a default icon
 		/** Returns the sprite index within the sprite bank */
-		virtual u32 getIcon(EGUI_DEFAULT_ICON icon) const IRR_OVERRIDE;
+		virtual u32 getIcon(EGUI_DEFAULT_ICON icon) const override;
 
 		//! Sets a default icon
 		/** Sets the sprite index used for drawing icons like arrows,
 		close buttons and ticks in checkboxes
 		\param icon: Enum specifying which icon to change
 		\param index: The sprite index used to draw this icon */
-		virtual void setIcon(EGUI_DEFAULT_ICON icon, u32 index) IRR_OVERRIDE;
+		virtual void setIcon(EGUI_DEFAULT_ICON icon, u32 index) override;
 
 		//! Returns a default text.
 		/** For example for Message box button captions:
 		"OK", "Cancel", "Yes", "No" and so on. */
-		virtual const wchar_t* getDefaultText(EGUI_DEFAULT_TEXT text) const IRR_OVERRIDE;
+		virtual const wchar_t* getDefaultText(EGUI_DEFAULT_TEXT text) const override;
 
 		//! Sets a default text.
 		/** For example for Message box button captions:
 		"OK", "Cancel", "Yes", "No" and so on. */
-		virtual void setDefaultText(EGUI_DEFAULT_TEXT which, const wchar_t* newText) IRR_OVERRIDE;
+		virtual void setDefaultText(EGUI_DEFAULT_TEXT which, const wchar_t* newText) override;
 
 		//! draws a standard 3d button pane
 		/** Used for drawing for example buttons in normal state.
@@ -85,7 +85,7 @@ namespace gui
 		implementations to find out how to draw the part exactly. */
 		virtual void draw3DButtonPaneStandard(IGUIElement* element,
 				const core::rect<s32>& rect,
-				const core::rect<s32>* clip=0) IRR_OVERRIDE;
+				const core::rect<s32>* clip=0) override;
 
 		//! draws a pressed 3d button pane
 		/** Used for drawing for example buttons in pressed state.
@@ -98,7 +98,7 @@ namespace gui
 		implementations to find out how to draw the part exactly. */
 		virtual void draw3DButtonPanePressed(IGUIElement* element,
 				const core::rect<s32>& rect,
-				const core::rect<s32>* clip=0) IRR_OVERRIDE;
+				const core::rect<s32>* clip=0) override;
 
 		//! draws a sunken 3d pane
 		/** Used for drawing the background of edit, combo or check boxes.
@@ -114,7 +114,7 @@ namespace gui
 				video::SColor bgcolor, bool flat,
 				bool fillBackGround,
 				const core::rect<s32>& rect,
-				const core::rect<s32>* clip=0) IRR_OVERRIDE;
+				const core::rect<s32>* clip=0) override;
 
 		//! draws a window background
 		/** Used for drawing the background of dialogs and windows.
@@ -134,7 +134,7 @@ namespace gui
 				bool drawTitleBar, video::SColor titleBarColor,
 				const core::rect<s32>& rect,
 				const core::rect<s32>* clip,
-				core::rect<s32>* checkClientArea) IRR_OVERRIDE;
+				core::rect<s32>* checkClientArea) override;
 
 		//! draws a standard 3d menu pane
 		/** Used for drawing for menus and context menus.
@@ -147,7 +147,7 @@ namespace gui
 		\param clip: Clip area.	*/
 		virtual void draw3DMenuPane(IGUIElement* element,
 				const core::rect<s32>& rect,
-				const core::rect<s32>* clip=0) IRR_OVERRIDE;
+				const core::rect<s32>* clip=0) override;
 
 		//! draws a standard 3d tool bar
 		/** Used for drawing for toolbars and menus.
@@ -158,7 +158,7 @@ namespace gui
 		\param clip: Clip area.	*/
 		virtual void draw3DToolBar(IGUIElement* element,
 				const core::rect<s32>& rect,
-				const core::rect<s32>* clip=0) IRR_OVERRIDE;
+				const core::rect<s32>* clip=0) override;
 
 		//! draws a tab button
 		/** Used for drawing for tab buttons on top of tabs.
@@ -170,7 +170,7 @@ namespace gui
 		\param clip: Clip area.	*/
 		virtual void draw3DTabButton(IGUIElement* element, bool active,
 			const core::rect<s32>& rect, const core::rect<s32>* clip=0,
-			EGUI_ALIGNMENT alignment=EGUIA_UPPERLEFT) IRR_OVERRIDE;
+			EGUI_ALIGNMENT alignment=EGUIA_UPPERLEFT) override;
 
 		//! draws a tab control body
 		/** \param element: Pointer to the element which wishes to draw this. This parameter
@@ -182,7 +182,7 @@ namespace gui
 		\param clip: Clip area.	*/
 		virtual void draw3DTabBody(IGUIElement* element, bool border, bool background,
 			const core::rect<s32>& rect, const core::rect<s32>* clip=0, s32 tabHeight=-1,
-			EGUI_ALIGNMENT alignment=EGUIA_UPPERLEFT) IRR_OVERRIDE;
+			EGUI_ALIGNMENT alignment=EGUIA_UPPERLEFT) override;
 
 		//! draws an icon, usually from the skin's sprite bank
 		/** \param element: Pointer to the element which wishes to draw this icon.
@@ -197,7 +197,7 @@ namespace gui
 		virtual void drawIcon(IGUIElement* element, EGUI_DEFAULT_ICON icon,
 				const core::position2di position,
 				u32 starttime=0, u32 currenttime=0,
-				bool loop=false, const core::rect<s32>* clip=0) IRR_OVERRIDE;
+				bool loop=false, const core::rect<s32>* clip=0) override;
 
 
 		//! draws a 2d rectangle.
@@ -210,17 +210,17 @@ namespace gui
 		\param clip: Pointer to rectangle against which the rectangle will be clipped.
 		If the pointer is null, no clipping will be performed. */
 		virtual void draw2DRectangle(IGUIElement* element, const video::SColor &color,
-				const core::rect<s32>& pos, const core::rect<s32>* clip = 0) IRR_OVERRIDE;
+				const core::rect<s32>& pos, const core::rect<s32>* clip = 0) override;
 
 
 		//! get the type of this skin
-		virtual EGUI_SKIN_TYPE getType() const IRR_OVERRIDE;
+		virtual EGUI_SKIN_TYPE getType() const override;
 
 		//! Writes attributes of the skin
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override;
 
 		//! Reads attributes of the skin
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override;
 
 	private:
 
@@ -240,6 +240,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
 #endif

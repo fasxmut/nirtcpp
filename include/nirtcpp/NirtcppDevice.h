@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_NIRTCPP_DEVICE_H_INCLUDED
-#define IRR_I_NIRTCPP_DEVICE_H_INCLUDED
+#ifndef NIRT_I_NIRTCPP_DEVICE_H_INCLUDED
+#define NIRT_I_NIRTCPP_DEVICE_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "dimension2d.h"
@@ -38,8 +38,8 @@ namespace irr
 		class IContextManager;
 	} // end namespace video
 
-	//! The Irrlicht device. You can create it with createDevice() or createDeviceEx().
-	/** This is the most important class of the Irrlicht Engine. You can
+	//! The Nirtcpp device. You can create it with createDevice() or createDeviceEx().
+	/** This is the most important class of the Nirtcpp Engine. You can
 	access everything in the engine if you have a pointer to an instance of
 	this class.  There should be only one instance of this class at any
 	time.
@@ -63,21 +63,21 @@ namespace irr
 		If you want the device to do nothing if the window is inactive
 		(recommended), use the slightly enhanced code shown at isWindowActive().
 
-		Note if you are running Irrlicht inside an external, custom
-		created window: Calling Device->run() will cause Irrlicht to
+		Note if you are running Nirtcpp inside an external, custom
+		created window: Calling Device->run() will cause Nirtcpp to
 		dispatch windows messages internally.
-		If you are running Irrlicht in your own custom window, you can
+		If you are running Nirtcpp in your own custom window, you can
 		also simply use your own message loop using GetMessage,
 		DispatchMessage and whatever and simply don't use this method.
-		But note that Irrlicht will not be able to fetch user input
-		then. See irr::SIrrlichtCreationParameters::WindowId for more
+		But note that Nirtcpp will not be able to fetch user input
+		then. See irr::SNirtcppCreationParameters::WindowId for more
 		information and example code.
 		*/
 		virtual bool run() = 0;
 
 		//! Cause the device to temporarily pause execution and let other processes run.
 		/** This should bring down processor usage without major
-		performance loss for Irrlicht */
+		performance loss for Nirtcpp */
 		virtual void yield() = 0;
 
 		//! Pause execution and let other processes to run for a specified amount of time.
@@ -148,7 +148,7 @@ namespace irr
 
 		//! Creates a new default randomizer.
 		/** The default randomizer provides the random sequence known from previous
-		Irrlicht versions and is the initial randomizer set on device creation.
+		Nirtcpp versions and is the initial randomizer set on device creation.
 		\return Pointer to the default IRandomizer object. */
 		virtual IRandomizer* createDefaultRandomizer() const =0;
 
@@ -174,15 +174,15 @@ namespace irr
 		\return True if window is active. */
 		virtual bool isWindowActive() const = 0;
 
-		//! Checks if the Irrlicht window has the input focus
+		//! Checks if the Nirtcpp window has the input focus
 		/** \return True if window has focus. */
 		virtual bool isWindowFocused() const = 0;
 
-		//! Checks if the Irrlicht window is minimized
+		//! Checks if the Nirtcpp window is minimized
 		/** \return True if window is minimized. */
 		virtual bool isWindowMinimized() const = 0;
 
-		//! Checks if the Irrlicht window is running in fullscreen mode
+		//! Checks if the Nirtcpp window is running in fullscreen mode
 		/** \return True if window is fullscreen. */
 		virtual bool isFullscreen() const = 0;
 
@@ -251,11 +251,11 @@ namespace irr
 		virtual core::position2di getWindowPosition() = 0;
 
 		//! Activate any joysticks, and generate events for them.
-		/** Irrlicht contains support for joysticks, but does not generate joystick events by default,
+		/** Nirtcpp contains support for joysticks, but does not generate joystick events by default,
 		as this would consume joystick info that 3rd party libraries might rely on. Call this method to
-		activate joystick support in Irrlicht and to receive irr::SJoystickEvent events.
+		activate joystick support in Nirtcpp and to receive irr::SJoystickEvent events.
 		\param joystickInfo On return, this will contain an array of each joystick that was found and activated.
-		\return true if joysticks are supported on this device and _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+		\return true if joysticks are supported on this device and _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 				is defined, false if joysticks are not supported or support is compiled out.
 		*/
 		virtual bool activateJoysticks(core::array<SJoystickInfo>& joystickInfo) =0;
@@ -307,25 +307,25 @@ namespace irr
 				case video::EDT_NULL:
 					return true;
 				case video::EDT_SOFTWARE:
-#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 					return true;
 #else
 					return false;
 #endif
 				case video::EDT_BURNINGSVIDEO:
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 					return true;
 #else
 					return false;
 #endif
 				case video::EDT_DIRECT3D9:
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 					return true;
 #else
 					return false;
 #endif
 				case video::EDT_OPENGL:
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 					return true;
 #else
 					return false;

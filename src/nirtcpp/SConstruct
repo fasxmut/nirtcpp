@@ -80,22 +80,22 @@ def createEnvironment() :
         raise SCons.Errors.StopError("debug library can not be build with the an osx framework")
             
     # set constants and global values (directory names are relative to the SConstruct)
-    # read first Irrlicht SDK version from the file include/IrrCompileConfig.h
-    irrlichtversion = None
+    # read first Nirtcpp SDK version from the file include/IrrCompileConfig.h
+    nirtcppversion = None
     try :
         configfile = open( os.path.join("include", "IrrCompileConfig.h"), "r" )
-        irrlichtversion = re.search("#define(.*)NIRTCPP_SDK_VERSION(.*)", configfile.read())
+        nirtcppversion = re.search("#define(.*)NIRTCPP_SDK_VERSION(.*)", configfile.read())
         configfile.close()
     except :
 	    pass
-    if irrlichtversion == None :
-        raise SCons.Errors.StopError("can not find Irrlicht SDK version in the configuration header")
+    if nirtcppversion == None :
+        raise SCons.Errors.StopError("can not find Nirtcpp SDK version in the configuration header")
     
-    env["irr_libversion"]         = irrlichtversion.group(2).replace("\"", "").strip()
-    env["irr_libinstallname"]     = "Irrlicht"
+    env["irr_libversion"]         = nirtcppversion.group(2).replace("\"", "").strip()
+    env["irr_libinstallname"]     = "Nirtcpp"
     env["irr_osxframeworkname"]   = env["irr_libinstallname"]
     env["irr_srcexamples"]        = "examples"
-    env["irr_srclibrary"]         = os.path.join("source", "Irrlicht")
+    env["irr_srclibrary"]         = os.path.join("source", "Nirtcpp")
     if env["buildtype"] == "debug" :
         env["irr_libinstallname"] = env["irr_libinstallname"] + "Debug"
     
@@ -195,7 +195,7 @@ def getLibraryBuildEnvironment(env) :
 # @param library environment
 def configOpenGL(envlib) :
     if not envlib["opengl"] :
-        envlib.AppendUnique(CPPDEFINES      = ["NO_IRR_COMPILE_WITH_OPENGL_"])
+        envlib.AppendUnique(CPPDEFINES      = ["NO_NIRT_COMPILE_WITH_OPENGL_"])
 
     if envlib["platform"] in ["osx-library", "osx-framework"] :
         envlib.AppendUnique(LINKFLAGS       = ["-Wl,-framework,OpenGL"])
@@ -211,18 +211,18 @@ def configOpenGL(envlib) :
 # define Direct X 9 support ( Direct X 8 is disabled by the SDK )
 # @param library environment
 def configDirectX(envlib) :
-    envlib.AppendUnique(CPPDEFINES          = ["NO_IRR_COMPILE_WITH_DIRECT3D_8_", "NO_IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_"])
+    envlib.AppendUnique(CPPDEFINES          = ["NO_NIRT_COMPILE_WITH_DIRECT3D_8_", "NO_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_"])
 
     if os.path.exists(env["directxsdk"]) :
         envlib.AppendUnique(CPPPATH         = [os.path.join(envlib["directxsdk"], "Include")])
-        envlib.AppendUnique(CPPDEFINES      = ["IRR_COMPILE_WITH_DX9_DEV_PACK"])
+        envlib.AppendUnique(CPPDEFINES      = ["NIRT_COMPILE_WITH_DX9_DEV_PACK"])
         envlib.AppendUnique(LIBS            = ["d3dx9"])
         if "win32" in envlib["platform"] :
             envlib.AppendUnique(LIBPATH     = [os.path.join(envlib["directxsdk"], "Lib", "x86")])
         elif "win64" in envlib["platform"] :
             envlib.AppendUnique(LIBPATH     = [os.path.join(envlib["directxsdk"], "Lib", "x84")])
     else :
-        envlib.AppendUnique(CPPDEFINES      = ["NO_IRR_COMPILE_WITH_DIRECT3D_9_"])
+        envlib.AppendUnique(CPPDEFINES      = ["NO_NIRT_COMPILE_WITH_DIRECT3D_9_"])
     
 
 # creates a build object for the examples,
@@ -243,13 +243,13 @@ def getExampleBuildEnvironment(env) :
             envexamples.AppendUnique(CXXFLAGS    = ["-O3"])
     
         if envexamples["platform"] == "osx-framework" :
-            envexamples.AppendUnique(CPPPATH     = [os.path.join(env["installdir"], "Irrlicht.framework", "Headers")])
-            envexamples.AppendUnique(LINKFLAGS   = ["-Wl,-framework,Irrlicht", "-Wl,-F"+env["installdir"]])
+            envexamples.AppendUnique(CPPPATH     = [os.path.join(env["installdir"], "Nirtcpp.framework", "Headers")])
+            envexamples.AppendUnique(LINKFLAGS   = ["-Wl,-framework,Nirtcpp", "-Wl,-F"+env["installdir"]])
         else :
             if envexamples["buildtype"] == "debug" :
-                envexamples.AppendUnique(LIBS        = ["IrrlichtDebug"])
+                envexamples.AppendUnique(LIBS        = ["NirtcppDebug"])
             elif envexamples["buildtype"] == "release" :
-                envexamples.AppendUnique(LIBS        = ["Irrlicht"])
+                envexamples.AppendUnique(LIBS        = ["Nirtcpp"])
             envexamples.AppendUnique(CPPPATH     = [os.path.join(env["installdir"], "include")])
             envexamples.AppendUnique(LIBPATH     = [os.path.join(env["installdir"], "lib")])
 
@@ -259,22 +259,22 @@ def getExampleBuildEnvironment(env) :
         envexamples.AppendUnique(LIBPATH         = [os.path.join(env["installdir"], "lib")])
         if envexamples["buildtype"] == "debug" :
             envexamples.AppendUnique(CXXFLAGS    = ["-Wall", "-g"])
-            envexamples.AppendUnique(LIBS        = ["IrrlichtDebug"])
+            envexamples.AppendUnique(LIBS        = ["NirtcppDebug"])
         elif envexamples["buildtype"] == "release" :
             envexamples.AppendUnique(CXXFLAGS    = ["-O3"])
-            envexamples.AppendUnique(LIBS        = ["Irrlicht"])
+            envexamples.AppendUnique(LIBS        = ["Nirtcpp"])
     
     
     elif envexamples["platform"] in ["win32-mingw", "win64-mingw"] :
         envexamples.AppendUnique(CPPPATH         = [os.path.join(env["installdir"], "include")])
         envexamples.AppendUnique(LIBPATH         = [os.path.join(env["installdir"], "lib")])
-        envexamples.AppendUnique(LIBS            = ["Irrlicht", "gdi32", "opengl32"])
+        envexamples.AppendUnique(LIBS            = ["Nirtcpp", "gdi32", "opengl32"])
         if envexamples["buildtype"] == "debug" :
             envexamples.AppendUnique(CXXFLAGS    = ["-Wall", "-g"])
-            envexamples.AppendUnique(LIBS        = ["IrrlichtDebug"])
+            envexamples.AppendUnique(LIBS        = ["NirtcppDebug"])
         elif envexamples["buildtype"] == "release" :
             envexamples.AppendUnique(CXXFLAGS    = ["-O3"])
-            envexamples.AppendUnique(LIBS        = ["Irrlicht"])
+            envexamples.AppendUnique(LIBS        = ["Nirtcpp"])
         
     
     elif envexamples["platform"] in ["win32-msvc", "win64-msvc"] :
@@ -285,11 +285,11 @@ def getExampleBuildEnvironment(env) :
         envexamples.AppendUnique(LIBS            = [ "user32", "gdi32", "opengl32"])
         if envexamples["buildtype"] == "debug" :
             envexamples.AppendUnique(CXXFLAGS    = ["-Wall", "/MTd", "/RTC1", "/Zi"])
-            envexamples.AppendUnique(LIBS        = ["IrrlichtDebug"])
+            envexamples.AppendUnique(LIBS        = ["NirtcppDebug"])
         elif envexamples["buildtype"] == "release" :
             envexamples.AppendUnique(CXXFLAGS    = ["/GL", "/MT", "/Ox"])
             envexamples.AppendUnique(LINKFLAGS   = ["/SUBSYSTEM:CONSOLE", "/OPT:REF", "/LTCG"])
-            envexamples.AppendUnique(LIBS        = ["Irrlicht"])
+            envexamples.AppendUnique(LIBS        = ["Nirtcpp"])
     
     return envexamples
 
@@ -327,7 +327,7 @@ def installLibrary(env, lib, header) :
             data.append(env.Command( os.path.join(framework, "Versions", env["irr_libversion"], "Headers", os.path.basename(str(i))), i, Copy("$TARGET", "$SOURCE")))
 
         # remove existing links and create new ones
-        install.append( env.Command(os.path.join(framework, "Irrlicht"), data, "rm -f $TARGET && ln -s "+os.path.join("Versions", env["irr_libversion"], "Libraries", os.path.basename(libname))+" $TARGET") )
+        install.append( env.Command(os.path.join(framework, "Nirtcpp"), data, "rm -f $TARGET && ln -s "+os.path.join("Versions", env["irr_libversion"], "Libraries", os.path.basename(libname))+" $TARGET") )
         install.append( env.Command(os.path.join(framework, "Libraries"), data, "rm -f $TARGET && ln -s "+os.path.join("Versions", env["irr_libversion"], "Libraries")+" $TARGET") )
         install.append( env.Command(os.path.join(framework, "Headers"), data, "rm -f $TARGET && ln -s "+os.path.join("Versions", env["irr_libversion"], "Headers")+" $TARGET") )
         install.append( env.Command(os.path.join(framework, "Versions", "Current"), data, "rm -f $TARGET && ln -s "+os.path.join(env["irr_libversion"])+" $TARGET") )
@@ -342,7 +342,7 @@ def installLibrary(env, lib, header) :
     # create a package 
     if env["package"] : 
         nameparts = [env["platform"], env["buildtarget"], env["irr_libversion"], env["buildtype"]]
-        install = env.ZipBetter( os.path.join("bin", "irrlicht-"+"-".join(nameparts)+env['ZIPSUFFIX']), install, ZIPROOT=env["installdir"])
+        install = env.ZipBetter( os.path.join("bin", "nirtcpp-"+"-".join(nameparts)+env['ZIPSUFFIX']), install, ZIPROOT=env["installdir"])
         
     NoClean(install)
     Default(install)

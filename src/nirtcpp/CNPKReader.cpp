@@ -1,18 +1,18 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // Copyright (C) 2009-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
-// Based on the NPK reader from Irrlicht
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// Based on the NPK reader from Nirtcpp
 
 #include "CNPKReader.h"
 
-#ifdef __IRR_COMPILE_WITH_NPK_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_NPK_ARCHIVE_LOADER_
 
 #include "os.h"
 #include "coreutil.h"
 
 #ifdef _DEBUG
-#define IRR_DEBUG_NPK_READER
+#define NIRT_DEBUG_NPK_READER
 #endif
 
 namespace irr
@@ -158,32 +158,32 @@ bool CNPKReader::scanLocalHeader()
 		char tag[4]={0};
 		SNPKFileEntry entry;
 		File->read(tag, 4);
-		const int numTag = MAKE_IRR_ID(tag[3],tag[2],tag[1],tag[0]);
+		const int numTag = MAKE_NIRT_ID(tag[3],tag[2],tag[1],tag[0]);
 		int size;
 
 		bool isDir=true;
 
 		switch (numTag)
 		{
-			case MAKE_IRR_ID('D','I','R','_'):
+			case MAKE_NIRT_ID('D','I','R','_'):
 			{
 				File->read(&size, 4);
 				readString(entry.Name);
 				entry.Length=0;
 				entry.Offset=0;
-#ifdef IRR_DEBUG_NPK_READER
+#ifdef NIRT_DEBUG_NPK_READER
 		os::Printer::log("Dir", entry.Name);
 #endif
 			}
 				break;
-			case MAKE_IRR_ID('F','I','L','E'):
+			case MAKE_NIRT_ID('F','I','L','E'):
 			{
 				File->read(&size, 4);
 				File->read(&entry.Offset, 4);
 				File->read(&entry.Length, 4);
 				readString(entry.Name);
 				isDir=false;
-#ifdef IRR_DEBUG_NPK_READER
+#ifdef NIRT_DEBUG_NPK_READER
 		os::Printer::log("File", entry.Name);
 #endif
 #ifdef __BIG_ENDIAN__
@@ -192,7 +192,7 @@ bool CNPKReader::scanLocalHeader()
 #endif
 			}
 				break;
-			case MAKE_IRR_ID('D','E','N','D'):
+			case MAKE_NIRT_ID('D','E','N','D'):
 			{
 				File->read(&size, 4);
 				entry.Name="";
@@ -203,7 +203,7 @@ bool CNPKReader::scanLocalHeader()
 					dirName="";
 				else
 					dirName=dirName.subString(0, pos);
-#ifdef IRR_DEBUG_NPK_READER
+#ifdef NIRT_DEBUG_NPK_READER
 		os::Printer::log("Dirend", dirName);
 #endif
 			}
@@ -219,7 +219,7 @@ bool CNPKReader::scanLocalHeader()
 			dirName += entry.Name;
 			dirName += "/";
 		}
-#ifdef IRR_DEBUG_NPK_READER
+#ifdef NIRT_DEBUG_NPK_READER
 		os::Printer::log("Name", entry.Name);
 #endif
 		addItem((isDir?dirName:dirName+entry.Name), entry.Offset+header.Offset, entry.Length, isDir);
@@ -273,5 +273,5 @@ void CNPKReader::readString(core::stringc& name)
 } // end namespace io
 } // end namespace irr
 
-#endif // __IRR_COMPILE_WITH_NPK_ARCHIVE_LOADER_
+#endif // __NIRT_COMPILE_WITH_NPK_ARCHIVE_LOADER_
 

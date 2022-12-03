@@ -7,7 +7,7 @@ using namespace irr;
 
 static bool testOrthoCam(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice (driverType, core::dimension2d<u32>(160,120));
+	NirtcppDevice *device = createDevice (driverType, core::dimension2d<u32>(160,120));
 	if (!device)
 		return true; // No error if device does not exist
 
@@ -51,7 +51,7 @@ static bool testOrthoCam(video::E_DRIVER_TYPE driverType)
 
 static bool testOrthoStencil(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice (driverType, core::dimension2d<u32>(160,120), 16, false, true);
+	NirtcppDevice *device = createDevice (driverType, core::dimension2d<u32>(160,120), 16, false, true);
 	if (!device)
 		return true; // No error if device does not exist
 

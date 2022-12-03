@@ -1,7 +1,7 @@
 
-Welcome to the Irrlicht test suite.
+Welcome to the Nirtcpp test suite.
 ===================================
-This is composed of a series of tests which exercise basic Irrlicht
+This is composed of a series of tests which exercise basic Nirtcpp
 functionality.  These are not strictly unit tests, since there is no stub
 framework that isolates each method under test.  They do however test small
 units of functionality and should help to isolate problems and spot
@@ -55,9 +55,9 @@ To add a new test, e.g. "myNewTest":
 5) Remember to svn add tests/newNewTest.cpp and any new tests/media/ files.
 
 Your test will be run independently in its own indepedent process. It is
-responsible for creating any required resources or Irrlicht interfaces, and for
+responsible for creating any required resources or Nirtcpp interfaces, and for
 cleaning up after itself and restoring the working directory to /tests.  You do
-not have to link against Irrlicht.lib; the whole application is already linked
+not have to link against Nirtcpp.lib; the whole application is already linked
 to it.
 
 
@@ -115,7 +115,7 @@ What to do when the tests fail
 DON'T PANIC!
 
 This is a Good Thing.  Failing tests challenge our assumptions and help us to
-make Irrlicht more robust.
+make Nirtcpp more robust.
 
 First, check your working directory.  The tests need to be run from the tests/
 directory, not a /bin subdirectory.  You can do this using the working
@@ -133,10 +133,10 @@ real issue in the code, it can be valid to accept OpenGL image matches as low
 as 98%.  Other devices should not require this amount of fuzziness!
 
 If you can't figure out the reason for the failure (or better yet, if you can,
-and think the tests and/or Irrlicht need updated), then please do raise the
+and think the tests and/or Nirtcpp need updated), then please do raise the
 issue in the bug forum:
 
-http://irrlicht.sourceforge.net/phpBB2/viewforum.php?f=7
+http://nirtcpp.sourceforge.net/phpBB2/viewforum.php?f=7
 
 We do want to hear about fails, and will thank you for finding them.
 

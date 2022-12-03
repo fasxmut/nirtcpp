@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_CAMERA_SCENE_NODE_H_INCLUDED
-#define IRR_I_CAMERA_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_I_CAMERA_SCENE_NODE_H_INCLUDED
+#define NIRT_I_CAMERA_SCENE_NODE_H_INCLUDED
 
 #include "ISceneNode.h"
 #include "IEventReceiver.h"
@@ -72,7 +72,7 @@ namespace scene
 		ISceneManager::addCameraSceneNodeFPS, may want to get
 		this input for changing their position, look at target or
 		whatever. */
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE =0;
+		virtual bool OnEvent(const SEvent& event) override =0;
 
 		//! Sets the look at target of the camera
 		/** If the camera's target and rotation are bound ( @see
@@ -90,7 +90,7 @@ namespace scene
 		bindTargetAndRotation() ) then calling this will also change
 		the camera's target to match the rotation.
 		\param rotation New rotation of the node in degrees. */
-		virtual void setRotation(const core::vector3df& rotation) IRR_OVERRIDE =0;
+		virtual void setRotation(const core::vector3df& rotation) override =0;
 
 		//! Gets the current look at target of the camera
 		/** \return The current look at target of the camera, in world co-ordinates */
@@ -180,7 +180,7 @@ namespace scene
 		virtual bool getTargetAndRotationBinding(void) const =0;
 
 		//! Writes attributes of the camera node
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override
 		{
 			ISceneNode::serializeAttributes(out, options);
 
@@ -190,7 +190,7 @@ namespace scene
 		}
 
 		//! Reads attributes of the camera node
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override
 		{
 			ISceneNode::deserializeAttributes(in, options);
 			if (!in)

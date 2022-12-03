@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SKY_BOX_SCENE_NODE_H_INCLUDED
-#define IRR_C_SKY_BOX_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_SKY_BOX_SCENE_NODE_H_INCLUDED
+#define NIRT_C_SKY_BOX_SCENE_NODE_H_INCLUDED
 
 #include "ISceneNode.h"
 #include "S3DVertex.h"
@@ -23,29 +23,29 @@ namespace scene
 			video::ITexture* right, video::ITexture* front, video::ITexture* back,
 			ISceneNode* parent, ISceneManager* mgr, s32 id);
 
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! renders the node.
-		virtual void render() IRR_OVERRIDE;
+		virtual void render() override;
 
 		//! returns the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 		//! returns the material based on the zero based index i. To get the amount
 		//! of materials used by this scene node, use getMaterialCount().
 		//! This function is needed for inserting the node into the scene hierarchy on a
 		//! optimal position for minimizing renderstate changes, but can also be used
 		//! to directly modify the material of a scene node.
-		virtual video::SMaterial& getMaterial(u32 i) IRR_OVERRIDE;
+		virtual video::SMaterial& getMaterial(u32 i) override;
 
 		//! returns amount of materials used by this scene node.
-		virtual u32 getMaterialCount() const IRR_OVERRIDE;
+		virtual u32 getMaterialCount() const override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_SKY_BOX; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_SKY_BOX; }
 
 		//! Creates a clone of this scene node and its children.
-		virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) IRR_OVERRIDE;
+		virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) override;
 
 	private:
 

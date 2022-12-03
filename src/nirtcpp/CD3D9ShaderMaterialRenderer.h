@@ -1,14 +1,14 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_D3D9_SHADER_MATERIAL_RENDERER_H_INCLUDED
-#define IRR_C_D3D9_SHADER_MATERIAL_RENDERER_H_INCLUDED
+#ifndef NIRT_C_D3D9_SHADER_MATERIAL_RENDERER_H_INCLUDED
+#define NIRT_C_D3D9_SHADER_MATERIAL_RENDERER_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_WINDOWS_
+#ifdef _NIRT_WINDOWS_
 
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 #if defined(__BORLANDC__) || defined (__BCPLUSPLUS__)
 #include "irrMath.h"    // needed by borland for sqrtf define
 #endif
@@ -39,17 +39,17 @@ public:
 	~CD3D9ShaderMaterialRenderer();
 
 	virtual void OnSetMaterial(const video::SMaterial& material, const video::SMaterial& lastMaterial,
-		bool resetAllRenderstates, video::IMaterialRendererServices* services) IRR_OVERRIDE;
+		bool resetAllRenderstates, video::IMaterialRendererServices* services) override;
 
-	virtual void OnUnsetMaterial() IRR_OVERRIDE;
+	virtual void OnUnsetMaterial() override;
 
-	virtual bool OnRender(IMaterialRendererServices* service, E_VERTEX_TYPE vtxtype) IRR_OVERRIDE;
+	virtual bool OnRender(IMaterialRendererServices* service, E_VERTEX_TYPE vtxtype) override;
 
 	//! Returns if the material is transparent.
-	virtual bool isTransparent() const IRR_OVERRIDE;
+	virtual bool isTransparent() const override;
 
 	//! Access the callback provided by the users when creating shader materials
-	virtual IShaderConstantSetCallBack* getShaderConstantSetCallBack() const IRR_OVERRIDE
+	virtual IShaderConstantSetCallBack* getShaderConstantSetCallBack() const override
 	{ 
 		return CallBack;
 	}

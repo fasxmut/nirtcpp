@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_BONE_SCENE_NODE_H_INCLUDED
-#define IRR_I_BONE_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_I_BONE_SCENE_NODE_H_INCLUDED
+#define NIRT_I_BONE_SCENE_NODE_H_INCLUDED
 
 #include "ISceneNode.h"
 
@@ -60,8 +60,8 @@ namespace scene
 			ISceneNode(parent, mgr, id),positionHint(-1),scaleHint(-1),rotationHint(-1) { }
 
 		//! Get the name of the bone
-		/** \deprecated Use getName instead. This method may be removed by Irrlicht 1.9 */
-		IRR_DEPRECATED virtual const c8* getBoneName() const { return getName(); }
+		/** \deprecated Use getName instead. This method may be removed by Nirtcpp 1.9 */
+		NIRT_DEPRECATED virtual const c8* getBoneName() const { return getName(); }
 
 		//! Get the index of the bone
 		virtual u32 getBoneIndex() const = 0;
@@ -74,17 +74,17 @@ namespace scene
 		virtual E_BONE_ANIMATION_MODE getAnimationMode() const = 0;
 
 		//! Get the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE = 0;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override = 0;
 
 		//! Returns the relative transformation of the scene node.
 		//virtual core::matrix4 getRelativeTransformation() const = 0;
 
 		//! The animation method.
-		virtual void OnAnimate(u32 timeMs) IRR_OVERRIDE =0;
+		virtual void OnAnimate(u32 timeMs) override =0;
 
 		//! The render method.
 		/** Does nothing as bones are not visible. */
-		virtual void render() IRR_OVERRIDE { }
+		virtual void render() override { }
 
 		//! How the relative transformation of the bone is used
 		virtual void setSkinningSpace( E_BONE_SKINNING_SPACE space ) =0;

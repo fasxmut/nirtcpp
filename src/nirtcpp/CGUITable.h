@@ -1,15 +1,15 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 // 07.10.2005 - Multicolor-Listbox addet by A. Buschhueter (Acki)
 //                                          A_Buschhueter@gmx.de
 
-#ifndef IRR_C_GUI_TABLE_BAR_H_INCLUDED
-#define IRR_C_GUI_TABLE_BAR_H_INCLUDED
+#ifndef NIRT_C_GUI_TABLE_BAR_H_INCLUDED
+#define NIRT_C_GUI_TABLE_BAR_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUITable.h"
 #include "irrArray.h"
@@ -35,52 +35,52 @@ namespace gui
 
 		//! Adds a column
 		//! If columnIndex is outside the current range, do push new column at the end
-		virtual void addColumn(const wchar_t* caption, s32 columnIndex=-1) IRR_OVERRIDE;
+		virtual void addColumn(const wchar_t* caption, s32 columnIndex=-1) override;
 
 		//! remove a column from the table
-		virtual void removeColumn(u32 columnIndex) IRR_OVERRIDE;
+		virtual void removeColumn(u32 columnIndex) override;
 
 		//! Returns the number of columns in the table control
-		virtual s32 getColumnCount() const IRR_OVERRIDE;
+		virtual s32 getColumnCount() const override;
 
 		//! Makes a column active. This will trigger an ordering process.
 		/** \param idx: The id of the column to make active.
 		\return True if successful. */
-		virtual bool setActiveColumn(s32 columnIndex, bool doOrder=false) IRR_OVERRIDE;
+		virtual bool setActiveColumn(s32 columnIndex, bool doOrder=false) override;
 
 		//! Returns which header is currently active
-		virtual s32 getActiveColumn() const IRR_OVERRIDE;
+		virtual s32 getActiveColumn() const override;
 
 		//! Returns the ordering used by the currently active column
-		virtual EGUI_ORDERING_MODE getActiveColumnOrdering() const IRR_OVERRIDE;
+		virtual EGUI_ORDERING_MODE getActiveColumnOrdering() const override;
 
 		//! set a column width
-		virtual void setColumnWidth(u32 columnIndex, u32 width) IRR_OVERRIDE;
+		virtual void setColumnWidth(u32 columnIndex, u32 width) override;
 
 		//! Get the width of a column
-		virtual u32 getColumnWidth(u32 columnIndex) const IRR_OVERRIDE;
+		virtual u32 getColumnWidth(u32 columnIndex) const override;
 
 		//! columns can be resized by drag 'n drop
-		virtual void setResizableColumns(bool resizable) IRR_OVERRIDE;
+		virtual void setResizableColumns(bool resizable) override;
 
 		//! can columns be resized by drag 'n drop?
-		virtual bool hasResizableColumns() const IRR_OVERRIDE;
+		virtual bool hasResizableColumns() const override;
 
 		//! This tells the table control which ordering mode should be used when
 		//! a column header is clicked.
 		/** \param columnIndex: The index of the column header.
 		\param state: If true, a EGET_TABLE_HEADER_CHANGED message will be sent and you can order the table data as you whish.*/
 		//! \param mode: One of the modes defined in EGUI_COLUMN_ORDERING
-		virtual void setColumnOrdering(u32 columnIndex, EGUI_COLUMN_ORDERING mode) IRR_OVERRIDE;
+		virtual void setColumnOrdering(u32 columnIndex, EGUI_COLUMN_ORDERING mode) override;
 
 		//! Returns which row is currently selected
-		virtual s32 getSelected() const IRR_OVERRIDE;
+		virtual s32 getSelected() const override;
 
 		//! set currently selected row
-		virtual void setSelected( s32 index ) IRR_OVERRIDE;
+		virtual void setSelected( s32 index ) override;
 
 		//! Returns amount of rows in the tab control
-		virtual s32 getRowCount() const IRR_OVERRIDE;
+		virtual s32 getRowCount() const override;
 
 		//! adds a row to the table
 		/** \param rowIndex: zero based index of rows. The row will be
@@ -89,16 +89,16 @@ namespace gui
 			than the actual number of rows by more than one, it
 			won't be created. Note that if you create a row that is
 			not at the end, there might be performance issues*/
-		virtual u32 addRow(u32 rowIndex) IRR_OVERRIDE;
+		virtual u32 addRow(u32 rowIndex) override;
 
 		//! Remove a row from the table
-		virtual void removeRow(u32 rowIndex) IRR_OVERRIDE;
+		virtual void removeRow(u32 rowIndex) override;
 
 		//! clear the table rows, but keep the columns intact
-		virtual void clearRows() IRR_OVERRIDE;
+		virtual void clearRows() override;
 
 		//! Swap two row positions. This is useful for a custom ordering algo.
-		virtual void swapRows(u32 rowIndexA, u32 rowIndexB) IRR_OVERRIDE;
+		virtual void swapRows(u32 rowIndexA, u32 rowIndexB) override;
 
 		//! This tells the table to start ordering all the rows. You
 		//! need to explicitly tell the table to reorder the rows when
@@ -106,77 +106,77 @@ namespace gui
 		//! the system more flexible and doesn't make you pay the cost
 		//! of ordering when adding a lot of rows.
 		//! \param columnIndex: When set to -1 the active column is used.
-		virtual void orderRows(s32 columnIndex=-1, EGUI_ORDERING_MODE mode=EGOM_NONE) IRR_OVERRIDE;
+		virtual void orderRows(s32 columnIndex=-1, EGUI_ORDERING_MODE mode=EGOM_NONE) override;
 
 
 		//! Set the text of a cell
-		virtual void setCellText(u32 rowIndex, u32 columnIndex, const core::stringw& text) IRR_OVERRIDE;
+		virtual void setCellText(u32 rowIndex, u32 columnIndex, const core::stringw& text) override;
 
 		//! Set the text of a cell, and set a color of this cell.
-		virtual void setCellText(u32 rowIndex, u32 columnIndex, const core::stringw& text, video::SColor color) IRR_OVERRIDE;
+		virtual void setCellText(u32 rowIndex, u32 columnIndex, const core::stringw& text, video::SColor color) override;
 
 		//! Set the data of a cell
 		//! data will not be serialized.
-		virtual void setCellData(u32 rowIndex, u32 columnIndex, void *data) IRR_OVERRIDE;
+		virtual void setCellData(u32 rowIndex, u32 columnIndex, void *data) override;
 
 		//! Set the color of a cell text
-		virtual void setCellColor(u32 rowIndex, u32 columnIndex, video::SColor color) IRR_OVERRIDE;
+		virtual void setCellColor(u32 rowIndex, u32 columnIndex, video::SColor color) override;
 
 		//! Get the text of a cell
-		virtual const wchar_t* getCellText(u32 rowIndex, u32 columnIndex ) const IRR_OVERRIDE;
+		virtual const wchar_t* getCellText(u32 rowIndex, u32 columnIndex ) const override;
 
 		//! Get the data of a cell
-		virtual void* getCellData(u32 rowIndex, u32 columnIndex ) const IRR_OVERRIDE;
+		virtual void* getCellData(u32 rowIndex, u32 columnIndex ) const override;
 
 		//! clears the table, deletes all items in the table
-		virtual void clear() IRR_OVERRIDE;
+		virtual void clear() override;
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent &event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent &event) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
 		//! Set flags, as defined in EGUI_TABLE_DRAW_FLAGS, which influence the layout
-		virtual void setDrawFlags(s32 flags) IRR_OVERRIDE;
+		virtual void setDrawFlags(s32 flags) override;
 
 		//! Get the flags, as defined in EGUI_TABLE_DRAW_FLAGS, which influence the layout
-		virtual s32 getDrawFlags() const IRR_OVERRIDE;
+		virtual s32 getDrawFlags() const override;
 
 		//! Sets another skin independent font.
-		virtual void setOverrideFont(IGUIFont* font=0) IRR_OVERRIDE;
+		virtual void setOverrideFont(IGUIFont* font=0) override;
 
 		//! Gets the override font (if any)
-		virtual IGUIFont* getOverrideFont() const IRR_OVERRIDE;
+		virtual IGUIFont* getOverrideFont() const override;
 
 		//! Get the font which is used right now for drawing
-		virtual IGUIFont* getActiveFont() const IRR_OVERRIDE;
+		virtual IGUIFont* getActiveFont() const override;
 
 		//! Get the height of items/rows
-		virtual s32 getItemHeight() const IRR_OVERRIDE;
+		virtual s32 getItemHeight() const override;
 
 		//! Access the vertical scrollbar
-		virtual IGUIScrollBar* getVerticalScrollBar() const IRR_OVERRIDE;
+		virtual IGUIScrollBar* getVerticalScrollBar() const override;
 
 		//! Access the horizontal scrollbar
-		virtual IGUIScrollBar* getHorizontalScrollBar() const IRR_OVERRIDE;
+		virtual IGUIScrollBar* getHorizontalScrollBar() const override;
 
 		//! Sets whether to draw the background.
-		virtual void setDrawBackground(bool draw) IRR_OVERRIDE;
+		virtual void setDrawBackground(bool draw) override;
 
 		//! Checks if background drawing is enabled
 		/** \return true if background drawing is enabled, false otherwise */
-		virtual bool isDrawBackgroundEnabled() const IRR_OVERRIDE;
+		virtual bool isDrawBackgroundEnabled() const override;
 
 		//! Writes attributes of the object.
 		//! Implement this to expose the attributes of your scene node animator for
 		//! scripting languages, editors, debuggers or xml serialization purposes.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override;
 
 		//! Reads attributes of the object.
 		//! Implement this to set the attributes of your scene node animator for
 		//! scripting languages, editors, debuggers or xml deserialization purposes.
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override;
 
 	protected:
 		void refreshControls();
@@ -248,6 +248,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
 #endif

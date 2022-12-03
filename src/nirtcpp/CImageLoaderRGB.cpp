@@ -1,6 +1,6 @@
 //! Copyright (C) 2009-2012 Gary Conway
-//! This file is part of the "Irrlicht Engine".
-//! For conditions of distribution and use, see copyright notice in irrlicht.h
+//! This file is part of the "Nirtcpp Engine".
+//! For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 /*
 	Author:	Gary Conway (Viper) - co-author of the ZIP file format, Feb 1989,
@@ -123,7 +123,7 @@ DUMMY -		This 404 bytes of data should be set to 0. This makes the Header exactl
 
 #include "CImageLoaderRGB.h"
 
-#ifdef _IRR_COMPILE_WITH_RGB_LOADER_
+#ifdef _NIRT_COMPILE_WITH_RGB_LOADER_
 
 #include "IReadFile.h"
 #include "SColor.h"
@@ -392,7 +392,7 @@ void CImageLoaderRGB::processFile(io::IReadFile* file, rgbStruct& rgb) const
 
 	// cycle through all scanlines
 
-#ifdef _IRR_RGB_FILE_INVERTED_IMAGE_
+#ifdef _NIRT_RGB_FILE_INVERTED_IMAGE_
 	// preserve the image as stored, eg, inverted
 	for (u16 i = 0; i < rgb.Header.Ysize; ++i)
 #else

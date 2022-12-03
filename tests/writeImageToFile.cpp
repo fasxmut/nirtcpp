@@ -17,7 +17,7 @@ using namespace gui;
 //! Tests IVideoDriver::writeImageToFile() using IWriteFile
 bool writeImageToFile(void)
 {
-	IrrlichtDevice *device = createDevice( EDT_BURNINGSVIDEO, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( EDT_BURNINGSVIDEO, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 

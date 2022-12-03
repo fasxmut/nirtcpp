@@ -40,7 +40,7 @@ private:
 //! Tests using octree selector
 bool octree()
 {
-	IrrlichtDevice *device = createDevice (video::EDT_OPENGL, core::dimension2d < u32 > (160, 120));
+	NirtcppDevice *device = createDevice (video::EDT_OPENGL, core::dimension2d < u32 > (160, 120));
 	if (!device)
 		return true; // No error if device does not exist
 
@@ -150,7 +150,7 @@ bool octree()
 //! Tests using triangle selector
 bool triangle()
 {
-	IrrlichtDevice *device = createDevice (video::EDT_OPENGL, core::dimension2d < u32 > (160, 120));
+	NirtcppDevice *device = createDevice (video::EDT_OPENGL, core::dimension2d < u32 > (160, 120));
 	if (!device)
 		return true; // No error if device does not exist
 

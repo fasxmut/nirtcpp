@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine" and the "irrXML" project.
-// For conditions of distribution and use, see copyright notice in irrlicht.h and/or irrXML.h
+// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// For conditions of distribution and use, see copyright notice in nirtcpp.h and/or irrXML.h
 
-#ifndef IRR_ICXML_READER_IMPL_H_INCLUDED
-#define IRR_ICXML_READER_IMPL_H_INCLUDED
+#ifndef NIRT_ICXML_READER_IMPL_H_INCLUDED
+#define NIRT_ICXML_READER_IMPL_H_INCLUDED
 
 #include "irrXML.h"
 #include "irrString.h"
@@ -11,9 +11,9 @@
 #include "fast_atof.h"
 
 #ifdef _DEBUG
-#define IRR_DEBUGPRINT(x) printf((x));
+#define NIRT_DEBUGPRINT(x) printf((x));
 #else // _DEBUG
-#define IRR_DEBUGPRINT(x)
+#define NIRT_DEBUGPRINT(x)
 #endif // _DEBUG
 
 
@@ -66,7 +66,7 @@ public:
 
 	//! Reads forward to the next xml node.
 	//! \return Returns false, if there was no further node.
-	virtual bool read() IRR_OVERRIDE
+	virtual bool read() override
 	{
 		// if not end reached, parse the node
 		if (P && ((unsigned int)(P - TextBegin) < TextSize - 1) && (*P != 0))
@@ -79,21 +79,21 @@ public:
 
 
 	//! Returns the type of the current XML node.
-	virtual EXML_NODE getNodeType() const IRR_OVERRIDE
+	virtual EXML_NODE getNodeType() const override
 	{
 		return CurrentNodeType;
 	}
 
 
 	//! Returns attribute count of the current XML node.
-	virtual unsigned int getAttributeCount() const IRR_OVERRIDE
+	virtual unsigned int getAttributeCount() const override
 	{
 		return Attributes.size();
 	}
 
 
 	//! Returns name of an attribute.
-	virtual const char_type* getAttributeName(int idx) const IRR_OVERRIDE
+	virtual const char_type* getAttributeName(int idx) const override
 	{
 		if ((u32)idx >= Attributes.size())
 			return 0;
@@ -103,7 +103,7 @@ public:
 
 
 	//! Returns the value of an attribute.
-	virtual const char_type* getAttributeValue(int idx) const IRR_OVERRIDE
+	virtual const char_type* getAttributeValue(int idx) const override
 	{
 		if ((unsigned int)idx >= Attributes.size())
 			return 0;
@@ -113,7 +113,7 @@ public:
 
 
 	//! Returns the value of an attribute.
-	virtual const char_type* getAttributeValue(const char_type* name) const IRR_OVERRIDE
+	virtual const char_type* getAttributeValue(const char_type* name) const override
 	{
 		const SAttribute* attr = getAttributeByName(name);
 		if (!attr)
@@ -124,7 +124,7 @@ public:
 
 
 	//! Returns the value of an attribute
-	virtual const char_type* getAttributeValueSafe(const char_type* name) const IRR_OVERRIDE
+	virtual const char_type* getAttributeValueSafe(const char_type* name) const override
 	{
 		const SAttribute* attr = getAttributeByName(name);
 		if (!attr)
@@ -136,7 +136,7 @@ public:
 
 
 	//! Returns the value of an attribute as integer.
-	virtual int getAttributeValueAsInt(const char_type* name, int defaultNotFound) const IRR_OVERRIDE
+	virtual int getAttributeValueAsInt(const char_type* name, int defaultNotFound) const override
 	{
 		const SAttribute* attr = getAttributeByName(name);
 		if (!attr)
@@ -148,7 +148,7 @@ public:
 
 
 	//! Returns the value of an attribute as integer.
-	virtual int getAttributeValueAsInt(int idx, int defaultNotFound) const IRR_OVERRIDE
+	virtual int getAttributeValueAsInt(int idx, int defaultNotFound) const override
 	{
 		const char_type* attrvalue = getAttributeValue(idx);
 		if (!attrvalue)
@@ -160,7 +160,7 @@ public:
 
 
 	//! Returns the value of an attribute as float.
-	virtual float getAttributeValueAsFloat(const char_type* name, float defaultNotFound) const IRR_OVERRIDE
+	virtual float getAttributeValueAsFloat(const char_type* name, float defaultNotFound) const override
 	{
 		const SAttribute* attr = getAttributeByName(name);
 		if (!attr)
@@ -172,7 +172,7 @@ public:
 
 
 	//! Returns the value of an attribute as float.
-	virtual float getAttributeValueAsFloat(int idx, float defaultNotFound) const IRR_OVERRIDE
+	virtual float getAttributeValueAsFloat(int idx, float defaultNotFound) const override
 	{
 		const char_type* attrvalue = getAttributeValue(idx);
 		if (!attrvalue)
@@ -184,33 +184,33 @@ public:
 
 
 	//! Returns the name of the current node.
-	virtual const char_type* getNodeName() const IRR_OVERRIDE
+	virtual const char_type* getNodeName() const override
 	{
 		return NodeName.c_str();
 	}
 
 
 	//! Returns data of the current node.
-	virtual const char_type* getNodeData() const IRR_OVERRIDE
+	virtual const char_type* getNodeData() const override
 	{
 		return NodeName.c_str();
 	}
 
 
 	//! Returns if an element is an empty element, like <foo />
-	virtual bool isEmptyElement() const IRR_OVERRIDE
+	virtual bool isEmptyElement() const override
 	{
 		return IsEmptyElement;
 	}
 
 	//! Returns format of the source xml file.
-	virtual ETEXT_FORMAT getSourceFormat() const IRR_OVERRIDE
+	virtual ETEXT_FORMAT getSourceFormat() const override
 	{
 		return SourceFormat;
 	}
 
 	//! Returns format of the strings returned by the parser.
-	virtual ETEXT_FORMAT getParserFormat() const IRR_OVERRIDE
+	virtual ETEXT_FORMAT getParserFormat() const override
 	{
 		return TargetFormat;
 	}
@@ -264,7 +264,7 @@ private:
 	//! sets the state that text was found. Returns true if set should be set
 	bool setText(char_type* start, char_type* end)
 	{
-		// By default xml preserves all whitespace. But Irrlicht dropped some whitespace by default
+		// By default xml preserves all whitespace. But Nirtcpp dropped some whitespace by default
 		// in the past which did lead to OS dependent behavior. We just ignore all whitespace for now
 		// as it's the closest to fixing behavior without breaking downward compatibility too much.
 		if ( IgnoreWhitespaceText )

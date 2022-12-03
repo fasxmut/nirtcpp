@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_MESH_LOADER_H_INCLUDED
-#define IRR_I_MESH_LOADER_H_INCLUDED
+#ifndef NIRT_I_MESH_LOADER_H_INCLUDED
+#define NIRT_I_MESH_LOADER_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "path.h"
@@ -21,7 +21,7 @@ namespace scene
 	class IAnimatedMesh;
 
 //! Class which is able to load an animated mesh from a file.
-/** If you want Irrlicht be able to load meshes of
+/** If you want Nirtcpp be able to load meshes of
 currently unsupported file formats (e.g. .cob), then implement
 this and add your new Meshloader with
 ISceneManager::addExternalMeshLoader() to the engine. */
@@ -82,7 +82,7 @@ public:
 	enum E_INDEX_TYPE_HINT
 	{
 		//! Prefer to use 16-bit index buffers even if it breaks the mesh
-		//! The default (and only option) before Irrlicht 1.9
+		//! The default (and only option) before Nirtcpp 1.9
 		EITH_16BIT,
 
 		//! Allow using 32-bit index buffers
@@ -91,14 +91,14 @@ public:
 		//! Allow 32-bit, but copy back to 16-bit when 32 is not needed.
 		//! So tiny overhead (sometimes extra allocation+copying) on loading, 
 		//! but meshes are later more optimal.
-		//! Default since Irrlicht 1.9
+		//! Default since Nirtcpp 1.9
 		EITH_OPTIMAL
 	};
 
 
 	//! Give loader a hint if you would prefer 16 or 32 bit meshbuffers.
 	/** 
-	Before Irrlicht 1.9 Irrlicht worked mostly with 16-bit meshbuffers.
+	Before Nirtcpp 1.9 Nirtcpp worked mostly with 16-bit meshbuffers.
 	Rendering 32-bit meshbuffers works, but some functions like 
 	mesh-writing and mesh manipulation might not work yet.
 	NOTE: Most loaders will ignore this hint so far, but hopefully 

@@ -1,9 +1,9 @@
 // Copyright (C) 2013-2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_CONTEXT_MANAGER_H_INCLUDED
-#define IRR_I_CONTEXT_MANAGER_H_INCLUDED
+#ifndef NIRT_I_CONTEXT_MANAGER_H_INCLUDED
+#define NIRT_I_CONTEXT_MANAGER_H_INCLUDED
 
 #include "SExposedVideoData.h"
 #include "SIrrCreationParameters.h"
@@ -17,7 +17,7 @@ namespace video
 	{
 	public:
         //! Initialize manager with device creation parameters and device window (passed as exposed video data)
-        virtual bool initialize(const SIrrlichtCreationParameters& params, const SExposedVideoData& data) =0;
+        virtual bool initialize(const SNirtcppCreationParameters& params, const SExposedVideoData& data) =0;
 
         //! Terminate manager, any cleanup that is left over. Manager needs a new initialize to be usable again
         virtual void terminate() =0;

@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_X_LOADER_
+#ifdef _NIRT_COMPILE_WITH_X_LOADER_
 
 #include "CXMeshFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -1914,7 +1914,7 @@ bool CXMeshFileLoader::parseDataObjectAnimationKey(ISkinnedMesh::SJoint *joint)
 				ISkinnedMesh::SRotationKey *keyR=AnimatedMesh->addRotationKey(joint);
 				keyR->frame=time;
 
-				// IRR_TEST_BROKEN_QUATERNION_USE: TODO - switched from mat to mat.getTransposed() for downward compatibility.
+				// NIRT_TEST_BROKEN_QUATERNION_USE: TODO - switched from mat to mat.getTransposed() for downward compatibility.
 				// Not tested so far if this was correct or wrong before quaternion fix!
 				keyR->rotation= core::quaternion(mat.getTransposed());
 
@@ -2455,5 +2455,5 @@ bool CXMeshFileLoader::readMatrix(core::matrix4& mat)
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_X_LOADER_
+#endif // _NIRT_COMPILE_WITH_X_LOADER_
 

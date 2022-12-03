@@ -1,13 +1,13 @@
 // Copyright (C) 2013-2016 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_IMAGE_LOADER_PVR_H_INCLUDED
-#define IRR_C_IMAGE_LOADER_PVR_H_INCLUDED
+#ifndef NIRT_C_IMAGE_LOADER_PVR_H_INCLUDED
+#define NIRT_C_IMAGE_LOADER_PVR_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_PVR_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PVR_LOADER_
 
 #include "IImageLoader.h"
 
@@ -39,13 +39,13 @@ struct SPVRHeader
 class CImageLoaderPVR : public IImageLoader
 {
 public:
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
-	virtual bool isALoadableFileFormat(io::IReadFile* file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileFormat(io::IReadFile* file) const override;
 
-	virtual IImage* loadImage(io::IReadFile* file) const IRR_OVERRIDE;
+	virtual IImage* loadImage(io::IReadFile* file) const override;
 
-	virtual core::array<IImage*> loadImages(io::IReadFile* file, E_TEXTURE_TYPE* type) const IRR_OVERRIDE;
+	virtual core::array<IImage*> loadImages(io::IReadFile* file, E_TEXTURE_TYPE* type) const override;
 };
 
 }

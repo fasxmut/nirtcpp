@@ -145,7 +145,7 @@
 		5E34CAD51B7F6EC100F212E8 /* CLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C8921B7F652600F212E8 /* CLogger.cpp */; };
 		5E34CAD71B7F6EC100F212E8 /* COSOperator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C8941B7F652600F212E8 /* COSOperator.cpp */; };
 		5E34CAD91B7F6EC100F212E8 /* CProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C8961B7F652600F212E8 /* CProfiler.cpp */; };
-		5E34CADD1B7F6EC100F212E8 /* Irrlicht.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C89A1B7F652600F212E8 /* Irrlicht.cpp */; };
+		5E34CADD1B7F6EC100F212E8 /* Nirtcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C89A1B7F652600F212E8 /* Nirtcpp.cpp */; };
 		5E34CADE1B7F6EC100F212E8 /* leakHunter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C89B1B7F652600F212E8 /* leakHunter.cpp */; };
 		5E34CADF1B7F6EC100F212E8 /* os.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C89C1B7F652600F212E8 /* os.cpp */; };
 		5E34CAE11B7F6EC100F212E8 /* utf8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C89E1B7F652600F212E8 /* utf8.cpp */; };
@@ -443,7 +443,7 @@
 		5E34C7571B7F4AFC00F212E8 /* irrAllocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrAllocator.h; path = ../../include/irrAllocator.h; sourceTree = "<group>"; };
 		5E34C7581B7F4AFC00F212E8 /* irrArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrArray.h; path = ../../include/irrArray.h; sourceTree = "<group>"; };
 		5E34C7591B7F4AFC00F212E8 /* IrrCompileConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IrrCompileConfig.h; path = ../../include/IrrCompileConfig.h; sourceTree = "<group>"; };
-		5E34C75A1B7F4AFC00F212E8 /* irrlicht.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrlicht.h; path = ../../include/irrlicht.h; sourceTree = "<group>"; };
+		5E34C75A1B7F4AFC00F212E8 /* nirtcpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nirtcpp.h; path = ../../include/nirtcpp.h; sourceTree = "<group>"; };
 		5E34C75B1B7F4AFC00F212E8 /* NirtcppDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NirtcppDevice.h; path = ../../include/NirtcppDevice.h; sourceTree = "<group>"; };
 		5E34C75C1B7F4AFC00F212E8 /* irrList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrList.h; path = ../../include/irrList.h; sourceTree = "<group>"; };
 		5E34C75D1B7F4AFC00F212E8 /* irrMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrMap.h; path = ../../include/irrMap.h; sourceTree = "<group>"; };
@@ -739,7 +739,7 @@
 		5E34C8971B7F652600F212E8 /* CProfiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CProfiler.h; sourceTree = "<group>"; };
 		5E34C8981B7F652600F212E8 /* CTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTimer.h; sourceTree = "<group>"; };
 		5E34C8991B7F652600F212E8 /* EProfileIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EProfileIDs.h; sourceTree = "<group>"; };
-		5E34C89A1B7F652600F212E8 /* Irrlicht.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = Irrlicht.cpp; sourceTree = "<group>"; };
+		5E34C89A1B7F652600F212E8 /* Nirtcpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = Nirtcpp.cpp; sourceTree = "<group>"; };
 		5E34C89B1B7F652600F212E8 /* leakHunter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = leakHunter.cpp; sourceTree = "<group>"; };
 		5E34C89C1B7F652600F212E8 /* os.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = os.cpp; sourceTree = "<group>"; };
 		5E34C89D1B7F652600F212E8 /* os.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = os.h; sourceTree = "<group>"; };
@@ -1032,7 +1032,7 @@
 		5E34C9EC1B7F6C8200F212E8 /* CVideoModeList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVideoModeList.h; sourceTree = "<group>"; };
 		5E34C9ED1B7F6CCC00F212E8 /* CNSOGLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNSOGLManager.h; sourceTree = "<group>"; };
 		5E34C9EE1B7F6CCC00F212E8 /* CNSOGLManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CNSOGLManager.mm; sourceTree = "<group>"; };
-		5E34C9F31B7F6E3400F212E8 /* libIrrlicht.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIrrlicht.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E34C9F31B7F6E3400F212E8 /* libNirtcpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNirtcpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E79088A1C10EC6C00DFE7FE /* IRenderTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IRenderTarget.h; path = ../../include/IRenderTarget.h; sourceTree = "<group>"; };
 		5E79088D1C10EE6700DFE7FE /* COpenGLCoreCacheHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COpenGLCoreCacheHandler.h; sourceTree = "<group>"; };
 		5E79088E1C10EE6700DFE7FE /* COpenGLCoreFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COpenGLCoreFeature.h; sourceTree = "<group>"; };
@@ -1077,7 +1077,7 @@
 			isa = PBXGroup;
 			children = (
 				5E34C6DF1B7F4AB500F212E8 /* include */,
-				5E34C6E01B7F4ABD00F212E8 /* Irrlicht */,
+				5E34C6E01B7F4ABD00F212E8 /* Nirtcpp */,
 				5E34C9F41B7F6E3400F212E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1100,7 +1100,7 @@
 				5E34C7541B7F4AFC00F212E8 /* IRandomizer.h */,
 				5E34C7561B7F4AFC00F212E8 /* IReferenceCounted.h */,
 				5E34C7591B7F4AFC00F212E8 /* IrrCompileConfig.h */,
-				5E34C75A1B7F4AFC00F212E8 /* irrlicht.h */,
+				5E34C75A1B7F4AFC00F212E8 /* nirtcpp.h */,
 				5E34C75B1B7F4AFC00F212E8 /* NirtcppDevice.h */,
 				5E34C75F1B7F4AFC00F212E8 /* irrpack.h */,
 				5E34C7611B7F4AFC00F212E8 /* irrTypes.h */,
@@ -1114,7 +1114,7 @@
 			name = include;
 			sourceTree = "<group>";
 		};
-		5E34C6E01B7F4ABD00F212E8 /* Irrlicht */ = {
+		5E34C6E01B7F4ABD00F212E8 /* Nirtcpp */ = {
 			isa = PBXGroup;
 			children = (
 				5E34C7A41B7F503A00F212E8 /* gui */,
@@ -1125,7 +1125,7 @@
 				5E34C9EB1B7F6C8200F212E8 /* CVideoModeList.cpp */,
 				5E34C9EC1B7F6C8200F212E8 /* CVideoModeList.h */,
 			);
-			name = Irrlicht;
+			name = Nirtcpp;
 			sourceTree = "<group>";
 		};
 		5E34C79F1B7F4B9400F212E8 /* core */ = {
@@ -1502,7 +1502,7 @@
 				5E34C8971B7F652600F212E8 /* CProfiler.h */,
 				5E34C8981B7F652600F212E8 /* CTimer.h */,
 				5E34C8991B7F652600F212E8 /* EProfileIDs.h */,
-				5E34C89A1B7F652600F212E8 /* Irrlicht.cpp */,
+				5E34C89A1B7F652600F212E8 /* Nirtcpp.cpp */,
 				5E34C89B1B7F652600F212E8 /* leakHunter.cpp */,
 				5E34C89C1B7F652600F212E8 /* os.cpp */,
 				5E34C89D1B7F652600F212E8 /* os.h */,
@@ -2070,7 +2070,7 @@
 		5E34C9F41B7F6E3400F212E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5E34C9F31B7F6E3400F212E8 /* libIrrlicht.a */,
+				5E34C9F31B7F6E3400F212E8 /* libNirtcpp.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2121,9 +2121,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5E34C9F21B7F6E3400F212E8 /* Irrlicht_OSX */ = {
+		5E34C9F21B7F6E3400F212E8 /* Nirtcpp_OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5E34C9F51B7F6E3400F212E8 /* Build configuration list for PBXNativeTarget "Irrlicht_OSX" */;
+			buildConfigurationList = 5E34C9F51B7F6E3400F212E8 /* Build configuration list for PBXNativeTarget "Nirtcpp_OSX" */;
 			buildPhases = (
 				5E34C9EF1B7F6E3400F212E8 /* Sources */,
 				5E34C9F01B7F6E3400F212E8 /* Frameworks */,
@@ -2133,9 +2133,9 @@
 			);
 			dependencies = (
 			);
-			name = Irrlicht_OSX;
-			productName = Irrlicht;
-			productReference = 5E34C9F31B7F6E3400F212E8 /* libIrrlicht.a */;
+			name = Nirtcpp_OSX;
+			productName = Nirtcpp;
+			productReference = 5E34C9F31B7F6E3400F212E8 /* libNirtcpp.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -2151,7 +2151,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5E34C6DC1B7F4A0C00F212E8 /* Build configuration list for PBXProject "Irrlicht" */;
+			buildConfigurationList = 5E34C6DC1B7F4A0C00F212E8 /* Build configuration list for PBXProject "Nirtcpp" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2164,7 +2164,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5E34C9F21B7F6E3400F212E8 /* Irrlicht_OSX */,
+				5E34C9F21B7F6E3400F212E8 /* Nirtcpp_OSX */,
 			);
 		};
 /* End PBXProject section */
@@ -2314,7 +2314,7 @@
 				5E34CAD51B7F6EC100F212E8 /* CLogger.cpp in Sources */,
 				5E34CAD71B7F6EC100F212E8 /* COSOperator.cpp in Sources */,
 				5E34CAD91B7F6EC100F212E8 /* CProfiler.cpp in Sources */,
-				5E34CADD1B7F6EC100F212E8 /* Irrlicht.cpp in Sources */,
+				5E34CADD1B7F6EC100F212E8 /* Nirtcpp.cpp in Sources */,
 				5E34CADE1B7F6EC100F212E8 /* leakHunter.cpp in Sources */,
 				5E34CADF1B7F6EC100F212E8 /* os.cpp in Sources */,
 				5E34CAE11B7F6EC100F212E8 /* utf8.cpp in Sources */,
@@ -2551,7 +2551,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = Irrlicht;
+				PRODUCT_NAME = Nirtcpp;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -2584,7 +2584,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Irrlicht;
+				PRODUCT_NAME = Nirtcpp;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -2592,7 +2592,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5E34C6DC1B7F4A0C00F212E8 /* Build configuration list for PBXProject "Irrlicht" */ = {
+		5E34C6DC1B7F4A0C00F212E8 /* Build configuration list for PBXProject "Nirtcpp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E34C6DD1B7F4A0C00F212E8 /* Debug */,
@@ -2601,7 +2601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5E34C9F51B7F6E3400F212E8 /* Build configuration list for PBXNativeTarget "Irrlicht_OSX" */ = {
+		5E34C9F51B7F6E3400F212E8 /* Build configuration list for PBXNativeTarget "Nirtcpp_OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E34C9F61B7F6E3400F212E8 /* Debug */,

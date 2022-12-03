@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_PARTICLE_ATTRACTION_AFFECTOR_H_INCLUDED
-#define IRR_C_PARTICLE_ATTRACTION_AFFECTOR_H_INCLUDED
+#ifndef NIRT_C_PARTICLE_ATTRACTION_AFFECTOR_H_INCLUDED
+#define NIRT_C_PARTICLE_ATTRACTION_AFFECTOR_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_PARTICLES_
+#ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
 #include "IParticleAttractionAffector.h"
 
@@ -26,49 +26,49 @@ public:
 		bool affectY = true, bool affectZ = true );
 
 	//! Affects a particle.
-	virtual void affect(u32 now, SParticle* particlearray, u32 count) IRR_OVERRIDE;
+	virtual void affect(u32 now, SParticle* particlearray, u32 count) override;
 
 	//! Set the point that particles will attract to
-	virtual void setPoint( const core::vector3df& point ) IRR_OVERRIDE { Point = point; }
+	virtual void setPoint( const core::vector3df& point ) override { Point = point; }
 
 	//! Set the speed, in game units per second that the particles will attract to the specified point
-	virtual void setSpeed( f32 speed ) IRR_OVERRIDE { Speed = speed; }
+	virtual void setSpeed( f32 speed ) override { Speed = speed; }
 
 	//! Set whether or not the particles are attracting or detracting
-	virtual void setAttract( bool attract ) IRR_OVERRIDE { Attract = attract; }
+	virtual void setAttract( bool attract ) override { Attract = attract; }
 
 	//! Set whether or not this will affect particles in the X direction
-	virtual void setAffectX( bool affect ) IRR_OVERRIDE { AffectX = affect; }
+	virtual void setAffectX( bool affect ) override { AffectX = affect; }
 
 	//! Set whether or not this will affect particles in the Y direction
-	virtual void setAffectY( bool affect ) IRR_OVERRIDE { AffectY = affect; }
+	virtual void setAffectY( bool affect ) override { AffectY = affect; }
 
 	//! Set whether or not this will affect particles in the Z direction
-	virtual void setAffectZ( bool affect ) IRR_OVERRIDE { AffectZ = affect; }
+	virtual void setAffectZ( bool affect ) override { AffectZ = affect; }
 
 	//! Get the point that particles are attracted to
-	virtual const core::vector3df& getPoint() const IRR_OVERRIDE { return Point; }
+	virtual const core::vector3df& getPoint() const override { return Point; }
 
 	//! Get the speed that points attract to the specified point
-	virtual f32 getSpeed() const IRR_OVERRIDE { return Speed; }
+	virtual f32 getSpeed() const override { return Speed; }
 
 	//! Get whether or not the particles are attracting or detracting
-	virtual bool getAttract() const IRR_OVERRIDE { return Attract; }
+	virtual bool getAttract() const override { return Attract; }
 
 	//! Get whether or not the particles X position are affected
-	virtual bool getAffectX() const IRR_OVERRIDE { return AffectX; }
+	virtual bool getAffectX() const override { return AffectX; }
 
 	//! Get whether or not the particles Y position are affected
-	virtual bool getAffectY() const IRR_OVERRIDE { return AffectY; }
+	virtual bool getAffectY() const override { return AffectY; }
 
 	//! Get whether or not the particles Z position are affected
-	virtual bool getAffectZ() const IRR_OVERRIDE { return AffectZ; }
+	virtual bool getAffectZ() const override { return AffectZ; }
 
 	//! Writes attributes of the object.
-	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 	//! Reads attributes of the object.
-	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 private:
 
@@ -84,6 +84,6 @@ private:
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_PARTICLES_
+#endif // _NIRT_COMPILE_WITH_PARTICLES_
 
-#endif // IRR_C_PARTICLE_ATTRACTION_AFFECTOR_H_INCLUDED
+#endif // NIRT_C_PARTICLE_ATTRACTION_AFFECTOR_H_INCLUDED

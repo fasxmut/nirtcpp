@@ -1,19 +1,19 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // This file was originally written by Salvatore Russo.
 // I (Nikolaus Gebhardt) did some minor modifications changes to it and integrated
-// it into Irrlicht:
+// it into Nirtcpp:
 // - removed STL dependency
-// - removed log file and replaced it with irrlicht logging
-// - adapted code formatting a bit to Irrlicht style
+// - removed log file and replaced it with nirtcpp logging
+// - adapted code formatting a bit to Nirtcpp style
 // - removed memory leaks
 // Thanks a lot to Salvatore for his work on this and that he gave me
-// his permission to add it into Irrlicht.
+// his permission to add it into Nirtcpp.
 
 // This support library has been made by Salvatore Russo and is released under GNU public license for general uses.
-// For uses in Irrlicht core and only for Irrlicht related uses I release this library under zlib license.
+// For uses in Nirtcpp core and only for Nirtcpp related uses I release this library under zlib license.
 
 #ifndef __DMF_SUPPORT_H_INCLUDED__
 #define __DMF_SUPPORT_H_INCLUDED__
@@ -372,7 +372,7 @@ bool GetDMFVerticesFaces(const StringList& RawFile/**<StringList representing a 
 
 	const s32 objs = atoi(RawFile[offs].c_str());
 	offs++;
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 	os::Printer::log("Reading objects", core::stringc(objs).c_str());
 #endif
 
@@ -381,7 +381,7 @@ bool GetDMFVerticesFaces(const StringList& RawFile/**<StringList representing a 
 	{
 		StringList wat=SubdivideString(RawFile[offs],";");
 		StringList wat1=SubdivideString(wat[0],"_");
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 	os::Printer::log("Reading object", wat[0].c_str());
 #endif
 

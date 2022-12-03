@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_OS_OPERATOR_H_INCLUDED
-#define IRR_I_OS_OPERATOR_H_INCLUDED
+#ifndef NIRT_I_OS_OPERATOR_H_INCLUDED
+#define NIRT_I_OS_OPERATOR_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "irrString.h"
@@ -19,8 +19,8 @@ public:
 	virtual const core::stringc& getOperatingSystemVersion() const = 0;
 
 	//! Get the current operation system version as string.
-	/** \deprecated Use getOperatingSystemVersion instead. This method will be removed in Irrlicht 1.9. */
-	IRR_DEPRECATED const wchar_t* getOperationSystemVersion() const
+	/** \deprecated Use getOperatingSystemVersion instead. This method will be removed in Nirtcpp 1.9. */
+	NIRT_DEPRECATED const wchar_t* getOperationSystemVersion() const
 	{
 		return core::stringw(getOperatingSystemVersion()).c_str();
 	}

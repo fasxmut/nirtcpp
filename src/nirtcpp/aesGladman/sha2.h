@@ -71,7 +71,7 @@
 #error Please define sha2_64t as an unsigned 64 bit type in sha2.h
 #endif
 #else
-#ifdef _IRR_SOLARIS_PLATFORM_
+#ifdef _NIRT_SOLARIS_PLATFORM_
 #include <sys/int_types.h>
 #else
 #include <stdint.h>

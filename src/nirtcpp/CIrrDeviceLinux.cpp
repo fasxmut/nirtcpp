@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CIrrDeviceLinux.h"
 
-#ifdef _IRR_COMPILE_WITH_X11_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,19 +25,19 @@
 #include <X11/XKBlib.h>
 #include <X11/Xatom.h>
 
-#if defined(_IRR_LINUX_X11_XINPUT2_)
+#if defined(_NIRT_LINUX_X11_XINPUT2_)
 #include <X11/extensions/XInput2.h>
 #endif
 
-#if defined(_IRR_COMPILE_WITH_OPENGL_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_)
 #include "CGLXManager.h"
 #endif
 
-#ifdef _IRR_LINUX_XCURSOR_
+#ifdef _NIRT_LINUX_XCURSOR_
 #include <X11/Xcursor/Xcursor.h>
 #endif
 
-#if defined _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -55,14 +55,14 @@
 #undef _INPUT_H
 #endif
 
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
 namespace irr
 {
 	namespace video
 	{
-#ifdef _IRR_COMPILE_WITH_OPENGL_
-		IVideoDriver* createOpenGLDriver(const irr::SIrrlichtCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
+		IVideoDriver* createOpenGLDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
 #endif
 	}
 } // end namespace irr
@@ -79,7 +79,7 @@ namespace
 
 	Atom X_ATOM_WM_DELETE_WINDOW;
 
-#if defined(_IRR_LINUX_X11_XINPUT2_)
+#if defined(_NIRT_LINUX_X11_XINPUT2_)
 	int XI_EXTENSIONS_OPCODE;
 #endif
 };
@@ -87,13 +87,13 @@ namespace
 namespace irr
 {
 //! constructor
-CIrrDeviceLinux::CIrrDeviceLinux(const SIrrlichtCreationParameters& param)
+CIrrDeviceLinux::CIrrDeviceLinux(const SNirtcppCreationParameters& param)
 	: CIrrDeviceStub(param),
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	XDisplay(0), VisualInfo(0), Screennr(0), XWindow(0), StdHints(0), SoftwareImage(0),
 	XInputMethod(0), XInputContext(0),
 	HasNetWM(false),
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 	GlxWin(0),
 	Context(0),
 #endif
@@ -146,7 +146,7 @@ CIrrDeviceLinux::CIrrDeviceLinux(const SIrrlichtCreationParameters& param)
 	if (!VideoDriver)
 		return;
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	createInputContext();
 #endif
 
@@ -157,7 +157,7 @@ CIrrDeviceLinux::CIrrDeviceLinux(const SIrrlichtCreationParameters& param)
 //! destructor
 CIrrDeviceLinux::~CIrrDeviceLinux()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (StdHints)
 		XFree(StdHints);
 	// Disable cursor (it is drop'ed in stub)
@@ -188,7 +188,7 @@ CIrrDeviceLinux::~CIrrDeviceLinux()
 
 	if (XDisplay)
 	{
-		#ifdef _IRR_COMPILE_WITH_OPENGL_
+		#ifdef _NIRT_COMPILE_WITH_OPENGL_
 		if (Context)
 		{
 			if (GlxWin)
@@ -205,7 +205,7 @@ CIrrDeviceLinux::~CIrrDeviceLinux()
 			if (GlxWin)
 				glXDestroyWindow(XDisplay, GlxWin);
 		}
-		#endif // #ifdef _IRR_COMPILE_WITH_OPENGL_
+		#endif // #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
 		// Reset fullscreen resolution change
 		switchToFullscreen(true);
@@ -222,9 +222,9 @@ CIrrDeviceLinux::~CIrrDeviceLinux()
 	if (VisualInfo)
 		XFree(VisualInfo);
 
-#endif // #ifdef _IRR_COMPILE_WITH_X11_
+#endif // #ifdef _NIRT_COMPILE_WITH_X11_
 
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	for (u32 joystick = 0; joystick < ActiveJoysticks.size(); ++joystick)
 	{
 		if (ActiveJoysticks[joystick].fd >= 0)
@@ -236,13 +236,13 @@ CIrrDeviceLinux::~CIrrDeviceLinux()
 }
 
 
-#if defined(_IRR_COMPILE_WITH_X11_) && defined(_DEBUG)
+#if defined(_NIRT_COMPILE_WITH_X11_) && defined(_DEBUG)
 int IrrPrintXError(Display *display, XErrorEvent *event)
 {
 	char msg[256];
 	char msg2[256];
 
-	snprintf_irr(msg, 256, "%d", event->request_code);
+	snprintf_nirt(msg, 256, "%d", event->request_code);
 	XGetErrorDatabaseText(display, "XRequest", msg, "unknown", msg2, 256);
 	XGetErrorText(display, event->error_code, msg, 256);
 	os::Printer::log("X Error", msg, ELL_WARNING);
@@ -258,14 +258,14 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 		return true;
 	if (reset)
 	{
-#ifdef _IRR_LINUX_X11_VIDMODE_
+#ifdef _NIRT_LINUX_X11_VIDMODE_
 		if (UseXVidMode && CreationParams.Fullscreen)
 		{
 			XF86VidModeSwitchToMode(XDisplay, Screennr, &OldVideoMode);
 			XF86VidModeSetViewPort(XDisplay, Screennr, 0, 0);
 		}
 		#endif
-		#ifdef _IRR_LINUX_X11_RANDR_
+		#ifdef _NIRT_LINUX_X11_RANDR_
 		if (UseXRandR && CreationParams.Fullscreen)
 		{
 			XRRScreenConfiguration *config=XRRGetScreenInfo(XDisplay,DefaultRootWindow(XDisplay));
@@ -277,12 +277,12 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 	}
 
 	getVideoModeList();
-	#if defined(_IRR_LINUX_X11_VIDMODE_) || defined(_IRR_LINUX_X11_RANDR_)
+	#if defined(_NIRT_LINUX_X11_VIDMODE_) || defined(_NIRT_LINUX_X11_RANDR_)
 	s32 eventbase, errorbase;
 	s32 bestMode = -1;
 	#endif
 
-	#ifdef _IRR_LINUX_X11_VIDMODE_
+	#ifdef _NIRT_LINUX_X11_VIDMODE_
 	if (XF86VidModeQueryExtension(XDisplay, &eventbase, &errorbase))
 	{
 		// enumerate video modes
@@ -323,7 +323,7 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 	}
 	else
 	#endif
-	#ifdef _IRR_LINUX_X11_RANDR_
+	#ifdef _NIRT_LINUX_X11_RANDR_
 	if (XRRQueryExtension(XDisplay, &eventbase, &errorbase))
 	{
 		s32 modeCount;
@@ -354,7 +354,7 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 	else
 	#endif
 	{
-		os::Printer::log("VidMode or RandR extension must be installed to allow Irrlicht "
+		os::Printer::log("VidMode or RandR extension must be installed to allow Nirtcpp "
 		"to switch to fullscreen mode. Running in windowed mode instead.", ELL_WARNING);
 		CreationParams.Fullscreen = false;
 	}
@@ -362,7 +362,7 @@ bool CIrrDeviceLinux::switchToFullscreen(bool reset)
 }
 
 
-#if defined(_IRR_COMPILE_WITH_X11_)
+#if defined(_NIRT_COMPILE_WITH_X11_)
 void IrrPrintXGrabError(int grabResult, const c8 * grabCommand )
 {
 	if ( grabResult == GrabSuccess )
@@ -395,7 +395,7 @@ void IrrPrintXGrabError(int grabResult, const c8 * grabCommand )
 
 bool CIrrDeviceLinux::createWindow()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 #ifdef _DEBUG
 	os::Printer::log("Creating X window...", ELL_INFORMATION);
 	XSetErrorHandler(IrrPrintXError);
@@ -404,7 +404,7 @@ bool CIrrDeviceLinux::createWindow()
 	XDisplay = XOpenDisplay(0);
 	if (!XDisplay)
 	{
-		os::Printer::log("Error: Need running XServer to start Irrlicht Engine.", ELL_ERROR);
+		os::Printer::log("Error: Need running XServer to start Nirtcpp Engine.", ELL_ERROR);
 		if (XDisplayName(0)[0])
 			os::Printer::log("Could not open display", XDisplayName(0), ELL_ERROR);
 		else
@@ -416,7 +416,7 @@ bool CIrrDeviceLinux::createWindow()
 
 	switchToFullscreen();
 
-#if defined(_IRR_COMPILE_WITH_OPENGL_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_)
 	// don't use the XVisual with OpenGL, because it ignores all requested
 	// properties of the CreationParams
 	if (CreationParams.DriverType == video::EDT_OPENGL)
@@ -592,7 +592,7 @@ bool CIrrDeviceLinux::createWindow()
 
 	initXInput2();
 
-#endif // #ifdef _IRR_COMPILE_WITH_X11_
+#endif // #ifdef _NIRT_COMPILE_WITH_X11_
 	return true;
 }
 
@@ -602,23 +602,23 @@ void CIrrDeviceLinux::createDriver()
 {
 	switch(CreationParams.DriverType)
 	{
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	case video::EDT_SOFTWARE:
-#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 		VideoDriver = video::createSoftwareDriver(CreationParams.WindowSize, CreationParams.Fullscreen, FileSystem, this);
 #else
 		os::Printer::log("No Software driver support compiled in.", ELL_ERROR);
 #endif
 		break;
 	case video::EDT_BURNINGSVIDEO:
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 		VideoDriver = video::createBurningVideoDriver(CreationParams, FileSystem, this);
 #else
 		os::Printer::log("Burning's video driver was not compiled in.", ELL_ERROR);
 #endif
 		break;
 	case video::EDT_OPENGL:
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 		{
 			video::SExposedVideoData data;
 			data.OpenGLLinux.X11Window = XWindow;
@@ -654,7 +654,7 @@ void CIrrDeviceLinux::createDriver()
 	}
 }
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 bool CIrrDeviceLinux::createInputContext()
 {
 	// One one side it would be nicer to let users do that - on the other hand
@@ -777,7 +777,7 @@ bool CIrrDeviceLinux::run()
 {
 	os::Timer::tick();
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 
 	if ( CursorControl )
 		static_cast<CCursorControl*>(CursorControl)->update();
@@ -982,7 +982,7 @@ bool CIrrDeviceLinux::run()
 						}
 						else
 						{
-#if 0 // Most of those are fine - but useful to have the info when debugging Irrlicht itself.
+#if 0 // Most of those are fine - but useful to have the info when debugging Nirtcpp itself.
 							if ( status == XLookupNone )
 								os::Printer::log("XLookupNone", ELL_INFORMATION);
 							else if ( status ==  XLookupKeySym )
@@ -1079,7 +1079,7 @@ bool CIrrDeviceLinux::run()
 					XFlush (XDisplay);
 				}
 				break;
-#if defined(_IRR_LINUX_X11_XINPUT2_)
+#if defined(_NIRT_LINUX_X11_XINPUT2_)
 				case GenericEvent:
 				{
 					XGenericEventCookie *cookie = &event.xcookie;
@@ -1108,7 +1108,7 @@ bool CIrrDeviceLinux::run()
 
 		} // end while
 	}
-#endif //_IRR_COMPILE_WITH_X11_
+#endif //_NIRT_COMPILE_WITH_X11_
 
 	if (!Close)
 		pollJoysticks();
@@ -1147,7 +1147,7 @@ void CIrrDeviceLinux::sleep(u32 timeMs, bool pauseTimer=false)
 //! sets the caption of the window
 void CIrrDeviceLinux::setWindowCaption(const wchar_t* text)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (CreationParams.DriverType == video::EDT_NULL)
 		return;
 
@@ -1166,7 +1166,7 @@ void CIrrDeviceLinux::setWindowCaption(const wchar_t* text)
 //! presents a surface in the client area
 bool CIrrDeviceLinux::present(video::IImage* image, void* windowId, core::rect<s32>* srcRect)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	// this is only necessary for software drivers.
 	if (!SoftwareImage)
 		return true;
@@ -1248,7 +1248,7 @@ bool CIrrDeviceLinux::isWindowMinimized() const
 //! returns color format of the window.
 video::ECOLOR_FORMAT CIrrDeviceLinux::getColorFormat() const
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (VisualInfo && (VisualInfo->depth != 16))
 		return video::ECF_R8G8B8;
 	else
@@ -1260,7 +1260,7 @@ video::ECOLOR_FORMAT CIrrDeviceLinux::getColorFormat() const
 //! Sets if the window should be resizable in windowed mode.
 void CIrrDeviceLinux::setResizable(bool resize)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (CreationParams.DriverType == video::EDT_NULL || CreationParams.Fullscreen )
 		return;
 
@@ -1279,13 +1279,13 @@ void CIrrDeviceLinux::setResizable(bool resize)
 		XSetWMNormalHints(XDisplay, XWindow, StdHints);
 	}
 	XFlush(XDisplay);
-#endif // #ifdef _IRR_COMPILE_WITH_X11_
+#endif // #ifdef _NIRT_COMPILE_WITH_X11_
 }
 
 //! Resize the render window.
 void CIrrDeviceLinux::setWindowSize(const irr::core::dimension2d<u32>& size)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (CreationParams.DriverType == video::EDT_NULL || CreationParams.Fullscreen )
 		return;
 
@@ -1294,13 +1294,13 @@ void CIrrDeviceLinux::setWindowSize(const irr::core::dimension2d<u32>& size)
 	values.height = size.Height;
 	XConfigureWindow(XDisplay, XWindow, CWWidth | CWHeight, &values);
 	XFlush(XDisplay);
-#endif // #ifdef _IRR_COMPILE_WITH_X11_
+#endif // #ifdef _NIRT_COMPILE_WITH_X11_
 }
 
 //! Return pointer to a list with all video modes supported by the gfx adapter.
 video::IVideoModeList* CIrrDeviceLinux::getVideoModeList()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (!VideoModeList->getVideoModeCount())
 	{
 		bool temporaryDisplay = false;
@@ -1312,12 +1312,12 @@ video::IVideoModeList* CIrrDeviceLinux::getVideoModeList()
 		}
 		if (XDisplay)
 		{
-			#if defined(_IRR_LINUX_X11_VIDMODE_) || defined(_IRR_LINUX_X11_RANDR_)
+			#if defined(_NIRT_LINUX_X11_VIDMODE_) || defined(_NIRT_LINUX_X11_RANDR_)
 			s32 eventbase, errorbase;
 			s32 defaultDepth=DefaultDepth(XDisplay,Screennr);
 			#endif
 
-			#ifdef _IRR_LINUX_X11_VIDMODE_
+			#ifdef _NIRT_LINUX_X11_VIDMODE_
 			if (XF86VidModeQueryExtension(XDisplay, &eventbase, &errorbase))
 			{
 				// enumerate video modes
@@ -1342,7 +1342,7 @@ video::IVideoModeList* CIrrDeviceLinux::getVideoModeList()
 			}
 			else
 			#endif
-			#ifdef _IRR_LINUX_X11_RANDR_
+			#ifdef _NIRT_LINUX_X11_RANDR_
 			if (XRRQueryExtension(XDisplay, &eventbase, &errorbase))
 			{
 				int modeCount;
@@ -1379,7 +1379,7 @@ video::IVideoModeList* CIrrDeviceLinux::getVideoModeList()
 //! Minimize window
 void CIrrDeviceLinux::minimizeWindow()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	XIconifyWindow(XDisplay, XWindow, Screennr);
 #endif
 }
@@ -1388,7 +1388,7 @@ void CIrrDeviceLinux::minimizeWindow()
 //! Maximize window
 void CIrrDeviceLinux::maximizeWindow()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	// Maximize is not implemented in bare X, it's a WM construct.
 	if (HasNetWM)
 	{
@@ -1414,7 +1414,7 @@ void CIrrDeviceLinux::maximizeWindow()
 //! Restore original window size
 void CIrrDeviceLinux::restoreWindow()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	// Maximize is not implemented in bare X, it's a WM construct.
 	if (HasNetWM)
 	{
@@ -1439,7 +1439,7 @@ void CIrrDeviceLinux::restoreWindow()
 core::position2di CIrrDeviceLinux::getWindowPosition()
 {
 	int wx = 0, wy = 0;
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	Window child;
 	XTranslateCoordinates(XDisplay, XWindow, DefaultRootWindow(XDisplay), 0, 0, &wx, &wy, &child);
 #endif
@@ -1453,7 +1453,7 @@ void CIrrDeviceLinux::createKeyMap()
 	// I find a better version.
 	// Search for missing numbers in keysymdef.h
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	KeyMap.reallocate(190);
 	KeyMap.push_back(SKeyMap(XK_BackSpace, KEY_BACK));
 	KeyMap.push_back(SKeyMap(XK_Tab, KEY_TAB));
@@ -1653,7 +1653,7 @@ void CIrrDeviceLinux::createKeyMap()
 
 bool CIrrDeviceLinux::activateJoysticks(core::array<SJoystickInfo> & joystickInfo)
 {
-#if defined (_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined (_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 
 	joystickInfo.clear();
 
@@ -1732,13 +1732,13 @@ bool CIrrDeviceLinux::activateJoysticks(core::array<SJoystickInfo> & joystickInf
 	return true;
 #else
 	return false;
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 }
 
 
 void CIrrDeviceLinux::pollJoysticks()
 {
-#if defined (_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined (_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	if (0 == ActiveJoysticks.size())
 		return;
 
@@ -1778,19 +1778,19 @@ void CIrrDeviceLinux::pollJoysticks()
 		}
 #endif
 
-		// Send an irrlicht joystick event once per ::run() even if no new data were received.
+		// Send an nirtcpp joystick event once per ::run() even if no new data were received.
 		(void)postEventFromUser(info.persistentData);
 	}
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 }
 
 
 //! Set the current Gamma Value for the Display
 bool CIrrDeviceLinux::setGammaRamp( f32 red, f32 green, f32 blue, f32 brightness, f32 contrast )
 {
-	#if defined(_IRR_LINUX_X11_VIDMODE_) || defined(_IRR_LINUX_X11_RANDR_)
+	#if defined(_NIRT_LINUX_X11_VIDMODE_) || defined(_NIRT_LINUX_X11_RANDR_)
 	s32 eventbase, errorbase;
-	#ifdef _IRR_LINUX_X11_VIDMODE_
+	#ifdef _NIRT_LINUX_X11_VIDMODE_
 	if (XF86VidModeQueryExtension(XDisplay, &eventbase, &errorbase))
 	{
 		XF86VidModeGamma gamma;
@@ -1801,10 +1801,10 @@ bool CIrrDeviceLinux::setGammaRamp( f32 red, f32 green, f32 blue, f32 brightness
 		return true;
 	}
 	#endif
-	#if defined(_IRR_LINUX_X11_VIDMODE_) && defined(_IRR_LINUX_X11_RANDR_)
+	#if defined(_NIRT_LINUX_X11_VIDMODE_) && defined(_NIRT_LINUX_X11_RANDR_)
 	else
 	#endif
-	#ifdef _IRR_LINUX_X11_RANDR_
+	#ifdef _NIRT_LINUX_X11_RANDR_
 	if (XRRQueryExtension(XDisplay, &eventbase, &errorbase))
 	{
 		XRRQueryVersion(XDisplay, &eventbase, &errorbase); // major, minor
@@ -1835,9 +1835,9 @@ bool CIrrDeviceLinux::getGammaRamp( f32 &red, f32 &green, f32 &blue, f32 &bright
 {
 	brightness = 0.f;
 	contrast = 0.f;
-	#if defined(_IRR_LINUX_X11_VIDMODE_) || defined(_IRR_LINUX_X11_RANDR_)
+	#if defined(_NIRT_LINUX_X11_VIDMODE_) || defined(_NIRT_LINUX_X11_RANDR_)
 	s32 eventbase, errorbase;
-	#ifdef _IRR_LINUX_X11_VIDMODE_
+	#ifdef _NIRT_LINUX_X11_VIDMODE_
 	if (XF86VidModeQueryExtension(XDisplay, &eventbase, &errorbase))
 	{
 		XF86VidModeGamma gamma;
@@ -1848,10 +1848,10 @@ bool CIrrDeviceLinux::getGammaRamp( f32 &red, f32 &green, f32 &blue, f32 &bright
 		return true;
 	}
 	#endif
-	#if defined(_IRR_LINUX_X11_VIDMODE_) && defined(_IRR_LINUX_X11_RANDR_)
+	#if defined(_NIRT_LINUX_X11_VIDMODE_) && defined(_NIRT_LINUX_X11_RANDR_)
 	else
 	#endif
-	#ifdef _IRR_LINUX_X11_RANDR_
+	#ifdef _NIRT_LINUX_X11_RANDR_
 	if (XRRQueryExtension(XDisplay, &eventbase, &errorbase))
 	{
 		XRRQueryVersion(XDisplay, &eventbase, &errorbase); // major, minor
@@ -1880,7 +1880,7 @@ bool CIrrDeviceLinux::getGammaRamp( f32 &red, f32 &green, f32 &blue, f32 &bright
 //! \return Returns 0 if no string is in there.
 const c8* CIrrDeviceLinux::getTextFromClipboard() const
 {
-#if defined(_IRR_COMPILE_WITH_X11_)
+#if defined(_NIRT_COMPILE_WITH_X11_)
 	Window ownerWindow = XGetSelectionOwner (XDisplay, X_ATOM_CLIPBOARD);
 	if ( ownerWindow ==  XWindow )
 	{
@@ -1930,7 +1930,7 @@ const c8* CIrrDeviceLinux::getTextFromClipboard() const
 //! copies text to the clipboard
 void CIrrDeviceLinux::copyToClipboard(const c8* text) const
 {
-#if defined(_IRR_COMPILE_WITH_X11_)
+#if defined(_NIRT_COMPILE_WITH_X11_)
 	// Actually there is no clipboard on X but applications just say they own the clipboard and return text when asked.
 	// Which btw. also means that on X you lose clipboard content when closing applications.
 	Clipboard = text;
@@ -1939,7 +1939,7 @@ void CIrrDeviceLinux::copyToClipboard(const c8* text) const
 #endif
 }
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 // return true if the passed event has the type passed in parameter arg
 Bool PredicateIsEventType(Display *display, XEvent *event, XPointer arg)
 {
@@ -1950,12 +1950,12 @@ Bool PredicateIsEventType(Display *display, XEvent *event, XPointer arg)
 	}
 	return False;
 }
-#endif //_IRR_COMPILE_WITH_X11_
+#endif //_NIRT_COMPILE_WITH_X11_
 
 //! Remove all messages pending in the system message loop
 void CIrrDeviceLinux::clearSystemMessages()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (CreationParams.DriverType != video::EDT_NULL)
 	{
 		XEvent event;
@@ -1970,12 +1970,12 @@ void CIrrDeviceLinux::clearSystemMessages()
 		usrArg = KeyPress;
 		while ( XCheckIfEvent(XDisplay, &event, PredicateIsEventType, XPointer(&usrArg)) == True ) {}
 	}
-#endif //_IRR_COMPILE_WITH_X11_
+#endif //_NIRT_COMPILE_WITH_X11_
 }
 
 void CIrrDeviceLinux::initXAtoms()
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	X_ATOM_CLIPBOARD = XInternAtom(XDisplay, "CLIPBOARD", False);
 	X_ATOM_TARGETS = XInternAtom(XDisplay, "TARGETS", False);
 	X_ATOM_UTF8_STRING = XInternAtom (XDisplay, "UTF8_STRING", False);
@@ -1988,7 +1988,7 @@ void CIrrDeviceLinux::initXAtoms()
 
 void CIrrDeviceLinux::initXInput2()
 {
-#if defined(_IRR_LINUX_X11_XINPUT2_)
+#if defined(_NIRT_LINUX_X11_XINPUT2_)
 	int ev=0;
 	int err=0;
 	if (!XQueryExtension(XDisplay, "XInputExtension", &XI_EXTENSIONS_OPCODE, &ev, &err))
@@ -2023,7 +2023,7 @@ void CIrrDeviceLinux::initXInput2()
 }
 
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 
 Cursor CIrrDeviceLinux::TextureToMonochromeCursor(irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
@@ -2112,7 +2112,7 @@ Cursor CIrrDeviceLinux::TextureToMonochromeCursor(irr::video::ITexture * tex, co
 	return cursorResult;
 }
 
-#ifdef _IRR_LINUX_XCURSOR_
+#ifdef _NIRT_LINUX_XCURSOR_
 Cursor CIrrDeviceLinux::TextureToARGBCursor(irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
 	XcursorImage * image = XcursorImageCreate (sourceRect.getWidth(), sourceRect.getHeight());
@@ -2150,34 +2150,34 @@ Cursor CIrrDeviceLinux::TextureToARGBCursor(irr::video::ITexture * tex, const co
 
 	return cursorResult;
 }
-#endif // #ifdef _IRR_LINUX_XCURSOR_
+#endif // #ifdef _NIRT_LINUX_XCURSOR_
 
 Cursor CIrrDeviceLinux::TextureToCursor(irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
-#ifdef _IRR_LINUX_XCURSOR_
+#ifdef _NIRT_LINUX_XCURSOR_
 	return TextureToARGBCursor( tex, sourceRect, hotspot );
 #else
 	return TextureToMonochromeCursor( tex, sourceRect, hotspot );
 #endif
 }
-#endif	// _IRR_COMPILE_WITH_X11_
+#endif	// _NIRT_COMPILE_WITH_X11_
 
 
 CIrrDeviceLinux::CCursorControl::CCursorControl(CIrrDeviceLinux* dev, bool null)
 	: Device(dev)
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	, PlatformBehavior(gui::ECPB_NONE), LastQuery(0)
-#ifdef _IRR_LINUX_X11_XINPUT2_
+#ifdef _NIRT_LINUX_X11_XINPUT2_
 	, DeviceId(0)
 #endif
 #endif
 	, IsVisible(true), Null(null), UseReferenceRect(false)
 	, ActiveIcon(gui::ECI_NORMAL), ActiveIconStartTime(0)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if (!Null)
 	{
-#ifdef _IRR_LINUX_X11_XINPUT2_
+#ifdef _NIRT_LINUX_X11_XINPUT2_
 		XIGetClientPointer(Device->XDisplay, Device->XWindow, &DeviceId);
 #endif
 
@@ -2218,7 +2218,7 @@ CIrrDeviceLinux::CCursorControl::~CCursorControl()
 	// TODO (cutealien): droping cursorcontrol earlier might work, not sure about reason why that's done in stub currently.
 }
 
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 void CIrrDeviceLinux::CCursorControl::clearCursors()
 {
 	if (!Null)
@@ -2264,7 +2264,7 @@ void CIrrDeviceLinux::CCursorControl::update()
 //! Sets the active cursor icon
 void CIrrDeviceLinux::CCursorControl::setActiveIcon(gui::ECURSOR_ICON iconId)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if ( iconId >= (s32)Cursors.size() )
 		return;
 
@@ -2280,7 +2280,7 @@ void CIrrDeviceLinux::CCursorControl::setActiveIcon(gui::ECURSOR_ICON iconId)
 //! Add a custom sprite as cursor icon.
 gui::ECURSOR_ICON CIrrDeviceLinux::CCursorControl::addIcon(const gui::SCursorSprite& icon)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if ( icon.SpriteId >= 0 )
 	{
 		CursorX11 cX11;
@@ -2305,7 +2305,7 @@ gui::ECURSOR_ICON CIrrDeviceLinux::CCursorControl::addIcon(const gui::SCursorSpr
 //! replace the given cursor icon.
 void CIrrDeviceLinux::CCursorControl::changeIcon(gui::ECURSOR_ICON iconId, const gui::SCursorSprite& icon)
 {
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	if ( iconId >= (s32)Cursors.size() )
 		return;
 
@@ -2334,7 +2334,7 @@ irr::core::dimension2di CIrrDeviceLinux::CCursorControl::getSupportedIconSize() 
 {
 	// this returns the closest match that is smaller or same size, so we just pass a value which should be large enough for cursors
 	unsigned int width=0, height=0;
-#ifdef _IRR_COMPILE_WITH_X11_
+#ifdef _NIRT_COMPILE_WITH_X11_
 	XQueryBestCursor(Device->XDisplay, Device->XWindow, 64, 64, &width, &height);
 #endif
 	return core::dimension2di(width, height);
@@ -2342,5 +2342,5 @@ irr::core::dimension2di CIrrDeviceLinux::CCursorControl::getSupportedIconSize() 
 
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_X11_DEVICE_
+#endif // _NIRT_COMPILE_WITH_X11_DEVICE_
 

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_BILLBOARD_SCENE_NODE_H_INCLUDED
-#define IRR_C_BILLBOARD_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_BILLBOARD_SCENE_NODE_H_INCLUDED
+#define NIRT_C_BILLBOARD_SCENE_NODE_H_INCLUDED
 
 #include "IBillboardSceneNode.h"
 #include "SMeshBuffer.h"
@@ -28,58 +28,58 @@ public:
 	virtual ~CBillboardSceneNode();
 
 	//! pre render event
-	virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+	virtual void OnRegisterSceneNode() override;
 
 	//! render
-	virtual void render() IRR_OVERRIDE;
+	virtual void render() override;
 
 	//! returns the axis aligned bounding box of this node
-	virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+	virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 	//! sets the size of the billboard
-	virtual void setSize(const core::dimension2d<f32>& size) IRR_OVERRIDE;
+	virtual void setSize(const core::dimension2d<f32>& size) override;
 
 	//! Sets the widths of the top and bottom edges of the billboard independently.
-	virtual void setSize(f32 height, f32 bottomEdgeWidth, f32 topEdgeWidth) IRR_OVERRIDE;
+	virtual void setSize(f32 height, f32 bottomEdgeWidth, f32 topEdgeWidth) override;
 
 	//! gets the size of the billboard
-	virtual const core::dimension2d<f32>& getSize() const IRR_OVERRIDE;
+	virtual const core::dimension2d<f32>& getSize() const override;
 
 	//! Gets the widths of the top and bottom edges of the billboard.
-	virtual void getSize(f32& height, f32& bottomEdgeWidth, f32& topEdgeWidth) const IRR_OVERRIDE;
+	virtual void getSize(f32& height, f32& bottomEdgeWidth, f32& topEdgeWidth) const override;
 
-	virtual video::SMaterial& getMaterial(u32 i) IRR_OVERRIDE;
+	virtual video::SMaterial& getMaterial(u32 i) override;
 
 	//! returns amount of materials used by this scene node.
-	virtual u32 getMaterialCount() const IRR_OVERRIDE;
+	virtual u32 getMaterialCount() const override;
 
 	//! Set the color of all vertices of the billboard
 	//! \param overallColor: the color to set
-	virtual void setColor(const video::SColor& overallColor) IRR_OVERRIDE;
+	virtual void setColor(const video::SColor& overallColor) override;
 
 	//! Set the color of the top and bottom vertices of the billboard
 	//! \param topColor: the color to set the top vertices
 	//! \param bottomColor: the color to set the bottom vertices
 	virtual void setColor(const video::SColor& topColor,
-			const video::SColor& bottomColor) IRR_OVERRIDE;
+			const video::SColor& bottomColor) override;
 
 	//! Gets the color of the top and bottom vertices of the billboard
 	//! \param[out] topColor: stores the color of the top vertices
 	//! \param[out] bottomColor: stores the color of the bottom vertices
 	virtual void getColor(video::SColor& topColor,
-			video::SColor& bottomColor) const IRR_OVERRIDE;
+			video::SColor& bottomColor) const override;
 
 	//! Get the real boundingbox used by the billboard (which depends on the active camera)
-	virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) IRR_OVERRIDE;
+	virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) override;
 
 	//! Get the amount of mesh buffers.
-	virtual u32 getMeshBufferCount() const IRR_OVERRIDE
+	virtual u32 getMeshBufferCount() const override
 	{
 		return Buffer ? 1 : 0;
 	}
 
 	//! Get pointer to the mesh buffer.
-	virtual IMeshBuffer* getMeshBuffer(u32 nr) const IRR_OVERRIDE
+	virtual IMeshBuffer* getMeshBuffer(u32 nr) const override
 	{
 		if ( nr == 0 )
 			return Buffer;
@@ -87,16 +87,16 @@ public:
 	}
 
 	//! Writes attributes of the scene node.
-	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE;
+	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override;
 
 	//! Reads attributes of the scene node.
-	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE;
+	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override;
 
 	//! Returns type of the scene node
-	virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_BILLBOARD; }
+	virtual ESCENE_NODE_TYPE getType() const override { return ESNT_BILLBOARD; }
 
 	//! Creates a clone of this scene node and its children.
-	virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) IRR_OVERRIDE;
+	virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) override;
 
 protected:
 	void updateMesh(const irr::scene::ICameraSceneNode* camera);

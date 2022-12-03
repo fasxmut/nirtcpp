@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "CSceneManager.h"
@@ -22,160 +22,160 @@
 
 // We need this include for the case of skinned mesh support without
 // any such loader
-#ifdef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifdef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 #include "CSkinnedMesh.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_IRR_MESH_LOADER_
+#ifdef _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
 #include "CIrrMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 #include "CBSPMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_MD2_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MD2_LOADER_
 #include "CMD2MeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_HALFLIFE_LOADER_
+#ifdef _NIRT_COMPILE_WITH_HALFLIFE_LOADER_
 #include "CAnimatedMeshHalfLife.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_MS3D_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MS3D_LOADER_
 #include "CMS3DMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_3DS_LOADER_
+#ifdef _NIRT_COMPILE_WITH_3DS_LOADER_
 #include "C3DSMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_X_LOADER_
+#ifdef _NIRT_COMPILE_WITH_X_LOADER_
 #include "CXMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OCT_LOADER_
+#ifdef _NIRT_COMPILE_WITH_OCT_LOADER_
 #include "COCTLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_CSM_LOADER_
+#ifdef _NIRT_COMPILE_WITH_CSM_LOADER_
 #include "CCSMLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_LMTS_LOADER_
+#ifdef _NIRT_COMPILE_WITH_LMTS_LOADER_
 #include "CLMTSMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_MY3D_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MY3D_LOADER_
 #include "CMY3DMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_COLLADA_LOADER_
+#ifdef _NIRT_COMPILE_WITH_COLLADA_LOADER_
 #include "CColladaFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_DMF_LOADER_
+#ifdef _NIRT_COMPILE_WITH_DMF_LOADER_
 #include "CDMFLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OGRE_LOADER_
+#ifdef _NIRT_COMPILE_WITH_OGRE_LOADER_
 #include "COgreMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OBJ_LOADER_
+#ifdef _NIRT_COMPILE_WITH_OBJ_LOADER_
 #include "COBJMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_MD3_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MD3_LOADER_
 #include "CMD3MeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_B3D_LOADER_
+#ifdef _NIRT_COMPILE_WITH_B3D_LOADER_
 #include "CB3DMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_LWO_LOADER_
+#ifdef _NIRT_COMPILE_WITH_LWO_LOADER_
 #include "CLWOMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_STL_LOADER_
+#ifdef _NIRT_COMPILE_WITH_STL_LOADER_
 #include "CSTLMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_PLY_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PLY_LOADER_
 #include "CPLYMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_SMF_LOADER_
+#ifdef _NIRT_COMPILE_WITH_SMF_LOADER_
 #include "CSMFMeshFileLoader.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_IRR_SCENE_LOADER_
+#ifdef _NIRT_COMPILE_WITH_NIRT_SCENE_LOADER_
 #include "CSceneLoaderIrr.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_COLLADA_WRITER_
+#ifdef _NIRT_COMPILE_WITH_COLLADA_WRITER_
 #include "CColladaMeshWriter.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_IRR_WRITER_
+#ifdef _NIRT_COMPILE_WITH_NIRT_WRITER_
 #include "CIrrMeshWriter.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_STL_WRITER_
+#ifdef _NIRT_COMPILE_WITH_STL_WRITER_
 #include "CSTLMeshWriter.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OBJ_WRITER_
+#ifdef _NIRT_COMPILE_WITH_OBJ_WRITER_
 #include "COBJMeshWriter.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_PLY_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PLY_WRITER_
 #include "CPLYMeshWriter.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_B3D_WRITER_
+#ifdef _NIRT_COMPILE_WITH_B3D_WRITER_
 #include "CB3DMeshWriter.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_CUBE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_CUBE_SCENENODE_
 #include "CCubeSceneNode.h"
-#endif // _IRR_COMPILE_WITH_CUBE_SCENENODE_
-#ifdef _IRR_COMPILE_WITH_SPHERE_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_CUBE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SPHERE_SCENENODE_
 #include "CSphereSceneNode.h"
 #endif
 #include "CAnimatedMeshSceneNode.h"
-#ifdef _IRR_COMPILE_WITH_OCTREE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
 #include "COctreeSceneNode.h"
-#endif // #ifdef _IRR_COMPILE_WITH_OCTREE_SCENENODE_
+#endif // #ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
 #include "CCameraSceneNode.h"
 #include "CLightSceneNode.h"
-#ifdef _IRR_COMPILE_WITH_BILLBOARD_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_
 #include "CBillboardSceneNode.h"
-#endif // _IRR_COMPILE_WITH_BILLBOARD_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_
 #include "CMeshSceneNode.h"
 #include "CSkyBoxSceneNode.h"
-#ifdef _IRR_COMPILE_WITH_SKYDOME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
 #include "CSkyDomeSceneNode.h"
-#endif // _IRR_COMPILE_WITH_SKYDOME_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
 
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 #include "CShadowVolumeSceneNode.h"
 #else
 #include "IShadowVolumeSceneNode.h"
-#endif // _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
-#ifdef _IRR_COMPILE_WITH_PARTICLES_
+#ifdef _NIRT_COMPILE_WITH_PARTICLES_
 #include "CParticleSystemSceneNode.h"
-#endif // _IRR_COMPILE_WITH_PARTICLES_
+#endif // _NIRT_COMPILE_WITH_PARTICLES_
 
 #include "CDummyTransformationSceneNode.h"
-#ifdef _IRR_COMPILE_WITH_WATER_SURFACE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_
 #include "CWaterSurfaceSceneNode.h"
-#endif // _IRR_COMPILE_WITH_WATER_SURFACE_SCENENODE_
-#ifdef _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 #include "CTerrainSceneNode.h"
-#endif // _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 #include "CEmptySceneNode.h"
 #include "CTextSceneNode.h"
 #include "CQuake3ShaderSceneNode.h"
@@ -188,9 +188,9 @@
 #include "COctreeTriangleSelector.h"
 #include "CTriangleBBSelector.h"
 #include "CMetaTriangleSelector.h"
-#ifdef _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 #include "CTerrainTriangleSelector.h"
-#endif // _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 
 #include "CSceneNodeAnimatorRotation.h"
 #include "CSceneNodeAnimatorFlyCircle.h"
@@ -220,7 +220,7 @@ CSceneManager::CSceneManager(video::IVideoDriver* driver, io::IFileSystem* fs,
 	CursorControl(cursorControl), CollisionManager(0),
 	ActiveCamera(0), ShadowColor(150,0,0,0), AmbientLight(0,0,0,0), Parameters(0),
 	MeshCache(cache), CurrentRenderPass(ESNRP_NONE), LightManager(0),
-	IRR_XML_FORMAT_SCENE(L"irr_scene"), IRR_XML_FORMAT_NODE(L"node"), IRR_XML_FORMAT_NODE_ATTR_TYPE(L"type")
+	NIRT_XML_FORMAT_SCENE(L"irr_scene"), NIRT_XML_FORMAT_NODE(L"node"), NIRT_XML_FORMAT_NODE_ATTR_TYPE(L"type")
 {
 	#ifdef _DEBUG
 	ISceneManager::setDebugName("CSceneManager ISceneManager");
@@ -265,72 +265,72 @@ CSceneManager::CSceneManager(video::IVideoDriver* driver, io::IFileSystem* fs,
 	// TODO: now that we have multiple scene managers, these should be
 	// shallow copies from the previous manager if there is one.
 
-	#ifdef _IRR_COMPILE_WITH_STL_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_STL_LOADER_
 	MeshLoaderList.push_back(new CSTLMeshFileLoader());
 	#endif
-	#ifdef _IRR_COMPILE_WITH_PLY_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_PLY_LOADER_
 	MeshLoaderList.push_back(new CPLYMeshFileLoader(this));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_SMF_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_SMF_LOADER_
 	MeshLoaderList.push_back(new CSMFMeshFileLoader(FileSystem, Driver));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_OCT_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_OCT_LOADER_
 	MeshLoaderList.push_back(new COCTLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_CSM_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_CSM_LOADER_
 	MeshLoaderList.push_back(new CCSMLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_LMTS_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_LMTS_LOADER_
 	MeshLoaderList.push_back(new CLMTSMeshFileLoader(FileSystem, Driver, Parameters));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_MY3D_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_MY3D_LOADER_
 	MeshLoaderList.push_back(new CMY3DMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_DMF_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_DMF_LOADER_
 	MeshLoaderList.push_back(new CDMFLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_OGRE_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_OGRE_LOADER_
 	MeshLoaderList.push_back(new COgreMeshFileLoader(FileSystem, Driver));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_HALFLIFE_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_HALFLIFE_LOADER_
 	MeshLoaderList.push_back(new CHalflifeMDLMeshFileLoader( this ));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_MD3_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_MD3_LOADER_
 	MeshLoaderList.push_back(new CMD3MeshFileLoader( this));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_LWO_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_LWO_LOADER_
 	MeshLoaderList.push_back(new CLWOMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_MD2_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_MD2_LOADER_
 	MeshLoaderList.push_back(new CMD2MeshFileLoader());
 	#endif
-	#ifdef _IRR_COMPILE_WITH_IRR_MESH_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
 	MeshLoaderList.push_back(new CIrrMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 	MeshLoaderList.push_back(new CBSPMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_COLLADA_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_COLLADA_LOADER_
 	MeshLoaderList.push_back(new CColladaFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_3DS_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_3DS_LOADER_
 	MeshLoaderList.push_back(new C3DSMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_X_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_X_LOADER_
 	MeshLoaderList.push_back(new CXMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_MS3D_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_MS3D_LOADER_
 	MeshLoaderList.push_back(new CMS3DMeshFileLoader(Driver));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_OBJ_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_OBJ_LOADER_
 	MeshLoaderList.push_back(new COBJMeshFileLoader(this, FileSystem));
 	#endif
-	#ifdef _IRR_COMPILE_WITH_B3D_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_B3D_LOADER_
 	MeshLoaderList.push_back(new CB3DMeshFileLoader(this));
 	#endif
 
 	// scene loaders
-	#ifdef _IRR_COMPILE_WITH_IRR_SCENE_LOADER_
+	#ifdef _NIRT_COMPILE_WITH_NIRT_SCENE_LOADER_
 	SceneLoaderList.push_back(new CSceneLoaderIrr(this, FileSystem));
 	#endif
 
@@ -343,22 +343,22 @@ CSceneManager::CSceneManager(video::IVideoDriver* driver, io::IFileSystem* fs,
 	registerSceneNodeAnimatorFactory(animatorFactory);
 	animatorFactory->drop();
 
-	IRR_PROFILE(
+	NIRT_PROFILE(
 		static bool initProfile = false;
 		if (!initProfile )
 		{
 			initProfile = true;
-			getProfiler().add(EPID_SM_DRAW_ALL, L"drawAll", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_ANIMATE, L"animate", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_CAMERAS, L"cameras", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_LIGHTS, L"lights", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_SKYBOXES, L"skyboxes", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_DEFAULT, L"defaultnodes", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_SHADOWS, L"shadows", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_TRANSPARENT, L"transp.nodes", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_EFFECT, L"effectnodes", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_RENDER_GUI_NODES, L"guinodes", L"Irrlicht scene");
-			getProfiler().add(EPID_SM_REGISTER, L"reg.render.node", L"Irrlicht scene");
+			getProfiler().add(EPID_SM_DRAW_ALL, L"drawAll", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_ANIMATE, L"animate", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_CAMERAS, L"cameras", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_LIGHTS, L"lights", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_SKYBOXES, L"skyboxes", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_DEFAULT, L"defaultnodes", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_SHADOWS, L"shadows", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_TRANSPARENT, L"transp.nodes", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_EFFECT, L"effectnodes", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_RENDER_GUI_NODES, L"guinodes", L"Nirtcpp scene");
+			getProfiler().add(EPID_SM_REGISTER, L"reg.render.node", L"Nirtcpp scene");
 		}
  	)
 }
@@ -568,7 +568,7 @@ IMeshSceneNode* CSceneManager::addQuake3SceneNode(const IMeshBuffer* meshBuffer,
 					const quake3::IShader * shader,
 					ISceneNode* parent, s32 id )
 {
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 	if (!shader)
 		return 0;
 
@@ -612,7 +612,7 @@ IMeshSceneNode* CSceneManager::addCubeSceneNode(f32 size, ISceneNode* parent,
 		const core::vector3df& rotation, const core::vector3df& scale,
 		ECUBE_MESH_TYPE type)
 {
-#ifdef _IRR_COMPILE_WITH_CUBE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_CUBE_SCENENODE_
 	if (!parent)
 		parent = this;
 
@@ -631,7 +631,7 @@ IMeshSceneNode* CSceneManager::addSphereSceneNode(f32 radius, s32 polyCount,
 		ISceneNode* parent, s32 id, const core::vector3df& position,
 		const core::vector3df& rotation, const core::vector3df& scale)
 {
-#ifdef _IRR_COMPILE_WITH_SPHERE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SPHERE_SCENENODE_
 	if (!parent)
 		parent = this;
 
@@ -641,7 +641,7 @@ IMeshSceneNode* CSceneManager::addSphereSceneNode(f32 radius, s32 polyCount,
 	return node;
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_SPHERE_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SPHERE_SCENENODE_
 }
 
 
@@ -669,7 +669,7 @@ ISceneNode* CSceneManager::addWaterSurfaceSceneNode(IMesh* mesh, f32 waveHeight,
 	ISceneNode* parent, s32 id, const core::vector3df& position,
 	const core::vector3df& rotation, const core::vector3df& scale)
 {
-#ifdef _IRR_COMPILE_WITH_WATER_SURFACE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_
 	if (!parent)
 		parent = this;
 
@@ -725,7 +725,7 @@ IOctreeSceneNode* CSceneManager::addOctreeSceneNode(IAnimatedMesh* mesh, ISceneN
 IOctreeSceneNode* CSceneManager::addOctreeSceneNode(IMesh* mesh, ISceneNode* parent,
 		s32 id, s32 minimalPolysPerNode, bool alsoAddIfMeshPointerZero)
 {
-#ifdef _IRR_COMPILE_WITH_OCTREE_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
 	if (!alsoAddIfMeshPointerZero && !mesh)
 		return 0;
 
@@ -843,7 +843,7 @@ IBillboardSceneNode* CSceneManager::addBillboardSceneNode(ISceneNode* parent,
 	video::SColor colorTop, video::SColor colorBottom
 	)
 {
-#ifdef _IRR_COMPILE_WITH_BILLBOARD_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_
 	if (!parent)
 		parent = this;
 
@@ -881,7 +881,7 @@ ISceneNode* CSceneManager::addSkyDomeSceneNode(video::ITexture* texture,
 	u32 horiRes, u32 vertRes, f32 texturePercentage,f32 spherePercentage, f32 radius,
 	ISceneNode* parent, s32 id)
 {
-#ifdef _IRR_COMPILE_WITH_SKYDOME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
 	if (!parent)
 		parent = this;
 
@@ -902,7 +902,7 @@ IParticleSystemSceneNode* CSceneManager::addParticleSystemSceneNode(
 	const core::vector3df& position, const core::vector3df& rotation,
 	const core::vector3df& scale)
 {
-#ifdef _IRR_COMPILE_WITH_PARTICLES_
+#ifdef _NIRT_COMPILE_WITH_PARTICLES_
 	if (!parent)
 		parent = this;
 
@@ -913,7 +913,7 @@ IParticleSystemSceneNode* CSceneManager::addParticleSystemSceneNode(
 	return node;
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_PARTICLES_
+#endif // _NIRT_COMPILE_WITH_PARTICLES_
 }
 
 
@@ -959,7 +959,7 @@ ITerrainSceneNode* CSceneManager::addTerrainSceneNode(
 	s32 smoothFactor,
 	bool addAlsoIfHeightmapEmpty)
 {
-#ifdef _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 	if (!parent)
 		parent = this;
 
@@ -986,7 +986,7 @@ ITerrainSceneNode* CSceneManager::addTerrainSceneNode(
 	return node;
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 }
 
 
@@ -1227,7 +1227,7 @@ void CSceneManager::render()
 //! returns the axis aligned bounding box of this node
 const core::aabbox3d<f32>& CSceneManager::getBoundingBox() const
 {
-	IRR_DEBUG_BREAK_IF(true) // Bounding Box of Scene Manager should never be used.
+	NIRT_DEBUG_BREAK_IF(true) // Bounding Box of Scene Manager should never be used.
 
 	static const core::aabbox3d<f32> dummy;
 	return dummy;
@@ -1314,7 +1314,7 @@ bool CSceneManager::isCulled(const ISceneNode* node) const
 //! registers a node for rendering it at a specific time.
 u32 CSceneManager::registerNodeForRendering(ISceneNode* node, E_SCENE_NODE_RENDER_PASS pass)
 {
-	IRR_PROFILE(CProfileScope p1(EPID_SM_REGISTER);)
+	NIRT_PROFILE(CProfileScope p1(EPID_SM_REGISTER);)
 	u32 taken = 0;
 
 	switch(pass)
@@ -1340,7 +1340,7 @@ u32 CSceneManager::registerNodeForRendering(ISceneNode* node, E_SCENE_NODE_RENDE
 
 	case ESNRP_LIGHT:
 		// TODO: Point Light culling..
-		// Lighting model in irrlicht has to be redone..
+		// Lighting model in nirtcpp has to be redone..
 		//if (!isCulled(node))
 		{
 			LightList.push_back(node);
@@ -1418,7 +1418,7 @@ u32 CSceneManager::registerNodeForRendering(ISceneNode* node, E_SCENE_NODE_RENDE
 		break;
 	}
 
-#ifdef _IRR_SCENEMANAGER_DEBUG
+#ifdef _NIRT_SCENEMANAGER_DEBUG
 	s32 index = Parameters->findAttribute("calls");
 	Parameters->setAttribute(index, Parameters->getAttributeAsInt(index)+1);
 
@@ -1448,12 +1448,12 @@ void CSceneManager::clearAllRegisteredNodesForRendering()
 //! draws all scene nodes
 void CSceneManager::drawAll()
 {
-	IRR_PROFILE(CProfileScope psAll(EPID_SM_DRAW_ALL);)
+	NIRT_PROFILE(CProfileScope psAll(EPID_SM_DRAW_ALL);)
 
 	if (!Driver)
 		return;
 
-#ifdef _IRR_SCENEMANAGER_DEBUG
+#ifdef _NIRT_SCENEMANAGER_DEBUG
 	// reset attributes
 	Parameters->setAttribute("culled", 0);
 	Parameters->setAttribute("calls", 0);
@@ -1475,22 +1475,22 @@ void CSceneManager::drawAll()
 	Driver->setAllowZWriteOnTransparent(Parameters->getAttributeAsBool(ALLOW_ZWRITE_ON_TRANSPARENT));
 
 	// do animations and other stuff.
-	IRR_PROFILE(getProfiler().start(EPID_SM_ANIMATE));
+	NIRT_PROFILE(getProfiler().start(EPID_SM_ANIMATE));
 	OnAnimate(os::Timer::getTime());
-	IRR_PROFILE(getProfiler().stop(EPID_SM_ANIMATE));
+	NIRT_PROFILE(getProfiler().stop(EPID_SM_ANIMATE));
 
 	/*!
 		First Scene Node for prerendering should be the active camera
 		consistent Camera is needed for culling
 	*/
-	IRR_PROFILE(getProfiler().start(EPID_SM_RENDER_CAMERAS));
+	NIRT_PROFILE(getProfiler().start(EPID_SM_RENDER_CAMERAS));
 	camWorldPos.set(0,0,0);
 	if (ActiveCamera)
 	{
 		ActiveCamera->render();
 		camWorldPos = ActiveCamera->getAbsolutePosition();
 	}
-	IRR_PROFILE(getProfiler().stop(EPID_SM_RENDER_CAMERAS));
+	NIRT_PROFILE(getProfiler().stop(EPID_SM_RENDER_CAMERAS));
 
 	// let all nodes register themselves
 	OnRegisterSceneNode();
@@ -1500,7 +1500,7 @@ void CSceneManager::drawAll()
 
 	//render camera scenes
 	{
-		IRR_PROFILE(CProfileScope psCam(EPID_SM_RENDER_CAMERAS);)
+		NIRT_PROFILE(CProfileScope psCam(EPID_SM_RENDER_CAMERAS);)
 		CurrentRenderPass = ESNRP_CAMERA;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1518,7 +1518,7 @@ void CSceneManager::drawAll()
 
 	//render lights scenes
 	{
-		IRR_PROFILE(CProfileScope psLights(EPID_SM_RENDER_LIGHTS);)
+		NIRT_PROFILE(CProfileScope psLights(EPID_SM_RENDER_LIGHTS);)
 		CurrentRenderPass = ESNRP_LIGHT;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1563,7 +1563,7 @@ void CSceneManager::drawAll()
 
 	// render skyboxes
 	{
-		IRR_PROFILE(CProfileScope psSkyBox(EPID_SM_RENDER_SKYBOXES);)
+		NIRT_PROFILE(CProfileScope psSkyBox(EPID_SM_RENDER_SKYBOXES);)
 		CurrentRenderPass = ESNRP_SKY_BOX;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1593,7 +1593,7 @@ void CSceneManager::drawAll()
 
 	// render default objects
 	{
-		IRR_PROFILE(CProfileScope psDefault(EPID_SM_RENDER_DEFAULT);)
+		NIRT_PROFILE(CProfileScope psDefault(EPID_SM_RENDER_DEFAULT);)
 		CurrentRenderPass = ESNRP_SOLID;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1616,7 +1616,7 @@ void CSceneManager::drawAll()
 				SolidNodeList[i].Node->render();
 		}
 
-#ifdef _IRR_SCENEMANAGER_DEBUG
+#ifdef _NIRT_SCENEMANAGER_DEBUG
 		Parameters->setAttribute("drawn_solid", (s32) SolidNodeList.size() );
 #endif
 		SolidNodeList.set_used(0);
@@ -1627,7 +1627,7 @@ void CSceneManager::drawAll()
 
 	// render shadows
 	{
-		IRR_PROFILE(CProfileScope psShadow(EPID_SM_RENDER_SHADOWS);)
+		NIRT_PROFILE(CProfileScope psShadow(EPID_SM_RENDER_SHADOWS);)
 		CurrentRenderPass = ESNRP_SHADOW;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1660,7 +1660,7 @@ void CSceneManager::drawAll()
 
 	// render transparent objects.
 	{
-		IRR_PROFILE(CProfileScope psTrans(EPID_SM_RENDER_TRANSPARENT);)
+		NIRT_PROFILE(CProfileScope psTrans(EPID_SM_RENDER_TRANSPARENT);)
 		CurrentRenderPass = ESNRP_TRANSPARENT;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1683,7 +1683,7 @@ void CSceneManager::drawAll()
 				TransparentNodeList[i].Node->render();
 		}
 
-#ifdef _IRR_SCENEMANAGER_DEBUG
+#ifdef _NIRT_SCENEMANAGER_DEBUG
 		Parameters->setAttribute ( "drawn_transparent", (s32) TransparentNodeList.size() );
 #endif
 		TransparentNodeList.set_used(0);
@@ -1694,7 +1694,7 @@ void CSceneManager::drawAll()
 
 	// render transparent effect objects.
 	{
-		IRR_PROFILE(CProfileScope psEffect(EPID_SM_RENDER_EFFECT);)
+		NIRT_PROFILE(CProfileScope psEffect(EPID_SM_RENDER_EFFECT);)
 		CurrentRenderPass = ESNRP_TRANSPARENT_EFFECT;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1717,7 +1717,7 @@ void CSceneManager::drawAll()
 			for (i=0; i<TransparentEffectNodeList.size(); ++i)
 				TransparentEffectNodeList[i].Node->render();
 		}
-#ifdef _IRR_SCENEMANAGER_DEBUG
+#ifdef _NIRT_SCENEMANAGER_DEBUG
 		Parameters->setAttribute("drawn_transparent_effect", (s32) TransparentEffectNodeList.size());
 #endif
 		TransparentEffectNodeList.set_used(0);
@@ -1725,7 +1725,7 @@ void CSceneManager::drawAll()
 
 	// render custom gui nodes
 	{
-		IRR_PROFILE(CProfileScope psEffect(EPID_SM_RENDER_GUI_NODES);)
+		NIRT_PROFILE(CProfileScope psEffect(EPID_SM_RENDER_GUI_NODES);)
 		CurrentRenderPass = ESNRP_GUI;
 		Driver->getOverrideMaterial().Enabled = ((Driver->getOverrideMaterial().EnablePasses & CurrentRenderPass) != 0);
 
@@ -1746,7 +1746,7 @@ void CSceneManager::drawAll()
 			for (i=0; i<GuiNodeList.size(); ++i)
 				GuiNodeList[i]->render();
 		}
-#ifdef _IRR_SCENEMANAGER_DEBUG
+#ifdef _NIRT_SCENEMANAGER_DEBUG
 		Parameters->setAttribute("drawn_gui_nodes", (s32) GuiNodeList.size());
 #endif
 		GuiNodeList.set_used(0);
@@ -1788,7 +1788,7 @@ video::SColor CSceneManager::getShadowColor() const
 
 IShadowVolumeSceneNode* CSceneManager::createShadowVolumeSceneNode(const IMesh* shadowMesh, ISceneNode* parent, s32 id, bool zfailmethod, f32 infinity)
 {
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 	return new CShadowVolumeSceneNode(shadowMesh, parent, this, id, zfailmethod, infinity);
 #else
 	return 0;
@@ -1894,7 +1894,7 @@ void CSceneManager::addExternalMeshLoader(IMeshLoader* externalLoader)
 }
 
 
-//! Returns the number of mesh loaders supported by Irrlicht at this time
+//! Returns the number of mesh loaders supported by Nirtcpp at this time
 u32 CSceneManager::getMeshLoaderCount() const
 {
 	return MeshLoaderList.size();
@@ -2020,7 +2020,7 @@ IMetaTriangleSelector* CSceneManager::createMetaTriangleSelector()
 ITriangleSelector* CSceneManager::createTerrainTriangleSelector(
 	ITerrainSceneNode* node, s32 LOD)
 {
-#ifdef _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 	return new CTerrainTriangleSelector(node, LOD);
 #else
 	return 0;
@@ -2395,14 +2395,14 @@ void CSceneManager::writeSceneNode(io::IXMLWriter* writer, ISceneNode* node, ISc
 
 	if (init)
 	{
-		name = IRR_XML_FORMAT_SCENE.c_str();
+		name = NIRT_XML_FORMAT_SCENE.c_str();
 		writer->writeElement(name, false);
 		node=this;
 	}
 	else
 	{
-		name = IRR_XML_FORMAT_NODE.c_str();
-		writer->writeElement(name, false, IRR_XML_FORMAT_NODE_ATTR_TYPE.c_str(),
+		name = NIRT_XML_FORMAT_NODE.c_str();
+		writer->writeElement(name, false, NIRT_XML_FORMAT_NODE_ATTR_TYPE.c_str(),
 			core::stringw(getSceneNodeTypeName(node->getType())).c_str());
 	}
 
@@ -2638,7 +2638,7 @@ const video::SColorf& CSceneManager::getAmbientLight() const
 //! Get a skinned mesh, which is not available as header-only code
 ISkinnedMesh* CSceneManager::createSkinnedMesh()
 {
-#ifdef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifdef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 	return new CSkinnedMesh();
 #else
 	return 0;
@@ -2650,40 +2650,40 @@ IMeshWriter* CSceneManager::createMeshWriter(EMESH_WRITER_TYPE type)
 {
 	switch(type)
 	{
-	case EMWT_IRR_MESH:
-#ifdef _IRR_COMPILE_WITH_IRR_WRITER_
+	case EMWT_NIRT_MESH:
+#ifdef _NIRT_COMPILE_WITH_NIRT_WRITER_
 		return new CIrrMeshWriter(Driver, FileSystem);
 #else
 		return 0;
 #endif
 	case EMWT_COLLADA:
-#ifdef _IRR_COMPILE_WITH_COLLADA_WRITER_
+#ifdef _NIRT_COMPILE_WITH_COLLADA_WRITER_
 		return new CColladaMeshWriter(this, Driver, FileSystem);
 #else
 		return 0;
 #endif
 	case EMWT_STL:
-#ifdef _IRR_COMPILE_WITH_STL_WRITER_
+#ifdef _NIRT_COMPILE_WITH_STL_WRITER_
 		return new CSTLMeshWriter(this);
 #else
 		return 0;
 #endif
 	case EMWT_OBJ:
-#ifdef _IRR_COMPILE_WITH_OBJ_WRITER_
+#ifdef _NIRT_COMPILE_WITH_OBJ_WRITER_
 		return new COBJMeshWriter(this, FileSystem);
 #else
 		return 0;
 #endif
 
 	case EMWT_PLY:
-#ifdef _IRR_COMPILE_WITH_PLY_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PLY_WRITER_
 		return new CPLYMeshWriter();
 #else
 		return 0;
 #endif
 
 	case EMWT_B3D:
-#ifdef _IRR_COMPILE_WITH_B3D_WRITER_
+#ifdef _NIRT_COMPILE_WITH_B3D_WRITER_
 		return new CB3DMeshWriter();
 #else
 		return 0;

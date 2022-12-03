@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by Irrlicht.rc
+// Used by Nirtcpp.rc
 
 // Nächste Standardwerte für neue Objekte
 // 

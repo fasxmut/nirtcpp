@@ -1,5 +1,5 @@
 #include "testUtils.h"
-#include <irrlicht.h>
+#include <nirtcpp.h>
 
 using namespace irr;
 using namespace core;

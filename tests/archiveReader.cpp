@@ -251,7 +251,7 @@ bool testEncryptedZip(IFileSystem* fs)
 
 	archive->Password="33445";
 	readFile = fs->createAndOpenFile(filename);
-#ifdef _IRR_COMPILE_WITH_ZIP_ENCRYPTION_
+#ifdef _NIRT_COMPILE_WITH_ZIP_ENCRYPTION_
 	if ( !readFile )
 	{
 		logTestString("createAndOpenFile failed\n");
@@ -428,7 +428,7 @@ bool testAddRemove(IFileSystem* fs, const io::path& archiveName)
 
 bool archiveReader()
 {
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
 	assert_log(device);
 	if(!device)
 		return false;

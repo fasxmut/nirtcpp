@@ -124,7 +124,7 @@ static bool testgetRelativeFilename(io::IFileSystem* fs)
 
 bool filesystem(void)
 {
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
 	assert_log(device);
 	if(!device)
 		return false;

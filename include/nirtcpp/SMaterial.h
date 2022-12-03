@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_MATERIAL_H_INCLUDED
 #define S_MATERIAL_H_INCLUDED
@@ -227,7 +227,7 @@ namespace video
 		ECM_DIFFUSE_AND_AMBIENT
 	};
 
-	//! DEPRECATED. Will be removed after Irrlicht 1.9.
+	//! DEPRECATED. Will be removed after Nirtcpp 1.9.
 	/** Flags for the definition of the polygon offset feature. These flags define whether the offset should be into the screen, or towards the eye. */
 	enum E_POLYGON_OFFSET
 	{
@@ -256,8 +256,8 @@ namespace video
 
 		//! This is the default setting for SMaterial and tries to handle things automatically.
 		//! This is also the value which is set when SMaterial::setFlag(EMF_ZWRITE_ENABLE) is enabled.
-		//! Usually zwriting is enabled non-transparent materials - as far as Irrlicht can recognize those.
-		//! Basically Irrlicht tries to handle the zwriting for you and assumes transparent materials don't need it.
+		//! Usually zwriting is enabled non-transparent materials - as far as Nirtcpp can recognize those.
+		//! Basically Nirtcpp tries to handle the zwriting for you and assumes transparent materials don't need it.
 		//! This is addionally affected by IVideoDriver::setAllowZWriteOnTransparent
 		EZW_AUTO,
 
@@ -278,9 +278,9 @@ namespace video
 
 	//! Maximum number of texture an SMaterial can have.
 	/** SMaterial might ignore some textures in most function, like assignment and comparison,
-		when SIrrlichtCreationParameters::MaxTextureUnits is set to a lower number.
+		when SNirtcppCreationParameters::MaxTextureUnits is set to a lower number.
 	*/
-	const u32 MATERIAL_MAX_TEXTURES = _IRR_MATERIAL_MAX_TEXTURES_;
+	const u32 MATERIAL_MAX_TEXTURES = _NIRT_MATERIAL_MAX_TEXTURES_;
 
 	//! By default this is identical to MATERIAL_MAX_TEXTURES
 	/** Users can modify this value if they are certain they don't need all
@@ -293,7 +293,7 @@ namespace video
 		engine can be faster when reducing this value to the limit you need.
 
 		NOTE: This should only be changed once and before any call to createDevice.
-		NOTE: Do not set it below 1 or above the value of _IRR_MATERIAL_MAX_TEXTURES_.
+		NOTE: Do not set it below 1 or above the value of _NIRT_MATERIAL_MAX_TEXTURES_.
 		NOTE: Going below 4 is usually not worth it.
 	*/
 	NIRTCPP_API extern u32 MATERIAL_MAX_TEXTURES_USED;
@@ -445,14 +445,14 @@ namespace video
 		and -1.f to pull them towards the camera.  */
 		f32 PolygonOffsetSlopeScale;
 
-		//! DEPRECATED. Will be removed after Irrlicht 1.9. Please use PolygonOffsetDepthBias instead.
+		//! DEPRECATED. Will be removed after Nirtcpp 1.9. Please use PolygonOffsetDepthBias instead.
 		/** Factor specifying how far the polygon offset should be made.
 		Specifying 0 disables the polygon offset. The direction is specified separately.
 		The factor can be from 0 to 7.
 		Note: This probably never worked on Direct3D9 (was coded for D3D8 which had different value ranges)	*/
 		u8 PolygonOffsetFactor:3;
 
-		//! DEPRECATED. Will be removed after Irrlicht 1.9.
+		//! DEPRECATED. Will be removed after Nirtcpp 1.9.
 		/** Flag defining the direction the polygon offset is applied to.
 		Can be to front or to back, specified by values from E_POLYGON_OFFSET. 	*/
 		E_POLYGON_OFFSET PolygonOffsetDirection:2;

@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // created by Dean Wadsworth aka Varmint Dec 31 2007
 
-#ifndef IRR_I_VOLUME_LIGHT_SCENE_NODE_H_INCLUDED
-#define IRR_I_VOLUME_LIGHT_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_I_VOLUME_LIGHT_SCENE_NODE_H_INCLUDED
+#define NIRT_I_VOLUME_LIGHT_SCENE_NODE_H_INCLUDED
 
 #include "ISceneNode.h"
 
@@ -27,7 +27,7 @@ namespace scene
 			: ISceneNode(parent, mgr, id, position, rotation, scale) {};
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_VOLUME_LIGHT; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_VOLUME_LIGHT; }
 
 		//! Sets the number of segments across the U axis
 		virtual void setSubDivideU(const u32 inU) =0;

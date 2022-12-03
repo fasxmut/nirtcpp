@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CImageLoaderJPG.h"
 
-#ifdef _IRR_COMPILE_WITH_JPG_LOADER_
+#ifdef _NIRT_COMPILE_WITH_JPG_LOADER_
 
 #include "IReadFile.h"
 #include "CImage.h"
@@ -41,7 +41,7 @@ bool CImageLoaderJPG::isALoadableFileExtension(const io::path& filename) const
 }
 
 
-#ifdef _IRR_COMPILE_WITH_LIBJPEG_
+#ifdef _NIRT_COMPILE_WITH_LIBJPEG_
 
     // struct for handling jpeg errors
     struct irr_jpeg_error_mgr
@@ -116,12 +116,12 @@ void CImageLoaderJPG::output_message(j_common_ptr cinfo)
 	errMsg += *myerr->filename;
 	os::Printer::log(errMsg.c_str(),temp1, ELL_ERROR);
 }
-#endif // _IRR_COMPILE_WITH_LIBJPEG_
+#endif // _NIRT_COMPILE_WITH_LIBJPEG_
 
 //! returns true if the file maybe is able to be loaded by this class
 bool CImageLoaderJPG::isALoadableFileFormat(io::IReadFile* file) const
 {
-	#ifndef _IRR_COMPILE_WITH_LIBJPEG_
+	#ifndef _NIRT_COMPILE_WITH_LIBJPEG_
 	return false;
 	#else
 
@@ -136,8 +136,8 @@ bool CImageLoaderJPG::isALoadableFileFormat(io::IReadFile* file) const
 //! creates a surface from the file
 IImage* CImageLoaderJPG::loadImage(io::IReadFile* file) const
 {
-	#ifndef _IRR_COMPILE_WITH_LIBJPEG_
-	os::Printer::log("Can't load as not compiled with _IRR_COMPILE_WITH_LIBJPEG_", file->getFileName(), ELL_DEBUG);
+	#ifndef _NIRT_COMPILE_WITH_LIBJPEG_
+	os::Printer::log("Can't load as not compiled with _NIRT_COMPILE_WITH_LIBJPEG_", file->getFileName(), ELL_DEBUG);
 	return 0;
 	#else
 

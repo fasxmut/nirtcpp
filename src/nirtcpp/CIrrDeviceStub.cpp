@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CIrrDeviceStub.h"
 #include "ISceneManager.h"
@@ -17,7 +17,7 @@
 namespace irr
 {
 //! constructor
-CIrrDeviceStub::CIrrDeviceStub(const SIrrlichtCreationParameters& params)
+CIrrDeviceStub::CIrrDeviceStub(const SNirtcppCreationParameters& params)
 : NirtcppDevice(), VideoDriver(0), GUIEnvironment(0), SceneManager(0),
 	Timer(0), CursorControl(0), UserReceiver(params.EventReceiver),
 	Logger(0), Operator(0), Randomizer(0), FileSystem(0),
@@ -44,7 +44,7 @@ CIrrDeviceStub::CIrrDeviceStub(const SIrrlichtCreationParameters& params)
 	FileSystem = io::createFileSystem();
 	VideoModeList = new video::CVideoModeList();
 
-	core::stringc s = "Irrlicht Engine version ";
+	core::stringc s = "Nirtcpp Engine version ";
 	s.append(getVersion());
 	os::Printer::log(s.c_str(), ELL_INFORMATION);
 
@@ -95,7 +95,7 @@ CIrrDeviceStub::~CIrrDeviceStub()
 
 void CIrrDeviceStub::createGUIAndScene()
 {
-	#ifdef _IRR_COMPILE_WITH_GUI_
+	#ifdef _NIRT_COMPILE_WITH_GUI_
 	// create gui environment
 	GUIEnvironment = gui::createGUIEnvironment(FileSystem, VideoDriver, Operator);
 	#endif
@@ -178,7 +178,7 @@ bool CIrrDeviceStub::checkVersion(const char* version)
 	if (strcmp(getVersion(), version))
 	{
 		core::stringc w;
-		w = "Warning: The library version of the Irrlicht Engine (";
+		w = "Warning: The library version of the Nirtcpp Engine (";
 		w += getVersion();
 		w += ") does not match the version the application was compiled with (";
 		w += version;
@@ -298,22 +298,22 @@ namespace
 {
 	struct SDefaultRandomizer : public IRandomizer
 	{
-		virtual void reset(s32 value=0x0f0f0f0f) IRR_OVERRIDE
+		virtual void reset(s32 value=0x0f0f0f0f) override
 		{
 			os::Randomizer::reset(value);
 		}
 
-		virtual s32 rand() const IRR_OVERRIDE
+		virtual s32 rand() const override
 		{
 			return os::Randomizer::rand();
 		}
 
-		virtual f32 frand() const IRR_OVERRIDE
+		virtual f32 frand() const override
 		{
 			return os::Randomizer::frand();
 		}
 
-		virtual s32 randMax() const IRR_OVERRIDE
+		virtual s32 randMax() const override
 		{
 			return os::Randomizer::randMax();
 		}

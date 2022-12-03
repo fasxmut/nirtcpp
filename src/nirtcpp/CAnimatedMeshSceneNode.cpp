@@ -1,17 +1,17 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CAnimatedMeshSceneNode.h"
 #include "IVideoDriver.h"
 #include "ISceneManager.h"
 #include "S3DVertex.h"
 #include "os.h"
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 #include "CShadowVolumeSceneNode.h"
 #else
 #include "IShadowVolumeSceneNode.h"
-#endif // _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 #include "IAnimatedMeshMD3.h"
 #include "CSkinnedMesh.h"
 #include "IDummyTransformationSceneNode.h"
@@ -199,7 +199,7 @@ IMesh * CAnimatedMeshSceneNode::getMeshForCurrentFrame()
 	}
 	else
 	{
-#ifndef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifndef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 		return 0;
 #else
 
@@ -555,7 +555,7 @@ u32 CAnimatedMeshSceneNode::getMaterialCount() const
 IShadowVolumeSceneNode* CAnimatedMeshSceneNode::addShadowVolumeSceneNode(
 		const IMesh* shadowMesh, s32 id, bool zfailmethod, f32 infinity)
 {
-#ifdef _IRR_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 	if (!SceneManager->getVideoDriver()->queryFeature(video::EVDF_STENCIL_BUFFER))
 		return 0;
 
@@ -576,8 +576,8 @@ IShadowVolumeSceneNode* CAnimatedMeshSceneNode::addShadowVolumeSceneNode(
 //! the corresponding joint, if the mesh in this scene node is a skinned mesh.
 IBoneSceneNode* CAnimatedMeshSceneNode::getJointNode(const c8* jointName)
 {
-#ifndef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
-	os::Printer::log("Compiled without _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_", ELL_WARNING);
+#ifndef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+	os::Printer::log("Compiled without _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_", ELL_WARNING);
 	return 0;
 #else
 
@@ -615,8 +615,8 @@ IBoneSceneNode* CAnimatedMeshSceneNode::getJointNode(const c8* jointName)
 //! the corresponding joint, if the mesh in this scene node is a skinned mesh.
 IBoneSceneNode* CAnimatedMeshSceneNode::getJointNode(u32 jointID)
 {
-#ifndef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
-	os::Printer::log("Compiled without _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_", ELL_WARNING);
+#ifndef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+	os::Printer::log("Compiled without _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_", ELL_WARNING);
 	return 0;
 #else
 
@@ -641,7 +641,7 @@ IBoneSceneNode* CAnimatedMeshSceneNode::getJointNode(u32 jointID)
 //! Gets joint count.
 u32 CAnimatedMeshSceneNode::getJointCount() const
 {
-#ifndef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifndef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 	return 0;
 #else
 
@@ -941,7 +941,7 @@ void CAnimatedMeshSceneNode::setRenderFromIdentity(bool enable)
 //! updates the joint positions of this mesh
 void CAnimatedMeshSceneNode::animateJoints(bool CalculateAbsolutePositions)
 {
-#ifndef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifndef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 	return;
 #else
 	if (Mesh && Mesh->getMeshType() == EAMT_SKINNED )
@@ -1022,7 +1022,7 @@ void CAnimatedMeshSceneNode::animateJoints(bool CalculateAbsolutePositions)
 */
 void CAnimatedMeshSceneNode::checkJoints()
 {
-#ifndef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifndef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 	return;
 #else
 

@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // Because I (Nikolaus Gebhardt) did some changes to Murphy McCauley's loader,
 // I'm writing this down here:
@@ -11,13 +11,13 @@
 
 //
 //  COCTLoader by Murphy McCauley (February 2005)
-//  An Irrlicht loader for OCT files
+//  An Nirtcpp loader for OCT files
 //
 //  OCT file format information comes from the sourcecode of the Fluid Studios
 //  Radiosity Processor by Paul Nettle.  You can get that sourcecode from
 //  http://www.fluidstudios.com .
 //
-//  Parts of this code are from Irrlicht's CQ3LevelMesh and C3DSMeshFileLoader,
+//  Parts of this code are from Nirtcpp's CQ3LevelMesh and C3DSMeshFileLoader,
 //  and are Copyright (C) 2002-2004 Nikolaus Gebhardt.
 //
 //  Use of this code is subject to the following:
@@ -40,8 +40,8 @@
 //  4. You may not use this software to directly or indirectly cause harm to others.
 
 
-#ifndef IRR_C_OCT_LOADER_H_INCLUDED
-#define IRR_C_OCT_LOADER_H_INCLUDED
+#ifndef NIRT_C_OCT_LOADER_H_INCLUDED
+#define NIRT_C_OCT_LOADER_H_INCLUDED
 
 #include "IMeshLoader.h"
 #include "IReadFile.h"
@@ -70,13 +70,13 @@ namespace scene
 
 		//! returns true if the file maybe is able to be loaded by this class
 		//! based on the file extension (e.g. ".cob")
-		virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+		virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 		//! creates/loads an animated mesh from the file.
 		//! \return Pointer to the created mesh. Returns 0 if loading failed.
 		//! If you no longer need the mesh, you should call IAnimatedMesh::drop().
 		//! See IReferenceCounted::drop() for more information.
-		virtual IAnimatedMesh* createMesh(io::IReadFile* file) IRR_OVERRIDE;
+		virtual IAnimatedMesh* createMesh(io::IReadFile* file) override;
 
 		void OCTLoadLights(io::IReadFile* file,
 				ISceneNode * parent = 0, f32 radius = 500.0f,

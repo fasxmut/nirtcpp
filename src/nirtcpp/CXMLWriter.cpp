@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CXMLWriter.h"
 
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 
 #include <wchar.h>
 #include "irrString.h"
@@ -239,9 +239,9 @@ void CXMLWriter::writeLineBreak()
 	if (!File)
 		return;
 
-#if defined(_IRR_OSX_PLATFORM_)
+#if defined(_NIRT_OSX_PLATFORM_)
 	File->write(L"\r", sizeof(wchar_t));
-#elif defined(_IRR_WINDOWS_API_)
+#elif defined(_NIRT_WINDOWS_API_)
 	File->write(L"\r\n", 2*sizeof(wchar_t));
 #else
 	File->write(L"\n", sizeof(wchar_t));
@@ -456,9 +456,9 @@ void CXMLWriterUTF8::writeLineBreak()
 	if (!File)
 		return;
 
-#if defined(_IRR_OSX_PLATFORM_)
+#if defined(_NIRT_OSX_PLATFORM_)
 	File->write("\r", sizeof(c8));
-#elif defined(_IRR_WINDOWS_API_)
+#elif defined(_NIRT_WINDOWS_API_)
 	File->write("\r\n", 2*sizeof(c8));
 #else
 	File->write("\n", sizeof(c8));
@@ -469,4 +469,4 @@ void CXMLWriterUTF8::writeLineBreak()
 } // end namespace irr
 } // end namespace io
 
-#endif // _IRR_COMPILE_WITH_XML_
+#endif // _NIRT_COMPILE_WITH_XML_

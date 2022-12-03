@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_S_COLOR_H_INCLUDED
-#define IRR_S_COLOR_H_INCLUDED
+#ifndef NIRT_S_COLOR_H_INCLUDED
+#define NIRT_S_COLOR_H_INCLUDED
 
 #include "irrTypes.h"
 #include "irrMath.h"
@@ -12,7 +12,7 @@ namespace irr
 {
 namespace video
 {
-	//! An enum for the color format of textures used by the Irrlicht Engine.
+	//! An enum for the color format of textures used by the Nirtcpp Engine.
 	/** A color format specifies how color information is stored.
 	    NOTE: Byte order in memory is usually flipped (it's probably correct in bitmap files, but flipped on reading).
 	    So for example ECF_A8R8G8B8 is BGRA in memory same as in DX9's D3DFMT_A8R8G8B8 format.
@@ -20,7 +20,7 @@ namespace video
 	enum ECOLOR_FORMAT
 	{
 		//! 16 bit color format used by the software driver.
-		/** It is thus preferred by all other irrlicht engine video drivers.
+		/** It is thus preferred by all other nirtcpp engine video drivers.
 		There are 5 bits for every color component, and a single bit is left
 		for alpha information. */
 		ECF_A1R5G5B5 = 0,
@@ -265,7 +265,7 @@ namespace video
 
 
 	//! Returns the alpha component from A1R5G5B5 color
-	/** In Irrlicht, alpha refers to opacity.
+	/** In Nirtcpp, alpha refers to opacity.
 	\return The alpha value of the color. 0 is transparent, 1 is opaque. */
 	inline u32 getAlpha(u16 color)
 	{
@@ -307,8 +307,8 @@ namespace video
 	//! Class representing a 32 bit ARGB color.
 	/** The color values for alpha, red, green, and blue are
 	stored in a single u32. So all four values may be between 0 and 255.
-	Alpha in Irrlicht is opacity, so 0 is fully transparent, 255 is fully opaque (solid).
-	This class is used by most parts of the Irrlicht Engine
+	Alpha in Nirtcpp is opacity, so 0 is fully transparent, 255 is fully opaque (solid).
+	This class is used by most parts of the Nirtcpp Engine
 	to specify a color. Another way is using the class SColorf, which
 	stores the color values in 4 floats.
 	This class must consist of only one u32 and must not use virtual functions.

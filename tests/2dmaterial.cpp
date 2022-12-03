@@ -646,7 +646,7 @@ private:
 // draw2dimage version, hence the name.
 static bool draw2DImage4c(video::E_DRIVER_TYPE type)
 {
-	IrrlichtDevice *device = createDevice(type, core::dimension2d<u32>(240, 120));
+	NirtcppDevice *device = createDevice(type, core::dimension2d<u32>(240, 120));
 
 	if (!device)
 		return true; // could not create selected driver.
@@ -745,13 +745,13 @@ static bool draw2DImage4c(video::E_DRIVER_TYPE type)
 // TODO: Works only for OpenGL right now
 static bool addBlend2d(video::E_DRIVER_TYPE type)
 {
-	SIrrlichtCreationParameters params;
+	SNirtcppCreationParameters params;
 	params.AntiAlias = 0;
 	params.Bits = 32;
 	params.WindowSize = core::dimension2d<u32>(160, 120);
 	params.DriverType = type;
 
-	IrrlichtDevice *device = createDeviceEx(params);
+	NirtcppDevice *device = createDeviceEx(params);
 
 	if (!device)
 		return true; // in case the driver type does not exist
@@ -842,7 +842,7 @@ static bool addBlend2d(video::E_DRIVER_TYPE type)
 // at the bottom left is not.
 static bool moreFilterTests(video::E_DRIVER_TYPE type)
 {
-	IrrlichtDevice* device = irr::createDevice(type, core::dimension2du(160,120));
+	NirtcppDevice* device = irr::createDevice(type, core::dimension2du(160,120));
 	if (!device)
 		return true;
 
@@ -862,7 +862,7 @@ static bool moreFilterTests(video::E_DRIVER_TYPE type)
 	logTestString("Testing driver %ls\n", driver->getName());
 
 	driver->setTextureCreationFlag(video::ETCF_CREATE_MIP_MAPS, false);
-	video::ITexture* tex = driver->getTexture("../media/irrlichtlogo.jpg");
+	video::ITexture* tex = driver->getTexture("../media/nirtcpplogo.jpg");
 	gui::IGUIImage* image = gui->addImage(core::recti(0,0,64,64));
 	image->setScaleImage(true);
 	image->setImage(tex);
@@ -905,7 +905,7 @@ bool twodmaterial()
 	bool result = true;
 	TestWithAllDrivers(addBlend2d);
 	TestWithAllDrivers(moreFilterTests);
-#ifdef 	_IRR_COMPILE_WITH_XML_
+#ifdef 	_NIRT_COMPILE_WITH_XML_
 	TestWithAllDrivers(draw2DImage4c);
 #endif
 	return result;

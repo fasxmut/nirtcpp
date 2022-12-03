@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_TYPES_H_INCLUDED
-#define IRR_TYPES_H_INCLUDED
+#ifndef NIRT_TYPES_H_INCLUDED
+#define NIRT_TYPES_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
@@ -72,7 +72,7 @@ typedef signed int		s32;
 #endif
 
 
-#ifdef __IRR_HAS_S64
+#ifdef __NIRT_HAS_S64
 //! 64 bit unsigned variable.
 /** This is a typedef for 64bit uint, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
@@ -100,7 +100,7 @@ __extension__ typedef long long			s64;
 #else
 typedef long long				s64;
 #endif
-#endif	// __IRR_HAS_S64
+#endif	// __NIRT_HAS_S64
 
 
 
@@ -117,17 +117,17 @@ typedef double				f64;
 
 
 #include <wchar.h>
-#ifdef _IRR_WINDOWS_API_
-//! Defines for s{w,n}printf_irr because s{w,n}printf methods do not match the ISO C
+#ifdef _NIRT_WINDOWS_API_
+//! Defines for s{w,n}printf_nirt because s{w,n}printf methods do not match the ISO C
 //! standard on Windows platforms.
-//! We want int snprintf_irr(char *str, size_t size, const char *format, ...);
-//! and int swprintf_irr(wchar_t *wcs, size_t maxlen, const wchar_t *format, ...);
+//! We want int snprintf_nirt(char *str, size_t size, const char *format, ...);
+//! and int swprintf_nirt(wchar_t *wcs, size_t maxlen, const wchar_t *format, ...);
 #if defined(_MSC_VER) && _MSC_VER > 1310 && !defined (_WIN32_WCE)
-#define swprintf_irr swprintf_s
-#define snprintf_irr sprintf_s
+#define swprintf_nirt swprintf_s
+#define snprintf_nirt sprintf_s
 #elif !defined(__CYGWIN__)
-#define swprintf_irr _snwprintf
-#define snprintf_irr _snprintf
+#define swprintf_nirt _snwprintf
+#define snprintf_nirt _snprintf
 #endif
 
 // define the wchar_t type if not already built in.
@@ -147,9 +147,9 @@ typedef unsigned short wchar_t;
 #endif // wchar is not defined
 #endif // microsoft compiler
 #else
-#define swprintf_irr swprintf
-#define snprintf_irr snprintf
-#endif // _IRR_WINDOWS_API_
+#define swprintf_nirt swprintf
+#define snprintf_nirt snprintf
+#endif // _NIRT_WINDOWS_API_
 
 namespace irr
 {
@@ -160,67 +160,53 @@ namespace irr
 Else it is a 8 bit character variable. Used for ansi filesystem and non-unicode
 strings
 */
-#if defined(_IRR_WCHAR_FILESYSTEM)
+#if defined(_NIRT_WCHAR_FILESYSTEM)
 	typedef wchar_t fschar_t;
-	#define IRR_TEXT(X) L##X
+	#define NIRT_TEXT(X) L##X
 #else
 	typedef char fschar_t;
-	#define IRR_TEXT(X) X
+	#define NIRT_TEXT(X) X
 #endif
 
 } // end namespace irr
 
 //! define a break macro for debugging.
 #if defined(_DEBUG)
-#if defined(_IRR_WINDOWS_API_) && defined(_MSC_VER) && !defined (_WIN32_WCE)
+#if defined(_NIRT_WINDOWS_API_) && defined(_MSC_VER) && !defined (_WIN32_WCE)
 #if defined(WIN64) || defined(_WIN64) // using portable common solution for x64 configuration
 	#include <crtdbg.h>
-	#define IRR_DEBUG_BREAK_IF( _CONDITION_ ) if (_CONDITION_) {_CrtDbgBreak();}
+	#define NIRT_DEBUG_BREAK_IF( _CONDITION_ ) if (_CONDITION_) {_CrtDbgBreak();}
 #else
-	#define IRR_DEBUG_BREAK_IF( _CONDITION_ ) if (_CONDITION_) {_asm int 3}
+	#define NIRT_DEBUG_BREAK_IF( _CONDITION_ ) if (_CONDITION_) {_asm int 3}
 #endif
 #else
 	#include "assert.h"
-	#define IRR_DEBUG_BREAK_IF( _CONDITION_ ) assert( !(_CONDITION_) );
+	#define NIRT_DEBUG_BREAK_IF( _CONDITION_ ) assert( !(_CONDITION_) );
 #endif
 #else
-	#define IRR_DEBUG_BREAK_IF( _CONDITION_ )
+	#define NIRT_DEBUG_BREAK_IF( _CONDITION_ )
 #endif
 
 //! Defines a deprecated macro which generates a warning at compile time
 /** The usage is simple
-For typedef:		typedef IRR_DEPRECATED int test1;
-For classes/structs:	class IRR_DEPRECATED test2 { ... };
-For methods:		class test3 { IRR_DEPRECATED virtual void foo() {} };
-For functions:		template<class T> IRR_DEPRECATED void test4(void) {}
+For typedef:		typedef NIRT_DEPRECATED int test1;
+For classes/structs:	class NIRT_DEPRECATED test2 { ... };
+For methods:		class test3 { NIRT_DEPRECATED virtual void foo() {} };
+For functions:		template<class T> NIRT_DEPRECATED void test4(void) {}
 **/
 #if defined(IGNORE_DEPRECATED_WARNING)
-#define IRR_DEPRECATED
+#define NIRT_DEPRECATED
 #elif _MSC_VER >= 1310 //vs 2003 or higher
-#define IRR_DEPRECATED __declspec(deprecated)
+#define NIRT_DEPRECATED __declspec(deprecated)
 #elif (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 1)) // all versions above 3.0 should support this feature
-#define IRR_DEPRECATED  __attribute__ ((deprecated))
+#define NIRT_DEPRECATED  __attribute__ ((deprecated))
 #else
-#define IRR_DEPRECATED
-#endif
-
-//! Defines an override macro, to protect virtual functions from typos and other mismatches
-/** Usage in a derived class:
-virtual void somefunc() IRR_OVERRIDE;
-*/
-#if ( ((__GNUC__ > 4 ) || ((__GNUC__ == 4 ) && (__GNUC_MINOR__ >= 7))) && (defined(__GXX_EXPERIMENTAL_CXX0X) || __cplusplus >= 201103L) )
-#define IRR_OVERRIDE override
-#elif (_MSC_VER >= 1600 ) /* supported since MSVC 2010 */
-#define IRR_OVERRIDE override
-#elif (__clang_major__ >= 3 && __has_feature(cxx_override_control))
-#define IRR_OVERRIDE override
-#else
-#define IRR_OVERRIDE
+#define NIRT_DEPRECATED
 #endif
 
 // memory debugging
 #if defined(_DEBUG) && defined(NIRTCPP_EXPORTS) && defined(_MSC_VER) && \
-	(_MSC_VER > 1299) && !defined(IRR_DONT_DO_MEMORY_DEBUGGING_HERE) && !defined(_WIN32_WCE)
+	(_MSC_VER > 1299) && !defined(NIRT_DONT_DO_MEMORY_DEBUGGING_HERE) && !defined(_WIN32_WCE)
 
 	#define CRTDBG_MAP_ALLOC
 	#define _CRTDBG_MAP_ALLOC
@@ -232,18 +218,18 @@ virtual void somefunc() IRR_OVERRIDE;
 
 //! ignore VC8 warning deprecated
 /** The Microsoft compiler */
-#if defined(_IRR_WINDOWS_API_) && defined(_MSC_VER) && (_MSC_VER >= 1400)
+#if defined(_NIRT_WINDOWS_API_) && defined(_MSC_VER) && (_MSC_VER >= 1400)
 	//#pragma warning( disable: 4996)
 	//#define _CRT_SECURE_NO_DEPRECATE 1
 	//#define _CRT_NONSTDC_NO_DEPRECATE 1
 #endif
 
 
-//! creates four CC codes used in Irrlicht for simple ids
+//! creates four CC codes used in Nirtcpp for simple ids
 /** some compilers can create those by directly writing the
 code like 'code', but some generate warnings so we use this macro here */
-#define MAKE_IRR_ID(c0, c1, c2, c3) \
+#define MAKE_NIRT_ID(c0, c1, c2, c3) \
 		((irr::u32)(irr::u8)(c0) | ((irr::u32)(irr::u8)(c1) << 8) | \
 		((irr::u32)(irr::u8)(c2) << 16) | ((irr::u32)(irr::u8)(c3) << 24 ))
 
-#endif // IRR_TYPES_H_INCLUDED
+#endif // NIRT_TYPES_H_INCLUDED

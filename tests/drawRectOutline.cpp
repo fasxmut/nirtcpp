@@ -7,7 +7,7 @@ namespace
 
 bool testWithDriver(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device =
+	NirtcppDevice *device =
 		createDevice(driverType, core::dimension2du(160, 120));
 	if (!device)
 		return true;

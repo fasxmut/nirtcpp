@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SCENE_NODE_ANIMATOR_H_INCLUDED
-#define IRR_I_SCENE_NODE_ANIMATOR_H_INCLUDED
+#ifndef NIRT_I_SCENE_NODE_ANIMATOR_H_INCLUDED
+#define NIRT_I_SCENE_NODE_ANIMATOR_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "vector3d.h"
@@ -55,7 +55,7 @@ namespace scene
 		}
 
 		//! Event receiver, override this function for camera controlling animators
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE
+		virtual bool OnEvent(const SEvent& event) override
 		{
 			return false;
 		}
@@ -129,14 +129,14 @@ namespace scene
 		}
 
 		//! Writes attributes of the scene node animator.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override
 		{
 			out->addBool("IsEnabled", IsEnabled);
 			// timers not serialized as they usually depend on system-time which is different on each application start.
 		}
 
 		//! Reads attributes of the scene node animator.
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override
 		{
 			IsEnabled = in->getAttributeAsBool("IsEnabled", IsEnabled);
 			PauseTimeSum = 0;

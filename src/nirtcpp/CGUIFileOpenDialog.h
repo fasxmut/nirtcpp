@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_FILE_OPEN_DIALOG_H_INCLUDED
-#define IRR_C_GUI_FILE_OPEN_DIALOG_H_INCLUDED
+#ifndef NIRT_C_GUI_FILE_OPEN_DIALOG_H_INCLUDED
+#define NIRT_C_GUI_FILE_OPEN_DIALOG_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIFileOpenDialog.h"
 #include "IGUIButton.h"
@@ -32,25 +32,25 @@ namespace gui
 		virtual ~CGUIFileOpenDialog();
 
 		//! returns the filename of the selected file. Returns NULL, if no file was selected.
-		virtual const wchar_t* getFileName() const IRR_OVERRIDE;
+		virtual const wchar_t* getFileName() const override;
 
 		//! Returns the filename of the selected file. Is empty if no file was selected.
-		virtual const io::path& getFileNameP() const IRR_OVERRIDE;
+		virtual const io::path& getFileNameP() const override;
 
 		//! Returns the directory of the selected file. Returns NULL, if no directory was selected.
-		virtual const io::path& getDirectoryName() const IRR_OVERRIDE;
+		virtual const io::path& getDirectoryName() const override;
 
 		//! Returns the directory of the selected file converted to wide characters. Returns NULL if no directory was selected.
-		virtual const wchar_t* getDirectoryNameW() const IRR_OVERRIDE;
+		virtual const wchar_t* getDirectoryNameW() const override;
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent& event) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE;
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override;
 
 	protected:
 
@@ -93,6 +93,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
-#endif // IRR_C_GUI_FILE_OPEN_DIALOG_H_INCLUDED
+#endif // NIRT_C_GUI_FILE_OPEN_DIALOG_H_INCLUDED

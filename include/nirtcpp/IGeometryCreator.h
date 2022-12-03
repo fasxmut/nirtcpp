@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GEOMETRY_CREATOR_H_INCLUDED
-#define IRR_I_GEOMETRY_CREATOR_H_INCLUDED
+#ifndef NIRT_I_GEOMETRY_CREATOR_H_INCLUDED
+#define NIRT_I_GEOMETRY_CREATOR_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "IMesh.h"
@@ -24,7 +24,7 @@ namespace scene
 	{
 		//! Single buffer with 12 different vertices, normals are average of adjacent planes
 		//! Order for outgoing (front-face) normals of planes would be: NEG_Z, POS_X, POS_Z, NEG_X, POS_Y, NEG_Y
-		//! This was the only available type before Irrlicht 1.9, so it's still the default in some functions.
+		//! This was the only available type before Nirtcpp 1.9, so it's still the default in some functions.
 		//! It has the least vertices, but is pretty much unusable if you have dynamic light
 		ECMT_1BUF_12VTX_NA,
 
@@ -244,4 +244,4 @@ public:
 } // end namespace scene
 } // end namespace irr
 
-#endif // IRR_I_GEOMETRY_CREATOR_H_INCLUDED
+#endif // NIRT_I_GEOMETRY_CREATOR_H_INCLUDED

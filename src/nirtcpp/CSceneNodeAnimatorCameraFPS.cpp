@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CSceneNodeAnimatorCameraFPS.h"
 #include "IVideoDriver.h"
@@ -20,10 +20,10 @@ CSceneNodeAnimatorCameraFPS::CSceneNodeAnimatorCameraFPS(gui::ICursorControl* cu
 		f32 rotateSpeed, f32 moveSpeed, f32 jumpSpeed,
 		SKeyMap* keyMapArray, u32 keyMapSize, bool noVerticalMovement, bool invertY, float rotateSpeedKeyboard)
 : CursorControl(cursorControl),
-// On X11 we get events even when mouse is not inside the Irrlicht window, on Windows we don't.
+// On X11 we get events even when mouse is not inside the Nirtcpp window, on Windows we don't.
 // It might be possible to add grabbing on Windows as well in which case this has to be somewhat changed.
-// TODO: I don't know about OSX, but in theory it should be like old Irrlicht 1.8 behavior whatever that was there.
-#ifdef _IRR_COMPILE_WITH_X11_DEVICE_
+// TODO: I don't know about OSX, but in theory it should be like old Nirtcpp 1.8 behavior whatever that was there.
+#ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
 	GrabMouse(false),
 #else
 	GrabMouse(true),

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_MESH_H_INCLUDED
-#define IRR_I_MESH_H_INCLUDED
+#ifndef NIRT_I_MESH_H_INCLUDED
+#define NIRT_I_MESH_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "SMaterial.h"
@@ -39,7 +39,7 @@ namespace scene
 		//! My3D Mesh, the file format by Zhuck Dimitry
 		EAMT_MY3D,
 
-		//! Pulsar LMTools .lmts file. This Irrlicht loader was written by Jonas Petersen
+		//! Pulsar LMTools .lmts file. This Nirtcpp loader was written by Jonas Petersen
 		EAMT_LMTS,
 
 		//! Cartography Shop .csm file. This loader was created by Saurav Mohapatra.
@@ -47,7 +47,7 @@ namespace scene
 
 		//! .oct file for Paul Nette's FSRad or from Murphy McCauley's Blender .oct exporter.
 		/** The oct file format contains 3D geometry and lightmaps and
-		can be loaded directly by Irrlicht */
+		can be loaded directly by Nirtcpp */
 		EAMT_OCT,
 
 		//! Halflife MDL model file

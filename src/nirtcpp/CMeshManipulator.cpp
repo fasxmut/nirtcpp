@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CMeshManipulator.h"
 #include "SMesh.h"
@@ -163,9 +163,9 @@ void calculateTangents(
 {
 	// choose one of them:
 	//#define USE_NVIDIA_GLH_VERSION // use version used by nvidia in glh headers
-	#define USE_IRR_VERSION
+	#define USE_NIRT_VERSION
 
-#ifdef USE_IRR_VERSION
+#ifdef USE_NIRT_VERSION
 
 	core::vector3df v1 = vt1 - vt2;
 	core::vector3df v2 = vt3 - vt1;
@@ -195,7 +195,7 @@ void calculateTangents(
 		binormal *= -1.0f;
 	}
 
-#endif // USE_IRR_VERSION
+#endif // USE_NIRT_VERSION
 
 #ifdef USE_NVIDIA_GLH_VERSION
 

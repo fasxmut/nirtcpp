@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
 
 #include "CIrrDeviceSDL.h"
 #include "IEventReceiver.h"
@@ -30,13 +30,13 @@ namespace irr
 {
 	namespace video
 	{
-		#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
-		IVideoDriver* createDirectX9Driver(const irr::SIrrlichtCreationParameters& params,
+		#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
+		IVideoDriver* createDirectX9Driver(const irr::SNirtcppCreationParameters& params,
 			io::IFileSystem* io, HWND window);
 		#endif
 
-		#ifdef _IRR_COMPILE_WITH_OPENGL_
-		IVideoDriver* createOpenGLDriver(const SIrrlichtCreationParameters& params,
+		#ifdef _NIRT_COMPILE_WITH_OPENGL_
+		IVideoDriver* createOpenGLDriver(const SNirtcppCreationParameters& params,
 				io::IFileSystem* io, CIrrDeviceSDL* device);
 		#endif
 	} // end namespace video
@@ -48,7 +48,7 @@ namespace irr
 {
 
 //! constructor
-CIrrDeviceSDL::CIrrDeviceSDL(const SIrrlichtCreationParameters& param)
+CIrrDeviceSDL::CIrrDeviceSDL(const SNirtcppCreationParameters& param)
 	: CIrrDeviceStub(param),
 	Screen((SDL_Surface*)param.WindowId), SDL_Flags(SDL_ANYFORMAT),
 	MouseX(0), MouseY(0), MouseButtonStates(0),
@@ -64,7 +64,7 @@ CIrrDeviceSDL::CIrrDeviceSDL(const SIrrlichtCreationParameters& param)
 		// Initialize SDL... Timer for sleep, video for the obvious, and
 		// noparachute prevents SDL from catching fatal errors.
 		if (SDL_Init( SDL_INIT_TIMER|SDL_INIT_VIDEO|
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 					SDL_INIT_JOYSTICK|
 #endif
 					SDL_INIT_NOPARACHUTE ) < 0)
@@ -77,9 +77,9 @@ CIrrDeviceSDL::CIrrDeviceSDL(const SIrrlichtCreationParameters& param)
 			os::Printer::log("SDL initialized", ELL_INFORMATION);
 		}
 
-#if defined(_IRR_WINDOWS_)
+#if defined(_NIRT_WINDOWS_)
 		SDL_putenv("SDL_VIDEODRIVER=directx");
-#elif defined(_IRR_OSX_PLATFORM_)
+#elif defined(_NIRT_OSX_PLATFORM_)
 		SDL_putenv("SDL_VIDEODRIVER=Quartz");
 #else
 		SDL_putenv("SDL_VIDEODRIVER=x11");
@@ -142,7 +142,7 @@ CIrrDeviceSDL::~CIrrDeviceSDL()
 {
 	if ( --SDLDeviceInstances == 0 )
 	{
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 		const u32 numJoysticks = Joysticks.size();
 		for (u32 i=0; i<numJoysticks; ++i)
 			SDL_JoystickClose(Joysticks[i]);
@@ -233,20 +233,20 @@ void CIrrDeviceSDL::createDriver()
 	switch(CreationParams.DriverType)
 	{
 	case video::DEPRECATED_EDT_DIRECT3D8_NO_LONGER_EXISTS:
-		os::Printer::log("DIRECT3D8 Driver is no longer supported in Irrlicht. Try another one.", ELL_ERROR);
+		os::Printer::log("DIRECT3D8 Driver is no longer supported in Nirtcpp. Try another one.", ELL_ERROR);
 		break;
 
 	case video::EDT_DIRECT3D9:
-		#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+		#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 		os::Printer::log("SDL device does not support DIRECT3D9 driver. Try another one.", ELL_ERROR);
 		#else
 		os::Printer::log("DIRECT3D9 Driver was not compiled into this dll. Try another one.", ELL_ERROR);
-		#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+		#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 		break;
 
 	case video::EDT_SOFTWARE:
-		#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+		#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 		VideoDriver = video::createSoftwareDriver(CreationParams.WindowSize, CreationParams.Fullscreen, FileSystem, this);
 		#else
 		os::Printer::log("No Software driver support compiled in.", ELL_ERROR);
@@ -254,7 +254,7 @@ void CIrrDeviceSDL::createDriver()
 		break;
 
 	case video::EDT_BURNINGSVIDEO:
-		#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+		#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 		VideoDriver = video::createBurningVideoDriver(CreationParams, FileSystem, this);
 		#else
 		os::Printer::log("Burning's video driver was not compiled in.", ELL_ERROR);
@@ -262,7 +262,7 @@ void CIrrDeviceSDL::createDriver()
 		break;
 
 	case video::EDT_OPENGL:
-		#ifdef _IRR_COMPILE_WITH_OPENGL_
+		#ifdef _NIRT_COMPILE_WITH_OPENGL_
 		VideoDriver = video::createOpenGLDriver(CreationParams, FileSystem, this);
 		#else
 		os::Printer::log("No OpenGL support compiled in.", ELL_ERROR);
@@ -399,7 +399,7 @@ bool CIrrDeviceSDL::run()
 				else
 					key = (EKEY_CODE)KeyMap[idx].Win32Key;
 
-#ifdef _IRR_WINDOWS_API_
+#ifdef _NIRT_WINDOWS_API_
 				// handle alt+f4 in Windows, because SDL seems not to
 				if ( (SDL_event.key.keysym.mod & KMOD_LALT) && key == KEY_F4)
 				{
@@ -451,7 +451,7 @@ bool CIrrDeviceSDL::run()
 
 	} // end while
 
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	// TODO: Check if the multiple open/close calls are too expensive, then
 	// open/close in the constructor/destructor instead
 
@@ -537,7 +537,7 @@ bool CIrrDeviceSDL::run()
 //! Activate any joysticks, and generate events for them.
 bool CIrrDeviceSDL::activateJoysticks(core::array<SJoystickInfo> & joystickInfo)
 {
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 	joystickInfo.clear();
 
 	// we can name up to 256 different joysticks
@@ -572,7 +572,7 @@ bool CIrrDeviceSDL::activateJoysticks(core::array<SJoystickInfo> & joystickInfo)
 
 	return true;
 
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
 	return false;
 }
@@ -742,11 +742,11 @@ void CIrrDeviceSDL::setResizable(bool resize)
 {
 	if (resize != Resizable)
 	{
-#if defined(_IRR_COMPILE_WITH_OPENGL_) && defined(_IRR_WINDOWS_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_) && defined(_NIRT_WINDOWS_)
 		if ( SDL_Flags & SDL_OPENGL )
 		{
-			// For unknown reasons the hack with sharing resources which was added in Irrlicht 1.8.5 for this no longer works in 1.9
-			// But at least we got a new WindowResizable flag since Irrlicht 1.9.
+			// For unknown reasons the hack with sharing resources which was added in Nirtcpp 1.8.5 for this no longer works in 1.9
+			// But at least we got a new WindowResizable flag since Nirtcpp 1.9.
 			os::Printer::log("setResizable not supported with this device/driver combination. Use SIrrCreationParameters.WindowResizable instead.", ELL_WARNING);
 			return;
 		}
@@ -816,7 +816,7 @@ bool CIrrDeviceSDL::isWindowMinimized() const
 bool CIrrDeviceSDL::setGammaRamp( f32 red, f32 green, f32 blue, f32 brightness, f32 contrast )
 {
 	/*
-	// todo: Gamma in SDL takes ints, what does Irrlicht use?
+	// todo: Gamma in SDL takes ints, what does Nirtcpp use?
 	return (SDL_SetGamma(red, green, blue) != -1);
 	*/
 	return false;
@@ -999,5 +999,5 @@ void CIrrDeviceSDL::createKeyMap()
 
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_SDL_DEVICE_
+#endif // _NIRT_COMPILE_WITH_SDL_DEVICE_
 

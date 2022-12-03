@@ -1,13 +1,13 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_OGLCORE_RENDER_TARGET_H_INCLUDED
-#define IRR_C_OGLCORE_RENDER_TARGET_H_INCLUDED
+#ifndef NIRT_C_OGLCORE_RENDER_TARGET_H_INCLUDED
+#define NIRT_C_OGLCORE_RENDER_TARGET_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#if defined(_IRR_COMPILE_WITH_OPENGL_) || defined(_IRR_COMPILE_WITH_OGLES1_) || defined(_IRR_COMPILE_WITH_OGLES2_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_) || defined(_NIRT_COMPILE_WITH_OGLES1_) || defined(_NIRT_COMPILE_WITH_OGLES2_)
 
 #include "IRenderTarget.h"
 
@@ -58,7 +58,7 @@ public:
 			DepthStencil->drop();
 	}
 
-	virtual void setTextures(ITexture* const * textures, u32 numTextures, ITexture* depthStencil, const E_CUBE_SURFACE* cubeSurfaces, u32 numCubeSurfaces) IRR_OVERRIDE
+	virtual void setTextures(ITexture* const * textures, u32 numTextures, ITexture* depthStencil, const E_CUBE_SURFACE* cubeSurfaces, u32 numCubeSurfaces) override
 	{
 		bool needSizeUpdate = false;
 

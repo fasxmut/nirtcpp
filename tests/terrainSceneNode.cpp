@@ -10,7 +10,7 @@ namespace
 // test camera changes with terrain scene node recalculation
 bool terrainRecalc(void)
 {
-	IrrlichtDevice *device =
+	NirtcppDevice *device =
 		createDevice(video::EDT_BURNINGSVIDEO, dimension2du(160, 120), 32);
 
 	if (!device)
@@ -77,7 +77,7 @@ bool terrainRecalc(void)
 
 bool terrainGaps()
 {
-	IrrlichtDevice* device = createDevice(video::EDT_BURNINGSVIDEO, dimension2d<u32>(160, 120));
+	NirtcppDevice* device = createDevice(video::EDT_BURNINGSVIDEO, dimension2d<u32>(160, 120));
 	if (!device)
 		return true;
 

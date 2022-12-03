@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "CD3D9ShaderMaterialRenderer.h"
 #include "IShaderConstantSetCallBack.h"
@@ -12,7 +12,7 @@
 #include "os.h"
 #include "irrString.h"
 
-#ifndef _IRR_D3D_NO_SHADER_DEBUGGING
+#ifndef _NIRT_D3D_NO_SHADER_DEBUGGING
 #include <stdio.h>
 #endif
 
@@ -173,7 +173,7 @@ bool CD3D9ShaderMaterialRenderer::createPixelShader(const c8* pxsh)
 	LPD3DXBUFFER code = 0;
 	LPD3DXBUFFER errors = 0;
 
-	#ifdef _IRR_D3D_NO_SHADER_DEBUGGING
+	#ifdef _NIRT_D3D_NO_SHADER_DEBUGGING
 
 		// compile shader without debug info
 		stubD3DXAssembleShader(pxsh, (UINT)strlen(pxsh), 0, 0, 0, &code, &errors);
@@ -232,7 +232,7 @@ bool CD3D9ShaderMaterialRenderer::createVertexShader(const char* vtxsh)
 	LPD3DXBUFFER code = 0;
 	LPD3DXBUFFER errors = 0;
 
-	#ifdef _IRR_D3D_NO_SHADER_DEBUGGING
+	#ifdef _NIRT_D3D_NO_SHADER_DEBUGGING
 
 		// compile shader without debug info
 		stubD3DXAssembleShader(vtxsh, (UINT)strlen(vtxsh), 0, 0, 0, &code, &errors);
@@ -287,7 +287,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShader(LPCSTR pSrcData,
 		LPD3DXINCLUDE pInclude, DWORD Flags, LPD3DXBUFFER* ppShader,
 		LPD3DXBUFFER* ppErrorMsgs)
 {
-	// Because Irrlicht needs to be able to start up even without installed d3d dlls, it
+	// Because Nirtcpp needs to be able to start up even without installed d3d dlls, it
 	// needs to load external d3d dlls manually. examples for the dlls are:
 	// SDK              dll name     D3DX_SDK_VERSION
 	// Summer 2004:     no dll        22
@@ -536,4 +536,4 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShaderFromFile(LPCSTR pSrcFi
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_

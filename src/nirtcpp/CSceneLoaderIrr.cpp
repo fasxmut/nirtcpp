@@ -1,6 +1,6 @@
 // Copyright (C) 2010-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CSceneLoaderIrr.h"
 #include "ISceneNodeAnimatorFactory.h"
@@ -18,9 +18,9 @@ namespace scene
 //! Constructor
 CSceneLoaderIrr::CSceneLoaderIrr(ISceneManager *smgr, io::IFileSystem* fs)
  : SceneManager(smgr), FileSystem(fs),
-   IRR_XML_FORMAT_SCENE(L"irr_scene"), IRR_XML_FORMAT_NODE(L"node"), IRR_XML_FORMAT_NODE_ATTR_TYPE(L"type"),
-   IRR_XML_FORMAT_ATTRIBUTES(L"attributes"), IRR_XML_FORMAT_MATERIALS(L"materials"),
-   IRR_XML_FORMAT_ANIMATORS(L"animators"), IRR_XML_FORMAT_USERDATA(L"userData")
+   NIRT_XML_FORMAT_SCENE(L"irr_scene"), NIRT_XML_FORMAT_NODE(L"node"), NIRT_XML_FORMAT_NODE_ATTR_TYPE(L"type"),
+   NIRT_XML_FORMAT_ATTRIBUTES(L"attributes"), NIRT_XML_FORMAT_MATERIALS(L"materials"),
+   NIRT_XML_FORMAT_ANIMATORS(L"animators"), NIRT_XML_FORMAT_USERDATA(L"userData")
 {
 
 }
@@ -89,12 +89,12 @@ void CSceneLoaderIrr::readSceneNode(io::IXMLReader* reader, ISceneNode* parent,
 
 	scene::ISceneNode* node = 0;
 
-	if (!parent && IRR_XML_FORMAT_SCENE==reader->getNodeName())
+	if (!parent && NIRT_XML_FORMAT_SCENE==reader->getNodeName())
 		node = SceneManager->getRootSceneNode();
-	else if (parent && IRR_XML_FORMAT_NODE==reader->getNodeName())
+	else if (parent && NIRT_XML_FORMAT_NODE==reader->getNodeName())
 	{
 		// find node type and create it
-		core::stringc attrName = reader->getAttributeValue(IRR_XML_FORMAT_NODE_ATTR_TYPE.c_str());
+		core::stringc attrName = reader->getAttributeValue(NIRT_XML_FORMAT_NODE_ATTR_TYPE.c_str());
 
 		node = SceneManager->addSceneNode(attrName.c_str(), parent);
 
@@ -114,14 +114,14 @@ void CSceneLoaderIrr::readSceneNode(io::IXMLReader* reader, ISceneNode* parent,
 		switch (reader->getNodeType())
 		{
 		case io::EXN_ELEMENT_END:
-			if ((IRR_XML_FORMAT_NODE  == name) ||
-				(IRR_XML_FORMAT_SCENE == name))
+			if ((NIRT_XML_FORMAT_NODE  == name) ||
+				(NIRT_XML_FORMAT_SCENE == name))
 			{
 				endreached = true;
 			}
 			break;
 		case io::EXN_ELEMENT:
-			if (IRR_XML_FORMAT_ATTRIBUTES == name)
+			if (NIRT_XML_FORMAT_ATTRIBUTES == name)
 			{
 				// read attributes
 				io::IAttributes* attr = FileSystem->createEmptyAttributes(SceneManager->getVideoDriver());
@@ -133,23 +133,23 @@ void CSceneLoaderIrr::readSceneNode(io::IXMLReader* reader, ISceneNode* parent,
 				attr->drop();
 			}
 			else
-			if (IRR_XML_FORMAT_MATERIALS == name)
+			if (NIRT_XML_FORMAT_MATERIALS == name)
 				readMaterials(reader, node);
 			else
-			if (IRR_XML_FORMAT_ANIMATORS == name)
+			if (NIRT_XML_FORMAT_ANIMATORS == name)
 				readAnimators(reader, node);
 			else
-			if (IRR_XML_FORMAT_USERDATA  == name)
+			if (NIRT_XML_FORMAT_USERDATA  == name)
 				readUserData(reader, node, userDataSerializer);
 			else
-			if ((IRR_XML_FORMAT_NODE  == name) ||
-				(IRR_XML_FORMAT_SCENE == name))
+			if ((NIRT_XML_FORMAT_NODE  == name) ||
+				(NIRT_XML_FORMAT_SCENE == name))
 			{
 				readSceneNode(reader, node, userDataSerializer);
 			}
 			else
 			{
-				os::Printer::log("Found unknown element in irrlicht scene file",
+				os::Printer::log("Found unknown element in nirtcpp scene file",
 						core::stringc(name).c_str());
 			}
 			break;
@@ -176,11 +176,11 @@ void CSceneLoaderIrr::readMaterials(io::IXMLReader* reader, ISceneNode* node)
 		switch(reader->getNodeType())
 		{
 		case io::EXN_ELEMENT_END:
-			if (IRR_XML_FORMAT_MATERIALS == name)
+			if (NIRT_XML_FORMAT_MATERIALS == name)
 				return;
 			break;
 		case io::EXN_ELEMENT:
-			if (IRR_XML_FORMAT_ATTRIBUTES == name)
+			if (NIRT_XML_FORMAT_ATTRIBUTES == name)
 			{
 				// read materials from attribute list
 				io::IAttributes* attr = FileSystem->createEmptyAttributes(SceneManager->getVideoDriver());
@@ -213,11 +213,11 @@ void CSceneLoaderIrr::readAnimators(io::IXMLReader* reader, ISceneNode* node)
 		switch(reader->getNodeType())
 		{
 		case io::EXN_ELEMENT_END:
-			if (IRR_XML_FORMAT_ANIMATORS == name)
+			if (NIRT_XML_FORMAT_ANIMATORS == name)
 				return;
 			break;
 		case io::EXN_ELEMENT:
-			if (IRR_XML_FORMAT_ATTRIBUTES == name)
+			if (NIRT_XML_FORMAT_ATTRIBUTES == name)
 			{
 				// read animator data from attribute list
 				io::IAttributes* attr = FileSystem->createEmptyAttributes(SceneManager->getVideoDriver());
@@ -255,11 +255,11 @@ void CSceneLoaderIrr::readUserData(io::IXMLReader* reader, ISceneNode* node, ISc
 		switch(reader->getNodeType())
 		{
 		case io::EXN_ELEMENT_END:
-			if (IRR_XML_FORMAT_USERDATA == name)
+			if (NIRT_XML_FORMAT_USERDATA == name)
 				return;
 			break;
 		case io::EXN_ELEMENT:
-			if (IRR_XML_FORMAT_ATTRIBUTES == name)
+			if (NIRT_XML_FORMAT_ATTRIBUTES == name)
 			{
 				// read user data from attribute list
 				io::IAttributes* attr = FileSystem->createEmptyAttributes(SceneManager->getVideoDriver());

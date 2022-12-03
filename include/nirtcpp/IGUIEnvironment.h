@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_ENVIRONMENT_H_INCLUDED
-#define IRR_I_GUI_ENVIRONMENT_H_INCLUDED
+#ifndef NIRT_I_GUI_ENVIRONMENT_H_INCLUDED
+#define NIRT_I_GUI_ENVIRONMENT_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "IGUISkin.h"
@@ -552,7 +552,7 @@ public:
 	virtual IGUITable* addTable(const core::rect<s32>& rectangle,
 		IGUIElement* parent=0, s32 id=-1, bool drawBackground=false) =0;
 
-	//! Adds an element to display the information from the Irrlicht profiler
+	//! Adds an element to display the information from the Nirtcpp profiler
 	/** \param rectangle Rectangle specifying the borders of the element.
 	\param parent Parent of the element. When 0 the environment itself will
 	be the parent.

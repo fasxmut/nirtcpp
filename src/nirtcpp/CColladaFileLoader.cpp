@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_COLLADA_LOADER_
+#ifdef _NIRT_COMPILE_WITH_COLLADA_LOADER_
 
 #include "CColladaFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -107,7 +107,7 @@ namespace
 	const core::stringc dataName =             "data";
 	const core::stringc wrapsName =            "wrap_s";
 	const core::stringc wraptName =            "wrap_t";
-	const core::stringc wraprName =            "wrap_r";	// for downward compatibility to bug in old Irrlicht collada writer. Not standard but we wrote that accidentally up to Irrlicht 1.8, so we should still be able to load those files
+	const core::stringc wraprName =            "wrap_r";	// for downward compatibility to bug in old Nirtcpp collada writer. Not standard but we wrote that accidentally up to Nirtcpp 1.8, so we should still be able to load those files
 	const core::stringc wrappName =            "wrap_p";
 	const core::stringc minfilterName =        "minfilter";
 	const core::stringc magfilterName =        "magfilter";
@@ -143,14 +143,14 @@ namespace
 
 		//! creates an instance of this prefab
 		virtual scene::ISceneNode* addInstance(scene::ISceneNode* parent,
-			scene::ISceneManager* mgr) IRR_OVERRIDE
+			scene::ISceneManager* mgr) override
 		{
 			// empty implementation
 			return 0;
 		}
 
 		//! returns id of this prefab
-		virtual const core::stringc& getId() IRR_OVERRIDE
+		virtual const core::stringc& getId() override
 		{
 			return Id;
 		}
@@ -177,7 +177,7 @@ namespace
 
 		//! creates an instance of this prefab
 		virtual scene::ISceneNode* addInstance(scene::ISceneNode* parent,
-			scene::ISceneManager* mgr) IRR_OVERRIDE
+			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
 			os::Printer::log("COLLADA: Constructing light instance", Id.c_str(), ELL_DEBUG);
@@ -213,7 +213,7 @@ namespace
 
 		//! creates an instance of this prefab
 		virtual scene::ISceneNode* addInstance(scene::ISceneNode* parent,
-			scene::ISceneManager* mgr) IRR_OVERRIDE
+			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
 			os::Printer::log("COLLADA: Constructing mesh instance", Id.c_str(), ELL_DEBUG);
@@ -251,7 +251,7 @@ namespace
 
 		//! creates an instance of this prefab
 		virtual scene::ISceneNode* addInstance(scene::ISceneNode* parent,
-			scene::ISceneManager* mgr) IRR_OVERRIDE
+			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
 			os::Printer::log("COLLADA: Constructing camera instance", Id.c_str(), ELL_DEBUG);
@@ -285,7 +285,7 @@ namespace
 
 		//! creates an instance of this prefab
 		virtual scene::ISceneNode* addInstance(scene::ISceneNode* parent,
-			scene::ISceneManager* mgr) IRR_OVERRIDE
+			scene::ISceneManager* mgr) override
 		{
 			#ifdef COLLADA_READER_DEBUG
 			os::Printer::log("COLLADA: Constructing scene instance", Id.c_str(), ELL_DEBUG);
@@ -1558,7 +1558,7 @@ void CColladaFileLoader::readEffect(io::IXMLReaderUTF8* reader, SColladaEffect *
 		twr = (video::E_TEXTURE_CLAMP)(effect->Parameters->getAttributeAsInt(idx));
 	else
 	{
-		// for downward compatibility with older Irrlicht collada writer
+		// for downward compatibility with older Nirtcpp collada writer
 		idx = effect->Parameters->findAttribute(wraprName.c_str());
 		if ( idx >= 0 )
 			twr = (video::E_TEXTURE_CLAMP)(effect->Parameters->getAttributeAsInt(idx));
@@ -2779,7 +2779,7 @@ core::stringc CColladaFileLoader::readId(io::IXMLReaderUTF8* reader)
 }
 
 
-//! create an Irrlicht texture from the reference
+//! create an Nirtcpp texture from the reference
 video::ITexture* CColladaFileLoader::getTextureFromImage(core::stringc uri, SColladaEffect * effect)
 {
 	#ifdef COLLADA_READER_DEBUG
@@ -3004,5 +3004,5 @@ void CColladaFileLoader::unescape(irr::core::stringc& uri)
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_COLLADA_LOADER_
+#endif // _NIRT_COMPILE_WITH_COLLADA_LOADER_
 

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_PARTICLE_MESH_EMITTER_H_INCLUDED
-#define IRR_I_PARTICLE_MESH_EMITTER_H_INCLUDED
+#ifndef NIRT_I_PARTICLE_MESH_EMITTER_H_INCLUDED
+#define NIRT_I_PARTICLE_MESH_EMITTER_H_INCLUDED
 
 #include "IParticleEmitter.h"
 #include "IMesh.h"
@@ -43,7 +43,7 @@ public:
 	virtual bool getEveryMeshVertex() const = 0;
 
 	//! Get emitter type
-	virtual E_PARTICLE_EMITTER_TYPE getType() const IRR_OVERRIDE { return EPET_MESH; }
+	virtual E_PARTICLE_EMITTER_TYPE getType() const override { return EPET_MESH; }
 };
 
 } // end namespace scene

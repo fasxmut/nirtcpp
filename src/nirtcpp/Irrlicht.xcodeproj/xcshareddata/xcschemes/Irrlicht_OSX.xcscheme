@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5E34C9F21B7F6E3400F212E8"
-               BuildableName = "libIrrlicht.a"
-               BlueprintName = "Irrlicht_OSX"
-               ReferencedContainer = "container:Irrlicht.xcodeproj">
+               BuildableName = "libNirtcpp.a"
+               BlueprintName = "Nirtcpp_OSX"
+               ReferencedContainer = "container:Nirtcpp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5E34C9F21B7F6E3400F212E8"
-            BuildableName = "libIrrlicht.a"
-            BlueprintName = "Irrlicht_OSX"
-            ReferencedContainer = "container:Irrlicht.xcodeproj">
+            BuildableName = "libNirtcpp.a"
+            BlueprintName = "Nirtcpp_OSX"
+            ReferencedContainer = "container:Nirtcpp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -60,9 +60,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5E34C9F21B7F6E3400F212E8"
-            BuildableName = "libIrrlicht.a"
-            BlueprintName = "Irrlicht_OSX"
-            ReferencedContainer = "container:Irrlicht.xcodeproj">
+            BuildableName = "libNirtcpp.a"
+            BlueprintName = "Nirtcpp_OSX"
+            ReferencedContainer = "container:Nirtcpp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

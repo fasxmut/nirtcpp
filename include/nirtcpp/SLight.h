@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_LIGHT_H_INCLUDED
 #define S_LIGHT_H_INCLUDED
@@ -37,7 +37,7 @@ const c8* const LightTypeNames[] =
 };
 
 //! structure for holding data describing a dynamic point light.
-/** Irrlicht supports point lights, spot lights, and directional lights.
+/** Nirtcpp supports point lights, spot lights, and directional lights.
 */
 struct SLight
 {

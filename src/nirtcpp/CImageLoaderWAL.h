@@ -1,15 +1,15 @@
 // Copyright (C) 2004 Murphy McCauley
 // Copyright (C) 2007-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 /*
  Thanks to:
  Max McGuire for his Flipcode article about WAL textures
- Nikolaus Gebhardt for the Irrlicht 3D engine
+ Nikolaus Gebhardt for the Nirtcpp 3D engine
 */
 
-#ifndef IRR_C_IMAGE_LOADER_WAL_H_INCLUDED
-#define IRR_C_IMAGE_LOADER_WAL_H_INCLUDED
+#ifndef NIRT_C_IMAGE_LOADER_WAL_H_INCLUDED
+#define NIRT_C_IMAGE_LOADER_WAL_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 #include "IImageLoader.h"
@@ -19,7 +19,7 @@ namespace irr
 namespace video
 {
 
-#ifdef _IRR_COMPILE_WITH_LMP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_LMP_LOADER_
 
 // byte-align structures
 #include "irrpack.h"
@@ -33,35 +33,35 @@ namespace video
 // Default alignment
 #include "irrunpack.h"
 
-//! An Irrlicht image loader for Quake1,2 engine lmp textures/palette
+//! An Nirtcpp image loader for Quake1,2 engine lmp textures/palette
 class CImageLoaderLMP : public irr::video::IImageLoader
 {
 public:
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
-	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const IRR_OVERRIDE;
-	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
+	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const override;
+	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const override;
 };
 
 #endif
 
-#ifdef _IRR_COMPILE_WITH_WAL_LOADER_
+#ifdef _NIRT_COMPILE_WITH_WAL_LOADER_
 
-//! An Irrlicht image loader for quake2 wal engine textures
+//! An Nirtcpp image loader for quake2 wal engine textures
 class CImageLoaderWAL : public irr::video::IImageLoader
 {
 public:
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
-	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const IRR_OVERRIDE;
-	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
+	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const override;
+	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const override;
 };
 
-//! An Irrlicht image loader for Halflife 1 engine textures
+//! An Nirtcpp image loader for Halflife 1 engine textures
 class CImageLoaderWAL2 : public irr::video::IImageLoader
 {
 public:
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
-	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const IRR_OVERRIDE;
-	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
+	virtual bool isALoadableFileFormat(irr::io::IReadFile* file) const override;
+	virtual irr::video::IImage* loadImage(irr::io::IReadFile* file) const override;
 };
 
 // byte-align structures

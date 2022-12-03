@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_MATERIAL_LAYER_H_INCLUDED
 #define S_MATERIAL_LAYER_H_INCLUDED
@@ -199,7 +199,7 @@ namespace video
 		bool TrilinearFilter:1;
 
 		//! Is anisotropic filtering enabled? Default: 0, disabled
-		/** In Irrlicht you can use anisotropic texture filtering
+		/** In Nirtcpp you can use anisotropic texture filtering
 		in conjunction with bilinear or trilinear texture
 		filtering to improve rendering results. Primitives
 		will look less blurry with this flag switched on. The number gives

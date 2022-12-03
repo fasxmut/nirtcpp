@@ -1,13 +1,13 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_XML_WRITER_H_INCLUDED
-#define IRR_C_XML_WRITER_H_INCLUDED
+#ifndef NIRT_C_XML_WRITER_H_INCLUDED
+#define NIRT_C_XML_WRITER_H_INCLUDED
 
 #include "IXMLWriter.h"
 
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 
 #include <wchar.h>
 #include "IWriteFile.h"
@@ -70,7 +70,7 @@ namespace io
 		virtual ~CXMLWriter() {}
 
 		//! Writes a xml 1.0 header like <?xml version="1.0"?>
-		virtual void writeXMLHeader() IRR_OVERRIDE;
+		virtual void writeXMLHeader() override;
 
 		//! Writes an xml element with maximal 5 attributes
 		virtual void writeElement(const wchar_t* name, bool empty=false,
@@ -78,24 +78,24 @@ namespace io
 			const wchar_t* attr2Name = 0, const wchar_t* attr2Value = 0,
 			const wchar_t* attr3Name = 0, const wchar_t* attr3Value = 0,
 			const wchar_t* attr4Name = 0, const wchar_t* attr4Value = 0,
-			const wchar_t* attr5Name = 0, const wchar_t* attr5Value = 0) IRR_OVERRIDE;
+			const wchar_t* attr5Name = 0, const wchar_t* attr5Value = 0) override;
 
 		//! Writes an xml element with any number of attributes
 		virtual void writeElement(const wchar_t* name, bool empty,
-				core::array<core::stringw> &names, core::array<core::stringw> &values) IRR_OVERRIDE;
+				core::array<core::stringw> &names, core::array<core::stringw> &values) override;
 
 		//! Writes a comment into the xml file
-		virtual void writeComment(const wchar_t* comment) IRR_OVERRIDE;
+		virtual void writeComment(const wchar_t* comment) override;
 
 		//! Writes the closing tag for an element. Like </foo>
-		virtual void writeClosingTag(const wchar_t* name) IRR_OVERRIDE;
+		virtual void writeClosingTag(const wchar_t* name) override;
 
 		//! Writes a text into the file. All occurrences of special characters like
 		//! & (&amp;), < (&lt;), > (&gt;), and " (&quot;) are automatically replaced.
-		virtual void writeText(const wchar_t* text) IRR_OVERRIDE;
+		virtual void writeText(const wchar_t* text) override;
 
 		//! Writes a line break
-		virtual void writeLineBreak() IRR_OVERRIDE;
+		virtual void writeLineBreak() override;
 
 	private:
 
@@ -114,7 +114,7 @@ namespace io
 		virtual ~CXMLWriterUTF8() {}
 
 		//! Writes a xml 1.0 header like <?xml version="1.0"?>
-		virtual void writeXMLHeader() IRR_OVERRIDE;
+		virtual void writeXMLHeader() override;
 
 		//! Writes an xml element with maximal 5 attributes
 		virtual void writeElement(const c8* name, bool empty=false,
@@ -122,24 +122,24 @@ namespace io
 			const c8* attr2Name = 0, const c8* attr2Value = 0,
 			const c8* attr3Name = 0, const c8* attr3Value = 0,
 			const c8* attr4Name = 0, const c8* attr4Value = 0,
-			const c8* attr5Name = 0, const c8* attr5Value = 0) IRR_OVERRIDE;
+			const c8* attr5Name = 0, const c8* attr5Value = 0) override;
 
 		//! Writes an xml element with any number of attributes
 		virtual void writeElement(const c8* name, bool empty,
-				core::array<core::stringc> &names, core::array<core::stringc> &values) IRR_OVERRIDE;
+				core::array<core::stringc> &names, core::array<core::stringc> &values) override;
 
 		//! Writes a comment into the xml file
-		virtual void writeComment(const c8* comment) IRR_OVERRIDE;
+		virtual void writeComment(const c8* comment) override;
 
 		//! Writes the closing tag for an element. Like </foo>
-		virtual void writeClosingTag(const c8* name) IRR_OVERRIDE;
+		virtual void writeClosingTag(const c8* name) override;
 
 		//! Writes a text into the file. All occurrences of special characters like
 		//! & (&amp;), < (&lt;), > (&gt;), and " (&quot;) are automatically replaced.
-		virtual void writeText(const c8* text) IRR_OVERRIDE;
+		virtual void writeText(const c8* text) override;
 
 		//! Writes a line break
-		virtual void writeLineBreak() IRR_OVERRIDE;
+		virtual void writeLineBreak() override;
 
 	private:
 
@@ -150,6 +150,6 @@ namespace io
 } // end namespace irr
 } // end namespace io
 
-#endif // _IRR_COMPILE_WITH_XML_
+#endif // _NIRT_COMPILE_WITH_XML_
 
 #endif

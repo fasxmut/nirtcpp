@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_TEXT_SCENE_NODE_H_INCLUDED
-#define IRR_C_TEXT_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_TEXT_SCENE_NODE_H_INCLUDED
+#define NIRT_C_TEXT_SCENE_NODE_H_INCLUDED
 
 #include "ITextSceneNode.h"
 #include "IBillboardTextSceneNode.h"
@@ -32,34 +32,34 @@ namespace scene
 		//! destructor
 		virtual ~CTextSceneNode();
 
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! renders the node.
-		virtual void render() IRR_OVERRIDE;
+		virtual void render() override;
 
 		//! returns the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 		//! sets the text string
-		virtual void setText(const wchar_t* text) IRR_OVERRIDE;
+		virtual void setText(const wchar_t* text) override;
 
 		//! get the text string
-		virtual const wchar_t* getText() const IRR_OVERRIDE;
+		virtual const wchar_t* getText() const override;
 
 		//! sets the color of the text
-		virtual void setTextColor(video::SColor color) IRR_OVERRIDE;
+		virtual void setTextColor(video::SColor color) override;
 
 		//! get the color of the text
-		virtual video::SColor getTextColor() const IRR_OVERRIDE;
+		virtual video::SColor getTextColor() const override;
 
 		//! set the font used to draw the text
-		virtual void setFont(gui::IGUIFont* font) IRR_OVERRIDE;
+		virtual void setFont(gui::IGUIFont* font) override;
 
 		//! Get the font used to draw the text
-		virtual gui::IGUIFont* getFont() const IRR_OVERRIDE;
+		virtual gui::IGUIFont* getFont() const override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_TEXT; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_TEXT; }
 
 	private:
 
@@ -83,76 +83,76 @@ namespace scene
 		virtual ~CBillboardTextSceneNode();
 
 		//! sets the vertex positions etc
-		virtual void OnAnimate(u32 timeMs) IRR_OVERRIDE;
+		virtual void OnAnimate(u32 timeMs) override;
 
 		//! registers the node into the transparent pass
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! renders the node.
-		virtual void render() IRR_OVERRIDE;
+		virtual void render() override;
 
 		//! returns the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 		//! sets the text string
-		virtual void setText(const wchar_t* text) IRR_OVERRIDE;
+		virtual void setText(const wchar_t* text) override;
 
 		//! get the text string
-		virtual const wchar_t* getText() const IRR_OVERRIDE;
+		virtual const wchar_t* getText() const override;
 
 		//! Get the font used to draw the text
-		virtual gui::IGUIFont* getFont() const IRR_OVERRIDE;
+		virtual gui::IGUIFont* getFont() const override;
 
 		//! sets the size of the billboard
-		virtual void setSize(const core::dimension2d<f32>& size) IRR_OVERRIDE;
+		virtual void setSize(const core::dimension2d<f32>& size) override;
 
 		//! gets the size of the billboard
-		virtual const core::dimension2d<f32>& getSize() const IRR_OVERRIDE;
+		virtual const core::dimension2d<f32>& getSize() const override;
 
-		virtual video::SMaterial& getMaterial(u32 i) IRR_OVERRIDE;
+		virtual video::SMaterial& getMaterial(u32 i) override;
 
 		//! returns amount of materials used by this scene node.
-		virtual u32 getMaterialCount() const IRR_OVERRIDE;
+		virtual u32 getMaterialCount() const override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_BILLBOARD_TEXT; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_BILLBOARD_TEXT; }
 
 		//! Set the color of all vertices of the billboard
 		//! \param overallColor: the color to set
-		virtual void setColor(const video::SColor & overallColor) IRR_OVERRIDE;
+		virtual void setColor(const video::SColor & overallColor) override;
 
 		//! Set the color of the top and bottom vertices of the billboard
 		//! \param topColor: the color to set the top vertices
 		//! \param bottomColor: the color to set the bottom vertices
-		virtual void setColor(const video::SColor & topColor, const video::SColor & bottomColor) IRR_OVERRIDE;
+		virtual void setColor(const video::SColor & topColor, const video::SColor & bottomColor) override;
 
 		//! Gets the color of the top and bottom vertices of the billboard
 		//! \param topColor: stores the color of the top vertices
 		//! \param bottomColor: stores the color of the bottom vertices
-		virtual void getColor(video::SColor & topColor, video::SColor & bottomColor) const IRR_OVERRIDE;
+		virtual void getColor(video::SColor & topColor, video::SColor & bottomColor) const override;
 
-		virtual void setSize(f32 height, f32 bottomEdgeWidth, f32 topEdgeWidth) IRR_OVERRIDE
+		virtual void setSize(f32 height, f32 bottomEdgeWidth, f32 topEdgeWidth) override
 		{
 			setSize(core::dimension2df(bottomEdgeWidth, height));
 		}
 
-		virtual void getSize(f32& height, f32& bottomEdgeWidth, f32& topEdgeWidth) const IRR_OVERRIDE
+		virtual void getSize(f32& height, f32& bottomEdgeWidth, f32& topEdgeWidth) const override
 		{
 			height = Size.Height;
 			bottomEdgeWidth = Size.Width;
 			topEdgeWidth = Size.Width;
 		}
 
-		virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getTransformedBillboardBoundingBox(const irr::scene::ICameraSceneNode* camera) override;
 
 		//! Get the amount of mesh buffers.
-		virtual u32 getMeshBufferCount() const IRR_OVERRIDE
+		virtual u32 getMeshBufferCount() const override
 		{
 			return Mesh ? Mesh->getMeshBufferCount() : 0;
 		}
 
 		//! Get pointer to the mesh buffer.
-		virtual IMeshBuffer* getMeshBuffer(u32 nr) const IRR_OVERRIDE
+		virtual IMeshBuffer* getMeshBuffer(u32 nr) const override
 		{
 			return Mesh ? Mesh->getMeshBuffer(nr) : 0;
 		}

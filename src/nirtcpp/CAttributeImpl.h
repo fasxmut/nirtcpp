@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CAttributes.h"
 #include "fast_atof.h"
@@ -27,52 +27,52 @@ public:
 		setBool(value);
 	}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		return BoolValue ? 1 : 0;
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		return BoolValue ? 1.0f : 0.0f;
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		return BoolValue;
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		return core::stringw( BoolValue ? L"true" : L"false" );
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		BoolValue = (intValue != 0);
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		BoolValue = (floatValue != 0);
 	}
 
-	virtual void setBool(bool boolValue) IRR_OVERRIDE
+	virtual void setBool(bool boolValue) override
 	{
 		BoolValue = boolValue;
 	}
 
-	virtual void setString(const char* string) IRR_OVERRIDE
+	virtual void setString(const char* string) override
 	{
 		BoolValue = strcmp(string, "true") == 0;
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_BOOL;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"bool";
 	}
@@ -91,48 +91,48 @@ public:
 		setInt(value);
 	}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		return Value;
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		return (f32)Value;
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		return (Value != 0);
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		return core::stringw(Value);
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		Value = intValue;
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		Value = (s32)floatValue;
 	};
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		Value = atoi(text);
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_INT;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"int";
 	}
@@ -151,48 +151,48 @@ public:
 		setFloat(value);
 	}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		return (s32)Value;
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		return Value;
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		return (Value != 0);
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		return core::stringw((double)Value);
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		Value = (f32)intValue;
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		Value = floatValue;
 	}
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		Value = core::fast_atof(text);
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_FLOAT;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"float";
 	}
@@ -384,7 +384,7 @@ public:
 	}
 
 	// getting values
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		if (Count==0)
 			return 0;
@@ -395,7 +395,7 @@ public:
 			return ValueI[0];
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		if (Count==0)
 			return 0.0f;
@@ -406,7 +406,7 @@ public:
 			return (f32)ValueI[0];
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		// return true if any number is nonzero
 		bool ret=false;
@@ -422,7 +422,7 @@ public:
 	}
 
 
-	virtual core::stringc getString() const IRR_OVERRIDE
+	virtual core::stringc getString() const override
 	{
 		core::stringc outstr;
 
@@ -439,7 +439,7 @@ public:
 		return outstr;
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		core::stringw outstr;
 
@@ -456,7 +456,7 @@ public:
 		return outstr;
 	}
 
-	virtual core::position2di getPosition() const IRR_OVERRIDE
+	virtual core::position2di getPosition() const override
 	{
 		core::position2di p;
 
@@ -474,7 +474,7 @@ public:
 		return p;
 	}
 
-	virtual core::vector3df getVector() const IRR_OVERRIDE
+	virtual core::vector3df getVector() const override
 	{
 		core::vector3df v;
 
@@ -494,7 +494,7 @@ public:
 		return v;
 	}
 
-	virtual core::vector2df getVector2d() const IRR_OVERRIDE
+	virtual core::vector2df getVector2d() const override
 	{
 		core::vector2df v;
 
@@ -512,7 +512,7 @@ public:
 		return v;
 	}
 
-	virtual video::SColorf getColorf() const IRR_OVERRIDE
+	virtual video::SColorf getColorf() const override
 	{
 		video::SColorf c;
 		if (IsFloat)
@@ -533,13 +533,13 @@ public:
 		return c;
 	}
 
-	virtual video::SColor getColor() const IRR_OVERRIDE
+	virtual video::SColor getColor() const override
 	{
 		return getColorf().toSColor();
 	}
 
 
-	virtual core::rect<s32> getRect() const IRR_OVERRIDE
+	virtual core::rect<s32> getRect() const override
 	{
 		core::rect<s32> r;
 
@@ -560,7 +560,7 @@ public:
 		return r;
 	}
 
-	virtual core::dimension2du getDimension2d() const IRR_OVERRIDE
+	virtual core::dimension2du getDimension2d() const override
 	{
 		core::dimension2d<u32> dim;
 
@@ -577,7 +577,7 @@ public:
 		return dim;
 	}
 
-	virtual core::matrix4 getMatrix() const IRR_OVERRIDE
+	virtual core::matrix4 getMatrix() const override
 	{
 		core::matrix4 ret;
 		if (IsFloat)
@@ -597,7 +597,7 @@ public:
 		return ret;
 	}
 
-	virtual core::quaternion getQuaternion() const IRR_OVERRIDE
+	virtual core::quaternion getQuaternion() const override
 	{
 		core::quaternion ret;
 		if (IsFloat)
@@ -617,7 +617,7 @@ public:
 		return ret;
 	}
 
-	virtual core::triangle3df getTriangle() const IRR_OVERRIDE
+	virtual core::triangle3df getTriangle() const override
 	{
 		core::triangle3df ret;
 
@@ -649,7 +649,7 @@ public:
 		return ret;
 	}
 
-	virtual core::plane3df getPlane() const IRR_OVERRIDE
+	virtual core::plane3df getPlane() const override
 	{
 		core::plane3df ret;
 
@@ -671,7 +671,7 @@ public:
 		return ret;
 	}
 
-	virtual core::aabbox3df getBBox() const IRR_OVERRIDE
+	virtual core::aabbox3df getBBox() const override
 	{
 		core::aabbox3df ret;
 		if (IsFloat)
@@ -696,7 +696,7 @@ public:
 
 	}
 
-	virtual core::line2df getLine2d() const IRR_OVERRIDE
+	virtual core::line2df getLine2d() const override
 	{
 		core::line2df ret;
 		if (IsFloat)
@@ -716,7 +716,7 @@ public:
 		return ret;
 	}
 
-	virtual core::line3df getLine3d() const IRR_OVERRIDE
+	virtual core::line3df getLine3d() const override
 	{
 		core::line3df ret;
 		if (IsFloat)
@@ -766,7 +766,7 @@ public:
 
 
 	// setting values
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		// set all values
 		for (u32 i=0; i < Count; ++i)
@@ -776,7 +776,7 @@ public:
 				ValueI[i] = intValue;
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		// set all values
 		for (u32 i=0; i < Count; ++i)
@@ -786,12 +786,12 @@ public:
 				ValueI[i] = (s32)floatValue;
 	}
 
-	virtual void setBool(bool boolValue) IRR_OVERRIDE
+	virtual void setBool(bool boolValue) override
 	{
 		setInt( boolValue ? 1 : 0);
 	}
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		// parse text
 
@@ -832,7 +832,7 @@ public:
 		//}
 	}
 
-	virtual void setPosition(const core::position2di& v) IRR_OVERRIDE
+	virtual void setPosition(const core::position2di& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -847,7 +847,7 @@ public:
 		}
 	}
 
-	virtual void setVector(const core::vector3df& v) IRR_OVERRIDE
+	virtual void setVector(const core::vector3df& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -864,7 +864,7 @@ public:
 		}
 	}
 
-	virtual void setColor(video::SColorf color) IRR_OVERRIDE
+	virtual void setColor(video::SColorf color) override
 	{
 		reset();
 		if (IsFloat)
@@ -884,7 +884,7 @@ public:
 
 	}
 
-	virtual void setColor(video::SColor color) IRR_OVERRIDE
+	virtual void setColor(video::SColor color) override
 	{
 		reset();
 		if (IsFloat)
@@ -903,7 +903,7 @@ public:
 		}
 	}
 
-	virtual void setRect(const core::rect<s32>& value) IRR_OVERRIDE
+	virtual void setRect(const core::rect<s32>& value) override
 	{
 		reset();
 		if (IsFloat)
@@ -922,7 +922,7 @@ public:
 		}
 	}
 
-	virtual void setMatrix(const core::matrix4& value) IRR_OVERRIDE
+	virtual void setMatrix(const core::matrix4& value) override
 	{
 		reset();
 		if (IsFloat)
@@ -941,7 +941,7 @@ public:
 		}
 	}
 
-	virtual void setQuaternion(const core::quaternion& value) IRR_OVERRIDE
+	virtual void setQuaternion(const core::quaternion& value) override
 	{
 		reset();
 		if (IsFloat)
@@ -983,7 +983,7 @@ public:
 		}
 	}
 
-	virtual void setPlane(const core::plane3df& value) IRR_OVERRIDE
+	virtual void setPlane(const core::plane3df& value) override
 	{
 		reset();
 		if (IsFloat)
@@ -1031,7 +1031,7 @@ public:
 		}
 	}
 
-	virtual void setVector2d(const core::vector2df& v) IRR_OVERRIDE
+	virtual void setVector2d(const core::vector2df& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -1046,7 +1046,7 @@ public:
 		}
 	}
 
-	virtual void setVector2d(const core::vector2di& v) IRR_OVERRIDE
+	virtual void setVector2d(const core::vector2di& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -1061,7 +1061,7 @@ public:
 		}
 	}
 
-	virtual void setLine2d(const core::line2di& v) IRR_OVERRIDE
+	virtual void setLine2d(const core::line2di& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -1080,7 +1080,7 @@ public:
 		}
 	}
 
-	virtual void setLine2d(const core::line2df& v) IRR_OVERRIDE
+	virtual void setLine2d(const core::line2df& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -1099,7 +1099,7 @@ public:
 		}
 	}
 
-	virtual void setDimension2d(const core::dimension2du& v) IRR_OVERRIDE
+	virtual void setDimension2d(const core::dimension2du& v) override
 	{
 		reset();
 		if (IsFloat)
@@ -1142,7 +1142,7 @@ public:
 		}
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		if (IsFloat)
 			return EAT_FLOATARRAY;
@@ -1150,7 +1150,7 @@ public:
 			return EAT_INTARRAY;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		if (IsFloat)
 			return L"floatlist";
@@ -1185,17 +1185,17 @@ public:
 
 	CColorfAttribute(const char* name, video::SColorf value) : CNumbersAttribute(name, value) {}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		return getColor().color;
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		return (f32)getColor().color;
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		video::SColorf c = video::SColor(intValue);
 		ValueF[0] = c.r;
@@ -1204,17 +1204,17 @@ public:
 		ValueF[3] = c.a;
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		setInt((s32)floatValue);
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_COLORF;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"colorf";
 	}
@@ -1231,17 +1231,17 @@ public:
 
 	CColorAttribute(const char* name, const video::SColor& value) : CNumbersAttribute(name, value) {}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		return getColor().color;
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		return (f32)getColor().color;
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		video::SColorf c = video::SColor(intValue);
 		ValueF[0] = c.r;
@@ -1250,12 +1250,12 @@ public:
 		ValueF[3] = c.a;
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		setInt((s32)floatValue);
 	}
 
-	virtual core::stringc getString() const IRR_OVERRIDE
+	virtual core::stringc getString() const override
 	{
 		char tmp[10];
 		const video::SColor c = getColor();
@@ -1263,7 +1263,7 @@ public:
 		return core::stringc(tmp);
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		char tmp[10];
 		const video::SColor c = getColor();
@@ -1271,7 +1271,7 @@ public:
 		return core::stringw(tmp);
 	}
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		u32 c;
 		int characters;
@@ -1284,13 +1284,13 @@ public:
 			setColor(c);
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_COLOR;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"color";
 	}
@@ -1305,12 +1305,12 @@ public:
 
 	CVector3DAttribute(const char* name, const core::vector3df& value) : CNumbersAttribute(name, value) {}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_VECTOR3D;
 	}
 
-	virtual core::matrix4 getMatrix() const IRR_OVERRIDE
+	virtual core::matrix4 getMatrix() const override
 	{
 		core::matrix4 ret;
 		ret.makeIdentity();
@@ -1318,7 +1318,7 @@ public:
 		return ret;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"vector3d";
 	}
@@ -1331,12 +1331,12 @@ public:
 
 	CVector2DAttribute(const char* name, const core::vector2df& value) : CNumbersAttribute(name, value) {}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_VECTOR2D;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"vector2d";
 	}
@@ -1349,12 +1349,12 @@ public:
 
 	CPosition2DAttribute(const char* name, const core::position2di& value) : CNumbersAttribute(name, value) {}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_POSITION2D;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"position";
 	}
@@ -1369,12 +1369,12 @@ public:
 
 	CRectAttribute(const char* name, const core::rect<s32>& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_RECT;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"rect";
 	}
@@ -1388,12 +1388,12 @@ public:
 
 	CDimension2dAttribute (const char* name, const core::dimension2d<u32>& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_DIMENSION2D;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"dimension2d";
 	}
@@ -1406,17 +1406,17 @@ public:
 
 	CMatrixAttribute(const char* name, const core::matrix4& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_MATRIX;
 	}
 
-	virtual core::quaternion getQuaternion() const IRR_OVERRIDE
+	virtual core::quaternion getQuaternion() const override
 	{
 		return core::quaternion(getMatrix());
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"matrix";
 	}
@@ -1429,17 +1429,17 @@ public:
 
 	CQuaternionAttribute(const char* name, const core::quaternion& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_QUATERNION;
 	}
 
-	virtual core::matrix4 getMatrix() const IRR_OVERRIDE
+	virtual core::matrix4 getMatrix() const override
 	{
 		return getQuaternion().getMatrix();
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"quaternion";
 	}
@@ -1453,12 +1453,12 @@ public:
 
 	CBBoxAttribute(const char* name, const core::aabbox3df& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_BBOX;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"box3d";
 	}
@@ -1471,12 +1471,12 @@ public:
 
 	CPlaneAttribute(const char* name, const core::plane3df& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_PLANE;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"plane";
 	}
@@ -1489,17 +1489,17 @@ public:
 
 	CTriangleAttribute(const char* name, const core::triangle3df& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_TRIANGLE3D;
 	}
 
-	virtual core::plane3df getPlane() const IRR_OVERRIDE
+	virtual core::plane3df getPlane() const override
 	{
 		return getTriangle().getPlane();
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"triangle";
 	}
@@ -1513,12 +1513,12 @@ public:
 
 	CLine2dAttribute(const char* name, const core::line2df& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_LINE2D;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"line2d";
 	}
@@ -1531,12 +1531,12 @@ public:
 
 	CLine3dAttribute(const char* name, const core::line3df& value) : CNumbersAttribute(name, value) { }
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_LINE3D;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"line3d";
 	}
@@ -1561,7 +1561,7 @@ public:
 		setEnum(value, literals);
 	}
 
-	virtual void setEnum(const char* enumValue, const char* const* enumerationLiterals) IRR_OVERRIDE
+	virtual void setEnum(const char* enumValue, const char* const* enumerationLiterals) override
 	{
 		u32 literalCount = 0;
 
@@ -1579,7 +1579,7 @@ public:
 		setString(enumValue);
 	}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		for (u32 i=0; i < EnumLiterals.size(); ++i)
 		{
@@ -1592,27 +1592,27 @@ public:
 		return -1;
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		return (f32)getInt();
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		return (getInt() != 0); // does not make a lot of sense, I know
 	}
 
-	virtual core::stringc getString() const IRR_OVERRIDE
+	virtual core::stringc getString() const override
 	{
 		return Value;
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		return core::stringw(Value.c_str());
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		if (intValue>=0 && intValue<(s32)EnumLiterals.size())
 			Value = EnumLiterals[intValue];
@@ -1620,28 +1620,28 @@ public:
 			Value = "";
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		setInt((s32)floatValue);
 	};
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		Value = text;
 	}
 
-	virtual const char* getEnum() const IRR_OVERRIDE
+	virtual const char* getEnum() const override
 	{
 		return Value.c_str();
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_ENUM;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"enum";
 	}
@@ -1680,7 +1680,7 @@ public:
 		setBinary(binaryData, lengthInBytes);
 	}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		if (IsStringW)
 			return atoi(core::stringc(ValueW.c_str()).c_str());
@@ -1688,7 +1688,7 @@ public:
 			return atoi(Value.c_str());
 	}
 
-	virtual f32 getFloat() const IRR_OVERRIDE
+	virtual f32 getFloat() const override
 	{
 		if (IsStringW)
 			return core::fast_atof(core::stringc(ValueW.c_str()).c_str());
@@ -1696,7 +1696,7 @@ public:
 			return core::fast_atof(Value.c_str());
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		if (IsStringW)
 			return ValueW.equals_ignore_case(L"true");
@@ -1704,14 +1704,14 @@ public:
 			return Value.equals_ignore_case("true");
 	}
 
-	virtual core::stringc getString() const IRR_OVERRIDE
+	virtual core::stringc getString() const override
 	{
 		if (IsStringW)
 			return core::stringc(ValueW.c_str());
 		else
 			return Value;
 	}
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		if (IsStringW)
 			return ValueW;
@@ -1719,7 +1719,7 @@ public:
 			return core::stringw(Value.c_str());
 	}
 
-	virtual void setInt(s32 intValue) IRR_OVERRIDE
+	virtual void setInt(s32 intValue) override
 	{
 		if (IsStringW)
 			ValueW = core::stringw(intValue);
@@ -1727,7 +1727,7 @@ public:
 			Value = core::stringc(intValue);
 	}
 
-	virtual void setFloat(f32 floatValue) IRR_OVERRIDE
+	virtual void setFloat(f32 floatValue) override
 	{
 		if (IsStringW)
 		{
@@ -1739,7 +1739,7 @@ public:
 		}
 	};
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		if (IsStringW)
 			ValueW = core::stringw(text);
@@ -1747,7 +1747,7 @@ public:
 			Value = text;
 	}
 
-	virtual void setString(const wchar_t* text) IRR_OVERRIDE
+	virtual void setString(const wchar_t* text) override
 	{
 		if (IsStringW)
 			ValueW = text;
@@ -1755,18 +1755,18 @@ public:
 			Value = core::stringc(text);
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_STRING;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"string";
 	}
 
-	virtual void getBinary(void* outdata, s32 maxLength) const IRR_OVERRIDE
+	virtual void getBinary(void* outdata, s32 maxLength) const override
 	{
 		const s32 dataSize = maxLength;
 		c8* datac8 = (c8*)(outdata);
@@ -1788,7 +1788,7 @@ public:
 		}
 	};
 
-	virtual void setBinary(void* data, s32 maxLength) IRR_OVERRIDE
+	virtual void setBinary(void* data, s32 maxLength) override
 	{
 		const s32 dataSize = maxLength;
 		const c8* datac8 = (c8*)(data);
@@ -1847,13 +1847,13 @@ public:
 
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_BINARY;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"binary";
 	}
@@ -1885,17 +1885,17 @@ public:
 			Value->drop();
 	}
 
-	virtual video::ITexture* getTexture() const IRR_OVERRIDE
+	virtual video::ITexture* getTexture() const override
 	{
 		return Value;
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		return (Value != 0);
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		// (note: don't try to put all this in some ?: operators, or c++ builder will choke)
 		if ( OverrideName.size() )
@@ -1907,7 +1907,7 @@ public:
 		return core::stringw();
 	}
 
-	virtual core::stringc getString() const IRR_OVERRIDE
+	virtual core::stringc getString() const override
 	{
 		// since texture names can be stringw we are careful with the types
 		if ( OverrideName.size() )
@@ -1919,7 +1919,7 @@ public:
 		return core::stringc();
 	}
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		if (Driver)
 		{
@@ -1933,7 +1933,7 @@ public:
 		}
 	}
 
-	virtual void setTexture(video::ITexture* texture, const path& filename) IRR_OVERRIDE
+	virtual void setTexture(video::ITexture* texture, const path& filename) override
 	{
 		OverrideName = filename;
 		setTexture(texture);
@@ -1953,13 +1953,13 @@ public:
 			Value->grab();
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_TEXTURE;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"texture";
 	}
@@ -1982,22 +1982,22 @@ public:
 		setArray(value);
 	}
 
-	virtual core::array<core::stringw> getArray() const IRR_OVERRIDE
+	virtual core::array<core::stringw> getArray() const override
 	{
 		return Value;
 	}
 
-	virtual void setArray(const core::array<core::stringw>& value) IRR_OVERRIDE
+	virtual void setArray(const core::array<core::stringw>& value) override
 	{
 		Value = value;
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_STRINGWARRAY;
 	}
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"stringwarray";
 	}
@@ -2017,32 +2017,32 @@ public:
 		Value = value;
 	}
 
-	virtual s32 getInt() const IRR_OVERRIDE
+	virtual s32 getInt() const override
 	{
 		return *static_cast<s32*>(Value);
 	}
 
-	virtual bool getBool() const IRR_OVERRIDE
+	virtual bool getBool() const override
 	{
 		return (Value != 0);
 	}
 
-	virtual core::stringw getStringW() const IRR_OVERRIDE
+	virtual core::stringw getStringW() const override
 	{
 		wchar_t buf[32];
-		swprintf_irr(buf, 32, L"%p", Value);
+		swprintf_nirt(buf, 32, L"%p", Value);
 
 		return core::stringw(buf);
 	}
 
-	virtual void setString(const char* text) IRR_OVERRIDE
+	virtual void setString(const char* text) override
 	{
 		size_t val = 0;
 		switch ( sizeof(void*) )
 		{
 			case 4:
 			{
-				unsigned int tmp; // not using an irrlicht type - sscanf with %x needs always unsigned int
+				unsigned int tmp; // not using an nirtcpp type - sscanf with %x needs always unsigned int
 				sscanf(text, "%x", &tmp);
 				val = (size_t)tmp;
 			}
@@ -2061,23 +2061,23 @@ public:
 		Value = (void *)val;
 	}
 
-	virtual E_ATTRIBUTE_TYPE getType() const IRR_OVERRIDE
+	virtual E_ATTRIBUTE_TYPE getType() const override
 	{
 		return EAT_USER_POINTER;
 	}
 
-	virtual void setUserPointer(void* v) IRR_OVERRIDE
+	virtual void setUserPointer(void* v) override
 	{
 		Value = v;
 	}
 
-	virtual void* getUserPointer() const IRR_OVERRIDE
+	virtual void* getUserPointer() const override
 	{
 		return Value;
 	}
 
 
-	virtual const wchar_t* getTypeString() const IRR_OVERRIDE
+	virtual const wchar_t* getTypeString() const override
 	{
 		return L"userPointer";
 	}

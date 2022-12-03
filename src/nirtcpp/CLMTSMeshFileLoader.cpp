@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // This file was written by Jonas Petersen and modified by Nikolaus Gebhardt.
 // See CLMTSMeshFileLoder.h for details.
 /*
@@ -35,7 +35,7 @@ Version 1.5 - 15 March 2005
 Version 1.4 - 12 March 2005
 - Fixed bug in texture and subset loading code that would possibly cause crash.
 - Fixed memory cleanup to avoid leak when loading more then one mesh
-- Used the irrlicht Logger instead of cerr to output warnings and errors.
+- Used the nirtcpp Logger instead of cerr to output warnings and errors.
   For this I had to change the constructor
   from:
 	CLMTSMeshFileLoader(io::IFileSystem* fs, video::IVideoDriver* driver)
@@ -66,7 +66,7 @@ Version 1.0 - 29 July 2004
 //////////////////////////////////////////////////////////////////////
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_LMTS_LOADER_
+#ifdef _NIRT_COMPILE_WITH_LMTS_LOADER_
 
 #include "CLMTSMeshFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -257,7 +257,7 @@ IAnimatedMesh* CLMTSMeshFileLoader::createMesh(io::IReadFile* file)
 	cleanup();
 
 	SAnimatedMesh* am = new SAnimatedMesh();
-	am->Type = EAMT_LMTS; // not unknown to irrlicht anymore
+	am->Type = EAMT_LMTS; // not unknown to nirtcpp anymore
 
 	am->addMesh(mesh);
 	am->recalculateBoundingBox();
@@ -377,4 +377,4 @@ void CLMTSMeshFileLoader::loadTextures(SMesh* mesh)
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_LMTS_LOADER_
+#endif // _NIRT_COMPILE_WITH_LMTS_LOADER_

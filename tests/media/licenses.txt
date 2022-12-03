@@ -1,4 +1,4 @@
-All assets of this test suite, except where noted below, are tkane from the main Irrlicht repository and are copyright/licensed as stated there. The source code is copyright by the authors, except where stated differently inside the files.
+All assets of this test suite, except where noted below, are tkane from the main Nirtcpp repository and are copyright/licensed as stated there. The source code is copyright by the authors, except where stated differently inside the files.
 
 title_font.xml and its png files are taken from SuperTuxKart. They are in the public domain.
 

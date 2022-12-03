@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#ifdef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 
 #include "CSkinnedMesh.h"
 #include "CBoneSceneNode.h"
@@ -241,7 +241,7 @@ void CSkinnedMesh::buildAllLocalAnimatedMatrices()
 		{
 			joint->GlobalSkinningSpace=false;
 
-			// IRR_TEST_BROKEN_QUATERNION_USE: TODO - switched to getMatrix_transposed instead of getMatrix for downward compatibility.
+			// NIRT_TEST_BROKEN_QUATERNION_USE: TODO - switched to getMatrix_transposed instead of getMatrix for downward compatibility.
 			//								   Not tested so far if this was correct or wrong before quaternion fix!
 			joint->Animatedrotation.getMatrix_transposed(joint->LocalAnimatedMatrix);
 
@@ -785,7 +785,7 @@ const core::array<CSkinnedMesh::SJoint*> &CSkinnedMesh::getAllJoints() const
 }
 
 
-//! (This feature is not implemented in irrlicht yet)
+//! (This feature is not implemented in nirtcpp yet)
 bool CSkinnedMesh::setHardwareSkinning(bool on)
 {
 	if (HardwareSkinning!=on)
@@ -1522,5 +1522,5 @@ void CSkinnedMesh::calculateTangents(
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
+#endif // _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 

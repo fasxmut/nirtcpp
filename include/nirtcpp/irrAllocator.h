@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine" and the "irrXML" project.
-// For conditions of distribution and use, see copyright notice in irrlicht.h and irrXML.h
+// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// For conditions of distribution and use, see copyright notice in nirtcpp.h and irrXML.h
 
-#ifndef IRR_ALLOCATOR_H_INCLUDED
-#define IRR_ALLOCATOR_H_INCLUDED
+#ifndef NIRT_ALLOCATOR_H_INCLUDED
+#define NIRT_ALLOCATOR_H_INCLUDED
 
 #include "irrTypes.h"
 #include <new>

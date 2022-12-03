@@ -1,9 +1,9 @@
 // Copyright (C) 2006-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_Q3_LEVEL_SHADER_H_INCLUDED
-#define IRR_I_Q3_LEVEL_SHADER_H_INCLUDED
+#ifndef NIRT_I_Q3_LEVEL_SHADER_H_INCLUDED
+#define NIRT_I_Q3_LEVEL_SHADER_H_INCLUDED
 
 #include "irrArray.h"
 #include "fast_atof.h"
@@ -111,7 +111,7 @@ namespace quake3
 		return value;
 	}
 
-	//! get a quake3 vector translated to irrlicht position (x,-z,y )
+	//! get a quake3 vector translated to nirtcpp position (x,-z,y )
 	inline core::vector3df getAsVector3df ( const core::stringc &string, u32 &pos )
 	{
 		core::vector3df v;

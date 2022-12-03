@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_MATRIX_H_INCLUDED
-#define IRR_MATRIX_H_INCLUDED
+#ifndef NIRT_MATRIX_H_INCLUDED
+#define NIRT_MATRIX_H_INCLUDED
 
 #include "irrMath.h"
 #include "vector3d.h"
@@ -849,7 +849,7 @@ namespace core
 		// See http://www.robertblum.com/articles/2005/02/14/decomposing-matrices
 
 		// Deal with the 0 rotation case first
-		// Prior to Irrlicht 1.6, we always returned this value.
+		// Prior to Nirtcpp 1.6, we always returned this value.
 		if(core::iszero(M[1]) && core::iszero(M[2]) &&
 			core::iszero(M[4]) && core::iszero(M[6]) &&
 			core::iszero(M[8]) && core::iszero(M[9]))
@@ -957,7 +957,7 @@ namespace core
 		// aka scale swapping 1 or 3 axes. (I think we could catch that as well by comparing 
 		// crossproduct of first 2 axes to direction of third axis, but TODO)
 		// And maybe it should also offer the solution for the simple calculation 
-		// without regarding scaling as Irrlicht did before 1.7
+		// without regarding scaling as Nirtcpp did before 1.7
 		core::vector3d<T> scale(getScale());
 
 		// We assume the matrix uses rotations instead of negative scaling 2 axes.
@@ -1281,7 +1281,7 @@ namespace core
 	//! Deprecated as it's usually not what people need (regards only 2 corners, but other corners might be outside the box after transformation)
 	//! Use transformBoxEx instead.
 	template <class T>
-	IRR_DEPRECATED inline void CMatrix4<T>::transformBox(core::aabbox3d<f32>& box) const
+	NIRT_DEPRECATED inline void CMatrix4<T>::transformBox(core::aabbox3d<f32>& box) const
 	{
 #if defined ( USE_MATRIX_TEST )
 		if (isIdentity())
@@ -1574,10 +1574,10 @@ namespace core
 			f32 fieldOfViewRadians, f32 aspectRatio, f32 zNear, f32 zFar, bool zClipFromZero)
 	{
 		const f64 h = reciprocal(tan(fieldOfViewRadians*0.5));
-		IRR_DEBUG_BREAK_IF(aspectRatio==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(aspectRatio==0.f); //divide by zero
 		const T w = static_cast<T>(h / aspectRatio);
 
-		IRR_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
+		NIRT_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
 		M[0] = w;
 		M[1] = 0;
 		M[2] = 0;
@@ -1622,10 +1622,10 @@ namespace core
 			f32 fieldOfViewRadians, f32 aspectRatio, f32 zNear, f32 zFar, bool zClipFromZero)
 	{
 		const f64 h = reciprocal(tan(fieldOfViewRadians*0.5));
-		IRR_DEBUG_BREAK_IF(aspectRatio==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(aspectRatio==0.f); //divide by zero
 		const T w = static_cast<T>(h / aspectRatio);
 
-		IRR_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
+		NIRT_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
 		M[0] = w;
 		M[1] = 0;
 		M[2] = 0;
@@ -1670,7 +1670,7 @@ namespace core
 			f32 fieldOfViewRadians, f32 aspectRatio, f32 zNear, f32 epsilon)
 	{
 		const f64 h = reciprocal(tan(fieldOfViewRadians*0.5));
-		IRR_DEBUG_BREAK_IF(aspectRatio==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(aspectRatio==0.f); //divide by zero
 		const T w = static_cast<T>(h / aspectRatio);
 
 		M[0] = w;
@@ -1705,9 +1705,9 @@ namespace core
 	inline CMatrix4<T>& CMatrix4<T>::buildProjectionMatrixOrthoLH(
 			f32 widthOfViewVolume, f32 heightOfViewVolume, f32 zNear, f32 zFar, bool zClipFromZero)
 	{
-		IRR_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
+		NIRT_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
 		M[0] = (T)(2/widthOfViewVolume);
 		M[1] = 0;
 		M[2] = 0;
@@ -1751,9 +1751,9 @@ namespace core
 	inline CMatrix4<T>& CMatrix4<T>::buildProjectionMatrixOrthoRH(
 			f32 widthOfViewVolume, f32 heightOfViewVolume, f32 zNear, f32 zFar, bool zClipFromZero)
 	{
-		IRR_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
+		NIRT_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
 		M[0] = (T)(2/widthOfViewVolume);
 		M[1] = 0;
 		M[2] = 0;
@@ -1797,9 +1797,9 @@ namespace core
 	inline CMatrix4<T>& CMatrix4<T>::buildProjectionMatrixPerspectiveRH(
 			f32 widthOfViewVolume, f32 heightOfViewVolume, f32 zNear, f32 zFar, bool zClipFromZero)
 	{
-		IRR_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
+		NIRT_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
 		M[0] = (T)(2*zNear/widthOfViewVolume);
 		M[1] = 0;
 		M[2] = 0;
@@ -1843,9 +1843,9 @@ namespace core
 	inline CMatrix4<T>& CMatrix4<T>::buildProjectionMatrixPerspectiveLH(
 			f32 widthOfViewVolume, f32 heightOfViewVolume, f32 zNear, f32 zFar, bool zClipFromZero)
 	{
-		IRR_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
-		IRR_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
+		NIRT_DEBUG_BREAK_IF(widthOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(heightOfViewVolume==0.f); //divide by zero
+		NIRT_DEBUG_BREAK_IF(zNear==zFar); //divide by zero
 		M[0] = (T)(2*zNear/widthOfViewVolume);
 		M[1] = 0;
 		M[2] = 0;

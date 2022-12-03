@@ -39,7 +39,7 @@
 
 #include <memory.h>
 
-#define USE_SHA1	// Irrlicht only cares about SHA1 for now
+#define USE_SHA1	// Nirtcpp only cares about SHA1 for now
 #if !defined(USE_SHA1) && !defined(USE_SHA256)
 #error define USE_SHA1 or USE_SHA256 to set the HMAC hash algorithm
 #endif

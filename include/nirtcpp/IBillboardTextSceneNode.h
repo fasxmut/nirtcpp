@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_BILLBOARD_TEXT_SCENE_NODE_H_INCLUDED
-#define IRR_I_BILLBOARD_TEXT_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_I_BILLBOARD_TEXT_SCENE_NODE_H_INCLUDED
+#define NIRT_I_BILLBOARD_TEXT_SCENE_NODE_H_INCLUDED
 
 #include "IBillboardSceneNode.h"
 
@@ -20,7 +20,7 @@ namespace scene
 
 //! A billboard text scene node.
 /** Acts like a billboard which displays the currently set text.
-  Due to the exclusion of RTTI in Irrlicht we have to avoid multiple
+  Due to the exclusion of RTTI in Nirtcpp we have to avoid multiple
   inheritance. Hence, changes to the ITextSceneNode interface have
   to be copied here manually.
 */

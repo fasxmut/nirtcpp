@@ -10,7 +10,7 @@ static irr::u8 aa = 0;	// AntiAlias used in testShotsInShots
 // Tests screenshots features
 static bool testShots(video::E_DRIVER_TYPE type)
 {
-	IrrlichtDevice *device = createDevice(type, core::dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice(type, core::dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true;
 
@@ -90,12 +90,12 @@ static void drawSomeStuff(video::IVideoDriver* driver)
 // Make a screenshot, then draw it again (scaled down) together with the stuff the screenshot was made from
 static bool testShotsOfShots(video::E_DRIVER_TYPE type)
 {
-	SIrrlichtCreationParameters params;
+	SNirtcppCreationParameters params;
 	params.AntiAlias = aa;
 	params.WindowSize = core::dimension2du(160, 120);
 	params.DriverType = type;
 
-	IrrlichtDevice *device = createDeviceEx(params);
+	NirtcppDevice *device = createDeviceEx(params);
 
 	if (!device)
 		return true; // in case the driver type does not exist

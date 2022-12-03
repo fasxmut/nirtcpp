@@ -1,9 +1,9 @@
 // Copyright (C) 2010-2012 Gaz Davidson
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SMF_MESH_LOADER_H_INCLUDED
-#define IRR_C_SMF_MESH_LOADER_H_INCLUDED
+#ifndef NIRT_C_SMF_MESH_LOADER_H_INCLUDED
+#define NIRT_C_SMF_MESH_LOADER_H_INCLUDED
 
 #include "IMeshLoader.h"
 #include "SMesh.h"
@@ -31,10 +31,10 @@ public:
 	CSMFMeshFileLoader(irr::io::IFileSystem* fs, video::IVideoDriver* driver);
 
 	//! Returns true if the file might be loaded by this class.
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 	//! Creates/loads an animated mesh from the file.
-	virtual IAnimatedMesh* createMesh(io::IReadFile* file) IRR_OVERRIDE;
+	virtual IAnimatedMesh* createMesh(io::IReadFile* file) override;
 private:
 
 	void loadLimb(io::IReadFile* file, scene::SMesh* mesh, const core::matrix4 &parentTransformation);
@@ -65,4 +65,4 @@ namespace io
 
 } // end namespace irr
 
-#endif // IRR_C_SMF_MESH_LOADER_H_INCLUDED
+#endif // NIRT_C_SMF_MESH_LOADER_H_INCLUDED

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine" and the "irrXML" project.
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_PATH_H_INCLUDED
-#define IRR_PATH_H_INCLUDED
+#ifndef NIRT_PATH_H_INCLUDED
+#define NIRT_PATH_H_INCLUDED
 
 #include "irrString.h"
 
@@ -19,7 +19,7 @@ namespace io
 typedef core::string<fschar_t> path;
 
 //! Used in places where we identify objects by a filename, but don't actually work with the real filename
-/** Irrlicht is internally not case-sensitive when it comes to names.
+/** Nirtcpp is internally not case-sensitive when it comes to names.
     Also this class is a first step towards support for correctly serializing renamed objects.
 */
 struct SNamedPath
@@ -52,7 +52,7 @@ struct SNamedPath
 	};
 
 	//! Get the name which is used to identify the file.
-	//! This string is similar to the names and filenames used before Irrlicht 1.7
+	//! This string is similar to the names and filenames used before Nirtcpp 1.7
 	const path& getInternalName() const
 	{
 		return InternalName;
@@ -87,4 +87,4 @@ private:
 } // io
 } // irr
 
-#endif // IRR_PATH_H_INCLUDED
+#endif // NIRT_PATH_H_INCLUDED

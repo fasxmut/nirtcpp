@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_FILE_SYSTEM_H_INCLUDED
-#define IRR_I_FILE_SYSTEM_H_INCLUDED
+#ifndef NIRT_I_FILE_SYSTEM_H_INCLUDED
+#define NIRT_I_FILE_SYSTEM_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "IXMLReader.h"
@@ -92,14 +92,14 @@ public:
 	virtual IWriteFile* createAndWriteFile(const path& filename, bool append=false) =0;
 
 	//! Adds an archive to the file system.
-	/** After calling this, the Irrlicht Engine will also search and open
+	/** After calling this, the Nirtcpp Engine will also search and open
 	files directly from this archive. This is useful for hiding data from
 	the end user, speeding up file access and making it possible to access
 	for example Quake3 .pk3 files, which are just renamed .zip files. By
-	default Irrlicht supports ZIP, PAK, TAR, PNK, and directories as
+	default Nirtcpp supports ZIP, PAK, TAR, PNK, and directories as
 	archives. You can provide your own archive types by implementing
 	IArchiveLoader and passing an instance to addArchiveLoader.
-	Irrlicht supports AES-encrypted zip files, and the advanced compression
+	Nirtcpp supports AES-encrypted zip files, and the advanced compression
 	techniques lzma and bzip2.
 	\param filename: Filename of the archive to add to the file system.
 	\param ignoreCase: If set to true, files in the archive can be accessed without
@@ -120,17 +120,17 @@ public:
 			IFileArchive** retArchive=0) =0;
 
 	//! Adds an archive to the file system.
-	/** After calling this, the Irrlicht Engine will also search and open
+	/** After calling this, the Nirtcpp Engine will also search and open
 	files directly from this archive. This is useful for hiding data from
 	the end user, speeding up file access and making it possible to access
 	for example Quake3 .pk3 files, which are just renamed .zip files. By
-	default Irrlicht supports ZIP, PAK, TAR, PNK, and directories as
+	default Nirtcpp supports ZIP, PAK, TAR, PNK, and directories as
 	archives. You can provide your own archive types by implementing
 	IArchiveLoader and passing an instance to addArchiveLoader.
-	Irrlicht supports AES-encrypted zip files, and the advanced compression
+	Nirtcpp supports AES-encrypted zip files, and the advanced compression
 	techniques lzma and bzip2.
 	If you want to add a directory as an archive, prefix its name with a
-	slash in order to let Irrlicht recognize it as a folder mount (mypath/).
+	slash in order to let Nirtcpp recognize it as a folder mount (mypath/).
 	Using this technique one can build up a search order, because archives
 	are read first, and can be used more easily with relative filenames.
 	\param file: Archive to add to the file system.
@@ -214,9 +214,9 @@ public:
 
 	//! Adds a zip archive to the file system.
 	/** \deprecated This function is provided for compatibility
-	with older versions of Irrlicht and may be removed in Irrlicht 1.9,
+	with older versions of Nirtcpp and may be removed in Nirtcpp 1.9,
 	you should use addFileArchive instead.
-	After calling this, the Irrlicht Engine will search and open files directly from this archive too.
+	After calling this, the Nirtcpp Engine will search and open files directly from this archive too.
 	This is useful for hiding data from the end user, speeding up file access and making it possible to
 	access for example Quake3 .pk3 files, which are no different than .zip files.
 	\param filename: Filename of the zip archive to add to the file system.
@@ -225,14 +225,14 @@ public:
 	\param ignorePaths: If set to true, files in the added archive can be accessed
 	without its complete path.
 	\return True if the archive was added successfully, false if not. */
-	IRR_DEPRECATED virtual bool addZipFileArchive(const c8* filename, bool ignoreCase=true, bool ignorePaths=true)
+	NIRT_DEPRECATED virtual bool addZipFileArchive(const c8* filename, bool ignoreCase=true, bool ignorePaths=true)
 	{
 		return addFileArchive(filename, ignoreCase, ignorePaths, EFAT_ZIP);
 	}
 
 	//! Adds an unzipped archive (or basedirectory with subdirectories..) to the file system.
 	/** \deprecated This function is provided for compatibility
-	with older versions of Irrlicht and may be removed in Irrlicht 1.9,
+	with older versions of Nirtcpp and may be removed in Nirtcpp 1.9,
 	you should use addFileArchive instead.
 	Useful for handling data which will be in a zip file
 	\param filename: Filename of the unzipped zip archive base directory to add to the file system.
@@ -241,16 +241,16 @@ public:
 	\param ignorePaths: If set to true, files in the added archive can be accessed
 	without its complete path.
 	\return True if the archive was added successful, false if not. */
-	IRR_DEPRECATED virtual bool addFolderFileArchive(const c8* filename, bool ignoreCase=true, bool ignorePaths=true)
+	NIRT_DEPRECATED virtual bool addFolderFileArchive(const c8* filename, bool ignoreCase=true, bool ignorePaths=true)
 	{
 		return addFileArchive(filename, ignoreCase, ignorePaths, EFAT_FOLDER);
 	}
 
 	//! Adds a pak archive to the file system.
 	/** \deprecated This function is provided for compatibility
-	with older versions of Irrlicht and may be removed in Irrlicht 1.9,
+	with older versions of Nirtcpp and may be removed in Nirtcpp 1.9,
 	you should use addFileArchive instead.
-	After calling this, the Irrlicht Engine will search and open files directly from this archive too.
+	After calling this, the Nirtcpp Engine will search and open files directly from this archive too.
 	This is useful for hiding data from the end user, speeding up file access and making it possible to
 	access for example Quake2/KingPin/Hexen2 .pak files
 	\param filename: Filename of the pak archive to add to the file system.
@@ -259,7 +259,7 @@ public:
 	\param ignorePaths: If set to true, files in the added archive can be accessed
 	without its complete path.(should not use with Quake2 paks
 	\return True if the archive was added successful, false if not. */
-	IRR_DEPRECATED virtual bool addPakFileArchive(const c8* filename, bool ignoreCase=true, bool ignorePaths=true)
+	NIRT_DEPRECATED virtual bool addPakFileArchive(const c8* filename, bool ignoreCase=true, bool ignorePaths=true)
 	{
 		return addFileArchive(filename, ignoreCase, ignorePaths, EFAT_PAK);
 	}

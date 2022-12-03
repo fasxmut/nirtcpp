@@ -1,11 +1,11 @@
 // Copyright (C) 2022 Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 namespace irr
 {
@@ -93,5 +93,5 @@ void burning_shader_class::OnSetMaterialBurning(const SBurningShaderMaterial& ma
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 

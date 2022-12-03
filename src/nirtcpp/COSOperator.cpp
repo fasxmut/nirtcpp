@@ -1,26 +1,26 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "COSOperator.h"
 
-#ifdef _IRR_WINDOWS_API_
-#ifndef _IRR_XBOX_PLATFORM_
+#ifdef _NIRT_WINDOWS_API_
+#ifndef _NIRT_XBOX_PLATFORM_
 #include <windows.h>
 #endif
 #else
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
-#ifdef _IRR_OSX_PLATFORM_
+#ifdef _NIRT_OSX_PLATFORM_
 #include <sys/sysctl.h>
 #endif
 #endif
 
-#if defined(_IRR_COMPILE_WITH_X11_DEVICE_)
+#if defined(_NIRT_COMPILE_WITH_X11_DEVICE_)
 #include "CIrrDeviceLinux.h"
 #endif
-#if defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+#if defined(_NIRT_COMPILE_WITH_OSX_DEVICE_)
 #import <Cocoa/Cocoa.h>
 #endif
 
@@ -29,7 +29,7 @@
 namespace irr
 {
 
-#if defined(_IRR_COMPILE_WITH_X11_DEVICE_)
+#if defined(_NIRT_COMPILE_WITH_X11_DEVICE_)
 // constructor  linux
 	COSOperator::COSOperator(const core::stringc& osVersion, CIrrDeviceLinux* device)
 : OperatingSystem(osVersion), IrrDeviceLinux(device)
@@ -60,8 +60,8 @@ void COSOperator::copyToClipboard(const c8* text) const
 		return;
 
 // Windows version
-#if defined(_IRR_XBOX_PLATFORM_)
-#elif defined(_IRR_WINDOWS_API_)
+#if defined(_NIRT_XBOX_PLATFORM_)
+#elif defined(_NIRT_WINDOWS_API_)
 	if (!OpenClipboard(NULL) || text == 0)
 		return;
 
@@ -83,7 +83,7 @@ void COSOperator::copyToClipboard(const c8* text) const
 	}
 	CloseClipboard();
 
-#elif defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+#elif defined(_NIRT_COMPILE_WITH_OSX_DEVICE_)
     NSString *str = nil;
     NSPasteboard *board = nil;
 
@@ -95,7 +95,7 @@ void COSOperator::copyToClipboard(const c8* text) const
         [board setString:str forType:NSStringPboardType];
     }
 
-#elif defined(_IRR_COMPILE_WITH_X11_DEVICE_)
+#elif defined(_NIRT_COMPILE_WITH_X11_DEVICE_)
     if ( IrrDeviceLinux )
         IrrDeviceLinux->copyToClipboard(text);
 #else
@@ -108,9 +108,9 @@ void COSOperator::copyToClipboard(const c8* text) const
 //! \return Returns 0 if no string is in there.
 const c8* COSOperator::getTextFromClipboard() const
 {
-#if defined(_IRR_XBOX_PLATFORM_)
+#if defined(_NIRT_XBOX_PLATFORM_)
 		return 0;
-#elif defined(_IRR_WINDOWS_API_)
+#elif defined(_NIRT_WINDOWS_API_)
 	if (!OpenClipboard(NULL))
 		return 0;
 
@@ -122,7 +122,7 @@ const c8* COSOperator::getTextFromClipboard() const
 	CloseClipboard();
 	return buffer;
 
-#elif defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+#elif defined(_NIRT_COMPILE_WITH_OSX_DEVICE_)
     NSString* str = nil;
     NSPasteboard* board = nil;
     char* result = 0;
@@ -135,7 +135,7 @@ const c8* COSOperator::getTextFromClipboard() const
 
     return (result);
 
-#elif defined(_IRR_COMPILE_WITH_X11_DEVICE_)
+#elif defined(_NIRT_COMPILE_WITH_X11_DEVICE_)
     if ( IrrDeviceLinux )
         return IrrDeviceLinux->getTextFromClipboard();
     return 0;
@@ -151,7 +151,7 @@ bool COSOperator::getProcessorSpeedMHz(u32* MHz) const
 {
 	if (MHz)
 		*MHz=0;
-#if defined(_IRR_WINDOWS_API_) && !defined(_WIN32_WCE ) && !defined (_IRR_XBOX_PLATFORM_)
+#if defined(_NIRT_WINDOWS_API_) && !defined(_WIN32_WCE ) && !defined (_NIRT_XBOX_PLATFORM_)
 	LONG Error;
 
 	HKEY Key;
@@ -174,7 +174,7 @@ bool COSOperator::getProcessorSpeedMHz(u32* MHz) const
 		*MHz = Speed;
 	return true;
 
-#elif defined(_IRR_OSX_PLATFORM_)
+#elif defined(_NIRT_OSX_PLATFORM_)
 	struct clockinfo CpuClock;
 	size_t Size = sizeof(clockinfo);
 
@@ -211,7 +211,7 @@ bool COSOperator::getProcessorSpeedMHz(u32* MHz) const
 
 bool COSOperator::getSystemMemory(u32* Total, u32* Avail) const
 {
-#if defined(_IRR_WINDOWS_API_) && !defined (_IRR_XBOX_PLATFORM_)
+#if defined(_NIRT_WINDOWS_API_) && !defined (_NIRT_XBOX_PLATFORM_)
 
     #if (_WIN32_WINNT >= 0x0500)
 	MEMORYSTATUSEX MemoryStatusEx;
@@ -239,7 +239,7 @@ bool COSOperator::getSystemMemory(u32* Total, u32* Avail) const
     return true;
 	#endif
 
-#elif defined(_IRR_POSIX_API_) && defined(_SC_PHYS_PAGES) && defined(_SC_AVPHYS_PAGES)
+#elif defined(_NIRT_POSIX_API_) && defined(_SC_PHYS_PAGES) && defined(_SC_AVPHYS_PAGES)
 	long ps = sysconf(_SC_PAGESIZE);
 	long pp = sysconf(_SC_PHYS_PAGES);
 	long ap = sysconf(_SC_AVPHYS_PAGES);
@@ -252,7 +252,7 @@ bool COSOperator::getSystemMemory(u32* Total, u32* Avail) const
 	if (Avail)
 		*Avail = (u32)((ap>>10)*ps);
 	return true;
-#elif defined(_IRR_OSX_PLATFORM_)
+#elif defined(_NIRT_OSX_PLATFORM_)
 	int mib[2];
 	int64_t physical_memory;
 	size_t length;

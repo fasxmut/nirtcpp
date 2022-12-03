@@ -13,7 +13,7 @@ using namespace gui;
 // Tests save scene.
 static bool saveScene(void)
 {
-	IrrlichtDevice *device = createDevice( EDT_NULL, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( EDT_NULL, dimension2d<u32>(160, 120), 32);
 	assert_log(device);
 	if (!device)
 		return false;
@@ -75,7 +75,7 @@ static bool saveScene(void)
 
 static bool loadScene(void)
 {
-	IrrlichtDevice *device = createDevice(video::EDT_BURNINGSVIDEO,
+	NirtcppDevice *device = createDevice(video::EDT_BURNINGSVIDEO,
 										core::dimension2du(160,120), 32);
 	if (!device)
 		return false;

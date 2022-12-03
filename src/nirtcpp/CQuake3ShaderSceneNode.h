@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_QUAKE3_SCENE_NODE_H_INCLUDED
-#define IRR_C_QUAKE3_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_QUAKE3_SCENE_NODE_H_INCLUDED
+#define NIRT_C_QUAKE3_SCENE_NODE_H_INCLUDED
 
 #include "IMeshSceneNode.h"
 #include "IQ3Shader.h"
@@ -31,31 +31,31 @@ public:
 
 	virtual ~CQuake3ShaderSceneNode();
 
-	virtual void OnRegisterSceneNode() IRR_OVERRIDE;
-	virtual void render() IRR_OVERRIDE;
-	virtual void OnAnimate(u32 timeMs) IRR_OVERRIDE;
-	virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+	virtual void OnRegisterSceneNode() override;
+	virtual void render() override;
+	virtual void OnAnimate(u32 timeMs) override;
+	virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
-	virtual u32 getMaterialCount() const IRR_OVERRIDE;
-	virtual video::SMaterial& getMaterial(u32 i) IRR_OVERRIDE;
+	virtual u32 getMaterialCount() const override;
+	virtual video::SMaterial& getMaterial(u32 i) override;
 
 	//! Returns type of the scene node
-	virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_Q3SHADER_SCENE_NODE; }
+	virtual ESCENE_NODE_TYPE getType() const override { return ESNT_Q3SHADER_SCENE_NODE; }
 
-	virtual void setMesh(IMesh* mesh)IRR_OVERRIDE {}
-	virtual IMesh* getMesh() IRR_OVERRIDE { return Mesh; }
-	virtual void setReadOnlyMaterials(bool readonly) IRR_OVERRIDE {}
-	virtual bool isReadOnlyMaterials() const IRR_OVERRIDE { return true; }
+	virtual void setMesh(IMesh* mesh)override {}
+	virtual IMesh* getMesh() override { return Mesh; }
+	virtual void setReadOnlyMaterials(bool readonly) override {}
+	virtual bool isReadOnlyMaterials() const override { return true; }
 
 	//! Creates shadow volume scene node as child of this node
 	//! and returns a pointer to it.
 	virtual IShadowVolumeSceneNode* addShadowVolumeSceneNode(const IMesh* shadowMesh,
-		s32 id, bool zfailmethod=true, f32 infinity=10000.0f) IRR_OVERRIDE;
+		s32 id, bool zfailmethod=true, f32 infinity=10000.0f) override;
 
 	//! Removes a child from this scene node.
 	//! Implemented here, to be able to remove the shadow properly, if there is one,
 	//! or to remove attached childs.
-	virtual bool removeChild(ISceneNode* child) IRR_OVERRIDE;
+	virtual bool removeChild(ISceneNode* child) override;
 
 private:
 	const quake3::IShader* Shader;

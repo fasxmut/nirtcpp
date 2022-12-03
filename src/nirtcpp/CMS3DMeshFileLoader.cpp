@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // 2019 additional alignment and big_endian fixes by Corto and Salas00
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_MS3D_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MS3D_LOADER_
 
 #include "IReadFile.h"
 #include "os.h"
@@ -18,7 +18,7 @@ namespace scene
 {
 
 #ifdef _DEBUG
-#define _IRR_DEBUG_MS3D_LOADER_
+#define _NIRT_DEBUG_MS3D_LOADER_
 #endif
 
 // byte-align structures
@@ -222,7 +222,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		os::Printer::log("Only Milkshape3D version 3 and 4 (1.3 to 1.8) is supported. Loading failed", file->getFileName(), ELL_ERROR);
 		return false;
 	}
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("Loaded header version", core::stringc(pHeader->Version).c_str());
 #endif
 
@@ -233,7 +233,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 #ifdef __BIG_ENDIAN__
 	numVertices = os::Byteswap::byteswap(numVertices);
 #endif
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("Load vertices", core::stringc(numVertices).c_str());
 #endif
 
@@ -265,7 +265,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 #ifdef __BIG_ENDIAN__
 	numTriangles = os::Byteswap::byteswap(numTriangles);
 #endif
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("Load Triangles", core::stringc(numTriangles).c_str());
 #endif
 	pPtr += sizeof(u16);
@@ -304,7 +304,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 #ifdef __BIG_ENDIAN__
 	numGroups = os::Byteswap::byteswap(numGroups);
 #endif
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("Load Groups", core::stringc(numGroups).c_str());
 #endif
 	pPtr += sizeof(u16);
@@ -359,7 +359,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 #ifdef __BIG_ENDIAN__
 	numMaterials = os::Byteswap::byteswap(numMaterials);
 #endif
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("Load Materials", core::stringc(numMaterials).c_str());
 #endif
 	pPtr += sizeof(u16);
@@ -425,7 +425,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 
 	f32 framesPerSecond = get_unaligned_le_float(pPtr);
 
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("FPS", core::stringc(framesPerSecond).c_str());
 #endif
 	pPtr += sizeof(float) * 2; // fps and current time
@@ -445,7 +445,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 #ifdef __BIG_ENDIAN__
 	jointCount = os::Byteswap::byteswap(jointCount);
 #endif
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 	os::Printer::log("Joints", core::stringc(jointCount).c_str());
 #endif
 	pPtr += sizeof(u16);
@@ -486,7 +486,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		ISkinnedMesh::SJoint *jnt = AnimatedMesh->addJoint();
 
 		jnt->Name = pJoint->Name;
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 		os::Printer::log("Joint", jnt->Name.c_str());
 		os::Printer::log("Rotation keyframes", core::stringc(pJoint->NumRotationKeyframes).c_str());
 		os::Printer::log("Translation keyframes", core::stringc(pJoint->NumTranslationKeyframes).c_str());
@@ -548,7 +548,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 
 			tmpMatrix=jnt->LocalMatrix*tmpMatrix;
 
-			// IRR_TEST_BROKEN_QUATERNION_USE: TODO - switched from tmpMatrix to tmpMatrix.getTransposed() for downward compatibility.
+			// NIRT_TEST_BROKEN_QUATERNION_USE: TODO - switched from tmpMatrix to tmpMatrix.getTransposed() for downward compatibility.
 			//								   Not tested so far if this was correct or wrong before quaternion fix!
 			k->rotation  = core::quaternion(tmpMatrix.getTransposed());
 		}
@@ -599,7 +599,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 
 		for (u32 j=0; j<4; ++j) // four comment groups
 		{
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 			os::Printer::log("Skipping comment group", core::stringc(j+1).c_str());
 #endif
 			u32 numComments = *(u32*)pPtr;
@@ -642,7 +642,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 				weightFactor=1.f/100.f;
 			pPtr += sizeof(s32);
 
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 			os::Printer::log("Reading vertex weights");
 #endif
 			// read vertex weights, ignoring data 'extra' from 1.8.2
@@ -670,7 +670,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 #endif
 			pPtr += sizeof(s32);
 			// skip joint colors
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 			os::Printer::log("Skip joint color");
 #endif
 			pPtr += 3*sizeof(float)*jointCount;
@@ -690,7 +690,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 			subVersion = os::Byteswap::byteswap(subVersion);
 #endif
 			pPtr += sizeof(s32);
-#ifdef _IRR_DEBUG_MS3D_LOADER_
+#ifdef _NIRT_DEBUG_MS3D_LOADER_
 			os::Printer::log("Skip model extra information");
 #endif
 			// now the model extra information would follow

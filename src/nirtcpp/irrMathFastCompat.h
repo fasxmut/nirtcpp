@@ -1,8 +1,8 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef __IRR_FAST_MATH_COMPAT_H_INCLUDED__
-#define __IRR_FAST_MATH_COMPAT_H_INCLUDED__
+#ifndef __NIRT_FAST_MATH_COMPAT_H_INCLUDED__
+#define __NIRT_FAST_MATH_COMPAT_H_INCLUDED__
 
 #include "irrMath.h"
 
@@ -123,4 +123,4 @@ namespace core
 } // end namespace core
 } // end namespace irr	
 
-#endif // __IRR_FAST_MATH_COMPAT_H_INCLUDED__
+#endif // __NIRT_FAST_MATH_COMPAT_H_INCLUDED__

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_CORE_UTIL_H_INCLUDED
-#define IRR_CORE_UTIL_H_INCLUDED
+#ifndef NIRT_CORE_UTIL_H_INCLUDED
+#define NIRT_CORE_UTIL_H_INCLUDED
 
 #include "irrString.h"
 #include "path.h"
@@ -177,15 +177,15 @@ static inline io::path mergeFilename(const io::path& path, const io::path& filen
 	if ( !result.empty() )
 	{
 		const fschar_t last = result.lastChar();
-		if ( last != IRR_TEXT('/') && last != IRR_TEXT('\\') )
-			result += IRR_TEXT('/');
+		if ( last != NIRT_TEXT('/') && last != NIRT_TEXT('\\') )
+			result += NIRT_TEXT('/');
 	}
 	if ( !filename.empty() )
 		result += filename;
 	if ( !extension.empty() )
 	{
-		if ( !result.empty() && extension[0] != IRR_TEXT('.') )
-			result += IRR_TEXT('.');
+		if ( !result.empty() && extension[0] != NIRT_TEXT('.') )
+			result += NIRT_TEXT('.');
 		result += extension;
 	}
 

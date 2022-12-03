@@ -21,10 +21,10 @@ class CustomAnimator : public ISceneNodeAnimator
 
 /** Test that a custom animator can remove itself cleanly from an ISceneNode during its
  *  own animateNode() loop.
- * http://irrlicht.sourceforge.net/phpBB2/viewtopic.php?t=32271 */
+ * http://nirtcpp.sourceforge.net/phpBB2/viewtopic.php?t=32271 */
 bool removeCustomAnimator(void)
 {
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL, dimension2du(160, 120));
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2du(160, 120));
 	assert_log(device);
 	if(!device)
 		return false;

@@ -1,15 +1,15 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 // The code for the TerrainSceneNode is based on the GeoMipMapSceneNode
-// developed by Spintz. He made it available for Irrlicht and allowed it to be
+// developed by Spintz. He made it available for Nirtcpp and allowed it to be
 // distributed under this licence. I only modified some parts. A lot of thanks
 // go to him.
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 
 #include "CTerrainSceneNode.h"
 #include "CTerrainTriangleSelector.h"
@@ -232,7 +232,7 @@ namespace scene
 		const u32 endTime = os::Timer::getRealTime();
 
 		c8 tmp[255];
-		snprintf_irr(tmp, 255, "Generated terrain data (%dx%d) in %.4f seconds",
+		snprintf_nirt(tmp, 255, "Generated terrain data (%dx%d) in %.4f seconds",
 			TerrainData.Size, TerrainData.Size, (endTime - startTime) / 1000.0f );
 		os::Printer::log(tmp);
 
@@ -468,7 +468,7 @@ namespace scene
 		const u32 endTime = os::Timer::getTime();
 
 		c8 tmp[255];
-		snprintf_irr(tmp, 255, "Generated terrain data (%dx%d) in %.4f seconds",
+		snprintf_nirt(tmp, 255, "Generated terrain data (%dx%d) in %.4f seconds",
 			TerrainData.Size, TerrainData.Size, (endTime - startTime) / 1000.0f);
 		os::Printer::log(tmp);
 
@@ -792,7 +792,7 @@ namespace scene
 			if (now - lastTime > 1000)
 			{
 				char buf[64];
-				snprintf_irr(buf, 64, "Count: %d, Visible: %d", count, visible);
+				snprintf_nirt(buf, 64, "Count: %d, Visible: %d", count, visible);
 				os::Printer::log(buf);
 
 				lastTime = now;
@@ -1515,4 +1515,4 @@ namespace scene
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_TERRAIN_SCENENODE_
+#endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_

@@ -1,13 +1,13 @@
 // Copyright (C) 2006-2012 Luke Hoschke
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 // B3D Mesh loader
 // File format designed by Mark Sibly for the Blitz3D engine and has been
 // declared public domain
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_B3D_LOADER_
+#ifdef _NIRT_COMPILE_WITH_B3D_LOADER_
 
 #include "CB3DMeshFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -460,7 +460,7 @@ bool CB3DMeshFileLoader::readChunkTRIS(scene::SSkinMeshBuffer *meshBuffer, u32 m
 
 	bool showVertexWarning=false;
 
-	s32 triangle_brush_id; // Note: Irrlicht can't have different brushes for each triangle (using a workaround)
+	s32 triangle_brush_id; // Note: Nirtcpp can't have different brushes for each triangle (using a workaround)
 	B3DFile->read(&triangle_brush_id, sizeof(triangle_brush_id));
 #ifdef __BIG_ENDIAN__
 	triangle_brush_id = os::Byteswap::byteswap(triangle_brush_id);
@@ -650,7 +650,7 @@ bool CB3DMeshFileLoader::readChunkKEYS(CSkinnedMesh::SJoint *inJoint)
 		frame = os::Byteswap::byteswap(frame);
 		#endif
 
-		// Add key frames, frames in Irrlicht are zero-based
+		// Add key frames, frames in Nirtcpp are zero-based
 		f32 data[4];
 		if (flags & 1)
 		{
@@ -855,14 +855,14 @@ bool CB3DMeshFileLoader::readChunkBRUS()
 	n_texs = os::Byteswap::byteswap(n_texs);
 #endif
 
-	// number of texture ids read for Irrlicht
+	// number of texture ids read for Nirtcpp
 	const u32 num_textures = core::min_(n_texs, video::MATERIAL_MAX_TEXTURES);
 	// number of bytes to skip (for ignored texture ids)
 	const u32 n_texs_offset = (num_textures<n_texs)?(n_texs-num_textures):0;
 
 	while((B3dStack.getLast().startposition + B3dStack.getLast().length) > B3DFile->getPos()) //this chunk repeats
 	{
-		// This is what blitz basic calls a brush, like an Irrlicht material
+		// This is what blitz basic calls a brush, like an Nirtcpp material
 
 		core::stringc name;
 		readString(name);
@@ -949,7 +949,7 @@ bool CB3DMeshFileLoader::readChunkBRUS()
 			}
 		}
 
-		//------ Convert blitz flags/blend to irrlicht -------
+		//------ Convert blitz flags/blend to nirtcpp -------
 
 		//Two textures:
 		if (B3dMaterial.Textures[1])
@@ -1105,5 +1105,5 @@ void CB3DMeshFileLoader::readFloats(f32* vec, u32 count)
 } // end namespace irr
 
 
-#endif // _IRR_COMPILE_WITH_B3D_LOADER_
+#endif // _NIRT_COMPILE_WITH_B3D_LOADER_
 

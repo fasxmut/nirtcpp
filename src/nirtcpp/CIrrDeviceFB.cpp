@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2007 Nikolaus Gebhardt
 // Copyright (C) 2007-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CIrrDeviceFB.h"
 
-#ifdef _IRR_COMPILE_WITH_FB_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_FB_DEVICE_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +34,7 @@ namespace irr
 {
 
 //! constructor
-CIrrDeviceFB::CIrrDeviceFB(const SIrrlichtCreationParameters& params)
+CIrrDeviceFB::CIrrDeviceFB(const SNirtcppCreationParameters& params)
  : CIrrDeviceStub(params), Framebuffer(-1), EventDevice(-1), SoftwareImage(0),
 	Pitch(0), FBColorFormat(video::ECF_A8R8G8B8), Close(false)
 {
@@ -133,7 +133,7 @@ bool CIrrDeviceFB::createWindow(const core::dimension2d<u32>& windowSize, u32 bi
 	// make format settings
 	ioctl(Framebuffer, FBIOGET_FSCREENINFO, &fbfixscreeninfo);
 	ioctl(Framebuffer, FBIOGET_VSCREENINFO, &oldscreeninfo);
-	snprintf_irr(buf, 256, "Original resolution: %d x %d\nARGB%d%d%d%d\n",oldscreeninfo.xres,oldscreeninfo.yres,
+	snprintf_nirt(buf, 256, "Original resolution: %d x %d\nARGB%d%d%d%d\n",oldscreeninfo.xres,oldscreeninfo.yres,
 		oldscreeninfo.transp.length,oldscreeninfo.red.length,oldscreeninfo.green.length,oldscreeninfo.blue.length);
 		os::Printer::log(buf);
 	memcpy(&fbscreeninfo, &oldscreeninfo, sizeof(struct fb_var_screeninfo));
@@ -153,7 +153,7 @@ bool CIrrDeviceFB::createWindow(const core::dimension2d<u32>& windowSize, u32 bi
 		ioctl(Framebuffer, FBIOPUT_VSCREENINFO, &fbscreeninfo);
 		ioctl(Framebuffer, FBIOGET_VSCREENINFO, &fbscreeninfo);
 
-		snprintf_irr(buf, 256, "New resolution: %d x %d (%d x %d)\nARGB%d%d%d%d\n",fbscreeninfo.xres,fbscreeninfo.yres,fbscreeninfo.xres_virtual,fbscreeninfo.yres_virtual,
+		snprintf_nirt(buf, 256, "New resolution: %d x %d (%d x %d)\nARGB%d%d%d%d\n",fbscreeninfo.xres,fbscreeninfo.yres,fbscreeninfo.xres_virtual,fbscreeninfo.yres_virtual,
 		fbscreeninfo.transp.length,fbscreeninfo.red.length,fbscreeninfo.green.length,fbscreeninfo.blue.length);
 		os::Printer::log(buf);
 
@@ -191,7 +191,7 @@ void CIrrDeviceFB::createDriver()
 	switch(CreationParams.DriverType)
 	{
 	case video::EDT_SOFTWARE:
-		#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+		#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 		VideoDriver = video::createSoftwareDriver(CreationParams.WindowSize, CreationParams.Fullscreen, FileSystem, this);
 		#else
 		os::Printer::log("No Software driver support compiled in.", ELL_WARNING);
@@ -199,7 +199,7 @@ void CIrrDeviceFB::createDriver()
 		break;
 
 	case video::EDT_BURNINGSVIDEO:
-		#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+		#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 		VideoDriver = video::createBurningVideoDriver(CreationParams, FileSystem, this);
 		#else
 		os::Printer::log("Burning's video driver was not compiled in.", ELL_WARNING);
@@ -401,5 +401,5 @@ E_DEVICE_TYPE CIrrDeviceFB::getType() const
 
 } // end namespace irr
 
-#endif // _IRR_USE_FB_DEVICE_
+#endif // _NIRT_USE_FB_DEVICE_
 

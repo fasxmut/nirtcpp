@@ -10,7 +10,7 @@ using namespace scene;
 //! Tests the basic functionality of the software device.
 bool softwareDevice(void)
 {
-	IrrlichtDevice *device = createDevice(video::EDT_SOFTWARE, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice(video::EDT_SOFTWARE, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return false;
 

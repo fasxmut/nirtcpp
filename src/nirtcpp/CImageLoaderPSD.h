@@ -1,13 +1,13 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_IMAGE_LOADER_PSD_H_INCLUDED
-#define IRR_C_IMAGE_LOADER_PSD_H_INCLUDED
+#ifndef NIRT_C_IMAGE_LOADER_PSD_H_INCLUDED
+#define NIRT_C_IMAGE_LOADER_PSD_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_PSD_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PSD_LOADER_
 
 #include "IImageLoader.h"
 
@@ -48,13 +48,13 @@ public:
 
 	//! returns true if the file maybe is able to be loaded by this class
 	//! based on the file extension (e.g. ".tga")
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 	//! returns true if the file maybe is able to be loaded by this class
-	virtual bool isALoadableFileFormat(io::IReadFile* file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileFormat(io::IReadFile* file) const override;
 
 	//! creates a surface from the file
-	virtual IImage* loadImage(io::IReadFile* file) const IRR_OVERRIDE;
+	virtual IImage* loadImage(io::IReadFile* file) const override;
 
 private:
 

@@ -14,7 +14,7 @@ using namespace gui;
 	filesystem don't create duplicated textures. */
 bool loadFromFileFolder(void)
 {
-	IrrlichtDevice *device =
+	NirtcppDevice *device =
 		createDevice( video::EDT_NULL, dimension2du(160, 120));
 
 	if (!device)

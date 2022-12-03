@@ -9,12 +9,12 @@ using namespace gui;
 
 // Tests that disabled GUI menu items don't cause their submenu to appear when hovered over.
 /**
-	http://irrlicht.sourceforge.net/phpBB2/viewtopic.php?p=178436#178436
+	http://nirtcpp.sourceforge.net/phpBB2/viewtopic.php?p=178436#178436
  */
 
 bool guiDisabledMenu(void)
 {
-	IrrlichtDevice *device = createDevice( video::EDT_BURNINGSVIDEO,
+	NirtcppDevice *device = createDevice( video::EDT_BURNINGSVIDEO,
 											dimension2d<u32>(160, 40), 32);
 	assert_log(device);
 	if (!device)

@@ -1,12 +1,12 @@
 // Copyright (C) 2008-2012 Colin MacDonald and Christian Stehno
 // No rights reserved: this software is in the public domain.
 
-// This is the entry point for the Irrlicht test suite.
+// This is the entry point for the Nirtcpp test suite.
 
-// This is an MSVC pragma to link against the Irrlicht library.
+// This is an MSVC pragma to link against the Nirtcpp library.
 // Other builds must link against it in the project files.
 #if defined(_MSC_VER)
-#pragma comment(lib, "Irrlicht.lib")
+#pragma comment(lib, "Nirtcpp.lib")
 #define _CRT_SECURE_NO_WARNINGS 1
 #endif // _MSC_VER
 
@@ -24,7 +24,7 @@ struct STestDefinition
 	const char * testName;
 };
 
-//! This is the main entry point for the Irrlicht test suite.
+//! This is the main entry point for the Nirtcpp test suite.
 /** \return The number of test that failed, i.e. 0 is success. */
 int main(int argumentCount, char * arguments[])
 {
@@ -43,7 +43,7 @@ int main(int argumentCount, char * arguments[])
 		tests.push_back(newTest);\
 	}
 
-	// Use an STL vector so that we don't rely on Irrlicht.
+	// Use an STL vector so that we don't rely on Nirtcpp.
 	std::vector<STestDefinition> tests;
 
 #if 0
@@ -243,7 +243,7 @@ int main(int argumentCount, char * arguments[])
 			}
 		}
 		closeTestLog();
-#ifdef _IRR_WINDOWS_
+#ifdef _NIRT_WINDOWS_
 		(void)system("tests.log");
 #else
 		if ( getenv("PAGER") )

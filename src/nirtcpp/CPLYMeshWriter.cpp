@@ -1,10 +1,10 @@
 // Copyright (C) 2008-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_PLY_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PLY_WRITER_
 
 #include "CPLYMeshWriter.h"
 #include "os.h"
@@ -53,7 +53,7 @@ bool CPLYMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 	else
 		header += "format ascii 1.0\n";
 
-	header +=  "comment Irrlicht Engine ";
+	header +=  "comment Nirtcpp Engine ";
 	header +=  NIRTCPP_SDK_VERSION;
 
 	// get vertex and triangle counts
@@ -149,7 +149,7 @@ bool CPLYMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 			else
 			{
 				// x y z nx ny nz u v red green blue [u1 v1 | tx ty tz]\n
-				snprintf_irr(outLine, 1024,
+				snprintf_nirt(outLine, 1024,
 					"%f %f %f %f %f %f %f %f %d %d %d\n",// %u %u %u %u %f %f\n",
 					pos.X, pos.Z, pos.Y, // Y and Z are flipped
 					n.X, n.Z, n.Y,
@@ -200,7 +200,7 @@ bool CPLYMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 			else
 			{
 				// count a b c\n
-				snprintf_irr(outLine, 1024, "3 %u %u %u\n", a, b, c);
+				snprintf_nirt(outLine, 1024, "3 %u %u %u\n", a, b, c);
 				file->write(outLine, strlen(outLine));
 			}
 		}
@@ -216,5 +216,5 @@ bool CPLYMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 } // end namespace
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_PLY_WRITER_
+#endif // _NIRT_COMPILE_WITH_PLY_WRITER_
 

@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CSceneNodeAnimatorDelete.h"
 #include "ISceneManager.h"
@@ -30,7 +30,7 @@ void CSceneNodeAnimatorDelete::animateNode(ISceneNode* node, u32 timeMs)
 		if(node && SceneManager)
 		{
 			// don't delete if scene manager is attached to an editor
-			if (!SceneManager->getParameters()->getAttributeAsBool(IRR_SCENE_MANAGER_IS_EDITOR))
+			if (!SceneManager->getParameters()->getAttributeAsBool(NIRT_SCENE_MANAGER_IS_EDITOR))
 				SceneManager->addToDeletionQueue(node);
 		}
 	}

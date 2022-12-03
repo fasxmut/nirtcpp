@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_PARTICLE_SYSTEM_SCENE_NODE_H_INCLUDED
-#define IRR_I_PARTICLE_SYSTEM_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_I_PARTICLE_SYSTEM_SCENE_NODE_H_INCLUDED
+#define NIRT_I_PARTICLE_SYSTEM_SCENE_NODE_H_INCLUDED
 
 #include "ISceneNode.h"
 #include "IParticleAnimatedMeshSceneNodeEmitter.h"
@@ -59,7 +59,7 @@ enum EParticleBehavior
 	EPB_CLEAR_ON_INVISIBLE = 8,
 
 	//! Particle movement direction on emitting ignores the node rotation
-	//! This is mainly to allow backward compatible behavior to Irrlicht 1.8
+	//! This is mainly to allow backward compatible behavior to Nirtcpp 1.8
 	EPB_EMITTER_VECTOR_IGNORE_ROTATION = 16,
 
 	//! On emitting global particles interpolate the positions randomly between the last and current node transformations.
@@ -551,13 +551,13 @@ public:
 		const core::vector3df& pivotPoint = core::vector3df(0.0f,0.0f,0.0f) ) = 0;
 
 	//! Writes attributes of the scene node.
-	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE
+	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override
 	{
 		out->addInt("ParticleBehavior", ParticleBehavior);
 	}
 
 	//! Reads attributes of the scene node.
-	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE
+	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override
 	{
 		ParticleBehavior = in->getAttributeAsInt("ParticleBehavior", ParticleBehavior);
 	}

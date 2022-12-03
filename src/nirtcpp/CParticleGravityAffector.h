@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_PARTICLE_GRAVITY_AFFECTOR_H_INCLUDED
-#define IRR_C_PARTICLE_GRAVITY_AFFECTOR_H_INCLUDED
+#ifndef NIRT_C_PARTICLE_GRAVITY_AFFECTOR_H_INCLUDED
+#define NIRT_C_PARTICLE_GRAVITY_AFFECTOR_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_PARTICLES_
+#ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
 #include "IParticleGravityAffector.h"
 #include "SColor.h"
@@ -26,33 +26,33 @@ public:
 		u32 timeForceLost = 1000);
 
 	//! Affects a particle.
-	virtual void affect(u32 now, SParticle* particlearray, u32 count) IRR_OVERRIDE;
+	virtual void affect(u32 now, SParticle* particlearray, u32 count) override;
 
 	//! Set the time in milliseconds when the gravity force is totally
 	//! lost and the particle does not move any more.
-	virtual void setTimeForceLost( f32 timeForceLost ) IRR_OVERRIDE { TimeForceLost = timeForceLost; }
+	virtual void setTimeForceLost( f32 timeForceLost ) override { TimeForceLost = timeForceLost; }
 
 	//! Set the direction and force of gravity.
-	virtual void setGravity( const core::vector3df& gravity ) IRR_OVERRIDE { Gravity = gravity; }
+	virtual void setGravity( const core::vector3df& gravity ) override { Gravity = gravity; }
 
 	//! Set the time in milliseconds when the gravity force is totally
 	//! lost and the particle does not move any more.
-	virtual f32 getTimeForceLost() const IRR_OVERRIDE { return TimeForceLost; }
+	virtual f32 getTimeForceLost() const override { return TimeForceLost; }
 
 	//! Set the direction and force of gravity.
-	virtual const core::vector3df& getGravity() const IRR_OVERRIDE { return Gravity; }
+	virtual const core::vector3df& getGravity() const override { return Gravity; }
 
 	//! Writes attributes of the object.
 	//! Implement this to expose the attributes of your scene node animator for
 	//! scripting languages, editors, debuggers or xml serialization purposes.
-	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+	virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 	//! Reads attributes of the object.
 	//! Implement this to set the attributes of your scene node animator for
 	//! scripting languages, editors, debuggers or xml deserialization purposes.
 	//! \param startIndex: start index where to start reading attributes.
 	//! \return: returns last index of an attribute read by this affector
-	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+	virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 private:
 	f32 TimeForceLost;
@@ -62,6 +62,6 @@ private:
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_PARTICLES_
+#endif // _NIRT_COMPILE_WITH_PARTICLES_
 
 #endif

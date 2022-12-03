@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CImage.h"
 #include "irrString.h"
@@ -75,7 +75,7 @@ void CImage::setPixel(u32 x, u32 y, const SColor &color, bool blend)
 			*dest = blend ? PixelBlend32 ( *dest, color.color ) : color.color;
 		} break;
 
-		IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+		NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 			os::Printer::log("IImage::setPixel method doesn't work with compressed images.", ELL_WARNING);
 			return;
 
@@ -109,7 +109,7 @@ SColor CImage::getPixel(u32 x, u32 y) const
 			return SColor(255,p[0],p[1],p[2]);
 		}
 
-	IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+	NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 		os::Printer::log("IImage::getPixel method doesn't work with compressed images.", ELL_WARNING);
 		break;
 

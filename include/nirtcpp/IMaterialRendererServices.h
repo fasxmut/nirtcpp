@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_MATERIAL_RENDERER_SERVICES_H_INCLUDED
-#define IRR_I_MATERIAL_RENDERER_SERVICES_H_INCLUDED
+#ifndef NIRT_I_MATERIAL_RENDERER_SERVICES_H_INCLUDED
+#define NIRT_I_MATERIAL_RENDERER_SERVICES_H_INCLUDED
 
 #include "SMaterial.h"
 #include "S3DVertex.h"
@@ -111,26 +111,26 @@ public:
 	\param constantAmount Amount of registers to be set. One register consists of 4 floats. */
 	virtual void setPixelShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) = 0;
 
-	//! \deprecated. This method may be removed by Irrlicht 2.0
-	IRR_DEPRECATED bool setVertexShaderConstant(const c8* name, const f32* floats, int count)
+	//! \deprecated. This method may be removed by Nirtcpp 2.0
+	NIRT_DEPRECATED bool setVertexShaderConstant(const c8* name, const f32* floats, int count)
 	{
 		return setVertexShaderConstant(getVertexShaderConstantID(name), floats, count);
 	}
 
-	//! \deprecated. This method may be removed by Irrlicht 2.0
-	IRR_DEPRECATED bool setVertexShaderConstant(const c8* name, const s32* ints, int count)
+	//! \deprecated. This method may be removed by Nirtcpp 2.0
+	NIRT_DEPRECATED bool setVertexShaderConstant(const c8* name, const s32* ints, int count)
 	{
 		return setVertexShaderConstant(getVertexShaderConstantID(name), ints, count);
 	}
 
-	//! \deprecated. This method may be removed by Irrlicht 2.0
-	IRR_DEPRECATED bool setPixelShaderConstant(const c8* name, const f32* floats, int count)
+	//! \deprecated. This method may be removed by Nirtcpp 2.0
+	NIRT_DEPRECATED bool setPixelShaderConstant(const c8* name, const f32* floats, int count)
 	{
 		return setPixelShaderConstant(getPixelShaderConstantID(name), floats, count);
 	}
 
-	//! \deprecated. This method may be removed by Irrlicht 2.0
-	IRR_DEPRECATED bool setPixelShaderConstant(const c8* name, const s32* ints, int count)
+	//! \deprecated. This method may be removed by Nirtcpp 2.0
+	NIRT_DEPRECATED bool setPixelShaderConstant(const c8* name, const s32* ints, int count)
 	{
 		return setPixelShaderConstant(getPixelShaderConstantID(name), ints, count);
 	}

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SOFTWARE2_MATERIAL_RENDERER_H_INCLUDED
-#define IRR_C_SOFTWARE2_MATERIAL_RENDERER_H_INCLUDED
+#ifndef NIRT_C_SOFTWARE2_MATERIAL_RENDERER_H_INCLUDED
+#define NIRT_C_SOFTWARE2_MATERIAL_RENDERER_H_INCLUDED
 
 #include "SoftwareDriver2_compile_config.h"
 
@@ -27,7 +27,7 @@ public:
 	}
 
 	virtual void OnSetMaterial(const SMaterial& material, const SMaterial& lastMaterial,
-		bool resetAllRenderstates, IMaterialRendererServices* services) IRR_OVERRIDE
+		bool resetAllRenderstates, IMaterialRendererServices* services) override
 	{
 		if (Driver)
 			Driver->setFallback_Material(material.MaterialType, BVT_Fix);
@@ -46,7 +46,7 @@ public:
 		:CSoftware2MaterialRenderer ( driver ) {}
 
 	//! Returns if the material is transparent.
-	virtual bool isTransparent() const IRR_OVERRIDE
+	virtual bool isTransparent() const override
 	{
 		return false;
 	}
@@ -63,7 +63,7 @@ public:
 
 
 	//! Returns if the material is transparent.
-	virtual bool isTransparent() const IRR_OVERRIDE
+	virtual bool isTransparent() const override
 	{
 		return true;
 	}
@@ -77,7 +77,7 @@ public:
 	CSoftware2MaterialRenderer_UNSUPPORTED ( video::CBurningVideoDriver* driver )
 		: CSoftware2MaterialRenderer ( driver ) {}
 
-	virtual s32 getRenderCapability() const IRR_OVERRIDE { return 1; }
+	virtual s32 getRenderCapability() const override { return 1; }
 
 };
 

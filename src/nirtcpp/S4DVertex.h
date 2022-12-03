@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_4D_VERTEX_H_INCLUDED
 #define S_4D_VERTEX_H_INCLUDED
@@ -98,7 +98,7 @@ struct sVec2
 
 #include "irrpack.h"
 
-//! sVec2Pack is Irrlicht S3DVertex,S3DVertex2TCoords,S3DVertexTangents Texture Coordinates.
+//! sVec2Pack is Nirtcpp S3DVertex,S3DVertex2TCoords,S3DVertexTangents Texture Coordinates.
 // Start address is not 4 byte aligned
 struct sVec2Pack
 {

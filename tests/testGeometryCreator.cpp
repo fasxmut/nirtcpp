@@ -11,7 +11,7 @@ using namespace video;
 /** Tests that the geometry creator does what it says it does. */
 bool testGeometryCreator(void)
 {
-	IrrlichtDevice *device = createDevice(video::EDT_BURNINGSVIDEO,
+	NirtcppDevice *device = createDevice(video::EDT_BURNINGSVIDEO,
 					core::dimension2du(160,120), 32);
 	if (!device)
 		return false;

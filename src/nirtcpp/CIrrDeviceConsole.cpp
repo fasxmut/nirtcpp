@@ -1,10 +1,10 @@
 // Copyright (C) 2009-2012 Gaz Davidson
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CIrrDeviceConsole.h"
 
-#ifdef _IRR_COMPILE_WITH_CONSOLE_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
 
 #include "os.h"
 #include "IGUISkin.h"
@@ -13,7 +13,7 @@
 // to close the device on terminate signal
 irr::CIrrDeviceConsole *DeviceToClose;
 
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 // Callback for Windows
 BOOL WINAPI ConsoleHandler(DWORD CEvent)
 {
@@ -38,7 +38,7 @@ BOOL WINAPI ConsoleHandler(DWORD CEvent)
 	DeviceToClose->closeDevice();
     return TRUE;
 }
-#elif defined(_IRR_POSIX_API_)
+#elif defined(_NIRT_POSIX_API_)
 // sigterm handler
 #include <signal.h>
 
@@ -63,12 +63,12 @@ const u16 ASCIIArtCharsCount = 32;
 //const u16 ASCIIArtCharsCount = 5;
 
 //! constructor
-CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
+CIrrDeviceConsole::CIrrDeviceConsole(const SNirtcppCreationParameters& params)
   : CIrrDeviceStub(params), IsWindowFocused(true), ConsoleFont(0), OutFile(stdout)
 {
 	DeviceToClose = this;
 
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 	MouseButtonStates = 0;
 
 	WindowsSTDIn  = GetStdHandle(STD_INPUT_HANDLE);
@@ -97,7 +97,7 @@ CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
 	// catch windows close/break signals
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)ConsoleHandler, TRUE);
 
-#elif defined(_IRR_POSIX_API_)
+#elif defined(_NIRT_POSIX_API_)
 	// catch other signals
 	signal(SIGABRT, &sighandler);
 	signal(SIGTERM, &sighandler);
@@ -108,7 +108,7 @@ CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
 		OutFile = (FILE*)(params.WindowId);
 #endif
 
-#ifdef _IRR_VT100_CONSOLE_
+#ifdef _NIRT_VT100_CONSOLE_
 	// reset terminal
 	fprintf(OutFile, "%cc", 27);
 	// disable line wrapping
@@ -118,7 +118,7 @@ CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
 	switch (params.DriverType)
 	{
 	case video::EDT_SOFTWARE:
-		#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+		#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 		VideoDriver = video::createSoftwareDriver(CreationParams.WindowSize, CreationParams.Fullscreen, FileSystem, this);
 		#else
 		os::Printer::log("Software driver was not compiled in.", ELL_ERROR);
@@ -126,7 +126,7 @@ CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
 		break;
 
 	case video::EDT_BURNINGSVIDEO:
-		#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+		#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 		VideoDriver = video::createBurningVideoDriver(CreationParams, FileSystem, this);
 		#else
 		os::Printer::log("Burning's Video driver was not compiled in.", ELL_ERROR);
@@ -156,14 +156,14 @@ CIrrDeviceConsole::CIrrDeviceConsole(const SIrrlichtCreationParameters& params)
 	}
 
 
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 	CursorControl = new CCursorControl(CreationParams.WindowSize);
 #endif
 
 	if (VideoDriver)
 	{
 		createGUIAndScene();
-#ifdef _IRR_USE_CONSOLE_FONT_
+#ifdef _NIRT_USE_CONSOLE_FONT_
 		if (GUIEnvironment)
 		{
 			ConsoleFont = new gui::CGUIConsoleFont(this);
@@ -192,7 +192,7 @@ CIrrDeviceConsole::~CIrrDeviceConsole()
 		ConsoleFont->drop();
 		ConsoleFont = 0;
 	}
-#ifdef _IRR_VT100_CONSOLE_
+#ifdef _NIRT_VT100_CONSOLE_
 	// reset terminal
 	fprintf(OutFile, "%cc", 27);
 #endif
@@ -205,7 +205,7 @@ bool CIrrDeviceConsole::run()
 	os::Timer::tick();
 
 	// process Windows console input
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 
 	INPUT_RECORD in;
 	DWORD        oldMode;
@@ -312,10 +312,10 @@ bool CIrrDeviceConsole::run()
 }
 
 //! Cause the device to temporarily pause execution and let other processes to run
-// This should bring down processor usage without major performance loss for Irrlicht
+// This should bring down processor usage without major performance loss for Nirtcpp
 void CIrrDeviceConsole::yield()
 {
-#ifdef _IRR_WINDOWS_API_
+#ifdef _NIRT_WINDOWS_API_
 	Sleep(1);
 #else
 	struct timespec ts = {0,0};
@@ -328,7 +328,7 @@ void CIrrDeviceConsole::sleep(u32 timeMs, bool pauseTimer)
 {
 	const bool wasStopped = Timer ? Timer->isStopped() : true;
 
-#ifdef _IRR_WINDOWS_API_
+#ifdef _NIRT_WINDOWS_API_
 	Sleep(timeMs);
 #else
 	struct timespec ts;
@@ -348,7 +348,7 @@ void CIrrDeviceConsole::sleep(u32 timeMs, bool pauseTimer)
 //! sets the caption of the window
 void CIrrDeviceConsole::setWindowCaption(const wchar_t* text)
 {
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 	SetConsoleTitleW(text);
 #endif
 }
@@ -389,7 +389,7 @@ bool CIrrDeviceConsole::present(video::IImage* surface, void* windowId, core::re
 			}
 		}
 	}
-#ifdef _IRR_USE_CONSOLE_FONT_
+#ifdef _NIRT_USE_CONSOLE_FONT_
 	for (u32 i=0; i< Text.size(); ++i)
 	{
 		s32 y = Text[i].Pos.Y;
@@ -449,13 +449,13 @@ void CIrrDeviceConsole::restoreWindow()
 
 void CIrrDeviceConsole::setTextCursorPos(s16 x, s16 y)
 {
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 	// move WinNT cursor
 	COORD Position;
     Position.X = x;
     Position.Y = y;
     SetConsoleCursorPosition(WindowsSTDOut, Position);
-#elif defined(_IRR_VT100_CONSOLE_)
+#elif defined(_NIRT_VT100_CONSOLE_)
 	// send escape code
 	fprintf(OutFile, "%c[%d;%dH", 27, y, x);
 #else
@@ -474,4 +474,4 @@ void CIrrDeviceConsole::addPostPresentText(s16 X, s16 Y, const wchar_t *text)
 
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_CONSOLE_DEVICE_
+#endif // _NIRT_COMPILE_WITH_CONSOLE_DEVICE_

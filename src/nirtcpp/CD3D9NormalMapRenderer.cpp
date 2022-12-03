@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "CD3D9NormalMapRenderer.h"
 #include "IVideoDriver.h"
@@ -18,9 +18,9 @@ namespace video
 
 	// 1.1 Shaders with two lights and vertex based attenuation
 
-	// Irrlicht Engine D3D9 render path normal map vertex shader
+	// Nirtcpp Engine D3D9 render path normal map vertex shader
 	const char D3D9_NORMAL_MAP_VSH[] =
-		";Irrlicht Engine 0.8 D3D9 render path normal map vertex shader\n"\
+		";Nirtcpp Engine 0.8 D3D9 render path normal map vertex shader\n"\
 		"; c0-3: Transposed world matrix \n"\
 		"; c8-11: Transposed worldViewProj matrix (Projection * View * World) \n"\
 		"; c12: Light01 position \n"\
@@ -81,9 +81,9 @@ namespace video
 		"mov oD0.a, v2.a               ; move out original alpha value \n"\
 		"\n";
 
-	// Irrlicht Engine D3D9 render path normal map pixel shader
+	// Nirtcpp Engine D3D9 render path normal map pixel shader
 	const char D3D9_NORMAL_MAP_PSH_1_1[] =
-		";Irrlicht Engine 0.8 D3D9 render path normal map pixel shader\n"\
+		";Nirtcpp Engine 0.8 D3D9 render path normal map pixel shader\n"\
 		";Input: \n"\
 		";t0: color map texture coord \n"\
 		";t1: normal map texture coords \n"\
@@ -112,7 +112,7 @@ namespace video
 	// Higher-quality normal map pixel shader (requires PS 2.0)
 	// uses per-pixel normalization for improved accuracy
 	const char D3D9_NORMAL_MAP_PSH_2_0[] =
-		";Irrlicht Engine 0.8 D3D9 render path normal map pixel shader\n"\
+		";Nirtcpp Engine 0.8 D3D9 render path normal map pixel shader\n"\
 		";Input: \n"\
 		";t0: color map texture coord \n"\
 		";t1: normal map texture coords \n"\
@@ -302,5 +302,5 @@ namespace video
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 

@@ -1,14 +1,14 @@
 // Copyright (C) 2013 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "CGLXManager.h"
 
-#ifdef _IRR_COMPILE_WITH_GLX_MANAGER_
+#ifdef _NIRT_COMPILE_WITH_GLX_MANAGER_
 
 #include "os.h"
 
-#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 	#define GL_GLEXT_LEGACY 1
 	#define GLX_GLXEXT_LEGACY 1
 #else
@@ -17,7 +17,7 @@
 #endif
 #include <GL/gl.h>
 #include <GL/glx.h>
-#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 #include "glext.h"
 #undef GLX_ARB_get_proc_address // avoid problems with local glxext.h
 #include "glxext.h"
@@ -28,7 +28,7 @@ namespace irr
 namespace video
 {
 
-CGLXManager::CGLXManager(const SIrrlichtCreationParameters& params, const SExposedVideoData& videodata, int screennr)
+CGLXManager::CGLXManager(const SNirtcppCreationParameters& params, const SExposedVideoData& videodata, int screennr)
 	: Params(params), PrimaryContext(videodata), VisualInfo(0), glxFBConfig(0), GlxWin(0)
 {
 	#ifdef _DEBUG
@@ -46,7 +46,7 @@ CGLXManager::CGLXManager(const SIrrlichtCreationParameters& params, const SExpos
 #if defined(GLX_VERSION_1_3)
 		typedef GLXFBConfig * ( * PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
 
-#ifdef _IRR_OPENGL_USE_EXTPOINTER_
+#ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 		PFNGLXCHOOSEFBCONFIGPROC glxChooseFBConfig = (PFNGLXCHOOSEFBCONFIGPROC)glXGetProcAddress(reinterpret_cast<const GLubyte*>("glXChooseFBConfig"));
 #else
 		PFNGLXCHOOSEFBCONFIGPROC glxChooseFBConfig=glXChooseFBConfig;
@@ -197,7 +197,7 @@ os::Printer::log("GLX >= 1.3", ELL_DEBUG);
 			{
 				glxFBConfig=configList[0];
 				XFree(configList);
-#ifdef _IRR_OPENGL_USE_EXTPOINTER_
+#ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 				typedef XVisualInfo * ( * PFNGLXGETVISUALFROMFBCONFIGPROC) (Display *dpy, GLXFBConfig config);
 				PFNGLXGETVISUALFROMFBCONFIGPROC glxGetVisualFromFBConfig= (PFNGLXGETVISUALFROMFBCONFIGPROC)glXGetProcAddress(reinterpret_cast<const GLubyte*>("glXGetVisualFromFBConfig"));
 				if (glxGetVisualFromFBConfig)
@@ -260,7 +260,7 @@ CGLXManager::~CGLXManager()
 {
 }
 
-bool CGLXManager::initialize(const SIrrlichtCreationParameters& params, const SExposedVideoData& videodata)
+bool CGLXManager::initialize(const SNirtcppCreationParameters& params, const SExposedVideoData& videodata)
 {
 	// store params
 	Params=params;

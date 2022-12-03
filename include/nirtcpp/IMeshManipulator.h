@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_MESH_MANIPULATOR_H_INCLUDED
-#define IRR_I_MESH_MANIPULATOR_H_INCLUDED
+#ifndef NIRT_I_MESH_MANIPULATOR_H_INCLUDED
+#define NIRT_I_MESH_MANIPULATOR_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "vector3d.h"
@@ -123,10 +123,10 @@ namespace scene
 		}
 
 		//! Scales the actual mesh, not a scene node.
-		/** \deprecated Use scale() instead. This method may be removed by Irrlicht 1.9
+		/** \deprecated Use scale() instead. This method may be removed by Nirtcpp 1.9
 		\param mesh Mesh on which the operation is performed.
 		\param factor Scale factor for each axis. */
-		IRR_DEPRECATED void scaleMesh(IMesh* mesh, const core::vector3df& factor) const {return scale(mesh,factor);}
+		NIRT_DEPRECATED void scaleMesh(IMesh* mesh, const core::vector3df& factor) const {return scale(mesh,factor);}
 
 		//! Scale the texture coords of a mesh.
 		/** \param mesh Mesh on which the operation is performed.
@@ -203,10 +203,10 @@ namespace scene
 		}
 
 		//! Applies a transformation to a mesh
-		/** \deprecated Use transform() instead. This method may be removed by Irrlicht 1.9
+		/** \deprecated Use transform() instead. This method may be removed by Nirtcpp 1.9
 		\param mesh Mesh on which the operation is performed.
 		\param m transformation matrix. */
-		IRR_DEPRECATED virtual void transformMesh(IMesh* mesh, const core::matrix4& m) const {return transform(mesh,m);}
+		NIRT_DEPRECATED virtual void transformMesh(IMesh* mesh, const core::matrix4& m) const {return transform(mesh,m);}
 
 		//! Creates a planar texture mapping on the mesh
 		/** \param mesh: Mesh on which the operation is performed.

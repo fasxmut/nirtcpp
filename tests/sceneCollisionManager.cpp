@@ -8,7 +8,7 @@ using namespace core;
 using namespace scene;
 using namespace video;
 
-static bool testGetCollisionResultPosition(IrrlichtDevice * device,
+static bool testGetCollisionResultPosition(NirtcppDevice * device,
 					   ISceneManager * smgr,
 					   ISceneCollisionManager * collMgr)
 {
@@ -88,7 +88,7 @@ static bool testGetCollisionResultPosition(IrrlichtDevice * device,
 
 
 // Test that getCollisionPoint() actually uses the closest point, not the closest triangle.
-static bool getCollisionPoint_ignoreTriangleVertices(IrrlichtDevice * device,
+static bool getCollisionPoint_ignoreTriangleVertices(NirtcppDevice * device,
 						ISceneManager * smgr,
 						ISceneCollisionManager * collMgr)
 {
@@ -143,7 +143,7 @@ static bool getCollisionPoint_ignoreTriangleVertices(IrrlichtDevice * device,
 }
 
 
-static bool testGetSceneNodeFromScreenCoordinatesBB(IrrlichtDevice * device,
+static bool testGetSceneNodeFromScreenCoordinatesBB(NirtcppDevice * device,
 						ISceneManager * smgr,
 						ISceneCollisionManager * collMgr)
 {
@@ -223,7 +223,7 @@ static bool testGetSceneNodeFromScreenCoordinatesBB(IrrlichtDevice * device,
 }
 
 
-static bool getScaledPickedNodeBB(IrrlichtDevice * device,
+static bool getScaledPickedNodeBB(NirtcppDevice * device,
 				ISceneManager * smgr,
 				ISceneCollisionManager * collMgr)
 {
@@ -283,7 +283,7 @@ static bool IntersectBox(const core::vector3df& origin, const core::vector3df& d
 	return (maxmin >=0 && minmax >= maxmin);
 }
 
-static bool checkBBoxIntersection(IrrlichtDevice * device,
+static bool checkBBoxIntersection(NirtcppDevice * device,
 				ISceneManager * smgr)
 {
 	video::IVideoDriver* driver = device->getVideoDriver();
@@ -384,7 +384,7 @@ static bool checkBBoxIntersection(IrrlichtDevice * device,
 }
 
 
-static bool compareGetSceneNodeFromRayBBWithBBIntersectsWithLine(IrrlichtDevice * device,
+static bool compareGetSceneNodeFromRayBBWithBBIntersectsWithLine(NirtcppDevice * device,
 				ISceneManager * smgr,
 				ISceneCollisionManager * collMgr)
 {
@@ -442,7 +442,7 @@ static bool compareGetSceneNodeFromRayBBWithBBIntersectsWithLine(IrrlichtDevice 
 /** Test functionality of the sceneCollisionManager */
 bool sceneCollisionManager(void)
 {
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(160, 120));
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(160, 120));
 	assert_log(device);
 	if(!device)
 		return false;

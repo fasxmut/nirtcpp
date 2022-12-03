@@ -39,7 +39,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-fno-exceptions" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add option="-D_DEBUG" />
 				</Compiler>
 				<Linker>
@@ -58,7 +58,7 @@
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-fno-exceptions" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 				</Compiler>
 				<Linker>
 					<Add library="Xxf86vm" />
@@ -74,7 +74,7 @@
 			<Add directory="../include" />
 		</Compiler>
 		<Linker>
-			<Add library="Irrlicht" />
+			<Add library="Nirtcpp" />
 			<Add directory="../lib/gcc" />
 		</Linker>
 		<Unit filename="2dmaterial.cpp" />

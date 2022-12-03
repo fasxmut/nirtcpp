@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CGeometryCreator.h"
 #include "SAnimatedMesh.h"
@@ -581,7 +581,7 @@ IMesh* CGeometryCreator::createArrowMesh(const u32 tesselationCylinder,
 /* A sphere with proper normals and texture coords */
 IMesh* CGeometryCreator::createSphereMesh(f32 radius, u32 polyCountX, u32 polyCountY) const
 {
-	// thanks to Alfaz93 who made his code available for Irrlicht on which
+	// thanks to Alfaz93 who made his code available for Nirtcpp on which
 	// this one is based!
 
 	// we are creating the sphere mesh here.

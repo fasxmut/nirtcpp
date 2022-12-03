@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 // compile flag for this file
 #undef USE_ZBUFFER
@@ -83,7 +83,7 @@ public:
 	CTRTextureGouraudAddNoZ2(CBurningVideoDriver* driver);
 
 	//! draws an indexed triangle list
-	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) IRR_OVERRIDE;
+	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) override;
 
 
 private:
@@ -629,7 +629,7 @@ void CTRTextureGouraudAddNoZ2::drawTriangle(const s4DVertex* burning_restrict a,
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 namespace irr
 {
@@ -642,7 +642,7 @@ IBurningShader* createTRTextureGouraudAddNoZ2(CBurningVideoDriver* driver)
 	/*
 	ETR_TEXTURE_GOURAUD_ADD_NO_Z
 	
-	Irrlicht:
+	Nirtcpp:
 		Material.MaterialType =	EMT_TRANSPARENT_ADD_COLOR;
 		Material.ZBuffer = ECFN_DISABLED;
 		-> need Material.ZWriteEnable off
@@ -653,11 +653,11 @@ IBurningShader* createTRTextureGouraudAddNoZ2(CBurningVideoDriver* driver)
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
 	*/
 
-	#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CTRTextureGouraudAddNoZ2(driver);
 	#else
 	return 0;
-	#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 

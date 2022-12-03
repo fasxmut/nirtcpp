@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_TRIANGLE_3D_H_INCLUDED
-#define IRR_TRIANGLE_3D_H_INCLUDED
+#ifndef NIRT_TRIANGLE_3D_H_INCLUDED
+#define NIRT_TRIANGLE_3D_H_INCLUDED
 
 #include "vector3d.h"
 #include "line3d.h"

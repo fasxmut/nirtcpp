@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_TEXTURE_H_INCLUDED
-#define IRR_I_TEXTURE_H_INCLUDED
+#ifndef NIRT_I_TEXTURE_H_INCLUDED
+#define NIRT_I_TEXTURE_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "IImage.h"
@@ -79,7 +79,7 @@ enum E_TEXTURE_CREATION_FLAG
 	/** Enabling this makes calls to ITexture::lock a lot faster, but costs main memory.
 	Currently only used in combination with OpenGL drivers.
 	NOTE: Disabling this does not yet work correctly with alpha-textures.
-	So the default is on for now (but might change with Irrlicht 1.9 if we get the alpha-troubles fixed).
+	So the default is on for now (but might change with Nirtcpp 1.9 if we get the alpha-troubles fixed).
 	*/
 	ETCF_ALLOW_MEMORY_COPY = 0x00000080,
 
@@ -132,9 +132,9 @@ enum E_TEXTURE_LOCK_FLAGS
 	ETLF_NONE = 0,
 
 	//! Flip left-bottom origin rendertarget textures upside-down
-	/** Irrlicht usually has all textures with left-top as origin.
+	/** Nirtcpp usually has all textures with left-top as origin.
 	And for drivers with a left-bottom origin coordinate system (OpenGL)
-	Irrlicht modifies the texture-matrix in the fixed function pipeline to make
+	Nirtcpp modifies the texture-matrix in the fixed function pipeline to make
 	the textures show up correctly (shader coders have to handle upside down 
 	textures themselves).
 	But rendertarget textures (RTT's) are written by drivers the way the 

@@ -1,9 +1,9 @@
 // Copyright (C) 2010-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SCENE_LOADER_IRR_H_INCLUDED
-#define IRR_C_SCENE_LOADER_IRR_H_INCLUDED
+#ifndef NIRT_C_SCENE_LOADER_NIRT_H_INCLUDED
+#define NIRT_C_SCENE_LOADER_NIRT_H_INCLUDED
 
 #include "ISceneLoader.h"
 
@@ -34,15 +34,15 @@ public:
 	virtual ~CSceneLoaderIrr();
 
 	//! Returns true if the class might be able to load this file.
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 	//! Returns true if the class might be able to load this file.
-	virtual bool isALoadableFileFormat(io::IReadFile *file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileFormat(io::IReadFile *file) const override;
 
 	//! Loads the scene into the scene manager.
 	virtual bool loadScene(io::IReadFile* file,
 		ISceneUserDataSerializer* userDataSerializer=0,
-		ISceneNode* rootNode=0) IRR_OVERRIDE;
+		ISceneNode* rootNode=0) override;
 
 private:
 
@@ -66,13 +66,13 @@ private:
 	//! constants for reading and writing XML.
 	//! Not made static due to portability problems.
 	// TODO: move to own header
-	const core::stringw IRR_XML_FORMAT_SCENE;
-	const core::stringw IRR_XML_FORMAT_NODE;
-	const core::stringw IRR_XML_FORMAT_NODE_ATTR_TYPE;
-	const core::stringw IRR_XML_FORMAT_ATTRIBUTES;
-	const core::stringw IRR_XML_FORMAT_MATERIALS;
-	const core::stringw IRR_XML_FORMAT_ANIMATORS;
-	const core::stringw IRR_XML_FORMAT_USERDATA;
+	const core::stringw NIRT_XML_FORMAT_SCENE;
+	const core::stringw NIRT_XML_FORMAT_NODE;
+	const core::stringw NIRT_XML_FORMAT_NODE_ATTR_TYPE;
+	const core::stringw NIRT_XML_FORMAT_ATTRIBUTES;
+	const core::stringw NIRT_XML_FORMAT_MATERIALS;
+	const core::stringw NIRT_XML_FORMAT_ANIMATORS;
+	const core::stringw NIRT_XML_FORMAT_USERDATA;
 };
 
 

@@ -14,7 +14,7 @@ using namespace gui;
 	can be distinguished, even if they have the same filename. */
 bool disambiguateTextures(void)
 {
-	IrrlichtDevice *device =
+	NirtcppDevice *device =
 		createDevice( video::EDT_NULL, dimension2d<u32>(640, 480));
 
 	if (!device)

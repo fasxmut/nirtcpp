@@ -1,9 +1,9 @@
 // Copyright (C) 2010-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SCENE_LOADER_H_INCLUDED
-#define IRR_I_SCENE_LOADER_H_INCLUDED
+#ifndef NIRT_I_SCENE_LOADER_H_INCLUDED
+#define NIRT_I_SCENE_LOADER_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "path.h"
@@ -20,7 +20,7 @@ namespace scene
 	class ISceneUserDataSerializer;
 
 //! Class which can load a scene into the scene manager.
-/** If you want Irrlicht to be able to load currently unsupported
+/** If you want Nirtcpp to be able to load currently unsupported
 scene file formats (e.g. .vrml), then implement this and add your
 new Sceneloader to the engine with ISceneManager::addExternalSceneLoader(). */
 class ISceneLoader : public virtual IReferenceCounted

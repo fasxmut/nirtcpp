@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "CD3D9ParallaxMapRenderer.h"
 #include "IMaterialRendererServices.h"
@@ -23,9 +23,9 @@ namespace video
 {
 	// 1.1/1.4 Shaders with two lights and vertex based attenuation
 
-	// Irrlicht Engine D3D9 render path normal map vertex shader
+	// Nirtcpp Engine D3D9 render path normal map vertex shader
 	const char D3D9_PARALLAX_MAP_VSH[] =
-		";Irrlicht Engine 0.10 D3D9 render path parallax mapping vertex shader\n"\
+		";Nirtcpp Engine 0.10 D3D9 render path parallax mapping vertex shader\n"\
 		"; c0-3: Transposed world matrix \n"\
 		"; c4: Eye position \n"\
 		"; c8-11: Transposed worldViewProj matrix (Projection * View * World) \n"\
@@ -101,9 +101,9 @@ namespace video
 		"\n";
 
 
-	// Irrlicht Engine D3D9 render path normal map pixel shader version 1.4
+	// Nirtcpp Engine D3D9 render path normal map pixel shader version 1.4
 	const char D3D9_PARALLAX_MAP_PSH[] =
-		";Irrlicht Engine 0.10 D3D9 render path parallax mapping pixel shader \n"\
+		";Nirtcpp Engine 0.10 D3D9 render path parallax mapping pixel shader \n"\
 		";Input:  \n"\
 		";t0: color map texture coord  \n"\
 		";t1: normal map texture coords  \n"\
@@ -149,9 +149,9 @@ namespace video
 		"+mov r0.a, v0.a             ; write original alpha value \n"\
 		"\n";
 
-	// Irrlicht Engine D3D9 render path normal map pixel shader version 2.0
+	// Nirtcpp Engine D3D9 render path normal map pixel shader version 2.0
 	const char D3D9_PARALLAX_MAP_PSH_20[] =
-		";Irrlicht Engine D3D9 render path parallax mapping pixel shader \n"\
+		";Nirtcpp Engine D3D9 render path parallax mapping pixel shader \n"\
 		";Input:  \n"\
 		" \n"\
 		";t0: color map texture coord  \n"\
@@ -405,5 +405,5 @@ namespace video
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 

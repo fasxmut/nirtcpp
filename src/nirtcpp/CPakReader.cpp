@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Code contributed by skreamz
 
 #include "CPakReader.h"
 
-#ifdef __IRR_COMPILE_WITH_PAK_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_PAK_ARCHIVE_LOADER_
 
 #include "os.h"
 #include "coreutil.h"
@@ -192,5 +192,5 @@ IReadFile* CPakReader::createAndOpenFile(u32 index)
 } // end namespace io
 } // end namespace irr
 
-#endif // __IRR_COMPILE_WITH_PAK_ARCHIVE_LOADER_
+#endif // __NIRT_COMPILE_WITH_PAK_ARCHIVE_LOADER_
 

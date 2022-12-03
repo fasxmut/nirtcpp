@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-//! As of Irrlicht 1.6, position2d is a synonym for vector2d.
+//! As of Nirtcpp 1.6, position2d is a synonym for vector2d.
 /** You should consider position2d to be deprecated, and use vector2d by preference. */
 
-#ifndef IRR_POSITION_H_INCLUDED
-#define IRR_POSITION_H_INCLUDED
+#ifndef NIRT_POSITION_H_INCLUDED
+#define NIRT_POSITION_H_INCLUDED
 
 #include "vector2d.h"
 
@@ -28,4 +28,4 @@ typedef vector2d<s32> position2di;
 // ...and use a #define to catch the rest, for (e.g.) position2d<f64>
 #define position2d vector2d
 
-#endif // IRR_POSITION_H_INCLUDED
+#endif // NIRT_POSITION_H_INCLUDED

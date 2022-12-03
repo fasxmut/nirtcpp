@@ -1,10 +1,10 @@
 // Copyright (C) 2013 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "CWGLManager.h"
 
-#ifdef _IRR_COMPILE_WITH_WGL_MANAGER_
+#ifdef _NIRT_COMPILE_WITH_WGL_MANAGER_
 
 #include "os.h"
 
@@ -32,7 +32,7 @@ CWGLManager::~CWGLManager()
 {
 }
 
-bool CWGLManager::initialize(const SIrrlichtCreationParameters& params, const SExposedVideoData& videodata)
+bool CWGLManager::initialize(const SNirtcppCreationParameters& params, const SExposedVideoData& videodata)
 {
 	// store params, videoData is set later as it would be overwritten else
 	Params=params;
@@ -417,7 +417,7 @@ bool CWGLManager::generateContext()
 	else
 #endif
 	hrc=wglCreateContext(HDc);
-	os::Printer::log("Irrlicht context");
+	os::Printer::log("Nirtcpp context");
 
 	if (!hrc)
 	{

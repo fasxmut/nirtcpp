@@ -1,11 +1,11 @@
 
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CGUIEnvironment.h"
 
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IVideoDriver.h"
 
@@ -49,9 +49,9 @@ namespace irr
 namespace gui
 {
 
-const wchar_t IRR_XML_FORMAT_GUI_ENV[]			= L"irr_gui";
-const wchar_t IRR_XML_FORMAT_GUI_ELEMENT[]		= L"element";
-const wchar_t IRR_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE[]	= L"type";
+const wchar_t NIRT_XML_FORMAT_GUI_ENV[]			= L"irr_gui";
+const wchar_t NIRT_XML_FORMAT_GUI_ELEMENT[]		= L"element";
+const wchar_t NIRT_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE[]	= L"type";
 
 const io::path CGUIEnvironment::DefaultFontName = "#DefaultFont";
 
@@ -862,7 +862,7 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 		return;
 
 	IGUIElement* deferedNode = 0;
-	if (!wcscmp(IRR_XML_FORMAT_GUI_ENV, reader->getNodeName()))
+	if (!wcscmp(NIRT_XML_FORMAT_GUI_ENV, reader->getNodeName()))
 	{
 		// GuiEnvironment always must be this as it would serialize into a wrong element otherwise.
 		// So we use the given node next time
@@ -870,10 +870,10 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 			deferedNode = node;
 		node = this; // root
 	}
-	else if	(!wcscmp(IRR_XML_FORMAT_GUI_ELEMENT, reader->getNodeName()))
+	else if	(!wcscmp(NIRT_XML_FORMAT_GUI_ELEMENT, reader->getNodeName()))
 	{
 		// find node type and create it
-		const core::stringc attrName = reader->getAttributeValue(IRR_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE);
+		const core::stringc attrName = reader->getAttributeValue(NIRT_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE);
 
 		node = addGUIElement(attrName.c_str(), node);
 
@@ -890,8 +890,8 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 		switch (reader->getNodeType())
 		{
 		case io::EXN_ELEMENT_END:
-			if (!wcscmp(IRR_XML_FORMAT_GUI_ELEMENT,  reader->getNodeName()) ||
-				!wcscmp(IRR_XML_FORMAT_GUI_ENV, reader->getNodeName()))
+			if (!wcscmp(NIRT_XML_FORMAT_GUI_ELEMENT,  reader->getNodeName()) ||
+				!wcscmp(NIRT_XML_FORMAT_GUI_ENV, reader->getNodeName()))
 			{
 				endreached = true;
 			}
@@ -909,8 +909,8 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 				attr->drop();
 			}
 			else
-			if (!wcscmp(IRR_XML_FORMAT_GUI_ELEMENT, reader->getNodeName()) ||
-				!wcscmp(IRR_XML_FORMAT_GUI_ENV, reader->getNodeName()))
+			if (!wcscmp(NIRT_XML_FORMAT_GUI_ELEMENT, reader->getNodeName()) ||
+				!wcscmp(NIRT_XML_FORMAT_GUI_ENV, reader->getNodeName()))
 			{
 				if ( deferedNode )
 					readGUIElement(reader, deferedNode);
@@ -919,7 +919,7 @@ void CGUIEnvironment::readGUIElement(io::IXMLReader* reader, IGUIElement* node)
 			}
 			else
 			{
-				os::Printer::log("Found unknown element in irrlicht GUI file",
+				os::Printer::log("Found unknown element in nirtcpp GUI file",
 						core::stringc(reader->getNodeName()).c_str());
 			}
 
@@ -953,13 +953,13 @@ void CGUIEnvironment::writeGUIElement(io::IXMLWriter* writer, IGUIElement* node)
 	{
 		if (node == this)
 		{
-			name = IRR_XML_FORMAT_GUI_ENV;
+			name = NIRT_XML_FORMAT_GUI_ENV;
 			writer->writeElement(name, false);
 		}
 		else
 		{
-			name = IRR_XML_FORMAT_GUI_ELEMENT;
-			writer->writeElement(name, false, IRR_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE,
+			name = NIRT_XML_FORMAT_GUI_ELEMENT;
+			writer->writeElement(name, false, NIRT_XML_FORMAT_GUI_ELEMENT_ATTR_TYPE,
 				core::stringw(node->getTypeName()).c_str());
 		}
 
@@ -1141,7 +1141,7 @@ IGUITable* CGUIEnvironment::addTable(const core::rect<s32>& rectangle, IGUIEleme
 	return b;
 }
 
-	//! Adds an element to display the information from the Irrlicht profiler
+	//! Adds an element to display the information from the Nirtcpp profiler
 IGUIProfiler* CGUIEnvironment::addProfilerDisplay(const core::rect<s32>& rectangle, IGUIElement* parent, s32 id)
 {
 	CGUIProfiler* p = new CGUIProfiler(this, parent ? parent : this, id, rectangle, NULL);
@@ -1715,5 +1715,5 @@ IGUIEnvironment* createGUIEnvironment(io::IFileSystem* fs,
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 

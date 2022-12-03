@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine" and the "irrXML" project.
-// For conditions of distribution and use, see copyright notice in irrlicht.h and/or irrXML.h
+// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// For conditions of distribution and use, see copyright notice in nirtcpp.h and/or irrXML.h
 
 #include "irrXML.h"
 
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 
 #include "irrString.h"
 #include "irrArray.h"
@@ -48,7 +48,7 @@ public:
 	}
 
 	//! Reads an amount of bytes from the file.
-	virtual int read(void* buffer, int sizeToRead) IRR_OVERRIDE
+	virtual int read(void* buffer, int sizeToRead) override
 	{
 		if (!File)
 			return 0;
@@ -57,7 +57,7 @@ public:
 	}
 
 	//! Returns size of file in bytes
-	virtual long getSize() const IRR_OVERRIDE
+	virtual long getSize() const override
 	{
 		return Size;
 	}
@@ -182,4 +182,4 @@ NIRTCPP_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(
 } // end namespace io
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_XML_
+#endif // _NIRT_COMPILE_WITH_XML_

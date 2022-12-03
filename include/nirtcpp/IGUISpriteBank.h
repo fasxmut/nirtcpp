@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_SPRITE_BANK_H_INCLUDED
-#define IRR_I_GUI_SPRITE_BANK_H_INCLUDED
+#ifndef NIRT_I_GUI_SPRITE_BANK_H_INCLUDED
+#define NIRT_I_GUI_SPRITE_BANK_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "irrArray.h"
@@ -57,7 +57,7 @@ struct SGUISprite
 
 
 //! Sprite bank interface.
-/** See http://http://irrlicht.sourceforge.net/forum//viewtopic.php?f=9&t=25742
+/** See http://http://nirtcpp.sourceforge.net/forum//viewtopic.php?f=9&t=25742
 * for more information how to use the spritebank.
 */
 class IGUISpriteBank : public virtual IReferenceCounted
@@ -138,4 +138,4 @@ public:
 } // end namespace gui
 } // end namespace irr
 
-#endif // IRR_I_GUI_SPRITE_BANK_H_INCLUDED
+#endif // NIRT_I_GUI_SPRITE_BANK_H_INCLUDED

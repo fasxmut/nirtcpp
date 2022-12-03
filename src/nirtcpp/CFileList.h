@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_FILE_LIST_H_INCLUDED
-#define IRR_C_FILE_LIST_H_INCLUDED
+#ifndef NIRT_C_FILE_LIST_H_INCLUDED
+#define NIRT_C_FILE_LIST_H_INCLUDED
 
 #include "IFileList.h"
 #include "irrString.h"
@@ -82,37 +82,37 @@ public:
 	\param offset The offset where the file is stored in an archive
 	\param size The size of the file in bytes.
 	\param id The ID of the file in the archive which owns it */
-	virtual u32 addItem(const io::path& fullPath, u32 offset, u32 size, bool isDirectory, u32 id=0) IRR_OVERRIDE;
+	virtual u32 addItem(const io::path& fullPath, u32 offset, u32 size, bool isDirectory, u32 id=0) override;
 
 	//! Sorts the file list. You should call this after adding any items to the file list
-	virtual void sort() IRR_OVERRIDE;
+	virtual void sort() override;
 
 	//! Returns the amount of files in the filelist.
-	virtual u32 getFileCount() const IRR_OVERRIDE;
+	virtual u32 getFileCount() const override;
 
 	//! Gets the name of a file in the list, based on an index.
-	virtual const io::path& getFileName(u32 index) const IRR_OVERRIDE;
+	virtual const io::path& getFileName(u32 index) const override;
 
 	//! Gets the full name of a file in the list, path included, based on an index.
-	virtual const io::path& getFullFileName(u32 index) const IRR_OVERRIDE;
+	virtual const io::path& getFullFileName(u32 index) const override;
 
 	//! Returns the ID of a file in the file list, based on an index.
-	virtual u32 getID(u32 index) const IRR_OVERRIDE;
+	virtual u32 getID(u32 index) const override;
 
 	//! Returns true if the file is a directory
-	virtual bool isDirectory(u32 index) const IRR_OVERRIDE;
+	virtual bool isDirectory(u32 index) const override;
 
 	//! Returns the size of a file
-	virtual u32 getFileSize(u32 index) const IRR_OVERRIDE;
+	virtual u32 getFileSize(u32 index) const override;
 
 	//! Returns the offset of a file
-	virtual u32 getFileOffset(u32 index) const IRR_OVERRIDE;
+	virtual u32 getFileOffset(u32 index) const override;
 
 	//! Searches for a file or folder within the list, returns the index
-	virtual s32 findFile(const io::path& filename, bool isFolder) const IRR_OVERRIDE;
+	virtual s32 findFile(const io::path& filename, bool isFolder) const override;
 
 	//! Returns the base path of the file list
-	virtual const io::path& getPath() const IRR_OVERRIDE;
+	virtual const io::path& getPath() const override;
 
 protected:
 

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_MATH_H_INCLUDED
-#define IRR_MATH_H_INCLUDED
+#ifndef NIRT_MATH_H_INCLUDED
+#define NIRT_MATH_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 #include "irrTypes.h"
@@ -12,7 +12,7 @@
 #include <stdlib.h> // for abs() etc.
 #include <limits.h> // For INT_MAX / UINT_MAX
 
-#if defined(_IRR_SOLARIS_PLATFORM_) || defined(__BORLANDC__) || defined (__BCPLUSPLUS__) || defined (_WIN32_WCE)
+#if defined(_NIRT_SOLARIS_PLATFORM_) || defined(__BORLANDC__) || defined (__BCPLUSPLUS__) || defined (_WIN32_WCE)
 	#define sqrtf(X) (irr::f32)sqrt((irr::f64)(X))
 	#define sinf(X) (irr::f32)sin((irr::f64)(X))
 	#define cosf(X) (irr::f32)cos((irr::f64)(X))
@@ -44,7 +44,7 @@ namespace core
 
 	const s32 ROUNDING_ERROR_S32 = 0;
 
-#ifdef __IRR_HAS_S64
+#ifdef __NIRT_HAS_S64
 	const s64 ROUNDING_ERROR_S64 = 0;
 #endif
 	const f32 ROUNDING_ERROR_f32 = 0.000001f;
@@ -171,7 +171,7 @@ namespace core
 
 	//! swaps the content of the passed parameters
 	// Note: We use the same trick as boost and use two template arguments to
-	// avoid ambiguity when swapping objects of an Irrlicht type that has not
+	// avoid ambiguity when swapping objects of an Nirtcpp type that has not
 	// it's own swap overload. Otherwise we get conflicts with some compilers
 	// in combination with stl.
 	template <class T1, class T2>
@@ -209,7 +209,7 @@ namespace core
 		return ROUNDING_ERROR_S32;
 	}
 
-#ifdef __IRR_HAS_S64
+#ifdef __NIRT_HAS_S64
 	template <>
 	inline s64 roundingError()
 	{
@@ -333,7 +333,7 @@ namespace core
 		return a <= tolerance;
 	}
 
-#ifdef __IRR_HAS_S64
+#ifdef __NIRT_HAS_S64
 	//! returns if a equals zero, taking rounding errors into account
 	inline bool iszero(const s64 a, const s64 tolerance = 0)
 	{
@@ -509,7 +509,7 @@ namespace core
 		return static_cast<s32>(squareroot(static_cast<f32>(f)));
 	}
 
-#ifdef __IRR_HAS_S64
+#ifdef __NIRT_HAS_S64
 	// calculate: sqrt ( x )
 	REALINLINE s64 squareroot(const s64 f)
 	{

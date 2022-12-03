@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 // TODO: second UV-coordinates currently ignored in textures
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_COLLADA_WRITER_
+#ifdef _NIRT_COMPILE_WITH_COLLADA_WRITER_
 
 #include "CColladaMeshWriter.h"
 #include "os.h"
@@ -57,7 +57,7 @@ s32 CColladaMeshWriterProperties::getTextureIdx(const video::SMaterial & materia
 	return -1;
 }
 
-E_COLLADA_IRR_COLOR CColladaMeshWriterProperties::getColorMapping(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs) const
+E_COLLADA_NIRT_COLOR CColladaMeshWriterProperties::getColorMapping(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs) const
 {
 	switch ( cs )
 	{
@@ -211,7 +211,7 @@ irr::core::stringc CColladaMeshWriterNames::nameForMaterial(const video::SMateri
 irr::core::stringc CColladaMeshWriterNames::nameForPtr(const void* ptr) const
 {
 	c8 buf[32];
-	snprintf_irr(buf, 32, "%p", ptr);
+	snprintf_nirt(buf, 32, "%p", ptr);
 	return irr::core::stringc(buf);
 }
 
@@ -676,7 +676,7 @@ void CColladaMeshWriter::writeNodeCameras(irr::scene::ISceneNode * node)
 			irr::f32 xmag = 2.f/projMat[0];
 			irr::f32 ymag = 2.f/projMat[5];
 
-			// Note that Irrlicht camera does not update near/far when setting the projection matrix,
+			// Note that Nirtcpp camera does not update near/far when setting the projection matrix,
 			// so we have to calculate that here (at least currently - maybe camera code will be updated at some time).
 			irr::f32 nearMinusFar = -1.f/projMat[10];
 			irr::f32 zNear = projMat[14]*nearMinusFar;
@@ -765,7 +765,7 @@ void CColladaMeshWriter::writeSceneNode(irr::scene::ISceneNode * node )
 		// TODO: We do not handle the case when ICameraSceneNode::getTargetAndRotationBinding() is false. Probably we would have to create a second
 		// node to do that.
 
-		// Note: We can't use rotations for the camera as Irrlicht does not regard the up-vector in rotations so far.
+		// Note: We can't use rotations for the camera as Nirtcpp does not regard the up-vector in rotations so far.
 		// We could maybe use projection matrices, but avoiding them might allow us to get rid of some DummyTransformationSceneNodes on
 		// import in the future. So that's why we use the lookat element instead.
 
@@ -996,15 +996,15 @@ void CColladaMeshWriter::writeVector(const irr::core::vector3df& vec)
 {
 	c8 tmpbuf[255];
 
-	snprintf_irr(tmpbuf, 255, "%f", vec.X);
+	snprintf_nirt(tmpbuf, 255, "%f", vec.X);
 	WriteBuffer = tmpbuf;
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	snprintf_irr(tmpbuf, 255, " %f", vec.Y);
+	snprintf_nirt(tmpbuf, 255, " %f", vec.Y);
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	snprintf_irr(tmpbuf, 255, " %f", vec.Z*-1.f);	// 	change handedness
+	snprintf_nirt(tmpbuf, 255, " %f", vec.Z*-1.f);	// 	change handedness
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
@@ -1015,11 +1015,11 @@ void CColladaMeshWriter::writeUv(const irr::core::vector2df& vec)
 {
 	c8 tmpbuf[255];
 
-	snprintf_irr(tmpbuf, 255, "%f", vec.X);
+	snprintf_nirt(tmpbuf, 255, "%f", vec.X);
 	WriteBuffer = tmpbuf;
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	snprintf_irr(tmpbuf, 255, " %f", 1.f-vec.Y);	// 	change handedness
+	snprintf_nirt(tmpbuf, 255, " %f", 1.f-vec.Y);	// 	change handedness
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
@@ -1030,21 +1030,21 @@ void CColladaMeshWriter::writeColor(const irr::video::SColorf& colorf, bool writ
 {
 	c8 tmpbuf[255];
 
-	snprintf_irr(tmpbuf, 255, "%f", colorf.getRed());
+	snprintf_nirt(tmpbuf, 255, "%f", colorf.getRed());
 	WriteBuffer = tmpbuf;
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	snprintf_irr(tmpbuf, 255, " %f", colorf.getGreen());
+	snprintf_nirt(tmpbuf, 255, " %f", colorf.getGreen());
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
-	snprintf_irr(tmpbuf, 255, " %f", colorf.getBlue());
+	snprintf_nirt(tmpbuf, 255, " %f", colorf.getBlue());
 	WriteBuffer.append(tmpbuf);
 	WriteBuffer.eraseTrailingFloatZeros();
 
 	if ( writeAlpha )
 	{
-		snprintf_irr(tmpbuf, 255, " %f", colorf.getAlpha());
+		snprintf_nirt(tmpbuf, 255, " %f", colorf.getAlpha());
 		WriteBuffer.append(tmpbuf);
 		WriteBuffer.eraseTrailingFloatZeros();
 	}
@@ -1156,7 +1156,7 @@ irr::core::stringc CColladaMeshWriter::nameForMaterial(const video::SMaterial & 
 irr::core::stringc CColladaMeshWriter::nameForMaterialSymbol(const scene::IMesh* mesh, int materialId) const
 {
 	c8 buf[100];
-	snprintf_irr(buf, 100, "mat_symb_%p_%d", mesh, materialId);
+	snprintf_nirt(buf, 100, "mat_symb_%p_%d", mesh, materialId);
 	return irr::core::stringc(buf);
 }
 
@@ -1267,13 +1267,13 @@ irr::core::stringc CColladaMeshWriter::pathToURI(const irr::io::path& path) cons
 
 	// is this a relative path?
 	if ( path.size() > 1
-		&& path[0] != IRR_TEXT('/')
-		&& path[0] != IRR_TEXT('\\')
-		&& path[1] != IRR_TEXT(':') )
+		&& path[0] != NIRT_TEXT('/')
+		&& path[0] != NIRT_TEXT('\\')
+		&& path[1] != NIRT_TEXT(':') )
 	{
 		// not already starting with "./" ?
-		if (	path[0] != IRR_TEXT('.')
-			||	path[1] != IRR_TEXT('/') )
+		if (	path[0] != NIRT_TEXT('.')
+			||	path[1] != NIRT_TEXT('/') )
 		{
 			result.append("./");
 		}
@@ -1311,7 +1311,7 @@ void CColladaMeshWriter::writeAsset()
 	Writer->writeElement("contributor", false);
 	Writer->writeLineBreak();
 	Writer->writeElement("authoring_tool", false);
-	Writer->writeText("Irrlicht Engine");
+	Writer->writeText("Nirtcpp Engine");
 	Writer->writeClosingTag("authoring_tool");
 	Writer->writeLineBreak();
 	Writer->writeClosingTag("contributor");
@@ -1857,7 +1857,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 
 		// write indices now
 
-		// In Collada we us a single global buffer for all vertices, so indices have this offset compared to Irrlicht
+		// In Collada we us a single global buffer for all vertices, so indices have this offset compared to Nirtcpp
 		u32 posIdx = globalIndices[i].PosStartIndex;
 		u32 tCoordIdx = globalIndices[i].TCoord0StartIndex;
 		u32 normalIdx = globalIndices[i].NormalStartIndex;
@@ -1873,7 +1873,7 @@ void CColladaMeshWriter::writeMeshGeometry(const irr::core::stringc& meshname, s
 		strP.reserve(100);
 		for (u32 p=0; p<polyCount; ++p)
 		{
-			// Irrlicht uses clockwise, Collada uses counter-clockwise to define front-face
+			// Nirtcpp uses clockwise, Collada uses counter-clockwise to define front-face
 			u32 irrIdx = iType == video::EIT_16BIT ? idx16[p*3 + 2] : idx32[p*3 + 2];
 			strP = "";
 			strP += irrIdx + posIdx;
@@ -2014,7 +2014,7 @@ s32 CColladaMeshWriter::getCheckedTextureIdx(const video::SMaterial & material, 
 	return idx;
 }
 
-video::SColor CColladaMeshWriter::getColorMapping(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs, E_COLLADA_IRR_COLOR colType)
+video::SColor CColladaMeshWriter::getColorMapping(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs, E_COLLADA_NIRT_COLOR colType)
 {
 	switch ( colType )
 	{
@@ -2182,7 +2182,7 @@ void CColladaMeshWriter::writeFxElement(const video::SMaterial & material, E_COL
 void CColladaMeshWriter::writeColorFx(const video::SMaterial & material, const c8 * colorname, E_COLLADA_COLOR_SAMPLER cs, const c8* attr1Name, const c8* attr1Value)
 {
 	irr::s32 idx = getCheckedTextureIdx(material, cs);
-	E_COLLADA_IRR_COLOR colType = idx < 0 ? getProperties()->getColorMapping(material, cs) : ECIC_NONE;
+	E_COLLADA_NIRT_COLOR colType = idx < 0 ? getProperties()->getColorMapping(material, cs) : ECIC_NONE;
 	if ( idx >= 0 || colType != ECIC_NONE )
 	{
 		Writer->writeElement(colorname, false, attr1Name, attr1Value);
@@ -2268,7 +2268,7 @@ void CColladaMeshWriter::writeLookAtElement(const irr::core::vector3df& eyePos, 
 	Writer->writeElement("lookat", false);
 
 	c8 tmpbuf[255];
-	snprintf_irr(tmpbuf, 255, "%f %f %f %f %f %f %f %f %f", eyePos.X, eyePos.Y, eyePos.Z*-1.f, targetPos.X, targetPos.Y, targetPos.Z*-1.f, upVector.X, upVector.Y, upVector.Z*-1.f);
+	snprintf_nirt(tmpbuf, 255, "%f %f %f %f %f %f %f %f %f", eyePos.X, eyePos.Y, eyePos.Z*-1.f, targetPos.X, targetPos.Y, targetPos.Z*-1.f, upVector.X, upVector.Y, upVector.Z*-1.f);
 	Writer->writeText(tmpbuf);
 
 	Writer->writeClosingTag("lookat");

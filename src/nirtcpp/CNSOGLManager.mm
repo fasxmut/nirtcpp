@@ -1,10 +1,10 @@
 // Copyright (C) 2014 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "CNSOGLManager.h"
 
-#ifdef _IRR_COMPILE_WITH_NSOGL_MANAGER_
+#ifdef _NIRT_COMPILE_WITH_NSOGL_MANAGER_
 
 #include "os.h"
 
@@ -25,7 +25,7 @@ CNSOGLManager::~CNSOGLManager()
 {
 }
 
-bool CNSOGLManager::initialize(const SIrrlichtCreationParameters& params, const SExposedVideoData& videodata)
+bool CNSOGLManager::initialize(const SNirtcppCreationParameters& params, const SExposedVideoData& videodata)
 {
 	Params = params;
 

@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
@@ -29,14 +29,14 @@
     #error Compiling with __STRICT_ANSI__ not supported. g++ does set this when compiling with -std=c++11 or -std=c++0x. Use instead -std=gnu++11 or -std=gnu++0x. Or use -U__STRICT_ANSI__ to disable strict ansi.
 #endif
 
-#if defined (_IRR_WINDOWS_API_)
+#if defined (_NIRT_WINDOWS_API_)
 	#if !defined ( _WIN32_WCE )
 		#include <direct.h> // for _chdir
 		#include <io.h> // for _access
 		#include <tchar.h>
 	#endif
 #else
-	#if (defined(_IRR_POSIX_API_) || defined(_IRR_OSX_PLATFORM_))
+	#if (defined(_NIRT_POSIX_API_) || defined(_NIRT_OSX_PLATFORM_))
 		#include <stdio.h>
 		#include <stdlib.h>
 		#include <string.h>
@@ -64,27 +64,27 @@ CFileSystem::CFileSystem()
 	//! reset current working directory
 	getWorkingDirectory();
 
-#ifdef __IRR_COMPILE_WITH_PAK_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_PAK_ARCHIVE_LOADER_
 	ArchiveLoader.push_back(new CArchiveLoaderPAK(this));
 #endif
 
-#ifdef __IRR_COMPILE_WITH_NPK_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_NPK_ARCHIVE_LOADER_
 	ArchiveLoader.push_back(new CArchiveLoaderNPK(this));
 #endif
 
-#ifdef __IRR_COMPILE_WITH_TAR_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_TAR_ARCHIVE_LOADER_
 	ArchiveLoader.push_back(new CArchiveLoaderTAR(this));
 #endif
 
-#ifdef __IRR_COMPILE_WITH_WAD_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_WAD_ARCHIVE_LOADER_
 	ArchiveLoader.push_back(new CArchiveLoaderWAD(this));
 #endif
 
-#ifdef __IRR_COMPILE_WITH_MOUNT_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_MOUNT_ARCHIVE_LOADER_
 	ArchiveLoader.push_back(new CArchiveLoaderMount(this));
 #endif
 
-#ifdef __IRR_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
 	ArchiveLoader.push_back(new CArchiveLoaderZIP(this));
 #endif
 
@@ -336,7 +336,7 @@ bool CFileSystem::changeArchivePassword(const path& filename,
 		// We need to check for directory names with trailing slash and without
 		const path absPath = getAbsolutePath(filename);
 		const path arcPath = FileArchives[idx]->getFileList()->getPath();
-		if ((absPath == arcPath) || ((absPath+IRR_TEXT("/")) == arcPath))
+		if ((absPath == arcPath) || ((absPath+NIRT_TEXT("/")) == arcPath))
 		{
 			if (password.size())
 				FileArchives[idx]->Password=password;
@@ -519,9 +519,9 @@ const io::path& CFileSystem::getWorkingDirectory()
 	}
 	else
 	{
-		#if defined(_IRR_WINDOWS_API_)
+		#if defined(_NIRT_WINDOWS_API_)
 			fschar_t tmp[_MAX_PATH];
-			#if defined(_IRR_WCHAR_FILESYSTEM )
+			#if defined(_NIRT_WCHAR_FILESYSTEM )
 				_wgetcwd(tmp, _MAX_PATH);
 				WorkingDirectory[FILESYSTEM_NATIVE] = tmp;
 				WorkingDirectory[FILESYSTEM_NATIVE].replace(L'\\', L'/');
@@ -532,13 +532,13 @@ const io::path& CFileSystem::getWorkingDirectory()
 			#endif
 		#endif
 
-		#if (defined(_IRR_POSIX_API_) || defined(_IRR_OSX_PLATFORM_))
+		#if (defined(_NIRT_POSIX_API_) || defined(_NIRT_OSX_PLATFORM_))
 
 			// getting the CWD is rather complex as we do not know the size
 			// so try it until the call was successful
 			// Note that neither the first nor the second parameter may be 0 according to POSIX
 
-			#if defined(_IRR_WCHAR_FILESYSTEM )
+			#if defined(_NIRT_WCHAR_FILESYSTEM )
 				u32 pathSize=256;
 				wchar_t *tmpPath = new wchar_t[pathSize];
 				while ((pathSize < (1<<16)) && !(wgetcwd(tmpPath,pathSize)))
@@ -585,7 +585,7 @@ bool CFileSystem::changeWorkingDirectoryTo(const io::path& newDirectory)
 	{
 		WorkingDirectory[FILESYSTEM_VIRTUAL] = newDirectory;
 		// is this empty string constant really intended?
-		flattenFilename(WorkingDirectory[FILESYSTEM_VIRTUAL], IRR_TEXT(""));
+		flattenFilename(WorkingDirectory[FILESYSTEM_VIRTUAL], NIRT_TEXT(""));
 		success = true;
 	}
 	else
@@ -593,13 +593,13 @@ bool CFileSystem::changeWorkingDirectoryTo(const io::path& newDirectory)
 		WorkingDirectory[FILESYSTEM_NATIVE] = newDirectory;
 
 #if defined(_MSC_VER)
-	#if defined(_IRR_WCHAR_FILESYSTEM)
+	#if defined(_NIRT_WCHAR_FILESYSTEM)
 		success = (_wchdir(newDirectory.c_str()) == 0);
 	#else
 		success = (_chdir(newDirectory.c_str()) == 0);
 	#endif
 #else
-	#if defined(_IRR_WCHAR_FILESYSTEM)
+	#if defined(_NIRT_WCHAR_FILESYSTEM)
 		success = (_wchdir(newDirectory.c_str()) == 0);
 	#else
 		success = (chdir(newDirectory.c_str()) == 0);
@@ -615,10 +615,10 @@ io::path CFileSystem::getAbsolutePath(const io::path& filename) const
 {
 	if ( filename.empty() )
 		return filename;
-#if defined(_IRR_WINDOWS_API_)
+#if defined(_NIRT_WINDOWS_API_)
 	fschar_t *p=0;
 	fschar_t fpath[_MAX_PATH];
-	#if defined(_IRR_WCHAR_FILESYSTEM )
+	#if defined(_NIRT_WCHAR_FILESYSTEM )
 		p = _wfullpath(fpath, filename.c_str(), _MAX_PATH);
 		core::stringw tmp(p);
 		tmp.replace(L'\\', L'/');
@@ -628,7 +628,7 @@ io::path CFileSystem::getAbsolutePath(const io::path& filename) const
 		tmp.replace('\\', '/');
 	#endif
 	return tmp;
-#elif (defined(_IRR_POSIX_API_) || defined(_IRR_OSX_PLATFORM_))
+#elif (defined(_NIRT_POSIX_API_) || defined(_NIRT_OSX_PLATFORM_))
 	c8* p=0;
 	c8 fpath[4096];
 	fpath[0]=0;
@@ -645,7 +645,7 @@ io::path CFileSystem::getAbsolutePath(const io::path& filename) const
 			return io::path(fpath);
 	}
 	if (filename[filename.size()-1]=='/')
-		return io::path(p)+IRR_TEXT("/");
+		return io::path(p)+NIRT_TEXT("/");
 	else
 		return io::path(p);
 #else
@@ -667,7 +667,7 @@ io::path CFileSystem::getFileDir(const io::path& filename) const
 	if ((u32)lastSlash < filename.size())
 		return filename.subString(0, lastSlash);
 	else
-		return IRR_TEXT(".");
+		return NIRT_TEXT(".");
 }
 
 
@@ -720,7 +720,7 @@ io::path& CFileSystem::flattenFilename(io::path& directory, const io::path& root
 	{
 		subdir = directory.subString(lastpos, pos - lastpos + 1);
 
-		if (subdir == IRR_TEXT("../"))
+		if (subdir == NIRT_TEXT("../"))
 		{
 			if (lastWasRealDir)
 			{
@@ -733,11 +733,11 @@ io::path& CFileSystem::flattenFilename(io::path& directory, const io::path& root
 				lastWasRealDir=false;
 			}
 		}
-		else if (subdir == IRR_TEXT("/"))
+		else if (subdir == NIRT_TEXT("/"))
 		{
 			dir = root;
 		}
-		else if (subdir != IRR_TEXT("./"))
+		else if (subdir != NIRT_TEXT("./"))
 		{
 			dir.append(subdir);
 			lastWasRealDir=true;
@@ -760,23 +760,23 @@ path CFileSystem::getRelativeFilename(const path& filename, const path& director
 	core::splitFilename(getAbsolutePath(filename), &path1, &file, &ext);
 	io::path path2(getAbsolutePath(directory));
 	core::list<io::path> list1, list2;
-	path1.split(list1, IRR_TEXT("/\\"), 2);
-	path2.split(list2, IRR_TEXT("/\\"), 2);
+	path1.split(list1, NIRT_TEXT("/\\"), 2);
+	path2.split(list2, NIRT_TEXT("/\\"), 2);
 	u32 i=0;
 	core::list<io::path>::ConstIterator it1,it2;
 	it1=list1.begin();
 	it2=list2.begin();
 
-	#if defined (_IRR_WINDOWS_API_)
+	#if defined (_NIRT_WINDOWS_API_)
 	fschar_t partition1 = 0, partition2 = 0;
 	io::path prefix1, prefix2;
 	if ( it1 != list1.end() )
 		prefix1 = *it1;
 	if ( it2 != list2.end() )
 		prefix2 = *it2;
-	if ( prefix1.size() > 1 && prefix1[1] == IRR_TEXT(':') )
+	if ( prefix1.size() > 1 && prefix1[1] == NIRT_TEXT(':') )
 		partition1 = core::locale_lower(prefix1[0]);
-	if ( prefix2.size() > 1 && prefix2[1] == IRR_TEXT(':') )
+	if ( prefix2.size() > 1 && prefix2[1] == NIRT_TEXT(':') )
 		partition2 = core::locale_lower(prefix2[0]);
 
 	// must have the same prefix or we can't resolve it to a relative filename
@@ -788,7 +788,7 @@ path CFileSystem::getRelativeFilename(const path& filename, const path& director
 
 
 	for (; i<list1.size() && i<list2.size()
-#if defined (_IRR_WINDOWS_API_)
+#if defined (_NIRT_WINDOWS_API_)
 		&& (io::path(*it1).make_lower()==io::path(*it2).make_lower())
 #else
 		&& (*it1==*it2)
@@ -798,18 +798,18 @@ path CFileSystem::getRelativeFilename(const path& filename, const path& director
 		++it1;
 		++it2;
 	}
-	path1=IRR_TEXT("");
+	path1=NIRT_TEXT("");
 	for (; i<list2.size(); ++i)
-		path1 += IRR_TEXT("../");
+		path1 += NIRT_TEXT("../");
 	while (it1 != list1.end())
 	{
 		path1 += *it1++;
-		path1 += IRR_TEXT('/');
+		path1 += NIRT_TEXT('/');
 	}
 	path1 += file;
 	if (ext.size())
 	{
-		path1 += IRR_TEXT('.');
+		path1 += NIRT_TEXT('.');
 		path1 += ext;
 	}
 	return path1;
@@ -839,7 +839,7 @@ IFileList* CFileSystem::createFileList()
 	{
 		// --------------------------------------------
 		//! Windows version
-		#ifdef _IRR_WINDOWS_API_
+		#ifdef _NIRT_WINDOWS_API_
 		#if !defined ( _WIN32_WCE )
 
 		r = new CFileList(Path, true, false);
@@ -872,12 +872,12 @@ IFileList* CFileSystem::createFileList()
 
 		// --------------------------------------------
 		//! Linux version
-		#if (defined(_IRR_POSIX_API_) || defined(_IRR_OSX_PLATFORM_))
+		#if (defined(_NIRT_POSIX_API_) || defined(_NIRT_OSX_PLATFORM_))
 
 
 		r = new CFileList(Path, false, false);
 
-		r->addItem(Path + IRR_TEXT(".."), 0, 0, true, 0);
+		r->addItem(Path + NIRT_TEXT(".."), 0, 0, true, 0);
 
 		//! We use the POSIX compliant methods instead of scandir
 		DIR* dirHandle=opendir(Path.c_str());
@@ -900,7 +900,7 @@ IFileList* CFileSystem::createFileList()
 					size = buf.st_size;
 					isDirectory = S_ISDIR(buf.st_mode);
 				}
-				#if !defined(_IRR_SOLARIS_PLATFORM_) && !defined(__CYGWIN__)
+				#if !defined(_NIRT_SOLARIS_PLATFORM_) && !defined(__CYGWIN__)
 				// only available on some systems
 				else
 				{
@@ -924,10 +924,10 @@ IFileList* CFileSystem::createFileList()
 		SFileListEntry e3;
 
 		//! PWD
-		r->addItem(Path + IRR_TEXT("."), 0, 0, true, 0);
+		r->addItem(Path + NIRT_TEXT("."), 0, 0, true, 0);
 
 		//! parent
-		r->addItem(Path + IRR_TEXT(".."), 0, 0, true, 0);
+		r->addItem(Path + NIRT_TEXT(".."), 0, 0, true, 0);
 
 		//! merge archives
 		for (u32 i=0; i < FileArchives.size(); ++i)
@@ -964,13 +964,13 @@ bool CFileSystem::existFile(const io::path& filename) const
 			return true;
 
 #if defined(_MSC_VER)
-	#if defined(_IRR_WCHAR_FILESYSTEM)
+	#if defined(_NIRT_WCHAR_FILESYSTEM)
 		return (_waccess(filename.c_str(), 0) != -1);
 	#else
 		return (_access(filename.c_str(), 0) != -1);
 	#endif
 #elif defined(F_OK)
-	#if defined(_IRR_WCHAR_FILESYSTEM)
+	#if defined(_NIRT_WCHAR_FILESYSTEM)
 		return (_waccess(filename.c_str(), F_OK) != -1);
 	#else
 		return (access(filename.c_str(), F_OK) != -1);
@@ -984,7 +984,7 @@ bool CFileSystem::existFile(const io::path& filename) const
 //! Creates a XML Reader from a file.
 IXMLReader* CFileSystem::createXMLReader(const io::path& filename)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	IReadFile* file = createAndOpenFile(filename);
 	if (!file)
 		return 0;
@@ -1002,7 +1002,7 @@ IXMLReader* CFileSystem::createXMLReader(const io::path& filename)
 //! Creates a XML Reader from a file.
 IXMLReader* CFileSystem::createXMLReader(IReadFile* file)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	if (!file)
 		return 0;
 
@@ -1017,7 +1017,7 @@ IXMLReader* CFileSystem::createXMLReader(IReadFile* file)
 //! Creates a XML Reader from a file.
 IXMLReaderUTF8* CFileSystem::createXMLReaderUTF8(const io::path& filename)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	IReadFile* file = createAndOpenFile(filename);
 	if (!file)
 		return 0;
@@ -1035,7 +1035,7 @@ IXMLReaderUTF8* CFileSystem::createXMLReaderUTF8(const io::path& filename)
 //! Creates a XML Reader from a file.
 IXMLReaderUTF8* CFileSystem::createXMLReaderUTF8(IReadFile* file)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	if (!file)
 		return 0;
 
@@ -1050,7 +1050,7 @@ IXMLReaderUTF8* CFileSystem::createXMLReaderUTF8(IReadFile* file)
 //! Creates a XML Writer from a file.
 IXMLWriter* CFileSystem::createXMLWriter(const io::path& filename)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	IWriteFile* file = createAndWriteFile(filename);
 	IXMLWriter* writer = 0;
 	if (file)
@@ -1069,7 +1069,7 @@ IXMLWriter* CFileSystem::createXMLWriter(const io::path& filename)
 //! Creates a XML Writer from a file.
 IXMLWriter* CFileSystem::createXMLWriter(IWriteFile* file)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	return createIXMLWriter(file);
 #else
 	noXML();
@@ -1080,7 +1080,7 @@ IXMLWriter* CFileSystem::createXMLWriter(IWriteFile* file)
 //! Creates a XML Writer from a file.
 IXMLWriterUTF8* CFileSystem::createXMLWriterUTF8(const io::path& filename)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	IWriteFile* file = createAndWriteFile(filename);
 	IXMLWriterUTF8* writer = 0;
 	if (file)
@@ -1099,7 +1099,7 @@ IXMLWriterUTF8* CFileSystem::createXMLWriterUTF8(const io::path& filename)
 //! Creates a XML Writer from a file.
 IXMLWriterUTF8* CFileSystem::createXMLWriterUTF8(IWriteFile* file)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	return createIXMLWriterUTF8(file);
 #else
 	noXML();

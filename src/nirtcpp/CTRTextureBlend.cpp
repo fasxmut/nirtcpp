@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 // compile flag for this file
 #undef USE_ZBUFFER
@@ -84,8 +84,8 @@ namespace video
 		CTRTextureBlend(CBurningVideoDriver* driver);
 
 		//! draws an indexed triangle list
-		virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) IRR_OVERRIDE;
-		virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) IRR_OVERRIDE;
+		virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) override;
+		virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) override;
 
 private:
 	// fragment shader
@@ -201,7 +201,7 @@ void CTRTextureBlend::OnSetMaterialBurning(const SBurningShaderMaterial& materia
 	if ( showname && ( lsrcFact != srcFact || ldstFact != dstFact ) )
 	{
 		char buf[128];
-		snprintf_irr ( buf, 128, "missing shader: %s %s",n[srcFact], n[dstFact] );
+		snprintf_nirt ( buf, 128, "missing shader: %s %s",n[srcFact], n[dstFact] );
 		os::Printer::log( buf, ELL_WARNING);
 
 		lsrcFact = srcFact;
@@ -2542,7 +2542,7 @@ void CTRTextureBlend::drawTriangle(const s4DVertex* burning_restrict a, const s4
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 namespace irr
 {
@@ -2553,11 +2553,11 @@ namespace video
 IBurningShader* createTRTextureBlend(CBurningVideoDriver* driver)
 {
 	// EMT_ONETEXTURE_BLEND
-	#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CTRTextureBlend(driver);
 	#else
 	return 0;
-	#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 

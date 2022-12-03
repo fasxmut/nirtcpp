@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_VIDEO_2_SOFTWARE_COMPILE_CONFIG_H_INCLUDED
 #define S_VIDEO_2_SOFTWARE_COMPILE_CONFIG_H_INCLUDED
@@ -8,7 +8,7 @@
 #include "IrrCompileConfig.h"
 
 // Generic Render Flags for burning's video rasterizer
-// defined now in irrlicht compile config
+// defined now in nirtcpp compile config
 
 #if defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
 #undef BURNINGVIDEO_RENDERER_BEAUTIFUL
@@ -294,12 +294,12 @@ typedef float ipoltype;
 #if defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
 
 #if defined(_MSC_VER) && _MSC_VER > 1310 && !defined (_WIN32_WCE)
-#define snprintf_irr sprintf_s
+#define snprintf_nirt sprintf_s
 #elif defined(__APPLE__)
-#define snprintf_irr snprintf
+#define snprintf_nirt snprintf
 #elif !defined(__CYGWIN__)
-#define swprintf_irr _snwprintf
-#define snprintf_irr _snprintf
+#define swprintf_nirt _snwprintf
+#define snprintf_nirt _snprintf
 #endif
 
 

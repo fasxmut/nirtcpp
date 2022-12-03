@@ -1,9 +1,9 @@
 // Copyright (C) 2007-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_ANIMATED_MESH_MD3_H_INCLUDED
-#define IRR_I_ANIMATED_MESH_MD3_H_INCLUDED
+#ifndef NIRT_I_ANIMATED_MESH_MD3_H_INCLUDED
+#define NIRT_I_ANIMATED_MESH_MD3_H_INCLUDED
 
 #include "IAnimatedMesh.h"
 #include "IQ3Shader.h"

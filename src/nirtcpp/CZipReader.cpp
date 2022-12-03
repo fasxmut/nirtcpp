@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CZipReader.h"
 
@@ -12,31 +12,31 @@ extern "C" void bz_internal_error(int errorCode)
 	irr::os::Printer::log("Error in bzip2 handling", irr::core::stringc(errorCode), irr::ELL_ERROR);
 }
 
-#ifdef __IRR_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
 
 #include "CFileList.h"
 #include "CReadFile.h"
 #include "coreutil.h"
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_ZLIB_
-	#ifndef _IRR_USE_NON_SYSTEM_ZLIB_
+#ifdef _NIRT_COMPILE_WITH_ZLIB_
+	#ifndef _NIRT_USE_NON_SYSTEM_ZLIB_
 	#include <zlib.h> // use system lib
 	#else
 	#include "zlib/zlib.h"
 	#endif
 
-	#ifdef _IRR_COMPILE_WITH_ZIP_ENCRYPTION_
+	#ifdef _NIRT_COMPILE_WITH_ZIP_ENCRYPTION_
 	#include "aesGladman/fileenc.h"
 	#endif
-	#ifdef _IRR_COMPILE_WITH_BZIP2_
-	#ifndef _IRR_USE_NON_SYSTEM_BZLIB_
+	#ifdef _NIRT_COMPILE_WITH_BZIP2_
+	#ifndef _NIRT_USE_NON_SYSTEM_BZLIB_
 	#include <bzlib.h>
 	#else
 	#include "bzip2/bzlib.h"
 	#endif
 	#endif
-	#ifdef _IRR_COMPILE_WITH_LZMA_
+	#ifdef _NIRT_COMPILE_WITH_LZMA_
 	#include "lzma/LzmaDec.h"
 	#endif
 #endif
@@ -323,7 +323,7 @@ bool CZipReader::scanZipHeader(bool ignoreGPBits)
 		delete [] tmp;
 	}
 
-#ifdef _IRR_COMPILE_WITH_ZIP_ENCRYPTION_
+#ifdef _NIRT_COMPILE_WITH_ZIP_ENCRYPTION_
 	// AES encryption
 	if ((entry.header.GeneralBitFlag & ZIP_FILE_ENCRYPTED) && (entry.header.CompressionMethod == 99))
 	{
@@ -488,7 +488,7 @@ IReadFile* CZipReader::createAndOpenFile(const io::path& filename)
 	return 0;
 }
 
-#ifdef _IRR_COMPILE_WITH_LZMA_
+#ifdef _NIRT_COMPILE_WITH_LZMA_
 //! Used for LZMA decompression. The lib has no default memory management
 namespace
 {
@@ -509,7 +509,7 @@ namespace
 //! opens a file by index
 IReadFile* CZipReader::createAndOpenFile(u32 index)
 {
-	// Irrlicht supports 0, 8, 12, 14, 99
+	// Nirtcpp supports 0, 8, 12, 14, 99
 	//0 - The file is stored (no compression)
 	//1 - The file is Shrunk
 	//2 - The file is Reduced with compression factor 1
@@ -534,7 +534,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 	IReadFile* decrypted=0;
 	u8* decryptedBuf=0;
 	u32 decryptedSize=e.header.DataDescriptor.CompressedSize;
-#ifdef _IRR_COMPILE_WITH_ZIP_ENCRYPTION_
+#ifdef _NIRT_COMPILE_WITH_ZIP_ENCRYPTION_
 	if ((e.header.GeneralBitFlag & ZIP_FILE_ENCRYPTED) && (e.header.CompressionMethod == 99))
 	{
 		os::Printer::log("Reading encrypted file.");
@@ -622,13 +622,13 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 		}
 	case 8:
 		{
-  			#ifdef _IRR_COMPILE_WITH_ZLIB_
+  			#ifdef _NIRT_COMPILE_WITH_ZLIB_
 
 			const u32 uncompressedSize = e.header.DataDescriptor.UncompressedSize;
 			c8* pBuf = new c8[ uncompressedSize ];
 			if (!pBuf)
 			{
-				swprintf_irr ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
+				swprintf_nirt ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
 				os::Printer::log( buf, ELL_ERROR);
 				if (decrypted)
 					decrypted->drop();
@@ -641,7 +641,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 				pcData = new u8[decryptedSize];
 				if (!pcData)
 				{
-					swprintf_irr ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
+					swprintf_nirt ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
 					os::Printer::log( buf, ELL_ERROR);
 					delete [] pBuf;
 					return 0;
@@ -682,7 +682,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 
 			if (err != Z_OK)
 			{
-				swprintf_irr ( buf, 64, L"Error decompressing %s", core::stringw(Files[index].FullName).c_str() );
+				swprintf_nirt ( buf, 64, L"Error decompressing %s", core::stringw(Files[index].FullName).c_str() );
 				os::Printer::log( buf, ELL_ERROR);
 				delete [] pBuf;
 				return 0;
@@ -696,13 +696,13 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 		}
 	case 12:
 		{
-  			#ifdef _IRR_COMPILE_WITH_BZIP2_
+  			#ifdef _NIRT_COMPILE_WITH_BZIP2_
 
 			const u32 uncompressedSize = e.header.DataDescriptor.UncompressedSize;
 			c8* pBuf = new c8[ uncompressedSize ];
 			if (!pBuf)
 			{
-				swprintf_irr ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
+				swprintf_nirt ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
 				os::Printer::log( buf, ELL_ERROR);
 				if (decrypted)
 					decrypted->drop();
@@ -715,7 +715,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 				pcData = new u8[decryptedSize];
 				if (!pcData)
 				{
-					swprintf_irr ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
+					swprintf_nirt ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
 					os::Printer::log( buf, ELL_ERROR);
 					delete [] pBuf;
 					return 0;
@@ -754,7 +754,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 
 			if (err != BZ_OK)
 			{
-				swprintf_irr ( buf, 64, L"Error decompressing %s", core::stringw(Files[index].FullName).c_str() );
+				swprintf_nirt ( buf, 64, L"Error decompressing %s", core::stringw(Files[index].FullName).c_str() );
 				os::Printer::log( buf, ELL_ERROR);
 				delete [] pBuf;
 				return 0;
@@ -769,13 +769,13 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 		}
 	case 14:
 		{
-  			#ifdef _IRR_COMPILE_WITH_LZMA_
+  			#ifdef _NIRT_COMPILE_WITH_LZMA_
 
 			u32 uncompressedSize = e.header.DataDescriptor.UncompressedSize;
 			c8* pBuf = new c8[ uncompressedSize ];
 			if (!pBuf)
 			{
-				swprintf_irr ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
+				swprintf_nirt ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
 				os::Printer::log( buf, ELL_ERROR);
 				if (decrypted)
 					decrypted->drop();
@@ -788,7 +788,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 				pcData = new u8[decryptedSize];
 				if (!pcData)
 				{
-					swprintf_irr ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
+					swprintf_nirt ( buf, 64, L"Not enough memory for decompressing %s", core::stringw(Files[index].FullName).c_str() );
 					os::Printer::log( buf, ELL_ERROR);
 					delete [] pBuf;
 					return 0;
@@ -835,7 +835,7 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 		os::Printer::log("Decryption support not enabled. File cannot be read.", ELL_ERROR);
 		return 0;
 	default:
-		swprintf_irr ( buf, 64, L"file has unsupported compression method. %s", core::stringw(Files[index].FullName).c_str() );
+		swprintf_nirt ( buf, 64, L"file has unsupported compression method. %s", core::stringw(Files[index].FullName).c_str() );
 		os::Printer::log( buf, ELL_ERROR);
 		return 0;
 	};
@@ -845,4 +845,4 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 } // end namespace io
 } // end namespace irr
 
-#endif // __IRR_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
+#endif // __NIRT_COMPILE_WITH_ZIP_ARCHIVE_LOADER_

@@ -1,13 +1,13 @@
 // Copyright (C) 2013 Michael Zeilfelder
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_LEAK_HUNTER_INCLUDED
-#define IRR_LEAK_HUNTER_INCLUDED
+#ifndef NIRT_LEAK_HUNTER_INCLUDED
+#define NIRT_LEAK_HUNTER_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_LEAK_HUNTER_
+#ifdef _NIRT_COMPILE_WITH_LEAK_HUNTER_
 
 #include "irrArray.h"
 
@@ -16,9 +16,9 @@ namespace irr
 	class IReferenceCounted;
 
 	//! A class helping to find unreleased objects of type IReferenceCounted.
-	/** To use this you have recompile Irrlicht with _IRR_COMPILE_WITH_LEAK_HUNTER_.
+	/** To use this you have recompile Nirtcpp with _NIRT_COMPILE_WITH_LEAK_HUNTER_.
 		Note that this will slow down your application and should only be used for debugging.
-		The way to use is that you can check after you closed and dropped your last Irrlicht device
+		The way to use is that you can check after you closed and dropped your last Nirtcpp device
 		if there are still any IReferenceCounted left over which have not been deleted.
 	*/
 	class LeakHunter
@@ -65,6 +65,6 @@ namespace irr
 	};
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_LEAK_HUNTER_
+#endif // _NIRT_COMPILE_WITH_LEAK_HUNTER_
 
 #endif

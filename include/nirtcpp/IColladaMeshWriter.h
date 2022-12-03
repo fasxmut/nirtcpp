@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_COLLADA_MESH_WRITER_H_INCLUDED
-#define IRR_I_COLLADA_MESH_WRITER_H_INCLUDED
+#ifndef NIRT_I_COLLADA_MESH_WRITER_H_INCLUDED
+#define NIRT_I_COLLADA_MESH_WRITER_H_INCLUDED
 
 #include "IMeshWriter.h"
 #include "ISceneNode.h"
@@ -54,8 +54,8 @@ namespace scene
 		ECCS_REFLECTIVE
 	};
 
-	//! Irrlicht colors which can be mapped to E_COLLADA_COLOR_SAMPLER values
-	enum E_COLLADA_IRR_COLOR
+	//! Nirtcpp colors which can be mapped to E_COLLADA_COLOR_SAMPLER values
+	enum E_COLLADA_NIRT_COLOR
 	{
 		//! Don't write this element at all
 		ECIC_NONE,
@@ -103,12 +103,12 @@ namespace scene
 			also the ECOF_RGB_ZERO flag in getTransparentFx.  */
 		virtual s32 getTextureIdx(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs) const = 0;
 
-		//! Return which color from Irrlicht should be used for the color requested by collada
+		//! Return which color from Nirtcpp should be used for the color requested by collada
 		/** Note that collada allows exporting either texture or color, not both.
 			So color mapping is only checked if we have no valid texture already.
 			By default we try to return best fits when possible. For example ECCS_DIFFUSE is mapped to ECIC_DIFFUSE.
 			When ECIC_CUSTOM is returned then the result of getCustomColor will be used. */
-		virtual E_COLLADA_IRR_COLOR getColorMapping(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs) const = 0;
+		virtual E_COLLADA_NIRT_COLOR getColorMapping(const video::SMaterial & material, E_COLLADA_COLOR_SAMPLER cs) const = 0;
 
 		//! Return custom colors for certain color types requested by collada.
 		/** Only used when getColorMapping returns ECIC_CUSTOM for the same parameters. */
@@ -139,7 +139,7 @@ namespace scene
 
 		//! Return the mesh for the given node. If it has no mesh or shouldn't export it's mesh
 		//! you can return 0 in which case only the transformation matrix of the node will be used.
-		// TODO: Function is not const because there is no const getMesh() function for several Irrlicht nodes.
+		// TODO: Function is not const because there is no const getMesh() function for several Nirtcpp nodes.
 		virtual IMesh* getMesh(irr::scene::ISceneNode * node) = 0;
 
 		//! Return if the node has it's own material overwriting the mesh-materials
@@ -186,7 +186,7 @@ namespace scene
 		//! Return a name for the material
 		/** There is one material created in the writer for each unique name.
 		So you can use this to control the number of materials which get written.
-		For example Irrlicht does by default write one material for each material
+		For example Nirtcpp does by default write one material for each material
 		instanced by a node. So if you know that in your application material
 		instances per node are identical between different nodes you can reduce
 		the number of exported materials using that knowledge by using identical
@@ -313,7 +313,7 @@ namespace scene
 			return GeometryWriting;
 		}
 
-		//! Make certain there is only one collada material generated per Irrlicht material
+		//! Make certain there is only one collada material generated per Nirtcpp material
 		/** Checks before creating a collada material-name if an identical
 		irr:::video::SMaterial has been exported already. If so don't export it with
 		another name. This is set by default and leads to way smaller .dae files.
@@ -390,7 +390,7 @@ namespace scene
 		//! After export you can find out which name had been used for writing the geometry for this node.
 		/** The name comes from IColladaMeshWriterNames::nameForMesh, but you can't access the node there.
 		\return Either a pointer to the name or NULL */
-		// TODO: Function is not const because there is no const getMesh() function for several Irrlicht nodes.
+		// TODO: Function is not const because there is no const getMesh() function for several Nirtcpp nodes.
 		virtual const irr::core::stringc* findGeometryNameForNode(ISceneNode* node) = 0;
 
 		//! Change param name used for UV's.

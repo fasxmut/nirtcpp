@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_GUI_ELEMENT_TYPES_H_INCLUDED
-#define IRR_E_GUI_ELEMENT_TYPES_H_INCLUDED
+#ifndef NIRT_E_GUI_ELEMENT_TYPES_H_INCLUDED
+#define NIRT_E_GUI_ELEMENT_TYPES_H_INCLUDED
 
 #include "irrTypes.h"
 
@@ -12,7 +12,7 @@ namespace irr
 namespace gui
 {
 
-//! List of all basic Irrlicht GUI elements.
+//! List of all basic Nirtcpp GUI elements.
 /** An IGUIElement returns this when calling IGUIElement::getType(); */
 enum EGUI_ELEMENT_TYPE
 {

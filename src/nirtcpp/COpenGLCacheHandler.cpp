@@ -1,10 +1,10 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "COpenGLCacheHandler.h"
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 
 #include "COpenGLDriver.h"
 
@@ -128,4 +128,4 @@ void COpenGLCacheHandler::setClientActiveTexture(GLenum texture)
 } // end namespace
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_OPENGL_
+#endif // _NIRT_COMPILE_WITH_OPENGL_

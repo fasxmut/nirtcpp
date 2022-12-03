@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CNullDriver.h"
 #include "os.h"
@@ -95,8 +95,8 @@ CNullDriver::CNullDriver(io::IFileSystem* io, const core::dimension2d<u32>& scre
 	#endif
 
 	DriverAttributes = new io::CAttributes();
-	DriverAttributes->addInt("MaxTextures", _IRR_MATERIAL_MAX_TEXTURES_);
-	DriverAttributes->addInt("MaxSupportedTextures", _IRR_MATERIAL_MAX_TEXTURES_);
+	DriverAttributes->addInt("MaxTextures", _NIRT_MATERIAL_MAX_TEXTURES_);
+	DriverAttributes->addInt("MaxSupportedTextures", _NIRT_MATERIAL_MAX_TEXTURES_);
 	DriverAttributes->addInt("MaxLights", getMaximalDynamicLightAmount());
 	DriverAttributes->addInt("MaxAnisotropy", 1);
 //	DriverAttributes->addInt("MaxUserClipPlanes", 0);
@@ -127,64 +127,64 @@ CNullDriver::CNullDriver(io::IFileSystem* io, const core::dimension2d<u32>& scre
 
 	// create surface loader
 
-#ifdef _IRR_COMPILE_WITH_WAL_LOADER_
+#ifdef _NIRT_COMPILE_WITH_WAL_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderHalfLife());
 	SurfaceLoader.push_back(video::createImageLoaderWAL());
 #endif
-#ifdef _IRR_COMPILE_WITH_LMP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_LMP_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderLMP());
 #endif
-#ifdef _IRR_COMPILE_WITH_PPM_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PPM_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderPPM());
 #endif
-#ifdef _IRR_COMPILE_WITH_RGB_LOADER_
+#ifdef _NIRT_COMPILE_WITH_RGB_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderRGB());
 #endif
-#ifdef _IRR_COMPILE_WITH_PSD_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PSD_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderPSD());
 #endif
-#ifdef _IRR_COMPILE_WITH_PVR_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PVR_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderPVR());
 #endif
-#if defined(_IRR_COMPILE_WITH_DDS_LOADER_) || defined(_IRR_COMPILE_WITH_DDS_DECODER_LOADER_)
+#if defined(_NIRT_COMPILE_WITH_DDS_LOADER_) || defined(_NIRT_COMPILE_WITH_DDS_DECODER_LOADER_)
 	SurfaceLoader.push_back(video::createImageLoaderDDS());
 #endif
-#ifdef _IRR_COMPILE_WITH_PCX_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PCX_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderPCX());
 #endif
-#ifdef _IRR_COMPILE_WITH_TGA_LOADER_
+#ifdef _NIRT_COMPILE_WITH_TGA_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderTGA());
 #endif
-#ifdef _IRR_COMPILE_WITH_PNG_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PNG_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderPNG());
 #endif
-#ifdef _IRR_COMPILE_WITH_JPG_LOADER_
+#ifdef _NIRT_COMPILE_WITH_JPG_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderJPG());
 #endif
-#ifdef _IRR_COMPILE_WITH_BMP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_BMP_LOADER_
 	SurfaceLoader.push_back(video::createImageLoaderBMP());
 #endif
 
 
-#ifdef _IRR_COMPILE_WITH_PPM_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PPM_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterPPM());
 #endif
-#ifdef _IRR_COMPILE_WITH_PCX_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PCX_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterPCX());
 #endif
-#ifdef _IRR_COMPILE_WITH_PSD_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PSD_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterPSD());
 #endif
-#ifdef _IRR_COMPILE_WITH_TGA_WRITER_
+#ifdef _NIRT_COMPILE_WITH_TGA_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterTGA());
 #endif
-#ifdef _IRR_COMPILE_WITH_JPG_WRITER_
+#ifdef _NIRT_COMPILE_WITH_JPG_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterJPG());
 #endif
-#ifdef _IRR_COMPILE_WITH_PNG_WRITER_
+#ifdef _NIRT_COMPILE_WITH_PNG_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterPNG());
 #endif
-#ifdef _IRR_COMPILE_WITH_BMP_WRITER_
+#ifdef _NIRT_COMPILE_WITH_BMP_WRITER_
 	SurfaceWriter.push_back(video::createImageWriterBMP());
 #endif
 
@@ -662,7 +662,7 @@ video::ITexture* CNullDriver::loadTextureFromFile(io::IReadFile* file, const io:
 			}
 			break;
 		default:
-			IRR_DEBUG_BREAK_IF(true);
+			NIRT_DEBUG_BREAK_IF(true);
 			break;
 		}
 
@@ -680,7 +680,7 @@ video::ITexture* CNullDriver::loadTextureFromFile(io::IReadFile* file, const io:
 }
 
 
-//! adds a surface, not loaded or created by the Irrlicht Engine
+//! adds a surface, not loaded or created by the Nirtcpp Engine
 void CNullDriver::addTexture(video::ITexture* texture)
 {
 	if (texture)
@@ -754,7 +754,7 @@ bool CNullDriver::setRenderTarget(ITexture* texture, u16 clearFlag, SColor clear
 		// create depth texture if require.
 		if (!depthTexture)
 		{
-			depthTexture = addRenderTargetTexture(texture->getSize(), "IRR_DEPTH_STENCIL", video::ECF_D24S8);
+			depthTexture = addRenderTargetTexture(texture->getSize(), "NIRT_DEPTH_STENCIL", video::ECF_D24S8);
 			SharedDepthTextures.push_back(depthTexture);
 		}
 
@@ -1058,7 +1058,7 @@ void CNullDriver::setAmbientLight(const SColorf& color)
 
 const wchar_t* CNullDriver::getName() const
 {
-	return L"Irrlicht NullDevice";
+	return L"Nirtcpp NullDevice";
 }
 
 
@@ -1129,7 +1129,7 @@ const SLight& CNullDriver::getDynamicLight(u32 idx) const
 		return Lights[idx];
 	else
 	{
-		IRR_DEBUG_BREAK_IF(true)
+		NIRT_DEBUG_BREAK_IF(true)
 		static const SLight dummy;
 		return dummy;
 	}
@@ -2226,7 +2226,7 @@ void CNullDriver::fillMaterialStructureFromAttributes(video::SMaterial& outMater
 	outMaterial.Lighting = attr->getAttributeAsBool("Lighting", outMaterial.Lighting);
 
 	io::E_ATTRIBUTE_TYPE attType = attr->getAttributeType("ZWriteEnable");
-	if (attType == io::EAT_BOOL )	// Before Irrlicht 1.9
+	if (attType == io::EAT_BOOL )	// Before Nirtcpp 1.9
 		outMaterial.ZWriteEnable = attr->getAttributeAsBool("ZWriteEnable", outMaterial.ZWriteEnable != video::EZW_OFF ) ? video::EZW_AUTO : video::EZW_OFF;
 	else if (attType == io::EAT_ENUM )
 		outMaterial.ZWriteEnable = (video::E_ZWRITE)attr->getAttributeAsEnumeration("ZWriteEnable", video::ZWriteNames, outMaterial.ZWriteEnable);

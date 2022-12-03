@@ -1,24 +1,24 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "os.h"
 #include "irrString.h"
 #include "IrrCompileConfig.h"
 #include "irrMath.h"
 
-#if defined(_IRR_COMPILE_WITH_SDL_DEVICE_)
+#if defined(_NIRT_COMPILE_WITH_SDL_DEVICE_)
 	#include <SDL/SDL_endian.h>
 	#define bswap_16(X) SDL_Swap16(X)
 	#define bswap_32(X) SDL_Swap32(X)
-#elif defined(_IRR_WINDOWS_API_) && defined(_MSC_VER) && (_MSC_VER > 1298)
+#elif defined(_NIRT_WINDOWS_API_) && defined(_MSC_VER) && (_MSC_VER > 1298)
 	#include <stdlib.h>
 	#define bswap_16(X) _byteswap_ushort(X)
 	#define bswap_32(X) _byteswap_ulong(X)
 #if (_MSC_VER >= 1400)
 	#define localtime _localtime_s
 #endif
-#elif defined(_IRR_OSX_PLATFORM_)
+#elif defined(_NIRT_OSX_PLATFORM_)
 	#include <libkern/OSByteOrder.h>
 	#define bswap_16(X) OSReadSwapInt16(&X,0)
 	#define bswap_32(X) OSReadSwapInt32(&X,0)
@@ -26,7 +26,7 @@
 	#include <sys/endian.h>
 	#define bswap_16(X) bswap16(X)
 	#define bswap_32(X) bswap32(X)
-#elif !defined(_IRR_SOLARIS_PLATFORM_) && !defined(__PPC__) && !defined(_IRR_WINDOWS_API_)
+#elif !defined(_NIRT_SOLARIS_PLATFORM_) && !defined(__PPC__) && !defined(_NIRT_WINDOWS_API_)
 	#include <byteswap.h>
 #else
 	#define bswap_16(X) ((((X)&0xFF) << 8) | (((X)&0xFF00) >> 8))
@@ -48,12 +48,12 @@ namespace os
 }
 }
 
-#if defined(_IRR_WINDOWS_API_)
+#if defined(_NIRT_WINDOWS_API_)
 // ----------------------------------------------------------------
 // Windows specific functions
 // ----------------------------------------------------------------
 
-#ifdef _IRR_XBOX_PLATFORM_
+#ifdef _NIRT_XBOX_PLATFORM_
 #include <xtl.h>
 #else
 #define WIN32_LEAN_AND_MEAN
@@ -86,7 +86,7 @@ namespace os
 
 	void Timer::initTimer(bool usePerformanceTimer)
 	{
-#if !defined(_WIN32_WCE) && !defined (_IRR_XBOX_PLATFORM_)
+#if !defined(_WIN32_WCE) && !defined (_NIRT_XBOX_PLATFORM_)
 		// workaround for hires timer on multiple core systems, bios bugs result in bad hires timers.
 		SYSTEM_INFO sysinfo;
 		GetSystemInfo(&sysinfo);
@@ -103,7 +103,7 @@ namespace os
 	{
 		if (HighPerformanceTimerSupport)
 		{
-#if !defined(_WIN32_WCE) && !defined (_IRR_XBOX_PLATFORM_)
+#if !defined(_WIN32_WCE) && !defined (_NIRT_XBOX_PLATFORM_)
 			// Avoid potential timing inaccuracies across multiple cores by
 			// temporarily setting the affinity of this process to one core.
 			DWORD_PTR affinityMask=0;
@@ -113,7 +113,7 @@ namespace os
 			LARGE_INTEGER nTime;
 			BOOL queriedOK = QueryPerformanceCounter(&nTime);
 
-#if !defined(_WIN32_WCE)  && !defined (_IRR_XBOX_PLATFORM_)
+#if !defined(_WIN32_WCE)  && !defined (_NIRT_XBOX_PLATFORM_)
 			// Restore the true affinity.
 			if(MultiCore)
 				(void)SetThreadAffinityMask(GetCurrentThread(), affinityMask);

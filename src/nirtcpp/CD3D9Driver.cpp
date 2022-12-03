@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#define IRR_DONT_DO_MEMORY_DEBUGGING_HERE
+#define NIRT_DONT_DO_MEMORY_DEBUGGING_HERE
 #include "CD3D9Driver.h"
 
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "os.h"
 #include "S3DVertex.h"
@@ -29,7 +29,7 @@ namespace
 }
 
 //! constructor
-CD3D9Driver::CD3D9Driver(const SIrrlichtCreationParameters& params, io::IFileSystem* io)
+CD3D9Driver::CD3D9Driver(const SNirtcppCreationParameters& params, io::IFileSystem* io)
 	: CNullDriver(io, params.WindowSize), BridgeCalls(0), CurrentRenderMode(ERM_NONE),
 	ResetRenderStates(true), Transformation3DChanged(false),
 	D3DLibrary(0), pID3D(0), pID3DDevice(0), BackBufferSurface(0),
@@ -259,9 +259,9 @@ bool CD3D9Driver::initDriver(HWND hwnd, bool pureSoftware)
 
 	UINT adapter = Params.DisplayAdapter;
 	D3DDEVTYPE devtype = D3DDEVTYPE_HAL;
-	#ifndef _IRR_D3D_NO_SHADER_DEBUGGING
+	#ifndef _NIRT_D3D_NO_SHADER_DEBUGGING
 	devtype = D3DDEVTYPE_REF;
-	#elif defined(_IRR_USE_NVIDIA_PERFHUD_)
+	#elif defined(_NIRT_USE_NVIDIA_PERFHUD_)
 	for (UINT adapter_i = 0; adapter_i < pID3D->GetAdapterCount(); ++adapter_i)
 	{
 		D3DADAPTER_IDENTIFIER9 identifier;
@@ -1970,7 +1970,7 @@ bool CD3D9Driver::setRenderStates3DMode()
 }
 
 
-//! Map Irrlicht texture wrap mode to native values
+//! Map Nirtcpp texture wrap mode to native values
 D3DTEXTUREADDRESS CD3D9Driver::getTextureWrapMode(const u8 clamp)
 {
 	switch (clamp)
@@ -3785,7 +3785,7 @@ void CD3D9CallBridge::setBlend(bool enable)
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 
 
@@ -3794,9 +3794,9 @@ namespace irr
 namespace video
 {
 
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 //! creates a video driver
-IVideoDriver* createDirectX9Driver(const SIrrlichtCreationParameters& params,
+IVideoDriver* createDirectX9Driver(const SNirtcppCreationParameters& params,
 			io::IFileSystem* io, HWND window)
 {
 	const bool pureSoftware = false;
@@ -3809,7 +3809,7 @@ IVideoDriver* createDirectX9Driver(const SIrrlichtCreationParameters& params,
 
 	return dx9;
 }
-#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 } // end namespace video
 } // end namespace irr

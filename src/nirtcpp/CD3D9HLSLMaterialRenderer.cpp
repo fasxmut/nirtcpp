@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "CD3D9HLSLMaterialRenderer.h"
 #include "IShaderConstantSetCallBack.h"
@@ -11,7 +11,7 @@
 #include "os.h"
 #include "irrString.h"
 
-#ifndef _IRR_D3D_NO_SHADER_DEBUGGING
+#ifndef _NIRT_D3D_NO_SHADER_DEBUGGING
 #include <stdio.h>
 #endif
 
@@ -86,7 +86,7 @@ bool CD3D9HLSLMaterialRenderer::createHLSLVertexShader(const char* vertexShaderP
 	LPD3DXBUFFER buffer = 0;
 	LPD3DXBUFFER errors = 0;
 
-#ifdef _IRR_D3D_NO_SHADER_DEBUGGING
+#ifdef _NIRT_D3D_NO_SHADER_DEBUGGING
 
 	size_t dataLen_t = strlen(vertexShaderProgram);
 	UINT dataLen = (UINT)dataLen_t;
@@ -186,14 +186,14 @@ bool CD3D9HLSLMaterialRenderer::createHLSLPixelShader(const char* pixelShaderPro
 		// instead they'll silently compile 1_x as 2_x when using this flag
 		flags |= D3DXSHADER_ENABLE_BACKWARDS_COMPATIBILITY;
 #endif
-#if defined(_IRR_D3D_USE_LEGACY_HLSL_COMPILER) && defined(D3DXSHADER_USE_LEGACY_D3DX9_31_DLL)
+#if defined(_NIRT_D3D_USE_LEGACY_HLSL_COMPILER) && defined(D3DXSHADER_USE_LEGACY_D3DX9_31_DLL)
 #ifdef D3DXSHADER_ENABLE_BACKWARDS_COMPATIBILITY
 	else
 #endif
 		flags |= D3DXSHADER_USE_LEGACY_D3DX9_31_DLL;
 #endif
 
-#ifdef _IRR_D3D_NO_SHADER_DEBUGGING
+#ifdef _NIRT_D3D_NO_SHADER_DEBUGGING
 
 	size_t dataLen_t = strlen(pixelShaderProgram);
 	UINT dataLen = (UINT)dataLen_t;
@@ -421,4 +421,4 @@ void CD3D9HLSLMaterialRenderer::printHLSLVariables(LPD3DXCONSTANTTABLE table)
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_DIRECT3D_9_
+#endif // _NIRT_COMPILE_WITH_DIRECT3D_9_

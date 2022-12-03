@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 
 #if defined (__STRICT_ANSI__)
     #error Compiling with __STRICT_ANSI__ not supported. g++ does set this when compiling with -std=c++11 or -std=c++0x. Use instead -std=gnu++11 or -std=gnu++0x. Or use -U__STRICT_ANSI__ to disable strict ansi.
@@ -21,10 +21,10 @@
 #include "dimension2d.h"
 #include "IGUISpriteBank.h"
 #include <winuser.h>
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 #include <mmsystem.h>
 #include <regstr.h>
-#ifdef _IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
+#ifdef _NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
 #ifdef _MSC_VER
@@ -38,7 +38,7 @@
 #endif
 #endif
 
-#if defined(_IRR_COMPILE_WITH_OPENGL_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_)
 #include "CWGLManager.h"
 #endif
 
@@ -46,12 +46,12 @@ namespace irr
 {
 	namespace video
 	{
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
-		IVideoDriver* createDirectX9Driver(const irr::SIrrlichtCreationParameters& params, io::IFileSystem* io, HWND window);
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
+		IVideoDriver* createDirectX9Driver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, HWND window);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
-		IVideoDriver* createOpenGLDriver(const irr::SIrrlichtCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
+		IVideoDriver* createOpenGLDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
 #endif
 	}
 } // end namespace irr
@@ -62,14 +62,14 @@ namespace irr
     {
         CIrrDeviceWin32* Device;
 
-    #if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
+    #if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
         IDirectInput8* DirectInputDevice;
     #endif
-    #if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_)
+    #if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
         struct JoystickInfo
         {
             u32 Index;
-    #ifdef _IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
+    #ifdef _NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
             core::stringc Name;
             GUID guid;
             LPDIRECTINPUTDEVICE8 lpdijoy;
@@ -85,7 +85,7 @@ namespace irr
         SJoystickWin32Control(CIrrDeviceWin32* dev);
         ~SJoystickWin32Control();
 
-    #if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
+    #if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
         static BOOL CALLBACK EnumJoysticks(LPCDIDEVICEINSTANCE lpddi, LPVOID cp);
         void directInputAddJoystick(LPCDIDEVICEINSTANCE lpddi);
     #endif
@@ -98,7 +98,7 @@ namespace irr
 
 	SJoystickWin32Control::SJoystickWin32Control(CIrrDeviceWin32* dev) : Device(dev)
 	{
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
 		DirectInputDevice=0;
 		if (DI_OK != (DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&DirectInputDevice, NULL)))
 		{
@@ -110,7 +110,7 @@ namespace irr
 
 	SJoystickWin32Control::~SJoystickWin32Control()
 	{
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
 		for(u32 joystick = 0; joystick < ActiveJoysticks.size(); ++joystick)
 		{
 			LPDIRECTINPUTDEVICE8 dev = ActiveJoysticks[joystick].lpdijoy;
@@ -126,7 +126,7 @@ namespace irr
 #endif
 	}
 
-#if defined(_IRR_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
+#if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_) && defined(_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_)
 	BOOL CALLBACK SJoystickWin32Control::EnumJoysticks(LPCDIDEVICEINSTANCE lpddi, LPVOID cp)
 	{
 		SJoystickWin32Control* p=(SJoystickWin32Control*)cp;
@@ -207,8 +207,8 @@ namespace irr
 
 void SJoystickWin32Control::pollJoysticks()
 {
-#if defined _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
-#ifdef _IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
+#if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
+#ifdef _NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
 	if(0 == ActiveJoysticks.size())
 		return;
 
@@ -374,14 +374,14 @@ void SJoystickWin32Control::pollJoysticks()
 		}
 	}
 #endif
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 }
 
 /** This function is ported from SDL and released under zlib-license:
   * Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org> */
 irr::core::stringc SJoystickWin32Control::findJoystickName(int index, const JOYCAPS &caps) const
 {
-#if defined _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
     // As a default use the name given in the joystick structure.
     // It is always the same name, independent of joystick.
@@ -441,10 +441,10 @@ irr::core::stringc SJoystickWin32Control::findJoystickName(int index, const JOYC
 
 bool SJoystickWin32Control::activateJoysticks(core::array<SJoystickInfo> & joystickInfo)
 {
-#if defined _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 	joystickInfo.clear();
 	ActiveJoysticks.clear();
-#ifdef _IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
+#ifdef _NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
 	if (!DirectInputDevice || (DirectInputDevice->EnumDevices(DI8DEVCLASS_GAMECTRL, SJoystickWin32Control::EnumJoysticks, this, DIEDFL_ATTACHEDONLY )))
 	{
 		os::Printer::log("Could not enum DirectInput8 controllers", ELL_WARNING);
@@ -511,7 +511,7 @@ bool SJoystickWin32Control::activateJoysticks(core::array<SJoystickInfo> & joyst
 #endif
 #else
 	return false;
-#endif // _IRR_COMPILE_WITH_JOYSTICK_EVENTS_
+#endif // _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 }
 } // end namespace irr
 
@@ -682,7 +682,7 @@ namespace
 		HWND hWnd;
 		irr::CIrrDeviceWin32* irrDev;
 	};
-	// NOTE: This is global. We can have more than one Irrlicht Device at same time.
+	// NOTE: This is global. We can have more than one Nirtcpp Device at same time.
 	irr::core::array<SEnvMapper> EnvMap;
 
 	HKL KEYBOARD_INPUT_HKL=0;
@@ -936,7 +936,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 			else
 			{
-				// Otherwise we retore the fullscreen Irrlicht app
+				// Otherwise we retore the fullscreen Nirtcpp app
 				SetForegroundWindow(hWnd);
 				ShowWindow(hWnd, SW_RESTORE);
 				// and set the fullscreen resolution again
@@ -980,7 +980,7 @@ namespace irr
 {
 
 //! constructor
-CIrrDeviceWin32::CIrrDeviceWin32(const SIrrlichtCreationParameters& params)
+CIrrDeviceWin32::CIrrDeviceWin32(const SNirtcppCreationParameters& params)
 : CIrrDeviceStub(params), HWnd(0), ChangedToFullScreen(false), Resized(false),
 	ExternalWindow(false), Win32CursorControl(0), JoyControl(0)
 {
@@ -1025,7 +1025,7 @@ CIrrDeviceWin32::CIrrDeviceWin32(const SIrrlichtCreationParameters& params)
 		wcex.hIconSm		= 0;
 
 		// if there is an icon, load it
-		wcex.hIcon = (HICON)LoadImage(hInstance, __TEXT("irrlicht.ico"), IMAGE_ICON, 0,0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
+		wcex.hIcon = (HICON)LoadImage(hInstance, __TEXT("nirtcpp.ico"), IMAGE_ICON, 0,0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
 
 		RegisterClassEx(&wcex);
 
@@ -1154,10 +1154,10 @@ void CIrrDeviceWin32::createDriver()
 	switch(CreationParams.DriverType)
 	{
 	case video::DEPRECATED_EDT_DIRECT3D8_NO_LONGER_EXISTS:
-		os::Printer::log("DIRECT3D8 Driver is no longer supported in Irrlicht. Try another one.", ELL_ERROR);
+		os::Printer::log("DIRECT3D8 Driver is no longer supported in Nirtcpp. Try another one.", ELL_ERROR);
 		break;
 	case video::EDT_DIRECT3D9:
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 		VideoDriver = video::createDirectX9Driver(CreationParams, FileSystem, HWnd);
 
 		if (!VideoDriver)
@@ -1167,7 +1167,7 @@ void CIrrDeviceWin32::createDriver()
 #endif
 		break;
 	case video::EDT_OPENGL:
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 		switchToFullScreen();
 
 		ContextManager = new video::CWGLManager();
@@ -1182,7 +1182,7 @@ void CIrrDeviceWin32::createDriver()
 #endif
 		break;
 	case video::EDT_SOFTWARE:
-#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 		switchToFullScreen();
 
 		VideoDriver = video::createSoftwareDriver(CreationParams.WindowSize, CreationParams.Fullscreen, FileSystem, this);
@@ -1191,7 +1191,7 @@ void CIrrDeviceWin32::createDriver()
 #endif
 		break;
 	case video::EDT_BURNINGSVIDEO:
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 		switchToFullScreen();
 
 		VideoDriver = video::createBurningVideoDriver(CreationParams, FileSystem, this);
@@ -1976,7 +1976,7 @@ bool CIrrDeviceWin32::isWindowsVistaOrGreater()
 #endif
 }
 
-// Convert an Irrlicht texture to a Windows cursor
+// Convert an Nirtcpp texture to a Windows cursor
 // Based on http://www.codeguru.com/cpp/w-p/win32/cursors/article.php/c4529/
 HCURSOR CIrrDeviceWin32::TextureToCursor(HWND hwnd, irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot)
 {
@@ -2187,4 +2187,4 @@ core::dimension2di CIrrDeviceWin32::CCursorControl::getSupportedIconSize() const
 
 } // end namespace
 
-#endif // _IRR_COMPILE_WITH_WINDOWS_DEVICE_
+#endif // _NIRT_COMPILE_WITH_WINDOWS_DEVICE_

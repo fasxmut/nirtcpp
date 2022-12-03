@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_MESH_WRITER_H_INCLUDED
-#define IRR_I_MESH_WRITER_H_INCLUDED
+#ifndef NIRT_I_MESH_WRITER_H_INCLUDED
+#define NIRT_I_MESH_WRITER_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "EMeshWriterEnums.h"
@@ -28,7 +28,7 @@ namespace scene
 		virtual ~IMeshWriter() {}
 
 		//! Get the type of the mesh writer
-		/** For own implementations, use MAKE_IRR_ID as shown in the
+		/** For own implementations, use MAKE_NIRT_ID as shown in the
 		EMESH_WRITER_TYPE enumeration to return your own unique mesh
 		type id.
 		\return Type of the mesh writer. */

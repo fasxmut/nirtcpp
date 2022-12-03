@@ -1,13 +1,13 @@
 // Copyright (C) 2014 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #ifndef __C_NSOGL_MANAGER_H_INCLUDED__
 #define __C_NSOGL_MANAGER_H_INCLUDED__
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_NSOGL_MANAGER_
+#ifdef _NIRT_COMPILE_WITH_NSOGL_MANAGER_
 
 #include "SIrrCreationParameters.h"
 #include "SExposedVideoData.h"
@@ -31,34 +31,34 @@ namespace video
 		~CNSOGLManager();
 
         // Initialize
-        bool initialize(const SIrrlichtCreationParameters& params, const SExposedVideoData& data) IRR_OVERRIDE;
+        bool initialize(const SNirtcppCreationParameters& params, const SExposedVideoData& data) override;
 
         // Terminate
-        void terminate() IRR_OVERRIDE;
+        void terminate() override;
 
         // Create surface.
-        bool generateSurface() IRR_OVERRIDE;
+        bool generateSurface() override;
 
         // Destroy surface.
-        void destroySurface() IRR_OVERRIDE;
+        void destroySurface() override;
 
         // Create context.
-        bool generateContext() IRR_OVERRIDE;
+        bool generateContext() override;
 
         // Destroy EGL context.
-        void destroyContext() IRR_OVERRIDE;
+        void destroyContext() override;
 
 		//! Get current context
-		const SExposedVideoData& getContext() const IRR_OVERRIDE;
+		const SExposedVideoData& getContext() const override;
 
 		//! Change render context, disable old and activate new defined by videoData
-		bool activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero) IRR_OVERRIDE;
+		bool activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero) override;
 
         // Swap buffers.
-        bool swapBuffers() IRR_OVERRIDE;
+        bool swapBuffers() override;
 
     private:
-        SIrrlichtCreationParameters Params;
+        SNirtcppCreationParameters Params;
 		SExposedVideoData PrimaryContext;
         SExposedVideoData CurrentContext;
 

@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "SoftwareDriver2_compile_config.h"
 #include "CDepthBuffer.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 namespace irr
 {
@@ -151,7 +151,7 @@ const core::dimension2d<u32>& CStencilBuffer::getSize() const
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 namespace irr
 {
@@ -161,22 +161,22 @@ namespace video
 //! creates a ZBuffer
 IDepthBuffer* createDepthBuffer(const core::dimension2d<u32>& size)
 {
-	#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CDepthBuffer(size);
 	#else
 	return 0;
-	#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 
 //! creates a Stencil Buffer
 IStencilBuffer* createStencilBuffer(const core::dimension2d<u32>& size, u32 bit)
 {
-	#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CStencilBuffer(size,bit);
 	#else
 	return 0;
-	#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 } // end namespace video

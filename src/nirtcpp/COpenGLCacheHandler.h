@@ -1,13 +1,13 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#ifndef IRR_C_OPENGL_CACHE_HANDLER_H_INCLUDED
-#define IRR_C_OPENGL_CACHE_HANDLER_H_INCLUDED
+#ifndef NIRT_C_OPENGL_CACHE_HANDLER_H_INCLUDED
+#define NIRT_C_OPENGL_CACHE_HANDLER_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 
 #include "COpenGLCommon.h"
 
@@ -62,5 +62,5 @@ namespace video
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_OPENGL_
+#endif // _NIRT_COMPILE_WITH_OPENGL_
 #endif

@@ -1,13 +1,13 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_TRIANGLE_RENDERER_TEXTURE_GOURAUD_H_INCLUDED
-#define IRR_C_TRIANGLE_RENDERER_TEXTURE_GOURAUD_H_INCLUDED
+#ifndef NIRT_C_TRIANGLE_RENDERER_TEXTURE_GOURAUD_H_INCLUDED
+#define NIRT_C_TRIANGLE_RENDERER_TEXTURE_GOURAUD_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifndef _IRR_COMPILE_WITH_SOFTWARE_
+#ifndef _NIRT_COMPILE_WITH_SOFTWARE_
 // forward declarations for create methods
 namespace irr
 {
@@ -39,16 +39,16 @@ namespace video
 		virtual ~CTRTextureGouraud();
 
 		//! sets a render target
-		virtual void setRenderTarget(video::IImage* surface, const core::rect<s32>& viewPort) IRR_OVERRIDE;
+		virtual void setRenderTarget(video::IImage* surface, const core::rect<s32>& viewPort) override;
 
 		//! draws an indexed triangle list
-		virtual void drawIndexedTriangleList(S2DVertex* vertices, s32 vertexCount, const u16* indexList, s32 triangleCount) IRR_OVERRIDE;
+		virtual void drawIndexedTriangleList(S2DVertex* vertices, s32 vertexCount, const u16* indexList, s32 triangleCount) override;
 
 		//! en or disables the backface culling
-		virtual void setBackfaceCulling(bool enabled = true) IRR_OVERRIDE;
+		virtual void setBackfaceCulling(bool enabled = true) override;
 
 		//! sets the Texture
-		virtual void setTexture(video::IImage* texture) IRR_OVERRIDE;
+		virtual void setTexture(video::IImage* texture) override;
 
 	protected:
 

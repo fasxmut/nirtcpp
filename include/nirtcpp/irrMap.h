@@ -1,9 +1,9 @@
 // Copyright (C) 2006-2012 by Kat'Oun
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_MAP_H_INCLUDED
-#define IRR_MAP_H_INCLUDED
+#ifndef NIRT_MAP_H_INCLUDED
+#define NIRT_MAP_H_INCLUDED
 
 #include "irrTypes.h"
 #include "irrMath.h"
@@ -175,7 +175,7 @@ class map
 
 		Node& operator*()
 		{
-			IRR_DEBUG_BREAK_IF(atEnd()) // access violation
+			NIRT_DEBUG_BREAK_IF(atEnd()) // access violation
 
 			return *Cur;
 		}
@@ -315,7 +315,7 @@ class map
 
 		const Node& operator*()
 		{
-			IRR_DEBUG_BREAK_IF(atEnd()) // access violation
+			NIRT_DEBUG_BREAK_IF(atEnd()) // access violation
 
 			return *Cur;
 		}
@@ -447,7 +447,7 @@ class map
 
 	Node& operator* ()
 	{
-		IRR_DEBUG_BREAK_IF(atEnd()) // access violation
+		NIRT_DEBUG_BREAK_IF(atEnd()) // access violation
 
 		return *getNode();
 	}
@@ -539,7 +539,7 @@ class map
 
 		Node& operator* ()
 		{
-			IRR_DEBUG_BREAK_IF(atEnd()) // access violation
+			NIRT_DEBUG_BREAK_IF(atEnd()) // access violation
 
 			return *getNode();
 		}
@@ -607,7 +607,7 @@ class map
 			Node* node = Tree.find(Key);
 
 			// Not found
-			IRR_DEBUG_BREAK_IF(node==0) // access violation
+			NIRT_DEBUG_BREAK_IF(node==0) // access violation
 
 			return node->getValue();
 		}
@@ -848,8 +848,8 @@ class map
 		return Root == 0;
 	}
 
-	//! \deprecated Use empty() instead. This method may be removed by Irrlicht 1.9
-	IRR_DEPRECATED bool isEmpty() const
+	//! \deprecated Use empty() instead. This method may be removed by Nirtcpp 1.9
+	NIRT_DEPRECATED bool isEmpty() const
 	{
 		return empty();
 	}
@@ -1078,4 +1078,4 @@ class map
 } // end namespace core
 } // end namespace irr
 
-#endif // IRR_MAP_H_INCLUDED
+#endif // NIRT_MAP_H_INCLUDED

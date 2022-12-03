@@ -4,13 +4,13 @@ using namespace irr;
 
 static bool testLineRendering(video::E_DRIVER_TYPE type)
 {
-	SIrrlichtCreationParameters params;
+	SNirtcppCreationParameters params;
 	params.AntiAlias = 2;
 	params.Bits = 16;
 	params.WindowSize = core::dimension2d<u32>(160, 120);
 	params.DriverType = type;
 
-	IrrlichtDevice *device = createDeviceEx(params);
+	NirtcppDevice *device = createDeviceEx(params);
 
 	if (!device)
 		return true; // in case the driver type does not exist

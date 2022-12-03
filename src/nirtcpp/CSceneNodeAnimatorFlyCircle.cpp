@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CSceneNodeAnimatorFlyCircle.h"
 
@@ -83,7 +83,7 @@ void CSceneNodeAnimatorFlyCircle::deserializeAttributes(io::IAttributes* in, io:
 	Direction = in->getAttributeAsVector3d("Direction");
 
 	if (Direction.equals(core::vector3df(0,0,0)))
-		Direction.set(0,1,0); // irrlicht 1.1 backwards compatibility
+		Direction.set(0,1,0); // nirtcpp 1.1 backwards compatibility
 	else
 		Direction.normalize();
 

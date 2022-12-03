@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#ifndef IRR_C_VIDEO_OPEN_GL_H_INCLUDED
-#define IRR_C_VIDEO_OPEN_GL_H_INCLUDED
+#ifndef NIRT_C_VIDEO_OPEN_GL_H_INCLUDED
+#define NIRT_C_VIDEO_OPEN_GL_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
@@ -17,7 +17,7 @@ namespace irr
 	class CIrrDeviceMacOSX;
 }
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 
 #include "IMaterialRendererServices.h"
 #include "CNullDriver.h"
@@ -43,12 +43,12 @@ namespace video
 			EOFPS_DISABLE_TO_ENABLE // switch from programmable to fixed pipeline.
 		};
 
-#if defined(_IRR_COMPILE_WITH_WINDOWS_DEVICE_) || defined(_IRR_COMPILE_WITH_X11_DEVICE_) || defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
-		COpenGLDriver(const SIrrlichtCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
+#if defined(_NIRT_COMPILE_WITH_WINDOWS_DEVICE_) || defined(_NIRT_COMPILE_WITH_X11_DEVICE_) || defined(_NIRT_COMPILE_WITH_OSX_DEVICE_)
+		COpenGLDriver(const SNirtcppCreationParameters& params, io::IFileSystem* io, IContextManager* contextManager);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
-		COpenGLDriver(const SIrrlichtCreationParameters& params, io::IFileSystem* io, CIrrDeviceSDL* device);
+#ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
+		COpenGLDriver(const SNirtcppCreationParameters& params, io::IFileSystem* io, CIrrDeviceSDL* device);
 #endif
 
 		bool initDriver();
@@ -57,12 +57,12 @@ namespace video
 		virtual ~COpenGLDriver();
 
 		virtual bool beginScene(u16 clearFlag, SColor clearColor = SColor(255,0,0,0), f32 clearDepth = 1.f, u8 clearStencil = 0,
-			const SExposedVideoData& videoData = SExposedVideoData(), core::rect<s32>* sourceRect = 0) IRR_OVERRIDE;
+			const SExposedVideoData& videoData = SExposedVideoData(), core::rect<s32>* sourceRect = 0) override;
 
-		virtual bool endScene() IRR_OVERRIDE;
+		virtual bool endScene() override;
 
 		//! sets transformation
-		virtual void setTransform(E_TRANSFORMATION_STATE state, const core::matrix4& mat) IRR_OVERRIDE;
+		virtual void setTransform(E_TRANSFORMATION_STATE state, const core::matrix4& mat) override;
 
 
 		struct SHWBufferLink_opengl : public SHWBufferLink
@@ -77,75 +77,75 @@ namespace video
 		};
 
 		//! updates hardware buffer if needed
-		virtual bool updateHardwareBuffer(SHWBufferLink *HWBuffer) IRR_OVERRIDE;
+		virtual bool updateHardwareBuffer(SHWBufferLink *HWBuffer) override;
 
 		//! Create hardware buffer from mesh
-		virtual SHWBufferLink *createHardwareBuffer(const scene::IMeshBuffer* mb) IRR_OVERRIDE;
+		virtual SHWBufferLink *createHardwareBuffer(const scene::IMeshBuffer* mb) override;
 
 		//! Delete hardware buffer (only some drivers can)
-		virtual void deleteHardwareBuffer(SHWBufferLink *HWBuffer) IRR_OVERRIDE;
+		virtual void deleteHardwareBuffer(SHWBufferLink *HWBuffer) override;
 
 		//! Draw hardware buffer
-		virtual void drawHardwareBuffer(SHWBufferLink *HWBuffer) IRR_OVERRIDE;
+		virtual void drawHardwareBuffer(SHWBufferLink *HWBuffer) override;
 
 		//! Create occlusion query.
 		/** Use node for identification and mesh for occlusion test. */
 		virtual void addOcclusionQuery(scene::ISceneNode* node,
-				const scene::IMesh* mesh=0) IRR_OVERRIDE;
+				const scene::IMesh* mesh=0) override;
 
 		//! Remove occlusion query.
-		virtual void removeOcclusionQuery(scene::ISceneNode* node) IRR_OVERRIDE;
+		virtual void removeOcclusionQuery(scene::ISceneNode* node) override;
 
 		//! Run occlusion query. Draws mesh stored in query.
 		/** If the mesh shall not be rendered visible, use
 		overrideMaterial to disable the color and depth buffer. */
-		virtual void runOcclusionQuery(scene::ISceneNode* node, bool visible=false) IRR_OVERRIDE;
+		virtual void runOcclusionQuery(scene::ISceneNode* node, bool visible=false) override;
 
 		//! Update occlusion query. Retrieves results from GPU.
 		/** If the query shall not block, set the flag to false.
 		Update might not occur in this case, though */
-		virtual void updateOcclusionQuery(scene::ISceneNode* node, bool block=true) IRR_OVERRIDE;
+		virtual void updateOcclusionQuery(scene::ISceneNode* node, bool block=true) override;
 
 		//! Return query result.
 		/** Return value is the number of visible pixels/fragments.
 		The value is a safe approximation, i.e. can be larger then the
 		actual value of pixels. */
-		virtual u32 getOcclusionQueryResult(const scene::ISceneNode* node) const IRR_OVERRIDE;
+		virtual u32 getOcclusionQueryResult(const scene::ISceneNode* node) const override;
 
 		//! Create render target.
-		virtual IRenderTarget* addRenderTarget() IRR_OVERRIDE;
+		virtual IRenderTarget* addRenderTarget() override;
 
 		//! draws a vertex primitive list
 		virtual void drawVertexPrimitiveList(const void* vertices, u32 vertexCount,
 				const void* indexList, u32 primitiveCount,
-				E_VERTEX_TYPE vType, scene::E_PRIMITIVE_TYPE pType, E_INDEX_TYPE iType) IRR_OVERRIDE;
+				E_VERTEX_TYPE vType, scene::E_PRIMITIVE_TYPE pType, E_INDEX_TYPE iType) override;
 
 		//! draws a vertex primitive list in 2d
 		virtual void draw2DVertexPrimitiveList(const void* vertices, u32 vertexCount,
 				const void* indexList, u32 primitiveCount,
-				E_VERTEX_TYPE vType, scene::E_PRIMITIVE_TYPE pType, E_INDEX_TYPE iType) IRR_OVERRIDE;
+				E_VERTEX_TYPE vType, scene::E_PRIMITIVE_TYPE pType, E_INDEX_TYPE iType) override;
 
 		//! queries the features of the driver, returns true if feature is available
-		virtual bool queryFeature(E_VIDEO_DRIVER_FEATURE feature) const IRR_OVERRIDE
+		virtual bool queryFeature(E_VIDEO_DRIVER_FEATURE feature) const override
 		{
 			return FeatureEnabled[feature] && COpenGLExtensionHandler::queryFeature(feature);
 		}
 
 		//! Disable a feature of the driver.
-		virtual void disableFeature(E_VIDEO_DRIVER_FEATURE feature, bool flag=true) IRR_OVERRIDE;
+		virtual void disableFeature(E_VIDEO_DRIVER_FEATURE feature, bool flag=true) override;
 
 		//! Sets a material. All 3d drawing functions draw geometry now
 		//! using this material.
 		//! \param material: Material to be used from now on.
-		virtual void setMaterial(const SMaterial& material) IRR_OVERRIDE;
+		virtual void setMaterial(const SMaterial& material) override;
 
 		virtual void draw2DImage(const video::ITexture* texture, const core::position2d<s32>& destPos,
 			const core::rect<s32>& sourceRect, const core::rect<s32>* clipRect = 0,
-			SColor color = SColor(255, 255, 255, 255), bool useAlphaChannelOfTexture = false) IRR_OVERRIDE;
+			SColor color = SColor(255, 255, 255, 255), bool useAlphaChannelOfTexture = false) override;
 
 		virtual void draw2DImage(const video::ITexture* texture, const core::rect<s32>& destRect,
 			const core::rect<s32>& sourceRect, const core::rect<s32>* clipRect = 0,
-			const video::SColor* const colors = 0, bool useAlphaChannelOfTexture = false) IRR_OVERRIDE;
+			const video::SColor* const colors = 0, bool useAlphaChannelOfTexture = false) override;
 
 		// Was some helper function used in previous texture locking. Currently not accessible for users
 		// and also no longer needed internally (unless we switch back to old texture lock code).
@@ -159,7 +159,7 @@ namespace video
 				const core::array<core::rect<s32> >& sourceRects,
 				const core::rect<s32>* clipRect,
 				SColor color,
-				bool useAlphaChannelOfTexture) IRR_OVERRIDE;
+				bool useAlphaChannelOfTexture) override;
 
 		//! draws a set of 2d images, using a color and the alpha
 		/** channel of the texture if desired. The images are drawn
@@ -184,62 +184,62 @@ namespace video
 				s32 kerningWidth=0,
 				const core::rect<s32>* clipRect=0,
 				SColor color=SColor(255,255,255,255),
-				bool useAlphaChannelOfTexture=false) IRR_OVERRIDE;
+				bool useAlphaChannelOfTexture=false) override;
 
 		//! draw an 2d rectangle
 		virtual void draw2DRectangle(SColor color, const core::rect<s32>& pos,
-			const core::rect<s32>* clip = 0) IRR_OVERRIDE;
+			const core::rect<s32>* clip = 0) override;
 
 		//!Draws an 2d rectangle with a gradient.
 		virtual void draw2DRectangle(const core::rect<s32>& pos,
 			SColor colorLeftUp, SColor colorRightUp, SColor colorLeftDown, SColor colorRightDown,
-			const core::rect<s32>* clip = 0) IRR_OVERRIDE;
+			const core::rect<s32>* clip = 0) override;
 
 		//! Draws a 2d line.
 		virtual void draw2DLine(const core::position2d<s32>& start,
 					const core::position2d<s32>& end,
-					SColor color=SColor(255,255,255,255)) IRR_OVERRIDE;
+					SColor color=SColor(255,255,255,255)) override;
 
 		//! Draws a single pixel
-		virtual void drawPixel(u32 x, u32 y, const SColor & color) IRR_OVERRIDE;
+		virtual void drawPixel(u32 x, u32 y, const SColor & color) override;
 
 		//! Draws a 3d box
-		virtual void draw3DBox( const core::aabbox3d<f32>& box, SColor color = SColor(255,255,255,255 ) ) IRR_OVERRIDE;
+		virtual void draw3DBox( const core::aabbox3d<f32>& box, SColor color = SColor(255,255,255,255 ) ) override;
 
 		//! Draws a 3d line.
 		virtual void draw3DLine(const core::vector3df& start,
 					const core::vector3df& end,
-					SColor color = SColor(255,255,255,255)) IRR_OVERRIDE;
+					SColor color = SColor(255,255,255,255)) override;
 
 		//! \return Returns the name of the video driver. Example: In case of the Direct3D8
 		//! driver, it would return "Direct3D8.1".
-		virtual const wchar_t* getName() const IRR_OVERRIDE;
+		virtual const wchar_t* getName() const override;
 
 		//! deletes all dynamic lights there are
-		virtual void deleteAllDynamicLights() IRR_OVERRIDE;
+		virtual void deleteAllDynamicLights() override;
 
 		//! adds a dynamic light, returning an index to the light
 		//! \param light: the light data to use to create the light
 		//! \return An index to the light, or -1 if an error occurs
-		virtual s32 addDynamicLight(const SLight& light) IRR_OVERRIDE;
+		virtual s32 addDynamicLight(const SLight& light) override;
 
 		//! Turns a dynamic light on or off
 		//! \param lightIndex: the index returned by addDynamicLight
 		//! \param turnOn: true to turn the light on, false to turn it off
-		virtual void turnLightOn(s32 lightIndex, bool turnOn) IRR_OVERRIDE;
+		virtual void turnLightOn(s32 lightIndex, bool turnOn) override;
 
 		//! returns the maximal amount of dynamic lights the device can handle
-		virtual u32 getMaximalDynamicLightAmount() const IRR_OVERRIDE;
+		virtual u32 getMaximalDynamicLightAmount() const override;
 
 		//! Sets the dynamic ambient light color. The default color is
 		//! (0,0,0,0) which means it is dark.
 		//! \param color: New color of the ambient light.
-		virtual void setAmbientLight(const SColorf& color) IRR_OVERRIDE;
+		virtual void setAmbientLight(const SColorf& color) override;
 
 		//! Draws a shadow volume into the stencil buffer. To draw a stencil shadow, do
 		//! this: First, draw all geometry. Then use this method, to draw the shadow
 		//! volume. Then, use IVideoDriver::drawStencilShadow() to visualize the shadow.
-		virtual void drawStencilShadowVolume(const core::array<core::vector3df>& triangles, bool zfail, u32 debugDataVisible=0) IRR_OVERRIDE;
+		virtual void drawStencilShadowVolume(const core::array<core::vector3df>& triangles, bool zfail, u32 debugDataVisible=0) override;
 
 		//! Fills the stencil shadow with color. After the shadow volume has been drawn
 		//! into the stencil buffer using IVideoDriver::drawStencilShadowVolume(), use this
@@ -248,64 +248,64 @@ namespace video
 			video::SColor leftUpEdge = video::SColor(0,0,0,0),
 			video::SColor rightUpEdge = video::SColor(0,0,0,0),
 			video::SColor leftDownEdge = video::SColor(0,0,0,0),
-			video::SColor rightDownEdge = video::SColor(0,0,0,0)) IRR_OVERRIDE;
+			video::SColor rightDownEdge = video::SColor(0,0,0,0)) override;
 
 		//! sets a viewport
-		virtual void setViewPort(const core::rect<s32>& area) IRR_OVERRIDE;
+		virtual void setViewPort(const core::rect<s32>& area) override;
 
 		//! Sets the fog mode.
 		virtual void setFog(SColor color, E_FOG_TYPE fogType, f32 start,
-			f32 end, f32 density, bool pixelFog, bool rangeFog) IRR_OVERRIDE;
+			f32 end, f32 density, bool pixelFog, bool rangeFog) override;
 
 		//! Only used by the internal engine. Used to notify the driver that
 		//! the window was resized.
-		virtual void OnResize(const core::dimension2d<u32>& size) IRR_OVERRIDE;
+		virtual void OnResize(const core::dimension2d<u32>& size) override;
 
 		//! Returns type of video driver
-		virtual E_DRIVER_TYPE getDriverType() const IRR_OVERRIDE;
+		virtual E_DRIVER_TYPE getDriverType() const override;
 
 		//! get color format of the current color buffer
-		virtual ECOLOR_FORMAT getColorFormat() const IRR_OVERRIDE;
+		virtual ECOLOR_FORMAT getColorFormat() const override;
 
 		//! Returns the transformation set by setTransform
-		virtual const core::matrix4& getTransform(E_TRANSFORMATION_STATE state) const IRR_OVERRIDE;
+		virtual const core::matrix4& getTransform(E_TRANSFORMATION_STATE state) const override;
 
 		//! Can be called by an IMaterialRenderer to make its work easier.
 		virtual void setBasicRenderStates(const SMaterial& material, const SMaterial& lastmaterial,
-			bool resetAllRenderstates) IRR_OVERRIDE;
+			bool resetAllRenderstates) override;
 
 		//! Compare in SMaterial doesn't check texture parameters, so we should call this on each OnRender call.
 		virtual void setTextureRenderStates(const SMaterial& material, bool resetAllRenderstates);
 
 		//! Get a vertex shader constant index.
-		virtual s32 getVertexShaderConstantID(const c8* name) IRR_OVERRIDE;
+		virtual s32 getVertexShaderConstantID(const c8* name) override;
 
 		//! Get a pixel shader constant index.
-		virtual s32 getPixelShaderConstantID(const c8* name) IRR_OVERRIDE;
+		virtual s32 getPixelShaderConstantID(const c8* name) override;
 
 		//! Sets a vertex shader constant.
-		virtual void setVertexShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) IRR_OVERRIDE;
+		virtual void setVertexShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) override;
 
 		//! Sets a pixel shader constant.
-		virtual void setPixelShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) IRR_OVERRIDE;
+		virtual void setPixelShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) override;
 
 		//! Sets a constant for the vertex shader based on an index.
-		virtual bool setVertexShaderConstant(s32 index, const f32* floats, int count) IRR_OVERRIDE;
+		virtual bool setVertexShaderConstant(s32 index, const f32* floats, int count) override;
 
 		//! Int interface for the above.
-		virtual bool setVertexShaderConstant(s32 index, const s32* ints, int count) IRR_OVERRIDE;
+		virtual bool setVertexShaderConstant(s32 index, const s32* ints, int count) override;
 
 		//! Uint interface for the above.
-		virtual bool setVertexShaderConstant(s32 index, const u32* ints, int count) IRR_OVERRIDE;
+		virtual bool setVertexShaderConstant(s32 index, const u32* ints, int count) override;
 
 		//! Sets a constant for the pixel shader based on an index.
-		virtual bool setPixelShaderConstant(s32 index, const f32* floats, int count) IRR_OVERRIDE;
+		virtual bool setPixelShaderConstant(s32 index, const f32* floats, int count) override;
 
 		//! Int interface for the above.
-		virtual bool setPixelShaderConstant(s32 index, const s32* ints, int count) IRR_OVERRIDE;
+		virtual bool setPixelShaderConstant(s32 index, const s32* ints, int count) override;
 
 		//! Uint interface for the above.
-		virtual bool setPixelShaderConstant(s32 index, const u32* ints, int count) IRR_OVERRIDE;
+		virtual bool setPixelShaderConstant(s32 index, const u32* ints, int count) override;
 
 		//! disables all textures beginning with the optional fromStage parameter. Otherwise all texture stages are disabled.
 		//! Returns whether disabling was successful or not.
@@ -315,7 +315,7 @@ namespace video
 		//! extGLGetObjectParameteriv(shaderHandle, GL_OBJECT_COMPILE_STATUS_ARB, &status)
 		//! pixel and/or vertex shaders to render geometry.
 		virtual s32 addShaderMaterial(const c8* vertexShaderProgram, const c8* pixelShaderProgram,
-			IShaderConstantSetCallBack* callback, E_MATERIAL_TYPE baseMaterial, s32 userData) IRR_OVERRIDE;
+			IShaderConstantSetCallBack* callback, E_MATERIAL_TYPE baseMaterial, s32 userData) override;
 
 		//! Adds a new material renderer to the VideoDriver, using GLSL to render geometry.
 		virtual s32 addHighLevelShaderMaterial(
@@ -333,31 +333,31 @@ namespace video
 				u32 verticesOut = 0,
 				IShaderConstantSetCallBack* callback = 0,
 				E_MATERIAL_TYPE baseMaterial = video::EMT_SOLID,
-				s32 userData = 0) IRR_OVERRIDE;
+				s32 userData = 0) override;
 
 		//! Returns a pointer to the IVideoDriver interface. (Implementation for
 		//! IMaterialRendererServices)
-		virtual IVideoDriver* getVideoDriver() IRR_OVERRIDE;
+		virtual IVideoDriver* getVideoDriver() override;
 
 		//! Returns the maximum amount of primitives (mostly vertices) which
 		//! the device is able to render with one drawIndexedTriangleList
 		//! call.
-		virtual u32 getMaximalPrimitiveCount() const IRR_OVERRIDE;
+		virtual u32 getMaximalPrimitiveCount() const override;
 
 		virtual ITexture* addRenderTargetTexture(const core::dimension2d<u32>& size,
-				const io::path& name, const ECOLOR_FORMAT format = ECF_UNKNOWN) IRR_OVERRIDE;
+				const io::path& name, const ECOLOR_FORMAT format = ECF_UNKNOWN) override;
 
 		//! Creates a render target texture for a cubemap
 		ITexture* addRenderTargetTextureCubemap(const irr::u32 sideLen,
-				const io::path& name, const ECOLOR_FORMAT format) IRR_OVERRIDE;
+				const io::path& name, const ECOLOR_FORMAT format) override;
 
 		virtual bool setRenderTargetEx(IRenderTarget* target, u16 clearFlag, SColor clearColor = SColor(255,0,0,0),
-			f32 clearDepth = 1.f, u8 clearStencil = 0) IRR_OVERRIDE;
+			f32 clearDepth = 1.f, u8 clearStencil = 0) override;
 
-		virtual void clearBuffers(u16 flag, SColor color = SColor(255,0,0,0), f32 depth = 1.f, u8 stencil = 0) IRR_OVERRIDE;
+		virtual void clearBuffers(u16 flag, SColor color = SColor(255,0,0,0), f32 depth = 1.f, u8 stencil = 0) override;
 
 		//! Returns an image created from the last rendered frame.
-		virtual IImage* createScreenShot(video::ECOLOR_FORMAT format=video::ECF_UNKNOWN, video::E_RENDER_TARGET target=video::ERT_FRAME_BUFFER) IRR_OVERRIDE;
+		virtual IImage* createScreenShot(video::ECOLOR_FORMAT format=video::ECF_UNKNOWN, video::E_RENDER_TARGET target=video::ERT_FRAME_BUFFER) override;
 
 		//! checks if an OpenGL error has happened and prints it (+ some internal code which is usually the line number)
 		//! for performance reasons only available in debug mode
@@ -368,31 +368,31 @@ namespace video
 		//! \param index: The plane index. Must be between 0 and MaxUserClipPlanes.
 		//! \param plane: The plane itself.
 		//! \param enable: If true, enable the clipping plane else disable it.
-		virtual bool setClipPlane(u32 index, const core::plane3df& plane, bool enable=false) IRR_OVERRIDE;
+		virtual bool setClipPlane(u32 index, const core::plane3df& plane, bool enable=false) override;
 
 		//! Enable/disable a clipping plane.
 		//! There are at least 6 clipping planes available for the user to set at will.
 		//! \param index: The plane index. Must be between 0 and MaxUserClipPlanes.
 		//! \param enable: If true, enable the clipping plane else disable it.
-		virtual void enableClipPlane(u32 index, bool enable) IRR_OVERRIDE;
+		virtual void enableClipPlane(u32 index, bool enable) override;
 
 		//! Enable the 2d override material
-		virtual void enableMaterial2D(bool enable=true) IRR_OVERRIDE;
+		virtual void enableMaterial2D(bool enable=true) override;
 
 		//! Returns the graphics card vendor name.
-		virtual core::stringc getVendorInfo() IRR_OVERRIDE {return VendorName;}
+		virtual core::stringc getVendorInfo() override {return VendorName;}
 
 		//! Returns the maximum texture size supported.
-		virtual core::dimension2du getMaxTextureSize() const IRR_OVERRIDE;
+		virtual core::dimension2du getMaxTextureSize() const override;
 
 		//! Removes a texture from the texture cache and deletes it, freeing lot of memory.
-		virtual void removeTexture(ITexture* texture) IRR_OVERRIDE;
+		virtual void removeTexture(ITexture* texture) override;
 
 		//! Check if the driver supports creating textures with the given color format
-		virtual bool queryTextureFormat(ECOLOR_FORMAT format) const IRR_OVERRIDE;
+		virtual bool queryTextureFormat(ECOLOR_FORMAT format) const override;
 
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
-		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const IRR_OVERRIDE;
+		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const override;
 
 		//! Convert E_PRIMITIVE_TYPE to OpenGL equivalent
 		GLenum primitiveTypeToGL(scene::E_PRIMITIVE_TYPE type) const;
@@ -427,9 +427,9 @@ namespace video
 		//! inits the parts of the open gl driver used on all platforms
 		bool genericDriverInit();
 
-		virtual ITexture* createDeviceDependentTexture(const io::path& name, IImage* image) IRR_OVERRIDE;
+		virtual ITexture* createDeviceDependentTexture(const io::path& name, IImage* image) override;
 
-		virtual ITexture* createDeviceDependentTextureCubemap(const io::path& name, const core::array<IImage*>& image) IRR_OVERRIDE;
+		virtual ITexture* createDeviceDependentTextureCubemap(const io::path& name, const core::array<IImage*>& image) override;
 
 		//! creates a transposed matrix in supplied GLfloat array to pass to OpenGL
 		inline void getGLMatrix(GLfloat gl_matrix[16], const core::matrix4& m);
@@ -497,7 +497,7 @@ namespace video
 
 		E_OPENGL_FIXED_PIPELINE_STATE FixedPipelineState;
 
-		SIrrlichtCreationParameters Params;
+		SNirtcppCreationParameters Params;
 
 		//! All the lights that have been requested; a hardware limited
 		//! number of them will be used at once.
@@ -516,7 +516,7 @@ namespace video
 		S3DVertex Quad2DVertices[4];
 		static const u16 Quad2DIndices[4];
 
-		#ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
+		#ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
 			CIrrDeviceSDL *SDLDevice;
 		#endif
 
@@ -529,5 +529,5 @@ namespace video
 } // end namespace irr
 
 
-#endif // _IRR_COMPILE_WITH_OPENGL_
+#endif // _NIRT_COMPILE_WITH_OPENGL_
 #endif

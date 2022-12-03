@@ -72,7 +72,7 @@ private:
 	jumping it back again. */
 bool collisionResponseAnimator(void)
 {
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL);
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL);
 	assert_log(device);
 	if(!device)
 		return false;

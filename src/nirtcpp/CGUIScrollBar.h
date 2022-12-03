@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_SCROLL_BAR_H_INCLUDED
-#define IRR_C_GUI_SCROLL_BAR_H_INCLUDED
+#ifndef NIRT_C_GUI_SCROLL_BAR_H_INCLUDED
+#define NIRT_C_GUI_SCROLL_BAR_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIScrollBar.h"
 #include "IGUIButton.h"
@@ -29,52 +29,52 @@ namespace gui
 		virtual ~CGUIScrollBar();
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent& event) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
-		virtual void OnPostRender(u32 timeMs) IRR_OVERRIDE;
+		virtual void OnPostRender(u32 timeMs) override;
 
 
 		//! gets the maximum value of the scrollbar.
-		virtual s32 getMax() const IRR_OVERRIDE;
+		virtual s32 getMax() const override;
 
 		//! sets the maximum value of the scrollbar.
-		virtual void setMax(s32 max) IRR_OVERRIDE;
+		virtual void setMax(s32 max) override;
 
 		//! gets the minimum value of the scrollbar.
-		virtual s32 getMin() const IRR_OVERRIDE;
+		virtual s32 getMin() const override;
 
 		//! sets the minimum value of the scrollbar.
-		virtual void setMin(s32 min) IRR_OVERRIDE;
+		virtual void setMin(s32 min) override;
 
 		//! gets the small step value
-		virtual s32 getSmallStep() const IRR_OVERRIDE;
+		virtual s32 getSmallStep() const override;
 
 		//! sets the small step value
-		virtual void setSmallStep(s32 step) IRR_OVERRIDE;
+		virtual void setSmallStep(s32 step) override;
 
 		//! gets the large step value
-		virtual s32 getLargeStep() const IRR_OVERRIDE;
+		virtual s32 getLargeStep() const override;
 
 		//! sets the large step value
-		virtual void setLargeStep(s32 step) IRR_OVERRIDE;
+		virtual void setLargeStep(s32 step) override;
 
 		//! gets the current position of the scrollbar
-		virtual s32 getPos() const IRR_OVERRIDE;
+		virtual s32 getPos() const override;
 
 		//! sets the position of the scrollbar
-		virtual void setPos(s32 pos) IRR_OVERRIDE;
+		virtual void setPos(s32 pos) override;
 
 		//! updates the rectangle
-		virtual void updateAbsolutePosition() IRR_OVERRIDE;
+		virtual void updateAbsolutePosition() override;
 
 		//! Writes attributes of the element.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 		//! Reads attributes of the element
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 	private:
 
@@ -107,6 +107,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
 #endif

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt/ Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_FILE_ARCHIVE_H_INCLUDED
-#define IRR_I_FILE_ARCHIVE_H_INCLUDED
+#ifndef NIRT_I_FILE_ARCHIVE_H_INCLUDED
+#define NIRT_I_FILE_ARCHIVE_H_INCLUDED
 
 #include "IReadFile.h"
 #include "IFileList.h"
@@ -25,28 +25,28 @@ enum EFileSystemType
 enum E_FILE_ARCHIVE_TYPE
 {
 	//! A PKZIP archive
-	EFAT_ZIP     = MAKE_IRR_ID('Z','I','P', 0),
+	EFAT_ZIP     = MAKE_NIRT_ID('Z','I','P', 0),
 
 	//! A gzip archive
-	EFAT_GZIP    = MAKE_IRR_ID('g','z','i','p'),
+	EFAT_GZIP    = MAKE_NIRT_ID('g','z','i','p'),
 
 	//! A virtual directory
-	EFAT_FOLDER  = MAKE_IRR_ID('f','l','d','r'),
+	EFAT_FOLDER  = MAKE_NIRT_ID('f','l','d','r'),
 
 	//! An ID Software PAK archive
-	EFAT_PAK     = MAKE_IRR_ID('P','A','K', 0),
+	EFAT_PAK     = MAKE_NIRT_ID('P','A','K', 0),
 
 	//! A Nebula Device archive
-	EFAT_NPK     = MAKE_IRR_ID('N','P','K', 0),
+	EFAT_NPK     = MAKE_NIRT_ID('N','P','K', 0),
 
 	//! A Tape ARchive
-	EFAT_TAR     = MAKE_IRR_ID('T','A','R', 0),
+	EFAT_TAR     = MAKE_NIRT_ID('T','A','R', 0),
 
 	//! A wad Archive, Quake2, Halflife
-	EFAT_WAD     = MAKE_IRR_ID('W','A','D', 0),
+	EFAT_WAD     = MAKE_NIRT_ID('W','A','D', 0),
 
 	//! The type of this archive is unknown
-	EFAT_UNKNOWN = MAKE_IRR_ID('u','n','k','n')
+	EFAT_UNKNOWN = MAKE_NIRT_ID('u','n','k','n')
 };
 
 //! The FileArchive manages archives and provides access to files inside them.
@@ -87,7 +87,7 @@ public:
 };
 
 //! Class which is able to create an archive from a file.
-/** If you want the Irrlicht Engine be able to load archives of
+/** If you want the Nirtcpp Engine be able to load archives of
 currently unsupported file formats (e.g .wad), then implement
 this and add your new Archive loader with
 IFileSystem::addArchiveLoader() to the engine. */

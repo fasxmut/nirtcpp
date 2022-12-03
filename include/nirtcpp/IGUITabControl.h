@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_TAB_CONTROL_H_INCLUDED
-#define IRR_I_GUI_TAB_CONTROL_H_INCLUDED
+#ifndef NIRT_I_GUI_TAB_CONTROL_H_INCLUDED
+#define NIRT_I_GUI_TAB_CONTROL_H_INCLUDED
 
 #include "IGUIElement.h"
 #include "SColor.h"
@@ -131,7 +131,7 @@ namespace gui
 
 		//! Returns zero based index of tab if in tabcontrol.
 		/** \deprecated Deprecated in 1.9, use IGUITabControl::getTabIndex instead*/
-		IRR_DEPRECATED virtual s32 getNumber() const
+		NIRT_DEPRECATED virtual s32 getNumber() const
 		{
 			if (Parent && Parent->getType() == EGUIET_TAB_CONTROL)
 				return static_cast<IGUITabControl*>(Parent)->getTabIndex(this);

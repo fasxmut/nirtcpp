@@ -10,7 +10,7 @@ using namespace video;
 /** Tests the Burning Video driver */
 bool burningsVideo(void)
 {
-    IrrlichtDevice *device = createDevice(video::EDT_BURNINGSVIDEO,
+    NirtcppDevice *device = createDevice(video::EDT_BURNINGSVIDEO,
 										core::dimension2du(160,120), 32);
     if (!device)
         return false;

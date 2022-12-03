@@ -1,9 +1,9 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 
-#ifndef IRR_I_PROFILER_H_INCLUDED
-#define IRR_I_PROFILER_H_INCLUDED
+#ifndef NIRT_I_PROFILER_H_INCLUDED
+#define NIRT_I_PROFILER_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 #include "irrString.h"
@@ -91,10 +91,10 @@ private:
     u32 LastTimeStarted;
 };
 
-//! Code-profiler. Please check the example in the Irrlicht examples folder about how to use it.
+//! Code-profiler. Please check the example in the Nirtcpp examples folder about how to use it.
 // Implementer notes:
 // The design is all about allowing to use the central start/stop mechanism with minimal time overhead.
-// This is why the class works without a virtual functions interface contrary to the usual Irrlicht design.
+// This is why the class works without a virtual functions interface contrary to the usual Nirtcpp design.
 // And also why it works with id's instead of strings in the start/stop functions even if it makes using
 // the class slightly harder.
 // The class comes without reference-counting because the profiler instance is never released (TBD).
@@ -110,7 +110,7 @@ public:
 
 	//! Add an id with given name and group which can be used for profiling with start/stop
 	/** After calling this once you can start/stop profiling for the given id.
-	\param id: Should be >= 0 as negative id's are reserved for Irrlicht. Also very large numbers (near INT_MAX) might
+	\param id: Should be >= 0 as negative id's are reserved for Nirtcpp. Also very large numbers (near INT_MAX) might
 	have been added automatically by the other add function.
 	\param name: Name for displaying profile data.
 	\param groupName: Each id belongs into a group - this helps on displaying profile data. */
@@ -219,10 +219,10 @@ private:
     s32 NextAutoId;	// for giving out id's automatically
 };
 
-//! Access the Irrlicht profiler object.
+//! Access the Nirtcpp profiler object.
 /** Profiler is always accessible, except in destruction of global objects.
 If you want to get internal profiling information about the engine itself
-you will have to re-compile the engine with _IRR_COMPILE_WITH_PROFILING_ enabled.
+you will have to re-compile the engine with _NIRT_COMPILE_WITH_PROFILING_ enabled.
 But you can use the profiler for profiling your own projects without that. */
 NIRTCPP_API IProfiler& IRRCALLCONV getProfiler();
 
@@ -243,7 +243,7 @@ public:
 	}
 
 	//! Object will create the given name, groupName combination for the id if it doesn't exist already
-	/** \param id: Should be >= 0 as negative id's are reserved for Irrlicht. Also very large numbers (near INT_MAX) might
+	/** \param id: Should be >= 0 as negative id's are reserved for Nirtcpp. Also very large numbers (near INT_MAX) might
 	have been created already by the automatic add function of ::IProfiler.
 	\param name: Name for displaying profile data.
 	\param groupName: Each id belongs into a group - this helps on displaying profile data. */
@@ -466,15 +466,15 @@ void IProfiler::resetAll()
 }
 
 //! For internal engine use:
-//! Code inside IRR_PROFILE is only executed when _IRR_COMPILE_WITH_PROFILING_ is set
+//! Code inside NIRT_PROFILE is only executed when _NIRT_COMPILE_WITH_PROFILING_ is set
 //! This allows disabling all profiler code completely by changing that define.
 //! It's generally useful to wrap profiler-calls in application code with a similar macro.
-#ifdef _IRR_COMPILE_WITH_PROFILING_
-	#define IRR_PROFILE(X) X
+#ifdef _NIRT_COMPILE_WITH_PROFILING_
+	#define NIRT_PROFILE(X) X
 #else
-	#define IRR_PROFILE(X)
-#endif // IRR_PROFILE
+	#define NIRT_PROFILE(X)
+#endif // NIRT_PROFILE
 
 } // namespace irr
 
-#endif // IRR_I_PROFILER_H_INCLUDED
+#endif // NIRT_I_PROFILER_H_INCLUDED

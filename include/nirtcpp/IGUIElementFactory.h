@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_ELEMENT_FACTORY_H_INCLUDED
-#define IRR_I_GUI_ELEMENT_FACTORY_H_INCLUDED
+#ifndef NIRT_I_GUI_ELEMENT_FACTORY_H_INCLUDED
+#define NIRT_I_GUI_ELEMENT_FACTORY_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "EGUIElementTypes.h"
@@ -16,7 +16,7 @@ namespace gui
 	class IGUIElement;
 
 	//! Interface making it possible to dynamically create GUI elements
-	/** To be able to add custom elements to Irrlicht and to make it possible for the
+	/** To be able to add custom elements to Nirtcpp and to make it possible for the
 	scene manager to save and load them, simply implement this interface and register it
 	in your gui environment via IGUIEnvironment::registerGUIElementFactory.
 	Note: When implementing your own element factory, don't call IGUIEnvironment::grab() to
@@ -62,4 +62,4 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // IRR_I_GUI_ELEMENT_FACTORY_H_INCLUDED
+#endif // NIRT_I_GUI_ELEMENT_FACTORY_H_INCLUDED

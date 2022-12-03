@@ -1,10 +1,10 @@
 // Copyright (C) 2008-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_OBJ_WRITER_
+#ifdef _NIRT_COMPILE_WITH_OBJ_WRITER_
 
 #include "COBJMeshWriter.h"
 #include "os.h"
@@ -66,7 +66,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 
 	io::path name;
 	core::cutFilenameExtension(name,file->getFileName()) += ".mtl";
-	file->write("# exported by Irrlicht\n",23);
+	file->write("# exported by Nirtcpp\n",23);
 	file->write("mtllib ",7);
 	file->write(name.c_str(),name.size());
 	file->write("\n\n",2);
@@ -185,7 +185,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 	{
 		os::Printer::log("Writing material", file->getFileName());
 
-		file->write("# exported by Irrlicht\n\n",24);
+		file->write("# exported by Nirtcpp\n\n",24);
 		for (u32 i=0; i<mat.size(); ++i)
 		{
 			core::stringc num(i);
@@ -260,7 +260,7 @@ bool COBJMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 void COBJMeshWriter::getVectorAsStringLine(const core::vector3df& v, core::stringc& s) const
 {
 	c8 tmpbuf[255];
-	snprintf_irr(tmpbuf, 255, "%f %f %f\n", -v.X, v.Y, v.Z);
+	snprintf_nirt(tmpbuf, 255, "%f %f %f\n", -v.X, v.Y, v.Z);
 	s = tmpbuf;
 }
 
@@ -268,7 +268,7 @@ void COBJMeshWriter::getVectorAsStringLine(const core::vector3df& v, core::strin
 void COBJMeshWriter::getVectorAsStringLine(const core::vector2df& v, core::stringc& s) const
 {
 	c8 tmpbuf[255];
-	snprintf_irr(tmpbuf, 255, "%f %f\n", v.X, 1.f-v.Y);
+	snprintf_nirt(tmpbuf, 255, "%f %f\n", v.X, 1.f-v.Y);
 	s = tmpbuf;
 }
 
@@ -276,7 +276,7 @@ void COBJMeshWriter::getVectorAsStringLine(const core::vector2df& v, core::strin
 void COBJMeshWriter::getColorAsStringLine(const video::SColor& color, const c8* const prefix, core::stringc& s) const
 {
 	c8 tmpbuf[255];
-	snprintf_irr(tmpbuf, 255, "%s %f %f %f\n", prefix, (float)(color.getRed()/255.f), (float)(color.getGreen()/255.f), (float)(color.getBlue()/255.f));
+	snprintf_nirt(tmpbuf, 255, "%s %f %f %f\n", prefix, (float)(color.getRed()/255.f), (float)(color.getGreen()/255.f), (float)(color.getBlue()/255.f));
 	s = tmpbuf;
 }
 

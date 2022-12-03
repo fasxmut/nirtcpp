@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SOFTWARE_2_TEXTURE_H_INCLUDED
-#define IRR_C_SOFTWARE_2_TEXTURE_H_INCLUDED
+#ifndef NIRT_C_SOFTWARE_2_TEXTURE_H_INCLUDED
+#define NIRT_C_SOFTWARE_2_TEXTURE_H_INCLUDED
 
 #include "SoftwareDriver2_compile_config.h"
 
@@ -79,7 +79,7 @@ public:
 #if defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
 	virtual void* lock(E_TEXTURE_LOCK_MODE mode, u32 mipmapLevel)
 #else
-	virtual void* lock(E_TEXTURE_LOCK_MODE mode, u32 mipmapLevel, u32 layer, E_TEXTURE_LOCK_FLAGS lockFlags = ETLF_FLIP_Y_UP_RTT) IRR_OVERRIDE
+	virtual void* lock(E_TEXTURE_LOCK_MODE mode, u32 mipmapLevel, u32 layer, E_TEXTURE_LOCK_FLAGS lockFlags = ETLF_FLIP_Y_UP_RTT) override
 #endif
 	{
 		if (Flags & GEN_MIPMAP)
@@ -94,7 +94,7 @@ public:
 	}
 
 	//! unlock function
-	virtual void unlock() IRR_OVERRIDE
+	virtual void unlock() override
 	{
 	}
 
@@ -121,7 +121,7 @@ public:
 	}
 
 #if !defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
-	virtual void regenerateMipMapLevels(void* data = 0, u32 layer = 0) IRR_OVERRIDE;
+	virtual void regenerateMipMapLevels(void* data = 0, u32 layer = 0) override;
 #else
 	virtual void regenerateMipMapLevels(void* data = 0);
 #endif
@@ -175,7 +175,7 @@ public:
 	CSoftwareRenderTarget2(CBurningVideoDriver* driver);
 	virtual ~CSoftwareRenderTarget2();
 
-	virtual void setTextures(ITexture* const * textures, u32 numTextures, ITexture* depthStencil, const E_CUBE_SURFACE* cubeSurfaces, u32 numCubeSurfaces) IRR_OVERRIDE;
+	virtual void setTextures(ITexture* const * textures, u32 numTextures, ITexture* depthStencil, const E_CUBE_SURFACE* cubeSurfaces, u32 numCubeSurfaces) override;
 
 #if defined(PATCH_SUPERTUX_8_0_1_with_1_9_0)
 public:
@@ -191,4 +191,4 @@ protected:
 } // end namespace video
 } // end namespace irr
 
-#endif // IRR_C_SOFTWARE_2_TEXTURE_H_INCLUDED
+#endif // NIRT_C_SOFTWARE_2_TEXTURE_H_INCLUDED

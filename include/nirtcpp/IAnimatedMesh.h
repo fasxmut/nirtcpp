@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_ANIMATED_MESH_H_INCLUDED
-#define IRR_I_ANIMATED_MESH_H_INCLUDED
+#ifndef NIRT_I_ANIMATED_MESH_H_INCLUDED
+#define NIRT_I_ANIMATED_MESH_H_INCLUDED
 
 #include "aabbox3d.h"
 #include "IMesh.h"
@@ -61,7 +61,7 @@ namespace scene
 		if getMeshType() returns EAMT_MD2 it's safe to cast the
 		IAnimatedMesh to IAnimatedMeshMD2.
 		\returns Type of the mesh. */
-		virtual E_ANIMATED_MESH_TYPE getMeshType() const IRR_OVERRIDE
+		virtual E_ANIMATED_MESH_TYPE getMeshType() const override
 		{
 			return EAMT_UNKNOWN;
 		}

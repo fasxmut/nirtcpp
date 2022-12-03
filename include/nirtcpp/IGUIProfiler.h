@@ -1,9 +1,9 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 
-#ifndef IRR_I_GUI_PROFILER_H_INCLUDED
-#define IRR_I_GUI_PROFILER_H_INCLUDED
+#ifndef NIRT_I_GUI_PROFILER_H_INCLUDED
+#define NIRT_I_GUI_PROFILER_H_INCLUDED
 
 #include "IGUIElement.h"
 
@@ -20,7 +20,7 @@ namespace gui
 	{
 	public:
 		//! constructor
-		/** \param profiler You can pass a custom profiler, but typically you can pass 0 in which cases it takes the global profiler from Irrlicht */
+		/** \param profiler You can pass a custom profiler, but typically you can pass 0 in which cases it takes the global profiler from Nirtcpp */
 		IGUIProfiler(IGUIEnvironment* environment, IGUIElement* parent, s32 id, core::rect<s32> rectangle, IProfiler* profiler = NULL)
 			: IGUIElement(EGUIET_PROFILER, environment, parent, id, rectangle)
 		{}

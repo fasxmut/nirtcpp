@@ -8,7 +8,7 @@ using namespace irr;
 //! Tests rendering MRTs
 static bool testWithDriver(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice (driverType, core::dimension2d < u32 > (220, 80));
+	NirtcppDevice *device = createDevice (driverType, core::dimension2d < u32 > (220, 80));
 	if (!device)
 		return true; // No error if device does not exist
 

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_Z_BUFFER_H_INCLUDED
-#define IRR_C_Z_BUFFER_H_INCLUDED
+#ifndef NIRT_C_Z_BUFFER_H_INCLUDED
+#define NIRT_C_Z_BUFFER_H_INCLUDED
 
 #include "IDepthBuffer.h"
 
@@ -23,22 +23,22 @@ namespace video
 		virtual ~CDepthBuffer();
 
 		//! clears the zbuffer
-		virtual void clear(f32 value, const interlaced_control interlaced) IRR_OVERRIDE;
+		virtual void clear(f32 value, const interlaced_control interlaced) override;
 
 		//! sets the new size of the zbuffer
-		virtual void setSize(const core::dimension2d<u32>& size) IRR_OVERRIDE;
+		virtual void setSize(const core::dimension2d<u32>& size) override;
 
 		//! returns the size of the zbuffer
-		virtual const core::dimension2d<u32>& getSize() const IRR_OVERRIDE;
+		virtual const core::dimension2d<u32>& getSize() const override;
 
 		//! locks the zbuffer
-		virtual void* lock() IRR_OVERRIDE { return (void*) Buffer; }
+		virtual void* lock() override { return (void*) Buffer; }
 
 		//! unlocks the zbuffer
-		virtual void unlock() IRR_OVERRIDE {}
+		virtual void unlock() override {}
 
 		//! returns pitch of depthbuffer (in bytes)
-		virtual u32 getPitch() const IRR_OVERRIDE { return Pitch; }
+		virtual u32 getPitch() const override { return Pitch; }
 
 
 	private:
@@ -60,22 +60,22 @@ namespace video
 		virtual ~CStencilBuffer();
 
 		//! clears the zbuffer
-		virtual void clear(u32 value, const interlaced_control interlaced) IRR_OVERRIDE;
+		virtual void clear(u32 value, const interlaced_control interlaced) override;
 
 		//! sets the new size of the zbuffer
-		virtual void setSize(const core::dimension2d<u32>& size) IRR_OVERRIDE;
+		virtual void setSize(const core::dimension2d<u32>& size) override;
 
 		//! returns the size of the zbuffer
-		virtual const core::dimension2d<u32>& getSize() const IRR_OVERRIDE;
+		virtual const core::dimension2d<u32>& getSize() const override;
 
 		//! locks the zbuffer
-		virtual void* lock() IRR_OVERRIDE { return (void*) Buffer; }
+		virtual void* lock() override { return (void*) Buffer; }
 
 		//! unlocks the zbuffer
-		virtual void unlock() IRR_OVERRIDE {}
+		virtual void unlock() override {}
 
 		//! returns pitch of depthbuffer (in bytes)
-		virtual u32 getPitch() const IRR_OVERRIDE { return Pitch; }
+		virtual u32 getPitch() const override { return Pitch; }
 
 
 	private:

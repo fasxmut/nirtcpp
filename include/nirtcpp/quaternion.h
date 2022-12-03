@@ -1,24 +1,24 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_QUATERNION_H_INCLUDED
-#define IRR_QUATERNION_H_INCLUDED
+#ifndef NIRT_QUATERNION_H_INCLUDED
+#define NIRT_QUATERNION_H_INCLUDED
 
 #include "irrTypes.h"
 #include "irrMath.h"
 #include "matrix4.h"
 #include "vector3d.h"
 
-// NOTE: You *only* need this when updating an application from Irrlicht before 1.8 to Irrlicht 1.8 or later.
-// Between Irrlicht 1.7 and Irrlicht 1.8 the quaternion-matrix conversions changed.
+// NOTE: You *only* need this when updating an application from Nirtcpp before 1.8 to Nirtcpp 1.8 or later.
+// Between Nirtcpp 1.7 and Nirtcpp 1.8 the quaternion-matrix conversions changed.
 // Before the fix they had mixed left- and right-handed rotations.
-// To test if your code was affected by the change enable IRR_TEST_BROKEN_QUATERNION_USE and try to compile your application.
+// To test if your code was affected by the change enable NIRT_TEST_BROKEN_QUATERNION_USE and try to compile your application.
 // This defines removes those functions so you get compile errors anywhere you use them in your code.
 // For every line with a compile-errors you have to change the corresponding lines like that:
 // - When you pass the matrix to the quaternion constructor then replace the matrix by the transposed matrix.
 // - For uses of getMatrix() you have to use quaternion::getMatrix_transposed instead.
-// #define IRR_TEST_BROKEN_QUATERNION_USE
+// #define NIRT_TEST_BROKEN_QUATERNION_USE
 
 namespace irr
 {
@@ -44,7 +44,7 @@ class quaternion
 		//! Constructor which converts Euler angles (radians) to a quaternion
 		quaternion(const vector3df& vec);
 
-#ifndef IRR_TEST_BROKEN_QUATERNION_USE
+#ifndef NIRT_TEST_BROKEN_QUATERNION_USE
 		//! Constructor which converts a matrix to a quaternion
 		quaternion(const matrix4& mat);
 #endif
@@ -55,7 +55,7 @@ class quaternion
 		//! inequality operator
 		bool operator!=(const quaternion& other) const;
 
-#ifndef IRR_TEST_BROKEN_QUATERNION_USE
+#ifndef NIRT_TEST_BROKEN_QUATERNION_USE
 		//! Matrix assignment operator
 		inline quaternion& operator=(const matrix4& other);
 #endif
@@ -101,7 +101,7 @@ class quaternion
 		//! Normalizes the quaternion
 		inline quaternion& normalize();
 
-#ifndef IRR_TEST_BROKEN_QUATERNION_USE
+#ifndef NIRT_TEST_BROKEN_QUATERNION_USE
 		//! Creates a matrix from this quaternion
 		matrix4 getMatrix() const;
 #endif
@@ -214,7 +214,7 @@ inline quaternion::quaternion(const vector3df& vec)
 	set(vec.X,vec.Y,vec.Z);
 }
 
-#ifndef IRR_TEST_BROKEN_QUATERNION_USE
+#ifndef NIRT_TEST_BROKEN_QUATERNION_USE
 // Constructor which converts a matrix to a quaternion
 inline quaternion::quaternion(const matrix4& mat)
 {
@@ -238,7 +238,7 @@ inline bool quaternion::operator!=(const quaternion& other) const
 }
 
 
-#ifndef IRR_TEST_BROKEN_QUATERNION_USE
+#ifndef NIRT_TEST_BROKEN_QUATERNION_USE
 // matrix assignment operator
 inline quaternion& quaternion::operator=(const matrix4& m)
 {
@@ -342,7 +342,7 @@ inline quaternion quaternion::operator+(const quaternion& b) const
 	return quaternion(X+b.X, Y+b.Y, Z+b.Z, W+b.W);
 }
 
-#ifndef IRR_TEST_BROKEN_QUATERNION_USE
+#ifndef NIRT_TEST_BROKEN_QUATERNION_USE
 // Creates a matrix from this quaternion
 inline matrix4 quaternion::getMatrix() const
 {

@@ -1,26 +1,26 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_IREFERENCE_COUNTED_H_INCLUDED
-#define IRR_I_IREFERENCE_COUNTED_H_INCLUDED
+#ifndef NIRT_I_IREFERENCE_COUNTED_H_INCLUDED
+#define NIRT_I_IREFERENCE_COUNTED_H_INCLUDED
 
 #include "irrTypes.h"
 
-#ifdef _IRR_COMPILE_WITH_LEAK_HUNTER_
+#ifdef _NIRT_COMPILE_WITH_LEAK_HUNTER_
 	#include "leakHunter.h"
 #endif
 
 namespace irr
 {
 
-	//! Base class of most objects of the Irrlicht Engine.
+	//! Base class of most objects of the Nirtcpp Engine.
 	/** This class provides reference counting through the methods grab() and drop().
 	It also is able to store a debug string for every instance of an object.
-	Most objects of the Irrlicht
+	Most objects of the Nirtcpp
 	Engine are derived from IReferenceCounted, and so they are reference counted.
 
-	When you create an object in the Irrlicht engine, calling a method
+	When you create an object in the Nirtcpp engine, calling a method
 	which starts with 'create', an object is created, and you get a pointer
 	to the new object. If you no longer need the object, you have
 	to call drop(). This will destroy the object, if grab() was not called
@@ -50,7 +50,7 @@ namespace irr
 		IReferenceCounted()
 			: DebugName(0), ReferenceCounter(1)
 		{
-#ifdef _IRR_COMPILE_WITH_LEAK_HUNTER_
+#ifdef _NIRT_COMPILE_WITH_LEAK_HUNTER_
 			LeakHunter::addObject(this);
 #endif
 		}
@@ -58,7 +58,7 @@ namespace irr
 		//! Destructor.
 		virtual ~IReferenceCounted()
 		{
-			#ifdef _IRR_COMPILE_WITH_LEAK_HUNTER_
+			#ifdef _NIRT_COMPILE_WITH_LEAK_HUNTER_
 				LeakHunter::removeObject(this);
 			#endif
 		}
@@ -69,10 +69,10 @@ namespace irr
 		grab() calls, it will never be destroyed. The
 		IReferenceCounted class provides a basic reference counting
 		mechanism with its methods grab() and drop(). Most objects of
-		the Irrlicht Engine are derived from IReferenceCounted, and so
+		the Nirtcpp Engine are derived from IReferenceCounted, and so
 		they are reference counted.
 
-		When you create an object in the Irrlicht engine, calling a
+		When you create an object in the Nirtcpp engine, calling a
 		method which starts with 'create', an object is created, and
 		you get a pointer to the new object. If you no longer need the
 		object, you have to call drop(). This will destroy the object,
@@ -98,10 +98,10 @@ namespace irr
 		//! Drops the object. Decrements the reference counter by one.
 		/** The IReferenceCounted class provides a basic reference
 		counting mechanism with its methods grab() and drop(). Most
-		objects of the Irrlicht Engine are derived from
+		objects of the Nirtcpp Engine are derived from
 		IReferenceCounted, and so they are reference counted.
 
-		When you create an object in the Irrlicht engine, calling a
+		When you create an object in the Nirtcpp engine, calling a
 		method which starts with 'create', an object is created, and
 		you get a pointer to the new object. If you no longer need the
 		object, you have to call drop(). This will destroy the object,
@@ -126,7 +126,7 @@ namespace irr
 		bool drop() const
 		{
 			// someone is doing bad reference counting.
-			IRR_DEBUG_BREAK_IF(ReferenceCounter <= 0)
+			NIRT_DEBUG_BREAK_IF(ReferenceCounter <= 0)
 
 			--ReferenceCounter;
 			if (!ReferenceCounter)

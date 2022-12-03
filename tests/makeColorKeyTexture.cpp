@@ -14,7 +14,7 @@ using namespace video;
 static bool doTestWith(E_DRIVER_TYPE driverType,
 						bool zeroTexels)
 {
-	IrrlichtDevice *device = createDevice( driverType,
+	NirtcppDevice *device = createDevice( driverType,
 											dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return false;
@@ -49,7 +49,7 @@ static bool doTestWith(E_DRIVER_TYPE driverType,
 	driver->endScene();
 
 	char screenshotName[256];
-	(void)snprintf_irr(screenshotName, 256, "-makeColorKeyTexture-%s.png",
+	(void)snprintf_nirt(screenshotName, 256, "-makeColorKeyTexture-%s.png",
 		zeroTexels? "old" : "new");
 
 	bool result = takeScreenshotAndCompareAgainstReference(driver, screenshotName);

@@ -3,12 +3,12 @@
 using namespace irr;
 using namespace core;
 
-// Test the functionality of the Irrlicht timer
+// Test the functionality of the Nirtcpp timer
 bool testTimer(void)
 {
 	bool success = true;
 
-	IrrlichtDevice* device = createDevice(video::EDT_NULL);
+	NirtcppDevice* device = createDevice(video::EDT_NULL);
 	if (!device)
 		return false;
 

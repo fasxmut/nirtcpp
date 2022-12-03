@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_COLLADA_MESH_FILE_LOADER_H_INCLUDED
-#define IRR_C_COLLADA_MESH_FILE_LOADER_H_INCLUDED
+#ifndef NIRT_C_COLLADA_MESH_FILE_LOADER_H_INCLUDED
+#define NIRT_C_COLLADA_MESH_FILE_LOADER_H_INCLUDED
 
 #include "IMeshLoader.h"
 #include "IFileSystem.h"
@@ -175,7 +175,7 @@ struct SSource
 
 class CScenePrefab;
 
-//! Meshloader capable of loading COLLADA meshes and scene descriptions into Irrlicht.
+//! Meshloader capable of loading COLLADA meshes and scene descriptions into Nirtcpp.
 class CColladaFileLoader : public IMeshLoader
 {
 public:
@@ -188,13 +188,13 @@ public:
 
 	//! returns true if the file maybe is able to be loaded by this class
 	//! based on the file extension (e.g. ".cob")
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 	//! creates/loads an animated mesh from the file.
 	//! \return Pointer to the created mesh. Returns 0 if loading failed.
 	//! If you no longer need the mesh, you should call IAnimatedMesh::drop().
 	//! See IReferenceCounted::drop() for more information.
-	virtual IAnimatedMesh* createMesh(io::IReadFile* file) IRR_OVERRIDE;
+	virtual IAnimatedMesh* createMesh(io::IReadFile* file) override;
 
 private:
 
@@ -334,7 +334,7 @@ private:
 	//! reads and bind materials as given by the symbol->target bind mapping
 	void readBindMaterialSection(io::IXMLReaderUTF8* reader, const core::stringc & id);
 
-	//! create an Irrlicht texture from the SColladaImage
+	//! create an Nirtcpp texture from the SColladaImage
 	video::ITexture* getTextureFromImage(core::stringc uri, SColladaEffect * effect);
 
 	//! read a parameter and value

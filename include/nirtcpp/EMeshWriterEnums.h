@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_MESH_WRITER_ENUMS_H_INCLUDED
-#define IRR_E_MESH_WRITER_ENUMS_H_INCLUDED
+#ifndef NIRT_E_MESH_WRITER_ENUMS_H_INCLUDED
+#define NIRT_E_MESH_WRITER_ENUMS_H_INCLUDED
 
 #include "irrTypes.h"
 
@@ -18,23 +18,23 @@ namespace scene
 	name clashes with external mesh writers.*/
 	enum EMESH_WRITER_TYPE
 	{
-		//! Irrlicht native mesh writer, for static .irrmesh files.
-		EMWT_IRR_MESH     = MAKE_IRR_ID('i','r','r','m'),
+		//! Nirtcpp native mesh writer, for static .irrmesh files.
+		EMWT_NIRT_MESH     = MAKE_NIRT_ID('i','r','r','m'),
 
 		//! COLLADA mesh writer for .dae and .xml files
-		EMWT_COLLADA      = MAKE_IRR_ID('c','o','l','l'),
+		EMWT_COLLADA      = MAKE_NIRT_ID('c','o','l','l'),
 
 		//! STL mesh writer for .stl files
-		EMWT_STL          = MAKE_IRR_ID('s','t','l',0),
+		EMWT_STL          = MAKE_NIRT_ID('s','t','l',0),
 
 		//! OBJ mesh writer for .obj files
-		EMWT_OBJ          = MAKE_IRR_ID('o','b','j',0),
+		EMWT_OBJ          = MAKE_NIRT_ID('o','b','j',0),
 
 		//! PLY mesh writer for .ply files
-		EMWT_PLY          = MAKE_IRR_ID('p','l','y',0),
+		EMWT_PLY          = MAKE_NIRT_ID('p','l','y',0),
 		
 		//! B3D mesh writer, for static .b3d files
-		EMWT_B3D          = MAKE_IRR_ID('b', '3', 'd', 0)
+		EMWT_B3D          = MAKE_NIRT_ID('b', '3', 'd', 0)
 	};
 
 
@@ -45,7 +45,7 @@ namespace scene
 		EMWF_NONE = 0,
 
 		//! write lightmap textures out if possible
-		//! Currently not used by any Irrlicht mesh-writer
+		//! Currently not used by any Nirtcpp mesh-writer
 		// (Note: User meshwriters can still use it)
 		EMWF_WRITE_LIGHTMAPS = 0x1,
 
@@ -60,4 +60,4 @@ namespace scene
 } // end namespace scene
 } // end namespace irr
 
-#endif // IRR_E_MESH_WRITER_ENUMS_H_INCLUDED
+#endif // NIRT_E_MESH_WRITER_ENUMS_H_INCLUDED

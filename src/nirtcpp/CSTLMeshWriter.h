@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_STL_MESH_WRITER_H_INCLUDED
-#define IRR_STL_MESH_WRITER_H_INCLUDED
+#ifndef NIRT_STL_MESH_WRITER_H_INCLUDED
+#define NIRT_STL_MESH_WRITER_H_INCLUDED
 
 #include "IMeshWriter.h"
 #include "S3DVertex.h"
@@ -25,10 +25,10 @@ namespace scene
 		virtual ~CSTLMeshWriter();
 
 		//! Returns the type of the mesh writer
-		virtual EMESH_WRITER_TYPE getType() const IRR_OVERRIDE;
+		virtual EMESH_WRITER_TYPE getType() const override;
 
 		//! writes a mesh
-		virtual bool writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 flags=EMWF_NONE) IRR_OVERRIDE;
+		virtual bool writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 flags=EMWF_NONE) override;
 
 	protected:
 		// write binary format

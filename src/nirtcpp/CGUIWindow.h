@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_WINDOW_H_INCLUDED
-#define IRR_C_GUI_WINDOW_H_INCLUDED
+#ifndef NIRT_C_GUI_WINDOW_H_INCLUDED
+#define NIRT_C_GUI_WINDOW_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIWindow.h"
 
@@ -27,50 +27,50 @@ namespace gui
 		virtual ~CGUIWindow();
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent& event) override;
 
 		//! update absolute position
-		virtual void updateAbsolutePosition() IRR_OVERRIDE;
+		virtual void updateAbsolutePosition() override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
 		//! Returns pointer to the close button
-		virtual IGUIButton* getCloseButton() const IRR_OVERRIDE;
+		virtual IGUIButton* getCloseButton() const override;
 
 		//! Returns pointer to the minimize button
-		virtual IGUIButton* getMinimizeButton() const IRR_OVERRIDE;
+		virtual IGUIButton* getMinimizeButton() const override;
 
 		//! Returns pointer to the maximize button
-		virtual IGUIButton* getMaximizeButton() const IRR_OVERRIDE;
+		virtual IGUIButton* getMaximizeButton() const override;
 
 		//! Returns true if the window is draggable, false if not
-		virtual bool isDraggable() const IRR_OVERRIDE;
+		virtual bool isDraggable() const override;
 
 		//! Sets whether the window is draggable
-		virtual void setDraggable(bool draggable) IRR_OVERRIDE;
+		virtual void setDraggable(bool draggable) override;
 
 		//! Set if the window background will be drawn
-		virtual void setDrawBackground(bool draw) IRR_OVERRIDE;
+		virtual void setDrawBackground(bool draw) override;
 
 		//! Get if the window background will be drawn
-		virtual bool getDrawBackground() const IRR_OVERRIDE;
+		virtual bool getDrawBackground() const override;
 
 		//! Set if the window titlebar will be drawn
 		//! Note: If the background is not drawn, then the titlebar is automatically also not drawn
-		virtual void setDrawTitlebar(bool draw) IRR_OVERRIDE;
+		virtual void setDrawTitlebar(bool draw) override;
 
 		//! Get if the window titlebar will be drawn
-		virtual bool getDrawTitlebar() const IRR_OVERRIDE;
+		virtual bool getDrawTitlebar() const override;
 
 		//! Returns the rectangle of the drawable area (without border and without titlebar)
-		virtual core::rect<s32> getClientRect() const IRR_OVERRIDE;
+		virtual core::rect<s32> getClientRect() const override;
 
 		//! Writes attributes of the element.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 		//! Reads attributes of the element
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 	protected:
 
@@ -93,6 +93,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
 #endif

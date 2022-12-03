@@ -26,7 +26,7 @@ struct TrapMouseMoves : IEventReceiver
 	only generates a mouse message when it actually changes */
 bool cursorSetVisible(void)
 {
-	IrrlichtDevice * device = createDevice(video::EDT_SOFTWARE, dimension2d<u32>(1, 1));
+	NirtcppDevice * device = createDevice(video::EDT_SOFTWARE, dimension2d<u32>(1, 1));
 	TrapMouseMoves moveTrapper;
 	device->setEventReceiver(&moveTrapper);
 
@@ -34,7 +34,7 @@ bool cursorSetVisible(void)
 
 	gui::ICursorControl * cursor = device->getCursorControl();
 
-	// Move the cursor inside the Irrlicht window so that we get messages for it.
+	// Move the cursor inside the Nirtcpp window so that we get messages for it.
 	cursor->setPosition(0, 0);
 	device->run(); // Receive any messages
 

@@ -2,13 +2,13 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Irrlicht" />
+		<Option title="Nirtcpp" />
 		<Option pch_mode="0" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Win32 - Debug - dll">
 				<Option platforms="Windows;" />
-				<Option output="..\..\lib\Win32-gcc\Irrlicht" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\lib\Win32-gcc\Nirtcpp" prefix_auto="1" extension_auto="1" />
 				<Option object_output="..\obj\win32-gcc-debug-dll" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -45,13 +45,13 @@
 					<Add library="winmm" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c del ..\..\bin\Win32-gcc\Irrlicht.dll" />
-					<Add after="cmd /c move ..\..\lib\Win32-gcc\Irrlicht.dll ..\..\bin\Win32-gcc\Irrlicht.dll" />
+					<Add after="cmd /c del ..\..\bin\Win32-gcc\Nirtcpp.dll" />
+					<Add after="cmd /c move ..\..\lib\Win32-gcc\Nirtcpp.dll ..\..\bin\Win32-gcc\Nirtcpp.dll" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Win32 - Release - accurate math - dll">
 				<Option platforms="Windows;" />
-				<Option output="..\..\lib\Win32-gcc\Irrlicht" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\lib\Win32-gcc\Nirtcpp" prefix_auto="1" extension_auto="1" />
 				<Option object_output="..\obj\win32-gcc-release-dll" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -87,13 +87,13 @@
 					<Add library="winmm" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c del ..\..\bin\Win32-gcc\Irrlicht.dll" />
-					<Add after="cmd /c move ..\..\lib\Win32-gcc\Irrlicht.dll ..\..\bin\Win32-gcc\Irrlicht.dll" />
+					<Add after="cmd /c del ..\..\bin\Win32-gcc\Nirtcpp.dll" />
+					<Add after="cmd /c move ..\..\lib\Win32-gcc\Nirtcpp.dll ..\..\bin\Win32-gcc\Nirtcpp.dll" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Win32 - Release - fast math - dll">
 				<Option platforms="Windows;" />
-				<Option output="..\..\lib\Win32-gcc\Irrlicht" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\lib\Win32-gcc\Nirtcpp" prefix_auto="1" extension_auto="1" />
 				<Option object_output="..\obj\win32-gcc-release-fast-dll" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -129,13 +129,13 @@
 					<Add library="winmm" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c del ..\..\bin\Win32-gcc\Irrlicht.dll" />
-					<Add after="cmd /c move ..\..\lib\Win32-gcc\Irrlicht.dll ..\..\bin\Win32-gcc\Irrlicht.dll" />
+					<Add after="cmd /c del ..\..\bin\Win32-gcc\Nirtcpp.dll" />
+					<Add after="cmd /c move ..\..\lib\Win32-gcc\Nirtcpp.dll ..\..\bin\Win32-gcc\Nirtcpp.dll" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Win32 - Debug - static">
 				<Option platforms="Windows;" />
-				<Option output="..\..\lib\Win32-gcc\Irrlicht" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\lib\Win32-gcc\Nirtcpp" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="..\obj\win32-gcc-debug-static" />
 				<Option type="2" />
@@ -145,7 +145,7 @@
 					<Add option="-O3" />
 					<Add option="-Wextra" />
 					<Add option="-ffast-math" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add directory="..\..\include" />
 					<Add directory="zlib" />
 					<Add directory="libpng" />
@@ -159,7 +159,7 @@
 			</Target>
 			<Target title="Win32 - Release - accurate math - static">
 				<Option platforms="Windows;" />
-				<Option output="..\..\lib\Win32-gcc\Irrlicht" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\lib\Win32-gcc\Nirtcpp" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="..\obj\win32-gcc-release-static" />
 				<Option type="2" />
@@ -174,7 +174,7 @@
 					<Add option="-DWIN32" />
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
 					<Add option="-D__GNUWIN32__" />
 					<Add directory="..\..\include" />
@@ -198,7 +198,7 @@
 			</Target>
 			<Target title="Win32 - Release - fast math - static">
 				<Option platforms="Windows;" />
-				<Option output="..\..\lib\Win32-gcc\Irrlicht" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\lib\Win32-gcc\Nirtcpp" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="..\obj\win32-gcc-release-fast-static" />
 				<Option type="2" />
@@ -214,7 +214,7 @@
 					<Add option="-DWIN32" />
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
 					<Add option="-D__GNUWIN32__" />
 					<Add directory="..\..\include" />
@@ -238,7 +238,7 @@
 			</Target>
 			<Target title="Linux - Debug - shared">
 				<Option platforms="Unix;" />
-				<Option output="..\..\lib\Linux\libIrrlicht" prefix_auto="0" extension_auto="1" />
+				<Option output="..\..\lib\Linux\libNirtcpp" prefix_auto="0" extension_auto="1" />
 				<Option object_output="..\obj\linux-gcc-debug-shared" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -265,7 +265,7 @@
 			</Target>
 			<Target title="Linux - Release - accurate math - shared">
 				<Option platforms="Unix;" />
-				<Option output="..\..\lib\Linux\libIrrlicht" prefix_auto="0" extension_auto="1" />
+				<Option output="..\..\lib\Linux\libNirtcpp" prefix_auto="0" extension_auto="1" />
 				<Option object_output="..\obj\linux-gcc-release-shared" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -289,7 +289,7 @@
 			</Target>
 			<Target title="Linux - Release - fast math - shared">
 				<Option platforms="Unix;" />
-				<Option output="..\..\lib\Linux\libIrrlicht" prefix_auto="0" extension_auto="1" />
+				<Option output="..\..\lib\Linux\libNirtcpp" prefix_auto="0" extension_auto="1" />
 				<Option object_output="..\obj\linux-gcc-release-fast-shared" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -314,7 +314,7 @@
 			</Target>
 			<Target title="Linux - Debug - static">
 				<Option platforms="Unix;" />
-				<Option output="..\..\lib\Linux\libIrrlicht" prefix_auto="0" extension_auto="1" />
+				<Option output="..\..\lib\Linux\libNirtcpp" prefix_auto="0" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="..\obj\linux-gcc-debug-static" />
 				<Option type="2" />
@@ -325,7 +325,7 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add option="-O0" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add option="-D_DEBUG" />
 					<Add directory="..\..\include" />
 					<Add directory="zlib" />
@@ -340,7 +340,7 @@
 			</Target>
 			<Target title="Linux - Release - accurate math - static">
 				<Option platforms="Unix;" />
-				<Option output="..\..\lib\Linux\libIrrlicht" prefix_auto="0" extension_auto="1" />
+				<Option output="..\..\lib\Linux\libNirtcpp" prefix_auto="0" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="..\obj\linux-gcc-release-static" />
 				<Option type="2" />
@@ -350,7 +350,7 @@
 					<Add option="-O3" />
 					<Add option="-Wextra" />
 					<Add option="-fno-exceptions" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add directory="..\..\include" />
 					<Add directory="zlib" />
 					<Add directory="libpng" />
@@ -364,7 +364,7 @@
 			</Target>
 			<Target title="Linux - Release - fast math - static">
 				<Option platforms="Unix;" />
-				<Option output="..\..\lib\Linux\libIrrlicht" prefix_auto="0" extension_auto="1" />
+				<Option output="..\..\lib\Linux\libNirtcpp" prefix_auto="0" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="..\obj\linux-gcc-release-fast-static" />
 				<Option type="2" />
@@ -374,7 +374,7 @@
 					<Add option="-O3" />
 					<Add option="-Wextra" />
 					<Add option="-ffast-math" />
-					<Add option="-D_IRR_STATIC_LIB_" />
+					<Add option="-D_NIRT_STATIC_LIB_" />
 					<Add directory="..\..\include" />
 					<Add directory="zlib" />
 					<Add directory="libpng" />
@@ -575,7 +575,7 @@
 		<Unit filename="..\..\include\irrString.h" />
 		<Unit filename="..\..\include\irrTypes.h" />
 		<Unit filename="..\..\include\irrXML.h" />
-		<Unit filename="..\..\include\irrlicht.h" />
+		<Unit filename="..\..\include\nirtcpp.h" />
 		<Unit filename="..\..\include\irrpack.h" />
 		<Unit filename="..\..\include\irrunpack.h" />
 		<Unit filename="..\..\include\leakHunter.h" />
@@ -1013,7 +1013,7 @@
 		<Unit filename="IImagePresenter.h" />
 		<Unit filename="ITriangleRenderer.h" />
 		<Unit filename="IZBuffer.h" />
-		<Unit filename="Irrlicht.cpp" />
+		<Unit filename="Nirtcpp.cpp" />
 		<Unit filename="Octree.h" />
 		<Unit filename="S2DVertex.h" />
 		<Unit filename="S4DVertex.h" />

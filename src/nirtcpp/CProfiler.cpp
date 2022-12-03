@@ -1,5 +1,5 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 
 #include "CProfiler.h"
@@ -77,7 +77,7 @@ core::stringw CProfiler::getAsString(const SProfileData& data) const
 #pragma warning(disable:4996)	// 'sprintf' was declared deprecated
 #endif
 		// Can't use swprintf as it fails on some platforms (especially mobile platforms)
-		// Can't use Irrlicht functions because we have no string formatting.
+		// Can't use Nirtcpp functions because we have no string formatting.
 		char dummy[1023];
 		sprintf(dummy, "%-15.15s%-12u%-12u%-12u%-12u",
 			core::stringc(data.getName()).c_str(), data.getCallsCounter(), data.getTimeSum(),

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_MD2_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MD2_LOADER_
 
 #include "CAnimatedMeshMD2.h"
 #include "SColor.h"
@@ -462,4 +462,4 @@ const c8* CAnimatedMeshMD2::getAnimationName(s32 nr) const
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_MD2_LOADER_
+#endif // _NIRT_COMPILE_WITH_MD2_LOADER_

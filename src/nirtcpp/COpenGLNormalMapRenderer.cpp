@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "COpenGLNormalMapRenderer.h"
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 
 #include "IGPUProgrammingServices.h"
 #include "IShaderConstantSetCallBack.h"
@@ -18,7 +18,7 @@ namespace irr
 namespace video
 {
 
-// Irrlicht Engine OpenGL render path normal map vertex shader
+// Nirtcpp Engine OpenGL render path normal map vertex shader
 // I guess it could be optimized a lot, because I wrote it in D3D ASM and
 // transferred it 1:1 to OpenGL
 const char OPENGL_NORMAL_MAP_VSH[] =
@@ -110,12 +110,12 @@ const char OPENGL_NORMAL_MAP_VSH[] =
 	"\n"\
 	"END\n";
 
-// Irrlicht Engine OpenGL render path normal map pixel shader
+// Nirtcpp Engine OpenGL render path normal map pixel shader
 // I guess it could be optimized a bit, because I wrote it in D3D ASM and
 // transfered it 1:1 to OpenGL
 const char OPENGL_NORMAL_MAP_PSH[] =
 	"!!ARBfp1.0\n"\
-	"#_IRR_FOG_MODE_\n"\
+	"#_NIRT_FOG_MODE_\n"\
 	"\n"\
 	"#Input\n"\
 	"ATTRIB inTexCoord = fragment.texcoord[0];   \n"\

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_NIRTCPP_CREATION_PARAMETERS_H_INCLUDED
-#define IRR_NIRTCPP_CREATION_PARAMETERS_H_INCLUDED
+#ifndef NIRT_NIRTCPP_CREATION_PARAMETERS_H_INCLUDED
+#define NIRT_NIRTCPP_CREATION_PARAMETERS_H_INCLUDED
 
 #include "EDriverTypes.h"
 #include "EDeviceTypes.h"
@@ -15,12 +15,12 @@ namespace irr
 {
 	class IEventReceiver;
 
-	//! Structure for holding Irrlicht Device creation parameters.
+	//! Structure for holding Nirtcpp Device creation parameters.
 	/** This structure is used in the createDeviceEx() function. */
-	struct SIrrlichtCreationParameters
+	struct SNirtcppCreationParameters
 	{
-		//! Constructs a SIrrlichtCreationParameters structure with default values.
-		SIrrlichtCreationParameters() :
+		//! Constructs a SNirtcppCreationParameters structure with default values.
+		SNirtcppCreationParameters() :
 			DeviceType(EIDT_BEST),
 			DriverType(video::EDT_BURNINGSVIDEO),
 			WindowSize(core::dimension2d<u32>(800, 600)),
@@ -52,11 +52,11 @@ namespace irr
 		{
 		}
 
-		SIrrlichtCreationParameters(const SIrrlichtCreationParameters& other) :
+		SNirtcppCreationParameters(const SNirtcppCreationParameters& other) :
 			SDK_version_do_not_use(NIRTCPP_SDK_VERSION)
 		{*this = other;}
 
-		SIrrlichtCreationParameters& operator=(const SIrrlichtCreationParameters& other)
+		SNirtcppCreationParameters& operator=(const SNirtcppCreationParameters& other)
 		{
 			DeviceType = other.DeviceType;
 			DriverType = other.DriverType;
@@ -219,13 +219,13 @@ namespace irr
 		IEventReceiver* EventReceiver;
 
 		//! Window Id.
-		/** If this is set to a value other than 0, the Irrlicht Engine
+		/** If this is set to a value other than 0, the Nirtcpp Engine
 		will be created in an already existing window. For windows, set
 		this to the HWND of the window you want. The windowSize and
 		FullScreen options will be ignored when using the WindowId
 		parameter. Default this is set to 0.
-		To make Irrlicht run inside the custom window, you still will
-		have to draw Irrlicht on your own. You can use this loop, as
+		To make Nirtcpp run inside the custom window, you still will
+		have to draw Nirtcpp on your own. You can use this loop, as
 		usual:
 		\code
 		while (device->run())
@@ -237,12 +237,12 @@ namespace irr
 		\endcode
 		Instead of this, you can also simply use your own message loop
 		using GetMessage, DispatchMessage and whatever. Calling
-		NirtcppDevice::run() will cause Irrlicht to dispatch messages
+		NirtcppDevice::run() will cause Nirtcpp to dispatch messages
 		internally too.  You need not call Device->run() if you want to
-		do your own message dispatching loop, but Irrlicht will not be
+		do your own message dispatching loop, but Nirtcpp will not be
 		able to fetch user input then and you have to do it on your own
 		using the window messages, DirectInput, or whatever. Also,
-		you'll have to increment the Irrlicht timer.
+		you'll have to increment the Nirtcpp timer.
 		An alternative, own message dispatching loop without
 		device->run() would look like this:
 		\code
@@ -285,7 +285,7 @@ namespace irr
 
 		//! Create the driver multithreaded.
 		/** Default is false. Enabling this can slow down your application.
-			Note that this does _not_ make Irrlicht threadsafe, but only the underlying driver-API for the graphiccard.
+			Note that this does _not_ make Nirtcpp threadsafe, but only the underlying driver-API for the graphiccard.
 			So far only supported on D3D. */
 		bool DriverMultithreaded;
 

@@ -1,13 +1,13 @@
 // Copyright (C) 2013 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#ifndef IRR_C_GLX_MANAGER_H_INCLUDED
-#define IRR_C_GLX_MANAGER_H_INCLUDED
+#ifndef NIRT_C_GLX_MANAGER_H_INCLUDED
+#define NIRT_C_GLX_MANAGER_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_GLX_MANAGER_
+#ifdef _NIRT_COMPILE_WITH_GLX_MANAGER_
 
 #include "SIrrCreationParameters.h"
 #include "SExposedVideoData.h"
@@ -28,42 +28,42 @@ namespace video
     {
     public:
         //! Constructor.
-        CGLXManager(const SIrrlichtCreationParameters& params, const SExposedVideoData& videodata, int screennr);
+        CGLXManager(const SNirtcppCreationParameters& params, const SExposedVideoData& videodata, int screennr);
 
         //! Destructor
         ~CGLXManager();
 
         // Initialize
-        virtual bool initialize(const SIrrlichtCreationParameters& params, const SExposedVideoData& data) IRR_OVERRIDE;
+        virtual bool initialize(const SNirtcppCreationParameters& params, const SExposedVideoData& data) override;
 
         // Terminate
-        virtual void terminate() IRR_OVERRIDE;
+        virtual void terminate() override;
 
         // Create surface.
-        virtual bool generateSurface() IRR_OVERRIDE;
+        virtual bool generateSurface() override;
 
         // Destroy surface.
-        virtual void destroySurface() IRR_OVERRIDE;
+        virtual void destroySurface() override;
 
         // Create context.
-        virtual bool generateContext() IRR_OVERRIDE;
+        virtual bool generateContext() override;
 
         // Destroy context.
-        virtual void destroyContext() IRR_OVERRIDE;
+        virtual void destroyContext() override;
 
         //! Get current context
-        virtual const SExposedVideoData& getContext() const IRR_OVERRIDE;
+        virtual const SExposedVideoData& getContext() const override;
 
         //! Change render context, disable old and activate new defined by videoData
-        virtual bool activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero) IRR_OVERRIDE;
+        virtual bool activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero) override;
 
         // Swap buffers.
-        virtual bool swapBuffers() IRR_OVERRIDE;
+        virtual bool swapBuffers() override;
 
         XVisualInfo* getVisual() const {return VisualInfo;} // return XVisualInfo
 
     private:
-        SIrrlichtCreationParameters Params;
+        SNirtcppCreationParameters Params;
         SExposedVideoData PrimaryContext;
         SExposedVideoData CurrentContext;
         XVisualInfo* VisualInfo;

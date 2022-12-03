@@ -8,7 +8,7 @@ using namespace core;
 
 static bool manyTextures(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice(driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice(driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 
@@ -71,7 +71,7 @@ static bool manyTextures(video::E_DRIVER_TYPE driverType)
 	can lead to rendering of the second texture in second place. */
 static bool renderAndLoad(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 
@@ -110,7 +110,7 @@ static bool renderAndLoad(video::E_DRIVER_TYPE driverType)
 // in 1.5.1 and 1.6 an illegal access in the OpenGL driver caused this
 static bool renderAndRemove(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 
@@ -160,7 +160,7 @@ static bool renderAndRemove(video::E_DRIVER_TYPE driverType)
 
 static bool testTextureMatrixInMixedScenes(video::E_DRIVER_TYPE driverType)
 {
-	irr::IrrlichtDevice* device = createDevice(driverType, dimension2du(160,120));
+	irr::NirtcppDevice* device = createDevice(driverType, dimension2du(160,120));
 	if (!device)
 		return true;
 
@@ -218,7 +218,7 @@ static bool testTextureMatrixInMixedScenes(video::E_DRIVER_TYPE driverType)
 // animated texture matrix test.
 static bool textureMatrix(video::E_DRIVER_TYPE driverType)
 {
-	irr::IrrlichtDevice* device = createDevice(driverType, dimension2du(160,120));
+	irr::NirtcppDevice* device = createDevice(driverType, dimension2du(160,120));
 	if (!device)
 		return true;
 
@@ -285,9 +285,9 @@ static bool textureMatrix(video::E_DRIVER_TYPE driverType)
 
 bool danglingTexturePointer()
 {
-// A demo of the OpenGL "white texture" bug in Irrlicht
+// A demo of the OpenGL "white texture" bug in Nirtcpp
 // Author: Matt Giuca
-// (Vaguely based on the Irrlicht 2D graphics tutorial)
+// (Vaguely based on the Nirtcpp 2D graphics tutorial)
 
 // I have found that in some situations, when using the OpenGL driver, some
 // textures appear white.
@@ -297,10 +297,10 @@ bool danglingTexturePointer()
 
 // This demo triggers the bug (though there is some probability that it won't
 // be triggered; just run it again until it shows a white square instead of
-// the Irrlicht logo).
+// the Nirtcpp logo).
 
 	// This is only a problem in the OpenGL driver
-	irr::IrrlichtDevice* device = irr::createDevice(irr::video::EDT_OPENGL,
+	irr::NirtcppDevice* device = irr::createDevice(irr::video::EDT_OPENGL,
 		irr::core::dimension2d<irr::u32>(160, 120));
 	if (!device)
 		return true;
@@ -311,7 +311,7 @@ bool danglingTexturePointer()
 
 	// Load a texture from a file
 	// This binds and uploads to OpenGL texture #2.
-	irr::video::ITexture* logo2 = driver->getTexture("../media/irrlichtlogo2.png");
+	irr::video::ITexture* logo2 = driver->getTexture("../media/nirtcpplogo2.png");
 	// Remove the texture from the driver (delete it from hardware)
 	// This leaves CurrentTexture pointing at logo2
 	driver->removeTexture(logo2);
@@ -321,7 +321,7 @@ bool danglingTexturePointer()
 	// COpenGLDriver::setActiveTexture will not bother to call glBindTextures
 	// (thinking that logo3 is the same texture as logo2).
 	// Therefore, the logo3 texture will be uploaded to texture #0, not #2.
-	irr::video::ITexture* logo3 = driver->getTexture("../media/irrlichtlogo3.png");
+	irr::video::ITexture* logo3 = driver->getTexture("../media/nirtcpplogo3.png");
 
 	device->run();
 	{

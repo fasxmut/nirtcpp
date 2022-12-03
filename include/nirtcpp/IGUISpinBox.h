@@ -1,9 +1,9 @@
 // Copyright (C) 2006-2012 Michael Zeilfelder
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_SPIN_BOX_H_INCLUDED
-#define IRR_I_GUI_SPIN_BOX_H_INCLUDED
+#ifndef NIRT_I_GUI_SPIN_BOX_H_INCLUDED
+#define NIRT_I_GUI_SPIN_BOX_H_INCLUDED
 
 #include "IGUIElement.h"
 
@@ -14,12 +14,12 @@ namespace gui
 	class IGUIEditBox;
 
 	//! Enumeration bitflag for when to validate the text typed into the spinbox
-	//! Default used by Irrlicht is: (EGUI_SBV_ENTER|EGUI_SBV_LOSE_FOCUS)
+	//! Default used by Nirtcpp is: (EGUI_SBV_ENTER|EGUI_SBV_LOSE_FOCUS)
 	enum EGUI_SPINBOX_VALIDATION
 	{
 		//! Does not validate typed text, probably a bad idea setting this usually.
 		EGUI_SBV_NEVER  = 0,
-		//! Validate on each change. Was default up to Irrlicht 1.8
+		//! Validate on each change. Was default up to Nirtcpp 1.8
 		EGUI_SBV_CHANGE = 1,
 		//! Validate when enter was pressed
 		EGUI_SBV_ENTER = 2,
@@ -101,4 +101,4 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // IRR_I_GUI_SPIN_BOX_H_INCLUDED
+#endif // NIRT_I_GUI_SPIN_BOX_H_INCLUDED

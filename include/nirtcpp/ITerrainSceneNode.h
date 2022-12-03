@@ -1,14 +1,14 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 // The code for the TerrainSceneNode is based on the terrain renderer by
 // Soconne and the GeoMipMapSceneNode developed by Spintz. They made their
-// code available for Irrlicht and allowed it to be distributed under this
+// code available for Nirtcpp and allowed it to be distributed under this
 // licence. I only modified some parts. A lot of thanks go to them.
 
-#ifndef IRR_I_TERRAIN_SCENE_NODE_H
-#define IRR_I_TERRAIN_SCENE_NODE_H
+#ifndef NIRT_I_TERRAIN_SCENE_NODE_H
+#define NIRT_I_TERRAIN_SCENE_NODE_H
 
 #include "ETerrainElements.h"
 #include "ISceneNode.h"
@@ -27,7 +27,7 @@ namespace scene
 
 	//! A scene node for displaying terrain using the geo mip map algorithm.
 	/** The code for the TerrainSceneNode is based on the Terrain renderer by Soconne and
-	 * the GeoMipMapSceneNode developed by Spintz. They made their code available for Irrlicht
+	 * the GeoMipMapSceneNode developed by Spintz. They made their code available for Nirtcpp
 	 * and allowed it to be distributed under this licence. I only modified some parts.
 	 * A lot of thanks go to them.
 	 *
@@ -186,4 +186,4 @@ namespace scene
 } // end namespace irr
 
 
-#endif // IRR_I_TERRAIN_SCENE_NODE_H
+#endif // NIRT_I_TERRAIN_SCENE_NODE_H

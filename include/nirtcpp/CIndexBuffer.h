@@ -1,9 +1,9 @@
 // Copyright (C) 2008-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_INDEX_BUFFER_H_INCLUDED
-#define IRR_C_INDEX_BUFFER_H_INCLUDED
+#ifndef NIRT_C_INDEX_BUFFER_H_INCLUDED
+#define NIRT_C_INDEX_BUFFER_H_INCLUDED
 
 #include "IIndexBuffer.h"
 
@@ -40,46 +40,46 @@ namespace scene
 		public:
 			core::array<T> Indices;
 
-			virtual u32 stride() const IRR_OVERRIDE {return sizeof(T);}
+			virtual u32 stride() const override {return sizeof(T);}
 
-			virtual u32 size() const IRR_OVERRIDE {return Indices.size();}
+			virtual u32 size() const override {return Indices.size();}
 
-			virtual void push_back(u32 value) IRR_OVERRIDE
+			virtual void push_back(u32 value) override
 			{
 				Indices.push_back((T)value);
 			}
 
-			virtual u32 operator [](u32 index) const IRR_OVERRIDE
+			virtual u32 operator [](u32 index) const override
 			{
 				return (u32)(Indices[index]);
 			}
 
-			virtual u32 getLast() IRR_OVERRIDE {return (u32)Indices.getLast();}
+			virtual u32 getLast() override {return (u32)Indices.getLast();}
 
-			virtual void setValue(u32 index, u32 value) IRR_OVERRIDE
+			virtual void setValue(u32 index, u32 value) override
 			{
 				Indices[index]=(T)value;
 			}
 
-			virtual void set_used(u32 usedNow) IRR_OVERRIDE
+			virtual void set_used(u32 usedNow) override
 			{
 				Indices.set_used(usedNow);
 			}
 
-			virtual void reallocate(u32 new_size, bool canShrink) IRR_OVERRIDE
+			virtual void reallocate(u32 new_size, bool canShrink) override
 			{
 				Indices.reallocate(new_size, canShrink);
 			}
 
-			virtual u32 allocated_size() const IRR_OVERRIDE
+			virtual u32 allocated_size() const override
 			{
 				return Indices.allocated_size();
 			}
 
-			virtual void* pointer() IRR_OVERRIDE  { return Indices.pointer(); }
-			virtual const void* const_pointer() const IRR_OVERRIDE  { return Indices.const_pointer(); }
+			virtual void* pointer() override  { return Indices.pointer(); }
+			virtual const void* const_pointer() const override  { return Indices.const_pointer(); }
 
-			virtual video::E_INDEX_TYPE getType() const IRR_OVERRIDE
+			virtual video::E_INDEX_TYPE getType() const override
 			{
 				if (sizeof(T)==sizeof(u16))
 					return video::EIT_16BIT;
@@ -110,7 +110,7 @@ namespace scene
 			delete Indices;
 		}
 
-		virtual void setType(video::E_INDEX_TYPE indexType) IRR_OVERRIDE
+		virtual void setType(video::E_INDEX_TYPE indexType) override
 		{
 			if ( Indices && Indices->getType() == indexType )
 				return;
@@ -144,74 +144,74 @@ namespace scene
 			Indices=NewIndices;
 		}
 
-		virtual void* getData() IRR_OVERRIDE {return Indices->pointer();}
-		virtual const void* getData() const IRR_OVERRIDE { return Indices->const_pointer(); }
+		virtual void* getData() override {return Indices->pointer();}
+		virtual const void* getData() const override { return Indices->const_pointer(); }
 
-		virtual video::E_INDEX_TYPE getType() const IRR_OVERRIDE {return Indices->getType();}
+		virtual video::E_INDEX_TYPE getType() const override {return Indices->getType();}
 
-		virtual u32 stride() const IRR_OVERRIDE {return Indices->stride();}
+		virtual u32 stride() const override {return Indices->stride();}
 
-		virtual u32 size() const IRR_OVERRIDE
+		virtual u32 size() const override
 		{
 			return Indices->size();
 		}
 
-		virtual void push_back(u32 value) IRR_OVERRIDE
+		virtual void push_back(u32 value) override
 		{
 			Indices->push_back(value);
 		}
 
-		virtual u32 operator [](u32 index) const IRR_OVERRIDE
+		virtual u32 operator [](u32 index) const override
 		{
 			return (*Indices)[index];
 		}
 
-		virtual u32 getLast() IRR_OVERRIDE
+		virtual u32 getLast() override
 		{
 			return Indices->getLast();
 		}
 
-		virtual void setValue(u32 index, u32 value) IRR_OVERRIDE
+		virtual void setValue(u32 index, u32 value) override
 		{
 			Indices->setValue(index, value);
 		}
 
-		virtual void set_used(u32 usedNow) IRR_OVERRIDE
+		virtual void set_used(u32 usedNow) override
 		{
 			Indices->set_used(usedNow);
 		}
 
-		virtual void reallocate(u32 new_size, bool canShrink=true) IRR_OVERRIDE
+		virtual void reallocate(u32 new_size, bool canShrink=true) override
 		{
 			Indices->reallocate(new_size, canShrink);
 		}
 
-		virtual u32 allocated_size() const IRR_OVERRIDE
+		virtual u32 allocated_size() const override
 		{
 			return Indices->allocated_size();
 		}
 
 		//! get the current hardware mapping hint
-		virtual E_HARDWARE_MAPPING getHardwareMappingHint() const IRR_OVERRIDE
+		virtual E_HARDWARE_MAPPING getHardwareMappingHint() const override
 		{
 			return MappingHint;
 		}
 
 		//! set the hardware mapping hint, for driver
-		virtual void setHardwareMappingHint( E_HARDWARE_MAPPING NewMappingHint ) IRR_OVERRIDE
+		virtual void setHardwareMappingHint( E_HARDWARE_MAPPING NewMappingHint ) override
 		{
 			MappingHint=NewMappingHint;
 		}
 
 		//! flags the mesh as changed, reloads hardware buffers
-		virtual void setDirty() IRR_OVERRIDE
+		virtual void setDirty() override
 		{
 			++ChangedID;
 		}
 
 		//! Get the currently used ID for identification of changes.
 		/** This shouldn't be used for anything outside the VideoDriver. */
-		virtual u32 getChangedID() const IRR_OVERRIDE {return ChangedID;}
+		virtual u32 getChangedID() const override {return ChangedID;}
 
 		E_HARDWARE_MAPPING MappingHint;
 		u32 ChangedID;

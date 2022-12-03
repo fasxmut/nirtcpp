@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_BSP_LOADER_
+#ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 
 #include "CQ3LevelMesh.h"
 #include "ISceneManager.h"
@@ -1041,7 +1041,7 @@ void CQ3LevelMesh::constructMesh()
 
 		if ( LoadParam.verbose > 1 )
 		{
-			snprintf_irr( buf, sizeof ( buf ),
+			snprintf_nirt( buf, sizeof ( buf ),
 				"quake3::constructMesh start to create %d faces, %d vertices,%d mesh vertices",
 				NumFaces,
 				NumVertices,
@@ -1082,7 +1082,7 @@ void CQ3LevelMesh::constructMesh()
 	{
 		LoadParam.endTime = os::Timer::getRealTime();
 
-		snprintf_irr( buf, sizeof ( buf ),
+		snprintf_nirt( buf, sizeof ( buf ),
 			"quake3::constructMesh needed %04u ms to create %d faces, %d vertices,%d mesh vertices",
 			LoadParam.endTime - LoadParam.startTime,
 			NumFaces,
@@ -1418,7 +1418,7 @@ void CQ3LevelMesh::createCurvedSurface_bezier(SMeshBufferLightMap* meshBuffer,
 	{
 		LoadParam.endTime = os::Timer::getRealTime();
 
-		snprintf_irr( buf, sizeof ( buf ),
+		snprintf_nirt( buf, sizeof ( buf ),
 			"quake3::createCurvedSurface_bezier needed %04u ms to create bezier patch.(%ux%u)",
 			LoadParam.endTime - LoadParam.startTime,
 			biquadWidth,
@@ -1803,7 +1803,7 @@ void CQ3LevelMesh::cleanMesh(SMesh *m, const bool texture0important)
 		LoadParam.startTime = os::Timer::getRealTime();
 		if ( LoadParam.verbose > 1 )
 		{
-			snprintf_irr( buf, sizeof ( buf ),
+			snprintf_nirt( buf, sizeof ( buf ),
 				"quake3::cleanMeshes start for %u meshes",
 				m->MeshBuffers.size()
 				);
@@ -1846,7 +1846,7 @@ void CQ3LevelMesh::cleanMesh(SMesh *m, const bool texture0important)
 			{
 				if ( LoadParam.verbose > 1 )
 				{
-					snprintf_irr( buf, sizeof ( buf ),
+					snprintf_nirt( buf, sizeof ( buf ),
 						"quake3::cleanMeshes cleaning mesh %d %d size",
 						blockstart,
 						blockcount
@@ -1862,7 +1862,7 @@ void CQ3LevelMesh::cleanMesh(SMesh *m, const bool texture0important)
 	if ( LoadParam.verbose > 0 )
 	{
 		LoadParam.endTime = os::Timer::getRealTime();
-		snprintf_irr( buf, sizeof ( buf ),
+		snprintf_nirt( buf, sizeof ( buf ),
 			"quake3::cleanMeshes needed %04u ms to clean %u of %u meshes",
 			LoadParam.endTime - LoadParam.startTime,
 			remove,
@@ -1882,7 +1882,7 @@ void CQ3LevelMesh::calcBoundingBoxes()
 
 		if ( LoadParam.verbose > 1 )
 		{
-			snprintf_irr( buf, sizeof ( buf ),
+			snprintf_nirt( buf, sizeof ( buf ),
 				"quake3::calcBoundingBoxes start create %d textures and %d lightmaps",
 				NumTextures,
 				NumLightMaps
@@ -1922,7 +1922,7 @@ void CQ3LevelMesh::calcBoundingBoxes()
 	{
 		LoadParam.endTime = os::Timer::getRealTime();
 
-		snprintf_irr( buf, sizeof ( buf ),
+		snprintf_nirt( buf, sizeof ( buf ),
 			"quake3::calcBoundingBoxes needed %04u ms to create %d textures and %d lightmaps",
 			LoadParam.endTime - LoadParam.startTime,
 			NumTextures,
@@ -1945,7 +1945,7 @@ void CQ3LevelMesh::loadTextures()
 
 		if ( LoadParam.verbose > 1 )
 		{
-			snprintf_irr( buf, sizeof ( buf ),
+			snprintf_nirt( buf, sizeof ( buf ),
 				"quake3::loadTextures start create %d textures and %d lightmaps",
 				NumTextures,
 				NumLightMaps
@@ -2046,7 +2046,7 @@ void CQ3LevelMesh::loadTextures()
 	{
 		LoadParam.endTime = os::Timer::getRealTime();
 
-		snprintf_irr( buf, sizeof ( buf ),
+		snprintf_nirt( buf, sizeof ( buf ),
 			"quake3::loadTextures needed %04u ms to create %d textures and %d lightmaps",
 			LoadParam.endTime - LoadParam.startTime,
 			NumTextures,
@@ -2079,4 +2079,4 @@ E_ANIMATED_MESH_TYPE CQ3LevelMesh::getMeshType() const
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BSP_LOADER_
+#endif // _NIRT_COMPILE_WITH_BSP_LOADER_

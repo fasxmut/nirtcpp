@@ -1,8 +1,8 @@
-// This file is part of the "Irrlicht Engine".
+// This file is part of the "Nirtcpp Engine".
 // written by Reinhard Ostermeier, reinhard@nospam.r-ostermeier.de
 
-#ifndef IRR_I_GUI_IMAGE_LIST_H_INCLUDED
-#define IRR_I_GUI_IMAGE_LIST_H_INCLUDED
+#ifndef NIRT_I_GUI_IMAGE_LIST_H_INCLUDED
+#define NIRT_I_GUI_IMAGE_LIST_H_INCLUDED
 
 #include "IGUIElement.h"
 #include "rect.h"

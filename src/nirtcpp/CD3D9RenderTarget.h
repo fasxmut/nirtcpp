@@ -1,13 +1,13 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_OPEN_GL_RENDER_TARGET_H_INCLUDED
-#define IRR_C_OPEN_GL_RENDER_TARGET_H_INCLUDED
+#ifndef NIRT_C_OPEN_GL_RENDER_TARGET_H_INCLUDED
+#define NIRT_C_OPEN_GL_RENDER_TARGET_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "IRenderTarget.h"
 
@@ -29,7 +29,7 @@ namespace irr
 			CD3D9RenderTarget(CD3D9Driver* driver);
 			virtual ~CD3D9RenderTarget();
 
-			virtual void setTextures(ITexture* const * textures, u32 numTextures, ITexture* depthStencil, const E_CUBE_SURFACE* cubeSurfaces, u32 numCubeSurfaces) IRR_OVERRIDE;
+			virtual void setTextures(ITexture* const * textures, u32 numTextures, ITexture* depthStencil, const E_CUBE_SURFACE* cubeSurfaces, u32 numCubeSurfaces) override;
 
 			const core::dimension2d<u32>& getSize() const;
 

@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CAttributes.h"
 #include "CAttributeImpl.h"
@@ -8,7 +8,7 @@
 #include "IXMLWriter.h"
 #include "IVideoDriver.h"
 
-#ifndef _IRR_COMPILE_WITH_XML_
+#ifndef _NIRT_COMPILE_WITH_XML_
 	#include "CXMLReader.h"	// for noXML
 #endif
 
@@ -1387,7 +1387,7 @@ void CAttributes::setAttribute(s32 index, void* userPointer)
 bool CAttributes::read(io::IXMLReader* reader, bool readCurrentElementOnly,
 					    const wchar_t* nonDefaultElementName)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	if (!reader)
 		return false;
 
@@ -1429,7 +1429,7 @@ bool CAttributes::read(io::IXMLReader* reader, bool readCurrentElementOnly,
 
 void CAttributes::readAttributeFromXML(const io::IXMLReader* reader)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	core::stringw element = reader->getNodeName();
 	core::stringc name = reader->getAttributeValue(L"name");
 
@@ -1587,7 +1587,7 @@ void CAttributes::readAttributeFromXML(const io::IXMLReader* reader)
 bool CAttributes::write(io::IXMLWriter* writer, bool writeXMLHeader,
 						const wchar_t* nonDefaultElementName)
 {
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 	if (!writer)
 		return false;
 

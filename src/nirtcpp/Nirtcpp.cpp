@@ -1,40 +1,40 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-static const char* const copyright = "Irrlicht Engine (c) 2002-2017 Nikolaus Gebhardt";	// put string in binary
+static const char* const copyright = "Nirtcpp Engine (c) 2002-2017 Nikolaus Gebhardt";	// put string in binary
 
-#ifdef _IRR_WINDOWS_
+#ifdef _NIRT_WINDOWS_
 	#include <windows.h>
 	#if defined(_DEBUG) && !defined(__GNUWIN32__) && !defined(_WIN32_WCE)
 		#include <crtdbg.h>
 	#endif // _DEBUG
 #endif
 
-#include "irrlicht.h"
-#ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
+#include "nirtcpp.h"
+#ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 #include "CIrrDeviceWin32.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_X11_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
 #include "CIrrDeviceLinux.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OSX_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_OSX_DEVICE_
 #include "CIrrDeviceOSX.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
 #include "CIrrDeviceSDL.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_FB_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_FB_DEVICE_
 #include "CIrrDeviceFB.h"
 #endif
 
-#ifdef _IRR_COMPILE_WITH_CONSOLE_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
 #include "CIrrDeviceConsole.h"
 #endif
 
@@ -48,7 +48,7 @@ namespace irr
 	{
 		(void)copyright;	// prevent unused variable warning
 
-		SIrrlichtCreationParameters p;
+		SNirtcppCreationParameters p;
 		p.DriverType = driverType;
 		p.WindowSize = windowSize;
 		p.Bits = (u8)bits;
@@ -60,37 +60,37 @@ namespace irr
 		return createDeviceEx(p);
 	}
 
-	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(const SIrrlichtCreationParameters& params)
+	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(const SNirtcppCreationParameters& params)
 	{
 
 		NirtcppDevice* dev = 0;
 
-#ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 		if (params.DeviceType == EIDT_WIN32 || (!dev && params.DeviceType == EIDT_BEST))
 			dev = new CIrrDeviceWin32(params);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_OSX_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_OSX_DEVICE_
 		if (params.DeviceType == EIDT_OSX || (!dev && params.DeviceType == EIDT_BEST))
 			dev = new CIrrDeviceMacOSX(params);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_X11_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
 		if (params.DeviceType == EIDT_X11 || (!dev && params.DeviceType == EIDT_BEST))
 			dev = new CIrrDeviceLinux(params);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
 		if (params.DeviceType == EIDT_SDL || (!dev && params.DeviceType == EIDT_BEST))
 			dev = new CIrrDeviceSDL(params);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_FB_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_FB_DEVICE_
 		if (params.DeviceType == EIDT_FRAMEBUFFER || (!dev && params.DeviceType == EIDT_BEST))
 			dev = new CIrrDeviceFB(params);
 #endif
 
-#ifdef _IRR_COMPILE_WITH_CONSOLE_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
 		if (params.DeviceType == EIDT_CONSOLE || (!dev && params.DeviceType == EIDT_BEST))
 			dev = new CIrrDeviceConsole(params);
 #endif
@@ -121,7 +121,7 @@ namespace video
 } // end namespace irr
 
 
-#if defined(_IRR_WINDOWS_API_) && !defined(_IRR_STATIC_LIB_)
+#if defined(_NIRT_WINDOWS_API_) && !defined(_NIRT_STATIC_LIB_)
 
 BOOL APIENTRY DllMain( HANDLE hModule,
                        DWORD  ul_reason_for_call,
@@ -132,7 +132,7 @@ BOOL APIENTRY DllMain( HANDLE hModule,
     switch (ul_reason_for_call)
 	{
 		case DLL_PROCESS_ATTACH:
-			#if defined(_DEBUG) && !defined(__GNUWIN32__) && !defined(__BORLANDC__) && !defined (_WIN32_WCE) && !defined (_IRR_XBOX_PLATFORM_)
+			#if defined(_DEBUG) && !defined(__GNUWIN32__) && !defined(__BORLANDC__) && !defined (_WIN32_WCE) && !defined (_NIRT_XBOX_PLATFORM_)
 				_CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF | _CRTDBG_ALLOC_MEM_DF);
 			#endif
 			break;
@@ -144,5 +144,5 @@ BOOL APIENTRY DllMain( HANDLE hModule,
     return TRUE;
 }
 
-#endif // defined(_IRR_WINDOWS_)
+#endif // defined(_NIRT_WINDOWS_)
 

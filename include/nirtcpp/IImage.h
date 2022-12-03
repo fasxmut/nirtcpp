@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_IMAGE_H_INCLUDED
-#define IRR_I_IMAGE_H_INCLUDED
+#ifndef NIRT_I_IMAGE_H_INCLUDED
+#define NIRT_I_IMAGE_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "position2d.h"
@@ -189,7 +189,7 @@ public:
 	depends on the color format of the image. For example if the color
 	format is ECF_A8R8G8B8, it is of u32. Be sure to call unlock() after
 	you don't need the pointer any more. */
-	IRR_DEPRECATED void* lock()
+	NIRT_DEPRECATED void* lock()
 	{
 		return getData();
 	}
@@ -197,7 +197,7 @@ public:
 	//! Unlock function.
 	/** Should be called after the pointer received by lock() is not
 	needed anymore. */
-	IRR_DEPRECATED void unlock()
+	NIRT_DEPRECATED void unlock()
 	{
 	}
 
@@ -367,14 +367,14 @@ public:
 	virtual void fill(const SColor &color) =0;
 
 	//! Inform whether the image is compressed
-	IRR_DEPRECATED bool isCompressed() const
+	NIRT_DEPRECATED bool isCompressed() const
 	{
 		return IImage::isCompressedFormat(Format);
 	}
 
 	//! Check whether the image has MipMaps
 	/** \return True if image has MipMaps, else false. */
-	IRR_DEPRECATED bool hasMipMaps() const
+	NIRT_DEPRECATED bool hasMipMaps() const
 	{
 		return (getMipMapsData() != 0);
 	}
@@ -504,7 +504,7 @@ public:
 	}
 
 // Define to check for all compressed image formats cases in a switch
-#define IRR_CASE_IIMAGE_COMPRESSED_FORMAT\
+#define NIRT_CASE_IIMAGE_COMPRESSED_FORMAT\
 	case ECF_DXT1:\
 	case ECF_DXT2:\
 	case ECF_DXT3:\
@@ -525,7 +525,7 @@ public:
 	{
 		switch(format)
 		{
-			IRR_CASE_IIMAGE_COMPRESSED_FORMAT
+			NIRT_CASE_IIMAGE_COMPRESSED_FORMAT
 				return true;
 			default:
 				return false;

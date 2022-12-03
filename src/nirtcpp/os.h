@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_OS_H_INCLUDED
-#define IRR_OS_H_INCLUDED
+#ifndef NIRT_OS_H_INCLUDED
+#define NIRT_OS_H_INCLUDED
 
 #include "IrrCompileConfig.h" // for endian check
 #include "irrTypes.h"

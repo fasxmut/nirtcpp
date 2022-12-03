@@ -36,7 +36,7 @@ If you get a compiling/linking problem like
 This is a problem introduced by the NVidia drivers. There are several solutions:
 A) Update your drivers. All versions with GLX 1.4 support (i.e. beginning with
   12/2005) will work.
-B) Define the symbol _IRR_GETPROCADDRESS_WORKAROUND_ during compilation of
+B) Define the symbol _NIRT_GETPROCADDRESS_WORKAROUND_ during compilation of
    COpenGLDriver.cpp, either by adding it to the compiler command line or by
    uncommenting the line defining this symbol inside the OpenGL driver source.
    This will force the use of glXGetProcAddressARB which has better chances to
@@ -46,7 +46,7 @@ If you get compiling or runtime problems regarding XF86VidMode, Xxf86vm.so, or
 the XFree86 VidMode extension you have also several solutions:
 A) Install the extension for your X server or the developer package in case of
    compiler/linker problems.
-B) Disable the VidMode usage by disabling the define _IRR_LINUX_X11_VIDMODE_ in
+B) Disable the VidMode usage by disabling the define _NIRT_LINUX_X11_VIDMODE_ in
    include/IrrCompileConfig.h
    In this case you might give the RandR extension a try (by enabling the
    next define in that file) which also provides fullscreen support under Linux.

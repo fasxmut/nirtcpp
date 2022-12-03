@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_FONT_BITMAP_H_INCLUDED
-#define IRR_I_GUI_FONT_BITMAP_H_INCLUDED
+#ifndef NIRT_I_GUI_FONT_BITMAP_H_INCLUDED
+#define NIRT_I_GUI_FONT_BITMAP_H_INCLUDED
 
 #include "IGUIFont.h"
 
@@ -19,7 +19,7 @@ class IGUIFontBitmap : public IGUIFont
 public:
 
 	//! Returns the type of this font
-	virtual EGUI_FONT_TYPE getType() const IRR_OVERRIDE { return EGFT_BITMAP; }
+	virtual EGUI_FONT_TYPE getType() const override { return EGFT_BITMAP; }
 
 	//! returns the parsed Symbol Information
 	virtual IGUISpriteBank* getSpriteBank() const = 0;
@@ -36,7 +36,7 @@ public:
 	kerning value. For example, EGFT_BITMAP will add the right kerning value of previousLetter to the
 	left side kerning value of thisLetter, then add the global value.
 	*/
-	virtual s32 getKerningWidth(const wchar_t* thisLetter=0, const wchar_t* previousLetter=0) const IRR_OVERRIDE = 0;
+	virtual s32 getKerningWidth(const wchar_t* thisLetter=0, const wchar_t* previousLetter=0) const override = 0;
 };
 
 } // end namespace gui

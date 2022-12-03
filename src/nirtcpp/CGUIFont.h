@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_FONT_H_INCLUDED
-#define IRR_C_GUI_FONT_H_INCLUDED
+#ifndef NIRT_C_GUI_FONT_H_INCLUDED
+#define NIRT_C_GUI_FONT_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIFontBitmap.h"
 #include "irrString.h"
@@ -52,32 +52,32 @@ public:
 	//! draws an text and clips it to the specified rectangle if wanted
 	virtual void draw(const core::stringw& text, const core::rect<s32>& position,
 			video::SColor color, bool hcenter=false,
-			bool vcenter=false, const core::rect<s32>* clip=0) IRR_OVERRIDE;
+			bool vcenter=false, const core::rect<s32>* clip=0) override;
 
 	//! returns the dimension of a text
-	virtual core::dimension2d<u32> getDimension(const wchar_t* text) const IRR_OVERRIDE;
+	virtual core::dimension2d<u32> getDimension(const wchar_t* text) const override;
 
 	//! Calculates the index of the character in the text which is on a specific position.
-	virtual s32 getCharacterFromPos(const wchar_t* text, s32 pixel_x) const IRR_OVERRIDE;
+	virtual s32 getCharacterFromPos(const wchar_t* text, s32 pixel_x) const override;
 
 	//! Returns the type of this font
-	virtual EGUI_FONT_TYPE getType() const IRR_OVERRIDE { return EGFT_BITMAP; }
+	virtual EGUI_FONT_TYPE getType() const override { return EGFT_BITMAP; }
 
 	//! set an Pixel Offset on Drawing ( scale position on width )
-	virtual void setKerningWidth (s32 kerning) IRR_OVERRIDE;
-	virtual void setKerningHeight (s32 kerning) IRR_OVERRIDE;
+	virtual void setKerningWidth (s32 kerning) override;
+	virtual void setKerningHeight (s32 kerning) override;
 
 	//! set an Pixel Offset on Drawing ( scale position on width )
-	virtual s32 getKerningWidth(const wchar_t* thisLetter=0, const wchar_t* previousLetter=0) const IRR_OVERRIDE;
-	virtual s32 getKerningHeight() const IRR_OVERRIDE;
+	virtual s32 getKerningWidth(const wchar_t* thisLetter=0, const wchar_t* previousLetter=0) const override;
+	virtual s32 getKerningHeight() const override;
 
 	//! gets the sprite bank
-	virtual IGUISpriteBank* getSpriteBank() const IRR_OVERRIDE;
+	virtual IGUISpriteBank* getSpriteBank() const override;
 
 	//! returns the sprite number from a given character
-	virtual u32 getSpriteNoFromChar(const wchar_t *c) const IRR_OVERRIDE;
+	virtual u32 getSpriteNoFromChar(const wchar_t *c) const override;
 
-	virtual void setInvisibleCharacters( const wchar_t *s ) IRR_OVERRIDE;
+	virtual void setInvisibleCharacters( const wchar_t *s ) override;
 
 private:
 
@@ -116,6 +116,6 @@ private:
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
-#endif // IRR_C_GUI_FONT_H_INCLUDED
+#endif // NIRT_C_GUI_FONT_H_INCLUDED

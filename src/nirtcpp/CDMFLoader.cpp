@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // This file was originally written by Salvatore Russo.
 // I (Nikolaus Gebhardt) did some minor modifications and changes to it and
-// integrated it into Irrlicht.
+// integrated it into Nirtcpp.
 // Thanks a lot to Salvatore for his work on this and that he gave me
-// his permission to add it into Irrlicht using the zlib license.
+// his permission to add it into Nirtcpp using the zlib license.
 /*
   CDMFLoader by Salvatore Russo (September 2005)
 
@@ -14,10 +14,10 @@
 */
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_DMF_LOADER_
+#ifdef _NIRT_COMPILE_WITH_DMF_LOADER_
 
 #ifdef _DEBUG
-#define _IRR_DMF_DEBUG_
+#define _NIRT_DMF_DEBUG_
 #include "os.h"
 #endif
 
@@ -105,19 +105,19 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 		dmfFace *faces=new dmfFace[header.numFaces];
 
 		//let's get the materials
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 		os::Printer::log("Loading materials", core::stringc(header.numMaterials).c_str());
 #endif
 		GetDMFMaterials(dmfRawFile, materiali, header.numMaterials);
 
 		//let's get vertices and faces
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 		os::Printer::log("Loading geometry");
 #endif
 		GetDMFVerticesFaces(dmfRawFile, verts, faces);
 
 		//create a meshbuffer for each material, then we'll remove empty ones
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 		os::Printer::log("Creating meshbuffers.");
 #endif
 		for (i=0; i<header.numMaterials; i++)
@@ -132,12 +132,12 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 		}
 
 		// Build the mesh buffers
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 		os::Printer::log("Adding geometry to mesh.");
 #endif
 		for (i = 0; i < header.numFaces; i++)
 		{
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 		os::Printer::log("Polygon with #vertices", core::stringc(faces[i].numVerts).c_str());
 #endif
 			if (faces[i].numVerts < 3)
@@ -219,7 +219,7 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 	}
 
 	// delete all buffers without geometry in it.
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 	os::Printer::log("Cleaning meshbuffers.");
 #endif
 	i = 0;
@@ -244,7 +244,7 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 		//load textures and lightmaps in materials.
 		//don't worry if you receive a could not load texture, cause if you don't need
 		//a particular material in your scene it will be loaded and then destroyed.
-#ifdef _IRR_DMF_DEBUG_
+#ifdef _NIRT_DMF_DEBUG_
 		os::Printer::log("Loading textures.");
 #endif
 		const bool use_mat_dirs=!SceneMgr->getParameters()->getAttributeAsBool(DMF_IGNORE_MATERIALS_DIRS);
@@ -273,7 +273,7 @@ IAnimatedMesh* CDMFLoader::createMesh(io::IReadFile* file)
 			{
 				video::SColor color(axtoi(materiali[i].textureName.c_str()));
 
-				//just for compatibility with older Irrlicht versions
+				//just for compatibility with older Nirtcpp versions
 				//to support transparent materials
 				if (color.getAlpha()!=255 && materiali[i].textureBlend==4)
 					driver->setTextureCreationFlag(video::ETCF_ALWAYS_32_BIT,true);
@@ -427,5 +427,5 @@ bool CDMFLoader::isALoadableFileExtension(const io::path& filename) const
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_DMF_LOADER_
+#endif // _NIRT_COMPILE_WITH_DMF_LOADER_
 

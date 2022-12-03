@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_PARTICLE_RING_EMITTER_H_INCLUDED
-#define IRR_I_PARTICLE_RING_EMITTER_H_INCLUDED
+#ifndef NIRT_I_PARTICLE_RING_EMITTER_H_INCLUDED
+#define NIRT_I_PARTICLE_RING_EMITTER_H_INCLUDED
 
 #include "IParticleEmitter.h"
 
@@ -36,7 +36,7 @@ public:
 	virtual f32 getRingThickness() const = 0;
 
 	//! Get emitter type
-	virtual E_PARTICLE_EMITTER_TYPE getType() const IRR_OVERRIDE { return EPET_RING; }
+	virtual E_PARTICLE_EMITTER_TYPE getType() const override { return EPET_RING; }
 };
 
 } // end namespace scene

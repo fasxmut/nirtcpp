@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 // compile flag for this file
 #undef USE_ZBUFFER
@@ -86,8 +86,8 @@ public:
 	CTR_transparent_reflection_2_layer(CBurningVideoDriver* driver);
 
 	//! draws an indexed triangle list
-	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) IRR_OVERRIDE;
-	virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) IRR_OVERRIDE;
+	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) override;
+	virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) override;
 
 private:
 	void fragmentShader();
@@ -804,7 +804,7 @@ void CTR_transparent_reflection_2_layer::drawTriangle(const s4DVertex* burning_r
 
 burning_namespace_end
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 burning_namespace_start
 
@@ -813,13 +813,13 @@ IBurningShader* createTriangleRendererTexture_transparent_reflection_2_layer(CBu
 {
 	/*
 	ETR_TRANSPARENT_REFLECTION_2_LAYER
-	Irrlicht EMT_REFLECTION_2_LAYER,EMT_TRANSPARENT_REFLECTION_2_LAYER
+	Nirtcpp EMT_REFLECTION_2_LAYER,EMT_TRANSPARENT_REFLECTION_2_LAYER
 	*/
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CTR_transparent_reflection_2_layer(driver);
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 

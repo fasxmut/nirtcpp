@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_SPRITE_BANK_H_INCLUDED
-#define IRR_C_GUI_SPRITE_BANK_H_INCLUDED
+#ifndef NIRT_C_GUI_SPRITE_BANK_H_INCLUDED
+#define NIRT_C_GUI_SPRITE_BANK_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUISpriteBank.h"
 
@@ -32,38 +32,38 @@ public:
 	CGUISpriteBank(IGUIEnvironment* env);
 	virtual ~CGUISpriteBank();
 
-	virtual core::array< core::rect<s32> >& getPositions() IRR_OVERRIDE;
-	virtual core::array< SGUISprite >& getSprites() IRR_OVERRIDE;
+	virtual core::array< core::rect<s32> >& getPositions() override;
+	virtual core::array< SGUISprite >& getSprites() override;
 
-	virtual u32 getTextureCount() const IRR_OVERRIDE;
-	virtual video::ITexture* getTexture(u32 index) const IRR_OVERRIDE;
-	virtual void addTexture(video::ITexture* texture) IRR_OVERRIDE;
-	virtual void setTexture(u32 index, video::ITexture* texture) IRR_OVERRIDE;
+	virtual u32 getTextureCount() const override;
+	virtual video::ITexture* getTexture(u32 index) const override;
+	virtual void addTexture(video::ITexture* texture) override;
+	virtual void setTexture(u32 index, video::ITexture* texture) override;
 
 	//! Add the texture and use it for a single non-animated sprite.
-	virtual s32 addTextureAsSprite(video::ITexture* texture) IRR_OVERRIDE;
+	virtual s32 addTextureAsSprite(video::ITexture* texture) override;
 
 	//! clears sprites, rectangles and textures
-	virtual void clear() IRR_OVERRIDE;
+	virtual void clear() override;
 
 	//! Draws a sprite in 2d with position and color
 	virtual void draw2DSprite(u32 index, const core::position2di& pos, const core::rect<s32>* clip=0,
 				const video::SColor& color= video::SColor(255,255,255,255),
-				u32 starttime=0, u32 currenttime=0, bool loop=true, bool center=false) IRR_OVERRIDE;
+				u32 starttime=0, u32 currenttime=0, bool loop=true, bool center=false) override;
 
 	//! Draws a sprite in 2d with destination rectangle and colors
 	virtual void draw2DSprite(u32 index, const core::rect<s32>& destRect,
 			const core::rect<s32>* clip=0,
 			const video::SColor * const colors=0,
 			u32 timeTicks = 0,
-			bool loop=true) IRR_OVERRIDE;
+			bool loop=true) override;
 
 	//! Draws a sprite batch in 2d using an array of positions and a color
 	virtual void draw2DSpriteBatch(const core::array<u32>& indices, const core::array<core::position2di>& pos,
 			const core::rect<s32>* clip=0,
 			const video::SColor& color= video::SColor(255,255,255,255),
 			u32 starttime=0, u32 currenttime=0,
-			bool loop=true, bool center=false) IRR_OVERRIDE;
+			bool loop=true, bool center=false) override;
 
 protected:
 
@@ -87,6 +87,6 @@ protected:
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
-#endif // IRR_C_GUI_SPRITE_BANK_H_INCLUDED
+#endif // NIRT_C_GUI_SPRITE_BANK_H_INCLUDED

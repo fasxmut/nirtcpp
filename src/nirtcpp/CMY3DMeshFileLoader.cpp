@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // This file was originally written by ZDimitor.
 
@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------------
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_MY3D_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MY3D_LOADER_
 
 #include "CMY3DMeshFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -882,5 +882,5 @@ const core::array<ISceneNode*>& CMY3DMeshFileLoader::getChildNodes() const
 } // end namespace scnene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_MY3D_LOADER_
+#endif // _NIRT_COMPILE_WITH_MY3D_LOADER_
 

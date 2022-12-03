@@ -1,6 +1,6 @@
 // Copyright (C) 2017 Michael Zeilfelder
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_OVERRIDE_MATERIAL_H_INCLUDED
 #define S_OVERRIDE_MATERIAL_H_INCLUDED

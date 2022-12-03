@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CGUIFileOpenDialog.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include <locale.h>
 
@@ -382,7 +382,7 @@ void CGUIFileOpenDialog::deserializeAttributes(io::IAttributes* in, io::SAttribu
 
 void CGUIFileOpenDialog::pathToStringW(irr::core::stringw& result, const irr::io::path& p)
 {
-#ifndef _IRR_WCHAR_FILESYSTEM
+#ifndef _NIRT_WCHAR_FILESYSTEM
 	char* oldLocale = setlocale(LC_CTYPE, NULL);
 	setlocale(LC_CTYPE,"");	// multibyteToWString is affected by LC_CTYPE. Filenames seem to need the system-locale.
 	core::multibyteToWString(result, p);
@@ -451,4 +451,4 @@ void CGUIFileOpenDialog::sendCancelEvent()
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_

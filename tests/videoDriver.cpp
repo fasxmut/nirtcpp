@@ -9,7 +9,7 @@ using namespace core;
 /** Test various things in video drivers. */
 bool testVideoDriver(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device =
+	NirtcppDevice *device =
 		createDevice(driverType, dimension2d<u32>(160, 120));
 
 	if (!device)

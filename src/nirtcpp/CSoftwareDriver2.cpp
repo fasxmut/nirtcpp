@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "CSoftwareDriver2.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 #include "SoftwareDriver2_helper.h"
 #include "CSoftwareTexture.h"
@@ -376,7 +376,7 @@ static void image_fill(irr::video::IImage* image, const irr::video::SColor& colo
 
 
 //setup Antialias. v0.52 uses as Interlaced
-void get_scale(interlaced_control& o, const irr::SIrrlichtCreationParameters& params)
+void get_scale(interlaced_control& o, const irr::SNirtcppCreationParameters& params)
 {
 	o.raw = 0;
 	o.bypass = 1;
@@ -454,7 +454,7 @@ void get_scale(interlaced_control& o, const irr::SIrrlichtCreationParameters& pa
 	if (o.enable || o.target_scalex || o.tex_scalex)
 	{
 		char buf[256];
-		snprintf_irr(buf, sizeof(buf), "Burningvideo: Interlaced:%u,%u target:%u,%u tex:%u,%u",
+		snprintf_nirt(buf, sizeof(buf), "Burningvideo: Interlaced:%u,%u target:%u,%u tex:%u,%u",
 			o.enable,
 			o.bypass,
 			o.target_scalex,
@@ -468,11 +468,11 @@ void get_scale(interlaced_control& o, const irr::SIrrlichtCreationParameters& pa
 
 #if 0
 //code snippets
-#include <IrrlichtDevice.h>
+#include <NirtcppDevice.h>
 #include <ICameraSceneNode.h>
 #include <ISceneManager.h>
 #include <EDriverTypes.h>
-void switch_between_ortho_and_perspective_projection(irr::IrrlichtDevice* device, irr::video::E_DRIVER_TYPE driverType)
+void switch_between_ortho_and_perspective_projection(irr::NirtcppDevice* device, irr::video::E_DRIVER_TYPE driverType)
 {
 	//switch between ortho and perspective projection
 	irr::scene::ICameraSceneNode* cam = device->getSceneManager()->addCameraSceneNode();
@@ -493,7 +493,7 @@ void switch_between_ortho_and_perspective_projection(irr::IrrlichtDevice* device
 	For using an alternative camera in the examples.
 	Try to translate the viewpoint (Maya internal CameraRotation)
 */
-static inline void switchToMayaCamera(irr::IrrlichtDevice* device)
+static inline void switchToMayaCamera(irr::NirtcppDevice* device)
 {
 	if (!device) return;
 
@@ -536,7 +536,7 @@ void fpu_exception(int on)
 burning_namespace_start
 
 //! constructor
-CBurningVideoDriver::CBurningVideoDriver(const irr::SIrrlichtCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
+CBurningVideoDriver::CBurningVideoDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
 	: CNullDriver(io, params.WindowSize), BackBuffer(0), Presenter(presenter),
 	WindowId(0), SceneSourceRect(0),
 	RenderTargetTexture(0), RenderTargetSurface(0), CurrentShader(0),
@@ -944,16 +944,16 @@ void CBurningVideoDriver::setTransform(E_TRANSFORMATION_STATE state, const core:
 		case ETS_TEXTURE_1:
 		case ETS_TEXTURE_2:
 		case ETS_TEXTURE_3:
-#if _IRR_MATERIAL_MAX_TEXTURES_>4
+#if _NIRT_MATERIAL_MAX_TEXTURES_>4
 		case ETS_TEXTURE_4:
 #endif
-#if _IRR_MATERIAL_MAX_TEXTURES_>5
+#if _NIRT_MATERIAL_MAX_TEXTURES_>5
 		case ETS_TEXTURE_5:
 #endif
-#if _IRR_MATERIAL_MAX_TEXTURES_>6
+#if _NIRT_MATERIAL_MAX_TEXTURES_>6
 		case ETS_TEXTURE_6:
 #endif
-#if _IRR_MATERIAL_MAX_TEXTURES_>7
+#if _NIRT_MATERIAL_MAX_TEXTURES_>7
 		case ETS_TEXTURE_7:
 #endif
 			if (0 == (flag[state] & ETF_IDENTITY))
@@ -1682,20 +1682,20 @@ void CBurningVideoDriver::VertexCache_map_source_format()
 	if (s0 != sizeof_s4DVertex || ((sizeof_s4DVertex * sizeof_s4DVertexPairRel) & 31))
 	{
 		os::Printer::log("BurningVideo vertex format compile problem", ELL_ERROR);
-		IRR_DEBUG_BREAK_IF(1);
+		NIRT_DEBUG_BREAK_IF(1);
 	}
 
 #if defined(ENV64BIT)
 	if (sizeof(void*) != 8)
 	{
 		os::Printer::log("BurningVideo pointer should be 8 bytes", ELL_ERROR);
-		IRR_DEBUG_BREAK_IF(1);
+		NIRT_DEBUG_BREAK_IF(1);
 	}
 
 	if (((unsigned long long)Transformation & 15) || ((unsigned long long)TransformationFlag & 15))
 	{
 		os::Printer::log("BurningVideo Matrix Stack not 16 byte aligned", ELL_ERROR);
-		IRR_DEBUG_BREAK_IF(1);
+		NIRT_DEBUG_BREAK_IF(1);
 	}
 #endif
 
@@ -1830,7 +1830,7 @@ void CBurningVideoDriver::VertexCache_fill(const u32 sourceIndex, const u32 dest
 	dest = VertexShader.mem.data + s4DVertex_ofs(destIndex);
 	dest->reset_interpolate();
 
-	//Irrlicht S3DVertex,S3DVertex2TCoords,S3DVertexTangents
+	//Nirtcpp S3DVertex,S3DVertex2TCoords,S3DVertexTangents
 	const S3DVertex* base = ((S3DVertex*)source);
 	const core::matrix4* matrix = Transformation[TransformationStack];
 
@@ -1845,7 +1845,7 @@ void CBurningVideoDriver::VertexCache_fill(const u32 sourceIndex, const u32 dest
 		sVec4 gl_Normal(base->Normal.X, base->Normal.Y, base->Normal.Z, 1.f);
 		sVec4 gl_Color; gl_Color.setA8R8G8B8(base->Color.color);
 
-		// Irrlicht TCoords and TCoords2 must be contiguous memory. baseTCoord has no 4 byte aligned start address!
+		// Nirtcpp TCoords and TCoords2 must be contiguous memory. baseTCoord has no 4 byte aligned start address!
 		sVec4 gl_MultiTexCoord[4];
 		const sVec2Pack* baseTCoord = (const sVec2Pack*)&base->TCoords.X;
 		for (u32 m = 0; m < array_size(gl_MultiTexCoord); ++m)
@@ -2273,7 +2273,7 @@ fftransform:
 		}
 		else if (m < VertexShader.vSize[VertexShader.vType].TexCooSize)
 		{
-			// Irrlicht TCoords and TCoords2 must be contiguous memory. baseTCoord has no 4 byte aligned start address!
+			// Nirtcpp TCoords and TCoords2 must be contiguous memory. baseTCoord has no 4 byte aligned start address!
 			const sVec2Pack* baseTCoord = (const sVec2Pack*)&base->TCoords.X;
 
 			tx = baseTCoord[m].x;
@@ -3160,7 +3160,7 @@ void CBurningVideoDriver::assignHardwareLight(SBurningShaderLight& l, const SLig
 		break;
 	}
 
-	//which means ETS_VIEW, irrlicht openGL
+	//which means ETS_VIEW, nirtcpp openGL
 	setTransform(ETS_WORLD, irr::core::IdentityMatrix);
 	transform_calc(ETS_MODEL_VIEW);
 	//transform_calc(ETS_NORMAL);
@@ -4818,19 +4818,19 @@ u32 CBurningVideoDriver::getOcclusionQueryResult(const scene::ISceneNode* node) 
 
 burning_namespace_end
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 
 burning_namespace_start
 
 //! creates a video driver
-IVideoDriver* createBurningVideoDriver(const irr::SIrrlichtCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
+IVideoDriver* createBurningVideoDriver(const irr::SNirtcppCreationParameters& params, io::IFileSystem* io, video::IImagePresenter* presenter)
 {
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CBurningVideoDriver(params, io, presenter);
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 burning_namespace_end

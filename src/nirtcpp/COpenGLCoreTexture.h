@@ -1,13 +1,13 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_OGLCORE_TEXTURE_H_INCLUDED
-#define IRR_C_OGLCORE_TEXTURE_H_INCLUDED
+#ifndef NIRT_C_OGLCORE_TEXTURE_H_INCLUDED
+#define NIRT_C_OGLCORE_TEXTURE_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#if defined(_IRR_COMPILE_WITH_OPENGL_) || defined(_IRR_COMPILE_WITH_OGLES1_) || defined(_IRR_COMPILE_WITH_OGLES2_)
+#if defined(_NIRT_COMPILE_WITH_OPENGL_) || defined(_NIRT_COMPILE_WITH_OGLES1_) || defined(_NIRT_COMPILE_WITH_OGLES2_)
 
 #include "irrArray.h"
 #include "SMaterialLayer.h"
@@ -19,7 +19,7 @@
 
 // Check if GL version we compile with should have the glGenerateMipmap function.
 #if defined(GL_VERSION_3_0) || defined(GL_ES_VERSION_2_0)
-	#define IRR_OPENGL_HAS_glGenerateMipmap
+	#define NIRT_OPENGL_HAS_glGenerateMipmap
 #endif
 
 namespace irr
@@ -54,7 +54,7 @@ public:
 		TextureName(0), InternalFormat(GL_RGBA), PixelFormat(GL_RGBA), PixelType(GL_UNSIGNED_BYTE), Converter(0), LockReadOnly(false), LockImage(0), LockLayer(0),
 		KeepImage(false), MipLevelStored(0), LegacyAutoGenerateMipMaps(false)
 	{
-		IRR_DEBUG_BREAK_IF(images.size() == 0)
+		NIRT_DEBUG_BREAK_IF(images.size() == 0)
 
 		DriverType = Driver->getDriverType();
 		TextureType = TextureTypeIrrToGL(Type);
@@ -115,7 +115,7 @@ public:
 		}
 #endif
 
-#if !defined(IRR_OPENGL_HAS_glGenerateMipmap) && defined(GL_GENERATE_MIPMAP)
+#if !defined(NIRT_OPENGL_HAS_glGenerateMipmap) && defined(GL_GENERATE_MIPMAP)
 		if (HasMipMaps)
 		{
 			LegacyAutoGenerateMipMaps = Driver->getTextureCreationFlag(ETCF_AUTO_GENERATE_MIP_MAPS)  &&
@@ -225,7 +225,7 @@ public:
 			Images[i]->drop();
 	}
 
-	virtual void* lock(E_TEXTURE_LOCK_MODE mode = ETLM_READ_WRITE, u32 mipmapLevel=0, u32 layer = 0, E_TEXTURE_LOCK_FLAGS lockFlags = ETLF_FLIP_Y_UP_RTT) IRR_OVERRIDE
+	virtual void* lock(E_TEXTURE_LOCK_MODE mode = ETLM_READ_WRITE, u32 mipmapLevel=0, u32 layer = 0, E_TEXTURE_LOCK_FLAGS lockFlags = ETLF_FLIP_Y_UP_RTT) override
 	{
 		if (LockImage)
 			return getLockImageData(MipLevelStored);
@@ -239,7 +239,7 @@ public:
 
 		if (KeepImage)
 		{
-			IRR_DEBUG_BREAK_IF(LockLayer > Images.size())
+			NIRT_DEBUG_BREAK_IF(LockLayer > Images.size())
 
 			if ( mipmapLevel == 0 || (Images[LockLayer] && Images[LockLayer]->getMipMapsData(mipmapLevel)) )
 			{
@@ -269,7 +269,7 @@ public:
 
 				if (tmpTextureType == GL_TEXTURE_CUBE_MAP)
 				{
-					IRR_DEBUG_BREAK_IF(layer > 5)
+					NIRT_DEBUG_BREAK_IF(layer > 5)
 
 					tmpTextureType = GL_TEXTURE_CUBE_MAP_POSITIVE_X + layer;
 				}
@@ -366,7 +366,7 @@ public:
 		return (LockImage) ? getLockImageData(MipLevelStored) : 0;
 	}
 
-	virtual void unlock() IRR_OVERRIDE
+	virtual void unlock() override
 	{
 		if (!LockImage)
 			return;
@@ -388,7 +388,7 @@ public:
 		LockLayer = 0;
 	}
 
-	virtual void regenerateMipMapLevels(void* data = 0, u32 layer = 0) IRR_OVERRIDE
+	virtual void regenerateMipMapLevels(void* data = 0, u32 layer = 0) override
 	{
 		if (!HasMipMaps || LegacyAutoGenerateMipMaps || (Size.Width <= 1 && Size.Height <= 1))
 			return;
@@ -423,7 +423,7 @@ public:
 		}
 		else
 		{
-#ifdef IRR_OPENGL_HAS_glGenerateMipmap
+#ifdef NIRT_OPENGL_HAS_glGenerateMipmap
 			glEnable(GL_TEXTURE_2D);	// Hack some ATI cards need this glEnable according to https://www.khronos.org/opengl/wiki/Common_Mistakes
 			Driver->irrGlGenerateMipmap(TextureType);
 #endif
@@ -562,7 +562,7 @@ protected:
 
 		if (tmpTextureType == GL_TEXTURE_CUBE_MAP)
 		{
-			IRR_DEBUG_BREAK_IF(layer > 5)
+			NIRT_DEBUG_BREAK_IF(layer > 5)
 
 			tmpTextureType = GL_TEXTURE_CUBE_MAP_POSITIVE_X + layer;
 		}

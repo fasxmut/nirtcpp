@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_OCTREE_SCENE_NODE_H_INCLUDED
-#define IRR_C_OCTREE_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_OCTREE_SCENE_NODE_H_INCLUDED
+#define NIRT_C_OCTREE_SCENE_NODE_H_INCLUDED
 
 #include "IOctreeSceneNode.h"
 #include "Octree.h"
@@ -26,13 +26,13 @@ namespace scene
 		//! destructor
 		virtual ~COctreeSceneNode();
 
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! renders the node.
-		virtual void render() IRR_OVERRIDE;
+		virtual void render() override;
 
 		//! returns the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 		//! creates the tree
 		bool createTree(IMesh* mesh);
@@ -42,41 +42,41 @@ namespace scene
 		//! This function is needed for inserting the node into the scene hierarchy on a
 		//! optimal position for minimizing renderstate changes, but can also be used
 		//! to directly modify the material of a scene node.
-		virtual video::SMaterial& getMaterial(u32 i) IRR_OVERRIDE;
+		virtual video::SMaterial& getMaterial(u32 i) override;
 
 		//! returns amount of materials used by this scene node.
-		virtual u32 getMaterialCount() const IRR_OVERRIDE;
+		virtual u32 getMaterialCount() const override;
 
 		//! Writes attributes of the scene node.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override;
 
 		//! Reads attributes of the scene node.
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_OCTREE; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_OCTREE; }
 
 		//! Sets a new mesh to display
-		virtual void setMesh(IMesh* mesh) IRR_OVERRIDE;
+		virtual void setMesh(IMesh* mesh) override;
 
 		//! Get the currently defined mesh for display.
-		virtual IMesh* getMesh(void) IRR_OVERRIDE;
+		virtual IMesh* getMesh(void) override;
 
 		//! Sets if the scene node should not copy the materials of the mesh but use them in a read only style.
-		virtual void setReadOnlyMaterials(bool readonly) IRR_OVERRIDE;
+		virtual void setReadOnlyMaterials(bool readonly) override;
 
 		//! Check if the scene node should not copy the materials of the mesh but use them in a read only style
-		virtual bool isReadOnlyMaterials() const IRR_OVERRIDE;
+		virtual bool isReadOnlyMaterials() const override;
 
 		//! Creates shadow volume scene node as child of this node
 		//! and returns a pointer to it.
 		virtual IShadowVolumeSceneNode* addShadowVolumeSceneNode(const IMesh* shadowMesh,
-			s32 id, bool zfailmethod=true, f32 infinity=10000.0f) IRR_OVERRIDE;
+			s32 id, bool zfailmethod=true, f32 infinity=10000.0f) override;
 
 		//! Removes a child from this scene node.
 		//! Implemented here, to be able to remove the shadow properly, if there is one,
 		//! or to remove attached child.
-		virtual bool removeChild(ISceneNode* child) IRR_OVERRIDE;
+		virtual bool removeChild(ISceneNode* child) override;
 
 		// TODO: Currently using VBO's will crash when reloading the model.
 		//       The reason is that COctreeSceneNode uses Octree::SMeshChunk 
@@ -88,13 +88,13 @@ namespace scene
 		virtual void setUseVBO(EOCTREENODE_VBO useVBO);
 
 		//! Get if/how vertex buffer object are used for the meshbuffers
-		virtual EOCTREENODE_VBO getUseVBO() const IRR_OVERRIDE;
+		virtual EOCTREENODE_VBO getUseVBO() const override;
 
 		//! Set the kind of tests polygons do for visibility against the camera
-		virtual void setPolygonChecks(EOCTREE_POLYGON_CHECKS checks) IRR_OVERRIDE;
+		virtual void setPolygonChecks(EOCTREE_POLYGON_CHECKS checks) override;
 
 		//! Get the kind of tests polygons do for visibility against the camera
-		virtual EOCTREE_POLYGON_CHECKS getPolygonChecks() const IRR_OVERRIDE;
+		virtual EOCTREE_POLYGON_CHECKS getPolygonChecks() const override;
 
 	private:
 

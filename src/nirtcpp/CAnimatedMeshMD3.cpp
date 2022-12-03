@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Fabio Concas / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_MD3_LOADER_
+#ifdef _NIRT_COMPILE_WITH_MD3_LOADER_
 
 #include "CAnimatedMeshMD3.h"
 #include "os.h"
@@ -209,7 +209,7 @@ IMesh* CAnimatedMeshMD3::getMesh(s32 frame, s32 detailLevel, s32 startFrameLoop,
 }
 
 
-//! create a Irrlicht MeshBuffer for a MD3 MeshBuffer
+//! create a Nirtcpp MeshBuffer for a MD3 MeshBuffer
 IMeshBuffer * CAnimatedMeshMD3::createMeshBuffer(const SMD3MeshBuffer* source,
 							 const io::IFileSystem* fs, video::IVideoDriver * driver)
 {
@@ -465,4 +465,4 @@ E_ANIMATED_MESH_TYPE CAnimatedMeshMD3::getMeshType() const
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_MD3_LOADER_
+#endif // _NIRT_COMPILE_WITH_MD3_LOADER_

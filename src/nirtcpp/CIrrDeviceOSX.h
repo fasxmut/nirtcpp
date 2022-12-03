@@ -1,14 +1,14 @@
 // Copyright (C) 2005-2006 Etienne Petitjean
 // Copyright (C) 2007-2012 Christian Stehno
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in Irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#ifndef __C_IRR_DEVICE_OSX_H_INCLUDED__
-#define __C_IRR_DEVICE_OSX_H_INCLUDED__
+#ifndef __C_NIRT_DEVICE_OSX_H_INCLUDED__
+#define __C_NIRT_DEVICE_OSX_H_INCLUDED__
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_OSX_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_OSX_DEVICE_
 
 #include "CIrrDeviceStub.h"
 #include "NirtcppDevice.h"
@@ -41,66 +41,66 @@ namespace irr
 	public:
 
 		//! constructor
-		CIrrDeviceMacOSX(const SIrrlichtCreationParameters& params);
+		CIrrDeviceMacOSX(const SNirtcppCreationParameters& params);
 
 		//! destructor
 		virtual ~CIrrDeviceMacOSX();
 
 		//! runs the device. Returns false if device wants to be deleted
-		virtual bool run() IRR_OVERRIDE;
+		virtual bool run() override;
 
 		//! Cause the device to temporarily pause execution and let other processes to run
-		// This should bring down processor usage without major performance loss for Irrlicht
-		virtual void yield() IRR_OVERRIDE;
+		// This should bring down processor usage without major performance loss for Nirtcpp
+		virtual void yield() override;
 
 		//! Pause execution and let other processes to run for a specified amount of time.
-		virtual void sleep(u32 timeMs, bool pauseTimer) IRR_OVERRIDE;
+		virtual void sleep(u32 timeMs, bool pauseTimer) override;
 
 		//! sets the caption of the window
-		virtual void setWindowCaption(const wchar_t* text) IRR_OVERRIDE;
+		virtual void setWindowCaption(const wchar_t* text) override;
 
 		//! returns if window is active. if not, nothing need to be drawn
-		virtual bool isWindowActive() const IRR_OVERRIDE;
+		virtual bool isWindowActive() const override;
 
-		//! Checks if the Irrlicht window has focus
-		virtual bool isWindowFocused() const IRR_OVERRIDE;
+		//! Checks if the Nirtcpp window has focus
+		virtual bool isWindowFocused() const override;
 
-		//! Checks if the Irrlicht window is minimized
-		virtual bool isWindowMinimized() const IRR_OVERRIDE;
+		//! Checks if the Nirtcpp window is minimized
+		virtual bool isWindowMinimized() const override;
 
 		//! presents a surface in the client area
-		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0 ) IRR_OVERRIDE;
+		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0 ) override;
 
 		//! notifies the device that it should close itself
-		virtual void closeDevice() IRR_OVERRIDE;
+		virtual void closeDevice() override;
 
 		//! Sets if the window should be resizable in windowed mode.
-		virtual void setResizable(bool resize) IRR_OVERRIDE;
+		virtual void setResizable(bool resize) override;
 
 		//! Returns true if the window is resizable, false if not
 		virtual bool isResizable() const;
 
 		//! Minimizes the window if possible
-		virtual void minimizeWindow() IRR_OVERRIDE;
+		virtual void minimizeWindow() override;
 
 		//! Maximizes the window if possible.
-		virtual void maximizeWindow() IRR_OVERRIDE;
+		virtual void maximizeWindow() override;
 
 		//! Restore the window to normal size if possible.
-		virtual void restoreWindow() IRR_OVERRIDE;
+		virtual void restoreWindow() override;
 
         //! Get the position of this window on screen
-        virtual core::position2di getWindowPosition() IRR_OVERRIDE;
+        virtual core::position2di getWindowPosition() override;
 
 		//! Activate any joysticks, and generate events for them.
-		virtual bool activateJoysticks(core::array<SJoystickInfo> & joystickInfo) IRR_OVERRIDE;
+		virtual bool activateJoysticks(core::array<SJoystickInfo> & joystickInfo) override;
 
 		//! \return Returns a pointer to a list with all video modes
 		//! supported by the gfx adapter.
-		virtual video::IVideoModeList* getVideoModeList() IRR_OVERRIDE;
+		virtual video::IVideoModeList* getVideoModeList() override;
 
 		//! Get the device type
-		virtual E_DEVICE_TYPE getType() const IRR_OVERRIDE
+		virtual E_DEVICE_TYPE getType() const override
 		{
 				return EIDT_OSX;
 		}
@@ -131,39 +131,39 @@ namespace irr
 			}
 
 			//! Changes the visible state of the mouse cursor.
-			virtual void setVisible(bool visible)  IRR_OVERRIDE
+			virtual void setVisible(bool visible)  override
 			{
 				IsVisible = visible;
 				Device->setCursorVisible(visible);
 			}
 
 			//! Returns if the cursor is currently visible.
-			virtual bool isVisible() const  IRR_OVERRIDE
+			virtual bool isVisible() const  override
 			{
 				return IsVisible;
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(const core::position2d<f32> &pos)  IRR_OVERRIDE
+			virtual void setPosition(const core::position2d<f32> &pos)  override
 			{
 				setPosition(pos.X, pos.Y);
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(f32 x, f32 y)  IRR_OVERRIDE
+			virtual void setPosition(f32 x, f32 y)  override
 			{
 				setPosition((s32)(x*WindowSize.Width), (s32)(y*WindowSize.Height));
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(const core::position2d<s32> &pos) IRR_OVERRIDE
+			virtual void setPosition(const core::position2d<s32> &pos) override
 			{
 				if (CursorPos.X != pos.X || CursorPos.Y != pos.Y)
 					setPosition(pos.X, pos.Y);
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(s32 x, s32 y) IRR_OVERRIDE
+			virtual void setPosition(s32 x, s32 y) override
 			{
 				if (UseReferenceRect)
 				{
@@ -176,13 +176,13 @@ namespace irr
 			}
 
 			//! Returns the current position of the mouse cursor.
-			virtual const core::position2d<s32>& getPosition(bool updateCursor) IRR_OVERRIDE
+			virtual const core::position2d<s32>& getPosition(bool updateCursor) override
 			{
 				return CursorPos;
 			}
 
 			//! Returns the current position of the mouse cursor.
-			virtual core::position2d<f32> getRelativePosition(bool updateCursor) IRR_OVERRIDE
+			virtual core::position2d<f32> getRelativePosition(bool updateCursor) override
 			{
 				if (!UseReferenceRect)
 				{
@@ -195,7 +195,7 @@ namespace irr
 			}
 
 			//! Sets an absolute reference rect for calculating the cursor position.
-			virtual void setReferenceRect(core::rect<s32>* rect=0)  IRR_OVERRIDE
+			virtual void setReferenceRect(core::rect<s32>* rect=0)  override
 			{
 				if (rect)
 				{
@@ -259,6 +259,6 @@ namespace irr
 
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_OSX_DEVICE_
-#endif // __C_IRR_DEVICE_MACOSX_H_INCLUDED__
+#endif // _NIRT_COMPILE_WITH_OSX_DEVICE_
+#endif // __C_NIRT_DEVICE_MACOSX_H_INCLUDED__
 

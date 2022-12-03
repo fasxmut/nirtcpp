@@ -1,22 +1,22 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_OPENGL_COMMON_H_INCLUDED
-#define IRR_C_OPENGL_COMMON_H_INCLUDED
+#ifndef NIRT_C_OPENGL_COMMON_H_INCLUDED
+#define NIRT_C_OPENGL_COMMON_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 
-#if defined(_IRR_WINDOWS_API_)
+#if defined(_NIRT_WINDOWS_API_)
 	#define WIN32_LEAN_AND_MEAN
 	#include <windows.h>
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#define GL_GLEXT_LEGACY 1
 	#endif
 	#include <GL/gl.h>
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#include "glext.h"
 	#endif
 	#include "wglext.h"
@@ -25,16 +25,16 @@
 		#pragma comment(lib, "OpenGL32.lib")
 	#endif
 
-#elif defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+#elif defined(_NIRT_COMPILE_WITH_OSX_DEVICE_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#define GL_GLEXT_LEGACY 1
 	#endif
 	#include <OpenGL/gl.h>
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#include "glext.h"
 	#endif
-#elif defined(_IRR_COMPILE_WITH_SDL_DEVICE_) && !defined(_IRR_COMPILE_WITH_X11_DEVICE_)
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+#elif defined(_NIRT_COMPILE_WITH_SDL_DEVICE_) && !defined(_NIRT_COMPILE_WITH_X11_DEVICE_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#define GL_GLEXT_LEGACY 1
 		#define GLX_GLXEXT_LEGACY 1
 	#else
@@ -46,7 +46,7 @@
 	#include <SDL/SDL_opengl.h>
 	#include "glext.h"
 #else
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#define GL_GLEXT_LEGACY 1
 		#define GLX_GLXEXT_LEGACY 1
 	#else
@@ -55,7 +55,7 @@
 	#endif
 	#include <GL/gl.h>
 	#include <GL/glx.h>
-	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 	#include "glext.h"
 	#undef GLX_ARB_get_proc_address
 	#include "glxext.h"
@@ -169,8 +169,8 @@ typedef char GLchar;
 #endif
 #endif
 
-// To check if this header is in the current compile unit (different GL driver implementations use different "GLCommon" headers in Irrlicht)
-#define IRR_COMPILE_GL_COMMON
+// To check if this header is in the current compile unit (different GL driver implementations use different "GLCommon" headers in Nirtcpp)
+#define NIRT_COMPILE_GL_COMMON
 
 namespace irr
 {

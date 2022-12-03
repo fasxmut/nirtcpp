@@ -2,13 +2,13 @@
 #ifndef _TEST_UTILS_H_
 #define _TEST_UTILS_H_ 1
 
-#include "irrlicht.h"
+#include "nirtcpp.h"
 #include <assert.h>
 
 // Small hack. Some newer X11 systems can't handle switching drivers too fast (causing BadWindow errors in X_ChangeWindowAttributes).
 // Could be they don't like when Windows with different Visuals are created very quickly (it always happened after creating a new Window with different Visual to previous one).
 // timeMs value set by try&error
-#ifdef _IRR_POSIX_API_
+#ifdef _NIRT_POSIX_API_
 	#include <time.h>
 	#define SLOW_SWITCH \
 	do { \
@@ -25,7 +25,7 @@
 #define TestWithAllDrivers(X) \
 	logTestString("Running test " #X "\n"); \
 	for (u32 i=1; i<video::EDT_COUNT; ++i) \
-		if (video::E_DRIVER_TYPE(i) != video::DEPRECATED_EDT_DIRECT3D8_NO_LONGER_EXISTS && irr::IrrlichtDevice::isDriverSupported((irr::video::E_DRIVER_TYPE)i)) \
+		if (video::E_DRIVER_TYPE(i) != video::DEPRECATED_EDT_DIRECT3D8_NO_LONGER_EXISTS && irr::NirtcppDevice::isDriverSupported((irr::video::E_DRIVER_TYPE)i)) \
 		{\
 			SLOW_SWITCH; \
 			result &= X(video::E_DRIVER_TYPE(i));\
@@ -35,7 +35,7 @@
 	SLOW_SWITCH; \
 	logTestString("Running test " #X "\n"); \
 	for (u32 i=video::EDT_DIRECT3D9; i<video::EDT_COUNT; ++i) \
-		if (irr::IrrlichtDevice::isDriverSupported((irr::video::E_DRIVER_TYPE)i)) \
+		if (irr::NirtcppDevice::isDriverSupported((irr::video::E_DRIVER_TYPE)i)) \
 		{\
 			SLOW_SWITCH; \
 			result &= X(video::E_DRIVER_TYPE(i));\
@@ -64,7 +64,7 @@ extern bool binaryCompareFiles(const char * fileName1, const char * fileName2);
 extern bool xmlCompareFiles(irr::io::IFileSystem * fs, const char * fileName1, const char * fileName2);
 
 //! Compare two images, returning the degree to which they match.
-/** \param driver The Irrlicht video driver.
+/** \param driver The Nirtcpp video driver.
 	\param fileName1 The first image to compare.
 	\param fileName2 The second image to compare.
 	\return The match, from 0.f to 100.f */
@@ -72,7 +72,7 @@ extern float fuzzyCompareImages(irr::video::IVideoDriver * driver,
 		const char * fileName1, const char * fileName2);
 
 //! Take a screenshot and compare it against a reference screenshot in the tests/media subdirectory
-/** \param driver The Irrlicht video driver.
+/** \param driver The Nirtcpp video driver.
 	\param fileName The unique filename suffix that will be appended to the name of the video driver.
 	\param requiredMatch The degree to which the screenshot needs to match the reference image
 	in order to be considered a match.
@@ -83,7 +83,7 @@ extern bool takeScreenshotAndCompareAgainstReference(irr::video::IVideoDriver * 
 													irr::f32 requiredMatch = 99.f);
 
 //! Stabilize the screen background eg. eliminate problems like an aero transparency effects etc.
-/** \param driver The Irrlicht video driver.
+/** \param driver The Nirtcpp video driver.
 	\return true if required color is the same as a window background color. */
 extern void stabilizeScreenBackground(irr::video::IVideoDriver * driver,
 													irr::video::SColor color = irr::video::SColor(255, 255, 255, 255));

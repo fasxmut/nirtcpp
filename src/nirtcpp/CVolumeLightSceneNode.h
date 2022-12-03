@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // created by Dean Wadsworth aka Varmint Dec 31 2007
 
@@ -29,43 +29,43 @@ namespace scene
 
 		virtual ~CVolumeLightSceneNode();
 
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! renders the node.
-		virtual void render() IRR_OVERRIDE;
+		virtual void render() override;
 
 		//! returns the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 		//! returns the material based on the zero based index i.
-		virtual video::SMaterial& getMaterial(u32 i) IRR_OVERRIDE;
+		virtual video::SMaterial& getMaterial(u32 i) override;
 
 		//! returns amount of materials used by this scene node.
-		virtual u32 getMaterialCount() const IRR_OVERRIDE;
+		virtual u32 getMaterialCount() const override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_VOLUME_LIGHT; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_VOLUME_LIGHT; }
 
 		//! Writes attributes of the scene node.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options=0) const override;
 
 		//! Reads attributes of the scene node.
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options=0) override;
 
 		//! Creates a clone of this scene node and its children.
-		virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) IRR_OVERRIDE;
+		virtual ISceneNode* clone(ISceneNode* newParent=0, ISceneManager* newManager=0) override;
 
-		virtual void setSubDivideU(const u32 inU) IRR_OVERRIDE;
-		virtual void setSubDivideV(const u32 inV) IRR_OVERRIDE;
+		virtual void setSubDivideU(const u32 inU) override;
+		virtual void setSubDivideV(const u32 inV) override;
 
-		virtual u32 getSubDivideU() const IRR_OVERRIDE { return SubdivideU; }
-		virtual u32 getSubDivideV() const IRR_OVERRIDE { return SubdivideV; }
+		virtual u32 getSubDivideU() const override { return SubdivideU; }
+		virtual u32 getSubDivideV() const override { return SubdivideV; }
 
-		virtual void setFootColor(const video::SColor inColor) IRR_OVERRIDE;
-		virtual void setTailColor(const video::SColor inColor) IRR_OVERRIDE;
+		virtual void setFootColor(const video::SColor inColor) override;
+		virtual void setTailColor(const video::SColor inColor) override;
 
-		virtual video::SColor getFootColor() const IRR_OVERRIDE { return FootColor; }
-		virtual video::SColor getTailColor() const IRR_OVERRIDE { return TailColor; }
+		virtual video::SColor getFootColor() const override { return FootColor; }
+		virtual video::SColor getTailColor() const override { return TailColor; }
 
 	private:
 		void constructLight();

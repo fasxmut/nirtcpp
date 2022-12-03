@@ -2,7 +2,7 @@
 // No rights reserved: this software is in the public domain.
 
 #include "testUtils.h"
-#include <irrlicht.h>
+#include <nirtcpp.h>
 
 using namespace irr;
 using namespace core;
@@ -249,7 +249,7 @@ bool testTriangle3d(void)
 	}
 
 	bool testEigen = triangle3di(vector3di(250, 0, 0), vector3di(0, 0, 500), vector3di(500, 0, 500)).isPointInside(vector3di(300,0,300));
-	if ( !testEigen )	// test from Eigen from here: http://irrlicht.sourceforge.net/forum/viewtopic.php?f=7&t=44372&p=254331#p254331
+	if ( !testEigen )	// test from Eigen from here: http://nirtcpp.sourceforge.net/forum/viewtopic.php?f=7&t=44372&p=254331#p254331
 		logTestString("Test isPointInside fails with integers\n");
 	allExpected &= testEigen;
 

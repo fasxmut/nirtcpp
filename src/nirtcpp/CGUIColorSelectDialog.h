@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_COLOR_SELECT_DIALOG_H_INCLUDED
-#define IRR_C_GUI_COLOR_SELECT_DIALOG_H_INCLUDED
+#ifndef NIRT_C_GUI_COLOR_SELECT_DIALOG_H_INCLUDED
+#define NIRT_C_GUI_COLOR_SELECT_DIALOG_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIColorSelectDialog.h"
 #include "IGUIButton.h"
@@ -31,13 +31,13 @@ namespace gui
 		virtual ~CGUIColorSelectDialog();
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent& event) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
-		virtual video::SColor getColor() IRR_OVERRIDE;
-		virtual video::SColorHSL getColorHSL() IRR_OVERRIDE;
+		virtual video::SColor getColor() override;
+		virtual video::SColorHSL getColorHSL() override;
 
 	private:
 
@@ -69,6 +69,6 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 
-#endif // IRR_C_GUI_COLOR_SELECT_DIALOG_H_INCLUDED
+#endif // NIRT_C_GUI_COLOR_SELECT_DIALOG_H_INCLUDED

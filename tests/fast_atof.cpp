@@ -6,7 +6,7 @@
 using namespace irr;
 using namespace core;
 
-//! This was an older Irrlicht implementation, tested against for reference.
+//! This was an older Nirtcpp implementation, tested against for reference.
 static inline u32 old_strtol10(const char* in, const char** out=0)
 {
 	u32 value = 0;
@@ -21,7 +21,7 @@ static inline u32 old_strtol10(const char* in, const char** out=0)
 	return value;
 }
 
-//! This was an older Irrlicht implementation, tested against for reference.
+//! This was an older Nirtcpp implementation, tested against for reference.
 static inline const char* old_fast_atof_move( const char* c, float& out)
 {
 	bool inv = false;
@@ -72,7 +72,7 @@ static inline const char* old_fast_atof_move( const char* c, float& out)
 	return c;
 }
 
-//! This was an older Irrlicht implementation, tested against for reference.
+//! This was an older Nirtcpp implementation, tested against for reference.
 static inline float old_fast_atof(const char* c)
 {
 	float ret;
@@ -117,7 +117,7 @@ static bool testCalculation_strtol(const char * valueString)
 	return accurate;
 }
 
-//! Test both the accuracy and speed of Irrlicht's fast_atof() implementation.
+//! Test both the accuracy and speed of Nirtcpp's fast_atof() implementation.
 bool test_fast_atof(void)
 {
 	bool accurate = true;
@@ -158,7 +158,7 @@ bool test_fast_atof(void)
 	}
 
 #ifndef _DEBUG	// it's only faster in release
-	IrrlichtDevice* device = createDevice(video::EDT_NULL);
+	NirtcppDevice* device = createDevice(video::EDT_NULL);
 	if (!device)
 		return false;
 	ITimer* timer = device->getTimer();
@@ -200,7 +200,7 @@ bool test_fast_atof(void)
 	return true;
 }
 
-//! Test both the accuracy and speed of Irrlicht's strtol10() implementation.
+//! Test both the accuracy and speed of Nirtcpp's strtol10() implementation.
 bool test_strtol(void)
 {
 	bool accurate = true;
@@ -239,7 +239,7 @@ bool test_strtol(void)
 	}
 
 #ifndef _DEBUG	// it's only faster in release
-	IrrlichtDevice* device = createDevice(video::EDT_NULL);
+	NirtcppDevice* device = createDevice(video::EDT_NULL);
 	if (!device)
 		return false;
 	ITimer* timer = device->getTimer();

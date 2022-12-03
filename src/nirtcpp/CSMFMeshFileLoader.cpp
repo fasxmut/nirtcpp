@@ -1,10 +1,10 @@
 // Copyright (C) 2010-2012 Gaz Davidson / Joseph Ellis
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_SMF_LOADER_
+#ifdef _NIRT_COMPILE_WITH_SMF_LOADER_
 
 #include "CSMFMeshFileLoader.h"
 #include "CMeshTextureLoader.h"

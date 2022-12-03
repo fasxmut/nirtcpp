@@ -53,7 +53,7 @@ extern "C" {
 
 #define GL_GLEXT_VERSION 20190515
 
-// NOTE: Modified this for Irrlicht from an include with <> to an include with "". 
+// NOTE: Modified this for Nirtcpp from an include with <> to an include with "". 
 //       Otherwise have to add include paths to many project files.
 #include "KHR/khrplatform.h"
 

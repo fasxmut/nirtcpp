@@ -1,13 +1,13 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_OPENGL_SHADER_LANGUAGE_MATERIAL_RENDERER_H_INCLUDED
-#define IRR_C_OPENGL_SHADER_LANGUAGE_MATERIAL_RENDERER_H_INCLUDED
+#ifndef NIRT_C_OPENGL_SHADER_LANGUAGE_MATERIAL_RENDERER_H_INCLUDED
+#define NIRT_C_OPENGL_SHADER_LANGUAGE_MATERIAL_RENDERER_H_INCLUDED
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_OPENGL_
+#ifdef _NIRT_COMPILE_WITH_OPENGL_
 
 #include "EMaterialTypes.h"
 #include "IMaterialRenderer.h"
@@ -56,34 +56,34 @@ public:
 	virtual ~COpenGLSLMaterialRenderer();
 
 	virtual void OnSetMaterial(const SMaterial& material, const SMaterial& lastMaterial,
-		bool resetAllRenderstates, IMaterialRendererServices* services) IRR_OVERRIDE;
+		bool resetAllRenderstates, IMaterialRendererServices* services) override;
 
-	virtual bool OnRender(IMaterialRendererServices* service, E_VERTEX_TYPE vtxtype) IRR_OVERRIDE;
+	virtual bool OnRender(IMaterialRendererServices* service, E_VERTEX_TYPE vtxtype) override;
 
-	virtual void OnUnsetMaterial() IRR_OVERRIDE;
+	virtual void OnUnsetMaterial() override;
 
 	//! Returns if the material is transparent.
-	virtual bool isTransparent() const IRR_OVERRIDE;
+	virtual bool isTransparent() const override;
 
 	//! Access the callback provided by the users when creating shader materials
-	virtual IShaderConstantSetCallBack* getShaderConstantSetCallBack() const IRR_OVERRIDE
+	virtual IShaderConstantSetCallBack* getShaderConstantSetCallBack() const override
 	{ 
 		return CallBack;
 	}
 
 	// implementations for the render services
-	virtual void setBasicRenderStates(const SMaterial& material, const SMaterial& lastMaterial, bool resetAllRenderstates) IRR_OVERRIDE;
-	virtual s32 getVertexShaderConstantID(const c8* name) IRR_OVERRIDE;
-	virtual s32 getPixelShaderConstantID(const c8* name) IRR_OVERRIDE;
-	virtual void setVertexShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) IRR_OVERRIDE;
-	virtual void setPixelShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) IRR_OVERRIDE;
-	virtual bool setVertexShaderConstant(s32 index, const f32* floats, int count) IRR_OVERRIDE;
-	virtual bool setVertexShaderConstant(s32 index, const s32* ints, int count) IRR_OVERRIDE;
-	virtual bool setVertexShaderConstant(s32 index, const u32* ints, int count) IRR_OVERRIDE;
-	virtual bool setPixelShaderConstant(s32 index, const f32* floats, int count) IRR_OVERRIDE;
-	virtual bool setPixelShaderConstant(s32 index, const s32* ints, int count) IRR_OVERRIDE;
-	virtual bool setPixelShaderConstant(s32 index, const u32* ints, int count) IRR_OVERRIDE;
-	virtual IVideoDriver* getVideoDriver() IRR_OVERRIDE;
+	virtual void setBasicRenderStates(const SMaterial& material, const SMaterial& lastMaterial, bool resetAllRenderstates) override;
+	virtual s32 getVertexShaderConstantID(const c8* name) override;
+	virtual s32 getPixelShaderConstantID(const c8* name) override;
+	virtual void setVertexShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) override;
+	virtual void setPixelShaderConstant(const f32* data, s32 startRegister, s32 constantAmount=1) override;
+	virtual bool setVertexShaderConstant(s32 index, const f32* floats, int count) override;
+	virtual bool setVertexShaderConstant(s32 index, const s32* ints, int count) override;
+	virtual bool setVertexShaderConstant(s32 index, const u32* ints, int count) override;
+	virtual bool setPixelShaderConstant(s32 index, const f32* floats, int count) override;
+	virtual bool setPixelShaderConstant(s32 index, const s32* ints, int count) override;
+	virtual bool setPixelShaderConstant(s32 index, const u32* ints, int count) override;
+	virtual IVideoDriver* getVideoDriver() override;
 
 protected:
 

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_DRIVER_FEATURES_H_INCLUDED
-#define IRR_E_DRIVER_FEATURES_H_INCLUDED
+#ifndef NIRT_E_DRIVER_FEATURES_H_INCLUDED
+#define NIRT_E_DRIVER_FEATURES_H_INCLUDED
 
 namespace irr
 {

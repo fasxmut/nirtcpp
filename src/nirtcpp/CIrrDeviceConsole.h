@@ -1,14 +1,14 @@
 // Copyright (C) 2009-2012 Gaz Davidson
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_IRR_DEVICE_CONSOLE_H_INCLUDED
-#define IRR_C_IRR_DEVICE_CONSOLE_H_INCLUDED
+#ifndef NIRT_C_NIRT_DEVICE_CONSOLE_H_INCLUDED
+#define NIRT_C_NIRT_DEVICE_CONSOLE_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_CONSOLE_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
 
-//#define _IRR_USE_CONSOLE_FONT_
+//#define _NIRT_USE_CONSOLE_FONT_
 
 #include "SIrrCreationParameters.h"
 #include "CIrrDeviceStub.h"
@@ -16,21 +16,21 @@
 // for console font
 #include "IGUIFont.h"
 
-#ifdef _IRR_WINDOWS_API_
+#ifdef _NIRT_WINDOWS_API_
 #define WIN32_LEAN_AND_MEAN
-#if !defined(_IRR_XBOX_PLATFORM_)
+#if !defined(_NIRT_XBOX_PLATFORM_)
 	#include <windows.h>
 #endif
 #if(_WIN32_WINNT >= 0x0500)
-#define _IRR_WINDOWS_NT_CONSOLE_
+#define _NIRT_WINDOWS_NT_CONSOLE_
 #endif
 #else
 #include <time.h>
 #endif
 
 // for now we assume all other terminal types are VT100
-#ifndef _IRR_WINDOWS_NT_CONSOLE_
-#define _IRR_VT100_CONSOLE_
+#ifndef _NIRT_WINDOWS_NT_CONSOLE_
+#define _NIRT_VT100_CONSOLE_
 #endif
 
 namespace irr
@@ -41,59 +41,59 @@ namespace irr
 	public:
 
 		//! constructor
-		CIrrDeviceConsole(const SIrrlichtCreationParameters& params);
+		CIrrDeviceConsole(const SNirtcppCreationParameters& params);
 
 		//! destructor
 		virtual ~CIrrDeviceConsole();
 
 		//! runs the device. Returns false if device wants to be deleted
-		virtual bool run() IRR_OVERRIDE;
+		virtual bool run() override;
 
 		//! Cause the device to temporarily pause execution and let other processes to run
-		// This should bring down processor usage without major performance loss for Irrlicht
-		virtual void yield() IRR_OVERRIDE;
+		// This should bring down processor usage without major performance loss for Nirtcpp
+		virtual void yield() override;
 
 		//! Pause execution and let other processes to run for a specified amount of time.
-		virtual void sleep(u32 timeMs, bool pauseTimer) IRR_OVERRIDE;
+		virtual void sleep(u32 timeMs, bool pauseTimer) override;
 
 		//! sets the caption of the window
-		virtual void setWindowCaption(const wchar_t* text) IRR_OVERRIDE;
+		virtual void setWindowCaption(const wchar_t* text) override;
 
 		//! returns if window is active. if not, nothing need to be drawn
-		virtual bool isWindowActive() const IRR_OVERRIDE;
+		virtual bool isWindowActive() const override;
 
 		//! returns if window has focus
-		virtual bool isWindowFocused() const IRR_OVERRIDE;
+		virtual bool isWindowFocused() const override;
 
 		//! returns if window is minimized
-		virtual bool isWindowMinimized() const IRR_OVERRIDE;
+		virtual bool isWindowMinimized() const override;
 
 		//! returns current window position (not supported for this device)
-		virtual core::position2di getWindowPosition() IRR_OVERRIDE
+		virtual core::position2di getWindowPosition() override
 		{
 			return core::position2di(-1, -1);
 		}
 
 		//! presents a surface in the client area
-		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0) IRR_OVERRIDE;
+		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0) override;
 
 		//! notifies the device that it should close itself
-		virtual void closeDevice() IRR_OVERRIDE;
+		virtual void closeDevice() override;
 
 		//! Sets if the window should be resizable in windowed mode.
-		virtual void setResizable(bool resize=false) IRR_OVERRIDE;
+		virtual void setResizable(bool resize=false) override;
 
 		//! Minimizes the window.
-		virtual void minimizeWindow() IRR_OVERRIDE;
+		virtual void minimizeWindow() override;
 
 		//! Maximizes the window.
-		virtual void maximizeWindow() IRR_OVERRIDE;
+		virtual void maximizeWindow() override;
 
 		//! Restores the window size.
-		virtual void restoreWindow() IRR_OVERRIDE;
+		virtual void restoreWindow() override;
 
 		//! Get the device type
-		virtual E_DEVICE_TYPE getType() const IRR_OVERRIDE
+		virtual E_DEVICE_TYPE getType() const override
 		{
 			return EIDT_CONSOLE;
 		}
@@ -116,7 +116,7 @@ namespace irr
 			}
 
 			//! Changes the visible state of the mouse cursor.
-			virtual void setVisible(bool visible) IRR_OVERRIDE
+			virtual void setVisible(bool visible) override
 			{
 				if(visible != IsVisible)
 				{
@@ -126,19 +126,19 @@ namespace irr
 			}
 
 			//! Returns if the cursor is currently visible.
-			virtual bool isVisible() const IRR_OVERRIDE
+			virtual bool isVisible() const override
 			{
 				return IsVisible;
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(const core::position2d<f32> &pos) IRR_OVERRIDE
+			virtual void setPosition(const core::position2d<f32> &pos) override
 			{
 				setPosition(pos.X, pos.Y);
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(f32 x, f32 y) IRR_OVERRIDE
+			virtual void setPosition(f32 x, f32 y) override
 			{
 				if (!UseReferenceRect)
 					setPosition((s32)(x*WindowSize.Width), (s32)(y*WindowSize.Height));
@@ -147,25 +147,25 @@ namespace irr
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(const core::position2d<s32> &pos) IRR_OVERRIDE
+			virtual void setPosition(const core::position2d<s32> &pos) override
 			{
 				setPosition(pos.X, pos.Y);
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(s32 x, s32 y) IRR_OVERRIDE
+			virtual void setPosition(s32 x, s32 y) override
 			{
 				setInternalCursorPosition(core::position2di(x,y));
 			}
 
 			//! Returns the current position of the mouse cursor.
-			virtual const core::position2d<s32>& getPosition(bool updateCursor) IRR_OVERRIDE
+			virtual const core::position2d<s32>& getPosition(bool updateCursor) override
 			{
 				return CursorPos;
 			}
 
 			//! Returns the current position of the mouse cursor.
-			virtual core::position2d<f32> getRelativePosition(bool updateCursor) IRR_OVERRIDE
+			virtual core::position2d<f32> getRelativePosition(bool updateCursor) override
 			{
 				if (!UseReferenceRect)
 				{
@@ -178,7 +178,7 @@ namespace irr
 			}
 
 			//! Sets an absolute reference rect for calculating the cursor position.
-			virtual void setReferenceRect(core::rect<s32>* rect=0) IRR_OVERRIDE
+			virtual void setReferenceRect(core::rect<s32>* rect=0) override
 			{
 				if (rect)
 				{
@@ -237,13 +237,13 @@ namespace irr
 
 		FILE *OutFile;
 
-#ifdef _IRR_WINDOWS_NT_CONSOLE_
+#ifdef _NIRT_WINDOWS_NT_CONSOLE_
 		HANDLE WindowsSTDIn, WindowsSTDOut;
 		u32 MouseButtonStates;
 #endif
 	};
 
-#ifdef _IRR_USE_CONSOLE_FONT_
+#ifdef _NIRT_USE_CONSOLE_FONT_
 
 namespace gui
 {
@@ -256,7 +256,7 @@ namespace gui
 		//! Draws some text and clips it to the specified rectangle if wanted.
 		virtual void draw(const wchar_t* text, const core::rect<s32>& position,
 			video::SColor color, bool hcenter=false, bool vcenter=false,
-			const core::rect<s32>* clip=0) IRR_OVERRIDE
+			const core::rect<s32>* clip=0) override
 		{
 			core::rect<s32> Area = clip ? *clip : position;
 
@@ -304,22 +304,22 @@ namespace gui
 		}
 
 		//! Calculates the dimension of some text.
-		virtual core::dimension2d<u32> getDimension(const wchar_t* text) const IRR_OVERRIDE
+		virtual core::dimension2d<u32> getDimension(const wchar_t* text) const override
 		{
 			return core::dimension2d<u32>(wcslen(text),1);
 		}
 
 		//! Calculates the index of the character in the text which is on a specific position.
-		virtual s32 getCharacterFromPos(const wchar_t* text, s32 pixel_x) const IRR_OVERRIDE { return pixel_x; } IRR_OVERRIDE;
+		virtual s32 getCharacterFromPos(const wchar_t* text, s32 pixel_x) const override { return pixel_x; } override;
 
 		//! No kerning
-		virtual void setKerningWidth (s32 kerning) IRR_OVERRIDE { }
-		virtual void setKerningHeight (s32 kerning) IRR_OVERRIDE { }
-		virtual s32 getKerningWidth(const wchar_t* thisLetter=0, const wchar_t* previousLetter=0) const IRR_OVERRIDE {return 0;}
-		virtual s32 getKerningHeight() const  IRR_OVERRIDE { return 0;}
-		virtual void setInvisibleCharacters( const wchar_t *s ) IRR_OVERRIDE { }
+		virtual void setKerningWidth (s32 kerning) override { }
+		virtual void setKerningHeight (s32 kerning) override { }
+		virtual s32 getKerningWidth(const wchar_t* thisLetter=0, const wchar_t* previousLetter=0) const override {return 0;}
+		virtual s32 getKerningHeight() const  override { return 0;}
+		virtual void setInvisibleCharacters( const wchar_t *s ) override { }
 		// I guess this is an OS specific font
-		virtual EGUI_FONT_TYPE getType() const IRR_OVERRIDE { return EGFT_OS; }
+		virtual EGUI_FONT_TYPE getType() const override { return EGFT_OS; }
 	private:
 		CIrrDeviceConsole* Device;
 		core::stringw tempText;
@@ -327,9 +327,9 @@ namespace gui
 
 } // end namespace gui
 
-#endif // _IRR_USE_CONSOLE_FONT_
+#endif // _NIRT_USE_CONSOLE_FONT_
 
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_CONSOLE_DEVICE_
-#endif // IRR_C_IRR_DEVICE_CONSOLE_H_INCLUDED
+#endif // _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
+#endif // NIRT_C_NIRT_DEVICE_CONSOLE_H_INCLUDED

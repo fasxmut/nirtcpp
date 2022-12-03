@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine" and the "irrXML" project.
-// For conditions of distribution and use, see copyright notice in irrlicht.h and/or irrXML.h
+// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// For conditions of distribution and use, see copyright notice in nirtcpp.h and/or irrXML.h
 
-#ifndef IRR_XML_H_INCLUDED
-#define IRR_XML_H_INCLUDED
+#ifndef NIRT_XML_H_INCLUDED
+#define NIRT_XML_H_INCLUDED
 
 #include <stdio.h>
 #include "IrrCompileConfig.h"
@@ -24,7 +24,7 @@
   irrXML is intended to be a high speed and easy-to-use XML Parser for C++, and
   this documentation is an important part of it. If you have any questions or
   suggestions, just send a email to the author of the engine, Nikolaus Gebhardt
-  (niko (at) irrlicht3d.org). For more information about this parser, see \ref history.
+  (niko (at) nirtcpp3d.org). For more information about this parser, see \ref history.
 
   \section features Features
 
@@ -43,8 +43,8 @@
 	UTF-16 and UTF-32 format.
 	- With its optional file access abstraction it has the advantage that it can read not
 	only from files but from any type of data (memory, network, ...). For example when
-	used with the Irrlicht Engine, it directly reads from compressed .zip files.
-	- Just like the Irrlicht Engine for which it was originally created, it is extremely easy
+	used with the Nirtcpp Engine, it directly reads from compressed .zip files.
+	- Just like the Nirtcpp Engine for which it was originally created, it is extremely easy
 	to use.
 	- It has no external dependencies, it does not even need the STL.
 
@@ -61,8 +61,8 @@
 	<config>
 		<!-- This is a config file for the mesh viewer -->
 		<model file="dwarf.dea" />
-		<messageText caption="Irrlicht Engine Mesh Viewer">
-		Welcome to the Mesh Viewer of the &quot;Irrlicht Engine&quot;.
+		<messageText caption="Nirtcpp Engine Mesh Viewer">
+		Welcome to the Mesh Viewer of the &quot;Nirtcpp Engine&quot;.
 		</messageText>
 	</config>
 	\endcode
@@ -146,9 +146,9 @@
 
 	As lots of references in this documentation and the source show, this xml
 	parser has originally been a part of the
-	<A HREF="http://irrlicht.sourceforge.net" >Irrlicht Engine</A>. But because
+	<A HREF="http://nirtcpp.sourceforge.net" >Nirtcpp Engine</A>. But because
 	the parser has become very useful with the latest release, people asked for a
-	separate version of it, to be able to use it in non Irrlicht projects. With
+	separate version of it, to be able to use it in non Nirtcpp projects. With
 	irrXML 1.0, this has now been done.
 */
 
@@ -207,7 +207,7 @@ namespace io
 
 	//! Callback class for file read abstraction.
 	/** With this, it is possible to make the xml parser read in other
-	things than just files. The Irrlicht engine is using this for example to
+	things than just files. The Nirtcpp engine is using this for example to
 	read xml from compressed .zip files. To make the parser read in
 	any other data, derive a class from this interface, implement the
 	two methods to read your data and give a pointer to an instance of
@@ -233,7 +233,7 @@ namespace io
 	//! Empty class to be used as parent class for IrrXMLReader.
 	/** If you need another class as base class for the xml reader, you can do this by creating
 	the reader using for example new CXMLReaderImpl<char, YourBaseClass>(yourcallback);
-	The Irrlicht Engine for example needs IReferenceCounted as base class for every object to
+	The Nirtcpp Engine for example needs IReferenceCounted as base class for every object to
 	let it automatically reference counted, hence it replaces IXMLBase with IReferenceCounted.
 	See irrXML.cpp on how this can be done in detail. */
 	class IXMLBase
@@ -243,7 +243,7 @@ namespace io
 	//! Interface providing easy read access to a XML file.
 	/** You can create an instance of this reader using one of the factory functions
 	createIrrXMLReader(), createIrrXMLReaderUTF16() and createIrrXMLReaderUTF32().
-	If using the parser from the Irrlicht Engine, please use IFileSystem::createXMLReader()
+	If using the parser from the Nirtcpp Engine, please use IFileSystem::createXMLReader()
 	instead.
 	For a detailed intro how to use the parser, see \ref irrxmlexample and \ref features.
 
@@ -493,12 +493,12 @@ namespace io
 	See IIrrXMLReader for description on how to use it. */
 	typedef IIrrXMLReader<char32, IXMLBase> IrrXMLReaderUTF32;
 
-#ifdef _IRR_COMPILE_WITH_XML_
+#ifdef _NIRT_COMPILE_WITH_XML_
 
 	//! Creates an instance of an UFT-8 or ASCII character xml parser.
 	/** This means that all character data will be returned in 8 bit ASCII or UTF-8.
 	The file to read can be in any format, it will be converted to UTF-8 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReaderUTF8() instead.
 	\param filename: Name of file to be opened.
 	\return Returns a pointer to the created xml parser. This pointer should be
@@ -509,7 +509,7 @@ namespace io
 	//! Creates an instance of an UFT-8 or ASCII character xml parser.
 	/** This means that all character data will be returned in 8 bit ASCII or UTF-8. The file to read can
 	be in any format, it will be converted to UTF-8 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReaderUTF8() instead.
 	\param file: Pointer to opened file, must have been opened in binary mode, e.g.
 	using fopen("foo.bar", "wb"); The file will not be closed after it has been read.
@@ -521,7 +521,7 @@ namespace io
 	//! Creates an instance of an UFT-8 or ASCII character xml parser.
 	/** This means that all character data will be returned in 8 bit ASCII or UTF-8. The file to read can
 	be in any format, it will be converted to UTF-8 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReaderUTF8() instead.
 	\param callback: Callback for file read abstraction. Implement your own
 	callback to make the xml parser read in other things than just files. See
@@ -538,7 +538,7 @@ namespace io
 	/** This means that
 	all character data will be returned in UTF-16. The file to read can
 	be in any format, it will be converted to UTF-16 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReader() instead.
 	\param filename: Name of file to be opened.
 	\return Returns a pointer to the created xml parser. This pointer should be
@@ -549,7 +549,7 @@ namespace io
 	//! Creates an instance of an UFT-16 xml parser.
 	/** This means that all character data will be returned in UTF-16. The file to read can
 	be in any format, it will be converted to UTF-16 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReader() instead.
 	\param file: Pointer to opened file, must have been opened in binary mode, e.g.
 	using fopen("foo.bar", "wb"); The file will not be closed after it has been read.
@@ -561,7 +561,7 @@ namespace io
 	//! Creates an instance of an UFT-16 xml parser.
 	/** This means that all character data will be returned in UTF-16. The file to read can
 	be in any format, it will be converted to UTF-16 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReader() instead.
 	\param callback: Callback for file read abstraction. Implement your own
 	callback to make the xml parser read in other things than just files. See
@@ -578,7 +578,7 @@ namespace io
 	//! Creates an instance of an UFT-32 xml parser.
 	/** This means that all character data will be returned in UTF-32. The file to read can
 	be in any format, it will be converted to UTF-32 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReader() instead.
 	\param filename: Name of file to be opened.
 	\return Returns a pointer to the created xml parser. This pointer should be
@@ -589,7 +589,7 @@ namespace io
 	//! Creates an instance of an UFT-32 xml parser.
 	/** This means that all character data will be returned in UTF-32. The file to read can
 	be in any format, it will be converted to UTF-32 if it is not in this format.
-	if you are using the Irrlicht Engine, it is better not to use this function but
+	if you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReader() instead.
 	\param file: Pointer to opened file, must have been opened in binary mode, e.g.
 	using fopen("foo.bar", "wb"); The file will not be closed after it has been read.
@@ -602,7 +602,7 @@ namespace io
 	/** This means that
 	all character data will be returned in UTF-32. The file to read can
 	be in any format, it will be converted to UTF-32 if it is not in this format.
-	If you are using the Irrlicht Engine, it is better not to use this function but
+	If you are using the Nirtcpp Engine, it is better not to use this function but
 	IFileSystem::createXMLReader() instead.
 	\param callback: Callback for file read abstraction. Implement your own
 	callback to make the xml parser read in other things than just files. See
@@ -615,13 +615,13 @@ namespace io
 	NIRTCPP_API IrrXMLReaderUTF32* IRRCALLCONV createIrrXMLReaderUTF32(IFileReadCallBack* callback,
 																		bool deleteCallback = false);
 
-#endif // _IRR_COMPILE_WITH_XML_
+#endif // _NIRT_COMPILE_WITH_XML_
 
 	/*! \file irrXML.h
-	\brief Header file of the irrXML, the Irrlicht XML parser.
+	\brief Header file of the irrXML, the Nirtcpp XML parser.
 
 	This file includes everything needed for using irrXML,
-	the XML parser of the Irrlicht Engine. To use irrXML,
+	the XML parser of the Nirtcpp Engine. To use irrXML,
 	you only need to include this file in your project:
 
 	\code
@@ -641,4 +641,4 @@ namespace io
 } // end namespace io
 } // end namespace irr
 
-#endif // IRR_XML_H_INCLUDED
+#endif // NIRT_XML_H_INCLUDED

@@ -4,7 +4,7 @@ using namespace irr;
 
 static bool withSphere(video::E_DRIVER_TYPE type)
 {
-	IrrlichtDevice* device = createDevice(type, core::dimension2d<u32>(160, 120));
+	NirtcppDevice* device = createDevice(type, core::dimension2d<u32>(160, 120));
 
 	if (device == 0)
 		return true;

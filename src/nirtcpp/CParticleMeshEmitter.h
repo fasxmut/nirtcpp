@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_PARTICLE_MESH_EMITTER_H_INCLUDED
-#define IRR_C_PARTICLE_MESH_EMITTER_H_INCLUDED
+#ifndef NIRT_C_PARTICLE_MESH_EMITTER_H_INCLUDED
+#define NIRT_C_PARTICLE_MESH_EMITTER_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_PARTICLES_
+#ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
 #include "IParticleMeshEmitter.h"
 #include "irrArray.h"
@@ -43,93 +43,93 @@ public:
 
 	//! Prepares an array with new particles to emitt into the system
 	//! and returns how much new particles there are.
-	virtual s32 emitt(u32 now, u32 timeSinceLastCall, SParticle*& outArray) IRR_OVERRIDE;
+	virtual s32 emitt(u32 now, u32 timeSinceLastCall, SParticle*& outArray) override;
 
 	//! Set Mesh to emit particles from
-	virtual void setMesh( IMesh* mesh ) IRR_OVERRIDE;
+	virtual void setMesh( IMesh* mesh ) override;
 
 	//! Set whether to use vertex normal for direction, or direction specified
-	virtual void setUseNormalDirection( bool useNormalDirection ) IRR_OVERRIDE { UseNormalDirection = useNormalDirection; }
+	virtual void setUseNormalDirection( bool useNormalDirection ) override { UseNormalDirection = useNormalDirection; }
 
 	//! Set direction the emitter emits particles
-	virtual void setDirection( const core::vector3df& newDirection ) IRR_OVERRIDE { Direction = newDirection; }
+	virtual void setDirection( const core::vector3df& newDirection ) override { Direction = newDirection; }
 
 	//! Set the amount that the normal is divided by for getting a particles direction
-	virtual void setNormalDirectionModifier( f32 normalDirectionModifier ) IRR_OVERRIDE { NormalDirectionModifier = normalDirectionModifier; }
+	virtual void setNormalDirectionModifier( f32 normalDirectionModifier ) override { NormalDirectionModifier = normalDirectionModifier; }
 
 	//! Sets whether to emit min<->max particles for every vertex per second, or to pick
 	//! min<->max vertices every second
-	virtual void setEveryMeshVertex( bool everyMeshVertex ) IRR_OVERRIDE { EveryMeshVertex = everyMeshVertex; }
+	virtual void setEveryMeshVertex( bool everyMeshVertex ) override { EveryMeshVertex = everyMeshVertex; }
 
 	//! Set minimum number of particles the emitter emits per second
-	virtual void setMinParticlesPerSecond( u32 minPPS ) IRR_OVERRIDE { MinParticlesPerSecond = minPPS; }
+	virtual void setMinParticlesPerSecond( u32 minPPS ) override { MinParticlesPerSecond = minPPS; }
 
 	//! Set maximum number of particles the emitter emits per second
-	virtual void setMaxParticlesPerSecond( u32 maxPPS ) IRR_OVERRIDE { MaxParticlesPerSecond = maxPPS; }
+	virtual void setMaxParticlesPerSecond( u32 maxPPS ) override { MaxParticlesPerSecond = maxPPS; }
 
 	//! Set minimum starting color for particles
-	virtual void setMinStartColor( const video::SColor& color ) IRR_OVERRIDE { MinStartColor = color; }
+	virtual void setMinStartColor( const video::SColor& color ) override { MinStartColor = color; }
 
 	//! Set maximum starting color for particles
-	virtual void setMaxStartColor( const video::SColor& color ) IRR_OVERRIDE { MaxStartColor = color; }
+	virtual void setMaxStartColor( const video::SColor& color ) override { MaxStartColor = color; }
 
 	//! Set the maximum starting size for particles
-	virtual void setMaxStartSize( const core::dimension2df& size ) IRR_OVERRIDE { MaxStartSize = size; }
+	virtual void setMaxStartSize( const core::dimension2df& size ) override { MaxStartSize = size; }
 
 	//! Set the minimum starting size for particles
-	virtual void setMinStartSize( const core::dimension2df& size ) IRR_OVERRIDE { MinStartSize = size; }
+	virtual void setMinStartSize( const core::dimension2df& size ) override { MinStartSize = size; }
 
 	//! Set the minimum particle life-time in milliseconds
-	virtual void setMinLifeTime( u32 lifeTimeMin ) IRR_OVERRIDE { MinLifeTime = lifeTimeMin; }
+	virtual void setMinLifeTime( u32 lifeTimeMin ) override { MinLifeTime = lifeTimeMin; }
 
 	//! Set the maximum particle life-time in milliseconds
-	virtual void setMaxLifeTime( u32 lifeTimeMax ) IRR_OVERRIDE { MaxLifeTime = lifeTimeMax; }
+	virtual void setMaxLifeTime( u32 lifeTimeMax ) override { MaxLifeTime = lifeTimeMax; }
 
 	//!	Set maximal random derivation from the direction
-	virtual void setMaxAngleDegrees( s32 maxAngleDegrees ) IRR_OVERRIDE { MaxAngleDegrees = maxAngleDegrees; }
+	virtual void setMaxAngleDegrees( s32 maxAngleDegrees ) override { MaxAngleDegrees = maxAngleDegrees; }
 
 	//! Get Mesh we're emitting particles from
-	virtual const IMesh* getMesh() const IRR_OVERRIDE { return Mesh; }
+	virtual const IMesh* getMesh() const override { return Mesh; }
 
 	//! Get whether to use vertex normal for direciton, or direction specified
-	virtual bool isUsingNormalDirection() const IRR_OVERRIDE { return UseNormalDirection; }
+	virtual bool isUsingNormalDirection() const override { return UseNormalDirection; }
 
 	//! Get direction the emitter emits particles
-	virtual const core::vector3df& getDirection() const IRR_OVERRIDE { return Direction; }
+	virtual const core::vector3df& getDirection() const override { return Direction; }
 
 	//! Get the amount that the normal is divided by for getting a particles direction
-	virtual f32 getNormalDirectionModifier() const IRR_OVERRIDE { return NormalDirectionModifier; }
+	virtual f32 getNormalDirectionModifier() const override { return NormalDirectionModifier; }
 
 	//! Gets whether to emit min<->max particles for every vertex per second, or to pick
 	//! min<->max vertices every second
-	virtual bool getEveryMeshVertex() const IRR_OVERRIDE { return EveryMeshVertex; }
+	virtual bool getEveryMeshVertex() const override { return EveryMeshVertex; }
 
 	//! Get the minimum number of particles the emitter emits per second
-	virtual u32 getMinParticlesPerSecond() const IRR_OVERRIDE { return MinParticlesPerSecond; }
+	virtual u32 getMinParticlesPerSecond() const override { return MinParticlesPerSecond; }
 
 	//! Get the maximum number of particles the emitter emits per second
-	virtual u32 getMaxParticlesPerSecond() const IRR_OVERRIDE { return MaxParticlesPerSecond; }
+	virtual u32 getMaxParticlesPerSecond() const override { return MaxParticlesPerSecond; }
 
 	//! Get the minimum starting color for particles
-	virtual const video::SColor& getMinStartColor() const IRR_OVERRIDE { return MinStartColor; }
+	virtual const video::SColor& getMinStartColor() const override { return MinStartColor; }
 
 	//! Get the maximum starting color for particles
-	virtual const video::SColor& getMaxStartColor() const IRR_OVERRIDE { return MaxStartColor; }
+	virtual const video::SColor& getMaxStartColor() const override { return MaxStartColor; }
 
 	//! Gets the maximum starting size for particles
-	virtual const core::dimension2df& getMaxStartSize() const IRR_OVERRIDE { return MaxStartSize; }
+	virtual const core::dimension2df& getMaxStartSize() const override { return MaxStartSize; }
 
 	//! Gets the minimum starting size for particles
-	virtual const core::dimension2df& getMinStartSize() const IRR_OVERRIDE { return MinStartSize; }
+	virtual const core::dimension2df& getMinStartSize() const override { return MinStartSize; }
 
 	//! Get the minimum particle life-time in milliseconds
-	virtual u32 getMinLifeTime() const IRR_OVERRIDE { return MinLifeTime; }
+	virtual u32 getMinLifeTime() const override { return MinLifeTime; }
 
 	//! Get the maximum particle life-time in milliseconds
-	virtual u32 getMaxLifeTime() const IRR_OVERRIDE { return MaxLifeTime; }
+	virtual u32 getMaxLifeTime() const override { return MaxLifeTime; }
 
 	//!	Get maximal random derivation from the direction
-	virtual s32 getMaxAngleDegrees() const IRR_OVERRIDE { return MaxAngleDegrees; }
+	virtual s32 getMaxAngleDegrees() const override { return MaxAngleDegrees; }
 
 private:
 
@@ -157,6 +157,6 @@ private:
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_PARTICLES_
+#endif // _NIRT_COMPILE_WITH_PARTICLES_
 
-#endif // IRR_C_PARTICLE_MESH_EMITTER_H_INCLUDED
+#endif // NIRT_C_PARTICLE_MESH_EMITTER_H_INCLUDED

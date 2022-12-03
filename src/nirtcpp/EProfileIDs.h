@@ -1,5 +1,5 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef E_PROFILE_IDS_H_INCLUDED__
 #define E_PROFILE_IDS_H_INCLUDED__
@@ -9,7 +9,7 @@
 
 namespace irr
 {
-#ifdef _IRR_COMPILE_WITH_PROFILING_
+#ifdef _NIRT_COMPILE_WITH_PROFILING_
     enum EPROFILE_ID
     {
 		// We use negative ID's to avoid clashing with user application id's.

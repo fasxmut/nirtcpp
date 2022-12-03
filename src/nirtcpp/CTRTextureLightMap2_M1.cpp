@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 // compile flag for this file
 #undef USE_ZBUFFER
@@ -82,7 +82,7 @@ public:
 	CTRTextureLightMap2_M1(CBurningVideoDriver* driver);
 
 	//! draws an indexed triangle list
-	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) IRR_OVERRIDE;
+	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) override;
 
 
 private:
@@ -612,7 +612,7 @@ void CTRTextureLightMap2_M1::drawTriangle(const s4DVertex* burning_restrict a, c
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 namespace irr
 {
@@ -625,11 +625,11 @@ namespace video
 IBurningShader* createTriangleRendererTextureLightMap2_M1(CBurningVideoDriver* driver)
 {
 	//ETR_TEXTURE_GOURAUD_LIGHTMAP_M1
-	#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CTRTextureLightMap2_M1(driver);
 	#else
 	return 0;
-	#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+	#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 

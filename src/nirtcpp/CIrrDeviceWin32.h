@@ -1,19 +1,19 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_IRR_DEVICE_WIN32_H_INCLUDED
-#define IRR_C_IRR_DEVICE_WIN32_H_INCLUDED
+#ifndef NIRT_C_NIRT_DEVICE_WIN32_H_INCLUDED
+#define NIRT_C_NIRT_DEVICE_WIN32_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
+#ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 
 #include "CIrrDeviceStub.h"
 #include "NirtcppDevice.h"
 #include "IImagePresenter.h"
 
 #define WIN32_LEAN_AND_MEAN
-#if !defined(_IRR_XBOX_PLATFORM_)
+#if !defined(_NIRT_XBOX_PLATFORM_)
 	#include <windows.h>
 	#include <mmsystem.h> // For JOYCAPS
 	#include <windowsx.h>
@@ -33,86 +33,86 @@ namespace irr
 	public:
 
 		//! constructor
-		CIrrDeviceWin32(const SIrrlichtCreationParameters& params);
+		CIrrDeviceWin32(const SNirtcppCreationParameters& params);
 
 		//! destructor
 		virtual ~CIrrDeviceWin32();
 
 		//! runs the device. Returns false if device wants to be deleted
-		virtual bool run() IRR_OVERRIDE;
+		virtual bool run() override;
 
 		//! Cause the device to temporarily pause execution and let other processes to run
-		// This should bring down processor usage without major performance loss for Irrlicht
-		virtual void yield() IRR_OVERRIDE;
+		// This should bring down processor usage without major performance loss for Nirtcpp
+		virtual void yield() override;
 
 		//! Pause execution and let other processes to run for a specified amount of time.
-		virtual void sleep(u32 timeMs, bool pauseTimer) IRR_OVERRIDE;
+		virtual void sleep(u32 timeMs, bool pauseTimer) override;
 
 		//! sets the caption of the window
-		virtual void setWindowCaption(const wchar_t* text) IRR_OVERRIDE;
+		virtual void setWindowCaption(const wchar_t* text) override;
 
 		//! returns if window is active. if not, nothing need to be drawn
-		virtual bool isWindowActive() const IRR_OVERRIDE;
+		virtual bool isWindowActive() const override;
 
 		//! returns if window has focus
-		virtual bool isWindowFocused() const IRR_OVERRIDE;
+		virtual bool isWindowFocused() const override;
 
 		//! returns if window is minimized
-		virtual bool isWindowMinimized() const IRR_OVERRIDE;
+		virtual bool isWindowMinimized() const override;
 
 		//! presents a surface in the client area
-		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0) IRR_OVERRIDE;
+		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0) override;
 
 		//! notifies the device that it should close itself
-		virtual void closeDevice() IRR_OVERRIDE;
+		virtual void closeDevice() override;
 
 		//! \return Returns a pointer to a list with all video modes
 		//! supported by the gfx adapter.
-		virtual video::IVideoModeList* getVideoModeList() IRR_OVERRIDE;
+		virtual video::IVideoModeList* getVideoModeList() override;
 
 		//! Notifies the device, that it has been resized
 		/** Must be publis as it is called from free function (event handler) */
 		void OnResized();
 
 		//! Sets if the window should be resizable in windowed mode.
-		virtual void setResizable(bool resize=false) IRR_OVERRIDE;
+		virtual void setResizable(bool resize=false) override;
 
 		//! Resize the render window.
-		virtual void setWindowSize(const irr::core::dimension2d<u32>& size) IRR_OVERRIDE;
+		virtual void setWindowSize(const irr::core::dimension2d<u32>& size) override;
 
 		//! Minimizes the window.
-		virtual void minimizeWindow() IRR_OVERRIDE;
+		virtual void minimizeWindow() override;
 
 		//! Maximizes the window.
-		virtual void maximizeWindow() IRR_OVERRIDE;
+		virtual void maximizeWindow() override;
 
 		//! Restores the window size.
-		virtual void restoreWindow() IRR_OVERRIDE;
+		virtual void restoreWindow() override;
 
 		//! Get the position of the window on screen
-		virtual core::position2di getWindowPosition() IRR_OVERRIDE;
+		virtual core::position2di getWindowPosition() override;
 
 		//! Activate any joysticks, and generate events for them.
-		virtual bool activateJoysticks(core::array<SJoystickInfo> & joystickInfo) IRR_OVERRIDE;
+		virtual bool activateJoysticks(core::array<SJoystickInfo> & joystickInfo) override;
 
 		//! Set the current Gamma Value for the Display
-		virtual bool setGammaRamp( f32 red, f32 green, f32 blue, f32 brightness, f32 contrast ) IRR_OVERRIDE;
+		virtual bool setGammaRamp( f32 red, f32 green, f32 blue, f32 brightness, f32 contrast ) override;
 
 		//! Get the current Gamma Value for the Display
-		virtual bool getGammaRamp( f32 &red, f32 &green, f32 &blue, f32 &brightness, f32 &contrast ) IRR_OVERRIDE;
+		virtual bool getGammaRamp( f32 &red, f32 &green, f32 &blue, f32 &brightness, f32 &contrast ) override;
 
 		//! Remove all messages pending in the system message loop
-		virtual void clearSystemMessages() IRR_OVERRIDE;
+		virtual void clearSystemMessages() override;
 
 		//! Get the device type
-		virtual E_DEVICE_TYPE getType() const IRR_OVERRIDE
+		virtual E_DEVICE_TYPE getType() const override
 		{
 			return EIDT_WIN32;
 		}
 
 		//! Compares to the last call of this function to return double and triple clicks.
 		//! \return Returns only 1,2 or 3. A 4th click will start with 1 again.
-		virtual u32 checkSuccessiveClicks(s32 mouseX, s32 mouseY, EMOUSE_INPUT_EVENT inputEvent ) IRR_OVERRIDE
+		virtual u32 checkSuccessiveClicks(s32 mouseX, s32 mouseY, EMOUSE_INPUT_EVENT inputEvent ) override
 		{
 			// we just have to make it public
 			return CIrrDeviceStub::checkSuccessiveClicks(mouseX, mouseY, inputEvent );
@@ -128,7 +128,7 @@ namespace irr
 		//! Same function Windows offers in VersionHelpers.h, but we can't use that as it's not available before SDK 8.1
 		static bool isWindowsVistaOrGreater();
 
-		// convert an Irrlicht texture to a windows cursor
+		// convert an Nirtcpp texture to a windows cursor
 		HCURSOR TextureToCursor(HWND hwnd, irr::video::ITexture * tex, const core::rect<s32>& sourceRect, const core::position2d<s32> &hotspot);
 
 		//! Implementation of the win32 cursor control
@@ -140,7 +140,7 @@ namespace irr
 			~CCursorControl();
 
 			//! Changes the visible state of the mouse cursor.
-			virtual void setVisible(bool visible) IRR_OVERRIDE
+			virtual void setVisible(bool visible) override
 			{
 				CURSORINFO info;
 				info.cbSize = sizeof(CURSORINFO);
@@ -186,19 +186,19 @@ namespace irr
 			}
 
 			//! Returns if the cursor is currently visible.
-			virtual bool isVisible() const IRR_OVERRIDE
+			virtual bool isVisible() const override
 			{
 				return IsVisible;
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(const core::position2d<f32> &pos) IRR_OVERRIDE
+			virtual void setPosition(const core::position2d<f32> &pos) override
 			{
 				setPosition(pos.X, pos.Y);
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(f32 x, f32 y) IRR_OVERRIDE
+			virtual void setPosition(f32 x, f32 y) override
 			{
 				if (!UseReferenceRect)
 					setPosition(core::round32(x*WindowSize.Width), core::round32(y*WindowSize.Height));
@@ -207,13 +207,13 @@ namespace irr
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(const core::position2d<s32> &pos) IRR_OVERRIDE
+			virtual void setPosition(const core::position2d<s32> &pos) override
 			{
 				setPosition(pos.X, pos.Y);
 			}
 
 			//! Sets the new position of the cursor.
-			virtual void setPosition(s32 x, s32 y) IRR_OVERRIDE
+			virtual void setPosition(s32 x, s32 y) override
 			{
 				if (UseReferenceRect)
 				{
@@ -232,7 +232,7 @@ namespace irr
 			}
 
 			//! Returns the current position of the mouse cursor.
-			virtual const core::position2d<s32>& getPosition(bool updateCursor) IRR_OVERRIDE
+			virtual const core::position2d<s32>& getPosition(bool updateCursor) override
 			{
 				if ( updateCursor )
 					updateInternalCursorPosition();
@@ -240,7 +240,7 @@ namespace irr
 			}
 
 			//! Returns the current position of the mouse cursor.
-			virtual core::position2d<f32> getRelativePosition(bool updateCursor) IRR_OVERRIDE
+			virtual core::position2d<f32> getRelativePosition(bool updateCursor) override
 			{
 				if ( updateCursor )
 					updateInternalCursorPosition();
@@ -256,7 +256,7 @@ namespace irr
 			}
 
 			//! Sets an absolute reference rect for calculating the cursor position.
-			virtual void setReferenceRect(core::rect<s32>* rect=0) IRR_OVERRIDE
+			virtual void setReferenceRect(core::rect<s32>* rect=0) override
 			{
 				if (rect)
 				{
@@ -320,22 +320,22 @@ namespace irr
 
 
 			//! Sets the active cursor icon
-			virtual void setActiveIcon(gui::ECURSOR_ICON iconId) IRR_OVERRIDE;
+			virtual void setActiveIcon(gui::ECURSOR_ICON iconId) override;
 
 			//! Gets the currently active icon
-			virtual gui::ECURSOR_ICON getActiveIcon() const IRR_OVERRIDE
+			virtual gui::ECURSOR_ICON getActiveIcon() const override
 			{
 				return ActiveIcon;
 			}
 
 			//! Add a custom sprite as cursor icon.
-			virtual gui::ECURSOR_ICON addIcon(const gui::SCursorSprite& icon) IRR_OVERRIDE;
+			virtual gui::ECURSOR_ICON addIcon(const gui::SCursorSprite& icon) override;
 
 			//! replace the given cursor icon.
-			virtual void changeIcon(gui::ECURSOR_ICON iconId, const gui::SCursorSprite& icon) IRR_OVERRIDE;
+			virtual void changeIcon(gui::ECURSOR_ICON iconId, const gui::SCursorSprite& icon) override;
 
 			//! Return a system-specific size which is supported for cursors. Larger icons will fail, smaller icons might work.
-			virtual core::dimension2di getSupportedIconSize() const IRR_OVERRIDE;
+			virtual core::dimension2di getSupportedIconSize() const override;
 
 			void update();
 
@@ -443,5 +443,5 @@ namespace irr
 
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_WINDOWS_DEVICE_
-#endif // IRR_C_IRR_DEVICE_WIN32_H_INCLUDED
+#endif // _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
+#endif // NIRT_C_NIRT_DEVICE_WIN32_H_INCLUDED

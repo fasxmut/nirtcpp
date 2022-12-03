@@ -9,7 +9,7 @@ bool testWithRenderTarget(video::E_DRIVER_TYPE driverType)
 {
 	// create device
 
-	IrrlichtDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120));
+	NirtcppDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120));
 
 	if (device == 0)
 		return true; // could not create selected driver.
@@ -63,7 +63,7 @@ bool testWithRenderTarget(video::E_DRIVER_TYPE driverType)
 bool testRectangles(video::E_DRIVER_TYPE driverType)
 {
 	// create device
-	IrrlichtDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120));
+	NirtcppDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120));
 
 	if (device == 0)
 		return true; // could not create selected driver.
@@ -106,7 +106,7 @@ bool testWithPNG(video::E_DRIVER_TYPE driverType)
 {
 	// create device
 
-	IrrlichtDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120));
+	NirtcppDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120));
 
 	if (device == 0)
 		return true; // could not create selected driver.
@@ -137,7 +137,7 @@ bool testExactPlacement(video::E_DRIVER_TYPE driverType)
 {
 	// create device
 
-	IrrlichtDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120), 32);
+	NirtcppDevice *device = createDevice(driverType, core::dimension2d<u32>(160,120), 32);
 
 	if (device == 0)
 		return true; // could not create selected driver.

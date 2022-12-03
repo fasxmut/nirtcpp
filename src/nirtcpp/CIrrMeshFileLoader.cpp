@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_IRR_MESH_LOADER_
+#ifdef _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
 
 #include "CIrrMeshFileLoader.h"
 #include "os.h"
@@ -553,4 +553,4 @@ void CIrrMeshFileLoader::readFloatsInsideElement(io::IXMLReader* reader, f32* fl
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_IRR_MESH_LOADER_
+#endif // _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_

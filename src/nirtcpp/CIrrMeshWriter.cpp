@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_IRR_WRITER_
+#ifdef _NIRT_COMPILE_WITH_NIRT_WRITER_
 
 #include "CIrrMeshWriter.h"
 #include "os.h"
@@ -48,7 +48,7 @@ CIrrMeshWriter::~CIrrMeshWriter()
 //! Returns the type of the mesh writer
 EMESH_WRITER_TYPE CIrrMeshWriter::getType() const
 {
-	return EMWT_IRR_MESH;
+	return EMWT_NIRT_MESH;
 }
 
 
@@ -73,14 +73,14 @@ bool CIrrMeshWriter::writeMesh(io::IWriteFile* file, scene::IMesh* mesh, s32 fla
 	Writer->writeXMLHeader();
 
 	Writer->writeElement(L"mesh", false,
-		L"xmlns", L"http://irrlicht.sourceforge.net/IRRMESH_09_2007",
+		L"xmlns", L"http://nirtcpp.sourceforge.net/IRRMESH_09_2007",
 		L"version", L"1.0");
 	Writer->writeLineBreak();
 
 	// add some informational comment. Add a space after and before the comment
 	// tags so that some braindead xml parsers (AS anyone?) are able to parse this too.
 
-	core::stringw infoComment = L" This file contains a static mesh in the Irrlicht Engine format with ";
+	core::stringw infoComment = L" This file contains a static mesh in the Nirtcpp Engine format with ";
 	infoComment += core::stringw(mesh->getMeshBufferCount());
 	infoComment += L" materials.";
 
@@ -292,7 +292,7 @@ void CIrrMeshWriter::writeMeshBuffer(const scene::IMeshBuffer* buffer)
 
 void CIrrMeshWriter::writeMaterial(const video::SMaterial& material)
 {
-	// simply use irrlichts built-in attribute serialization capabilities here:
+	// simply use nirtcpps built-in attribute serialization capabilities here:
 
 	io::IAttributes* attributes =
 		VideoDriver->createAttributesFromMaterial(material);

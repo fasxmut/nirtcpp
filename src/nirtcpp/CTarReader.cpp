@@ -1,10 +1,10 @@
 // Copyright (C) 2009-2012 Gaz Davidson
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CTarReader.h"
 
-#ifdef __IRR_COMPILE_WITH_TAR_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_TAR_ARCHIVE_LOADER_
 
 #include "CFileList.h"
 #include "CLimitReadFile.h"
@@ -253,4 +253,4 @@ IReadFile* CTarReader::createAndOpenFile(u32 index)
 } // end namespace io
 } // end namespace irr
 
-#endif // __IRR_COMPILE_WITH_TAR_ARCHIVE_LOADER_
+#endif // __NIRT_COMPILE_WITH_TAR_ARCHIVE_LOADER_

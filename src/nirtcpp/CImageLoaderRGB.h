@@ -1,6 +1,6 @@
 // Copyright (C) 2009-2012 Gary Conway
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 
 /*
@@ -13,16 +13,16 @@
 	Updated:
 */
 
-#ifndef IRR_C_IMAGE_LOADER_RGB_H_INCLUDED
-#define IRR_C_IMAGE_LOADER_RGB_H_INCLUDED
+#ifndef NIRT_C_IMAGE_LOADER_RGB_H_INCLUDED
+#define NIRT_C_IMAGE_LOADER_RGB_H_INCLUDED
 
-// define _IRR_RGB_FILE_INVERTED_IMAGE_ to preserve the inverted format of the RGB file
+// define _NIRT_RGB_FILE_INVERTED_IMAGE_ to preserve the inverted format of the RGB file
 // commenting this out will invert the inverted image,resulting in the image being upright
-#define _IRR_RGB_FILE_INVERTED_IMAGE_
+#define _NIRT_RGB_FILE_INVERTED_IMAGE_
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_RGB_LOADER_
+#ifdef _NIRT_COMPILE_WITH_RGB_LOADER_
 
 #include "IImageLoader.h"
 
@@ -138,13 +138,13 @@ public:
 
 	//! returns true if the file maybe is able to be loaded by this class
 	//! based on the file extension (e.g. ".tga")
-	virtual bool isALoadableFileExtension(const io::path& filename) const IRR_OVERRIDE;
+	virtual bool isALoadableFileExtension(const io::path& filename) const override;
 
 	//! returns true if the file maybe is able to be loaded by this class
-	virtual bool isALoadableFileFormat(io::IReadFile* file) const IRR_OVERRIDE;
+	virtual bool isALoadableFileFormat(io::IReadFile* file) const override;
 
 	//! creates a surface from the file
-	virtual IImage* loadImage(io::IReadFile* file) const IRR_OVERRIDE;
+	virtual IImage* loadImage(io::IReadFile* file) const override;
 
 private:
 
@@ -159,5 +159,5 @@ private:
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_RGB_LOADER_
-#endif // IRR_C_IMAGE_LOADER_RGB_H_INCLUDED
+#endif // _NIRT_COMPILE_WITH_RGB_LOADER_
+#endif // NIRT_C_IMAGE_LOADER_RGB_H_INCLUDED

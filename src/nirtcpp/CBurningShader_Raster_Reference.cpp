@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#if defined(_IRR_COMPILE_WITH_BURNINGSVIDEO_) && 0
+#if defined(_NIRT_COMPILE_WITH_BURNINGSVIDEO_) && 0
 
 
 namespace irr
@@ -512,9 +512,9 @@ public:
 	CBurningShader_Raster_Reference(CBurningVideoDriver* driver);
 
 	//! draws an indexed triangle list
-	virtual void drawTriangle ( const s4DVertex *a,const s4DVertex *b,const s4DVertex *c ) IRR_OVERRIDE;
+	virtual void drawTriangle ( const s4DVertex *a,const s4DVertex *b,const s4DVertex *c ) override;
 
-	virtual void setMaterial ( const SBurningShaderMaterial &material ) IRR_OVERRIDE;
+	virtual void setMaterial ( const SBurningShaderMaterial &material ) override;
 
 
 private:
@@ -1144,6 +1144,6 @@ IBurningShader* createTriangleRendererReference(CBurningVideoDriver* driver)
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 

@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Code contributed by skreamz
 
 #include "IrrCompileConfig.h"
 
-#ifdef __IRR_COMPILE_WITH_WAD_ARCHIVE_LOADER_
+#ifdef __NIRT_COMPILE_WITH_WAD_ARCHIVE_LOADER_
 
 #include "CWADReader.h"
 #include "os.h"
@@ -115,7 +115,7 @@ CWADReader::CWADReader(IReadFile* file, bool ignoreCase, bool ignorePaths)
 	{
 		SWADFileEntry &e = FileList[i];
 		char buf[128];
-		snprintf_irr ( buf, 128, "c:\\h2\\%s", e.wadFileName.c_str() );
+		snprintf_nirt ( buf, 128, "c:\\h2\\%s", e.wadFileName.c_str() );
 
 		createDir ( buf );
 		FILE * f = fopen ( buf, "wb" );
@@ -200,7 +200,7 @@ bool CWADReader::scanLocalHeader()
 					save.wadFileName += ".wal2";
 					break;
 				default:
-					snprintf_irr ( buf, 16, ".%02d", entry.type );
+					snprintf_nirt ( buf, 16, ".%02d", entry.type );
 					save.wadFileName += buf;
 					break;
 			}
@@ -217,7 +217,7 @@ bool CWADReader::scanLocalHeader()
 				case WAD_TYP_QPIC: save.wadFileName += ".qpic"; break;
 				case WAD_TYP_FONT: save.wadFileName += ".font"; break;
 				default:
-					snprintf_irr ( buf, 16, ".%02d", entry.type );
+					snprintf_nirt ( buf, 16, ".%02d", entry.type );
 					save.wadFileName += buf;
 					break;
 			}
@@ -259,5 +259,5 @@ IReadFile* CWADReader::createAndOpenFile(u32 index)
 } // end namespace irr
 
 
-#endif // __IRR_COMPILE_WITH_WAD_ARCHIVE_LOADER_
+#endif // __NIRT_COMPILE_WITH_WAD_ARCHIVE_LOADER_
 

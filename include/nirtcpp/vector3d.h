@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_POINT_3D_H_INCLUDED
-#define IRR_POINT_3D_H_INCLUDED
+#ifndef NIRT_POINT_3D_H_INCLUDED
+#define NIRT_POINT_3D_H_INCLUDED
 
 #include "irrMath.h"
 
@@ -13,7 +13,7 @@ namespace core
 {
 
 	//! 3d vector template class with lots of operators and methods.
-	/** The vector3d class is used in Irrlicht for three main purposes:
+	/** The vector3d class is used in Nirtcpp for three main purposes:
 		1) As a direction vector (most of the methods assume this).
 		2) As a position in 3d space (which is synonymous with a direction vector from the origin to this position).
 		3) To hold three Euler rotations, where X is pitch, Y is yaw and Z is roll.
@@ -55,14 +55,14 @@ namespace core
 
 		T& operator [](u32 index)
 		{
-			IRR_DEBUG_BREAK_IF(index>2) // access violation
+			NIRT_DEBUG_BREAK_IF(index>2) // access violation
 
 			return *(&X+index);
 		}
 
 		const T& operator [](u32 index) const
 		{
-			IRR_DEBUG_BREAK_IF(index>2) // access violation
+			NIRT_DEBUG_BREAK_IF(index>2) // access violation
 
 			return *(&X+index);
 		}
@@ -195,7 +195,7 @@ namespace core
 			return (*this *= newlength);
 		}
 
-#if defined(_IRR_COMPILE_WITH_90_DEGREE_CAMERA)
+#if defined(_NIRT_COMPILE_WITH_90_DEGREE_CAMERA)
 		vector3d<T>& normalize_camera_direction(const vector3d<T>& def)
 		{
 			f64 l = (f64)X * X + (f64)Y * Y + (f64)Z * Z;
@@ -325,7 +325,7 @@ namespace core
 
 
 		//! Get the rotations that would make a (0,0,1) direction vector point in the same direction as this direction vector.
-		/** Thanks to Arras on the Irrlicht forums for this method.  This utility method is very useful for
+		/** Thanks to Arras on the Nirtcpp forums for this method.  This utility method is very useful for
 		orienting scene nodes towards specific targets.  For example, if this vector represents the difference
 		between two scene nodes, then applying the result of getHorizontalAngle() to one scene node will point
 		it at the other one.

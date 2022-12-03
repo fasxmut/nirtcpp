@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_SHADOW_VOLUME_SCENE_NODE_H_INCLUDED
-#define IRR_C_SHADOW_VOLUME_SCENE_NODE_H_INCLUDED
+#ifndef NIRT_C_SHADOW_VOLUME_SCENE_NODE_H_INCLUDED
+#define NIRT_C_SHADOW_VOLUME_SCENE_NODE_H_INCLUDED
 
 #include "IShadowVolumeSceneNode.h"
 
@@ -27,34 +27,34 @@ namespace scene
 		//! Sets the mesh from which the shadow volume should be generated.
 		/** To optimize shadow rendering, use a simpler mesh for shadows.
 		*/
-		virtual void setShadowMesh(const IMesh* mesh) IRR_OVERRIDE;
+		virtual void setShadowMesh(const IMesh* mesh) override;
 
 		//! Updates the shadow volumes for current light positions.
 		/** Called each render cycle from Animated Mesh SceneNode render method. */
-		virtual void updateShadowVolumes() IRR_OVERRIDE;
+		virtual void updateShadowVolumes() override;
 
 		//! Set optimization used to create shadow volumes
 		/** Default is ESV_SILHOUETTE_BY_POS. If the shadow 
 		looks bad then give ESV_NONE a try (which will be slower). */
-		virtual void setOptimization(ESHADOWVOLUME_OPTIMIZATION optimization) IRR_OVERRIDE;
+		virtual void setOptimization(ESHADOWVOLUME_OPTIMIZATION optimization) override;
 
 		//! Get currently active optimization used to create shadow volumes
-		virtual ESHADOWVOLUME_OPTIMIZATION getOptimization() const IRR_OVERRIDE
+		virtual ESHADOWVOLUME_OPTIMIZATION getOptimization() const override
 		{
 			return Optimization;
 		}
 
 		//! pre render method
-		virtual void OnRegisterSceneNode() IRR_OVERRIDE;
+		virtual void OnRegisterSceneNode() override;
 
 		//! renders the node.
-		virtual void render() IRR_OVERRIDE;
+		virtual void render() override;
 
 		//! returns the axis aligned bounding box of this node
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE;
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override;
 
 		//! Returns type of the scene node
-		virtual ESCENE_NODE_TYPE getType() const IRR_OVERRIDE { return ESNT_SHADOW_VOLUME; }
+		virtual ESCENE_NODE_TYPE getType() const override { return ESNT_SHADOW_VOLUME; }
 
 	private:
 

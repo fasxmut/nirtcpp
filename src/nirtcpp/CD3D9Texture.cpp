@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 
-#ifdef _IRR_COMPILE_WITH_DIRECT3D_9_
+#ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
 #include "CD3D9Texture.h"
 #include "CD3D9Driver.h"
@@ -23,7 +23,7 @@ CD3D9Texture::CD3D9Texture(const io::path& name, const core::array<IImage*>& ima
 	setDebugName("CD3D9Texture");
 #endif
 
-	IRR_DEBUG_BREAK_IF(image.size() == 0)
+	NIRT_DEBUG_BREAK_IF(image.size() == 0)
 
 	Device=driver->getExposedVideoData().D3D9.D3DDev9;
 
@@ -63,7 +63,7 @@ CD3D9Texture::CD3D9Texture(const io::path& name, const core::array<IImage*>& ima
 		hr = Device->CreateCubeTexture(Size.Width, HasMipMaps ? 0 : 1, flags, InternalFormat, D3DPOOL_MANAGED, &CubeTexture, NULL);
 		break;
 	default:
-		IRR_DEBUG_BREAK_IF(true)
+		NIRT_DEBUG_BREAK_IF(true)
 		break;
 	}
 
@@ -225,7 +225,7 @@ void* CD3D9Texture::lock(E_TEXTURE_LOCK_MODE mode, u32 mipmapLevel, u32 layer, E
 		}
 		else if (CubeTexture)
 		{
-			IRR_DEBUG_BREAK_IF(layer > 5)
+			NIRT_DEBUG_BREAK_IF(layer > 5)
 
 			hr = CubeTexture->LockRect(static_cast<_D3DCUBEMAP_FACES>(layer), MipLevelLocked, &rect, 0, LockReadOnly ? D3DLOCK_READONLY : 0);
 		}
@@ -591,7 +591,7 @@ void CD3D9Texture::generateRenderTarget()
 				hr = Device->CreateCubeTexture(Size.Width, 1, flags, InternalFormat, D3DPOOL_DEFAULT, &CubeTexture, NULL);
 			break;
 		default:
-			IRR_DEBUG_BREAK_IF(true)
+			NIRT_DEBUG_BREAK_IF(true)
 			break;
 	}
 
@@ -726,7 +726,7 @@ void CD3D9Texture::uploadTexture(void* data, u32 mipmapLevel, u32 layer)
 	}
 	else if (CubeTexture)
 	{
-		IRR_DEBUG_BREAK_IF(layer > 5)
+		NIRT_DEBUG_BREAK_IF(layer > 5)
 
 		hr = CubeTexture->LockRect(static_cast<_D3DCUBEMAP_FACES>(layer), mipmapLevel, &lockRectangle, 0, 0);
 	}

@@ -1,8 +1,8 @@
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_SCENE_NODE_UPDATE_ABS_H_INCLUDED
-#define IRR_E_SCENE_NODE_UPDATE_ABS_H_INCLUDED
+#ifndef NIRT_E_SCENE_NODE_UPDATE_ABS_H_INCLUDED
+#define NIRT_E_SCENE_NODE_UPDATE_ABS_H_INCLUDED
 
 namespace irr
 {

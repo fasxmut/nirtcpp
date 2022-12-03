@@ -1,9 +1,9 @@
 // written by Reinhard Ostermeier, reinhard@nospam.r-ostermeier.de
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_TREE_VIEW_H_INCLUDED
-#define IRR_I_GUI_TREE_VIEW_H_INCLUDED
+#ifndef NIRT_I_GUI_TREE_VIEW_H_INCLUDED
+#define NIRT_I_GUI_TREE_VIEW_H_INCLUDED
 
 #include "IGUIElement.h"
 #include "IGUIImageList.h"
@@ -79,8 +79,8 @@ namespace gui
 
 		//! removes all children (recursive) from this node
 		/** \deprecated Deprecated in 1.8, use clearChildren() instead.
-		This method may be removed by Irrlicht 1.9 */
-		IRR_DEPRECATED void clearChilds()
+		This method may be removed by Nirtcpp 1.9 */
+		NIRT_DEPRECATED void clearChilds()
 		{
 			return clearChildren();
 		}
@@ -90,8 +90,8 @@ namespace gui
 
 		//! returns true if this node has child nodes
 		/** \deprecated Deprecated in 1.8, use hasChildren() instead.
-		This method may be removed by Irrlicht 1.9 */
-		IRR_DEPRECATED bool hasChilds() const
+		This method may be removed by Nirtcpp 1.9 */
+		NIRT_DEPRECATED bool hasChilds() const
 		{
 			return hasChildren();
 		}
@@ -245,10 +245,10 @@ namespace gui
 		virtual void setLinesVisible( bool visible ) = 0;
 
 		//! Sets the font which should be used as icon font.
-		/** This font is set to the Irrlicht engine built-in-font by
+		/** This font is set to the Nirtcpp engine built-in-font by
 		default. Icons can be displayed in front of every list item.
 		An icon is a string, displayed with the icon font. When using
-		the build-in-font of the Irrlicht engine as icon font, the icon
+		the build-in-font of the Nirtcpp engine as icon font, the icon
 		strings defined in GUIIcons.h can be used.
 		*/
 		virtual void setIconFont( IGUIFont* font ) = 0;

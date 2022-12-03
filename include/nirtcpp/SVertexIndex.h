@@ -1,6 +1,6 @@
 // Copyright (C) 2008-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_VERTEX_INDEX_H_INCLUDED
 #define S_VERTEX_INDEX_H_INCLUDED
@@ -20,7 +20,7 @@ enum E_INDEX_TYPE
 
 
 /*
-//! vertex index used by the Irrlicht engine.
+//! vertex index used by the Nirtcpp engine.
 template <class T>
 struct SSpecificVertexIndex
 {

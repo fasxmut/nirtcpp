@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_GUI_SKIN_H_INCLUDED
-#define IRR_I_GUI_SKIN_H_INCLUDED
+#ifndef NIRT_I_GUI_SKIN_H_INCLUDED
+#define NIRT_I_GUI_SKIN_H_INCLUDED
 
 #include "IAttributeExchangingObject.h"
 #include "EGUIAlignment.h"
@@ -157,9 +157,9 @@ namespace gui
 		EGDS_WINDOW_BUTTON_WIDTH,
 		//! width of a checkbox check
 		EGDS_CHECK_BOX_WIDTH,
-		//! \deprecated This may be removed by Irrlicht 1.9
+		//! \deprecated This may be removed by Nirtcpp 1.9
 		EGDS_MESSAGE_BOX_WIDTH,
-		//! \deprecated This may be removed by Irrlicht 1.9
+		//! \deprecated This may be removed by Nirtcpp 1.9
 		EGDS_MESSAGE_BOX_HEIGHT,
 		//! width of a default button
 		EGDS_BUTTON_WIDTH,

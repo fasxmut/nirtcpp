@@ -1,10 +1,10 @@
 // Copyright (C) 2013-2016 Patryk Nadrowski
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CImageLoaderPVR.h"
 
-#ifdef _IRR_COMPILE_WITH_PVR_LOADER_
+#ifdef _NIRT_COMPILE_WITH_PVR_LOADER_
 
 #include "IReadFile.h"
 #include "os.h"

@@ -338,7 +338,7 @@ bool serializeAttributes()
 {
 	bool result = true;
 
-	IrrlichtDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
+	NirtcppDevice * device = irr::createDevice(video::EDT_NULL, dimension2d<u32>(1, 1));
 	assert(device);
 	if(!device)
 	{

@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_E_MATERIAL_FLAGS_H_INCLUDED
-#define IRR_E_MATERIAL_FLAGS_H_INCLUDED
+#ifndef NIRT_E_MATERIAL_FLAGS_H_INCLUDED
+#define NIRT_E_MATERIAL_FLAGS_H_INCLUDED
 
 namespace irr
 {
@@ -48,7 +48,7 @@ namespace video
 		EMF_TRILINEAR_FILTER = 0x200,
 
 		//! Is anisotropic filtering? Default: false
-		/** In Irrlicht you can use anisotropic texture filtering in
+		/** In Nirtcpp you can use anisotropic texture filtering in
 		conjunction with bilinear or trilinear texture filtering
 		to improve rendering results. Primitives will look less
 		blurry with this flag switched on. */
@@ -96,4 +96,4 @@ namespace video
 } // end namespace video
 } // end namespace irr
 
-#endif // IRR_E_MATERIAL_FLAGS_H_INCLUDED
+#endif // NIRT_E_MATERIAL_FLAGS_H_INCLUDED

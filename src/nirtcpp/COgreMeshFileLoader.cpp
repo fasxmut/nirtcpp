@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Originally written by Christian Stehno, modified by Nikolaus Gebhardt
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_OGRE_LOADER_
+#ifdef _NIRT_COMPILE_WITH_OGRE_LOADER_
 
 #include "COgreMeshFileLoader.h"
 #include "CMeshTextureLoader.h"
@@ -16,7 +16,7 @@
 #include "coreutil.h"
 
 #ifdef _DEBUG
-#define IRR_OGRE_LOADER_DEBUG
+#define NIRT_OGRE_LOADER_DEBUG
 #endif
 
 namespace irr
@@ -211,7 +211,7 @@ bool COgreMeshFileLoader::readChunk(io::IReadFile* file)
 
 bool COgreMeshFileLoader::readObjectChunk(io::IReadFile* file, ChunkData& parent, OgreMesh& mesh)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Object Chunk", ELL_DEBUG);
 #endif
 	readBool(file, parent, mesh.SkeletalAnimation);
@@ -232,7 +232,7 @@ bool COgreMeshFileLoader::readObjectChunk(io::IReadFile* file, ChunkData& parent
 			break;
 			case COGRE_MESH_BOUNDS:
 			{
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 				os::Printer::log("Read Mesh Bounds", ELL_DEBUG);
 #endif
 				readVector(file, data, mesh.BBoxMinEdge);
@@ -242,7 +242,7 @@ bool COgreMeshFileLoader::readObjectChunk(io::IReadFile* file, ChunkData& parent
 			break;
 			case COGRE_SKELETON_LINK:
 			{
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 				os::Printer::log("Read Skeleton link", ELL_DEBUG);
 #endif
 				core::stringc name;
@@ -267,7 +267,7 @@ bool COgreMeshFileLoader::readObjectChunk(io::IReadFile* file, ChunkData& parent
 				data.read += data.header.length-data.read;
 				break;
 			default:
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 				os::Printer::log("Skipping", core::stringc(data.header.id), ELL_DEBUG);
 #endif
 				// ignore chunk
@@ -285,7 +285,7 @@ bool COgreMeshFileLoader::readObjectChunk(io::IReadFile* file, ChunkData& parent
 
 bool COgreMeshFileLoader::readGeometry(io::IReadFile* file, ChunkData& parent, OgreGeometry& geometry)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Geometry", ELL_DEBUG);
 #endif
 	readInt(file, parent, &geometry.NumVertex);
@@ -304,7 +304,7 @@ bool COgreMeshFileLoader::readGeometry(io::IReadFile* file, ChunkData& parent, O
 			break;
 		default:
 			// ignore chunk
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 			os::Printer::log("Skipping", core::stringc(data.header.id), ELL_DEBUG);
 #endif
 			file->seek(data.header.length-data.read, true);
@@ -320,7 +320,7 @@ bool COgreMeshFileLoader::readGeometry(io::IReadFile* file, ChunkData& parent, O
 
 bool COgreMeshFileLoader::readVertexDeclaration(io::IReadFile* file, ChunkData& parent, OgreGeometry& geometry)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Vertex Declaration", ELL_DEBUG);
 #endif
 	NumUV = 0;
@@ -362,7 +362,7 @@ bool COgreMeshFileLoader::readVertexDeclaration(io::IReadFile* file, ChunkData& 
 
 bool COgreMeshFileLoader::readVertexBuffer(io::IReadFile* file, ChunkData& parent, OgreGeometry& geometry)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Vertex Buffer", ELL_DEBUG);
 #endif
 	OgreVertexBuffer buf;
@@ -388,11 +388,11 @@ bool COgreMeshFileLoader::readVertexBuffer(io::IReadFile* file, ChunkData& paren
 
 bool COgreMeshFileLoader::readSubMesh(io::IReadFile* file, ChunkData& parent, OgreSubMesh& subMesh)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Submesh", ELL_DEBUG);
 #endif
 	readString(file, parent, subMesh.Material);
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("using material", subMesh.Material, ELL_DEBUG);
 #endif
 	readBool(file, parent, subMesh.SharedVertices);
@@ -427,7 +427,7 @@ bool COgreMeshFileLoader::readSubMesh(io::IReadFile* file, ChunkData& parent, Og
 		break;
 		case COGRE_SUBMESH_OPERATION:
 			readShort(file, data, &subMesh.Operation);
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 			os::Printer::log("Read Submesh Operation",core::stringc(subMesh.Operation), ELL_DEBUG);
 #endif
 			if (subMesh.Operation != 4)
@@ -435,7 +435,7 @@ bool COgreMeshFileLoader::readSubMesh(io::IReadFile* file, ChunkData& parent, Og
 			break;
 		case COGRE_SUBMESH_TEXTURE_ALIAS:
 		{
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 				os::Printer::log("Read Submesh Texture Alias", ELL_DEBUG);
 #endif
 			core::stringc texture, alias;
@@ -453,7 +453,7 @@ bool COgreMeshFileLoader::readSubMesh(io::IReadFile* file, ChunkData& parent, Og
 		}
 			break;
 		default:
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 			os::Printer::log("Skipping", core::stringc(data.header.id), ELL_DEBUG);
 #endif
 			parent.read=parent.header.length;
@@ -464,7 +464,7 @@ bool COgreMeshFileLoader::readSubMesh(io::IReadFile* file, ChunkData& parent, Og
 	}
 	if (parent.read != parent.header.length)
 		os::Printer::log("Incorrect submesh length. File might be corrupted.");
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Done with submesh", ELL_DEBUG);
 #endif
 	return true;
@@ -788,7 +788,7 @@ void COgreMeshFileLoader::composeObject(void)
 			ISkinnedMesh::SJoint* joint = m->addJoint();
 			joint->Name=Skeleton.Bones[i].Name;
 
-			// IRR_TEST_BROKEN_QUATERNION_USE: TODO - switched to getMatrix_transposed instead of getMatrix for downward compatibility.
+			// NIRT_TEST_BROKEN_QUATERNION_USE: TODO - switched to getMatrix_transposed instead of getMatrix for downward compatibility.
 			//								   Not tested so far if this was correct or wrong before quaternion fix!
 			Skeleton.Bones[i].Orientation.getMatrix_transposed(joint->LocalMatrix);
 
@@ -842,7 +842,7 @@ void COgreMeshFileLoader::composeObject(void)
 				ISkinnedMesh::SRotationKey* rotkey = m->addRotationKey(keyjoint);
 				rotkey->frame=frame.Time*25;
 
-				// IRR_TEST_BROKEN_QUATERNION_USE: TODO - switched from keyjoint->LocalMatrix to keyjoint->LocalMatrix.getTransposed() for downward compatibility.
+				// NIRT_TEST_BROKEN_QUATERNION_USE: TODO - switched from keyjoint->LocalMatrix to keyjoint->LocalMatrix.getTransposed() for downward compatibility.
 				// Not tested so far if this was correct or wrong before quaternion fix!
 				rotkey->rotation=core::quaternion(keyjoint->LocalMatrix.getTransposed())*frame.Orientation;
 
@@ -960,7 +960,7 @@ bool COgreMeshFileLoader::readColor(io::IReadFile* file, video::SColor& col)
 
 void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Pass");
 #endif
 	core::stringc token;
@@ -1113,7 +1113,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 		}
 		else if (token=="texture_unit")
 		{
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 			os::Printer::log("Read Texture unit", ELL_DEBUG);
 #endif
 			getMaterialToken(file, token); //open brace
@@ -1124,7 +1124,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 				{
 					getMaterialToken(file, token);
 					pass.Texture.Filename.push_back(token);
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 					os::Printer::log("Read Texture", token, ELL_DEBUG);
 #endif
 					getMaterialToken(file, pass.Texture.CoordsType, true);
@@ -1234,7 +1234,7 @@ void COgreMeshFileLoader::readPass(io::IReadFile* file, OgreTechnique& technique
 
 void COgreMeshFileLoader::readTechnique(io::IReadFile* file, OgreMaterial& mat)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Read Technique");
 #endif
 	core::stringc token;
@@ -1263,7 +1263,7 @@ void COgreMeshFileLoader::readTechnique(io::IReadFile* file, OgreMaterial& mat)
 
 void COgreMeshFileLoader::loadMaterials(io::IReadFile* meshFile)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Load Materials", ELL_DEBUG);
 #endif
 	core::stringc token;
@@ -1314,7 +1314,7 @@ void COgreMeshFileLoader::loadMaterials(io::IReadFile* meshFile)
 		OgreMaterial& mat = Materials.getLast();
 
 		getMaterialToken(file, mat.Name);
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Load Material", mat.Name.c_str(), ELL_DEBUG);
 #endif
 		getMaterialToken(file, token); //open brace
@@ -1346,7 +1346,7 @@ void COgreMeshFileLoader::loadMaterials(io::IReadFile* meshFile)
 	}
 
 	file->drop();
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Finished loading Materials", ELL_DEBUG);
 #endif
 }
@@ -1354,7 +1354,7 @@ void COgreMeshFileLoader::loadMaterials(io::IReadFile* meshFile)
 
 bool COgreMeshFileLoader::loadSkeleton(io::IReadFile* meshFile, const core::stringc& name)
 {
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 	os::Printer::log("Load Skeleton", name, ELL_DEBUG);
 #endif
 	io::IReadFile* file = 0;
@@ -1409,7 +1409,7 @@ bool COgreMeshFileLoader::loadSkeleton(io::IReadFile* meshFile, const core::stri
 				readShort(file, data, &bone.Handle);
 				readVector(file, data, bone.Position);
 				readQuaternion(file, data, bone.Orientation);
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 				os::Printer::log("Bone", bone.Name+" ("+core::stringc(bone.Handle)+")", ELL_DEBUG);
 				os::Printer::log("Position", core::stringc(bone.Position.X)+" "+core::stringc(bone.Position.Y)+" "+core::stringc(bone.Position.Z), ELL_DEBUG);
 				os::Printer::log("Rotation quat", core::stringc(bone.Orientation.W)+" "+core::stringc(bone.Orientation.X)+" "+core::stringc(bone.Orientation.Y)+" "+core::stringc(bone.Orientation.Z), ELL_DEBUG);
@@ -1445,14 +1445,14 @@ bool COgreMeshFileLoader::loadSkeleton(io::IReadFile* meshFile, const core::stri
 				OgreAnimation& anim = Skeleton.Animations.getLast();
 				readString(file, data, anim.Name);
 				readFloat(file, data, &anim.Length);
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 				os::Printer::log("Animation", anim.Name, ELL_DEBUG);
 				os::Printer::log("Length", core::stringc(anim.Length), ELL_DEBUG);
 #endif
 			}
 			break;
 		case COGRE_ANIMATION_TRACK:
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 			os::Printer::log("for Bone ", core::stringc(bone), ELL_DEBUG);
 #endif
 				readShort(file, data, &bone); // store current bone
@@ -1476,7 +1476,7 @@ bool COgreMeshFileLoader::loadSkeleton(io::IReadFile* meshFile, const core::stri
 			}
 			break;
 		case COGRE_ANIMATION_LINK:
-#ifdef IRR_OGRE_LOADER_DEBUG
+#ifdef NIRT_OGRE_LOADER_DEBUG
 			os::Printer::log("Animation link", ELL_DEBUG);
 #endif
 			break;
@@ -1603,5 +1603,5 @@ void COgreMeshFileLoader::clearMeshes()
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_OGRE_LOADER_
+#endif // _NIRT_COMPILE_WITH_OGRE_LOADER_
 

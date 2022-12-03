@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_VIDEO_DRIVER_H_INCLUDED
-#define IRR_I_VIDEO_DRIVER_H_INCLUDED
+#ifndef NIRT_I_VIDEO_DRIVER_H_INCLUDED
+#define NIRT_I_VIDEO_DRIVER_H_INCLUDED
 
 #include "rect.h"
 #include "SColor.h"
@@ -66,16 +66,16 @@ namespace video
 		ETS_TEXTURE_2,
 		//! Texture transformation
 		ETS_TEXTURE_3,
-#if _IRR_MATERIAL_MAX_TEXTURES_>4
+#if _NIRT_MATERIAL_MAX_TEXTURES_>4
 		//! Texture transformation
 		ETS_TEXTURE_4,
-#if _IRR_MATERIAL_MAX_TEXTURES_>5
+#if _NIRT_MATERIAL_MAX_TEXTURES_>5
 		//! Texture transformation
 		ETS_TEXTURE_5,
-#if _IRR_MATERIAL_MAX_TEXTURES_>6
+#if _NIRT_MATERIAL_MAX_TEXTURES_>6
 		//! Texture transformation
 		ETS_TEXTURE_6,
-#if _IRR_MATERIAL_MAX_TEXTURES_>7
+#if _NIRT_MATERIAL_MAX_TEXTURES_>7
 		//! Texture transformation
 		ETS_TEXTURE_7,
 #endif
@@ -83,7 +83,7 @@ namespace video
 #endif
 #endif
 		//! Only used internally
-		ETS_COUNT = ETS_TEXTURE_0 + _IRR_MATERIAL_MAX_TEXTURES_
+		ETS_COUNT = ETS_TEXTURE_0 + _NIRT_MATERIAL_MAX_TEXTURES_
 	};
 
 	//! Special render targets, which usually map to dedicated hardware
@@ -142,8 +142,8 @@ namespace video
 
 	//! Interface to driver which is able to perform 2d and 3d graphics functions.
 	/** This interface is one of the most important interfaces of
-	the Irrlicht Engine: All rendering and texture manipulation is done with
-	this interface. You are able to use the Irrlicht Engine by only
+	the Nirtcpp Engine: All rendering and texture manipulation is done with
+	this interface. You are able to use the Nirtcpp Engine by only
 	invoking methods of this interface if you like to, although the
 	irr::scene::ISceneManager interface provides a lot of powerful classes
 	and methods to make the programmer's life easier.
@@ -205,12 +205,12 @@ namespace video
 
 		//! Get attributes of the actual video driver
 		/** The following names can be queried for the given types:
-		MaxTextures (int) The maximum number of simultaneous textures supported by the driver. This can be less than the supported number of textures of the driver. Use _IRR_MATERIAL_MAX_TEXTURES_ to adapt the number.
+		MaxTextures (int) The maximum number of simultaneous textures supported by the driver. This can be less than the supported number of textures of the driver. Use _NIRT_MATERIAL_MAX_TEXTURES_ to adapt the number.
 		MaxSupportedTextures (int) The maximum number of simultaneous textures supported by the fixed function pipeline of the (hw) driver. The actual supported number of textures supported by the engine can be lower.
 		MaxLights (int) Number of hardware lights supported in the fixed function pipeline of the driver, typically 6-8. Use light manager or deferred shading for more.
 		MaxAnisotropy (int) Number of anisotropy levels supported for filtering. At least 1, max is typically at 16 or 32.
 		MaxUserClipPlanes (int) Number of additional clip planes, which can be set by the user via dedicated driver methods.
-		MaxAuxBuffers (int) Special render buffers, which are currently not really usable inside Irrlicht. Only supported by OpenGL
+		MaxAuxBuffers (int) Special render buffers, which are currently not really usable inside Nirtcpp. Only supported by OpenGL
 		MaxMultipleRenderTargets (int) Number of render targets which can be bound simultaneously. Rendering to MRTs is done via shaders.
 		MaxIndices (int) Number of indices which can be used in one render call (i.e. one mesh buffer).
 		MaxTextureSize (int) Dimension that a texture may have, both in width and height.
@@ -330,7 +330,7 @@ namespace video
 		\return Pointer to the newly created texture. This pointer
 		should not be dropped. See IReferenceCounted::drop() for more
 		information. */
-		IRR_DEPRECATED ITexture* addTexture(const io::path& name, IImage* image, void* mipmapData)
+		NIRT_DEPRECATED ITexture* addTexture(const io::path& name, IImage* image, void* mipmapData)
 		{
 			if (image)
 				image->setMipMapsData(mipmapData, false, true);
@@ -487,7 +487,7 @@ namespace video
 		the color key will have their color, as well as their alpha, set to zero
 		(i.e. black). This behavior matches the legacy (buggy) behavior prior
 		to release 1.5 and is provided for backwards compatibility only.
-		This parameter may be removed by Irrlicht 1.9. */
+		This parameter may be removed by Nirtcpp 1.9. */
 		virtual void makeColorKeyTexture(video::ITexture* texture,
 						video::SColor color,
 						bool zeroTexels = false) const =0;
@@ -504,7 +504,7 @@ namespace video
 		the color key will have their color, as well as their alpha, set to zero
 		(i.e. black). This behavior matches the legacy (buggy) behavior prior
 		to release 1.5 and is provided for backwards compatibility only.
-		This parameter may be removed by Irrlicht 1.9. */
+		This parameter may be removed by Nirtcpp 1.9. */
 		virtual void makeColorKeyTexture(video::ITexture* texture,
 				core::position2d<s32> colorKeyPixelPos,
 				bool zeroTexels = false) const =0;
@@ -1101,7 +1101,7 @@ namespace video
 		virtual const wchar_t* getName() const =0;
 
 		//! Adds an external image loader to the engine.
-		/** This is useful if the Irrlicht Engine should be able to load
+		/** This is useful if the Nirtcpp Engine should be able to load
 		textures of currently unsupported file formats (e.g. gif). The
 		IImageLoader only needs to be implemented for loading this file
 		format. A pointer to the implementation can be passed to the
@@ -1110,7 +1110,7 @@ namespace video
 		virtual void addExternalImageLoader(IImageLoader* loader) =0;
 
 		//! Adds an external image writer to the engine.
-		/** This is useful if the Irrlicht Engine should be able to
+		/** This is useful if the Nirtcpp Engine should be able to
 		write textures of currently unsupported file formats (e.g
 		.gif). The IImageWriter only needs to be implemented for
 		writing this file format. A pointer to the implementation can
@@ -1233,7 +1233,7 @@ namespace video
 		pointer directly and own it afterward. If false, the memory
 		will by copied internally.
 		WARNING: Setting this to 'true' will not work across dll boundaries.
-		So unless you link Irrlicht statically you should keep this to 'false'.
+		So unless you link Nirtcpp statically you should keep this to 'false'.
 		The parameter is mainly for internal usage.
 		\param deleteMemory Whether the memory is deallocated upon
 		destruction.
@@ -1254,23 +1254,23 @@ namespace video
 		virtual IImage* createImage(ECOLOR_FORMAT format, const core::dimension2d<u32>& size) =0;
 
 		//! Creates a software image by converting it to given format from another image.
-		/** \deprecated Create an empty image and use copyTo(). This method may be removed by Irrlicht 1.9.
+		/** \deprecated Create an empty image and use copyTo(). This method may be removed by Nirtcpp 1.9.
 		\param format Desired color format of the image.
 		\param imageToCopy Image to copy to the new image.
 		\return The created image.
 		If you no longer need the image, you should call IImage::drop().
 		See IReferenceCounted::drop() for more information. */
-		IRR_DEPRECATED virtual IImage* createImage(ECOLOR_FORMAT format, IImage *imageToCopy) =0;
+		NIRT_DEPRECATED virtual IImage* createImage(ECOLOR_FORMAT format, IImage *imageToCopy) =0;
 
 		//! Creates a software image from a part of another image.
-		/** \deprecated Create an empty image and use copyTo(). This method may be removed by Irrlicht 1.9.
+		/** \deprecated Create an empty image and use copyTo(). This method may be removed by Nirtcpp 1.9.
 		\param imageToCopy Image to copy to the new image in part.
 		\param pos Position of rectangle to copy.
 		\param size Extents of rectangle to copy.
 		\return The created image.
 		If you no longer need the image, you should call IImage::drop().
 		See IReferenceCounted::drop() for more information. */
-		IRR_DEPRECATED virtual IImage* createImage(IImage* imageToCopy,
+		NIRT_DEPRECATED virtual IImage* createImage(IImage* imageToCopy,
 				const core::position2d<s32>& pos,
 				const core::dimension2d<u32>& size) =0;
 
@@ -1400,7 +1400,7 @@ namespace video
 		virtual void clearBuffers(u16 flag, SColor color = SColor(255,0,0,0), f32 depth = 1.f, u8 stencil = 0) = 0;
 
 		//! Clear the color, depth and/or stencil buffers.
-		IRR_DEPRECATED void clearBuffers(bool backBuffer, bool depthBuffer, bool stencilBuffer, SColor color)
+		NIRT_DEPRECATED void clearBuffers(bool backBuffer, bool depthBuffer, bool stencilBuffer, SColor color)
 		{
 			u16 flag = 0;
 

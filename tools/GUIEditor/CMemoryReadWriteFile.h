@@ -56,7 +56,7 @@ namespace io
 		virtual const io::path& getFileName() const;
 
 		//! Flush the content of the buffer in the file
-		virtual bool flush() IRR_OVERRIDE;
+		virtual bool flush() override;
 
 		//! Returns file data as an array
 		core::array<c8>& getData();

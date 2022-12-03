@@ -1,4 +1,4 @@
-/* irrlicht.h -- interface of the 'Irrlicht Engine'
+/* nirtcpp.h -- interface of the 'Nirtcpp Engine'
 
   Copyright (C) 2002-2012 Nikolaus Gebhardt
 
@@ -18,11 +18,11 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 
-  Please note that the Irrlicht Engine is based in part on the work of the
+  Please note that the Nirtcpp Engine is based in part on the work of the
   Independent JPEG Group, the zlib and the libPng. This means that if you use
-  the Irrlicht Engine in your product, you must acknowledge somewhere in your
+  the Nirtcpp Engine in your product, you must acknowledge somewhere in your
   documentation that you've used the IJG code. It would also be nice to mention
-  that you use the Irrlicht Engine, the zlib and libPng. See the README files
+  that you use the Nirtcpp Engine, the zlib and libPng. See the README files
   in the jpeglib, the zlib and libPng for further information.
 */
 
@@ -192,23 +192,23 @@
 #include "vector2d.h"
 #include "vector3d.h"
 
-/*! \mainpage Irrlicht Engine 1.9 API documentation
+/*! \mainpage Nirtcpp Engine 1.9 API documentation
  *
  * <div align="center"><img src="logobig.png" ></div>
  *
  * \section intro Introduction
  *
- * Welcome to the Irrlicht Engine API documentation.
+ * Welcome to the Nirtcpp Engine API documentation.
  * Here you'll find any information you'll need to develop applications with
- * the Irrlicht Engine. If you are looking for a tutorial on how to start, you'll
- * find some on the homepage of the Irrlicht Engine at
- * <A HREF="http://irrlicht.sourceforge.net" >irrlicht.sourceforge.net</A>
+ * the Nirtcpp Engine. If you are looking for a tutorial on how to start, you'll
+ * find some on the homepage of the Nirtcpp Engine at
+ * <A HREF="http://nirtcpp.sourceforge.net" >nirtcpp.sourceforge.net</A>
  * or inside the SDK in the examples directory.
  *
- * The Irrlicht Engine is intended to be an easy-to-use 3d engine, so
+ * The Nirtcpp Engine is intended to be an easy-to-use 3d engine, so
  * this documentation is an important part of it. If you have any questions or
  * suggestions, just send a email to the author of the engine, Nikolaus Gebhardt
- * (niko (at) irrlicht3d.org).
+ * (niko (at) nirtcpp3d.org).
  *
  *
  * \section links Links
@@ -227,7 +227,7 @@
  * of the engine quite well:
  *
  * \code
- * #include <irrlicht.h>
+ * #include <nirtcpp.h>
  * using namespace irr;
  *
  * int main()
@@ -269,7 +269,7 @@
  * }
  * \endcode
  *
- * Irrlicht can load a lot of file formats automatically, see irr::scene::ISceneManager::getMesh()
+ * Nirtcpp can load a lot of file formats automatically, see irr::scene::ISceneManager::getMesh()
  * for a detailed list. So if you would like to replace the simple blue screen background by
  * a cool Quake 3 Map, optimized by an octree, just insert this code
  * somewhere before the while loop:
@@ -305,11 +305,11 @@
 
 #include "SIrrCreationParameters.h"
 
-//! Everything in the Irrlicht Engine can be found in this namespace.
+//! Everything in the Nirtcpp Engine can be found in this namespace.
 namespace irr
 {
-	//! Creates an Irrlicht device. The Irrlicht device is the root object for using the engine.
-	/** If you need more parameters to be passed to the creation of the Irrlicht Engine device,
+	//! Creates an Nirtcpp device. The Nirtcpp device is the root object for using the engine.
+	/** If you need more parameters to be passed to the creation of the Nirtcpp Engine device,
 	use the createDeviceEx() function.
 	\param driverType: Type of the video driver to use. This can currently be video::EDT_NULL,
 	video::EDT_SOFTWARE, video::EDT_BURNINGSVIDEO, video::EDT_DIRECT3D9 and video::EDT_OPENGL.
@@ -347,19 +347,19 @@ namespace irr
 			IEventReceiver* receiver);
 
 
-	//! Creates an Irrlicht device with the option to specify advanced parameters.
-	/** Usually you should used createDevice() for creating an Irrlicht Engine device.
+	//! Creates an Nirtcpp device with the option to specify advanced parameters.
+	/** Usually you should used createDevice() for creating an Nirtcpp Engine device.
 	Use this function only if you wish to specify advanced parameters like a window
 	handle in which the device should be created.
 	\param parameters: Structure containing advanced parameters for the creation of the device.
-	See irr::SIrrlichtCreationParameters for details.
+	See irr::SNirtcppCreationParameters for details.
 	\return Returns pointer to the created NirtcppDevice or null if the
 	device could not be created. */
 	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(
-		const SIrrlichtCreationParameters& parameters);
+		const SNirtcppCreationParameters& parameters);
 
 	//! typedef for Function Pointer
-	typedef NirtcppDevice* (IRRCALLCONV *funcptr_createDeviceEx )( const SIrrlichtCreationParameters& parameters );
+	typedef NirtcppDevice* (IRRCALLCONV *funcptr_createDeviceEx )( const SNirtcppCreationParameters& parameters );
 
 
 	// THE FOLLOWING IS AN EMPTY LIST OF ALL SUB NAMESPACES
@@ -391,8 +391,8 @@ namespace irr
 	}
 }
 
-/*! \file irrlicht.h
-	\brief Main header file of the irrlicht, the only file needed to include.
+/*! \file nirtcpp.h
+	\brief Main header file of the nirtcpp, the only file needed to include.
 */
 
 #endif

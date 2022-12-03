@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CCameraSceneNode.h"
 #include "ISceneManager.h"
@@ -266,7 +266,7 @@ void CCameraSceneNode::render()
 //! update
 void CCameraSceneNode::updateMatrices()
 {
-#if defined(_IRR_COMPILE_WITH_90_DEGREE_CAMERA)
+#if defined(_NIRT_COMPILE_WITH_90_DEGREE_CAMERA)
 	ViewArea.getTransform(video::ETS_VIEW).buildCameraLookAtMatrixLH(getAbsolutePosition(), Target, UpVector);
 #else
 	core::vector3df pos = getAbsolutePosition();

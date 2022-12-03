@@ -9,7 +9,7 @@ using namespace irr;
 /** This test is very special in its setup, problematic situation was found by stefbuet. */
 static bool testWith2DImage(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice(driverType, core::dimension2d<u32> (256, 128));
+	NirtcppDevice *device = createDevice(driverType, core::dimension2d<u32> (256, 128));
 	if (!device)
 		return true; // No error if device does not exist
 
@@ -28,7 +28,7 @@ static bool testWith2DImage(video::E_DRIVER_TYPE driverType)
 
 	logTestString("Testing driver %ls\n", driver->getName());
 
-	video::ITexture *image = driver->getTexture ("../media/irrlichtlogo2.png");
+	video::ITexture *image = driver->getTexture ("../media/nirtcpplogo2.png");
 	video::ITexture *RTT_texture = driver->addRenderTargetTexture (core::dimension2d < u32 > (256, 128));
 
 	smgr->addCameraSceneNode (0, core::vector3df (100, 100, 100),
@@ -102,13 +102,13 @@ static bool testWith2DImage(video::E_DRIVER_TYPE driverType)
 
 bool rttAndZBuffer(video::E_DRIVER_TYPE driverType)
 {
-	SIrrlichtCreationParameters cp;
+	SNirtcppCreationParameters cp;
 	cp.WindowSize.set(160,120);
 	cp.Bits = 32;
 	cp.AntiAlias = 4;
 	cp.DriverType = driverType;
 
-	IrrlichtDevice* nullDevice = createDevice(video::EDT_NULL);
+	NirtcppDevice* nullDevice = createDevice(video::EDT_NULL);
 	cp.WindowSize = nullDevice->getVideoModeList()->getDesktopResolution();
 	nullDevice->closeDevice();
 	nullDevice->run();
@@ -116,7 +116,7 @@ bool rttAndZBuffer(video::E_DRIVER_TYPE driverType)
 
 	cp.WindowSize -= core::dimension2d<u32>(100, 100);
 
-	IrrlichtDevice* device = createDeviceEx(cp);
+	NirtcppDevice* device = createDeviceEx(cp);
 	if (!device)
 		return true;
 
@@ -214,7 +214,7 @@ bool rttAndZBuffer(video::E_DRIVER_TYPE driverType)
 // drivers that don't support image scaling will show a pink background instead
 bool rttAndText(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120));
+	NirtcppDevice* device = createDevice(driverType, core::dimension2d<u32>(160, 120));
 	if (!device)
 		return true;
 
@@ -280,7 +280,7 @@ bool rttAndText(video::E_DRIVER_TYPE driverType)
 	return result;
 }
 
-static void Render(IrrlichtDevice* device, video::IRenderTarget* rt, core::vector3df& pos1, 
+static void Render(NirtcppDevice* device, video::IRenderTarget* rt, core::vector3df& pos1, 
 				   core::vector3df& pos2, scene::IAnimatedMesh* sphereMesh, core::vector3df& pos3, core::vector3df& pos4)
 {
 	video::IVideoDriver* driver = device->getVideoDriver();
@@ -321,13 +321,13 @@ static void Render(IrrlichtDevice* device, video::IRenderTarget* rt, core::vecto
 
 bool rttAndAntiAliasing(video::E_DRIVER_TYPE driverType)
 {
-	SIrrlichtCreationParameters cp;
+	SNirtcppCreationParameters cp;
 	cp.DriverType = driverType;
 	cp.WindowSize = core::dimension2di(160, 120);
 	cp.AntiAlias = 2;
 	cp.Vsync = true;
 
-	IrrlichtDevice* device = createDeviceEx(cp);
+	NirtcppDevice* device = createDeviceEx(cp);
 	if (!device)
 		return true;
 
@@ -420,11 +420,11 @@ bool rttAndAntiAliasing(video::E_DRIVER_TYPE driverType)
 
 bool rttFormats(video::E_DRIVER_TYPE driverType)
 {
-	SIrrlichtCreationParameters cp;
+	SNirtcppCreationParameters cp;
 	cp.DriverType = driverType;
 	cp.WindowSize = core::dimension2di(160, 120);
 
-	IrrlichtDevice* device = createDeviceEx(cp);
+	NirtcppDevice* device = createDeviceEx(cp);
 	if (!device)
 		return true;
 

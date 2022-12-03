@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_MESH_CACHE_H_INCLUDED
-#define IRR_I_MESH_CACHE_H_INCLUDED
+#ifndef NIRT_I_MESH_CACHE_H_INCLUDED
+#define NIRT_I_MESH_CACHE_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "path.h"
@@ -80,40 +80,40 @@ namespace scene
 
 		//! Returns a mesh based on its name (often a filename).
 		/** \deprecated Use getMeshByName() instead. This method may be removed by
-		Irrlicht 1.9 */
-		IRR_DEPRECATED IAnimatedMesh* getMeshByFilename(const io::path& filename)
+		Nirtcpp 1.9 */
+		NIRT_DEPRECATED IAnimatedMesh* getMeshByFilename(const io::path& filename)
 		{
 			return getMeshByName(filename);
 		}
 
 		//! Get the name of a loaded mesh, based on its index. (Name is often identical to the filename).
 		/** \deprecated Use getMeshName() instead. This method may be removed by
-		Irrlicht 1.9 */
-		IRR_DEPRECATED const io::path& getMeshFilename(u32 index) const
+		Nirtcpp 1.9 */
+		NIRT_DEPRECATED const io::path& getMeshFilename(u32 index) const
 		{
 			return getMeshName(index).getInternalName();
 		}
 
 		//! Get the name of a loaded mesh, if there is any. (Name is often identical to the filename).
 		/** \deprecated Use getMeshName() instead. This method may be removed by
-		Irrlicht 1.9 */
-		IRR_DEPRECATED const io::path& getMeshFilename(const IMesh* const mesh) const
+		Nirtcpp 1.9 */
+		NIRT_DEPRECATED const io::path& getMeshFilename(const IMesh* const mesh) const
 		{
 			return getMeshName(mesh).getInternalName();
 		}
 
 		//! Renames a loaded mesh.
 		/** \deprecated Use renameMesh() instead. This method may be removed by
-		Irrlicht 1.9 */
-		IRR_DEPRECATED bool setMeshFilename(u32 index, const io::path& filename)
+		Nirtcpp 1.9 */
+		NIRT_DEPRECATED bool setMeshFilename(u32 index, const io::path& filename)
 		{
 			return renameMesh(index, filename);
 		}
 
 		//! Renames a loaded mesh.
 		/** \deprecated Use renameMesh() instead. This method may be removed by
-		Irrlicht 1.9 */
-		IRR_DEPRECATED bool setMeshFilename(const IMesh* const mesh, const io::path& filename)
+		Nirtcpp 1.9 */
+		NIRT_DEPRECATED bool setMeshFilename(const IMesh* const mesh, const io::path& filename)
 		{
 			return renameMesh(mesh, filename);
 		}

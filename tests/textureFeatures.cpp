@@ -11,7 +11,7 @@ namespace
 //! check miplevels by visual test
 bool renderMipLevels(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 
@@ -94,7 +94,7 @@ bool renderMipLevels(video::E_DRIVER_TYPE driverType)
 //! Tests locking miplevels
 bool lockAllMipLevels(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 
@@ -221,7 +221,7 @@ bool lockAllMipLevels(video::E_DRIVER_TYPE driverType)
 //! Tests locking miplevels after texture was created with auto mipmap update
 bool lockWithAutoMipmap(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 
@@ -318,7 +318,7 @@ bool lockWithAutoMipmap(video::E_DRIVER_TYPE driverType)
 //! Tests locking
 bool lockCubemapTexture(video::E_DRIVER_TYPE driverType)
 {
-	IrrlichtDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
+	NirtcppDevice *device = createDevice( driverType, dimension2d<u32>(160, 120), 32);
 	if (!device)
 		return true; // Treat a failure to create a driver as benign; this saves a lot of #ifdefs
 

@@ -1,9 +1,9 @@
 // Copyright (C) 2008-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_DYNAMIC_MESHBUFFER_H_INCLUDED
-#define IRR_C_DYNAMIC_MESHBUFFER_H_INCLUDED
+#ifndef NIRT_C_DYNAMIC_MESHBUFFER_H_INCLUDED
+#define NIRT_C_DYNAMIC_MESHBUFFER_H_INCLUDED
 
 #include "IDynamicMeshBuffer.h"
 
@@ -35,17 +35,17 @@ namespace scene
 				IndexBuffer->drop();
 		}
 
-		virtual IVertexBuffer& getVertexBuffer() const IRR_OVERRIDE
+		virtual IVertexBuffer& getVertexBuffer() const override
 		{
 			return *VertexBuffer;
 		}
 
-		virtual IIndexBuffer& getIndexBuffer() const IRR_OVERRIDE
+		virtual IIndexBuffer& getIndexBuffer() const override
 		{
 			return *IndexBuffer;
 		}
 
-		virtual void setVertexBuffer(IVertexBuffer *newVertexBuffer) IRR_OVERRIDE
+		virtual void setVertexBuffer(IVertexBuffer *newVertexBuffer) override
 		{
 			if (newVertexBuffer)
 				newVertexBuffer->grab();
@@ -55,7 +55,7 @@ namespace scene
 			VertexBuffer=newVertexBuffer;
 		}
 
-		virtual void setIndexBuffer(IIndexBuffer *newIndexBuffer) IRR_OVERRIDE
+		virtual void setIndexBuffer(IIndexBuffer *newIndexBuffer) override
 		{
 			if (newIndexBuffer)
 				newIndexBuffer->grab();
@@ -66,31 +66,31 @@ namespace scene
 		}
 
 		//! Get Material of this buffer.
-		virtual const video::SMaterial& getMaterial() const IRR_OVERRIDE
+		virtual const video::SMaterial& getMaterial() const override
 		{
 			return Material;
 		}
 
 		//! Get Material of this buffer.
-		virtual video::SMaterial& getMaterial() IRR_OVERRIDE
+		virtual video::SMaterial& getMaterial() override
 		{
 			return Material;
 		}
 
 		//! Get bounding box
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override
 		{
 			return BoundingBox;
 		}
 
 		//! Set bounding box
-		virtual void setBoundingBox( const core::aabbox3df& box) IRR_OVERRIDE
+		virtual void setBoundingBox( const core::aabbox3df& box) override
 		{
 			BoundingBox = box;
 		}
 
 		//! Recalculate bounding box
-		virtual void recalculateBoundingBox() IRR_OVERRIDE
+		virtual void recalculateBoundingBox() override
 		{
 			if (!getVertexBuffer().size())
 				BoundingBox.reset(0,0,0);
@@ -108,7 +108,7 @@ namespace scene
 		\param numVertices Number of vertices in the array.
 		\param indices Pointer to index array.
 		\param numIndices Number of indices in array. */
-		virtual void append(const void* const vertices, u32 numVertices, const u16* const indices, u32 numIndices) IRR_OVERRIDE
+		virtual void append(const void* const vertices, u32 numVertices, const u16* const indices, u32 numIndices) override
 		{
 			// TODO
 		}
@@ -116,32 +116,32 @@ namespace scene
 		//! Append the meshbuffer to the current buffer
 		/** Only works for compatible vertex types
 		\param other Buffer to append to this one. */
-		virtual void append(const IMeshBuffer* const other) IRR_OVERRIDE
+		virtual void append(const IMeshBuffer* const other) override
 		{
 			// TODO
 		}
 
 
 		//! Describe what kind of primitive geometry is used by the meshbuffer
-		virtual void setPrimitiveType(E_PRIMITIVE_TYPE type) IRR_OVERRIDE
+		virtual void setPrimitiveType(E_PRIMITIVE_TYPE type) override
 		{
 			PrimitiveType = type;
 		}
 
 		//! Get the kind of primitive geometry which is used by the meshbuffer
-		virtual E_PRIMITIVE_TYPE getPrimitiveType() const IRR_OVERRIDE
+		virtual E_PRIMITIVE_TYPE getPrimitiveType() const override
 		{
 			return PrimitiveType;
 		}
 
 		//! Returns type of the class implementing the IMeshBuffer
-		virtual EMESH_BUFFER_TYPE getType() const  IRR_OVERRIDE
+		virtual EMESH_BUFFER_TYPE getType() const  override
 		{
 			return EMBT_DYNAMIC;
 		}
 
 		//! Create copy of the meshbuffer
-		virtual IMeshBuffer* createClone(int cloneFlags) const IRR_OVERRIDE
+		virtual IMeshBuffer* createClone(int cloneFlags) const override
 		{
 			CDynamicMeshBuffer* clone = new CDynamicMeshBuffer(VertexBuffer->getType(), IndexBuffer->getType());
 

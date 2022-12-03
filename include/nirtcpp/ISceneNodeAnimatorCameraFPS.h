@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SCENE_NODE_ANIMATOR_CAMERA_FPS_H_INCLUDED
-#define IRR_I_SCENE_NODE_ANIMATOR_CAMERA_FPS_H_INCLUDED
+#ifndef NIRT_I_SCENE_NODE_ANIMATOR_CAMERA_FPS_H_INCLUDED
+#define NIRT_I_SCENE_NODE_ANIMATOR_CAMERA_FPS_H_INCLUDED
 
 #include "ISceneNodeAnimator.h"
 #include "IEventReceiver.h"

@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "IBurningShader.h"
 
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 // compile flag for this file
 #undef USE_ZBUFFER
@@ -83,10 +83,10 @@ public:
 	CTRTextureGouraudNoZ2(CBurningVideoDriver* driver);
 
 	//! draws an indexed triangle list
-	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) IRR_OVERRIDE;
-	virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) IRR_OVERRIDE;
+	virtual void drawTriangle(const s4DVertex* burning_restrict a, const s4DVertex* burning_restrict b, const s4DVertex* burning_restrict c) override;
+	virtual void OnSetMaterialBurning(const SBurningShaderMaterial& material) override;
 
-	virtual bool canWireFrame() IRR_OVERRIDE { return true; }
+	virtual bool canWireFrame() override { return true; }
 
 private:
 
@@ -789,7 +789,7 @@ void CTRTextureGouraudNoZ2::drawTriangle(const s4DVertex* burning_restrict a, co
 
 burning_namespace_end
 
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
 burning_namespace_start
 
@@ -797,11 +797,11 @@ burning_namespace_start
 IBurningShader* createTRTextureGouraudNoZ2(CBurningVideoDriver* driver)
 {
 	// ETR_TEXTURE_GOURAUD_NOZ
-#ifdef _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 	return new CTRTextureGouraudNoZ2(driver);
 #else
 	return 0;
-#endif // _IRR_COMPILE_WITH_BURNINGSVIDEO_
+#endif // _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 }
 
 burning_namespace_end

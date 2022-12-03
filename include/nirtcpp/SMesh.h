@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_MESH_H_INCLUDED
 #define S_MESH_H_INCLUDED
@@ -44,20 +44,20 @@ namespace scene
 
 
 		//! returns amount of mesh buffers.
-		virtual u32 getMeshBufferCount() const IRR_OVERRIDE
+		virtual u32 getMeshBufferCount() const override
 		{
 			return MeshBuffers.size();
 		}
 
 		//! returns pointer to a mesh buffer
-		virtual IMeshBuffer* getMeshBuffer(u32 nr) const IRR_OVERRIDE
+		virtual IMeshBuffer* getMeshBuffer(u32 nr) const override
 		{
 			return MeshBuffers[nr];
 		}
 
 		//! returns a meshbuffer which fits a material
 		/** reverse search */
-		virtual IMeshBuffer* getMeshBuffer( const video::SMaterial & material) const IRR_OVERRIDE
+		virtual IMeshBuffer* getMeshBuffer( const video::SMaterial & material) const override
 		{
 			for (s32 i = (s32)MeshBuffers.size()-1; i >= 0; --i)
 			{
@@ -69,13 +69,13 @@ namespace scene
 		}
 
 		//! returns an axis aligned bounding box
-		virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE
+		virtual const core::aabbox3d<f32>& getBoundingBox() const override
 		{
 			return BoundingBox;
 		}
 
 		//! set user axis aligned bounding box
-		virtual void setBoundingBox( const core::aabbox3df& box) IRR_OVERRIDE
+		virtual void setBoundingBox( const core::aabbox3df& box) override
 		{
 			BoundingBox = box;
 		}
@@ -118,21 +118,21 @@ namespace scene
 		}
 
 		//! sets a flag of all contained materials to a new value
-		virtual void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool newvalue) IRR_OVERRIDE
+		virtual void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool newvalue) override
 		{
 			for (u32 i=0; i<MeshBuffers.size(); ++i)
 				MeshBuffers[i]->getMaterial().setFlag(flag, newvalue);
 		}
 
 		//! set the hardware mapping hint, for driver
-		virtual void setHardwareMappingHint( E_HARDWARE_MAPPING newMappingHint, E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX ) IRR_OVERRIDE
+		virtual void setHardwareMappingHint( E_HARDWARE_MAPPING newMappingHint, E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX ) override
 		{
 			for (u32 i=0; i<MeshBuffers.size(); ++i)
 				MeshBuffers[i]->setHardwareMappingHint(newMappingHint, buffer);
 		}
 
 		//! flags the meshbuffer as changed, reloads hardware buffers
-		virtual void setDirty(E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX) IRR_OVERRIDE
+		virtual void setDirty(E_BUFFER_TYPE buffer=EBT_VERTEX_AND_INDEX) override
 		{
 			for (u32 i=0; i<MeshBuffers.size(); ++i)
 				MeshBuffers[i]->setDirty(buffer);

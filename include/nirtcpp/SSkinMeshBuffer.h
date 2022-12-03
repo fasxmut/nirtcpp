@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef S_SKIN_MESH_BUFFER_H_INCLUDED
 #define S_SKIN_MESH_BUFFER_H_INCLUDED
@@ -31,13 +31,13 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! Get Material of this buffer.
-	virtual const video::SMaterial& getMaterial() const IRR_OVERRIDE
+	virtual const video::SMaterial& getMaterial() const override
 	{
 		return Material;
 	}
 
 	//! Get Material of this buffer.
-	virtual video::SMaterial& getMaterial() IRR_OVERRIDE
+	virtual video::SMaterial& getMaterial() override
 	{
 		return Material;
 	}
@@ -57,7 +57,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! Get pointer to vertex array
-	virtual const void* getVertices() const IRR_OVERRIDE
+	virtual const void* getVertices() const override
 	{
 		switch (VertexType)
 		{
@@ -71,7 +71,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! Get pointer to vertex array
-	virtual void* getVertices() IRR_OVERRIDE
+	virtual void* getVertices() override
 	{
 		switch (VertexType)
 		{
@@ -85,7 +85,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! Get vertex count
-	virtual u32 getVertexCount() const IRR_OVERRIDE
+	virtual u32 getVertexCount() const override
 	{
 		switch (VertexType)
 		{
@@ -100,43 +100,43 @@ struct SSkinMeshBuffer : public IMeshBuffer
 
 	//! Get type of index data which is stored in this meshbuffer.
 	/** \return Index type of this buffer. */
-	virtual video::E_INDEX_TYPE getIndexType() const IRR_OVERRIDE
+	virtual video::E_INDEX_TYPE getIndexType() const override
 	{
 		return video::EIT_16BIT;
 	}
 
 	//! Get pointer to index array
-	virtual const u16* getIndices() const IRR_OVERRIDE
+	virtual const u16* getIndices() const override
 	{
 		return Indices.const_pointer();
 	}
 
 	//! Get pointer to index array
-	virtual u16* getIndices() IRR_OVERRIDE
+	virtual u16* getIndices() override
 	{
 		return Indices.pointer();
 	}
 
 	//! Get index count
-	virtual u32 getIndexCount() const IRR_OVERRIDE
+	virtual u32 getIndexCount() const override
 	{
 		return Indices.size();
 	}
 
 	//! Get bounding box
-	virtual const core::aabbox3d<f32>& getBoundingBox() const IRR_OVERRIDE
+	virtual const core::aabbox3d<f32>& getBoundingBox() const override
 	{
 		return BoundingBox;
 	}
 
 	//! Set bounding box
-	virtual void setBoundingBox( const core::aabbox3df& box) IRR_OVERRIDE
+	virtual void setBoundingBox( const core::aabbox3df& box) override
 	{
 		BoundingBox = box;
 	}
 
 	//! Recalculate bounding box
-	virtual void recalculateBoundingBox() IRR_OVERRIDE
+	virtual void recalculateBoundingBox() override
 	{
 		if(!BoundingBoxNeedsRecalculated)
 			return;
@@ -185,7 +185,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! Get vertex type
-	virtual video::E_VERTEX_TYPE getVertexType() const IRR_OVERRIDE
+	virtual video::E_VERTEX_TYPE getVertexType() const override
 	{
 		return VertexType;
 	}
@@ -243,7 +243,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns position of vertex i
-	virtual const core::vector3df& getPosition(u32 i) const IRR_OVERRIDE
+	virtual const core::vector3df& getPosition(u32 i) const override
 	{
 		switch (VertexType)
 		{
@@ -257,7 +257,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns position of vertex i
-	virtual core::vector3df& getPosition(u32 i) IRR_OVERRIDE
+	virtual core::vector3df& getPosition(u32 i) override
 	{
 		switch (VertexType)
 		{
@@ -271,7 +271,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns normal of vertex i
-	virtual const core::vector3df& getNormal(u32 i) const IRR_OVERRIDE
+	virtual const core::vector3df& getNormal(u32 i) const override
 	{
 		switch (VertexType)
 		{
@@ -285,7 +285,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns normal of vertex i
-	virtual core::vector3df& getNormal(u32 i) IRR_OVERRIDE
+	virtual core::vector3df& getNormal(u32 i) override
 	{
 		switch (VertexType)
 		{
@@ -299,7 +299,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns texture coords of vertex i
-	virtual const core::vector2df& getTCoords(u32 i) const IRR_OVERRIDE
+	virtual const core::vector2df& getTCoords(u32 i) const override
 	{
 		switch (VertexType)
 		{
@@ -313,7 +313,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns texture coords of vertex i
-	virtual core::vector2df& getTCoords(u32 i) IRR_OVERRIDE
+	virtual core::vector2df& getTCoords(u32 i) override
 	{
 		switch (VertexType)
 		{
@@ -327,7 +327,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns color of vertex i
-	virtual video::SColor& getColor(u32 i) IRR_OVERRIDE
+	virtual video::SColor& getColor(u32 i) override
 	{
 		switch (VertexType)
 		{
@@ -341,7 +341,7 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! returns color of vertex i
-	virtual const video::SColor& getColor(u32 i) const IRR_OVERRIDE
+	virtual const video::SColor& getColor(u32 i) const override
 	{
 		switch (VertexType)
 		{
@@ -355,25 +355,25 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! append the vertices and indices to the current buffer
-	virtual void append(const void* const vertices, u32 numVertices, const u16* const indices, u32 numIndices) IRR_OVERRIDE {}
+	virtual void append(const void* const vertices, u32 numVertices, const u16* const indices, u32 numIndices) override {}
 
 	//! append the meshbuffer to the current buffer
-	virtual void append(const IMeshBuffer* const other) IRR_OVERRIDE {}
+	virtual void append(const IMeshBuffer* const other) override {}
 
 	//! get the current hardware mapping hint for vertex buffers
-	virtual E_HARDWARE_MAPPING getHardwareMappingHint_Vertex() const IRR_OVERRIDE
+	virtual E_HARDWARE_MAPPING getHardwareMappingHint_Vertex() const override
 	{
 		return MappingHint_Vertex;
 	}
 
 	//! get the current hardware mapping hint for index buffers
-	virtual E_HARDWARE_MAPPING getHardwareMappingHint_Index() const IRR_OVERRIDE
+	virtual E_HARDWARE_MAPPING getHardwareMappingHint_Index() const override
 	{
 		return MappingHint_Index;
 	}
 
 	//! set the hardware mapping hint, for driver
-	virtual void setHardwareMappingHint( E_HARDWARE_MAPPING NewMappingHint, E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX ) IRR_OVERRIDE
+	virtual void setHardwareMappingHint( E_HARDWARE_MAPPING NewMappingHint, E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX ) override
 	{
 		if (Buffer==EBT_VERTEX)
 			MappingHint_Vertex=NewMappingHint;
@@ -387,19 +387,19 @@ struct SSkinMeshBuffer : public IMeshBuffer
 	}
 
 	//! Describe what kind of primitive geometry is used by the meshbuffer
-	virtual void setPrimitiveType(E_PRIMITIVE_TYPE type) IRR_OVERRIDE
+	virtual void setPrimitiveType(E_PRIMITIVE_TYPE type) override
 	{
 		PrimitiveType = type;
 	}
 
 	//! Get the kind of primitive geometry which is used by the meshbuffer
-	virtual E_PRIMITIVE_TYPE getPrimitiveType() const IRR_OVERRIDE
+	virtual E_PRIMITIVE_TYPE getPrimitiveType() const override
 	{
 		return PrimitiveType;
 	}
 
 	//! flags the mesh as changed, reloads hardware buffers
-	virtual void setDirty(E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX) IRR_OVERRIDE
+	virtual void setDirty(E_BUFFER_TYPE Buffer=EBT_VERTEX_AND_INDEX) override
 	{
 		if (Buffer==EBT_VERTEX_AND_INDEX || Buffer==EBT_VERTEX)
 			++ChangedID_Vertex;
@@ -407,18 +407,18 @@ struct SSkinMeshBuffer : public IMeshBuffer
 			++ChangedID_Index;
 	}
 
-	virtual u32 getChangedID_Vertex() const IRR_OVERRIDE {return ChangedID_Vertex;}
+	virtual u32 getChangedID_Vertex() const override {return ChangedID_Vertex;}
 
-	virtual u32 getChangedID_Index() const IRR_OVERRIDE {return ChangedID_Index;}
+	virtual u32 getChangedID_Index() const override {return ChangedID_Index;}
 
 	//! Returns type of the class implementing the IMeshBuffer
-	virtual EMESH_BUFFER_TYPE getType() const  IRR_OVERRIDE
+	virtual EMESH_BUFFER_TYPE getType() const  override
 	{
 		return EMBT_SKIN;
 	}
 
 	//! Create copy of the meshbuffer
-	virtual IMeshBuffer* createClone(int cloneFlags) const IRR_OVERRIDE
+	virtual IMeshBuffer* createClone(int cloneFlags) const override
 	{
 		SSkinMeshBuffer* clone = new SSkinMeshBuffer(VertexType);
 

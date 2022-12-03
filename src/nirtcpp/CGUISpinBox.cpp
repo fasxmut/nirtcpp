@@ -1,8 +1,8 @@
 // Copyright (C) 2006-2012 Michael Zeilfelder
-// This file uses the licence of the Irrlicht Engine.
+// This file uses the licence of the Nirtcpp Engine.
 
 #include "CGUISpinBox.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "CGUIEditBox.h"
 #include "CGUIButton.h"
@@ -105,7 +105,7 @@ IGUIEditBox* CGUISpinBox::getEditBox() const
 void CGUISpinBox::setValue(f32 val)
 {
 	wchar_t str[100];
-	swprintf_irr(str, 99, FormatString.c_str(), val);
+	swprintf_nirt(str, 99, FormatString.c_str(), val);
 	EditBox->setText(str);
 	verifyValueRange(getValue());
 }
@@ -133,9 +133,9 @@ void CGUISpinBox::setRange(f32 min, f32 max)
 
 	// we have to round the range - otherwise we can get into an infinte setValue/verifyValueRange cycle.
 	wchar_t str[100];
-	swprintf_irr(str, 99, FormatString.c_str(), RangeMin);
+	swprintf_nirt(str, 99, FormatString.c_str(), RangeMin);
 	RangeMin = core::fast_atof(core::stringc(str).c_str());
-	swprintf_irr(str, 99, FormatString.c_str(), RangeMax);
+	swprintf_nirt(str, 99, FormatString.c_str(), RangeMax);
 	RangeMax = core::fast_atof(core::stringc(str).c_str());
 
 	verifyValueRange(getValue());
@@ -343,5 +343,5 @@ void CGUISpinBox::deserializeAttributes(io::IAttributes* in, io::SAttributeReadW
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
+#endif // _NIRT_COMPILE_WITH_GUI_
 

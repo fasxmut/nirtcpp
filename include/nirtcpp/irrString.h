@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine" and the "irrXML" project.
-// For conditions of distribution and use, see copyright notice in irrlicht.h and irrXML.h
+// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// For conditions of distribution and use, see copyright notice in nirtcpp.h and irrXML.h
 
-#ifndef IRR_STRING_H_INCLUDED
-#define IRR_STRING_H_INCLUDED
+#ifndef NIRT_STRING_H_INCLUDED
+#define NIRT_STRING_H_INCLUDED
 
 #include "irrTypes.h"
 #include "irrAllocator.h"
@@ -40,11 +40,11 @@ inline s32 isdigit(s32 c);
 
 enum eLocaleID
 {
-	IRR_LOCALE_ANSI = 0,
-	IRR_LOCALE_GERMAN = 1
+	NIRT_LOCALE_ANSI = 0,
+	NIRT_LOCALE_GERMAN = 1
 };
 
-static eLocaleID locale_current = IRR_LOCALE_ANSI;
+static eLocaleID locale_current = NIRT_LOCALE_ANSI;
 static inline void locale_set ( eLocaleID id )
 {
 	locale_current = id;
@@ -55,8 +55,8 @@ static inline u32 locale_lower ( u32 x )
 {
 	switch ( locale_current )
 	{
-		case IRR_LOCALE_GERMAN:
-		case IRR_LOCALE_ANSI:
+		case NIRT_LOCALE_GERMAN:
+		case NIRT_LOCALE_ANSI:
 			break;
 	}
 	// ansi
@@ -68,8 +68,8 @@ static inline u32 locale_upper ( u32 x )
 {
 	switch ( locale_current )
 	{
-		case IRR_LOCALE_GERMAN:
-		case IRR_LOCALE_ANSI:
+		case NIRT_LOCALE_GERMAN:
+		case NIRT_LOCALE_ANSI:
 			break;
 	}
 
@@ -127,7 +127,7 @@ public:
 	: array(0), allocated(0), used(0)
 	{
 		c8 tmpbuf[255];
-		snprintf_irr(tmpbuf, 255, "%0.6f", number);
+		snprintf_nirt(tmpbuf, 255, "%0.6f", number);
 		*this = tmpbuf;
 	}
 
@@ -429,7 +429,7 @@ public:
 	//! Direct access operator
 	T& operator [](const u32 index)
 	{
-		IRR_DEBUG_BREAK_IF(index>=used) // bad index
+		NIRT_DEBUG_BREAK_IF(index>=used) // bad index
 		return array[index];
 	}
 
@@ -437,7 +437,7 @@ public:
 	//! Direct access operator
 	const T& operator [](const u32 index) const
 	{
-		IRR_DEBUG_BREAK_IF(index>=used) // bad index
+		NIRT_DEBUG_BREAK_IF(index>=used) // bad index
 		return array[index];
 	}
 
@@ -1325,7 +1325,7 @@ public:
 	\param index: Index of element to be erased. */
 	string<T,TAlloc>& erase(u32 index)
 	{
-		IRR_DEBUG_BREAK_IF(index>=used) // access violation
+		NIRT_DEBUG_BREAK_IF(index>=used) // access violation
 
 		for (u32 i=index+1; i<used; ++i)
 			array[i-1] = array[i];
@@ -1461,7 +1461,7 @@ typedef string<c8> stringc;
 typedef string<wchar_t> stringw;
 
 //! Convert multibyte string to wide-character string
-/** Wrapper around mbstowcs from standard library, but directly using Irrlicht string class.
+/** Wrapper around mbstowcs from standard library, but directly using Nirtcpp string class.
 What the function does exactly depends on the LC_CTYPE of the current c locale.
 \param destination Wide-character string receiving the converted source
 \param source multibyte string
@@ -1472,7 +1472,7 @@ static inline size_t multibyteToWString(string<wchar_t>& destination, const core
 }
 
 //! Convert multibyte string to wide-character string
-/** Wrapper around mbstowcs from standard library, but directly writing to Irrlicht string class.
+/** Wrapper around mbstowcs from standard library, but directly writing to Nirtcpp string class.
 What the function does exactly depends on the LC_CTYPE of the current c locale.
 \param destination Wide-character string receiving the converted source
 \param source multibyte string

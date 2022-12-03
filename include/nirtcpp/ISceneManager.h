@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_I_SCENE_MANAGER_H_INCLUDED
-#define IRR_I_SCENE_MANAGER_H_INCLUDED
+#ifndef NIRT_I_SCENE_MANAGER_H_INCLUDED
+#define NIRT_I_SCENE_MANAGER_H_INCLUDED
 
 #include "IReferenceCounted.h"
 #include "irrArray.h"
@@ -193,17 +193,17 @@ namespace scene
 		 *  <TR>
 		 *    <TD>Cartography shop 4 (.csm)</TD>
 		 *    <TD>Cartography Shop is a modeling program for creating
-		 *      architecture and calculating lighting. Irrlicht can
+		 *      architecture and calculating lighting. Nirtcpp can
 		 *      directly import .csm files thanks to the IrrCSM library
 		 *      created by Saurav Mohapatra which is now integrated
-		 *      directly in Irrlicht.
+		 *      directly in Nirtcpp.
 		 *  </TR>
 		 *  <TR>
 		 *    <TD>COLLADA (.dae, .xml)</TD>
 		 *    <TD>COLLADA is an open Digital Asset Exchange Schema for
 		 *        the interactive 3D industry. There are exporters and
 		 *        importers for this format available for most of the
-		 *        big 3d packagesat http://collada.org. Irrlicht can
+		 *        big 3d packagesat http://collada.org. Nirtcpp can
 		 *        import COLLADA files by using the
 		 *        ISceneManager::getMesh() method. COLLADA files need
 		 *        not contain only one single mesh but multiple meshes
@@ -244,7 +244,7 @@ namespace scene
 		 *        1. The loader is based on Salvatore Russo's .dmf
 		 *        loader, I just changed some parts of it. Thanks to
 		 *        Salvatore for his work and for allowing me to use his
-		 *        code in Irrlicht and put it under Irrlicht's license.
+		 *        code in Nirtcpp and put it under Nirtcpp's license.
 		 *        For newer and more enhanced versions of the loader,
 		 *        take a look at delgine.com.
 		 *    </TD>
@@ -255,10 +255,10 @@ namespace scene
 		 *      .x files. Most 3D packages can export these natively
 		 *      and there are several tools for them available, e.g.
 		 *      the Maya exporter included in the DX SDK.
-		 *      .x files can include skeletal animations and Irrlicht
+		 *      .x files can include skeletal animations and Nirtcpp
 		 *      is able to play and display them, users can manipulate
 		 *      the joints via the ISkinnedMesh interface. Currently,
-		 *      Irrlicht only supports uncompressed .x files.</TD>
+		 *      Nirtcpp only supports uncompressed .x files.</TD>
 		 *  </TR>
 		 *  <TR>
 		 *    <TD>Half-Life model (.mdl)</TD>
@@ -266,9 +266,9 @@ namespace scene
 		 *        by Fabio Concas and adapted by Thomas Alten.</TD>
 		 *  </TR>
 		 *  <TR>
-		 *    <TD>Irrlicht Mesh (.irrMesh)</TD>
+		 *    <TD>Nirtcpp Mesh (.irrMesh)</TD>
 		 *    <TD>This is a static mesh format written in XML, native
-		 *      to Irrlicht and written by the irr mesh writer.
+		 *      to Nirtcpp and written by the irr mesh writer.
 		 *      This format is exported by the CopperCube engine's
 		 *      lightmapper.</TD>
 		 *  </TR>
@@ -284,7 +284,7 @@ namespace scene
 		 *    <TD>Most 3D software can create .obj files which contain
 		 *      static geometry without material data. The material
 		 *      files .mtl are also supported. This importer for
-		 *      Irrlicht can load them directly. </TD>
+		 *      Nirtcpp can load them directly. </TD>
 		 *  </TR>
 		 *  <TR>
 		 *    <TD>Milkshape (.ms3d)</TD>
@@ -297,7 +297,7 @@ namespace scene
 		 *  <TD>My3D (.my3d)</TD>
 		 *      <TD>.my3D is a flexible 3D file format. The My3DTools
 		 *        contains plug-ins to export .my3D files from several
-		 *        3D packages. With this built-in importer, Irrlicht
+		 *        3D packages. With this built-in importer, Nirtcpp
 		 *        can read and display those files directly. This
 		 *        loader was written by Zhuck Dimitry who also created
 		 *        the whole My3DTools package.
@@ -306,7 +306,7 @@ namespace scene
 		 *    <TR>
 		 *      <TD>OCT (.oct)</TD>
 		 *      <TD>The oct file format contains 3D geometry and
-		 *        lightmaps and can be loaded directly by Irrlicht. OCT
+		 *        lightmaps and can be loaded directly by Nirtcpp. OCT
 		 *        files<br> can be created by FSRad, Paul Nette's
 		 *        radiosity processor or exported from Blender using
 		 *        OCTTools which can be found in the exporters/OCTTools
@@ -316,7 +316,7 @@ namespace scene
 		 *    <TR>
 		 *      <TD>OGRE Meshes (.mesh)</TD>
 		 *      <TD>Ogre .mesh files contain 3D data for the OGRE 3D
-		 *        engine. Irrlicht can read and display them directly
+		 *        engine. Nirtcpp can read and display them directly
 		 *        with this importer. To define materials for the mesh,
 		 *        copy a .material file named like the corresponding
 		 *        .mesh file where the .mesh file is. (For example
@@ -327,14 +327,14 @@ namespace scene
 		 *    <TR>
 		 *      <TD>Pulsar LMTools (.lmts)</TD>
 		 *      <TD>LMTools is a set of tools (Windows &amp; Linux) for
-		 *        creating lightmaps. Irrlicht can directly read .lmts
+		 *        creating lightmaps. Nirtcpp can directly read .lmts
 		 *        files thanks to<br> the importer created by Jonas
 		 *        Petersen.
 		 *        Notes for<br> this version of the loader:<br>
 		 *        - It does not recognize/support user data in the
 		 *          *.lmts files.<br>
 		 *        - The TGAs generated by LMTools don't work in
-		 *          Irrlicht for some reason (the textures are upside
+		 *          Nirtcpp for some reason (the textures are upside
 		 *          down). Opening and resaving them in a graphics app
 		 *          will solve the problem.</TD>
 		 *    </TR>
@@ -342,7 +342,7 @@ namespace scene
 		 *      <TD>Quake 3 levels (.bsp)</TD>
 		 *      <TD>Quake 3 is a popular game by IDSoftware, and .pk3
 		 *        files contain .bsp files and textures/lightmaps
-		 *        describing huge prelighted levels. Irrlicht can read
+		 *        describing huge prelighted levels. Nirtcpp can read
 		 *        .pk3 and .bsp files directly and thus render Quake 3
 		 *        levels directly. Written by Nikolaus Gebhardt
 		 *        enhanced by Dean P. Macri with the curved surfaces
@@ -351,7 +351,7 @@ namespace scene
 		 *    <TR>
 		 *      <TD>Quake 2 models (.md2)</TD>
 		 *      <TD>Quake 2 models are characters with morph target
-		 *        animation. Irrlicht can read, display and animate
+		 *        animation. Nirtcpp can read, display and animate
 		 *        them directly with this importer. </TD>
 		 *    </TR>
 		 *    <TR>
@@ -384,7 +384,7 @@ namespace scene
 		 *  SceneManager->addAnimatedMeshSceneNode(
 		 *		SceneManager->getMesh("yourmesh.3ds"));
 		 * \endcode
-		 * If you would like to implement and add your own file format loader to Irrlicht,
+		 * If you would like to implement and add your own file format loader to Nirtcpp,
 		 * see addExternalMeshLoader().
 		 * \param filename: Filename of the mesh to load.
 		 * \param alternativeCacheName: In case you want to have the mesh under another name in the cache (to create real copies)
@@ -799,7 +799,7 @@ namespace scene
 		for reducing the detail of triangle blocks which are far away.
 		The code for the TerrainSceneNode is based on the terrain
 		renderer by Soconne and the GeoMipMapSceneNode developed by
-		Spintz. They made their code available for Irrlicht and allowed
+		Spintz. They made their code available for Nirtcpp and allowed
 		it to be distributed under this licence. I only modified some
 		parts. A lot of thanks go to them.
 
@@ -1373,8 +1373,8 @@ namespace scene
 			ISceneNode* node, s32 minimalPolysPerNode=32) = 0;
 
 		//! //! Creates a Triangle Selector, optimized by an octree.
-		/** \deprecated Use createOctreeTriangleSelector instead. This method may be removed by Irrlicht 1.9. */
-		IRR_DEPRECATED ITriangleSelector* createOctTreeTriangleSelector(IMesh* mesh,
+		/** \deprecated Use createOctreeTriangleSelector instead. This method may be removed by Nirtcpp 1.9. */
+		NIRT_DEPRECATED ITriangleSelector* createOctTreeTriangleSelector(IMesh* mesh,
 			ISceneNode* node, s32 minimalPolysPerNode=32)
 		{
 			return createOctreeTriangleSelector(mesh, node, minimalPolysPerNode);
@@ -1408,7 +1408,7 @@ namespace scene
 		\param externalLoader: Implementation of a new mesh loader. */
 		virtual void addExternalMeshLoader(IMeshLoader* externalLoader) = 0;
 
-		//! Returns the number of mesh loaders supported by Irrlicht at this time
+		//! Returns the number of mesh loaders supported by Nirtcpp at this time
 		virtual u32 getMeshLoaderCount() const = 0;
 
 		//! Retrieve the given mesh loader
@@ -1426,7 +1426,7 @@ namespace scene
 		\param externalLoader: Implementation of a new mesh loader. */
 		virtual void addExternalSceneLoader(ISceneLoader* externalLoader) = 0;
 
-		//! Returns the number of scene loaders supported by Irrlicht at this time
+		//! Returns the number of scene loaders supported by Nirtcpp at this time
 		virtual u32 getSceneLoaderCount() const = 0;
 
 		//! Retrieve the given scene loader
@@ -1557,7 +1557,7 @@ namespace scene
 		//! Saves the current scene into a file.
 		/** Scene nodes with the option isDebugObject set to true are
 		not being saved. The scene is usually written to an .irr file,
-		an xml based format. .irr files can Be edited with the Irrlicht
+		an xml based format. .irr files can Be edited with the Nirtcpp
 		Engine Editor, irrEdit (http://www.ambiera.com/irredit/). To
 		load .irr files again, see ISceneManager::loadScene().
 		\param filename Name of the file.
@@ -1575,7 +1575,7 @@ namespace scene
 		//! Saves the current scene into a file.
 		/** Scene nodes with the option isDebugObject set to true are
 		not being saved. The scene is usually written to an .irr file,
-		an xml based format. .irr files can Be edited with the Irrlicht
+		an xml based format. .irr files can Be edited with the Nirtcpp
 		Engine Editor, irrEdit (http://www.ambiera.com/irredit/). To
 		load .irr files again, see ISceneManager::loadScene().
 		\param file File where the scene is saved into.
@@ -1593,7 +1593,7 @@ namespace scene
 		//! Saves the current scene into a file.
 		/** Scene nodes with the option isDebugObject set to true are
 		not being saved. The scene is usually written to an .irr file,
-		an xml based format. .irr files can Be edited with the Irrlicht
+		an xml based format. .irr files can Be edited with the Nirtcpp
 		Engine Editor, irrEdit (http://www.ambiera.com/irredit/). To
 		load .irr files again, see ISceneManager::loadScene().
 		\param writer XMLWriter with which the scene is saved.
@@ -1614,7 +1614,7 @@ namespace scene
 		/** The scene is usually loaded from an .irr file, an xml based
 		format, but other scene formats can be added to the engine via
 		ISceneManager::addExternalSceneLoader. .irr files can Be edited
-		with the Irrlicht Engine Editor, irrEdit
+		with the Nirtcpp Engine Editor, irrEdit
 		(http://www.ambiera.com/irredit/) or saved directly by the engine
 		using ISceneManager::saveScene().
 		\param filename Name of the file to load from.
@@ -1633,7 +1633,7 @@ namespace scene
 		/** The scene is usually loaded from an .irr file, an xml based
 		format, but other scene formats can be added to the engine via
 		ISceneManager::addExternalSceneLoader. .irr files can Be edited
-		with the Irrlicht Engine Editor, irrEdit
+		with the Nirtcpp Engine Editor, irrEdit
 		(http://www.ambiera.com/irredit/) or saved directly by the engine
 		using ISceneManager::saveScene().
 		\param file File where the scene is loaded from.

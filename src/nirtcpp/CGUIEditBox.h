@@ -1,12 +1,12 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#ifndef IRR_C_GUI_EDIT_BOX_H_INCLUDED
-#define IRR_C_GUI_EDIT_BOX_H_INCLUDED
+#ifndef NIRT_C_GUI_EDIT_BOX_H_INCLUDED
+#define NIRT_C_GUI_EDIT_BOX_H_INCLUDED
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_GUI_
+#ifdef _NIRT_COMPILE_WITH_GUI_
 
 #include "IGUIEditBox.h"
 #include "irrArray.h"
@@ -28,122 +28,122 @@ namespace gui
 		virtual ~CGUIEditBox();
 
 		//! Sets another skin independent font.
-		virtual void setOverrideFont(IGUIFont* font=0) IRR_OVERRIDE;
+		virtual void setOverrideFont(IGUIFont* font=0) override;
 
 		//! Gets the override font (if any)
 		/** \return The override font (may be 0) */
-		virtual IGUIFont* getOverrideFont() const IRR_OVERRIDE;
+		virtual IGUIFont* getOverrideFont() const override;
 
 		//! Get the font which is used right now for drawing
 		/** Currently this is the override font when one is set and the
 		font of the active skin otherwise */
-		virtual IGUIFont* getActiveFont() const IRR_OVERRIDE;
+		virtual IGUIFont* getActiveFont() const override;
 
 		//! Sets another color for the text.
-		virtual void setOverrideColor(video::SColor color) IRR_OVERRIDE;
+		virtual void setOverrideColor(video::SColor color) override;
 
 		//! Gets the override color
-		virtual video::SColor getOverrideColor() const IRR_OVERRIDE;
+		virtual video::SColor getOverrideColor() const override;
 
 		//! Sets if the text should use the override color or the
 		//! color in the gui skin.
-		virtual void enableOverrideColor(bool enable) IRR_OVERRIDE;
+		virtual void enableOverrideColor(bool enable) override;
 
 		//! Checks if an override color is enabled
 		/** \return true if the override color is enabled, false otherwise */
-		virtual bool isOverrideColorEnabled(void) const IRR_OVERRIDE;
+		virtual bool isOverrideColorEnabled(void) const override;
 
 		//! Sets whether to draw the background
-		virtual void setDrawBackground(bool draw) IRR_OVERRIDE;
+		virtual void setDrawBackground(bool draw) override;
 
 		//! Checks if background drawing is enabled
-		virtual bool isDrawBackgroundEnabled() const IRR_OVERRIDE;
+		virtual bool isDrawBackgroundEnabled() const override;
 
 		//! Turns the border on or off
-		virtual void setDrawBorder(bool border) IRR_OVERRIDE;
+		virtual void setDrawBorder(bool border) override;
 
 		//! Checks if border drawing is enabled
-		virtual bool isDrawBorderEnabled() const IRR_OVERRIDE;
+		virtual bool isDrawBorderEnabled() const override;
 
 		//! Enables or disables word wrap for using the edit box as multiline text editor.
-		virtual void setWordWrap(bool enable) IRR_OVERRIDE;
+		virtual void setWordWrap(bool enable) override;
 
 		//! Checks if word wrap is enabled
 		//! \return true if word wrap is enabled, false otherwise
-		virtual bool isWordWrapEnabled() const IRR_OVERRIDE;
+		virtual bool isWordWrapEnabled() const override;
 
 		//! Enables or disables newlines.
 		/** \param enable: If set to true, the EGET_EDITBOX_ENTER event will not be fired,
 		instead a newline character will be inserted. */
-		virtual void setMultiLine(bool enable) IRR_OVERRIDE;
+		virtual void setMultiLine(bool enable) override;
 
 		//! Checks if multi line editing is enabled
 		//! \return true if mult-line is enabled, false otherwise
-		virtual bool isMultiLineEnabled() const IRR_OVERRIDE;
+		virtual bool isMultiLineEnabled() const override;
 
 		//! Enables or disables automatic scrolling with cursor position
 		//! \param enable: If set to true, the text will move around with the cursor position
-		virtual void setAutoScroll(bool enable) IRR_OVERRIDE;
+		virtual void setAutoScroll(bool enable) override;
 
 		//! Checks to see if automatic scrolling is enabled
 		//! \return true if automatic scrolling is enabled, false if not
-		virtual bool isAutoScrollEnabled() const IRR_OVERRIDE;
+		virtual bool isAutoScrollEnabled() const override;
 
 		//! Gets the size area of the text in the edit box
 		//! \return Returns the size in pixels of the text
-		virtual core::dimension2du getTextDimension() IRR_OVERRIDE;
+		virtual core::dimension2du getTextDimension() override;
 
 		//! Sets text justification
-		virtual void setTextAlignment(EGUI_ALIGNMENT horizontal, EGUI_ALIGNMENT vertical) IRR_OVERRIDE;
+		virtual void setTextAlignment(EGUI_ALIGNMENT horizontal, EGUI_ALIGNMENT vertical) override;
 
 		//! called if an event happened.
-		virtual bool OnEvent(const SEvent& event) IRR_OVERRIDE;
+		virtual bool OnEvent(const SEvent& event) override;
 
 		//! draws the element and its children
-		virtual void draw() IRR_OVERRIDE;
+		virtual void draw() override;
 
 		//! Sets the new caption of this element.
-		virtual void setText(const wchar_t* text) IRR_OVERRIDE;
+		virtual void setText(const wchar_t* text) override;
 
 		//! Sets the maximum amount of characters which may be entered in the box.
 		//! \param max: Maximum amount of characters. If 0, the character amount is
 		//! infinity.
-		virtual void setMax(u32 max) IRR_OVERRIDE;
+		virtual void setMax(u32 max) override;
 
 		//! Returns maximum amount of characters, previously set by setMax();
-		virtual u32 getMax() const IRR_OVERRIDE;
+		virtual u32 getMax() const override;
 
 		//! Set the character used for the cursor.
 		/** By default it's "_" */
-		virtual void setCursorChar(const wchar_t cursorChar) IRR_OVERRIDE;
+		virtual void setCursorChar(const wchar_t cursorChar) override;
 
 		//! Get the character used for the cursor.
-		virtual wchar_t getCursorChar() const IRR_OVERRIDE;
+		virtual wchar_t getCursorChar() const override;
 
 		//! Set the blinktime for the cursor. 2x blinktime is one full cycle.
 		//** \param timeMs Blinktime in milliseconds. When set to 0 the cursor is constantly on without blinking */
-		virtual void setCursorBlinkTime(irr::u32 timeMs) IRR_OVERRIDE;
+		virtual void setCursorBlinkTime(irr::u32 timeMs) override;
 
 		//! Get the cursor blinktime
-		virtual irr::u32 getCursorBlinkTime() const IRR_OVERRIDE;
+		virtual irr::u32 getCursorBlinkTime() const override;
 
 		//! Sets whether the edit box is a password box. Setting this to true will
 		/** disable MultiLine, WordWrap and the ability to copy with ctrl+c or ctrl+x
 		\param passwordBox: true to enable password, false to disable
 		\param passwordChar: the character that is displayed instead of letters */
-		virtual void setPasswordBox(bool passwordBox, wchar_t passwordChar = L'*') IRR_OVERRIDE;
+		virtual void setPasswordBox(bool passwordBox, wchar_t passwordChar = L'*') override;
 
 		//! Returns true if the edit box is currently a password box.
-		virtual bool isPasswordBox() const IRR_OVERRIDE;
+		virtual bool isPasswordBox() const override;
 
 		//! Updates the absolute position, splits text if required
-		virtual void updateAbsolutePosition() IRR_OVERRIDE;
+		virtual void updateAbsolutePosition() override;
 
 		//! Writes attributes of the element.
-		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const IRR_OVERRIDE;
+		virtual void serializeAttributes(io::IAttributes* out, io::SAttributeReadWriteOptions* options) const override;
 
 		//! Reads attributes of the element
-		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) IRR_OVERRIDE;
+		virtual void deserializeAttributes(io::IAttributes* in, io::SAttributeReadWriteOptions* options) override;
 
 	protected:
 		//! Breaks the single text line.
@@ -202,5 +202,5 @@ namespace gui
 } // end namespace gui
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_GUI_
-#endif // IRR_C_GUI_EDIT_BOX_H_INCLUDED
+#endif // _NIRT_COMPILE_WITH_GUI_
+#endif // NIRT_C_GUI_EDIT_BOX_H_INCLUDED

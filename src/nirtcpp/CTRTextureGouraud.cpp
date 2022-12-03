@@ -1,10 +1,10 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CTRTextureGouraud.h"
 
-#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 
 namespace irr
 {
@@ -442,7 +442,7 @@ void CTRTextureGouraud::drawIndexedTriangleList(S2DVertex* vertices, s32 vertexC
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_SOFTWARE_
+#endif // _NIRT_COMPILE_WITH_SOFTWARE_
 
 namespace irr
 {
@@ -452,11 +452,11 @@ namespace video
 //! creates a flat triangle renderer
 ITriangleRenderer* createTriangleRendererTextureGouraud(IZBuffer* zbuffer)
 {
-	#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+	#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 	return new CTRTextureGouraud(zbuffer);
 	#else
 	return 0;
-	#endif // _IRR_COMPILE_WITH_SOFTWARE_
+	#endif // _NIRT_COMPILE_WITH_SOFTWARE_
 }
 
 

@@ -1,11 +1,11 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
 #include "CSoftwareDriver.h"
 
-#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 
 #include "CSoftwareTexture.h"
 #include "CBlit.h"
@@ -867,7 +867,7 @@ void CSoftwareDriver::draw2DRectangle(const core::rect<s32>& pos,
 //! driver, it would return "Direct3D8.1".
 const wchar_t* CSoftwareDriver::getName() const
 {
-	return L"Irrlicht Software Driver 1.0";
+	return L"Nirtcpp Software Driver 1.0";
 }
 
 
@@ -952,7 +952,7 @@ bool CSoftwareDriver::queryTextureFormat(ECOLOR_FORMAT format) const
 } // end namespace video
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_SOFTWARE_
+#endif // _NIRT_COMPILE_WITH_SOFTWARE_
 
 namespace irr
 {
@@ -963,7 +963,7 @@ namespace video
 //! creates a video driver
 IVideoDriver* createSoftwareDriver(const core::dimension2d<u32>& windowSize, bool fullscreen, io::IFileSystem* io, video::IImagePresenter* presenter)
 {
-	#ifdef _IRR_COMPILE_WITH_SOFTWARE_
+	#ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 	return new CSoftwareDriver(windowSize, fullscreen, io, presenter);
 	#else
 	return 0;

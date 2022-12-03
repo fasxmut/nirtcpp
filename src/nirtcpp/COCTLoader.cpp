@@ -1,16 +1,16 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // originally written by Murphy McCauley, see COCTLoader.h for details.
 //
 // COCTLoader by Murphy McCauley (February 2005)
-// An Irrlicht loader for OCT files
+// An Nirtcpp loader for OCT files
 //
 // See the header file for additional information including use and distribution rights.
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_OCT_LOADER_
+#ifdef _NIRT_COMPILE_WITH_OCT_LOADER_
 
 #include "COCTLoader.h"
 #include "CMeshTextureLoader.h"
@@ -342,5 +342,5 @@ bool COCTLoader::isALoadableFileExtension(const io::path& filename) const
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_OCT_LOADER_
+#endif // _NIRT_COMPILE_WITH_OCT_LOADER_
 

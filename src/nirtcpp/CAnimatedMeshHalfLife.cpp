@@ -1,9 +1,9 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Fabio Concas / Thomas Alten
-// This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in irrlicht.h
+// This file is part of the "Nirtcpp Engine".
+// For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"
-#ifdef _IRR_COMPILE_WITH_HALFLIFE_LOADER_
+#ifdef _NIRT_COMPILE_WITH_HALFLIFE_LOADER_
 
 #include "CAnimatedMeshHalfLife.h"
 #include "os.h"
@@ -1151,7 +1151,7 @@ bool CAnimatedMeshHalfLife::postLoadModel( const io::path &filename )
 		c8 seq[8];
 		for (u32 i = 1; i < Header->numseqgroups; i++)
 		{
-			snprintf_irr( seq, 8, "%02u.mdl", i );
+			snprintf_nirt( seq, 8, "%02u.mdl", i );
 			submodel = path + texname + seq;
 
 			AnimationHeader[i] = loadModel(0, submodel);
@@ -1675,5 +1675,5 @@ void CAnimatedMeshHalfLife::setBoundingBox(const core::aabbox3df& box)
 } // end namespace scene
 } // end namespace irr
 
-#endif // _IRR_COMPILE_WITH_MD3_LOADER_
+#endif // _NIRT_COMPILE_WITH_MD3_LOADER_
 
