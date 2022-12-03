@@ -1,5 +1,5 @@
 // Copyright (C) 2006-2012 Michael Zeilfelder
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef NIRT_C_GUI_SPIN_BOX_H_INCLUDED

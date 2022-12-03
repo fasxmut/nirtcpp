@@ -1,5 +1,5 @@
 // Copyright (C) 2015 Patryk Nadrowski
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #ifndef NIRT_C_OGLCORE_RENDER_TARGET_H_INCLUDED

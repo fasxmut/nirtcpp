@@ -1,7 +1,7 @@
 // Copyright (C) 2013 Patryk Nadrowski
 // Heavily based on the DDS loader implemented by Thomas Alten
 // and DDS loader from IrrSpintz implemented by Thomas Ince
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 /*

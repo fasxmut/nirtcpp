@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // 2019 additional alignment and big_endian fixes by Corto and Salas00
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"

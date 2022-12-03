@@ -1,4 +1,4 @@
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // Written by Reinhard Ostermeier, reinhard@nospam.r-ostermeier.de
 // Expanded by burningwater
 // Bugfixes by Michael Zeilfelder

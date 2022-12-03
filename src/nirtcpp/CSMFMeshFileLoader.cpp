@@ -1,5 +1,5 @@
 // Copyright (C) 2010-2012 Gaz Davidson / Joseph Ellis
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "IrrCompileConfig.h"

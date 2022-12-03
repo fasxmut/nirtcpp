@@ -1,5 +1,5 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #ifndef NIRT_C_VIDEO_OPEN_GL_H_INCLUDED

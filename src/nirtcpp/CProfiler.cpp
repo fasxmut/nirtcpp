@@ -1,4 +1,4 @@
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 

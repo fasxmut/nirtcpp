@@ -1,4 +1,4 @@
-/* nirtcpp.h -- interface of the 'Nirtcpp Engine'
+/* irrlicht.h -- interface of the 'Irrlicht Engine'
 
   Copyright (C) 2002-2012 Nikolaus Gebhardt
 
@@ -18,12 +18,15 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 
-  Please note that the Nirtcpp Engine is based in part on the work of the
+  Please note that the Irrlicht Engine is based in part on the work of the
   Independent JPEG Group, the zlib and the libPng. This means that if you use
-  the Nirtcpp Engine in your product, you must acknowledge somewhere in your
+  the Irrlicht Engine in your product, you must acknowledge somewhere in your
   documentation that you've used the IJG code. It would also be nice to mention
-  that you use the Nirtcpp Engine, the zlib and libPng. See the README files
+  that you use the Irrlicht Engine, the zlib and libPng. See the README files
   in the jpeglib, the zlib and libPng for further information.
+*/
+/*
+Please note that this nirtcpp.h is renamed from irrlicht.h.
 */
 
 #ifndef NIRTCPP_H_INCLUDED

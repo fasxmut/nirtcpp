@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2007 Nikolaus Gebhardt
 // Copyright (C) 2007-2012 Christian Stehno
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #include "CIrrDeviceFB.h"

@@ -1,4 +1,4 @@
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // written by Reinhard Ostermeier, reinhard@nospam.r-ostermeier.de
 
 #ifndef NIRT_I_GUI_IMAGE_LIST_H_INCLUDED

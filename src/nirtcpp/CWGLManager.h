@@ -1,5 +1,5 @@
 // Copyright (C) 2013 Christian Stehno
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #ifndef NIRT_C_WGL_MANAGER_H_INCLUDED

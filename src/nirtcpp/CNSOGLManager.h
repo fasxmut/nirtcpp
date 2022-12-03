@@ -1,5 +1,5 @@
 // Copyright (C) 2014 Patryk Nadrowski
-// This file is part of the "Nirtcpp Engine".
+// This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #ifndef __C_NSOGL_MANAGER_H_INCLUDED__

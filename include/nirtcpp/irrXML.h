@@ -1,5 +1,5 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
-// This file is part of the "Nirtcpp Engine" and the "irrXML" project.
+// This file is part of the "Irrlicht Engine" and the "irrXML" project.
 // For conditions of distribution and use, see copyright notice in nirtcpp.h and/or irrXML.h
 
 #ifndef NIRT_XML_H_INCLUDED
