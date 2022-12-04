@@ -18,21 +18,21 @@
 
 #include <nirtcpp/IEventReceiver.hpp>
 #include <nirtcpp/irrList.hpp>
-#include "os.h"
-#include "CTimer.h"
+#include "os.hpp"
+#include "CTimer.hpp"
 #include <nirtcpp/irrString.hpp>
 #include <nirtcpp/Keycodes.hpp>
 #include <stdio.h>
 #include <sys/utsname.h>
-#include "COSOperator.h"
-#include "CColorConverter.h"
+#include "COSOperator.hpp"
+#include "CColorConverter.hpp"
 #include <nirtcpp/nirtcpp.hpp>
 #include <algorithm>
 
 #include <wchar.h>
 #include <time.h>
 
-#include "CNSOGLManager.h"
+#include "CNSOGLManager.hpp"
 
 #if defined _NIRT_COMPILE_WITH_JOYSTICK_EVENTS_
 
