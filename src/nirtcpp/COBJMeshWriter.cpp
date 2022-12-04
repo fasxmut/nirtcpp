@@ -2,20 +2,20 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_OBJ_WRITER_
 
-#include "COBJMeshWriter.h"
-#include "os.h"
-#include "IMesh.h"
-#include "IMeshBuffer.h"
-#include "IAttributes.h"
-#include "ISceneManager.h"
-#include "IMeshCache.h"
-#include "IWriteFile.h"
-#include "IFileSystem.h"
-#include "ITexture.h"
+#include "COBJMeshWriter.hpp"
+#include "os.hpp"
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IMeshBuffer.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/ITexture.hpp>
 
 namespace nirt
 {

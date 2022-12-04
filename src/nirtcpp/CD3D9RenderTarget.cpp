@@ -2,16 +2,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CD3D9RenderTarget.h"
+#include "CD3D9RenderTarget.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
-#include "IImage.h"
-#include "irrMath.h"
-#include "irrString.h"
+#include <nirtcpp/IImage.hpp>
+#include <nirtcpp/irrMath.hpp>
+#include <nirtcpp/irrString.hpp>
 
-#include "CD3D9Driver.h"
-#include "CD3D9Texture.h"
+#include "CD3D9Driver.hpp"
+#include "CD3D9Texture.hpp"
 
 namespace nirt
 {

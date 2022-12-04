@@ -2,28 +2,28 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
-#include "CFileSystem.h"
-#include "IReadFile.h"
-#include "IWriteFile.h"
-#include "CZipReader.h"
-#include "CMountPointReader.h"
-#include "CPakReader.h"
-#include "CNPKReader.h"
-#include "CTarReader.h"
-#include "CWADReader.h"
-#include "CFileList.h"
-#include "CXMLReader.h"
-#include "CXMLWriter.h"
+#include "CFileSystem.hpp"
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IWriteFile.hpp>
+#include "CZipReader.hpp"
+#include "CMountPointReader.hpp"
+#include "CPakReader.hpp"
+#include "CNPKReader.hpp"
+#include "CTarReader.hpp"
+#include "CWADReader.hpp"
+#include "CFileList.hpp"
+#include "CXMLReader.hpp"
+#include "CXMLWriter.hpp"
 #include "stdio.h"
-#include "os.h"
-#include "CAttributes.h"
-#include "CReadFile.h"
-#include "CMemoryFile.h"
-#include "CLimitReadFile.h"
-#include "CWriteFile.h"
-#include "irrList.h"
+#include "os.hpp"
+#include "CAttributes.hpp"
+#include "CReadFile.hpp"
+#include "CMemoryFile.hpp"
+#include "CLimitReadFile.hpp"
+#include "CWriteFile.hpp"
+#include <nirtcpp/irrList.hpp>
 
 #if defined (__STRICT_ANSI__)
     #error Compiling with __STRICT_ANSI__ not supported. g++ does set this when compiling with -std=c++11 or -std=c++0x. Use instead -std=gnu++11 or -std=gnu++0x. Or use -U__STRICT_ANSI__ to disable strict ansi.

@@ -7,25 +7,25 @@
 // distributed under this licence. I only modified some parts. A lot of thanks
 // go to him.
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 
-#include "CTerrainSceneNode.h"
-#include "CTerrainTriangleSelector.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "ICameraSceneNode.h"
-#include "SViewFrustum.h"
-#include "irrMath.h"
-#include "os.h"
-#include "IGUIFont.h"
-#include "IFileSystem.h"
-#include "IReadFile.h"
-#include "ITextSceneNode.h"
-#include "IAnimatedMesh.h"
-#include "SMesh.h"
-#include "CDynamicMeshBuffer.h"
+#include "CTerrainSceneNode.hpp"
+#include "CTerrainTriangleSelector.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/SViewFrustum.hpp>
+#include <nirtcpp/irrMath.hpp>
+#include "os.hpp"
+#include <nirtcpp/IGUIFont.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/ITextSceneNode.hpp>
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/CDynamicMeshBuffer.hpp>
 
 namespace nirt
 {

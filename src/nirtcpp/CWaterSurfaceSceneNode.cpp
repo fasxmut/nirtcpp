@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_
-#include "CWaterSurfaceSceneNode.h"
-#include "ISceneManager.h"
-#include "IMeshManipulator.h"
-#include "IMeshCache.h"
-#include "S3DVertex.h"
-#include "SMesh.h"
-#include "os.h"
+#include "CWaterSurfaceSceneNode.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IMeshManipulator.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/S3DVertex.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

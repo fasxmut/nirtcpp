@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CXMLReader.h"
+#include "CXMLReader.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_XML_
-#include "CXMLReaderImpl.h"
-#include "IReadFile.h"
+#include "CXMLReaderImpl.hpp"
+#include <nirtcpp/IReadFile.hpp>
 
 namespace nirt
 {
@@ -71,7 +71,7 @@ namespace io
 } // end namespace
 } // end namespace
 #else // not _NIRT_COMPILE_WITH_XML_
-#include "os.h"
+#include "os.hpp"
 namespace nirt
 {
 

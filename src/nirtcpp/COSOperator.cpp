@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "COSOperator.h"
+#include "COSOperator.hpp"
 
 #ifdef _NIRT_WINDOWS_API_
 #ifndef _NIRT_XBOX_PLATFORM_
@@ -18,13 +18,13 @@
 #endif
 
 #if defined(_NIRT_COMPILE_WITH_X11_DEVICE_)
-#include "CIrrDeviceLinux.h"
+#include "CIrrDeviceLinux.hpp"
 #endif
 #if defined(_NIRT_COMPILE_WITH_OSX_DEVICE_)
 #import <Cocoa/Cocoa.h>
 #endif
 
-#include "fast_atof.h"
+#include <nirtcpp/fast_atof.hpp>
 
 namespace nirt
 {

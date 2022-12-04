@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-#include "SoftwareDriver2_compile_config.h"
-#include "IBurningShader.h"
-#include "CSoftwareDriver2.h"
-#include "IShaderConstantSetCallBack.h"
+#include "SoftwareDriver2_compile_config.hpp"
+#include "IBurningShader.hpp"
+#include "CSoftwareDriver2.hpp"
+#include <nirtcpp/IShaderConstantSetCallBack.hpp>
 
 burning_namespace_start
 

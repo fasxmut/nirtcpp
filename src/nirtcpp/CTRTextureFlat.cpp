@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
-#include "CTRTextureGouraud.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include "CTRTextureGouraud.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 

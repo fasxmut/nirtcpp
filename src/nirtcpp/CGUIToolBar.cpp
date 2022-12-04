@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIToolBar.h"
+#include "CGUIToolBar.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
-#include "IGUIButton.h"
-#include "IGUIFont.h"
-#include "CGUIButton.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUIButton.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include "CGUIButton.hpp"
 
 namespace nirt
 {

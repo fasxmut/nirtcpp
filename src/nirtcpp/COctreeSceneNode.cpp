@@ -2,25 +2,25 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
 
-#include "COctreeSceneNode.h"
-#include "Octree.h"
-#include "ISceneManager.h"
-#include "IVideoDriver.h"
-#include "ICameraSceneNode.h"
-#include "IMeshCache.h"
-#include "IAnimatedMesh.h"
-#include "IMaterialRenderer.h"
-#include "os.h"
+#include "COctreeSceneNode.hpp"
+#include "Octree.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include <nirtcpp/IMaterialRenderer.hpp>
+#include "os.hpp"
 #ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "CShadowVolumeSceneNode.h"
+#include "CShadowVolumeSceneNode.hpp"
 #else
-#include "IShadowVolumeSceneNode.h"
+#include <nirtcpp/IShadowVolumeSceneNode.hpp>
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "EProfileIDs.h"
-#include "IProfiler.h"
+#include "EProfileIDs.hpp"
+#include <nirtcpp/IProfiler.hpp>
 
 namespace nirt
 {

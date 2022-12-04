@@ -2,32 +2,32 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CDefaultGUIElementFactory.h"
+#include "CDefaultGUIElementFactory.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUIEnvironment.h"
+#include <nirtcpp/IGUIEnvironment.hpp>
 
-#include "IGUIButton.h"
-#include "IGUICheckBox.h"
-#include "IGUIColorSelectDialog.h"
-#include "IGUIComboBox.h"
-#include "IGUIContextMenu.h"
-#include "IGUIEditBox.h"
-#include "IGUIFileOpenDialog.h"
-#include "IGUIInOutFader.h"
-#include "IGUIImage.h"
-#include "IGUIListBox.h"
-#include "IGUIMeshViewer.h"
-#include "IGUIScrollBar.h"
-#include "IGUISpinBox.h"
-#include "IGUIStaticText.h"
-#include "IGUITabControl.h"
-#include "IGUITable.h"
-#include "IGUIToolbar.h"
-#include "IGUIWindow.h"
-#include "IGUITreeView.h"
-#include "IGUIProfiler.h"
+#include <nirtcpp/IGUIButton.hpp>
+#include <nirtcpp/IGUICheckBox.hpp>
+#include <nirtcpp/IGUIColorSelectDialog.hpp>
+#include <nirtcpp/IGUIComboBox.hpp>
+#include <nirtcpp/IGUIContextMenu.hpp>
+#include <nirtcpp/IGUIEditBox.hpp>
+#include <nirtcpp/IGUIFileOpenDialog.hpp>
+#include <nirtcpp/IGUIInOutFader.hpp>
+#include <nirtcpp/IGUIImage.hpp>
+#include <nirtcpp/IGUIListBox.hpp>
+#include <nirtcpp/IGUIMeshViewer.hpp>
+#include <nirtcpp/IGUIScrollBar.hpp>
+#include <nirtcpp/IGUISpinBox.hpp>
+#include <nirtcpp/IGUIStaticText.hpp>
+#include <nirtcpp/IGUITabControl.hpp>
+#include <nirtcpp/IGUITable.hpp>
+#include <nirtcpp/IGUIToolbar.hpp>
+#include <nirtcpp/IGUIWindow.hpp>
+#include <nirtcpp/IGUITreeView.hpp>
+#include <nirtcpp/IGUIProfiler.hpp>
 
 namespace nirt
 {

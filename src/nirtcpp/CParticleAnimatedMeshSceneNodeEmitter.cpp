@@ -2,10 +2,10 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CParticleAnimatedMeshSceneNodeEmitter.h"
-#include "IAnimatedMeshSceneNode.h"
-#include "IMesh.h"
-#include "os.h"
+#include "CParticleAnimatedMeshSceneNodeEmitter.hpp"
+#include <nirtcpp/IAnimatedMeshSceneNode.hpp>
+#include <nirtcpp/IMesh.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageWriterTGA.h"
+#include "CImageWriterTGA.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_TGA_WRITER_
 
-#include "CImageLoaderTGA.h"
-#include "IWriteFile.h"
-#include "CColorConverter.h"
-#include "irrString.h"
-#include "os.h"
+#include "CImageLoaderTGA.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include "CColorConverter.hpp"
+#include <nirtcpp/irrString.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

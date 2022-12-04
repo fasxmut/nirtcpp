@@ -1,7 +1,7 @@
 // Copyright (C) 2008-2012 Colin MacDonald and Christian Stehno
 // No rights reserved: this software is in the public domain.
 
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 bool irrCoreEquals(void)
 {

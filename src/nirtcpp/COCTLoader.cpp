@@ -2,25 +2,25 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
-// originally written by Murphy McCauley, see COCTLoader.h for details.
+// originally written by Murphy McCauley, see COCTLoader.hpp for details.
 //
 // COCTLoader by Murphy McCauley (February 2005)
 // An Nirtcpp loader for OCT files
 //
 // See the header file for additional information including use and distribution rights.
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_OCT_LOADER_
 
-#include "COCTLoader.h"
-#include "CMeshTextureLoader.h"
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
-#include "os.h"
-#include "SAnimatedMesh.h"
-#include "SMeshBufferLightMap.h"
-#include "irrString.h"
-#include "ISceneManager.h"
+#include "COCTLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include "os.hpp"
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMeshBufferLightMap.hpp>
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/ISceneManager.hpp>
 
 namespace nirt
 {

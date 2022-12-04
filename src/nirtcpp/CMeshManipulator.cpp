@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CMeshManipulator.h"
-#include "SMesh.h"
-#include "CMeshBuffer.h"
-#include "SAnimatedMesh.h"
-#include "os.h"
-#include "irrMap.h"
-#include "triangle3d.h"
+#include "CMeshManipulator.hpp"
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/CMeshBuffer.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include "os.hpp"
+#include <nirtcpp/irrMap.hpp>
+#include <nirtcpp/triangle3d.hpp>
 
 namespace nirt
 {

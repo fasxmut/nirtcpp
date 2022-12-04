@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageWriterJPG.h"
+#include "CImageWriterJPG.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_JPG_WRITER_
 
-#include "CColorConverter.h"
-#include "IWriteFile.h"
-#include "CImage.h"
-#include "irrString.h"
-#include "os.h"
+#include "CColorConverter.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include "CImage.hpp"
+#include <nirtcpp/irrString.hpp>
+#include "os.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_LIBJPEG_
 #include <stdio.h> // required for jpeglib.h

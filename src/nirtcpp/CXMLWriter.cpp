@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CXMLWriter.h"
+#include "CXMLWriter.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_XML_
 
 #include <wchar.h>
-#include "irrString.h"
-#include "IrrCompileConfig.h"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 namespace nirt
 {

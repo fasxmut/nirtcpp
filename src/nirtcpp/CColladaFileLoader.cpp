@@ -2,26 +2,26 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_COLLADA_LOADER_
 
-#include "CColladaFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "os.h"
-#include "IXMLReader.h"
-#include "IDummyTransformationSceneNode.h"
-#include "SAnimatedMesh.h"
-#include "fast_atof.h"
-#include "quaternion.h"
-#include "ILightSceneNode.h"
-#include "ICameraSceneNode.h"
-#include "IMeshManipulator.h"
-#include "IReadFile.h"
-#include "IAttributes.h"
-#include "IMeshCache.h"
-#include "IMeshSceneNode.h"
-#include "SMeshBufferLightMap.h"
-#include "irrMap.h"
+#include "CColladaFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include "os.hpp"
+#include <nirtcpp/IXMLReader.hpp>
+#include <nirtcpp/IDummyTransformationSceneNode.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/fast_atof.hpp>
+#include <nirtcpp/quaternion.hpp>
+#include <nirtcpp/ILightSceneNode.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IMeshManipulator.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/IMeshSceneNode.hpp>
+#include <nirtcpp/SMeshBufferLightMap.hpp>
+#include <nirtcpp/irrMap.hpp>
 
 #ifdef _DEBUG
 #define COLLADA_READER_DEBUG

@@ -3,16 +3,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageLoaderWAL.h"
+#include "CImageLoaderWAL.hpp"
 
-#include "CColorConverter.h"
-#include "CImage.h"
-#include "os.h"
-#include "dimension2d.h"
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
-#include "IReadFile.h"
-#include "irrString.h"
+#include "CColorConverter.hpp"
+#include "CImage.hpp"
+#include "os.hpp"
+#include <nirtcpp/dimension2d.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/irrString.hpp>
 
 namespace nirt
 {

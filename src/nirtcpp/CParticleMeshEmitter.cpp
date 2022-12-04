@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CParticleMeshEmitter.h"
+#include "CParticleMeshEmitter.hpp"
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
-#include "os.h"
+#include "os.hpp"
 
 namespace nirt
 {

@@ -2,9 +2,9 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CMeshCache.h"
-#include "IAnimatedMesh.h"
-#include "IMesh.h"
+#include "CMeshCache.hpp"
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include <nirtcpp/IMesh.hpp>
 
 namespace nirt
 {

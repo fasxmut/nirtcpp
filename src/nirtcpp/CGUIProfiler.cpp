@@ -2,13 +2,13 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 
-#include "CGUIProfiler.h"
+#include "CGUIProfiler.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUITable.h"
-#include "IGUIScrollBar.h"
-#include "IGUIEnvironment.h"
-#include "CProfiler.h"
+#include <nirtcpp/IGUITable.hpp>
+#include <nirtcpp/IGUIScrollBar.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include "CProfiler.hpp"
 
 namespace nirt
 {

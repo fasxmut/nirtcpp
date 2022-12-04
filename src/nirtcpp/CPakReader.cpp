@@ -3,12 +3,12 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Code contributed by skreamz
 
-#include "CPakReader.h"
+#include "CPakReader.hpp"
 
 #ifdef __NIRT_COMPILE_WITH_PAK_ARCHIVE_LOADER_
 
-#include "os.h"
-#include "coreutil.h"
+#include "os.hpp"
+#include <nirtcpp/coreutil.hpp>
 
 namespace nirt
 {

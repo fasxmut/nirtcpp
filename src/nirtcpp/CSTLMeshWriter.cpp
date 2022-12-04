@@ -2,18 +2,18 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_STL_WRITER_
 
-#include "CSTLMeshWriter.h"
-#include "os.h"
-#include "IMesh.h"
-#include "IMeshBuffer.h"
-#include "IAttributes.h"
-#include "ISceneManager.h"
-#include "IMeshCache.h"
-#include "IWriteFile.h"
+#include "CSTLMeshWriter.hpp"
+#include "os.hpp"
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IMeshBuffer.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/IWriteFile.hpp>
 
 namespace nirt
 {

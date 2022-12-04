@@ -2,20 +2,20 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIColorSelectDialog.h"
+#include "CGUIColorSelectDialog.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
-#include "IGUIButton.h"
-#include "IGUIStaticText.h"
-#include "IGUIFont.h"
-#include "IGUISpriteBank.h"
-#include "IFileList.h"
-#include "os.h"
-#include "fast_atof.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUIButton.hpp>
+#include <nirtcpp/IGUIStaticText.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include <nirtcpp/IGUISpriteBank.hpp>
+#include <nirtcpp/IFileList.hpp>
+#include "os.hpp"
+#include <nirtcpp/fast_atof.hpp>
 
 namespace nirt
 {

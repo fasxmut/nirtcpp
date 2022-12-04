@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneLoaderIrr.h"
-#include "ISceneNodeAnimatorFactory.h"
-#include "ISceneUserDataSerializer.h"
-#include "ISceneManager.h"
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
-#include "os.h"
+#include "CSceneLoaderIrr.hpp"
+#include <nirtcpp/ISceneNodeAnimatorFactory.hpp>
+#include <nirtcpp/ISceneUserDataSerializer.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

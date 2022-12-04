@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageLoaderPNG.h"
+#include "CImageLoaderPNG.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PNG_LOADER_
 
@@ -14,9 +14,9 @@
 	#endif // _NIRT_USE_NON_SYSTEM_LIB_PNG_
 #endif // _NIRT_COMPILE_WITH_LIBPNG_
 
-#include "CImage.h"
-#include "CReadFile.h"
-#include "os.h"
+#include "CImage.hpp"
+#include "CReadFile.hpp"
+#include "os.hpp"
 
 namespace nirt
 {

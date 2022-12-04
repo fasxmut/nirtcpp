@@ -2,17 +2,17 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_HALFLIFE_LOADER_
 
-#include "CAnimatedMeshHalfLife.h"
-#include "os.h"
-#include "CColorConverter.h"
-#include "CImage.h"
-#include "coreutil.h"
-#include "SMeshBuffer.h"
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
+#include "CAnimatedMeshHalfLife.hpp"
+#include "os.hpp"
+#include "CColorConverter.hpp"
+#include "CImage.hpp"
+#include <nirtcpp/coreutil.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
 
 namespace nirt
 {

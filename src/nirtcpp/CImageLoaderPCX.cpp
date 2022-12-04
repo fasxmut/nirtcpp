@@ -2,16 +2,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageLoaderPCX.h"
+#include "CImageLoaderPCX.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PCX_LOADER_
 
-#include "IReadFile.h"
-#include "SColor.h"
-#include "CColorConverter.h"
-#include "CImage.h"
-#include "os.h"
-#include "irrString.h"
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/SColor.hpp>
+#include "CColorConverter.hpp"
+#include "CImage.hpp"
+#include "os.hpp"
+#include <nirtcpp/irrString.hpp>
 
 
 namespace nirt

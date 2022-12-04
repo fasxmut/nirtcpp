@@ -2,9 +2,9 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
-#include "SoftwareDriver2_compile_config.h"
-#include "CDepthBuffer.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include "SoftwareDriver2_compile_config.hpp"
+#include "CDepthBuffer.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 

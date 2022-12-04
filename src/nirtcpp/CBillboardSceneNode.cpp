@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_
-#include "CBillboardSceneNode.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "ICameraSceneNode.h"
-#include "os.h"
+#include "CBillboardSceneNode.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

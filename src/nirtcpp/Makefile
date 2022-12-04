@@ -124,7 +124,11 @@ sharedlib_osx: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm
 #Windows specific options
 NIRTCPP_DLL := ../../bin/Win32-gcc/nirtcpp.dll
 sharedlib_win32 staticlib_win32: SYSTEM = Win32-gcc
-sharedlib_win32: LDFLAGS += -lgdi32 -lopengl32 -ld3dx9d -lwinmm -Wl,--add-stdcall-alias
+
+#sharedlib_win32: LDFLAGS += -lgdi32 -lopengl32 -ld3dx9d -lwinmm -Wl,--add-stdcall-alias
+# Not link d3dx9d
+sharedlib_win32: LDFLAGS += -lgdi32 -lopengl32 -lwinmm -Wl,--add-stdcall-alias
+
 #sharedlib_win32: LDFLAGS += -lSDL
 #choose either -DNIRT_COMPILE_WITH_DX9_DEV_PACK or -DNO_NIRT_COMPILE_WITH_DIRECT3D_9_ depending if you need dx9
 #sharedlib_win32 staticlib_win32: CPPFLAGS += -DNIRT_COMPILE_WITH_DX9_DEV_PACK
@@ -173,14 +177,14 @@ sharedlib_osx: $(LINKOBJ)
 install install_osx:
 	$(RM) -r $(INSTALL_DIR)/../include/nirtcpp
 	mkdir -p $(INSTALL_DIR)/../include/nirtcpp
-	cp ../../include/nirtcpp/*.h $(INSTALL_DIR)/../include/nirtcpp/
+	cp ../../include/nirtcpp/*.hpp $(INSTALL_DIR)/../include/nirtcpp/
 	cp $(LIB_PATH)/$(SHARED_FULLNAME) $(INSTALL_DIR)
 	cd $(INSTALL_DIR) && ln -s -f $(SHARED_FULLNAME) $(SONAME)
 	cd $(INSTALL_DIR) && ln -s -f $(SONAME) $(SHARED_LIB)
 #	ldconfig -n $(INSTALL_DIR)
 
 TAGS:
-	ctags *.cpp ../../include/nirtcpp/*.h *.h
+	ctags *.cpp ../../include/nirtcpp/*.hpp
 
 # Create dependency files for automatic recompilation
 %.d:%.cpp

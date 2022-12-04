@@ -2,16 +2,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_NIRT_WRITER_
 
-#include "CIrrMeshWriter.h"
-#include "os.h"
-#include "IWriteFile.h"
-#include "IXMLWriter.h"
-#include "IMesh.h"
-#include "IAttributes.h"
+#include "CIrrMeshWriter.hpp"
+#include "os.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/IXMLWriter.hpp>
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IAttributes.hpp>
 
 namespace nirt
 {

@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageWriterBMP.h"
+#include "CImageWriterBMP.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_BMP_WRITER_
 
-#include "CImageLoaderBMP.h"
-#include "IWriteFile.h"
-#include "CColorConverter.h"
-#include "irrString.h"
-#include "os.h"
+#include "CImageLoaderBMP.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include "CColorConverter.hpp"
+#include <nirtcpp/irrString.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

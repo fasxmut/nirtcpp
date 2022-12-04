@@ -2,28 +2,28 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CParticleSystemSceneNode.h"
+#include "CParticleSystemSceneNode.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
-#include "os.h"
-#include "ISceneManager.h"
-#include "ICameraSceneNode.h"
-#include "IVideoDriver.h"
+#include "os.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
 
-#include "CParticleAnimatedMeshSceneNodeEmitter.h"
-#include "CParticleBoxEmitter.h"
-#include "CParticleCylinderEmitter.h"
-#include "CParticleMeshEmitter.h"
-#include "CParticlePointEmitter.h"
-#include "CParticleRingEmitter.h"
-#include "CParticleSphereEmitter.h"
-#include "CParticleAttractionAffector.h"
-#include "CParticleFadeOutAffector.h"
-#include "CParticleGravityAffector.h"
-#include "CParticleRotationAffector.h"
-#include "CParticleScaleAffector.h"
-#include "SViewFrustum.h"
+#include "CParticleAnimatedMeshSceneNodeEmitter.hpp"
+#include "CParticleBoxEmitter.hpp"
+#include "CParticleCylinderEmitter.hpp"
+#include "CParticleMeshEmitter.hpp"
+#include "CParticlePointEmitter.hpp"
+#include "CParticleRingEmitter.hpp"
+#include "CParticleSphereEmitter.hpp"
+#include "CParticleAttractionAffector.hpp"
+#include "CParticleFadeOutAffector.hpp"
+#include "CParticleGravityAffector.hpp"
+#include "CParticleRotationAffector.hpp"
+#include "CParticleScaleAffector.hpp"
+#include <nirtcpp/SViewFrustum.hpp>
 
 namespace nirt
 {

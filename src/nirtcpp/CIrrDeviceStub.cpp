@@ -2,17 +2,17 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CIrrDeviceStub.h"
-#include "ISceneManager.h"
-#include "IEventReceiver.h"
-#include "IFileSystem.h"
-#include "IGUIEnvironment.h"
-#include "os.h"
-#include "IrrCompileConfig.h"
-#include "CTimer.h"
-#include "CLogger.h"
-#include "irrString.h"
-#include "IRandomizer.h"
+#include "CIrrDeviceStub.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IEventReceiver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include "os.hpp"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include "CTimer.hpp"
+#include "CLogger.hpp"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/IRandomizer.hpp>
 
 namespace nirt
 {

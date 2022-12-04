@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CAttributes.h"
-#include "CAttributeImpl.h"
-#include "ITexture.h"
-#include "IXMLWriter.h"
-#include "IVideoDriver.h"
+#include "CAttributes.hpp"
+#include "CAttributeImpl.hpp"
+#include <nirtcpp/ITexture.hpp>
+#include <nirtcpp/IXMLWriter.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
 
 #ifndef _NIRT_COMPILE_WITH_XML_
-	#include "CXMLReader.h"	// for noXML
+	#include "CXMLReader.hpp"	// for noXML
 #endif
 
 namespace nirt

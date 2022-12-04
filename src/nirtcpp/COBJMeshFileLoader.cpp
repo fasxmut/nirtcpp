@@ -2,21 +2,21 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_OBJ_LOADER_
 
-#include "COBJMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "IMeshManipulator.h"
-#include "IVideoDriver.h"
-#include "SMesh.h"
-#include "SMeshBuffer.h"
-#include "SAnimatedMesh.h"
-#include "IReadFile.h"
-#include "IAttributes.h"
-#include "fast_atof.h"
-#include "coreutil.h"
-#include "os.h"
+#include "COBJMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include <nirtcpp/IMeshManipulator.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/fast_atof.hpp>
+#include <nirtcpp/coreutil.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

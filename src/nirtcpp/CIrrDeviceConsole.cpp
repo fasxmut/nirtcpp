@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CIrrDeviceConsole.h"
+#include "CIrrDeviceConsole.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
 
-#include "os.h"
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
+#include "os.hpp"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
 
 // to close the device on terminate signal
 nirt::CIrrDeviceConsole *DeviceToClose;

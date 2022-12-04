@@ -5,7 +5,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #endif // _MSC_VER
 
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 using namespace nirt;
 using namespace core;

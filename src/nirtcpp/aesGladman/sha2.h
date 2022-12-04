@@ -34,7 +34,7 @@
 #ifndef _SHA2_H
 #define _SHA2_H
 
-#include "irrMath.h"
+#include <nirtcpp/irrMath.hpp>
 
 /*  Defines for suffixes to 32 and 64 bit unsigned numeric values   */
 

@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIImage.h"
+#include "CGUIImage.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
 
 namespace nirt
 {

@@ -3,7 +3,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CIrrDeviceFB.h"
+#include "CIrrDeviceFB.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_FB_DEVICE_
 
@@ -19,14 +19,14 @@
 #include <time.h>
 #include <errno.h>
 
-#include "IEventReceiver.h"
-#include "os.h"
-#include "CTimer.h"
-#include "irrString.h"
-#include "Keycodes.h"
-#include "COSOperator.h"
-#include "CColorConverter.h"
-#include "SIrrCreationParameters.h"
+#include <nirtcpp/IEventReceiver.hpp>
+#include "os.hpp"
+#include "CTimer.hpp"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/Keycodes.hpp>
+#include "COSOperator.hpp"
+#include "CColorConverter.hpp"
+#include <nirtcpp/SIrrCreationParameters.hpp>
 
 #include <linux/input.h>
 

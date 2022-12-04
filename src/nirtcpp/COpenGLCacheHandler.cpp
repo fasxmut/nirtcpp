@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#include "COpenGLCacheHandler.h"
+#include "COpenGLCacheHandler.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
-#include "COpenGLDriver.h"
+#include "COpenGLDriver.hpp"
 
 namespace nirt
 {

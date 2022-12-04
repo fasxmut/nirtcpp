@@ -1,5 +1,5 @@
-#include "testUtils.h"
-#include "nirtcpp.h"
+#include "testUtils.hpp"
+#include <nirtcpp/nirtcpp.hpp>
 
 using namespace nirt;
 using namespace core;

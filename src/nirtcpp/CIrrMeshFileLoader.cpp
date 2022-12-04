@@ -2,19 +2,19 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
 
-#include "CIrrMeshFileLoader.h"
-#include "os.h"
-#include "IXMLReader.h"
-#include "SAnimatedMesh.h"
-#include "fast_atof.h"
-#include "IReadFile.h"
-#include "IAttributes.h"
-#include "IMeshSceneNode.h"
-#include "CDynamicMeshBuffer.h"
-#include "SMeshBufferLightMap.h"
+#include "CIrrMeshFileLoader.hpp"
+#include "os.hpp"
+#include <nirtcpp/IXMLReader.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/fast_atof.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/IMeshSceneNode.hpp>
+#include <nirtcpp/CDynamicMeshBuffer.hpp>
+#include <nirtcpp/SMeshBufferLightMap.hpp>
 
 namespace nirt
 {

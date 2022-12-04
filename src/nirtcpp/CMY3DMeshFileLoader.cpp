@@ -8,19 +8,19 @@
 // This tool created by ZDimitor everyone can use it as wants
 //-----------------------------------------------------------------------------
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_MY3D_LOADER_
 
-#include "CMY3DMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
+#include "CMY3DMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
 
-#include "SAnimatedMesh.h"
-#include "SMeshBuffer.h"
-#include "IReadFile.h"
-#include "IAttributes.h"
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IAttributes.hpp>
 
-#include "CMY3DHelper.h"
-#include "os.h"
+#include "CMY3DHelper.hpp"
+#include "os.hpp"
 
 // v3.15 - May 16, 2005
 

@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGeometryCreator.h"
-#include "SAnimatedMesh.h"
-#include "SMeshBuffer.h"
-#include "SMesh.h"
-#include "IMesh.h"
-#include "IVideoDriver.h"
-#include "os.h"
+#include "CGeometryCreator.hpp"
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

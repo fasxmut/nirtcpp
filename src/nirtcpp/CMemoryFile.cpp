@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CMemoryFile.h"
-#include "irrString.h"
+#include "CMemoryFile.hpp"
+#include <nirtcpp/irrString.hpp>
 
 namespace nirt
 {

@@ -1,6 +1,6 @@
-#include "CMeshTextureLoader.h"
-#include "IFileSystem.h"
-#include "IVideoDriver.h"
+#include "CMeshTextureLoader.hpp"
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
 
 namespace nirt
 {

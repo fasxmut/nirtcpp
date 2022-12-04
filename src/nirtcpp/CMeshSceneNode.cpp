@@ -2,19 +2,19 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CMeshSceneNode.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "S3DVertex.h"
-#include "ICameraSceneNode.h"
-#include "IMeshCache.h"
-#include "IAnimatedMesh.h"
-#include "IMaterialRenderer.h"
-#include "IFileSystem.h"
+#include "CMeshSceneNode.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/S3DVertex.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include <nirtcpp/IMaterialRenderer.hpp>
+#include <nirtcpp/IFileSystem.hpp>
 #ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "CShadowVolumeSceneNode.h"
+#include "CShadowVolumeSceneNode.hpp"
 #else
-#include "IShadowVolumeSceneNode.h"
+#include <nirtcpp/IShadowVolumeSceneNode.hpp>
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
 namespace nirt

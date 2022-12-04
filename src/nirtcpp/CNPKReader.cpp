@@ -4,12 +4,12 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Based on the NPK reader from Nirtcpp
 
-#include "CNPKReader.h"
+#include "CNPKReader.hpp"
 
 #ifdef __NIRT_COMPILE_WITH_NPK_ARCHIVE_LOADER_
 
-#include "os.h"
-#include "coreutil.h"
+#include "os.hpp"
+#include <nirtcpp/coreutil.hpp>
 
 #ifdef _DEBUG
 #define NIRT_DEBUG_NPK_READER

@@ -3,17 +3,17 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Originally written by Christian Stehno, modified by Nikolaus Gebhardt
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_OGRE_LOADER_
 
-#include "COgreMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "os.h"
-#include "SMeshBuffer.h"
-#include "SAnimatedMesh.h"
-#include "IReadFile.h"
-#include "fast_atof.h"
-#include "coreutil.h"
+#include "COgreMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include "os.hpp"
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/fast_atof.hpp>
+#include <nirtcpp/coreutil.hpp>
 
 #ifdef _DEBUG
 #define NIRT_OGRE_LOADER_DEBUG

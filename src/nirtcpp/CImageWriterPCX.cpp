@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageWriterPCX.h"
+#include "CImageWriterPCX.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PCX_WRITER_
 
-#include "CImageLoaderPCX.h"
-#include "IWriteFile.h"
-#include "os.h" // for logging
-#include "irrString.h"
+#include "CImageLoaderPCX.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include "os.hpp" // for logging
+#include <nirtcpp/irrString.hpp>
 
 namespace nirt
 {

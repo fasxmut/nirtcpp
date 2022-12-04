@@ -3,14 +3,14 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Code for this scene node has been contributed by Anders la Cour-Harbo (alc)
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
-#include "CSkyDomeSceneNode.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "ICameraSceneNode.h"
-#include "IAnimatedMesh.h"
-#include "os.h"
+#include "CSkyDomeSceneNode.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

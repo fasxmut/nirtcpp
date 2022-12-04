@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIMessageBox.h"
+#include "CGUIMessageBox.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IGUIButton.h"
-#include "IGUIFont.h"
-#include "ITexture.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IGUIButton.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include <nirtcpp/ITexture.hpp>
 
 namespace nirt
 {

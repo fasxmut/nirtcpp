@@ -2,22 +2,22 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 
-#include "CQuake3ShaderSceneNode.h"
-#include "ISceneManager.h"
-#include "IVideoDriver.h"
-#include "ICameraSceneNode.h"
-#include "SViewFrustum.h"
-#include "IMeshManipulator.h"
-#include "SMesh.h"
-#include "IMaterialRenderer.h"
+#include "CQuake3ShaderSceneNode.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/SViewFrustum.hpp>
+#include <nirtcpp/IMeshManipulator.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/IMaterialRenderer.hpp>
 #ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "CShadowVolumeSceneNode.h"
+#include "CShadowVolumeSceneNode.hpp"
 #else
-#include "IShadowVolumeSceneNode.h"
+#include <nirtcpp/IShadowVolumeSceneNode.hpp>
 #endif
 
 namespace nirt

@@ -3,20 +3,20 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
 #define NIRT_DONT_DO_MEMORY_DEBUGGING_HERE
-#include "CD3D9Driver.h"
+#include "CD3D9Driver.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
-#include "os.h"
-#include "S3DVertex.h"
-#include "CD3D9Texture.h"
-#include "CD3D9RenderTarget.h"
-#include "CD3D9MaterialRenderer.h"
-#include "CD3D9ShaderMaterialRenderer.h"
-#include "CD3D9NormalMapRenderer.h"
-#include "CD3D9ParallaxMapRenderer.h"
-#include "CD3D9HLSLMaterialRenderer.h"
-#include "SIrrCreationParameters.h"
+#include "os.hpp"
+#include <nirtcpp/S3DVertex.hpp>
+#include "CD3D9Texture.hpp"
+#include "CD3D9RenderTarget.hpp"
+#include "CD3D9MaterialRenderer.hpp"
+#include "CD3D9ShaderMaterialRenderer.hpp"
+#include "CD3D9NormalMapRenderer.hpp"
+#include "CD3D9ParallaxMapRenderer.hpp"
+#include "CD3D9HLSLMaterialRenderer.hpp"
+#include <nirtcpp/SIrrCreationParameters.hpp>
 
 namespace nirt
 {

@@ -2,23 +2,23 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "COpenGLDriver.h"
-#include "CNullDriver.h"
-#include "IContextManager.h"
+#include "COpenGLDriver.hpp"
+#include "CNullDriver.hpp"
+#include <nirtcpp/IContextManager.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
-#include "os.h"
+#include "os.hpp"
 
-#include "COpenGLCacheHandler.h"
-#include "COpenGLMaterialRenderer.h"
-#include "COpenGLShaderMaterialRenderer.h"
-#include "COpenGLSLMaterialRenderer.h"
-#include "COpenGLNormalMapRenderer.h"
-#include "COpenGLParallaxMapRenderer.h"
+#include "COpenGLCacheHandler.hpp"
+#include "COpenGLMaterialRenderer.hpp"
+#include "COpenGLShaderMaterialRenderer.hpp"
+#include "COpenGLSLMaterialRenderer.hpp"
+#include "COpenGLNormalMapRenderer.hpp"
+#include "COpenGLParallaxMapRenderer.hpp"
 
-#include "COpenGLCoreTexture.h"
-#include "COpenGLCoreRenderTarget.h"
+#include "COpenGLCoreTexture.hpp"
+#include "COpenGLCoreRenderTarget.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
 #include <SDL/SDL.h>

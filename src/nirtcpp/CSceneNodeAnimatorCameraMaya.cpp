@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneNodeAnimatorCameraMaya.h"
-#include "ICursorControl.h"
-#include "ICameraSceneNode.h"
-#include "SViewFrustum.h"
-#include "ISceneManager.h"
+#include "CSceneNodeAnimatorCameraMaya.hpp"
+#include <nirtcpp/ICursorControl.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/SViewFrustum.hpp>
+#include <nirtcpp/ISceneManager.hpp>
 
 namespace nirt
 {

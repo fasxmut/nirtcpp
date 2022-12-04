@@ -4,7 +4,7 @@
 /** This test verifies that position2d and vector2d are interchangeable,
 	and that they can convert from dimension2d */
 
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 using namespace nirt;
 using namespace core;

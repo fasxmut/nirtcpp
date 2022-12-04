@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneCollisionManager.h"
-#include "ISceneNode.h"
-#include "ICameraSceneNode.h"
-#include "ITriangleSelector.h"
-#include "SViewFrustum.h"
+#include "CSceneCollisionManager.hpp"
+#include <nirtcpp/ISceneNode.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/ITriangleSelector.hpp>
+#include <nirtcpp/SViewFrustum.hpp>
 
-#include "os.h"
-#include "irrMath.h"
+#include "os.hpp"
+#include <nirtcpp/irrMath.hpp>
 
 namespace nirt
 {

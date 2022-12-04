@@ -2,25 +2,25 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CAnimatedMeshSceneNode.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "S3DVertex.h"
-#include "os.h"
+#include "CAnimatedMeshSceneNode.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/S3DVertex.hpp>
+#include "os.hpp"
 #ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "CShadowVolumeSceneNode.h"
+#include "CShadowVolumeSceneNode.hpp"
 #else
-#include "IShadowVolumeSceneNode.h"
+#include <nirtcpp/IShadowVolumeSceneNode.hpp>
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "IAnimatedMeshMD3.h"
-#include "CSkinnedMesh.h"
-#include "IDummyTransformationSceneNode.h"
-#include "IBoneSceneNode.h"
-#include "IMaterialRenderer.h"
-#include "IMesh.h"
-#include "IMeshCache.h"
-#include "IAnimatedMesh.h"
-#include "quaternion.h"
+#include <nirtcpp/IAnimatedMeshMD3.hpp>
+#include "CSkinnedMesh.hpp"
+#include <nirtcpp/IDummyTransformationSceneNode.hpp>
+#include <nirtcpp/IBoneSceneNode.hpp>
+#include <nirtcpp/IMaterialRenderer.hpp>
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IMeshCache.hpp>
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include <nirtcpp/quaternion.hpp>
 
 
 namespace nirt

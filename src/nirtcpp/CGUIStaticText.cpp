@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIStaticText.h"
+#include "CGUIStaticText.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IGUIFont.h"
-#include "IVideoDriver.h"
-#include "rect.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/rect.hpp>
 
 namespace nirt
 {

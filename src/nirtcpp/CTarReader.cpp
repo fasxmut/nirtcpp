@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CTarReader.h"
+#include "CTarReader.hpp"
 
 #ifdef __NIRT_COMPILE_WITH_TAR_ARCHIVE_LOADER_
 
-#include "CFileList.h"
-#include "CLimitReadFile.h"
-#include "os.h"
-#include "coreutil.h"
+#include "CFileList.hpp"
+#include "CLimitReadFile.hpp"
+#include "os.hpp"
+#include <nirtcpp/coreutil.hpp>
 #include "errno.h"
 
 namespace nirt

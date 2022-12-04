@@ -2,8 +2,8 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Written by Michael Zeilfelder
 
-#include "CProfiler.h"
-#include "CTimer.h"
+#include "CProfiler.hpp"
+#include "CTimer.hpp"
 
 namespace nirt
 {

@@ -3,46 +3,46 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIEnvironment.h"
+#include "CGUIEnvironment.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IVideoDriver.h"
+#include <nirtcpp/IVideoDriver.hpp>
 
-#include "CGUISkin.h"
-#include "CGUIButton.h"
-#include "CGUIWindow.h"
-#include "CGUIScrollBar.h"
-#include "CGUIFont.h"
-#include "CGUISpriteBank.h"
-#include "CGUIImage.h"
-#include "CGUIMeshViewer.h"
-#include "CGUICheckBox.h"
-#include "CGUIListBox.h"
-#include "CGUITreeView.h"
-#include "CGUIImageList.h"
-#include "CGUIFileOpenDialog.h"
-#include "CGUIColorSelectDialog.h"
-#include "CGUIStaticText.h"
-#include "CGUIEditBox.h"
-#include "CGUISpinBox.h"
-#include "CGUIInOutFader.h"
-#include "CGUIMessageBox.h"
-#include "CGUIModalScreen.h"
-#include "CGUITabControl.h"
-#include "CGUIContextMenu.h"
-#include "CGUIComboBox.h"
-#include "CGUIMenu.h"
-#include "CGUIToolBar.h"
-#include "CGUITable.h"
-#include "CGUIProfiler.h"
+#include "CGUISkin.hpp"
+#include "CGUIButton.hpp"
+#include "CGUIWindow.hpp"
+#include "CGUIScrollBar.hpp"
+#include "CGUIFont.hpp"
+#include "CGUISpriteBank.hpp"
+#include "CGUIImage.hpp"
+#include "CGUIMeshViewer.hpp"
+#include "CGUICheckBox.hpp"
+#include "CGUIListBox.hpp"
+#include "CGUITreeView.hpp"
+#include "CGUIImageList.hpp"
+#include "CGUIFileOpenDialog.hpp"
+#include "CGUIColorSelectDialog.hpp"
+#include "CGUIStaticText.hpp"
+#include "CGUIEditBox.hpp"
+#include "CGUISpinBox.hpp"
+#include "CGUIInOutFader.hpp"
+#include "CGUIMessageBox.hpp"
+#include "CGUIModalScreen.hpp"
+#include "CGUITabControl.hpp"
+#include "CGUIContextMenu.hpp"
+#include "CGUIComboBox.hpp"
+#include "CGUIMenu.hpp"
+#include "CGUIToolBar.hpp"
+#include "CGUITable.hpp"
+#include "CGUIProfiler.hpp"
 
-#include "CDefaultGUIElementFactory.h"
-#include "IWriteFile.h"
-#include "IXMLWriter.h"
+#include "CDefaultGUIElementFactory.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/IXMLWriter.hpp>
 
-#include "BuiltInFont.h"
-#include "os.h"
+#include "BuiltInFont.hpp"
+#include "os.hpp"
 
 namespace nirt
 {

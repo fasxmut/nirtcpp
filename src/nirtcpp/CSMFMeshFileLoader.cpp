@@ -2,18 +2,18 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_SMF_LOADER_
 
-#include "CSMFMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "SAnimatedMesh.h"
-#include "SMeshBuffer.h"
-#include "IReadFile.h"
-#include "coreutil.h"
-#include "os.h"
-#include "IVideoDriver.h"
+#include "CSMFMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/coreutil.hpp>
+#include "os.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
 
 namespace nirt
 {

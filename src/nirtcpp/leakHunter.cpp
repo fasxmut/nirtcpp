@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "leakHunter.h"
+#include <nirtcpp/leakHunter.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_LEAK_HUNTER_
 

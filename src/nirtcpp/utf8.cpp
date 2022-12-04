@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine". The UTF-8 functions are from physfs,
 // under the zlib license, reproduced below.
 
-#include "irrTypes.h"
-#include "irrString.h"
+#include <nirtcpp/irrTypes.hpp>
+#include <nirtcpp/irrString.hpp>
 
 namespace nirt
 {

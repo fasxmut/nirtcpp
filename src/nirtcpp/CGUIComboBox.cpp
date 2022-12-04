@@ -2,17 +2,17 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIComboBox.h"
+#include "CGUIComboBox.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IGUIFont.h"
-#include "IGUIButton.h"
-#include "CGUIListBox.h"
-#include "os.h"
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include <nirtcpp/IGUIButton.hpp>
+#include "CGUIListBox.hpp"
+#include "os.hpp"
 
 namespace nirt
 {

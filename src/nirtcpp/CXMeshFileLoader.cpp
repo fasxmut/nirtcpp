@@ -2,20 +2,20 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_X_LOADER_
 
-#include "CXMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "os.h"
+#include "CXMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include "os.hpp"
 
-#include "fast_atof.h"
-#include "coreutil.h"
-#include "ISceneManager.h"
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
-#include "IReadFile.h"
+#include <nirtcpp/fast_atof.hpp>
+#include <nirtcpp/coreutil.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IReadFile.hpp>
 
 #ifdef _DEBUG
 #define _XREADER_DEBUG

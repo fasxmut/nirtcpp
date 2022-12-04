@@ -2,19 +2,19 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CDefaultSceneNodeFactory.h"
-#include "ISceneManager.h"
-#include "ITextSceneNode.h"
-#include "IBillboardTextSceneNode.h"
-#include "ITerrainSceneNode.h"
-#include "IDummyTransformationSceneNode.h"
-#include "ICameraSceneNode.h"
-#include "IBillboardSceneNode.h"
-#include "IAnimatedMeshSceneNode.h"
-#include "IParticleSystemSceneNode.h"
-#include "ILightSceneNode.h"
-#include "IMeshSceneNode.h"
-#include "IOctreeSceneNode.h"
+#include "CDefaultSceneNodeFactory.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/ITextSceneNode.hpp>
+#include <nirtcpp/IBillboardTextSceneNode.hpp>
+#include <nirtcpp/ITerrainSceneNode.hpp>
+#include <nirtcpp/IDummyTransformationSceneNode.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IBillboardSceneNode.hpp>
+#include <nirtcpp/IAnimatedMeshSceneNode.hpp>
+#include <nirtcpp/IParticleSystemSceneNode.hpp>
+#include <nirtcpp/ILightSceneNode.hpp>
+#include <nirtcpp/IMeshSceneNode.hpp>
+#include <nirtcpp/IOctreeSceneNode.hpp>
 
 namespace nirt
 {

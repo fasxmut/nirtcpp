@@ -2,18 +2,18 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
-#include "CSoftwareDriver2.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include "CSoftwareDriver2.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
-#include "SoftwareDriver2_helper.h"
-#include "CSoftwareTexture.h"
-#include "CSoftwareTexture2.h"
-#include "CSoftware2MaterialRenderer.h"
-#include "S3DVertex.h"
-#include "S4DVertex.h"
-#include "CBlit.h"
+#include "SoftwareDriver2_helper.hpp"
+#include "CSoftwareTexture.hpp"
+#include "CSoftwareTexture2.hpp"
+#include "CSoftware2MaterialRenderer.hpp"
+#include <nirtcpp/S3DVertex.hpp>
+#include "S4DVertex.hpp"
+#include "CBlit.hpp"
 
 
 // Matrix now here

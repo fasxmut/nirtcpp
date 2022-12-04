@@ -2,17 +2,17 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_3DS_LOADER_
 
-#include "C3DSMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "os.h"
-#include "SMeshBuffer.h"
-#include "SAnimatedMesh.h"
-#include "IReadFile.h"
-#include "IVideoDriver.h"
-#include "IMeshManipulator.h"
+#include "C3DSMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include "os.hpp"
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IMeshManipulator.hpp>
 
 #ifdef _DEBUG
 #define _NIRT_DEBUG_3DS_LOADER_

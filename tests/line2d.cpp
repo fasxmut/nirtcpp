@@ -1,7 +1,7 @@
 // Copyright (C) 2017 Dario Oliveri
 // No rights reserved: this software is in the public domain.
 
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 #include <iostream>
 

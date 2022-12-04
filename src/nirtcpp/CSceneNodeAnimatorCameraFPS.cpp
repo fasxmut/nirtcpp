@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneNodeAnimatorCameraFPS.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "Keycodes.h"
-#include "ICursorControl.h"
-#include "ICameraSceneNode.h"
-#include "ISceneNodeAnimatorCollisionResponse.h"
+#include "CSceneNodeAnimatorCameraFPS.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/Keycodes.hpp>
+#include <nirtcpp/ICursorControl.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/ISceneNodeAnimatorCollisionResponse.hpp>
 
 namespace nirt
 {

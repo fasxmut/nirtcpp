@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine" and the "irrXML" project.
 // For conditions of distribution and use, see copyright notice in nirtcpp.h and/or irrXML.h
 
-#include "irrXML.h"
+#include <nirtcpp/irrXML.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_XML_
 
-#include "irrString.h"
-#include "irrArray.h"
-#include "fast_atof.h"
-#include "CXMLReaderImpl.h"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/irrArray.hpp>
+#include <nirtcpp/fast_atof.hpp>
+#include "CXMLReaderImpl.hpp"
 
 namespace nirt
 {

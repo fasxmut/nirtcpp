@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CFileList.h"
-#include "IrrCompileConfig.h"
-#include "irrArray.h"
-#include "coreutil.h"
+#include "CFileList.hpp"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include <nirtcpp/irrArray.hpp>
+#include <nirtcpp/coreutil.hpp>
 
-#include "os.h"
+#include "os.hpp"
 
 namespace nirt
 {

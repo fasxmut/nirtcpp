@@ -1,7 +1,7 @@
 // Copyright (C) 2008-2012 Colin MacDonald
 // No rights reserved: this software is in the public domain.
 
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 //! Tests that symbols exported from Nirtcpp can be used by the user app.
 bool exports(void)

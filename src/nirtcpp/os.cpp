@@ -2,10 +2,10 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "os.h"
-#include "irrString.h"
-#include "IrrCompileConfig.h"
-#include "irrMath.h"
+#include "os.hpp"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include <nirtcpp/irrMath.hpp>
 
 #if defined(_NIRT_COMPILE_WITH_SDL_DEVICE_)
 	#include <SDL/SDL_endian.h>

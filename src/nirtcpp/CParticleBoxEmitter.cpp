@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CParticleBoxEmitter.h"
+#include "CParticleBoxEmitter.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
-#include "os.h"
-#include "IAttributes.h"
-#include "irrMath.h"
+#include "os.hpp"
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/irrMath.hpp>
 
 namespace nirt
 {

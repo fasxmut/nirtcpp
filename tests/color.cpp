@@ -1,4 +1,4 @@
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 using namespace nirt;
 using namespace video;

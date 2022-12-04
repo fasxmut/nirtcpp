@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImage.h"
-#include "irrString.h"
-#include "CColorConverter.h"
-#include "CBlit.h"
-#include "os.h"
-#include "SoftwareDriver2_helper.h"
+#include "CImage.hpp"
+#include <nirtcpp/irrString.hpp>
+#include "CColorConverter.hpp"
+#include "CBlit.hpp"
+#include "os.hpp"
+#include "SoftwareDriver2_helper.hpp"
 
 namespace nirt
 {

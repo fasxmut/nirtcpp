@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 
-#include "CTerrainTriangleSelector.h"
-#include "CTerrainSceneNode.h"
-#include "os.h"
+#include "CTerrainTriangleSelector.hpp"
+#include "CTerrainSceneNode.hpp"
+#include "os.hpp"
 
 namespace nirt
 {

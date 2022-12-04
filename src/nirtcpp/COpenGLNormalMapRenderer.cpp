@@ -2,16 +2,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "COpenGLNormalMapRenderer.h"
+#include "COpenGLNormalMapRenderer.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
-#include "IGPUProgrammingServices.h"
-#include "IShaderConstantSetCallBack.h"
-#include "IVideoDriver.h"
-#include "os.h"
+#include <nirtcpp/IGPUProgrammingServices.hpp>
+#include <nirtcpp/IShaderConstantSetCallBack.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include "os.hpp"
 
-#include "COpenGLDriver.h"
+#include "COpenGLDriver.hpp"
 
 namespace nirt
 {

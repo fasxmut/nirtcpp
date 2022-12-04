@@ -2,16 +2,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIFont.h"
+#include "CGUIFont.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "os.h"
-#include "coreutil.h"
-#include "IGUIEnvironment.h"
-#include "IXMLReader.h"
-#include "IReadFile.h"
-#include "IVideoDriver.h"
-#include "IGUISpriteBank.h"
+#include "os.hpp"
+#include <nirtcpp/coreutil.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IXMLReader.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUISpriteBank.hpp>
 
 namespace nirt
 {

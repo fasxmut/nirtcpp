@@ -4,16 +4,16 @@
 // Bugfixes by Michael Zeilfelder
 // Bugfixes by Andreas Reichl
 
-#include "CGUITreeView.h"
+#include "CGUITreeView.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
-#include "IGUIFont.h"
-#include "CGUIScrollBar.h"
-#include "os.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include "CGUIScrollBar.hpp"
+#include "os.hpp"
 
 namespace nirt
 {

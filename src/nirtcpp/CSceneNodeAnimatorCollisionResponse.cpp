@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneNodeAnimatorCollisionResponse.h"
-#include "ISceneCollisionManager.h"
-#include "ISceneManager.h"
-#include "ICameraSceneNode.h"
-#include "os.h"
+#include "CSceneNodeAnimatorCollisionResponse.hpp"
+#include <nirtcpp/ISceneCollisionManager.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

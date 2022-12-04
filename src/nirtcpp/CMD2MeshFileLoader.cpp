@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_MD2_LOADER_
 
-#include "CMD2MeshFileLoader.h"
-#include "CAnimatedMeshMD2.h"
-#include "os.h"
+#include "CMD2MeshFileLoader.hpp"
+#include "CAnimatedMeshMD2.hpp"
+#include "os.hpp"
 
 namespace nirt
 {
@@ -22,7 +22,7 @@ namespace scene
 	const s32 MD2_MAX_VERTS     = 2048;
 
 // byte-align structures
-#include "irrpack.h"
+#include <nirtcpp/irrpack.hpp>
 
 	struct SMD2Header
 	{
@@ -78,7 +78,7 @@ namespace scene
 	} PACK_STRUCT;
 
 // Default alignment
-#include "irrunpack.h"
+#include <nirtcpp/irrunpack.hpp>
 
 //! Constructor
 CMD2MeshFileLoader::CMD2MeshFileLoader()

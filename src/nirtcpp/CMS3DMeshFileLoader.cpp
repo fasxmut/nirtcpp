@@ -3,13 +3,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_MS3D_LOADER_
 
-#include "IReadFile.h"
-#include "os.h"
-#include "CMS3DMeshFileLoader.h"
-#include "CSkinnedMesh.h"
+#include <nirtcpp/IReadFile.hpp>
+#include "os.hpp"
+#include "CMS3DMeshFileLoader.hpp"
+#include "CSkinnedMesh.hpp"
 
 
 namespace nirt
@@ -22,7 +22,7 @@ namespace scene
 #endif
 
 // byte-align structures
-#include "irrpack.h"
+#include <nirtcpp/irrpack.hpp>
 
 namespace {
 // File header
@@ -109,7 +109,7 @@ struct MS3DVertexWeights
 } // end namespace
 
 // Default alignment
-#include "irrunpack.h"
+#include <nirtcpp/irrunpack.hpp>
 
 // Get float encoded in little endian in  way not causing troubles when floats have to be memory aligned.
 static inline float get_unaligned_le_float(const u8 *ptr)

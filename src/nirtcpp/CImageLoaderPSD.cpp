@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageLoaderPSD.h"
+#include "CImageLoaderPSD.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PSD_LOADER_
 
-#include "IReadFile.h"
-#include "os.h"
-#include "CImage.h"
-#include "irrString.h"
+#include <nirtcpp/IReadFile.hpp>
+#include "os.hpp"
+#include "CImage.hpp"
+#include <nirtcpp/irrString.hpp>
 
 
 namespace nirt

@@ -2,20 +2,20 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CNullDriver.h"
-#include "os.h"
-#include "CImage.h"
-#include "CAttributes.h"
-#include "IReadFile.h"
-#include "IWriteFile.h"
-#include "IImageLoader.h"
-#include "IImageWriter.h"
-#include "IMaterialRenderer.h"
-#include "IAnimatedMeshSceneNode.h"
-#include "CMeshManipulator.h"
-#include "CColorConverter.h"
-#include "IAttributeExchangingObject.h"
-#include "IRenderTarget.h"
+#include "CNullDriver.hpp"
+#include "os.hpp"
+#include "CImage.hpp"
+#include "CAttributes.hpp"
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/IImageLoader.hpp>
+#include <nirtcpp/IImageWriter.hpp>
+#include <nirtcpp/IMaterialRenderer.hpp>
+#include <nirtcpp/IAnimatedMeshSceneNode.hpp>
+#include "CMeshManipulator.hpp"
+#include "CColorConverter.hpp"
+#include <nirtcpp/IAttributeExchangingObject.hpp>
+#include <nirtcpp/IRenderTarget.hpp>
 
 
 namespace nirt

@@ -2,19 +2,19 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_LWO_LOADER_
 
-#include "CLWOMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "os.h"
-#include "SAnimatedMesh.h"
-#include "SMesh.h"
-#include "IReadFile.h"
-#include "ISceneManager.h"
-#include "IFileSystem.h"
-#include "IVideoDriver.h"
-#include "IMeshManipulator.h"
+#include "CLWOMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include "os.hpp"
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IMeshManipulator.hpp>
 
 namespace nirt
 {

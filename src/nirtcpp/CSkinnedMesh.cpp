@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 
-#include "CSkinnedMesh.h"
-#include "CBoneSceneNode.h"
-#include "IAnimatedMeshSceneNode.h"
-#include "os.h"
+#include "CSkinnedMesh.hpp"
+#include "CBoneSceneNode.hpp"
+#include <nirtcpp/IAnimatedMeshSceneNode.hpp>
+#include "os.hpp"
 
 namespace
 {

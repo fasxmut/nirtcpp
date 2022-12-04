@@ -2,10 +2,10 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CColorConverter.h"
-#include "SColor.h"
-#include "os.h"
-#include "irrString.h"
+#include "CColorConverter.hpp"
+#include <nirtcpp/SColor.hpp>
+#include "os.hpp"
+#include <nirtcpp/irrString.hpp>
 
 namespace nirt
 {

@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_PLY_WRITER_
 
-#include "CPLYMeshWriter.h"
-#include "os.h"
-#include "IMesh.h"
-#include "IMeshBuffer.h"
-#include "IWriteFile.h"
+#include "CPLYMeshWriter.hpp"
+#include "os.hpp"
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IMeshBuffer.hpp>
+#include <nirtcpp/IWriteFile.hpp>
 
 namespace nirt
 {

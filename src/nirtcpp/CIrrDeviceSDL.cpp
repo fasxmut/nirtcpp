@@ -2,21 +2,21 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
 
-#include "CIrrDeviceSDL.h"
-#include "IEventReceiver.h"
-#include "irrList.h"
-#include "os.h"
-#include "CTimer.h"
-#include "irrString.h"
-#include "Keycodes.h"
-#include "COSOperator.h"
+#include "CIrrDeviceSDL.hpp"
+#include <nirtcpp/IEventReceiver.hpp>
+#include <nirtcpp/irrList.hpp>
+#include "os.hpp"
+#include "CTimer.hpp"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/Keycodes.hpp>
+#include "COSOperator.hpp"
 #include <stdio.h>
 #include <stdlib.h>
-#include "SIrrCreationParameters.h"
+#include <nirtcpp/SIrrCreationParameters.hpp>
 #include <SDL/SDL_syswm.h>
 #include <SDL/SDL_video.h>
 

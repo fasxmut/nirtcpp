@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CMountPointReader.h"
+#include "CMountPointReader.hpp"
 
 #ifdef __NIRT_COMPILE_WITH_MOUNT_ARCHIVE_LOADER_
 
-#include "CReadFile.h"
-#include "os.h"
+#include "CReadFile.hpp"
+#include "os.hpp"
 
 namespace nirt
 {

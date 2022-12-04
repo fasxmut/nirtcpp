@@ -3,13 +3,13 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 // Code contributed by skreamz
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef __NIRT_COMPILE_WITH_WAD_ARCHIVE_LOADER_
 
-#include "CWADReader.h"
-#include "os.h"
-#include "coreutil.h"
+#include "CWADReader.hpp"
+#include "os.hpp"
+#include <nirtcpp/coreutil.hpp>
 
 namespace nirt
 {

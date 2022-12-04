@@ -4,23 +4,23 @@
 
 // TODO: second UV-coordinates currently ignored in textures
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_COLLADA_WRITER_
 
-#include "CColladaMeshWriter.h"
-#include "os.h"
-#include "IFileSystem.h"
-#include "IWriteFile.h"
-#include "IXMLWriter.h"
-#include "IMesh.h"
-#include "IAttributes.h"
-#include "IAnimatedMeshSceneNode.h"
-#include "IMeshSceneNode.h"
-#include "ITerrainSceneNode.h"
-#include "ILightSceneNode.h"
-#include "ICameraSceneNode.h"
-#include "ISceneManager.h"
+#include "CColladaMeshWriter.hpp"
+#include "os.hpp"
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/IXMLWriter.hpp>
+#include <nirtcpp/IMesh.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/IAnimatedMeshSceneNode.hpp>
+#include <nirtcpp/IMeshSceneNode.hpp>
+#include <nirtcpp/ITerrainSceneNode.hpp>
+#include <nirtcpp/ILightSceneNode.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/ISceneManager.hpp>
 
 namespace nirt
 {

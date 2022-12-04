@@ -10,21 +10,21 @@
 // After Nirtcpp 0.12, Michael Zoech did some improvements to this renderer, I
 // merged this into Nirtcpp 0.14, thanks to him for his work.
 
-#include "COpenGLSLMaterialRenderer.h"
+#include "COpenGLSLMaterialRenderer.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
-#include "IGPUProgrammingServices.h"
-#include "IShaderConstantSetCallBack.h"
-#include "IMaterialRendererServices.h"
-#include "IVideoDriver.h"
-#include "os.h"
+#include <nirtcpp/IGPUProgrammingServices.hpp>
+#include <nirtcpp/IShaderConstantSetCallBack.hpp>
+#include <nirtcpp/IMaterialRendererServices.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include "os.hpp"
 
-#include "COpenGLDriver.h"
-#include "COpenGLCacheHandler.h"
-#include "COpenGLMaterialRenderer.h"
+#include "COpenGLDriver.hpp"
+#include "COpenGLCacheHandler.hpp"
+#include "COpenGLMaterialRenderer.hpp"
 
-#include "COpenGLCoreFeature.h"
+#include "COpenGLCoreFeature.hpp"
 
 namespace nirt
 {

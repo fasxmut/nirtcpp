@@ -2,208 +2,208 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
-#include "CSceneManager.h"
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
-#include "SAnimatedMesh.h"
-#include "CMeshCache.h"
-#include "IXMLWriter.h"
-#include "ISceneUserDataSerializer.h"
-#include "IGUIEnvironment.h"
-#include "IMaterialRenderer.h"
-#include "IReadFile.h"
-#include "IWriteFile.h"
-#include "ISceneLoader.h"
-#include "EProfileIDs.h"
-#include "IProfiler.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include "CSceneManager.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include "CMeshCache.hpp"
+#include <nirtcpp/IXMLWriter.hpp>
+#include <nirtcpp/ISceneUserDataSerializer.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IMaterialRenderer.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/ISceneLoader.hpp>
+#include "EProfileIDs.hpp"
+#include <nirtcpp/IProfiler.hpp>
 
-#include "os.h"
+#include "os.hpp"
 
 // We need this include for the case of skinned mesh support without
 // any such loader
 #ifdef _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
-#include "CSkinnedMesh.h"
+#include "CSkinnedMesh.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
-#include "CIrrMeshFileLoader.h"
+#include "CIrrMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
-#include "CBSPMeshFileLoader.h"
+#include "CBSPMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_MD2_LOADER_
-#include "CMD2MeshFileLoader.h"
+#include "CMD2MeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_HALFLIFE_LOADER_
-#include "CAnimatedMeshHalfLife.h"
+#include "CAnimatedMeshHalfLife.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_MS3D_LOADER_
-#include "CMS3DMeshFileLoader.h"
+#include "CMS3DMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_3DS_LOADER_
-#include "C3DSMeshFileLoader.h"
+#include "C3DSMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_X_LOADER_
-#include "CXMeshFileLoader.h"
+#include "CXMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_OCT_LOADER_
-#include "COCTLoader.h"
+#include "COCTLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_CSM_LOADER_
-#include "CCSMLoader.h"
+#include "CCSMLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_LMTS_LOADER_
-#include "CLMTSMeshFileLoader.h"
+#include "CLMTSMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_MY3D_LOADER_
-#include "CMY3DMeshFileLoader.h"
+#include "CMY3DMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_COLLADA_LOADER_
-#include "CColladaFileLoader.h"
+#include "CColladaFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_DMF_LOADER_
-#include "CDMFLoader.h"
+#include "CDMFLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_OGRE_LOADER_
-#include "COgreMeshFileLoader.h"
+#include "COgreMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_OBJ_LOADER_
-#include "COBJMeshFileLoader.h"
+#include "COBJMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_MD3_LOADER_
-#include "CMD3MeshFileLoader.h"
+#include "CMD3MeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_B3D_LOADER_
-#include "CB3DMeshFileLoader.h"
+#include "CB3DMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_LWO_LOADER_
-#include "CLWOMeshFileLoader.h"
+#include "CLWOMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_STL_LOADER_
-#include "CSTLMeshFileLoader.h"
+#include "CSTLMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_PLY_LOADER_
-#include "CPLYMeshFileLoader.h"
+#include "CPLYMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_SMF_LOADER_
-#include "CSMFMeshFileLoader.h"
+#include "CSMFMeshFileLoader.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_NIRT_SCENE_LOADER_
-#include "CSceneLoaderIrr.h"
+#include "CSceneLoaderIrr.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_COLLADA_WRITER_
-#include "CColladaMeshWriter.h"
+#include "CColladaMeshWriter.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_NIRT_WRITER_
-#include "CIrrMeshWriter.h"
+#include "CIrrMeshWriter.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_STL_WRITER_
-#include "CSTLMeshWriter.h"
+#include "CSTLMeshWriter.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_OBJ_WRITER_
-#include "COBJMeshWriter.h"
+#include "COBJMeshWriter.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_PLY_WRITER_
-#include "CPLYMeshWriter.h"
+#include "CPLYMeshWriter.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_B3D_WRITER_
-#include "CB3DMeshWriter.h"
+#include "CB3DMeshWriter.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_CUBE_SCENENODE_
-#include "CCubeSceneNode.h"
+#include "CCubeSceneNode.hpp"
 #endif // _NIRT_COMPILE_WITH_CUBE_SCENENODE_
 #ifdef _NIRT_COMPILE_WITH_SPHERE_SCENENODE_
-#include "CSphereSceneNode.h"
+#include "CSphereSceneNode.hpp"
 #endif
-#include "CAnimatedMeshSceneNode.h"
+#include "CAnimatedMeshSceneNode.hpp"
 #ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
-#include "COctreeSceneNode.h"
+#include "COctreeSceneNode.hpp"
 #endif // #ifdef _NIRT_COMPILE_WITH_OCTREE_SCENENODE_
-#include "CCameraSceneNode.h"
-#include "CLightSceneNode.h"
+#include "CCameraSceneNode.hpp"
+#include "CLightSceneNode.hpp"
 #ifdef _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_
-#include "CBillboardSceneNode.h"
+#include "CBillboardSceneNode.hpp"
 #endif // _NIRT_COMPILE_WITH_BILLBOARD_SCENENODE_
-#include "CMeshSceneNode.h"
-#include "CSkyBoxSceneNode.h"
+#include "CMeshSceneNode.hpp"
+#include "CSkyBoxSceneNode.hpp"
 #ifdef _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
-#include "CSkyDomeSceneNode.h"
+#include "CSkyDomeSceneNode.hpp"
 #endif // _NIRT_COMPILE_WITH_SKYDOME_SCENENODE_
 
 #ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "CShadowVolumeSceneNode.h"
+#include "CShadowVolumeSceneNode.hpp"
 #else
-#include "IShadowVolumeSceneNode.h"
+#include <nirtcpp/IShadowVolumeSceneNode.hpp>
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
 #ifdef _NIRT_COMPILE_WITH_PARTICLES_
-#include "CParticleSystemSceneNode.h"
+#include "CParticleSystemSceneNode.hpp"
 #endif // _NIRT_COMPILE_WITH_PARTICLES_
 
-#include "CDummyTransformationSceneNode.h"
+#include "CDummyTransformationSceneNode.hpp"
 #ifdef _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_
-#include "CWaterSurfaceSceneNode.h"
+#include "CWaterSurfaceSceneNode.hpp"
 #endif // _NIRT_COMPILE_WITH_WATER_SURFACE_SCENENODE_
 #ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
-#include "CTerrainSceneNode.h"
+#include "CTerrainSceneNode.hpp"
 #endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
-#include "CEmptySceneNode.h"
-#include "CTextSceneNode.h"
-#include "CQuake3ShaderSceneNode.h"
-#include "CVolumeLightSceneNode.h"
+#include "CEmptySceneNode.hpp"
+#include "CTextSceneNode.hpp"
+#include "CQuake3ShaderSceneNode.hpp"
+#include "CVolumeLightSceneNode.hpp"
 
-#include "CDefaultSceneNodeFactory.h"
+#include "CDefaultSceneNodeFactory.hpp"
 
-#include "CSceneCollisionManager.h"
-#include "CTriangleSelector.h"
-#include "COctreeTriangleSelector.h"
-#include "CTriangleBBSelector.h"
-#include "CMetaTriangleSelector.h"
+#include "CSceneCollisionManager.hpp"
+#include "CTriangleSelector.hpp"
+#include "COctreeTriangleSelector.hpp"
+#include "CTriangleBBSelector.hpp"
+#include "CMetaTriangleSelector.hpp"
 #ifdef _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
-#include "CTerrainTriangleSelector.h"
+#include "CTerrainTriangleSelector.hpp"
 #endif // _NIRT_COMPILE_WITH_TERRAIN_SCENENODE_
 
-#include "CSceneNodeAnimatorRotation.h"
-#include "CSceneNodeAnimatorFlyCircle.h"
-#include "CSceneNodeAnimatorFlyStraight.h"
-#include "CSceneNodeAnimatorTexture.h"
-#include "CSceneNodeAnimatorCollisionResponse.h"
-#include "CSceneNodeAnimatorDelete.h"
-#include "CSceneNodeAnimatorFollowSpline.h"
-#include "CSceneNodeAnimatorCameraFPS.h"
-#include "CSceneNodeAnimatorCameraMaya.h"
-#include "CDefaultSceneNodeAnimatorFactory.h"
+#include "CSceneNodeAnimatorRotation.hpp"
+#include "CSceneNodeAnimatorFlyCircle.hpp"
+#include "CSceneNodeAnimatorFlyStraight.hpp"
+#include "CSceneNodeAnimatorTexture.hpp"
+#include "CSceneNodeAnimatorCollisionResponse.hpp"
+#include "CSceneNodeAnimatorDelete.hpp"
+#include "CSceneNodeAnimatorFollowSpline.hpp"
+#include "CSceneNodeAnimatorCameraFPS.hpp"
+#include "CSceneNodeAnimatorCameraMaya.hpp"
+#include "CDefaultSceneNodeAnimatorFactory.hpp"
 
-#include "CGeometryCreator.h"
+#include "CGeometryCreator.hpp"
 
 #include <locale.h>
 

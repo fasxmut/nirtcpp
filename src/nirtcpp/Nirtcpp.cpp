@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 static const char* const copyright = "Nirtcpp Engine (c) 2002-2017 Nikolaus Gebhardt";	// put string in binary
 
@@ -13,29 +13,29 @@ static const char* const copyright = "Nirtcpp Engine (c) 2002-2017 Nikolaus Gebh
 	#endif // _DEBUG
 #endif
 
-#include "nirtcpp.h"
+#include <nirtcpp/nirtcpp.hpp>
 #ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
-#include "CIrrDeviceWin32.h"
+#include "CIrrDeviceWin32.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
-#include "CIrrDeviceLinux.h"
+#include "CIrrDeviceLinux.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_OSX_DEVICE_
-#include "CIrrDeviceOSX.h"
+#include "CIrrDeviceOSX.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_SDL_DEVICE_
-#include "CIrrDeviceSDL.h"
+#include "CIrrDeviceSDL.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_FB_DEVICE_
-#include "CIrrDeviceFB.h"
+#include "CIrrDeviceFB.hpp"
 #endif
 
 #ifdef _NIRT_COMPILE_WITH_CONSOLE_DEVICE_
-#include "CIrrDeviceConsole.h"
+#include "CIrrDeviceConsole.hpp"
 #endif
 
 namespace nirt

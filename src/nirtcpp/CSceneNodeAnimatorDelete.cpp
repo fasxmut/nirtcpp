@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneNodeAnimatorDelete.h"
-#include "ISceneManager.h"
+#include "CSceneNodeAnimatorDelete.hpp"
+#include <nirtcpp/ISceneManager.hpp>
 
 namespace nirt
 {

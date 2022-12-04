@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#include "CWGLManager.h"
+#include "CWGLManager.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_WGL_MANAGER_
 
-#include "os.h"
+#include "os.hpp"
 
 #include <GL/gl.h>
-#include "wglext.h"
+#include "wglext.hpppp"
 
 #ifdef _MSC_VER
 	#pragma comment(lib, "OpenGL32.lib")

@@ -3,22 +3,22 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 //
 // This file was written by Saurav Mohapatra and modified by Nikolaus Gebhardt.
-// See CCSMLoader.h for details.
+// See CCSMLoader.hpp for details.
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_CSM_LOADER_
 
-#include "CCSMLoader.h"
-#include "CMeshTextureLoader.h"
-#include "os.h"
-#include "IFileSystem.h"
-#include "IReadFile.h"
-#include "ISceneManager.h"
-#include "IAttributes.h"
-#include "SMesh.h"
-#include "IVideoDriver.h"
-#include "SAnimatedMesh.h"
-#include "SMeshBufferLightMap.h"
+#include "CCSMLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include "os.hpp"
+#include <nirtcpp/IFileSystem.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/SMesh.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMeshBufferLightMap.hpp>
 
 #ifdef _DEBUG
 #define _NIRT_DEBUG_CSM_LOADER_

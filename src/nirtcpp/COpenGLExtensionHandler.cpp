@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "COpenGLExtensionHandler.h"
+#include "COpenGLExtensionHandler.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
-#include "irrString.h"
-#include "SMaterial.h"
-#include "fast_atof.h"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/SMaterial.hpp>
+#include <nirtcpp/fast_atof.hpp>
 
 namespace nirt
 {

@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
-#include "CD3D9ShaderMaterialRenderer.h"
-#include "IShaderConstantSetCallBack.h"
-#include "IMaterialRendererServices.h"
-#include "IVideoDriver.h"
-#include "os.h"
-#include "irrString.h"
+#include "CD3D9ShaderMaterialRenderer.hpp"
+#include <nirtcpp/IShaderConstantSetCallBack.hpp>
+#include <nirtcpp/IMaterialRendererServices.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include "os.hpp"
+#include <nirtcpp/irrString.hpp>
 
 #ifndef _NIRT_D3D_NO_SHADER_DEBUGGING
 #include <stdio.h>

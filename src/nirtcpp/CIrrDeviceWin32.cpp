@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 
@@ -10,16 +10,16 @@
     #error Compiling with __STRICT_ANSI__ not supported. g++ does set this when compiling with -std=c++11 or -std=c++0x. Use instead -std=gnu++11 or -std=gnu++0x. Or use -U__STRICT_ANSI__ to disable strict ansi.
 #endif
 
-#include "CIrrDeviceWin32.h"
-#include "IEventReceiver.h"
-#include "irrList.h"
-#include "os.h"
+#include "CIrrDeviceWin32.hpp"
+#include <nirtcpp/IEventReceiver.hpp>
+#include <nirtcpp/irrList.hpp>
+#include "os.hpp"
 
-#include "CTimer.h"
-#include "irrString.h"
-#include "COSOperator.h"
-#include "dimension2d.h"
-#include "IGUISpriteBank.h"
+#include "CTimer.hpp"
+#include <nirtcpp/irrString.hpp>
+#include "COSOperator.hpp"
+#include <nirtcpp/dimension2d.hpp>
+#include <nirtcpp/IGUISpriteBank.hpp>
 #include <winuser.h>
 #if defined(_NIRT_COMPILE_WITH_JOYSTICK_EVENTS_)
 #include <mmsystem.h>
@@ -39,7 +39,7 @@
 #endif
 
 #if defined(_NIRT_COMPILE_WITH_OPENGL_)
-#include "CWGLManager.h"
+#include "CWGLManager.hpp"
 #endif
 
 namespace nirt

@@ -12,15 +12,15 @@
 	mainly c to cpp
 */
 
-#include "CImageLoaderDDS.h"
+#include "CImageLoaderDDS.hpp"
 
 #if defined(_NIRT_COMPILE_WITH_DDS_LOADER_) || defined(_NIRT_COMPILE_WITH_DDS_DECODER_LOADER_)
 
-#include "IReadFile.h"
-#include "os.h"
-#include "CColorConverter.h"
-#include "CImage.h"
-#include "irrString.h"
+#include <nirtcpp/IReadFile.hpp>
+#include "os.hpp"
+#include "CColorConverter.hpp"
+#include "CImage.hpp"
+#include <nirtcpp/irrString.hpp>
 
 // Header flag values
 #define DDSD_CAPS			0x00000001

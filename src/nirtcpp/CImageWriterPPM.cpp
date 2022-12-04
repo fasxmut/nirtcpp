@@ -2,14 +2,14 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageWriterPPM.h"
+#include "CImageWriterPPM.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PPM_WRITER_
 
-#include "IWriteFile.h"
-#include "IImage.h"
-#include "dimension2d.h"
-#include "irrString.h"
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/IImage.hpp>
+#include <nirtcpp/dimension2d.hpp>
+#include <nirtcpp/irrString.hpp>
 
 namespace nirt
 {

@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CSceneNodeAnimatorFlyStraight.h"
+#include "CSceneNodeAnimatorFlyStraight.hpp"
 
 namespace nirt
 {

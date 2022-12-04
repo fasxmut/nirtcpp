@@ -2,10 +2,10 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "COctreeTriangleSelector.h"
-#include "ISceneNode.h"
+#include "COctreeTriangleSelector.hpp"
+#include <nirtcpp/ISceneNode.hpp>
 
-#include "os.h"
+#include "os.hpp"
 
 namespace nirt
 {

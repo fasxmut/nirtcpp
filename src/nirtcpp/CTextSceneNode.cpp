@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CTextSceneNode.h"
-#include "ISceneManager.h"
-#include "IVideoDriver.h"
-#include "ICameraSceneNode.h"
-#include "IGUISpriteBank.h"
-#include "SMeshBuffer.h"
-#include "os.h"
+#include "CTextSceneNode.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ICameraSceneNode.hpp>
+#include <nirtcpp/IGUISpriteBank.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include "os.hpp"
 
 
 namespace nirt

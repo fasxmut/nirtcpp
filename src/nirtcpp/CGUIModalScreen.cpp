@@ -2,13 +2,13 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIModalScreen.h"
+#include "CGUIModalScreen.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUIEnvironment.h"
-#include "os.h"
-#include "IVideoDriver.h"
-#include "IGUISkin.h"
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include "os.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUISkin.hpp>
 
 namespace nirt
 {

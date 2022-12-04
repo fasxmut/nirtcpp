@@ -5,15 +5,15 @@
 // 07.10.2005 - Multicolor-Listbox added by A. Buschhueter (Acki)
 //                                          A_Buschhueter@gmx.de
 
-#include "CGUITable.h"
+#include "CGUITable.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUISkin.h"
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
-#include "IGUIFont.h"
-#include "CGUIScrollBar.h"
-#include "os.h"
+#include <nirtcpp/IGUISkin.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IGUIFont.hpp>
+#include "CGUIScrollBar.hpp"
+#include "os.hpp"
 
 #define ARROW_PAD 15
 

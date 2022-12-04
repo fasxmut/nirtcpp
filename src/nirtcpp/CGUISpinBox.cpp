@@ -1,14 +1,14 @@
 // Copyright (C) 2006-2012 Michael Zeilfelder
 // This file uses the licence of the Nirtcpp Engine.
 
-#include "CGUISpinBox.h"
+#include "CGUISpinBox.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "CGUIEditBox.h"
-#include "CGUIButton.h"
-#include "IGUIEnvironment.h"
-#include "IEventReceiver.h"
-#include "fast_atof.h"
+#include "CGUIEditBox.hpp"
+#include "CGUIButton.hpp"
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IEventReceiver.hpp>
+#include <nirtcpp/fast_atof.hpp>
 #include <wchar.h>
 
 

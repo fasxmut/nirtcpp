@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CGUIMeshViewer.h"
+#include "CGUIMeshViewer.hpp"
 #ifdef _NIRT_COMPILE_WITH_GUI_
 
-#include "IGUIEnvironment.h"
-#include "IVideoDriver.h"
-#include "IAnimatedMesh.h"
-#include "IMesh.h"
-#include "os.h"
-#include "IGUISkin.h"
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IAnimatedMesh.hpp>
+#include <nirtcpp/IMesh.hpp>
+#include "os.hpp"
+#include <nirtcpp/IGUISkin.hpp>
 
 namespace nirt
 {

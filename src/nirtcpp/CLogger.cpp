@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CLogger.h"
+#include "CLogger.hpp"
 
 namespace nirt
 {

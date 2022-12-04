@@ -2,19 +2,19 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
-#include "CD3D9ParallaxMapRenderer.h"
-#include "IMaterialRendererServices.h"
-#include "IVideoDriver.h"
-#include "os.h"
-#include "SLight.h"
+#include "CD3D9ParallaxMapRenderer.hpp"
+#include <nirtcpp/IMaterialRendererServices.hpp>
+#include <nirtcpp/IVideoDriver.hpp>
+#include "os.hpp"
+#include <nirtcpp/SLight.hpp>
 
 //#define SHADER_EXTERNAL_DEBUG
 
 #ifdef SHADER_EXTERNAL_DEBUG
-#include "CReadFile.h"
+#include "CReadFile.hpp"
 #endif
 
 namespace nirt

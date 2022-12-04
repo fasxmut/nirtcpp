@@ -2,12 +2,12 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CParticleRotationAffector.h"
+#include "CParticleRotationAffector.hpp"
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_PARTICLES_
 
-#include "IAttributes.h"
+#include <nirtcpp/IAttributes.hpp>
 
 namespace nirt
 {

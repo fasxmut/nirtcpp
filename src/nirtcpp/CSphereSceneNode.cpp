@@ -2,17 +2,17 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_SPHERE_SCENENODE_
-#include "CSphereSceneNode.h"
-#include "IVideoDriver.h"
-#include "ISceneManager.h"
-#include "S3DVertex.h"
-#include "os.h"
+#include "CSphereSceneNode.hpp"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/S3DVertex.hpp>
+#include "os.hpp"
 #ifdef _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
-#include "CShadowVolumeSceneNode.h"
+#include "CShadowVolumeSceneNode.hpp"
 #else
-#include "IShadowVolumeSceneNode.h"
+#include <nirtcpp/IShadowVolumeSceneNode.hpp>
 #endif // _NIRT_COMPILE_WITH_SHADOW_VOLUME_SCENENODE_
 
 namespace nirt

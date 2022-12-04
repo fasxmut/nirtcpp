@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 
-#include "CBSPMeshFileLoader.h"
-#include "CQ3LevelMesh.h"
+#include "CBSPMeshFileLoader.hpp"
+#include "CQ3LevelMesh.hpp"
 
 namespace nirt
 {

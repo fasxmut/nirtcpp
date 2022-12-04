@@ -2,17 +2,17 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 
-#include "CQ3LevelMesh.h"
-#include "ISceneManager.h"
-#include "os.h"
-#include "SMeshBufferLightMap.h"
-#include "irrString.h"
-#include "ILightSceneNode.h"
-#include "IQ3Shader.h"
-#include "IFileList.h"
+#include "CQ3LevelMesh.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include "os.hpp"
+#include <nirtcpp/SMeshBufferLightMap.hpp>
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/ILightSceneNode.hpp>
+#include <nirtcpp/IQ3Shader.hpp>
+#include <nirtcpp/IFileList.hpp>
 
 //#define TJUNCTION_SOLVER_ROUND
 //#define TJUNCTION_SOLVER_0125

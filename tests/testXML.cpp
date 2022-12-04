@@ -1,7 +1,7 @@
 // Copyright (C) 2009-2012 Christian Stehno
 // No rights reserved: this software is in the public domain.
 
-#include "testUtils.h"
+#include "testUtils.hpp"
 
 using namespace nirt;
 using namespace core;

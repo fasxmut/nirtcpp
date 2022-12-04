@@ -4,7 +4,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_OSX_DEVICE_
 
@@ -16,17 +16,17 @@
 
 #include "CIrrDeviceOSX.h"
 
-#include "IEventReceiver.h"
-#include "irrList.h"
+#include <nirtcpp/IEventReceiver.hpp>
+#include <nirtcpp/irrList.hpp>
 #include "os.h"
 #include "CTimer.h"
-#include "irrString.h"
-#include "Keycodes.h"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/Keycodes.hpp>
 #include <stdio.h>
 #include <sys/utsname.h>
 #include "COSOperator.h"
 #include "CColorConverter.h"
-#include "nirtcpp.h"
+#include <nirtcpp/nirtcpp.hpp>
 #include <algorithm>
 
 #include <wchar.h>

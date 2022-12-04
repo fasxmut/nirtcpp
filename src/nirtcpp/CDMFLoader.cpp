@@ -13,23 +13,23 @@
   See the header file for additional information including use and distribution rights.
 */
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_DMF_LOADER_
 
 #ifdef _DEBUG
 #define _NIRT_DMF_DEBUG_
-#include "os.h"
+#include "os.hpp"
 #endif
 
-#include "CDMFLoader.h"
-#include "CMeshTextureLoader.h"
-#include "ISceneManager.h"
-#include "IAttributes.h"
-#include "SAnimatedMesh.h"
-#include "SSkinMeshBuffer.h"
-#include "irrString.h"
-#include "irrMath.h"
-#include "dmfsupport.h"
+#include "CDMFLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SSkinMeshBuffer.hpp>
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/irrMath.hpp>
+#include "dmfsupport.hpp"
 
 namespace nirt
 {

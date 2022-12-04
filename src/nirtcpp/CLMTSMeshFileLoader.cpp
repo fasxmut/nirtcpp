@@ -44,7 +44,7 @@ Version 1.4 - 12 March 2005
 
 Version 1.3 - 15 February 2005
 - Fixed bug that prevented loading more than one different lmts files.
-- Removed unnecessary "#include <os.h>".
+- Removed unnecessary "#include <os.hpp>".
 - Added "std::" in front of "cerr". This was necessary for Visual Studio .NET,
   I hope it's not disturbing other compilers.
 - Added warning message when a texture can not be loaded.
@@ -65,19 +65,19 @@ Version 1.0 - 29 July 2004
 */
 //////////////////////////////////////////////////////////////////////
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_LMTS_LOADER_
 
-#include "CLMTSMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
-#include "SMeshBufferLightMap.h"
-#include "SAnimatedMesh.h"
-#include "SMeshBuffer.h"
-#include "irrString.h"
-#include "IReadFile.h"
-#include "IAttributes.h"
-#include "ISceneManager.h"
-#include "os.h"
+#include "CLMTSMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
+#include <nirtcpp/SMeshBufferLightMap.hpp>
+#include <nirtcpp/SAnimatedMesh.hpp>
+#include <nirtcpp/SMeshBuffer.hpp>
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/IReadFile.hpp>
+#include <nirtcpp/IAttributes.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include "os.hpp"
 
 namespace nirt
 {

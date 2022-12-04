@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CTriangleBBSelector.h"
-#include "ISceneNode.h"
+#include "CTriangleBBSelector.hpp"
+#include <nirtcpp/ISceneNode.hpp>
 
 namespace nirt
 {

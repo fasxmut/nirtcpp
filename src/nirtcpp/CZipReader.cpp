@@ -2,9 +2,9 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CZipReader.h"
+#include "CZipReader.hpp"
 
-#include "os.h"
+#include "os.hpp"
 
 // This method is used for error output from bzip2.
 extern "C" void bz_internal_error(int errorCode)
@@ -14,11 +14,11 @@ extern "C" void bz_internal_error(int errorCode)
 
 #ifdef __NIRT_COMPILE_WITH_ZIP_ARCHIVE_LOADER_
 
-#include "CFileList.h"
-#include "CReadFile.h"
-#include "coreutil.h"
+#include "CFileList.hpp"
+#include "CReadFile.hpp"
+#include <nirtcpp/coreutil.hpp>
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_ZLIB_
 	#ifndef _NIRT_USE_NON_SYSTEM_ZLIB_
 	#include <zlib.h> // use system lib

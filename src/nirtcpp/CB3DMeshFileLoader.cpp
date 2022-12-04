@@ -1,4 +1,4 @@
-// Copyright (C) 2006-2012 Luke Hoschke
+// Copyright (C) 2006-2012 Luke Hos.hppke
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
@@ -6,15 +6,15 @@
 // File format designed by Mark Sibly for the Blitz3D engine and has been
 // declared public domain
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_B3D_LOADER_
 
-#include "CB3DMeshFileLoader.h"
-#include "CMeshTextureLoader.h"
+#include "CB3DMeshFileLoader.hpp"
+#include "CMeshTextureLoader.hpp"
 
-#include "IVideoDriver.h"
-#include "IFileSystem.h"
-#include "os.h"
+#include <nirtcpp/IVideoDriver.hpp>
+#include <nirtcpp/IFileSystem.hpp>
+#include "os.hpp"
 
 #ifdef _DEBUG
 #define _B3D_READER_DEBUG

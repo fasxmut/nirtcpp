@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
-#include "CGLXManager.h"
+#include "CGLXManager.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_GLX_MANAGER_
 
-#include "os.h"
+#include "os.hpp"
 
 #if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 	#define GL_GLEXT_LEGACY 1
@@ -18,9 +18,9 @@
 #include <GL/gl.h>
 #include <GL/glx.h>
 #if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
-#include "glext.h"
-#undef GLX_ARB_get_proc_address // avoid problems with local glxext.h
-#include "glxext.h"
+#include "glext.hpp"
+#undef GLX_ARB_get_proc_address // avoid problems with local glxext.hpp
+#include "glxext.hpp"
 #endif
 
 namespace nirt

@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CWriteFile.h"
+#include "CWriteFile.hpp"
 #include <stdio.h>
 
 namespace nirt

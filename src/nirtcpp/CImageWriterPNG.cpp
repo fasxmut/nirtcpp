@@ -2,15 +2,15 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageWriterPNG.h"
+#include "CImageWriterPNG.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PNG_WRITER_
 
-#include "CImageLoaderPNG.h"
-#include "CColorConverter.h"
-#include "IWriteFile.h"
-#include "irrString.h"
-#include "os.h" // for logging
+#include "CImageLoaderPNG.hpp"
+#include "CColorConverter.hpp"
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/irrString.hpp>
+#include "os.hpp" // for logging
 
 #ifdef _NIRT_COMPILE_WITH_LIBPNG_
 #ifndef _NIRT_USE_NON_SYSTEM_LIB_PNG_

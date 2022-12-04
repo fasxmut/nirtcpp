@@ -4,17 +4,17 @@
 
 // TODO: replace printf's by logging messages
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 
 #ifdef _NIRT_COMPILE_WITH_B3D_WRITER_
 
-#include "CB3DMeshWriter.h"
-#include "os.h"
-#include "ISkinnedMesh.h"
-#include "IMeshBuffer.h"
-#include "IWriteFile.h"
-#include "ITexture.h"
-#include "irrMap.h"
+#include "CB3DMeshWriter.hpp"
+#include "os.hpp"
+#include <nirtcpp/ISkinnedMesh.hpp>
+#include <nirtcpp/IMeshBuffer.hpp>
+#include <nirtcpp/IWriteFile.hpp>
+#include <nirtcpp/ITexture.hpp>
+#include <nirtcpp/irrMap.hpp>
 
 
 namespace nirt

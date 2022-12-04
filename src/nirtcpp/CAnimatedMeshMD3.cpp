@@ -2,11 +2,11 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_MD3_LOADER_
 
-#include "CAnimatedMeshMD3.h"
-#include "os.h"
+#include "CAnimatedMeshMD3.hpp"
+#include "os.hpp"
 
 namespace nirt
 {
@@ -15,7 +15,7 @@ namespace scene
 
 
 // byte-align structures
-#include "irrpack.h"
+#include <nirtcpp/irrpack.hpp>
 
 //! General properties of a single animation frame.
 struct SMD3Frame
@@ -44,7 +44,7 @@ struct SMD3Shader
 } PACK_STRUCT;
 
 // Default alignment
-#include "irrunpack.h"
+#include <nirtcpp/irrunpack.hpp>
 
 
 //! Constructor

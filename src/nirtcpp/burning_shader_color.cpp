@@ -2,8 +2,8 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "IrrCompileConfig.h"
-#include "IBurningShader.h"
+#include <nirtcpp/IrrCompileConfig.hpp>
+#include "IBurningShader.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
@@ -14,8 +14,8 @@ namespace video
 {
 
 #define burning_shader_class burning_shader_color
-#define burning_shader_frag "burning_shader_color_fraq.h"
-#include "burning_shader_compile_fragment_default.h"
+#define burning_shader_frag "burning_shader_color_fraq.hpp"
+#include "burning_shader_compile_fragment_default.hpp"
 
 
 /*!

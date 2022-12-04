@@ -2,7 +2,7 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CIrrDeviceLinux.h"
+#include "CIrrDeviceLinux.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
 
@@ -11,17 +11,17 @@
 #include <sys/utsname.h>
 #include <time.h>
 #include <locale.h>
-#include "IEventReceiver.h"
-#include "ISceneManager.h"
-#include "IGUIEnvironment.h"
-#include "os.h"
-#include "CTimer.h"
-#include "irrString.h"
-#include "Keycodes.h"
-#include "COSOperator.h"
-#include "CColorConverter.h"
-#include "SIrrCreationParameters.h"
-#include "IGUISpriteBank.h"
+#include <nirtcpp/IEventReceiver.hpp>
+#include <nirtcpp/ISceneManager.hpp>
+#include <nirtcpp/IGUIEnvironment.hpp>
+#include "os.hpp"
+#include "CTimer.hpp"
+#include <nirtcpp/irrString.hpp>
+#include <nirtcpp/Keycodes.hpp>
+#include "COSOperator.hpp"
+#include "CColorConverter.hpp"
+#include <nirtcpp/SIrrCreationParameters.hpp>
+#include <nirtcpp/IGUISpriteBank.hpp>
 #include <X11/XKBlib.h>
 #include <X11/Xatom.h>
 
@@ -30,7 +30,7 @@
 #endif
 
 #if defined(_NIRT_COMPILE_WITH_OPENGL_)
-#include "CGLXManager.h"
+#include "CGLXManager.hpp"
 #endif
 
 #ifdef _NIRT_LINUX_XCURSOR_

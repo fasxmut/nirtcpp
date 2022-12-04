@@ -2,16 +2,16 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp.h
 
-#include "CImageLoaderPPM.h"
+#include "CImageLoaderPPM.hpp"
 
 #ifdef _NIRT_COMPILE_WITH_PPM_LOADER_
 
-#include "IReadFile.h"
-#include "CColorConverter.h"
-#include "CImage.h"
-#include "os.h"
-#include "fast_atof.h"
-#include "coreutil.h"
+#include <nirtcpp/IReadFile.hpp>
+#include "CColorConverter.hpp"
+#include "CImage.hpp"
+#include "os.hpp"
+#include <nirtcpp/fast_atof.hpp>
+#include <nirtcpp/coreutil.hpp>
 
 namespace nirt
 {
