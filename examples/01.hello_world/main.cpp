@@ -8,8 +8,6 @@ Compile the program:
 #include <nirtcpp.hpp>
 #include <iostream>
 
-class bed_t {};
-
 int main()
 {
 	// nirt::NirtcppDevice

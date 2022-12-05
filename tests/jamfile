@@ -1,0 +1,16 @@
+import testing ;
+
+project tests : requirements <library>../src/nirtcpp//nirtcpp ;
+
+src =
+	2dmaterial.cpp anti-aliasing.cpp archiveReader.cpp b3dAnimation.cpp billboards.cpp burningsVideo.cpp collisionResponseAnimator.cpp color.cpp coreutil.cpp createImage.cpp cursorSetVisible.cpp disambiguateTextures.cpp draw2DImage.cpp drawPixel.cpp drawRectOutline.cpp drawVertexPrimitive.cpp enumerateImageManipulators.cpp exports.cpp fast_atof.cpp filesystem.cpp flyCircleAnimator.cpp guiDisabledMenu.cpp ioScene.cpp irrArray.cpp irrCoreEquals.cpp irrList.cpp irrMap.cpp irrString.cpp lightMaps.cpp lights.cpp line2d.cpp loadTextures.cpp main.cpp makeColorKeyTexture.cpp material.cpp matrixOps.cpp md2Animation.cpp meshLoaders.cpp meshTransform.cpp mrt.cpp orthoCam.cpp planeMatrix.cpp projectionMatrix.cpp removeCustomAnimator.cpp renderTargetTexture.cpp sceneCollisionManager.cpp sceneNodeAnimator.cpp screenshot.cpp serializeAttributes.cpp skinnedMesh.cpp softwareDevice.cpp stencilshadow.cpp terrainSceneNode.cpp testDimension2d.cpp testGeometryCreator.cpp testLine2d.cpp testQuaternion.cpp testS3DVertex.cpp testUtils.cpp testVector2d.cpp testVector3d.cpp testXML.cpp testaabbox.cpp textureFeatures.cpp textureRenderStates.cpp timer.cpp transparentMaterials.cpp triangle3d.cpp triangleSelector.cpp userClipPlane.cpp vectorPositionDimension2d.cpp videoDriver.cpp viewPort.cpp writeImageToFile.cpp
+	;
+
+# unit-test tests : $(src)
+exe tests : $(src)
+	:
+		<cxxflags>"-pipe -Wall -ansi -pedantic -fno-exceptions"
+		<variant>debug:<cxxflags>"-O0 -g -D_DEBUG"
+		<variant>release:<cxxflags>"-fexpensive-optimizations -O3"
+		<os>LINUX:<linkflags>"-lGL -lXxf86vm -lX11"
+	;

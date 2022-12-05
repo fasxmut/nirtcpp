@@ -1,0 +1,6 @@
+project examples
+	: requirements <library>../src/nirtcpp//nirtcpp
+;
+
+build-project 01.hello_world ;
+

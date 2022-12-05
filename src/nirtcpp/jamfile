@@ -1,0 +1,95 @@
+echo "Build src/nitcpp ..." ;
+
+VERSION_MAJOR = 1 ;
+VERSION_MINOR = 9 ;
+VERSION_RELEASE = 0 ;
+
+#List of object files, separated based on engine architecture
+
+IRRMESHLOADER = CBSPMeshFileLoader.cpp CMD2MeshFileLoader.cpp CMD3MeshFileLoader.cpp CMS3DMeshFileLoader.cpp CB3DMeshFileLoader.cpp C3DSMeshFileLoader.cpp COgreMeshFileLoader.cpp COBJMeshFileLoader.cpp CColladaFileLoader.cpp CCSMLoader.cpp CDMFLoader.cpp CLMTSMeshFileLoader.cpp CMY3DMeshFileLoader.cpp COCTLoader.cpp CXMeshFileLoader.cpp CIrrMeshFileLoader.cpp CSTLMeshFileLoader.cpp CLWOMeshFileLoader.cpp CPLYMeshFileLoader.cpp CSMFMeshFileLoader.cpp CMeshTextureLoader.cpp
+	;
+IRRMESHWRITER = CColladaMeshWriter.cpp CIrrMeshWriter.cpp CSTLMeshWriter.cpp COBJMeshWriter.cpp CPLYMeshWriter.cpp CB3DMeshWriter.cpp
+	;
+IRRMESHOBJ = $(IRRMESHLOADER) $(IRRMESHWRITER)
+	CSkinnedMesh.cpp CBoneSceneNode.cpp CMeshSceneNode.cpp 
+	CAnimatedMeshSceneNode.cpp CAnimatedMeshMD2.cpp CAnimatedMeshMD3.cpp 
+	CQ3LevelMesh.cpp CQuake3ShaderSceneNode.cpp CAnimatedMeshHalfLife.cpp
+	;
+IRROBJ = CBillboardSceneNode.cpp CCameraSceneNode.cpp CDummyTransformationSceneNode.cpp CEmptySceneNode.cpp CGeometryCreator.cpp CLightSceneNode.cpp CMeshManipulator.cpp CMetaTriangleSelector.cpp COctreeSceneNode.cpp COctreeTriangleSelector.cpp CSceneCollisionManager.cpp CSceneManager.cpp CShadowVolumeSceneNode.cpp CSkyBoxSceneNode.cpp CSkyDomeSceneNode.cpp CTerrainSceneNode.cpp CTerrainTriangleSelector.cpp CVolumeLightSceneNode.cpp CCubeSceneNode.cpp CSphereSceneNode.cpp CTextSceneNode.cpp CTriangleBBSelector.cpp CTriangleSelector.cpp CWaterSurfaceSceneNode.cpp CMeshCache.cpp CDefaultSceneNodeAnimatorFactory.cpp CDefaultSceneNodeFactory.cpp CSceneLoaderIrr.cpp
+	;
+IRRPARTICLEOBJ = CParticleAnimatedMeshSceneNodeEmitter.cpp CParticleBoxEmitter.cpp CParticleCylinderEmitter.cpp CParticleMeshEmitter.cpp CParticlePointEmitter.cpp CParticleRingEmitter.cpp CParticleSphereEmitter.cpp CParticleAttractionAffector.cpp CParticleFadeOutAffector.cpp CParticleGravityAffector.cpp CParticleRotationAffector.cpp CParticleSystemSceneNode.cpp CParticleScaleAffector.cpp
+	;
+IRRANIMOBJ = CSceneNodeAnimatorCameraFPS.cpp CSceneNodeAnimatorCameraMaya.cpp CSceneNodeAnimatorCollisionResponse.cpp CSceneNodeAnimatorDelete.cpp CSceneNodeAnimatorFlyCircle.cpp CSceneNodeAnimatorFlyStraight.cpp CSceneNodeAnimatorFollowSpline.cpp CSceneNodeAnimatorRotation.cpp CSceneNodeAnimatorTexture.cpp
+	;
+IRRDRVROBJ = CNullDriver.cpp COpenGLCacheHandler.cpp COpenGLDriver.cpp COpenGLNormalMapRenderer.cpp COpenGLParallaxMapRenderer.cpp COpenGLShaderMaterialRenderer.cpp COpenGLSLMaterialRenderer.cpp COpenGLExtensionHandler.cpp CD3D9Driver.cpp CD3D9HLSLMaterialRenderer.cpp CD3D9NormalMapRenderer.cpp CD3D9ParallaxMapRenderer.cpp CD3D9ShaderMaterialRenderer.cpp CD3D9Texture.cpp CGLXManager.cpp CWGLManager.cpp
+	;
+IRRIMAGEOBJ = CColorConverter.cpp CImage.cpp CImageLoaderBMP.cpp CImageLoaderDDS.cpp CImageLoaderJPG.cpp CImageLoaderPCX.cpp CImageLoaderPNG.cpp CImageLoaderPSD.cpp CImageLoaderPVR.cpp CImageLoaderTGA.cpp CImageLoaderPPM.cpp CImageLoaderWAL.cpp CImageLoaderRGB.cpp 
+	CImageWriterBMP.cpp CImageWriterJPG.cpp CImageWriterPCX.cpp CImageWriterPNG.cpp CImageWriterPPM.cpp CImageWriterPSD.cpp CImageWriterTGA.cpp
+	;
+IRRVIDEOOBJ = CVideoModeList.cpp CFPSCounter.cpp $(IRRDRVROBJ) $(IRRIMAGEOBJ)
+	;
+IRRSWRENDEROBJ = CSoftwareDriver.cpp CSoftwareTexture.cpp CTRFlat.cpp CTRFlatWire.cpp CTRGouraud.cpp CTRGouraudWire.cpp
+	CTRTextureFlat.cpp CTRTextureFlatWire.cpp CTRTextureGouraud.cpp CTRTextureGouraudAdd.cpp CTRTextureGouraudNoZ.cpp 
+	CTRTextureGouraudWire.cpp CZBuffer.cpp
+	;
+IRRBURNINGOBJ = CSoftwareDriver2.cpp CSoftwareTexture2.cpp CDepthBuffer.cpp IBurningShader.cpp CTRNormalMap.cpp CTRParallaxMap.cpp 
+	CTRStencilShadow.cpp CTRTextureGouraudVertexAlpha2.cpp CTRTextureGouraudNoZ2.cpp CTRTextureLightMap2_M2.cpp 
+	CTRTextureLightMap2_M1.cpp CTRTextureLightMapGouraud2_M4.cpp CTRTextureLightMap2_M4.cpp  CTRTextureGouraud2.cpp CTRGouraud2.cpp 
+	CTRGouraudAlphaNoZ2.cpp CTRTextureDetailMap2.cpp CTRTextureGouraudAdd2.cpp CTRTextureGouraudAddNoZ2.cpp CTRTextureWire2.cpp 
+	CTRTextureLightMap2_Add.cpp CTRTextureBlend.cpp CTRTextureGouraudAlpha.cpp burning_shader_color.cpp 
+	CTRTextureGouraudAlphaNoZ.cpp  CBurningShader_Raster_Reference.cpp CTR_transparent_reflection_2_layer.cpp CTRGouraudNoZ2.cpp
+	;
+IRRIOOBJ = CFileList.cpp CFileSystem.cpp CLimitReadFile.cpp CMemoryFile.cpp CReadFile.cpp CWriteFile.cpp CXMLReader.cpp CXMLWriter.cpp CWADReader.cpp CZipReader.cpp CPakReader.cpp CNPKReader.cpp CTarReader.cpp CMountPointReader.cpp irrXML.cpp CAttributes.cpp lzma/LzmaDec.c
+	;
+IRROTHEROBJ = CIrrDeviceSDL.cpp CIrrDeviceLinux.cpp CIrrDeviceConsole.cpp CIrrDeviceStub.cpp CIrrDeviceWin32.cpp CIrrDeviceFB.cpp CLogger.cpp COSOperator.cpp Nirtcpp.cpp os.cpp leakHunter.cpp 	CProfiler.cpp utf8.cpp
+	;
+IRRGUIOBJ = CGUIButton.cpp CGUICheckBox.cpp CGUIComboBox.cpp CGUIContextMenu.cpp CGUIEditBox.cpp CGUIEnvironment.cpp CGUIFileOpenDialog.cpp CGUIFont.cpp CGUIImage.cpp CGUIInOutFader.cpp CGUIListBox.cpp CGUIMenu.cpp CGUIMeshViewer.cpp CGUIMessageBox.cpp CGUIModalScreen.cpp CGUIScrollBar.cpp CGUISpinBox.cpp CGUISkin.cpp CGUIStaticText.cpp CGUITabControl.cpp CGUITable.cpp CGUIToolBar.cpp CGUIWindow.cpp CGUIColorSelectDialog.cpp CDefaultGUIElementFactory.cpp CGUISpriteBank.cpp CGUIImageList.cpp CGUITreeView.cpp CGUIProfiler.cpp
+	;
+
+LIBAESGM = aesGladman/aescrypt.cpp aesGladman/aeskey.cpp aesGladman/aestab.cpp aesGladman/fileenc.cpp aesGladman/hmac.cpp aesGladman/prng.cpp aesGladman/pwd2key.cpp aesGladman/sha1.cpp aesGladman/sha2.cpp
+	;
+
+ZLIBOBJ = zlib/adler32.c zlib/compress.c zlib/crc32.c zlib/deflate.c zlib/inffast.c zlib/inflate.c zlib/inftrees.c zlib/trees.c zlib/uncompr.c zlib/zutil.c
+	;
+JPEGLIBOBJ = jpeglib/jcapimin.c jpeglib/jcapistd.c jpeglib/jccoefct.c jpeglib/jccolor.c jpeglib/jcdctmgr.c jpeglib/jchuff.c jpeglib/jcinit.c jpeglib/jcmainct.c jpeglib/jcmarker.c jpeglib/jcmaster.c jpeglib/jcomapi.c jpeglib/jcparam.c jpeglib/jcprepct.c jpeglib/jcsample.c jpeglib/jctrans.c jpeglib/jdapimin.c jpeglib/jdapistd.c jpeglib/jdatadst.c jpeglib/jdatasrc.c jpeglib/jdcoefct.c jpeglib/jdcolor.c jpeglib/jddctmgr.c jpeglib/jdhuff.c jpeglib/jdinput.c jpeglib/jdmainct.c jpeglib/jdmarker.c jpeglib/jdmaster.c jpeglib/jdmerge.c jpeglib/jdpostct.c jpeglib/jdsample.c jpeglib/jdtrans.c jpeglib/jerror.c jpeglib/jfdctflt.c jpeglib/jfdctfst.c jpeglib/jfdctint.c jpeglib/jidctflt.c jpeglib/jidctfst.c jpeglib/jidctint.c jpeglib/jmemmgr.c jpeglib/jmemnobs.c jpeglib/jquant1.c jpeglib/jquant2.c jpeglib/jutils.c jpeglib/jcarith.c jpeglib/jdarith.c jpeglib/jaricom.c
+	;
+LIBPNGOBJ = libpng/png.c libpng/pngerror.c libpng/pngget.c libpng/pngmem.c libpng/pngpread.c libpng/pngread.c libpng/pngrio.c libpng/pngrtran.c libpng/pngrutil.c libpng/pngset.c libpng/pngtrans.c libpng/pngwio.c libpng/pngwrite.c libpng/pngwtran.c libpng/pngwutil.c
+	;
+BZIP2OBJ = bzip2/blocksort.c bzip2/huffman.c bzip2/crctable.c bzip2/randtable.c bzip2/bzcompress.c bzip2/decompress.c bzip2/bzlib.c
+	;
+
+# Next variable is for additional scene nodes etc. of customized Nirtcpp versions
+EXTRAOBJ =
+	;
+LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ) 
+	$(IRRVIDEOOBJ) $(IRRSWRENDEROBJ) $(IRRBURNINGOBJ) $(IRRIOOBJ) $(IRROTHEROBJ) 
+	$(IRRGUIOBJ) $(ZLIBOBJ) $(JPEGLIBOBJ) $(LIBPNGOBJ) $(LIBAESGM) 
+	$(BZIP2OBJ) $(EXTRAOBJ)
+	;
+
+# After enough testing, this '-U__STRICT_ANSI__' will be removed. 
+# Read line 28~30 of CFileSystem.cpp, about __STRICT_ANSI__
+cxxflags_all =
+	-U__STRICT_ANSI__
+	-DNIRTCPP_EXPORTS=1
+	-Wall -pipe -fno-exceptions -fno-rtti
+	-DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES -DPNG_ARM_NEON_OPT=0
+	;
+
+lib nirtcpp
+	: $(LINKOBJ)
+	:
+		<include>$(include_dir)
+		<include>./zlib <include>./jpeglib <include>./libpng
+		<cxxflags>"$(cxxflags_all)"
+
+		<variant>debug:<cxxflags>"-g -D_DEBUG"
+		<variant>release:<cxxflags>"-O3"
+
+		<link>shared:<cxxflags>"-fPIC"
+		<os>LINUX:<linkflags>"-lGL -lXxf86vm"
+	:
+	:
+		<include>$(include_dir)
+	;
+

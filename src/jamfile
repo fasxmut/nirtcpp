@@ -1,0 +1,4 @@
+echo "Build src ..." ;
+
+build-project nirtcpp ;
+
