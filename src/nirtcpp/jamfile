@@ -69,6 +69,7 @@ LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ)
 
 # After enough testing, this '-U__STRICT_ANSI__' will be removed. 
 # Read line 28~30 of CFileSystem.cpp, about __STRICT_ANSI__
+# For all targets (all os, all link type)
 cxxflags_all =
 	-U__STRICT_ANSI__
 	-DNIRTCPP_EXPORTS=1
@@ -76,18 +77,35 @@ cxxflags_all =
 	-DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES -DPNG_ARM_NEON_OPT=0
 	;
 
+# Both for windows msys2 static and shared
+cxxflags_win32_all =
+	-DNO_NIRT_COMPILE_WITH_DIRECTINPUT_JOYSTICK_ -DNO_NIRT_COMPILE_WITH_DIRECT3D_9_
+	-DNIRT_COMPILE_WITH_DX9_DEV_PACK -D__GNUWIN32__ -D_WIN32 -DWIN32 -D_WINDOWS -D_MBCS -D_USRDLL
+	;
+
+#|
+	<os>LINUX  -  Linux
+	<os>CYGWIN  -  Windows MSYS2
+|#
+
+# (todo) <os>CYGWIN <link>shared:<linkflags>  -  "-ld3dx9d" is not supported yet, I have no d3d to test.
+
 lib nirtcpp
 	: $(LINKOBJ)
 	:
 		<include>$(include_dir)
 		<include>./zlib <include>./jpeglib <include>./libpng
 		<cxxflags>"$(cxxflags_all)"
+		<link>shared:<cxxflags>"-fPIC"
 
 		<variant>debug:<cxxflags>"-g -D_DEBUG"
 		<variant>release:<cxxflags>"-O3"
 
-		<link>shared:<cxxflags>"-fPIC"
-		<os>LINUX:<linkflags>"-lGL -lXxf86vm"
+		<os>LINUX <link>shared:<linkflags>"-lGL -lXxf86vm"
+
+		<os>CYGWIN:<cxxflags>"$(cxxflags_win32_all)"
+ 		<os>CYGWIN <link>shared:<linkflags>"-lgdi32 -lopengl32 -lwinmm -Wl,--add-stdcall-alias -dynamiclib"
+		<os>CYGWIN <link>static:<cxxflags>"-D_NIRT_STATIC_LIB_"
 	:
 	:
 		<include>$(include_dir)

@@ -1,5 +1,5 @@
-#ifndef __wgl_wglext.hpppp_
-#define __wgl_wglext.hpppp_ 1
+#ifndef __wgl_wglext_hpp__
+#define __wgl_wglext_hpp__ 1
 
 #ifdef __cplusplus
 extern "C" {

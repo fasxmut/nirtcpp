@@ -19,7 +19,7 @@
 	#if defined(_NIRT_OPENGL_USE_EXTPOINTER_)
 		#include "glext.hpp"
 	#endif
-	#include "wglext.hpppp"
+	#include "wglext.hpp"
 
 	#ifdef _MSC_VER
 		#pragma comment(lib, "OpenGL32.lib")

@@ -1,5 +1,5 @@
-#ifndef __gl_glext.hpp_
-#define __gl_glext.hpp_ 1
+#ifndef __gl_glext_hpp_
+#define __gl_glext_hpp_ 1
 
 #ifdef __cplusplus
 extern "C" {

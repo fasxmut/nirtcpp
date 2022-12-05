@@ -13,4 +13,5 @@ exe tests : $(src)
 		<variant>debug:<cxxflags>"-O0 -g -D_DEBUG"
 		<variant>release:<cxxflags>"-fexpensive-optimizations -O3"
 		<os>LINUX:<linkflags>"-lGL -lXxf86vm -lX11"
+		<os>CYGWIN:<linkflags>"-lopengl32 -lm"
 	;

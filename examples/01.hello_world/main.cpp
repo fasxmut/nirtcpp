@@ -1,15 +1,15 @@
 /*
 This is a simple program that loads a mesh model from disk, add a camera, display the scene.
-
-Compile the program:
-	g++ main.cpp -std=c++20 -I ../../include/ -L ../../lib/Linux/ -lnirtcpp -o hello_world
 */
 
 #include <nirtcpp.hpp>
 #include <iostream>
+#include <string>
+
+using namespace std::string_literals;
 
 int main()
-{
+try {
 	// nirt::NirtcppDevice
 	nirt::NirtcppDevice * device = nirt::createDevice(
 		nirt::video::EDT_BURNINGSVIDEO, // Select video driver.
@@ -20,29 +20,20 @@ int main()
 		true, // vsync?
 		nullptr // event receiver
 	);
-	if (!device) {
-		std::cerr << "Can not create nirt::NirtcppDevice!\n";
-		return 1;
-	}
+	if (!device)
+		throw std::runtime_error{"Can not create nirt::NirtcppDevice!"};
 
 	nirt::video::IVideoDriver * driver = device->getVideoDriver();
 	nirt::scene::ISceneManager * smgr = device->getSceneManager();
-
-	// Irrlicht File System.
-	nirt::io::IFileSystem * fs = device->getFileSystem();
-	const std::string media_path = "../../media";
-	// After add a system path to irrlicht, you can load file easily.
-	bool status = fs->addFileArchive(media_path.data());
-	if (!status)
-		std::cerr << "Can not add media path: " << media_path << std::endl;
 
 	// Add a camera node to the scene. We can not see anything without a camera.
 	nirt::scene::ICameraSceneNode * fps_camera = smgr->addCameraSceneNodeFPS();
 	// Set camera position.
 	fps_camera->setPosition(nirt::core::vector3df{0,0,-15});
 
+	const std::string ninja_mesh_filename = "../../media/ninja.b3d";
 	nirt::scene::IAnimatedMeshSceneNode * ninja_node = smgr->addAnimatedMeshSceneNode(
-		smgr->getMesh("ninja.b3d"), // Mesh model on disk.
+		smgr->getMesh(ninja_mesh_filename.data()), // Mesh model on disk.
 		nullptr, // Parent node
 		-1, // Node id
 		nirt::core::vector3df{0,-5,0}, // Position
@@ -50,9 +41,10 @@ int main()
 		nirt::core::vector3df{1,1,1}, // Scale
 		false // Still add if the mesh is empty?
 	);
-
-	// Turn off light. For a beginner's code, this program does not use advanced lighting here.
-	ninja_node->setMaterialFlag(nirt::video::EMF_LIGHTING, false);
+	if (!ninja_node)
+		std::cerr << "Can not load ninja_node: " << ninja_mesh_filename << '\n';
+	else // Turn off light. For a beginner's code, this program does not use advanced lighting here.
+		ninja_node->setMaterialFlag(nirt::video::EMF_LIGHTING, false);
 
 
 	// 'device->run()' will do two task: display the scene, and return if the window is running.
@@ -67,5 +59,9 @@ int main()
 	}
 	device->drop();
 	std::cout << "Window is closed." << std::endl;
+} catch (std::exception & err) {
+	std::cerr << "========================================================================\n";
+	std::cerr << "[std::exception] " << err.what() << '\n';
+	return 1;
 }
 

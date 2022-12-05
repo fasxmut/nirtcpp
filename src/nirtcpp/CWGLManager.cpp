@@ -9,7 +9,7 @@
 #include "os.hpp"
 
 #include <GL/gl.h>
-#include "wglext.hpppp"
+#include "wglext.hpp"
 
 #ifdef _MSC_VER
 	#pragma comment(lib, "OpenGL32.lib")
