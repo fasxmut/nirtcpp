@@ -101,11 +101,10 @@ lib nirtcpp
 		<variant>debug:<cxxflags>"-g -D_DEBUG"
 		<variant>release:<cxxflags>"-O3"
 
-		<os>LINUX <link>shared:<linkflags>"-lGL -lXxf86vm"
-
+		<os>LINUX,<link>shared:<linkflags>"-lGL -lXxf86vm"
 		<os>CYGWIN:<cxxflags>"$(cxxflags_win32_all)"
- 		<os>CYGWIN <link>shared:<linkflags>"-lgdi32 -lopengl32 -lwinmm -Wl,--add-stdcall-alias -dynamiclib"
-		<os>CYGWIN <link>static:<cxxflags>"-D_NIRT_STATIC_LIB_"
+ 		<os>CYGWIN,<link>shared:<linkflags>"-lgdi32 -lopengl32 -lwinmm -Wl,--add-stdcall-alias -dynamiclib"
+		<os>CYGWIN,<link>static:<cxxflags>"-D_NIRT_STATIC_LIB_"
 	:
 	:
 		<include>$(include_dir)
