@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt / Fabio Concas / Thomas Alten
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_MD3_LOADER_

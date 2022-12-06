@@ -26,7 +26,7 @@
   in the jpeglib, the zlib and libPng for further information.
 */
 /*
-Please note that this nirtcpp.h is renamed from irrlicht.h.
+Please note that this nirtcpp/nirtcpp.hpp is renamed from irrlicht.h.
 */
 
 #ifndef NIRTCPP_H_INCLUDED
@@ -230,7 +230,7 @@ Please note that this nirtcpp.h is renamed from irrlicht.h.
  * of the engine quite well:
  *
  * \code
- * #include <nirtcpp.h>
+ * #include <nirtcpp/nirtcpp.hpp>
  * using namespace nirt;
  *
  * int main()
@@ -394,7 +394,7 @@ namespace nirt
 	}
 }
 
-/*! \file nirtcpp.h
+/*! \file nirtcpp/nirtcpp.hpp
 	\brief Main header file of the nirtcpp, the only file needed to include.
 */
 

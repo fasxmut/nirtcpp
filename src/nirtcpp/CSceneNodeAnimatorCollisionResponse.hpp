@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_C_SCENE_NODE_ANIMATOR_COLLISION_RESPONSE_H_INCLUDED
 #define NIRT_C_SCENE_NODE_ANIMATOR_COLLISION_RESPONSE_H_INCLUDED

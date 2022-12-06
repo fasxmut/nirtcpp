@@ -1,6 +1,6 @@
 // Copyright (C) 2009-2012 Gaz Davidson
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_PLY_MESH_WRITER_H_INCLUDED
 #define NIRT_PLY_MESH_WRITER_H_INCLUDED

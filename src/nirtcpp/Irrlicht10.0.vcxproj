@@ -870,7 +870,7 @@
     <ClInclude Include="..\..\include\IReferenceCounted.h" />
     <ClInclude Include="..\..\include\IRenderTarget.h" />
     <ClInclude Include="..\..\include\IrrCompileConfig.h" />
-    <ClInclude Include="..\..\include\nirtcpp.h" />
+    <ClInclude Include="..\..\include\nirtcpp/nirtcpp.hpp" />
     <ClInclude Include="..\..\include\leakHunter.h" />
     <ClInclude Include="..\..\include\NirtcppDevice.h" />
     <ClInclude Include="..\..\include\irrTypes.h" />

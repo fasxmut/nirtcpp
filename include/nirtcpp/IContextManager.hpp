@@ -1,6 +1,6 @@
 // Copyright (C) 2013-2015 Patryk Nadrowski
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_I_CONTEXT_MANAGER_H_INCLUDED
 #define NIRT_I_CONTEXT_MANAGER_H_INCLUDED

@@ -126,7 +126,7 @@
     <ClInclude Include="..\..\include\IrrCompileConfig.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\nirtcpp.h">
+    <ClInclude Include="..\..\include\nirtcpp/nirtcpp.hpp">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\leakHunter.h">

@@ -1,6 +1,6 @@
 // Copyright Michael Zeilfelder
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_I_MEMORY_READ_FILE_H_INCLUDED
 #define NIRT_I_MEMORY_READ_FILE_H_INCLUDED

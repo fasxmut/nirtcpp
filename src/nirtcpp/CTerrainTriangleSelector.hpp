@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 // The code for the TerrainTriangleSelector is based on the GeoMipMapSelector
 // developed by Spintz. He made it available for Nirtcpp and allowed it to be

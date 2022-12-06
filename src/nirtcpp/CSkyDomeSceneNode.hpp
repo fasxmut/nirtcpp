@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 // Code for this scene node has been contributed by Anders la Cour-Harbo (alc)
 
 #ifndef NIRT_C_SKY_DOME_SCENE_NODE_H_INCLUDED

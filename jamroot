@@ -176,7 +176,6 @@ headers =
 	nirtcpp/SViewFrustum.hpp
 	nirtcpp/SceneParameters.hpp
 	nirtcpp/aabbox3d.hpp
-	nirtcpp/core.hpp
 	nirtcpp/coreutil.hpp
 	nirtcpp/dimension2d.hpp
 	nirtcpp/driverChoice.hpp

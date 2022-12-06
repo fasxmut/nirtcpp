@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 //! As of Nirtcpp 1.6, position2d is a synonym for vector2d.
 /** You should consider position2d to be deprecated, and use vector2d by preference. */

@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 //
 // I (Nikolaus Gebhardt) did some few changes to Jonas Petersen's original loader:
 // - removed setTexturePath() and replaced with the ISceneManager::getStringParameter()-stuff.

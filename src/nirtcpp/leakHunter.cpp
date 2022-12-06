@@ -1,6 +1,6 @@
 // Copyright (C) 2013 Michael Zeilfelder
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/leakHunter.hpp>
 

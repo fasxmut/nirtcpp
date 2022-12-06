@@ -1,6 +1,6 @@
 // Copyright (C) 2006-2012 by Kat'Oun
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_MAP_H_INCLUDED
 #define NIRT_MAP_H_INCLUDED

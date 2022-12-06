@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 //
 // This Loader has been originally written by Saurav Mohapatra. I (Nikolaus Gebhardt)
 // modified some minor things and integrated it into Nirtcpp 0.9. Thanks a lot

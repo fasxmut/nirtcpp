@@ -1,6 +1,6 @@
 // Copyright (C) 2002-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_COMPILE_CONFIG_H_INCLUDED
 #define NIRT_COMPILE_CONFIG_H_INCLUDED
@@ -775,7 +775,7 @@ precision will be lower but speed higher. currently X86 only
 #ifdef _NIRT_WINDOWS_API_
 
 // To build Nirtcpp as a static library, you must define _NIRT_STATIC_LIB_ in both the
-// Nirtcpp build, *and* in the user application, before #including <nirtcpp.h>
+// Nirtcpp build, *and* in the user application, before #including <nirtcpp/nirtcpp.hpp>
 #ifndef _NIRT_STATIC_LIB_
 #ifdef NIRTCPP_EXPORTS
 #define NIRTCPP_API __declspec(dllexport)

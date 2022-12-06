@@ -575,7 +575,7 @@
 		<Unit filename="..\..\include\irrString.h" />
 		<Unit filename="..\..\include\irrTypes.h" />
 		<Unit filename="..\..\include\irrXML.h" />
-		<Unit filename="..\..\include\nirtcpp.h" />
+		<Unit filename="..\..\include\nirtcpp/nirtcpp.hpp" />
 		<Unit filename="..\..\include\irrpack.h" />
 		<Unit filename="..\..\include\irrunpack.h" />
 		<Unit filename="..\..\include\leakHunter.h" />

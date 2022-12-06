@@ -1,6 +1,6 @@
 // Copyright (C) 2006-2012 Luke Hos.hppke
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 // B3D Mesh loader
 // File format designed by Mark Sibly for the Blitz3D engine and has been

@@ -1,10 +1,10 @@
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_LEGACY_DEFINES_H_INCLUDED
 #define NIRT_LEGACY_DEFINES_H_INCLUDED
 
-//! Include this file _after_ nirtcpp.h
+//! Include this file _after_ nirtcpp/nirtcpp.hpp
 //! It contains old defines which got replaced in Nirtcpp.
 //! So including this header is a quick fix to allow users compiling old code 
 //! without having to rewrite it all. Thought in the long run you should 

@@ -1,5 +1,5 @@
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 // Written by Michael Zeilfelder
 
 #ifndef NIRT_C_GUI_PROFILER_H_INCLUDED

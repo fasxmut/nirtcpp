@@ -1,5 +1,5 @@
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef __NIRT_FAST_MATH_COMPAT_H_INCLUDED__
 #define __NIRT_FAST_MATH_COMPAT_H_INCLUDED__

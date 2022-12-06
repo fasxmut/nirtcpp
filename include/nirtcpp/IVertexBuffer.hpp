@@ -1,6 +1,6 @@
 // Copyright (C) 2008-2012 Nikolaus Gebhardt
 // This file is part of the "Irrlicht Engine".
-// For conditions of distribution and use, see copyright notice in nirtcpp.h
+// For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #ifndef NIRT_I_VERTEX_BUFFER_H_INCLUDED
 #define NIRT_I_VERTEX_BUFFER_H_INCLUDED

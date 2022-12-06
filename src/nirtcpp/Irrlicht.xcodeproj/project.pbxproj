@@ -443,7 +443,7 @@
 		5E34C7571B7F4AFC00F212E8 /* irrAllocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrAllocator.h; path = ../../include/irrAllocator.h; sourceTree = "<group>"; };
 		5E34C7581B7F4AFC00F212E8 /* irrArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrArray.h; path = ../../include/irrArray.h; sourceTree = "<group>"; };
 		5E34C7591B7F4AFC00F212E8 /* IrrCompileConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IrrCompileConfig.h; path = ../../include/IrrCompileConfig.h; sourceTree = "<group>"; };
-		5E34C75A1B7F4AFC00F212E8 /* nirtcpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nirtcpp.h; path = ../../include/nirtcpp.h; sourceTree = "<group>"; };
+		5E34C75A1B7F4AFC00F212E8 /* nirtcpp/nirtcpp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nirtcpp/nirtcpp.hpp; path = ../../include/nirtcpp/nirtcpp.hpp; sourceTree = "<group>"; };
 		5E34C75B1B7F4AFC00F212E8 /* NirtcppDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NirtcppDevice.h; path = ../../include/NirtcppDevice.h; sourceTree = "<group>"; };
 		5E34C75C1B7F4AFC00F212E8 /* irrList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrList.h; path = ../../include/irrList.h; sourceTree = "<group>"; };
 		5E34C75D1B7F4AFC00F212E8 /* irrMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = irrMap.h; path = ../../include/irrMap.h; sourceTree = "<group>"; };
@@ -1100,7 +1100,7 @@
 				5E34C7541B7F4AFC00F212E8 /* IRandomizer.h */,
 				5E34C7561B7F4AFC00F212E8 /* IReferenceCounted.h */,
 				5E34C7591B7F4AFC00F212E8 /* IrrCompileConfig.h */,
-				5E34C75A1B7F4AFC00F212E8 /* nirtcpp.h */,
+				5E34C75A1B7F4AFC00F212E8 /* nirtcpp/nirtcpp.hpp */,
 				5E34C75B1B7F4AFC00F212E8 /* NirtcppDevice.h */,
 				5E34C75F1B7F4AFC00F212E8 /* irrpack.h */,
 				5E34C7611B7F4AFC00F212E8 /* irrTypes.h */,
