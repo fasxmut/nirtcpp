@@ -1,8 +1,10 @@
 echo "Build src/nitcpp ..." ;
 
-VERSION_MAJOR = 1 ;
-VERSION_MINOR = 9 ;
-VERSION_RELEASE = 0 ;
+import common ;
+
+major_version = 1 ;
+minor_version = 9 ;
+release_version = 0 ;
 
 #List of object files, separated based on engine architecture
 
@@ -83,6 +85,8 @@ cxxflags_win32_all =
 	-DNIRT_COMPILE_WITH_DX9_DEV_PACK -D__GNUWIN32__ -D_WIN32 -DWIN32 -D_WINDOWS -D_MBCS -D_USRDLL
 	;
 
+version_full = $(major_version).$(minor_version).$(release_version) ;
+
 #|
 	<os>LINUX  -  Linux
 	<os>CYGWIN  -  Windows MSYS2
@@ -93,6 +97,7 @@ cxxflags_win32_all =
 lib nirtcpp
 	: $(LINKOBJ)
 	:
+		<version>$(version_full) <tag>@nirtvertag
 		<include>$(include_dir)
 		<include>./zlib <include>./jpeglib <include>./libpng
 		<cxxflags>"$(cxxflags_all)"
@@ -109,4 +114,14 @@ lib nirtcpp
 	:
 		<include>$(include_dir)
 	;
+
+rule nirtvertag ( name : type ? : prop-set )
+{
+	if $(type) in SHARED_LIB {
+		local v = [ $(prop-set).get <version> ] ;
+		local r = [ common.format-name <base> : $(name) : $(type)
+			: $(prop-set) ] ;
+		return $(r).$(v) ;
+	}
+}
 
