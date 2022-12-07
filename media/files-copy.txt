@@ -1,0 +1,16 @@
+These media files are copied from Irrlicht:
+------------------------------------------------------------------------
+ninja.b3d
+nskinbl.jpg
+tools.png
+irrlicht-logos/irr.ico
+irrlicht-logos/irrlichtlogo.BMP
+irrlicht-logos/irrlichtlogo.jpg
+irrlicht-logos/irrlichtlogo2.png
+irrlicht-logos/irrlichtlogo3.png
+irrlicht-logos/irrlichtlogoaligned.jpg
+irrlicht-logos/irrlichtlogoalpha.tga
+irrlicht-logos/irrlichtlogoalpha2.tga
+
+
+

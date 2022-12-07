@@ -22,6 +22,7 @@ try {
 	);
 	if (!device)
 		throw std::runtime_error{"Can not create nirt::NirtcppDevice!"};
+	device->setWindowCaption(L"Ninja - from irrlicht media");
 
 	nirt::video::IVideoDriver * driver = device->getVideoDriver();
 	nirt::scene::ISceneManager * smgr = device->getSceneManager();
