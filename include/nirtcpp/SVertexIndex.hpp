@@ -66,9 +66,9 @@ struct SSpecificVertexIndex
 
 };
 
-//typedef SSpecificVertexIndex<u16> SVertexIndex;
+//using SVertexIndex = SSpecificVertexIndex<u16>;
 
-typedef u32 SVertexIndex;
+using SVertexIndex = u32;
 */
 
 

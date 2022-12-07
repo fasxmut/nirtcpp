@@ -371,7 +371,7 @@ namespace core
 		in general: number = (sign ? -1:1) * 2^(exponent) * 1.(mantissa bits)
 	*/
 
-	typedef union { u32 u; s32 s; f32 f; } inttofloat;
+	using inttofloat = union { u32 u; s32 s; f32 f; };
 
 	#define F32_AS_S32(f)		(*((s32 *) &(f)))
 	#define F32_AS_U32(f)		(*((u32 *) &(f)))

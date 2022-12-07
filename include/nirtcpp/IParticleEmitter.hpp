@@ -118,7 +118,7 @@ public:
 	virtual E_PARTICLE_EMITTER_TYPE getType() const { return EPET_POINT; }
 };
 
-typedef IParticleEmitter IParticlePointEmitter;
+using IParticlePointEmitter = IParticleEmitter;
 
 } // end namespace scene
 } // end namespace nirt

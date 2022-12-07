@@ -58,7 +58,7 @@ namespace video
 
 	// this structure holds context specific data about the file being loaded.
 
-	typedef struct _RGBdata
+	using rgbStruct = struct _RGBdata
 	{
 		u8 *tmp;
 		u8 *tmpR;
@@ -125,7 +125,7 @@ namespace video
 			}
 			return true;
 		}
-	} rgbStruct;
+	};
 
 
 //! Surface Loader for Silicon Graphics RGB files

@@ -266,11 +266,11 @@ namespace core
 	};
 
 
-	//! Typedef for a f32 3d triangle.
-	typedef triangle3d<f32> triangle3df;
+	//! using type alias for a f32 3d triangle.
+	using triangle3df = triangle3d<f32>;
 
-	//! Typedef for an integer 3d triangle.
-	typedef triangle3d<s32> triangle3di;
+	//! using type alias for an integer 3d triangle.
+	using triangle3di = triangle3d<s32>;
 
 } // end namespace core
 } // end namespace nirt

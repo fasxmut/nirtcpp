@@ -21,8 +21,8 @@ namespace nirt
 // supporting different packed pixel needs many defines...
 
 #if defined(SOFTWARE_DRIVER_2_32BIT)
-typedef u32	tVideoSample;
-typedef u32	tStencilSample;
+using tVideoSample = u32;
+using tStencilSample =  u32;
 
 #define	MASK_A	0xFF000000
 #define	MASK_R	0x00FF0000
@@ -41,8 +41,8 @@ typedef u32	tStencilSample;
 #define SOFTWARE_DRIVER_2_TEXTURE_GRANULARITY	(unsigned)2
 #define SOFTWARE_DRIVER_2_RENDERTARGET_GRANULARITY	(unsigned)2
 #else
-typedef u16	tVideoSample;
-typedef u8	tStencilSample;
+using tVideoSample = u16;
+using tStencilSample = u8;
 
 #define	MASK_A	0x8000
 #define	MASK_R	0x7C00
@@ -157,12 +157,13 @@ static inline void memset32_interlaced(void* dest, const u32 value, size_t pitch
 #include <nirtcpp/irrpack.hpp>
 
 //IEEE Standard for Floating - Point Arithmetic(IEEE 754)
-typedef union {
+using ieee754 = union {
 	float f;
 	unsigned int u;
 	struct { unsigned int frac : 23; unsigned exp : 8; unsigned int sign : 1; } fields;
 	struct { unsigned int frac_exp : 31; } abs;
-} PACK_STRUCT ieee754;
+} PACK_STRUCT;
+
 
 // Default alignment
 #include <nirtcpp/irrunpack.hpp>
@@ -425,11 +426,11 @@ inline u32 PixelBlend32(const u32 c2, const u32 c1)
 // ------------------ Fix Point ----------------------------------
 
 #if defined(ENV64BIT)
-typedef s32 tFixPoint;
-typedef u32 tFixPointu;
+using tFixPoint = s32;
+using tFixPointu = u32;
 #else
-typedef s32 tFixPoint;
-typedef u32 tFixPointu;
+using tFixPoint = s32;
+using tFixPointu = u32;
 #endif
 
 // Fix Point 12 (overflow on s32)
@@ -789,7 +790,7 @@ inline void color_to_fix1(tFixPoint c[4], const tVideoSample t00)
 //! ----- FP24 1.23 fix point z-buffer
 
 #if 1
-typedef f32 fp24;
+using fp24 = f32;
 #else
 struct fp24
 {

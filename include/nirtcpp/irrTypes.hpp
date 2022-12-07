@@ -16,101 +16,101 @@ namespace nirt
 {
 
 //! 8 bit unsigned variable.
-/** This is a typedef for unsigned char, it ensures portability of the engine. */
+/** This is a using type alias for unsigned char, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef unsigned __int8		u8;
+using u8 = unsigned __int8;
 #else
-typedef unsigned char		u8;
+using u8 = unsigned char;
 #endif
 
 //! 8 bit signed variable.
-/** This is a typedef for signed char, it ensures portability of the engine. */
+/** This is a using type alias for signed char, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef __int8			s8;
+using s8 = __int8;
 #else
-typedef signed char		s8;
+using s8 = signed char;
 #endif
 
 //! 8 bit character variable.
-/** This is a typedef for char, it ensures portability of the engine. */
-typedef char			c8;
+/** This is a using type alias for char, it ensures portability of the engine. */
+using c8 = char;
 
 
 
 //! 16 bit unsigned variable.
-/** This is a typedef for unsigned short, it ensures portability of the engine. */
+/** This is a using type alias for unsigned short, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef unsigned __int16	u16;
+using u16 = unsigned __int16;
 #else
-typedef unsigned short		u16;
+using u16 = unsigned short;
 #endif
 
 //! 16 bit signed variable.
-/** This is a typedef for signed short, it ensures portability of the engine. */
+/** This is a using type alias for signed short, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef __int16			s16;
+using s16 = __int16;
 #else
-typedef signed short		s16;
+using s16 = signed short;
 #endif
 
 
 
 //! 32 bit unsigned variable.
-/** This is a typedef for unsigned int, it ensures portability of the engine. */
+/** This is a using type alias for unsigned int, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef unsigned __int32	u32;
+using u32 = unsigned __int32;
 #else
-typedef unsigned int		u32;
+using u32 = unsigned int;
 #endif
 
 //! 32 bit signed variable.
-/** This is a typedef for signed int, it ensures portability of the engine. */
+/** This is a using type alias for signed int, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef __int32			s32;
+using s32 = __int32;
 #else
-typedef signed int		s32;
+using s32 = signed int;
 #endif
 
 
 #ifdef __NIRT_HAS_S64
 //! 64 bit unsigned variable.
-/** This is a typedef for 64bit uint, it ensures portability of the engine. */
+/** This is a using type alias for 64bit uint, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef unsigned __int64			u64;
+using u64 = unsigned __int64;
 #elif defined(__GNUC__)
 #if (defined(__LP64__) && __LP64__ == 1) || (defined(_LP64) && _LP64 == 1)  || (defined(__WORDSIZE) && __WORDSIZE == 64)
-typedef unsigned long int			u64;
+using u64 = unsigned long int;
 #else
-__extension__ typedef unsigned long long	u64;
+__extension__ using u64 = unsigned long long;
 #endif
 #else
-typedef unsigned long long			u64;
+using u64 = unsigned long long;
 #endif
 
 //! 64 bit signed variable.
-/** This is a typedef for 64bit int, it ensures portability of the engine. */
+/** This is a using type alias for 64bit int, it ensures portability of the engine. */
 #if defined(_MSC_VER) || ((__BORLANDC__ >= 0x530) && !defined(__STRICT_ANSI__))
-typedef __int64					s64;
+using s64 = __int64;
 #elif defined(__GNUC__)
 #if (defined(__LP64__) && __LP64__ == 1) || (defined(_LP64) && _LP64 == 1)  || (defined(__WORDSIZE) && __WORDSIZE == 64)
-typedef long int				s64;
+using s64 = long int;
 #else
-__extension__ typedef long long			s64;
+__extension__ using s64 = long long;
 #endif
 #else
-typedef long long				s64;
+using s64 = long long;
 #endif
 #endif	// __NIRT_HAS_S64
 
 
 
 //! 32 bit floating point variable.
-/** This is a typedef for float, it ensures portability of the engine. */
-typedef float				f32;
+/** This is a using type alias for float, it ensures portability of the engine. */
+using f32 = float;
 
 //! 64 bit floating point variable.
-/** This is a typedef for double, it ensures portability of the engine. */
-typedef double				f64;
+/** This is a using type alias for double, it ensures portability of the engine. */
+using f64 = double;
 
 
 } // end namespace nirt
@@ -142,7 +142,7 @@ typedef double				f64;
 	sometimes we just don't want to include the huge stdlib.h or wchar.h,
 	so we'll use this.
 */
-typedef unsigned short wchar_t;
+using wchar_t = unsigned short;
 #define _WCHAR_T_DEFINED
 #endif // wchar is not defined
 #endif // microsoft compiler
@@ -161,10 +161,10 @@ Else it is a 8 bit character variable. Used for ansi filesystem and non-unicode
 strings
 */
 #if defined(_NIRT_WCHAR_FILESYSTEM)
-	typedef wchar_t fschar_t;
+	using fschar_t = wchar_t;
 	#define NIRT_TEXT(X) L##X
 #else
-	typedef char fschar_t;
+	using fschar_t = char;
 	#define NIRT_TEXT(X) X
 #endif
 
@@ -189,7 +189,7 @@ strings
 
 //! Defines a deprecated macro which generates a warning at compile time
 /** The usage is simple
-For typedef:		typedef NIRT_DEPRECATED int test1;
+For using type alias:		using test1 = NIRT_DEPRECATED int;
 For classes/structs:	class NIRT_DEPRECATED test2 { ... };
 For methods:		class test3 { NIRT_DEPRECATED virtual void foo() {} };
 For functions:		template<class T> NIRT_DEPRECATED void test4(void) {}

@@ -117,7 +117,7 @@ int axtoi(const char *hexStg)
 	return (intValue);
 }
 
-typedef core::array<core::stringc> StringList;
+using StringList = core::array<core::stringc>;
 
 //Loads a stringlist from a file
 //note that each String added to StringList

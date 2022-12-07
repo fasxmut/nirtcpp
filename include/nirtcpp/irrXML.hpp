@@ -463,12 +463,12 @@ namespace io
 	//! defines the utf-16 type.
 	/** Not using wchar_t for this because
 	wchar_t has 16 bit on windows and 32 bit on other operating systems. */
-	typedef xmlChar<unsigned short> char16;
+	using char16 = xmlChar<unsigned short>;
 
 	//! defines the utf-32 type.
 	/** Not using wchar_t for this because
 	wchar_t has 16 bit on windows and 32 bit on other operating systems. */
-	typedef xmlChar<unsigned int> char32;
+	using char32 = xmlChar<unsigned int>;
 
 	//! A UTF-8 or ASCII character xml parser.
 	/** This means that all character data will be returned in 8 bit ASCII or UTF-8 by this parser.
@@ -476,7 +476,7 @@ namespace io
 	in this format.
 	Create an instance of this with createIrrXMLReader();
 	See IIrrXMLReader for description on how to use it. */
-	typedef IIrrXMLReader<char, IXMLBase> IrrXMLReader;
+	using IrrXMLReader = IIrrXMLReader<char, IXMLBase>;
 
 	//! A UTF-16 xml parser.
 	/** This means that all character data will be returned in UTF-16 by this parser.
@@ -484,7 +484,7 @@ namespace io
 	in this format.
 	Create an instance of this with createIrrXMLReaderUTF16();
 	See IIrrXMLReader for description on how to use it. */
-	typedef IIrrXMLReader<char16, IXMLBase> IrrXMLReaderUTF16;
+	using IrrXMLReaderUTF16 = IIrrXMLReader<char16, IXMLBase>;
 
 	//! A UTF-32 xml parser.
 	/** This means that all character data will be returned in UTF-32 by this parser.
@@ -492,7 +492,7 @@ namespace io
 	in this format.
 	Create an instance of this with createIrrXMLReaderUTF32();
 	See IIrrXMLReader for description on how to use it. */
-	typedef IIrrXMLReader<char32, IXMLBase> IrrXMLReaderUTF32;
+	using IrrXMLReaderUTF32 = IIrrXMLReader<char32, IXMLBase>;
 
 #ifdef _NIRT_COMPILE_WITH_XML_
 

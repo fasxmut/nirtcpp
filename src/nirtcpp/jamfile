@@ -1,4 +1,4 @@
-echo "Build src/nitcpp ..." ;
+echo "Build src/nirtcpp ..." ;
 
 import common ;
 

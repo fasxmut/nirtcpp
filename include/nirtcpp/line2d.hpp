@@ -347,10 +347,10 @@ class line2d
 	}
 
 
-	//! Typedef for an f32 line.
-	typedef line2d<f32> line2df;
-	//! Typedef for an integer line.
-	typedef line2d<s32> line2di;
+	//! using type alias for an f32 line.
+	using line2df = line2d<f32>;
+	//! using type alias for an integer line.
+	using line2di = line2d<s32>;
 
 } // end namespace core
 } // end namespace nirt

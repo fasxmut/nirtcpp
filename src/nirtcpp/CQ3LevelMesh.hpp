@@ -444,7 +444,7 @@ namespace scene
 		SQ3Parser Parser;
 
 
-		typedef void( CQ3LevelMesh::*tParserCallback ) ( quake3::SVarGroupList *& groupList, eToken token );
+		using tParserCallback = void( CQ3LevelMesh::* ) ( quake3::SVarGroupList *& groupList, eToken token );
 		void parser_parse( const void * data, u32 size, tParserCallback callback );
 		void parser_nextToken();
 

@@ -122,7 +122,7 @@ class map
 
 	public:
 
-	typedef RBTree<KeyType,ValueType> Node;
+	using Node = RBTree<KeyType,ValueType>;
 	// We need the forward declaration for the friend declaration
 	class ConstIterator;
 
@@ -632,10 +632,10 @@ class map
 		clear();
 	}
 
-	// typedefs
-	typedef KeyType key_type;
-	typedef ValueType value_type;
-	typedef u32 size_type;
+	// using type aliases
+	using key_type = KeyType;
+	using value_type = ValueType;
+	using size_type = u32;
 
 	//------------------------------
 	// Public Commands

@@ -840,7 +840,7 @@ precision will be lower but speed higher. currently X86 only
 		#define _tfinddata_t __tfinddata_t
 		#define _tfindfirst  __tfindfirst
 		#define _tfindnext   __tfindnext
-		typedef long intptr_t;
+		using intptr_t = long;
 	#endif
 #endif
 

@@ -16,13 +16,13 @@ namespace io
 	/** This XML Parser can read any type of text files from any source
 	Nirtcpp can read. Just call IFileSystem::createXMLReader(). For more
 	information on how to use the parser, see IIrrXMLReader */
-	typedef IIrrXMLReader<wchar_t, IReferenceCounted> IXMLReader;
+	using IXMLReader = IIrrXMLReader<wchar_t, IReferenceCounted>;
 
 	//! An xml reader for ASCII or UTF-8 characters, derived from IReferenceCounted.
 	/** This XML Parser can read any type of text files from any source
 	Nirtcpp can read. Just call IFileSystem::createXMLReaderUTF8(). For
 	more information on how to use the parser, see IIrrXMLReader */
-	typedef IIrrXMLReader<c8, IReferenceCounted> IXMLReaderUTF8;
+	using IXMLReaderUTF8 = IIrrXMLReader<c8, IReferenceCounted>;
 
 } // end namespace io
 } // end namespace nirt

@@ -16,7 +16,7 @@ public:
 private:
 
 	// fragment shader
-	typedef void (burning_shader_class::*tFragmentShader) ();
+	using tFragmentShader = void (burning_shader_class::*) ();
 	void fragment_depth_less_equal_depth_write_blend_one_zero();
 	void fragment_depth_less_equal_no_depth_write_blend_one_zero();
 	void fragment_nodepth_perspective_blend_one_zero();

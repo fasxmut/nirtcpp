@@ -232,11 +232,11 @@ class plane3d
 };
 
 
-//! Typedef for a f32 3d plane.
-typedef plane3d<f32> plane3df;
+//! using type alias for a f32 3d plane.
+using plane3df = plane3d<f32>;
 
-//! Typedef for an integer 3d plane.
-typedef plane3d<s32> plane3di;
+//! using type alias for an integer 3d plane.
+using plane3di = plane3d<s32>;
 
 } // end namespace core
 } // end namespace nirt

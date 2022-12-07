@@ -261,9 +261,9 @@ enum edge_test_flag
 #endif
 
 #if defined(ENV64BIT) && defined(BURNINGVIDEO_RENDERER_BEAUTIFUL)
-typedef float ipoltype;
+using ipoltype = float;
 #else
-typedef float ipoltype;
+using ipoltype = float;
 #endif
 
 #define	ipol_lower_equal_0(n)	((n) <= (ipoltype)0.0)

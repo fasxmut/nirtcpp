@@ -206,15 +206,15 @@ namespace core
 			T Height;
 	};
 
-	//! Typedef for an f32 dimension.
-	typedef dimension2d<f32> dimension2df;
-	//! Typedef for an unsigned integer dimension.
-	typedef dimension2d<u32> dimension2du;
+	//! using type alias for an f32 dimension.
+	using dimension2df = dimension2d<f32>;
+	//! using type alias for an unsigned integer dimension.
+	using dimension2du = dimension2d<u32>;
 
-	//! Typedef for an integer dimension.
+	//! using type alias for an integer dimension.
 	/** There are few cases where negative dimensions make sense. Please consider using
 		dimension2du instead. */
-	typedef dimension2d<s32> dimension2di;
+	using dimension2di = dimension2d<s32>;
 
 
 } // end namespace core

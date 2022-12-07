@@ -395,11 +395,11 @@ public:
 	T Y;
 };
 
-	//! Typedef for f32 2d vector.
-	typedef vector2d<f32> vector2df;
+	//! using type alias for f32 2d vector.
+	using vector2df = vector2d<f32>;
 
-	//! Typedef for integer 2d vector.
-	typedef vector2d<s32> vector2di;
+	//! using type alias for integer 2d vector.
+	using vector2di = vector2d<s32>;
 
 	template<class S, class T>
 	vector2d<T> operator*(const S scalar, const vector2d<T>& vector) { return vector*scalar; }

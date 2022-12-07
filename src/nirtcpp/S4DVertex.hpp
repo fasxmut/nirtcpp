@@ -441,9 +441,9 @@ inline void nirt::video::sVec2::operator=(const sVec4& b)
 }
 
 //!during runtime sVec3Pack
-typedef sVec4 sVec3Pack_unpack;
+using sVec3Pack_unpack = sVec4;
 
-typedef sVec4 sVec3Color;
+using sVec3Color = sVec4;
 
 //internal BurningShaderFlag for a Vertex (Attributes)
 enum e4DVertexFlag
@@ -674,7 +674,7 @@ struct s4DVertex
 // ----------------- Vertex Cache ---------------------------
 
 // Buffer is used as interleaved pairs of S4DVertex (0 ... ndc, 1 .. dc and projected)
-typedef s4DVertex s4DVertexPair;
+using s4DVertexPair = s4DVertex;
 #define sizeof_s4DVertexPairRel 2
 #define s4DVertex_ofs(index) ((index)*sizeof_s4DVertexPairRel)
 #define s4DVertex_pro(index) (((index)*sizeof_s4DVertexPairRel) + 1)

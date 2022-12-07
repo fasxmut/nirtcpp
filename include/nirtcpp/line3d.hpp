@@ -132,10 +132,10 @@ class line3d
 		vector3d<T> end;
 };
 
-	//! Typedef for an f32 line.
-	typedef line3d<f32> line3df;
-	//! Typedef for an integer line.
-	typedef line3d<s32> line3di;
+	//! using type alias for an f32 line.
+	using line3df = line3d<f32>;
+	//! using type alias for an integer line.
+	using line3di = line3d<s32>;
 
 } // end namespace core
 } // end namespace nirt

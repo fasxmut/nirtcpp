@@ -227,7 +227,7 @@ protected:
 
 		core::array<SGeometryMeshMaterials> GeometryMeshMaterials;
 	};
-	typedef core::map<IMesh*, SColladaMesh>::Node MeshNode;
+	using MeshNode = core::map<IMesh*, SColladaMesh>::Node;
 	core::map<IMesh*, SColladaMesh> Meshes;
 
 	// structure for the lights library
@@ -236,11 +236,11 @@ protected:
 		SColladaLight()	{}
 		nirt::core::stringc Name;
 	};
-	typedef core::map<ISceneNode*, SColladaLight>::Node LightNode;
+	using LightNode = core::map<ISceneNode*, SColladaLight>::Node;
 	core::map<ISceneNode*, SColladaLight> LightNodes;
 
 	// structure for the camera library
-	typedef core::map<ISceneNode*, nirt::core::stringc>::Node CameraNode;
+	using CameraNode = core::map<ISceneNode*, nirt::core::stringc>::Node;
 	core::map<ISceneNode*, nirt::core::stringc> CameraNodes;
 
 	// Check per name if stuff has been written already

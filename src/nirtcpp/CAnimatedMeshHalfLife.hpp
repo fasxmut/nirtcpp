@@ -35,8 +35,8 @@ namespace scene
 	#define MAXSTUDIOPIVOTS		256
 	#define MAXSTUDIOCONTROLLERS 8
 
-	typedef f32 vec3_hl[3];	// x,y,z
-	typedef f32 vec4_hl[4];	// x,y,z,w
+	using vec3_hl = f32[3];	// x,y,z
+	using vec4_hl = f32[4];	// x,y,z,w
 
 // byte-align structures
 #include <nirtcpp/irrpack.hpp>
@@ -141,7 +141,7 @@ namespace scene
 #ifndef ZONE_H
 	// NOTE: this was a void*, but that crashes on 64bit.
 	// I have found no mdl format desc, so not sure what it's meant to be, but s32 at least works.
-	typedef s32 cache_user_t;
+	using cache_user_t = s32;
 #endif
 
 	// demand loaded sequence groups
@@ -449,10 +449,10 @@ namespace scene
 
 
 	//! a List holding named Animations
-	typedef core::array < KeyFrameInterpolation > IAnimationList;
+	using IAnimationList = core::array < KeyFrameInterpolation >;
 
 	//! a List holding named Skins
-	typedef core::array < core::stringc > ISkinList;
+	using ISkinList = core::array < core::stringc >;
 
 
 	// Current Model per Body
@@ -471,7 +471,7 @@ namespace scene
 		core::array < SubModel > model;
 	};
 	//! a List holding named Models and SubModels
-	typedef core::array < BodyPart > IBodyList;
+	using IBodyList = core::array < BodyPart >;
 
 
 	class CAnimatedMeshHalfLife : public IAnimatedMesh

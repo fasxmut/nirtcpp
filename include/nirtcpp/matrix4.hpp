@@ -2389,8 +2389,8 @@ namespace core
 	}
 
 
-	//! Typedef for f32 matrix
-	typedef CMatrix4<f32> matrix4;
+	//! using type alias for f32 matrix
+	using matrix4 = CMatrix4<f32>;
 
 	//! global const identity matrix
 	NIRTCPP_API extern const matrix4 IdentityMatrix;

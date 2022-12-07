@@ -357,10 +357,10 @@ class aabbox3d
 		vector3d<T> MaxEdge;
 };
 
-	//! Typedef for a f32 3d bounding box.
-	typedef aabbox3d<f32> aabbox3df;
-	//! Typedef for an integer 3d bounding box.
-	typedef aabbox3d<s32> aabbox3di;
+	//! using type alias for a f32 3d bounding box.
+	using aabbox3df = aabbox3d<f32>;
+	//! using type alias for an integer 3d bounding box.
+	using aabbox3di = aabbox3d<s32>;
 
 } // end namespace core
 } // end namespace nirt

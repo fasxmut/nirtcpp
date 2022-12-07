@@ -277,9 +277,9 @@ namespace core
 	};
 
 	//! Rectangle with float values
-	typedef rect<f32> rectf;
+	using rectf = rect<f32>;
 	//! Rectangle with int values
-	typedef rect<s32> recti;
+	using recti = rect<s32>;
 
 } // end namespace core
 } // end namespace nirt

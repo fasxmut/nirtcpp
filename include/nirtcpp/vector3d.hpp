@@ -483,11 +483,11 @@ namespace core
 		return angle;
 	}
 
-	//! Typedef for a f32 3d vector.
-	typedef vector3d<f32> vector3df;
+	//! using type alias for a f32 3d vector.
+	using vector3df = vector3d<f32>;
 
-	//! Typedef for an integer 3d vector.
-	typedef vector3d<s32> vector3di;
+	//! using type alias for an integer 3d vector.
+	using vector3di = vector3d<s32>;
 
 	//! Function multiplying a scalar and a vector component-wise.
 	template<class S, class T>

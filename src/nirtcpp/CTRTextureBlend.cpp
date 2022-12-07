@@ -89,7 +89,7 @@ namespace video
 
 private:
 	// fragment shader
-	typedef void (CTRTextureBlend::*tFragmentShader) ();
+	using tFragmentShader = void (CTRTextureBlend::*) ();
 	void fragment_dst_color_zero ();
 	void fragment_dst_color_one ();
 	void fragment_dst_color_src_alpha ();

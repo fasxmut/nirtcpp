@@ -44,7 +44,7 @@ CGLXManager::CGLXManager(const SNirtcppCreationParameters& params, const SExpose
 	if (isAvailableGLX && glXQueryVersion(display, &major, &minor))
 	{
 #if defined(GLX_VERSION_1_3)
-		typedef GLXFBConfig * ( * PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
+		using PFNGLXCHOOSEFBCONFIGPROC = GLXFBConfig * (*) (Display *dpy, int screen, const int *attrib_list, int *nelements);
 
 #ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 		PFNGLXCHOOSEFBCONFIGPROC glxChooseFBConfig = (PFNGLXCHOOSEFBCONFIGPROC)glXGetProcAddress(reinterpret_cast<const GLubyte*>("glXChooseFBConfig"));
@@ -198,7 +198,7 @@ os::Printer::log("GLX >= 1.3", ELL_DEBUG);
 				glxFBConfig=configList[0];
 				XFree(configList);
 #ifdef _NIRT_OPENGL_USE_EXTPOINTER_
-				typedef XVisualInfo * ( * PFNGLXGETVISUALFROMFBCONFIGPROC) (Display *dpy, GLXFBConfig config);
+				using PFNGLXGETVISUALFROMFBCONFIGPROC = XVisualInfo * (*) (Display *dpy, GLXFBConfig config);
 				PFNGLXGETVISUALFROMFBCONFIGPROC glxGetVisualFromFBConfig= (PFNGLXGETVISUALFROMFBCONFIGPROC)glXGetProcAddress(reinterpret_cast<const GLubyte*>("glXGetVisualFromFBConfig"));
 				if (glxGetVisualFromFBConfig)
 					VisualInfo = glxGetVisualFromFBConfig(display,(GLXFBConfig)glxFBConfig);

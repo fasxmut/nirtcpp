@@ -313,7 +313,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShader(LPCSTR pSrcData,
 		// try to load shader functions from the dll and print error if failed.
 
 		// D3DXAssembleShader signature
-		typedef HRESULT (WINAPI *AssembleShaderFunction)(LPCSTR pSrcData,  UINT SrcDataLen,
+		using AssembleShaderFunction = HRESULT (WINAPI *)(LPCSTR pSrcData,  UINT SrcDataLen,
 					CONST D3DXMACRO* pDefines, LPD3DXINCLUDE pInclude,
 					DWORD Flags, LPD3DXBUFFER* ppShader,
 					LPD3DXBUFFER* ppErrorMsgs);
@@ -374,7 +374,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXAssembleShaderFromFile(LPCSTR pSrcF
 		// try to load shader functions from the dll and print error if failed.
 
 		// D3DXAssembleShaderFromFileA signature
-		typedef HRESULT (WINAPI *AssembleShaderFromFileFunction)(LPCSTR pSrcFile,
+		using AssembleShaderFromFileFunction = HRESULT (WINAPI *)(LPCSTR pSrcFile,
 				CONST D3DXMACRO* pDefines, LPD3DXINCLUDE pInclude, DWORD Flags,
 				LPD3DXBUFFER* ppShader, LPD3DXBUFFER* ppErrorMsgs);
 
@@ -434,7 +434,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShader(LPCSTR pSrcData, UINT
 		// try to load shader functions from the dll and print error if failed.
 
 		// D3DXCompileShader
-		typedef HRESULT (WINAPI *D3DXCompileShaderFunction)(LPCSTR pSrcData, UINT SrcDataLen, CONST D3DXMACRO* pDefines,
+		using D3DXCompileShaderFunction = HRESULT (WINAPI *)(LPCSTR pSrcData, UINT SrcDataLen, CONST D3DXMACRO* pDefines,
 				LPD3DXINCLUDE pInclude, LPCSTR pFunctionName,
 				LPCSTR pProfile, DWORD Flags, LPD3DXBUFFER* ppShader,
 				LPD3DXBUFFER* ppErrorMsgs, LPD3DXCONSTANTTABLE* ppConstantTable);
@@ -494,7 +494,7 @@ HRESULT CD3D9ShaderMaterialRenderer::stubD3DXCompileShaderFromFile(LPCSTR pSrcFi
 		// try to load shader functions from the dll and print error if failed.
 
 		// D3DXCompileShaderFromFileA
-		typedef HRESULT (WINAPI *D3DXCompileShaderFromFileFunction)(LPCSTR pSrcFile,
+		using D3DXCompileShaderFromFileFunction = HRESULT (WINAPI *)(LPCSTR pSrcFile,
 			CONST D3DXMACRO* pDefines, LPD3DXINCLUDE pInclude, LPCSTR pFunctionName,
 			LPCSTR pProfile, DWORD Flags, LPD3DXBUFFER* ppShader, LPD3DXBUFFER* ppErrorMsgs,
 			LPD3DXCONSTANTTABLE* ppConstantTable);

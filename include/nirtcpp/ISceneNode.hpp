@@ -25,10 +25,10 @@ namespace scene
 {
 	class ISceneManager;
 
-	//! Typedef for list of scene nodes
-	typedef core::list<ISceneNode*> ISceneNodeList;
-	//! Typedef for list of scene node animators
-	typedef core::list<ISceneNodeAnimator*> ISceneNodeAnimatorList;
+	//! using type alias for list of scene nodes
+	using ISceneNodeList = core::list<ISceneNode*>;
+	//! using type alias for list of scene node animators
+	using ISceneNodeAnimatorList = core::list<ISceneNodeAnimator*>;
 
 
 	//! Scene node interface.

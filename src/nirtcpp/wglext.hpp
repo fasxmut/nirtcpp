@@ -852,4 +852,9 @@ BOOL WINAPI wglWaitForSbcOML (HDC hdc, INT64 target_sbc, INT64 *ust, INT64 *msc,
 }
 #endif
 
+namespace wglext
+{
+	using wglext = class {};
+};
+
 #endif

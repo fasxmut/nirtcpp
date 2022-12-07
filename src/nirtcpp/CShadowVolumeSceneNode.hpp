@@ -58,7 +58,7 @@ namespace scene
 
 	private:
 
-		typedef core::array<core::vector3df> SShadowVolume;
+		using SShadowVolume = core::array<core::vector3df>;
 
 		void createShadowVolume(const core::vector3df& pos, bool isDirectional);
 		u32 createEdgesAndCaps(const core::vector3df& light, bool isDirectional, SShadowVolume* svp, core::aabbox3d<f32>* bb);

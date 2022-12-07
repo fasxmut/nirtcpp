@@ -15,13 +15,13 @@ namespace nirt
 namespace core
 {
 
-// Use typedefs where possible as they are more explicit...
+// Use using type aliases where possible as they are more explicit...
 
 //! \deprecated position2d is now a synonym for vector2d, but vector2d should be used directly.
-typedef vector2d<f32> position2df;
+using position2df = vector2d<f32>;
 
 //! \deprecated position2d is now a synonym for vector2d, but vector2d should be used directly.
-typedef vector2d<s32> position2di;
+using position2di = vector2d<s32>;
 } // namespace core
 } // namespace nirt
 

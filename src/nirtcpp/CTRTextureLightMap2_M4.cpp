@@ -83,7 +83,7 @@ public:
 private:
 
 	// fragment shader
-	typedef void (CTRTextureLightMap2_M4::* tFragmentShader) ();
+	using tFragmentShader = void (CTRTextureLightMap2_M4::*) ();
 	void fragment_linear_mag();
 	void fragment_nearest_min();
 

@@ -14,7 +14,7 @@ namespace nirt
 #define CBLIT_USE_FIXPOINT18
 
 #if defined(CBLIT_USE_FIXPOINT18)
-	typedef int f18;
+	using f18 = int;
 	#define f18_one 262144
 	#define f18_zero 0
 	#define f32_to_f18(x)((f18)floorf(((x) * 262144.f) + 0.f))
@@ -22,7 +22,7 @@ namespace nirt
 	#define f18_floor(x) ((x)>>18)
 	#define f18_round(x) ((x+131.072)>>18)
 #else
-	typedef float f18;
+	using f18 = float;
 	#define f18_one 1.f
 	#define f18_zero_dot_five 0.5f
 	#define f18_zero 0.f
@@ -1216,7 +1216,7 @@ enum eBlitter
 	BLITTER_TEXTURE_COMBINE_ALPHA,
 };
 
-typedef void (*tExecuteBlit) ( const SBlitJob * job );
+using tExecuteBlit = void (*) ( const SBlitJob * job );
 
 
 /*!

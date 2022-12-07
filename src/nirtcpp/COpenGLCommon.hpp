@@ -63,12 +63,12 @@
 #endif
 
 #ifndef GL_ARB_shader_objects
-typedef char GLcharARB;
-typedef unsigned int GLhandleARB;
+using GLcharARB = char;
+using GLhandleARB = unsigned int;
 #endif
 
 #ifndef GL_VERSION_2_0
-typedef char GLchar;
+using GLchar = char;
 #endif
 
 // Blending definitions.
@@ -191,8 +191,8 @@ namespace video
 	class COpenGLCoreCacheHandler;
 
 	class COpenGLDriver;
-	typedef COpenGLCoreTexture<COpenGLDriver> COpenGLTexture;
-	typedef COpenGLCoreRenderTarget<COpenGLDriver, COpenGLTexture> COpenGLRenderTarget;
+	using COpenGLTexture = COpenGLCoreTexture<COpenGLDriver>;
+	using COpenGLRenderTarget = COpenGLCoreRenderTarget<COpenGLDriver, COpenGLTexture>;
 	class COpenGLCacheHandler;
 
 }

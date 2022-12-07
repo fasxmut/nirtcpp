@@ -95,7 +95,7 @@ class string
 {
 public:
 
-	typedef T char_type;
+	using char_type = T;
 
 	//! Default constructor
 	string()
@@ -1454,11 +1454,11 @@ private:
 };
 
 
-//! Typedef for character strings
-typedef string<c8> stringc;
+//! using type alias for character strings
+using stringc = string<c8>;
 
-//! Typedef for wide character strings
-typedef string<wchar_t> stringw;
+//! using type alias for wide character strings
+using stringw = string<wchar_t>;
 
 //! Convert multibyte string to wide-character string
 /** Wrapper around mbstowcs from standard library, but directly using Nirtcpp string class.

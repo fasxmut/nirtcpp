@@ -173,7 +173,7 @@ bool CD3D9Driver::initDriver(HWND hwnd, bool pureSoftware)
 			return false;
 		}
 
-		typedef IDirect3D9 * (__stdcall *D3DCREATETYPE)(UINT);
+		using D3DCREATETYPE = IDirect3D9 * (__stdcall *)(UINT);
 		D3DCREATETYPE d3dCreate = (D3DCREATETYPE) GetProcAddress(D3DLibrary, "Direct3DCreate9");
 
 		if (!d3dCreate)

@@ -957,4 +957,9 @@ Status glXGetTransparentIndexSUN (Display *dpy, Window overlay, Window underlay,
 }
 #endif
 
+namespace glxext
+{
+	using glxext = class {};
+}
+
 #endif

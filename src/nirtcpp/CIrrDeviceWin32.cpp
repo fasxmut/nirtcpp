@@ -1491,7 +1491,7 @@ video::IVideoModeList* CIrrDeviceWin32::getVideoModeList()
 	return VideoModeList;
 }
 
-typedef BOOL (WINAPI *PGPI)(DWORD, DWORD, DWORD, DWORD, PDWORD);
+using PGPI = BOOL (WINAPI *)(DWORD, DWORD, DWORD, DWORD, PDWORD);
 // Needed for old windows apis
 // depending on the SDK version and compilers some defines might be available
 // or not

@@ -75,9 +75,9 @@ namespace quake3
 		c8 scriptDir [ 64 ];
 	};
 
-	// some useful typedefs
-	typedef core::array< core::stringc > tStringList;
-	typedef core::array< video::ITexture* > tTexArray;
+	// some useful using type aliases
+	using tStringList = core::array< core::stringc >;
+	using tTexArray = core::array< video::ITexture* >;
 
 	// string helper.. TODO: move to generic files
 	inline s16 isEqual ( const core::stringc &string, u32 &pos, const c8 * const list[], u16 listSize )
@@ -674,9 +674,9 @@ namespace quake3
 		core::stringc name;
 	};
 
-	typedef IShader IEntity;
+	using IEntity = IShader;
 
-	typedef core::array < IEntity > tQ3EntityList;
+	using tQ3EntityList = core::array < IEntity >;
 
 	/*
 		dump shader like original layout, regardless of internal data holding

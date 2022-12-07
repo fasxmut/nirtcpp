@@ -394,8 +394,8 @@ public:
 		core::swap(allocator, other.allocator); // memory is still released by the same allocator used for allocation
 	}
 
-	typedef T value_type;
-	typedef u32 size_type;
+	using value_type = T;
+	using size_type = u32;
 
 private:
 

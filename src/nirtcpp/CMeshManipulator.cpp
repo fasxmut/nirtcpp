@@ -1720,7 +1720,7 @@ IMesh* CMeshManipulator::createForsythOptimizedMesh(const IMesh *mesh) const
 				buf->Indices.reallocate(icount);
 
 				core::map<const video::S3DVertex, const u16> sind; // search index for fast operation
-				typedef core::map<const video::S3DVertex, const u16>::Node snode;
+				using snode = core::map<const video::S3DVertex, const u16>::Node;
 
 				// Main algorithm
 				u32 highest = 0;
@@ -1832,7 +1832,7 @@ IMesh* CMeshManipulator::createForsythOptimizedMesh(const IMesh *mesh) const
 				buf->Indices.reallocate(icount);
 
 				core::map<const video::S3DVertex2TCoords, const u16> sind; // search index for fast operation
-				typedef core::map<const video::S3DVertex2TCoords, const u16>::Node snode;
+				using snode = core::map<const video::S3DVertex2TCoords, const u16>::Node;
 
 				// Main algorithm
 				u32 highest = 0;
@@ -1945,7 +1945,7 @@ IMesh* CMeshManipulator::createForsythOptimizedMesh(const IMesh *mesh) const
 				buf->Indices.reallocate(icount);
 
 				core::map<const video::S3DVertexTangents, const u16> sind; // search index for fast operation
-				typedef core::map<const video::S3DVertexTangents, const u16>::Node snode;
+				using snode = core::map<const video::S3DVertexTangents, const u16>::Node;
 
 				// Main algorithm
 				u32 highest = 0;

@@ -108,12 +108,11 @@ struct ddsColor
 
 
 /* endian tomfoolery */
-typedef union
+using floatSwapUnion = union
 {
 	f32	f;
 	c8	c[ 4 ];
-}
-floatSwapUnion;
+};
 
 
 #ifndef __BIG_ENDIAN__

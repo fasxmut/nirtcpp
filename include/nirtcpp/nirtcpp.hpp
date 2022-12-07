@@ -339,8 +339,8 @@ namespace nirt
 		bool vsync = false,
 		IEventReceiver* receiver = 0);
 
-	//! typedef for Function Pointer
-	typedef NirtcppDevice* (IRRCALLCONV *funcptr_createDevice )(
+	//! using type alias for Function Pointer
+	using funcptr_createDevice = NirtcppDevice* (IRRCALLCONV *)(
 			video::E_DRIVER_TYPE driverType,
 			const core::dimension2d<u32>& windowSize,
 			u32 bits,
@@ -361,8 +361,8 @@ namespace nirt
 	extern "C" NIRTCPP_API NirtcppDevice* IRRCALLCONV createDeviceEx(
 		const SNirtcppCreationParameters& parameters);
 
-	//! typedef for Function Pointer
-	typedef NirtcppDevice* (IRRCALLCONV *funcptr_createDeviceEx )( const SNirtcppCreationParameters& parameters );
+	//! using type alias for Function Pointer
+	using funcptr_createDeviceEx = NirtcppDevice* (IRRCALLCONV *)( const SNirtcppCreationParameters& parameters );
 
 
 	// THE FOLLOWING IS AN EMPTY LIST OF ALL SUB NAMESPACES

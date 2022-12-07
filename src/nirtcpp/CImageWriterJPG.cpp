@@ -33,16 +33,16 @@ namespace video
 
 // The writer uses a 4k buffer and flushes to disk each time it's filled
 #define OUTPUT_BUF_SIZE 4096
-typedef struct
+using mem_destination_mgr = struct
 {
 	struct jpeg_destination_mgr pub;/* public fields */
 
 	io::IWriteFile* file;		/* target file */
 	JOCTET buffer[OUTPUT_BUF_SIZE];	/* image buffer */
-} mem_destination_mgr;
+};
 
 
-typedef mem_destination_mgr * mem_dest_ptr;
+using mem_dest_ptr = mem_destination_mgr *;
 
 
 // init

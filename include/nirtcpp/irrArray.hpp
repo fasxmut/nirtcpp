@@ -639,9 +639,9 @@ public:
 		other.is_sorted = helper_is_sorted;
 	}
 
-	typedef TAlloc allocator_type;
-	typedef T value_type;
-	typedef u32 size_type;
+	using allocator_type = TAlloc;
+	using value_type = T;
+	using size_type = u32;
 
 private:
 	T* data;

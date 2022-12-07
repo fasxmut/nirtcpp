@@ -91,7 +91,7 @@ public:
 private:
 
 	// fragment shader
-	typedef void (CTRTextureGouraudAlphaNoZ::*tFragmentShader) ();
+	using tFragmentShader = void (CTRTextureGouraudAlphaNoZ::*) ();
 	void fragment_linear();
 	void fragment_linear_alpharef();
 	void fragment_point_noz();

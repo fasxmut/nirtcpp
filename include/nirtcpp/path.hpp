@@ -16,7 +16,7 @@ namespace io
 /** This type will transparently handle different file system encodings. 
     NOTE: For historical reasons the tool-functions using io::path are all in coreutil.h
 */
-typedef core::string<fschar_t> path;
+using path = core::string<fschar_t>;
 
 //! Used in places where we identify objects by a filename, but don't actually work with the real filename
 /** Nirtcpp is internally not case-sensitive when it comes to names.

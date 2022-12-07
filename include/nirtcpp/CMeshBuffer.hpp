@@ -352,11 +352,11 @@ namespace scene
 	};
 
 	//! Standard meshbuffer
-	typedef CMeshBuffer<video::S3DVertex> SMeshBuffer;
+	using SMeshBuffer = CMeshBuffer<video::S3DVertex>;
 	//! Meshbuffer with two texture coords per vertex, e.g. for lightmaps
-	typedef CMeshBuffer<video::S3DVertex2TCoords> SMeshBufferLightMap;
+	using SMeshBufferLightMap = CMeshBuffer<video::S3DVertex2TCoords>;
 	//! Meshbuffer with vertices having tangents stored, e.g. for normal mapping
-	typedef CMeshBuffer<video::S3DVertexTangents> SMeshBufferTangents;
+	using SMeshBufferTangents = CMeshBuffer<video::S3DVertexTangents>;
 
 	//! partial specialization to return types
 	template <>

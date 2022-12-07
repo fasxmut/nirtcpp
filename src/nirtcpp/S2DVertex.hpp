@@ -7,7 +7,7 @@
 
 #include <nirtcpp/vector2d.hpp>
 
-typedef signed short TZBufferType;
+using TZBufferType = signed short;
 
 namespace nirt
 {

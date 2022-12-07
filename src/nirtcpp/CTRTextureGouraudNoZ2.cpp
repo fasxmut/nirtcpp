@@ -91,7 +91,7 @@ public:
 private:
 
 	// fragment shader
-	typedef void (CTRTextureGouraudNoZ2::* tFragmentShader) ();
+	using tFragmentShader = void (CTRTextureGouraudNoZ2::*) ();
 	void fragment_linear();
 	void fragment_nearest();
 
