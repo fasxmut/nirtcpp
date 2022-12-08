@@ -713,8 +713,7 @@ private:
 	u8* mem;
 };
 
-//#define memcpy_s4DVertexPair(dst,src) memcpy(dst,src,sizeof_s4DVertex * 2)
-static REALINLINE void memcpy_s4DVertexPair(void* burning_restrict dst, const void* burning_restrict src)
+static REALINLINE void copy_s4DVertexPair(void* burning_restrict dst, const void* burning_restrict src)
 {
 	//test alignment -> if already in aligned data
 #if 0

@@ -50,7 +50,7 @@ void CDepthBuffer::clear(f32 value, const interlaced_control interlaced)
 	zMaxValue.f = value;
 #endif
 
-	memset32_interlaced(Buffer, zMaxValue.u, Pitch, Size.Height, interlaced);
+	fill32_interlaced(Buffer, zMaxValue.u, Pitch, Size.Height, interlaced);
 }
 
 
@@ -116,7 +116,7 @@ void CStencilBuffer::clear(u32 value, const interlaced_control interlaced)
 		set |= set << 8;
 		set |= set << 16;
 	}
-	memset32_interlaced ( Buffer, set, Pitch,Size.Height,interlaced );
+	fill32_interlaced ( Buffer, set, Pitch,Size.Height,interlaced );
 }
 
 

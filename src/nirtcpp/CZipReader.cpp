@@ -6,6 +6,9 @@
 
 #include "os.hpp"
 
+#include <algorithm>
+#include <string>
+
 // This method is used for error output from bzip2.
 extern "C" void bz_internal_error(int errorCode)
 {
@@ -184,7 +187,7 @@ bool CZipReader::scanGZipHeader()
 {
 	SZipFileEntry entry;
 	entry.Offset = 0;
-	memset(&entry.header, 0, sizeof(SZIPFileHeader));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&entry.header), sizeof(SZIPFileHeader), 0);
 
 	// read header
 	SGZIPMemberHeader header;
@@ -293,7 +296,7 @@ bool CZipReader::scanZipHeader(bool ignoreGPBits)
 	io::path ZipFileName = "";
 	SZipFileEntry entry;
 	entry.Offset = 0;
-	memset(&entry.header, 0, sizeof(SZIPFileHeader));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&entry.header), sizeof(SZIPFileHeader), 0);
 
 	File->read(&entry.header, sizeof(SZIPFileHeader));
 
@@ -647,7 +650,8 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 					return 0;
 				}
 
-				//memset(pcData, 0, decryptedSize);
+				// pcData is u8 *
+				//std::fill_n(pcData, decryptedSize, 0);
 				File->seek(e.Offset);
 				File->read(pcData, decryptedSize);
 			}
@@ -721,13 +725,14 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 					return 0;
 				}
 
-				//memset(pcData, 0, decryptedSize);
+				// pcData is u8 *
+				//std::fill_n(pcData, decryptedSize, 0);
 				File->seek(e.Offset);
 				File->read(pcData, decryptedSize);
 			}
 
 			bz_stream bz_ctx;
-			memset(&bz_ctx, 0, sizeof(bz_ctx));
+			std::fill_n(reinterpret_cast<std::uint8_t *>(&bz_ctx), sizeof(bz_ctx), 0);
 			/* use BZIP2's default memory allocation
 			bz_ctx->bzalloc = NULL;
 			bz_ctx->bzfree  = NULL;
@@ -794,7 +799,8 @@ IReadFile* CZipReader::createAndOpenFile(u32 index)
 					return 0;
 				}
 
-				//memset(pcData, 0, decryptedSize);
+				// pcData is u8 *
+				//std::fill_n(pcData, decryptedSize, 0);
 				File->seek(e.Offset);
 				File->read(pcData, decryptedSize);
 			}

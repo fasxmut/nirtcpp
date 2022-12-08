@@ -6,6 +6,8 @@
 #include <nirtcpp/SColor.hpp>
 #include "os.hpp"
 #include <nirtcpp/irrString.hpp>
+#include <algorithm>
+#include <string>
 
 namespace nirt
 {
@@ -218,7 +220,7 @@ void CColorConverter::convert16BitTo16Bit(const s16* in, s16* out, u32 width, u3
 		for (u32 x=0; x<width; ++x)
 			out[x]=os::Byteswap::byteswap(in[x]);
 #else
-		memcpy(out, in, width*sizeof(s16));
+		std::copy_n(in, width, out);
 #endif
 		if (!flip)
 			out += width;
@@ -254,7 +256,7 @@ void CColorConverter::convert24BitTo24Bit(const u8* in, u8* out, u32 width, u32 
 		}
 		else
 		{
-			memcpy(out,in,lineWidth);
+			std::copy_n(in, lineWidth, out);
 		}
 		if (!flip)
 			out += lineWidth;
@@ -315,7 +317,7 @@ void CColorConverter::convert32BitTo32Bit(const s32* in, s32* out, u32 width, u3
 		for (u32 x=0; x<width; ++x)
 			out[x]=os::Byteswap::byteswap(in[x]);
 #else
-		memcpy(out, in, width*sizeof(s32));
+		std::copy_n(in, width, out);
 #endif
 		if (!flip)
 			out += width;
@@ -369,7 +371,7 @@ void CColorConverter::convert_A1R5G5B5toA8R8G8B8(const void* sP, u32 sN, void* d
 
 void CColorConverter::convert_A1R5G5B5toA1R5G5B5(const void* sP, u32 sN, void* dP)
 {
-	memcpy(dP, sP, sN * 2);
+	std::copy_n((const u8 *)sP, sN*2, (u8 *)dP);
 }
 
 void CColorConverter::convert_A1R5G5B5toR5G6B5(const void* sP, u32 sN, void* dP)
@@ -417,7 +419,7 @@ void CColorConverter::convert_A8R8G8B8toB8G8R8(const void* sP, u32 sN, void* dP)
 
 void CColorConverter::convert_A8R8G8B8toA8R8G8B8(const void* sP, u32 sN, void* dP)
 {
-	memcpy(dP, sP, sN * 4);
+	std::copy_n((const u8 *)sP, sN*4, (u8 *)dP);
 }
 
 void CColorConverter::convert_A8R8G8B8toA1R5G5B5(const void* sP, u32 sN, void* dP)
@@ -486,7 +488,7 @@ void CColorConverter::convert_A8R8G8B8toR3G3B2(const void* sP, u32 sN, void* dP)
 
 void CColorConverter::convert_R8G8B8toR8G8B8(const void* sP, u32 sN, void* dP)
 {
-	memcpy(dP, sP, sN * 3);
+	std::copy_n((const u8 *)sP, sN*3, (u8 *)dP);
 }
 
 void CColorConverter::convert_R8G8B8toA8R8G8B8(const void* sP, u32 sN, void* dP)
@@ -585,7 +587,7 @@ void CColorConverter::convert_R8G8B8toR5G6B5(const void* sP, u32 sN, void* dP)
 
 void CColorConverter::convert_R5G6B5toR5G6B5(const void* sP, u32 sN, void* dP)
 {
-	memcpy(dP, sP, sN * 2);
+	std::copy_n((const u8 *)sP, sN*2, (u8 *)dP);
 }
 
 void CColorConverter::convert_R5G6B5toR8G8B8(const void* sP, u32 sN, void* dP)

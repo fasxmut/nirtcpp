@@ -2,6 +2,9 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
+#include <algorithm>
+#include <string>
+
 #define NIRT_DONT_DO_MEMORY_DEBUGGING_HERE
 #include "CD3D9Driver.hpp"
 
@@ -961,14 +964,14 @@ bool CD3D9Driver::updateVertexHardwareBuffer(SHWBufferLink_d3d9 *hwBuffer)
 
 		void* lockedBuffer = 0;
 		hwBuffer->vertexBuffer->Lock(0, bufSize, (void**)&lockedBuffer, flags);
-		memcpy(lockedBuffer, vertices, bufSize);
+		std::copy_n((const u8 *)vertices, bufSize, (u8 *)lockedBuffer);
 		hwBuffer->vertexBuffer->Unlock();
 	}
 	else
 	{
 		void* lockedBuffer = 0;
 		hwBuffer->vertexBuffer->Lock(0, bufSize, (void**)&lockedBuffer, D3DLOCK_DISCARD);
-		memcpy(lockedBuffer, vertices, bufSize);
+		std::copy_n((const u8 *)vertices, bufSize, (u8 *)lockedBuffer);
 		hwBuffer->vertexBuffer->Unlock();
 	}
 
@@ -1026,7 +1029,7 @@ bool CD3D9Driver::updateIndexHardwareBuffer(SHWBufferLink_d3d9 *hwBuffer)
 		if (FAILED(hwBuffer->indexBuffer->Lock( 0, 0, (void**)&lockedBuffer, flags)))
 			return false;
 
-		memcpy(lockedBuffer, indices, bufSize);
+		std::copy_n((const u8 *)indices, bufSize, (u8 *)lockedBuffer);
 		hwBuffer->indexBuffer->Unlock();
 
 		hwBuffer->indexBufferSize = bufSize;
@@ -1036,7 +1039,7 @@ bool CD3D9Driver::updateIndexHardwareBuffer(SHWBufferLink_d3d9 *hwBuffer)
 		void* lockedBuffer = 0;
 		if( SUCCEEDED(hwBuffer->indexBuffer->Lock( 0, 0, (void**)&lockedBuffer, D3DLOCK_DISCARD)))
 		{
-			memcpy(lockedBuffer, indices, bufSize);
+			std::copy_n((const u8 *)indices, bufSize, (u8 *)lockedBuffer);
 			hwBuffer->indexBuffer->Unlock();
 		}
 	}

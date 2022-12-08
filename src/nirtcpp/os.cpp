@@ -6,6 +6,8 @@
 #include <nirtcpp/irrString.hpp>
 #include <nirtcpp/IrrCompileConfig.hpp>
 #include <nirtcpp/irrMath.hpp>
+#include <algorithm>
+#include <string>
 
 #if defined(_NIRT_COMPILE_WITH_SDL_DEVICE_)
 	#include <SDL/SDL_endian.h>
@@ -254,7 +256,7 @@ namespace os
 
 		// init with all 0 to indicate error
 		ITimer::RealTimeDate date;
-		memset(&date, 0, sizeof(date));
+		std::fill_n(reinterpret_cast<std::uint8_t *>(&date), sizeof date, 0);
 		// at least Windows returns NULL on some illegal dates
 		if (timeinfo)
 		{

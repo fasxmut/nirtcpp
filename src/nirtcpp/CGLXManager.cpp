@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "CGLXManager.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_GLX_MANAGER_
 
@@ -280,7 +282,7 @@ bool CGLXManager::initialize(const SNirtcppCreationParameters& params, const SEx
 
 void CGLXManager::terminate()
 {
-	memset((void*)&CurrentContext, 0, sizeof(CurrentContext));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&CurrentContext), sizeof CurrentContext, 0);
 }
 
 bool CGLXManager::generateSurface()

@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CImageLoaderPPM.hpp"
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_PPM_LOADER_
 
@@ -88,7 +89,8 @@ IImage* CImageLoaderPPM::loadImage(io::IReadFile* file) const
 			if (file->getSize()-file->getPos() < (long)(2*size)) // optimistic test
 				return 0;
 			data = new u8[bytesize];
-			memset(data, 0, bytesize);
+			// data is u8 *
+			std::fill_n(data, bytesize, 0);
 			u32 shift=0;
 			for (u32 i=0; i<size; ++i)
 			{

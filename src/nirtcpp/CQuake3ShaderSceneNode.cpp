@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_BSP_LOADER_
 
@@ -1172,7 +1174,7 @@ void CQuake3ShaderSceneNode::animate( u32 stage,core::matrix4 &texture )
 				break;
 			case TRANSFORM:
 				// tcMod <transform> <m00> <m01> <m10> <m11> <t0> <t1>
-				memset(f, 0, sizeof ( f ));
+				std::fill_n(reinterpret_cast<std::uint8_t *>(f), sizeof f, 0);
 				f[10] = f[15] = 1.f;
 
 				f[0] = getAsFloat( v.content, pos );

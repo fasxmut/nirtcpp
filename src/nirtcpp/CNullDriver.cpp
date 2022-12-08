@@ -16,6 +16,8 @@
 #include "CColorConverter.hpp"
 #include <nirtcpp/IAttributeExchangingObject.hpp>
 #include <nirtcpp/IRenderTarget.hpp>
+#include <algorithm>
+#include <string>
 
 
 namespace nirt
@@ -190,7 +192,7 @@ CNullDriver::CNullDriver(io::IFileSystem* io, const core::dimension2d<u32>& scre
 
 
 	// set ExposedData to 0
-	memset((void*)&ExposedData, 0, sizeof(ExposedData));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&ExposedData), sizeof ExposedData, 0);
 	for (u32 i=0; i<video::EVDF_COUNT; ++i)
 		FeatureEnabled[i]=true;
 
@@ -1314,7 +1316,8 @@ void CNullDriver::makeNormalMapTexture(video::ITexture* texture, f32 amplitude) 
 		u32 pitch = texture->getPitch() / 4;
 
 		s32* in = new s32[dim.Height * pitch];
-		memcpy(in, p, dim.Height * pitch * 4);
+		// p, in : s32
+		std::copy_n(p, dim.Height * pitch, in);
 
 		for (s32 x=0; x < s32(pitch); ++x)
 			for (s32 y=0; y < s32(dim.Height); ++y)
@@ -1363,7 +1366,8 @@ void CNullDriver::makeNormalMapTexture(video::ITexture* texture, f32 amplitude) 
 		// copy texture
 
 		s16* in = new s16[dim.Height * pitch];
-		memcpy(in, p, dim.Height * pitch * 2);
+		// p, in : s16
+		std::copy_n(p, dim.Height * pitch, in);
 
 		for (s32 x=0; x < s32(pitch); ++x)
 			for (s32 y=0; y < s32(dim.Height); ++y)

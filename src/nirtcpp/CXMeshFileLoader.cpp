@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_X_LOADER_
 
@@ -310,7 +311,7 @@ bool CXMeshFileLoader::load(io::IReadFile* file)
 			{
 				// store vertices in buffers and remember relation in verticesLinkIndex
 				u32* vCountArray = new u32[mesh->Buffers.size()];
-				memset(vCountArray, 0, mesh->Buffers.size()*sizeof(u32));
+				std::fill_n(vCountArray, mesh->Buffers.size(), 0);
 				// count vertices in each buffer and reallocate
 				for (i=0; i<mesh->Vertices.size(); ++i)
 				{
@@ -356,7 +357,8 @@ bool CXMeshFileLoader::load(io::IReadFile* file)
 				}
 
 				// count indices per buffer and reallocate
-				memset(vCountArray, 0, mesh->Buffers.size()*sizeof(u32));
+				// vCountArray is u32 *
+				std::fill_n(vCountArray, mesh->Buffers.size(), 0);
 				for (i=0; i<mesh->FaceMaterialIndices.size(); ++i)
 					++vCountArray[ mesh->FaceMaterialIndices[i] ];
 				for (i=0; i!=mesh->Buffers.size(); ++i)

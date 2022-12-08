@@ -11,6 +11,7 @@
 #include <nirtcpp/SColor.hpp>
 #include <nirtcpp/irrAllocator.hpp>
 #include <string.h>
+#include <algorithm>
 
 namespace nirt
 {
@@ -311,7 +312,7 @@ public:
 					} while (width != 1 || height != 1);
 
 					MipMapsData = Allocator.allocate(dataSize);
-					memcpy(MipMapsData, data, dataSize);
+					std::copy_n((char *)data, dataSize, (char *)MipMapsData);
 
 					DeleteMipMapsMemory = true;
 				}

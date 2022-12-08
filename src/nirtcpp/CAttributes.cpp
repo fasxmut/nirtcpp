@@ -7,6 +7,7 @@
 #include <nirtcpp/ITexture.hpp>
 #include <nirtcpp/IXMLWriter.hpp>
 #include <nirtcpp/IVideoDriver.hpp>
+#include <algorithm>
 
 #ifndef _NIRT_COMPILE_WITH_XML_
 	#include "CXMLReader.hpp"	// for noXML
@@ -94,7 +95,7 @@ void CAttributes::getAttributeAsString(const c8* attributeName, char* target) co
 	if (att)
 	{
 		core::stringc str = att->getString();
-		strcpy(target,str.data());
+		std::copy_n(str.data(), str.size(), target);
 	}
 	else
 		target[0] = 0;
@@ -162,7 +163,7 @@ void CAttributes::getAttributeAsStringW(const c8* attributeName, wchar_t* target
 	if (att)
 	{
 		core::stringw str = att->getStringW();
-		wcscpy(target,str.data());
+		std::copy_n(str.data(), str.size(), target);
 	}
 	else
 		target[0] = 0;

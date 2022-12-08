@@ -446,7 +446,7 @@ B3D, MS3D or X meshes */
 #endif
 #endif // _NIRT_COMPILE_WITH_SKINNED_MESH_SUPPORT_
 
-//! Define _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_ if you want to load Nirtcpp Engine .irrmesh files
+//! Define _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_ if you want to load Irrlicht Engine .irrmesh files
 #define _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
 #ifdef NO_NIRT_COMPILE_WITH_NIRT_MESH_LOADER_
 #undef _NIRT_COMPILE_WITH_NIRT_MESH_LOADER_

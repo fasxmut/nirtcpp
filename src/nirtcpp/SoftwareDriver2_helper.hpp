@@ -69,9 +69,8 @@ using tStencilSample = u8;
 //! align_next - align to next upper 2^n
 #define align_next(num,to) (((num) + (to-1)) & (~(to-1)))
 
-//! a more useful memset for pixel. dest must be aligned at least to 4 byte
-// (standard memset only works with 8-bit values)
-static inline void memset32(void* dest, const u32 value, size_t bytesize)
+//! a more useful memory fill for pixel. dest must be aligned at least to 4 byte
+static inline void fill32(void* dest, const u32 value, size_t bytesize)
 {
 	u32* d = (u32*)dest;
 
@@ -104,9 +103,8 @@ static inline void memset32(void* dest, const u32 value, size_t bytesize)
 	}
 }
 
-//! a more useful memset for pixel. dest must be aligned at least to 2 byte
-// (standard memset only works with 8-bit values)
-static inline void memset16(void* dest, const u16 value, size_t bytesize)
+//! a more useful memory fill for pixel. dest must be aligned at least to 2 byte
+static inline void fill16(void* dest, const u16 value, size_t bytesize)
 {
 	u16* d = (u16*)dest;
 
@@ -139,16 +137,16 @@ static inline void memset16(void* dest, const u16 value, size_t bytesize)
 	}
 }
 
-//! memset interleaved
-static inline void memset32_interlaced(void* dest, const u32 value, size_t pitch, u32 height, const interlaced_control Interlaced)
+//! memory fill interleaved
+static inline void fill32_interlaced(void* dest, const u32 value, size_t pitch, u32 height, const interlaced_control Interlaced)
 {
-	if (Interlaced.bypass) return memset32(dest, value, pitch * height);
+	if (Interlaced.bypass) return fill32(dest, value, pitch * height);
 
 	u8* dst = (u8*)dest;
 	interlace_scanline_data line;
 	for (line.y = 0; line.y < height; line.y += SOFTWARE_DRIVER_2_STEP_Y)
 	{
-		if_interlace_scanline_active memset32(dst, value, pitch);
+		if_interlace_scanline_active fill32(dst, value, pitch);
 		dst += pitch;
 	}
 }
@@ -1300,13 +1298,13 @@ inline s32 intervall_intersect_test(const sIntervall& a, const sIntervall& b)
 #endif
 
 // strings
-static inline void tiny_strncpy(char* to, const char* from, const size_t count)
+static inline void copy_n_str_tiny(char* to, const char* from, const size_t count)
 {
 	for (size_t r = 0; r < count && (*to = *from) != '\0'; ++from, ++to, ++r);
 	*to = '\0';
 }
 
-#define tiny_strcpy(a, b) tiny_strncpy(a,b,sizeof(a)-1)
+#define copy_str_tiny(a, b) copy_n_str_tiny(a,b,sizeof(a)-1)
 
 
 // tiny_isequal = !strncmp(a,b,sizeof(a)-1)

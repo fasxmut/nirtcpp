@@ -8,6 +8,8 @@
 // This tool created by ZDimitor everyone can use it as wants
 //-----------------------------------------------------------------------------
 
+#include <algorithm>
+
 #include <nirtcpp/IrrCompileConfig.hpp>
 #ifdef _NIRT_COMPILE_WITH_MY3D_LOADER_
 

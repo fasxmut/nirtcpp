@@ -3,11 +3,13 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_WINDOWS_DEVICE_
 
 #if defined (__STRICT_ANSI__)
-    #error Compiling with __STRICT_ANSI__ not supported. g++ does set this when compiling with -std=c++11 or -std=c++0x. Use instead -std=gnu++11 or -std=gnu++0x. Or use -U__STRICT_ANSI__ to disable strict ansi.
+    #warning Compiling with __STRICT_ANSI__ not supported. g++ does set this when compiling with -std=c++11 or -std=c++0x. Use instead -std=gnu++11 or -std=gnu++0x. Or use -U__STRICT_ANSI__ to disable strict ansi.
 #endif
 
 #include "CIrrDeviceWin32.hpp"
@@ -999,7 +1001,7 @@ CIrrDeviceWin32::CIrrDeviceWin32(const SNirtcppCreationParameters& params)
 
 	// Store original desktop mode.
 
-	memset(&DesktopMode, 0, sizeof(DesktopMode));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&DesktopMode), sizeof DesktopMode, 0);
 	DesktopMode.dmSize = sizeof(DesktopMode);
 
 	EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &DesktopMode);
@@ -1411,7 +1413,7 @@ bool CIrrDeviceWin32::switchToFullScreen(bool reset)
 	// use default values from current setting
 
 	DEVMODE dm;
-	memset(&dm, 0, sizeof(dm));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&dm), sizeof dm, 0);
 	dm.dmSize = sizeof(dm);
 
 	EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dm);
@@ -1473,7 +1475,7 @@ video::IVideoModeList* CIrrDeviceWin32::getVideoModeList()
 		// enumerate video modes.
 		DWORD i=0;
 		DEVMODE mode;
-		memset(&mode, 0, sizeof(mode));
+		std::fill_n(reinterpret_cast<std::uint8_t *>(&mode), sizeof mode, 0);
 		mode.dmSize = sizeof(mode);
 
 		while (EnumDisplaySettings(NULL, i, &mode))

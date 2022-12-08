@@ -244,7 +244,7 @@ namespace scene
 		 *        1. The loader is based on Salvatore Russo's .dmf
 		 *        loader, I just changed some parts of it. Thanks to
 		 *        Salvatore for his work and for allowing me to use his
-		 *        code in Nirtcpp and put it under Nirtcpp's license.
+		 *        code in Irrlicht and put it under Irrlicht's license.
 		 *        For newer and more enhanced versions of the loader,
 		 *        take a look at delgine.com.
 		 *    </TD>
@@ -266,9 +266,9 @@ namespace scene
 		 *        by Fabio Concas and adapted by Thomas Alten.</TD>
 		 *  </TR>
 		 *  <TR>
-		 *    <TD>Nirtcpp Mesh (.irrMesh)</TD>
+		 *    <TD>Irrlicht Mesh (.irrMesh)</TD>
 		 *    <TD>This is a static mesh format written in XML, native
-		 *      to Nirtcpp and written by the irr mesh writer.
+		 *      to Irrlicht and written by the irr mesh writer.
 		 *      This format is exported by the CopperCube engine's
 		 *      lightmapper.</TD>
 		 *  </TR>
@@ -342,7 +342,7 @@ namespace scene
 		 *      <TD>Quake 3 levels (.bsp)</TD>
 		 *      <TD>Quake 3 is a popular game by IDSoftware, and .pk3
 		 *        files contain .bsp files and textures/lightmaps
-		 *        describing huge prelighted levels. Nirtcpp can read
+		 *        describing huge prelighted levels. Irrlicht can read
 		 *        .pk3 and .bsp files directly and thus render Quake 3
 		 *        levels directly. Written by Nikolaus Gebhardt
 		 *        enhanced by Dean P. Macri with the curved surfaces
@@ -799,7 +799,7 @@ namespace scene
 		for reducing the detail of triangle blocks which are far away.
 		The code for the TerrainSceneNode is based on the terrain
 		renderer by Soconne and the GeoMipMapSceneNode developed by
-		Spintz. They made their code available for Nirtcpp and allowed
+		Spintz. They made their code available for Irrlicht and allowed
 		it to be distributed under this licence. I only modified some
 		parts. A lot of thanks go to them.
 
@@ -1557,7 +1557,7 @@ namespace scene
 		//! Saves the current scene into a file.
 		/** Scene nodes with the option isDebugObject set to true are
 		not being saved. The scene is usually written to an .irr file,
-		an xml based format. .irr files can Be edited with the Nirtcpp
+		an xml based format. .irr files can Be edited with the Irrlicht
 		Engine Editor, irrEdit (http://www.ambiera.com/irredit/). To
 		load .irr files again, see ISceneManager::loadScene().
 		\param filename Name of the file.
@@ -1575,7 +1575,7 @@ namespace scene
 		//! Saves the current scene into a file.
 		/** Scene nodes with the option isDebugObject set to true are
 		not being saved. The scene is usually written to an .irr file,
-		an xml based format. .irr files can Be edited with the Nirtcpp
+		an xml based format. .irr files can Be edited with the Irrlicht
 		Engine Editor, irrEdit (http://www.ambiera.com/irredit/). To
 		load .irr files again, see ISceneManager::loadScene().
 		\param file File where the scene is saved into.
@@ -1593,7 +1593,7 @@ namespace scene
 		//! Saves the current scene into a file.
 		/** Scene nodes with the option isDebugObject set to true are
 		not being saved. The scene is usually written to an .irr file,
-		an xml based format. .irr files can Be edited with the Nirtcpp
+		an xml based format. .irr files can Be edited with the Irrlicht
 		Engine Editor, irrEdit (http://www.ambiera.com/irredit/). To
 		load .irr files again, see ISceneManager::loadScene().
 		\param writer XMLWriter with which the scene is saved.
@@ -1614,7 +1614,7 @@ namespace scene
 		/** The scene is usually loaded from an .irr file, an xml based
 		format, but other scene formats can be added to the engine via
 		ISceneManager::addExternalSceneLoader. .irr files can Be edited
-		with the Nirtcpp Engine Editor, irrEdit
+		with the Irrlicht Engine Editor, irrEdit
 		(http://www.ambiera.com/irredit/) or saved directly by the engine
 		using ISceneManager::saveScene().
 		\param filename Name of the file to load from.
@@ -1633,7 +1633,7 @@ namespace scene
 		/** The scene is usually loaded from an .irr file, an xml based
 		format, but other scene formats can be added to the engine via
 		ISceneManager::addExternalSceneLoader. .irr files can Be edited
-		with the Nirtcpp Engine Editor, irrEdit
+		with the Irrlicht Engine Editor, irrEdit
 		(http://www.ambiera.com/irredit/) or saved directly by the engine
 		using ISceneManager::saveScene().
 		\param file File where the scene is loaded from.

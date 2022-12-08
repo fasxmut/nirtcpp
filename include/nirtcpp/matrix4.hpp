@@ -12,6 +12,7 @@
 #include <nirtcpp/aabbox3d.hpp>
 #include <nirtcpp/rect.hpp>
 #include <nirtcpp/irrString.hpp>
+#include <algorithm>
 
 // enable this to keep track of changes to the matrix
 // and make simpler identity check for seldom changing matrices
@@ -514,11 +515,11 @@ namespace core
 				break;
 			case EM4CONST_INVERSE:
 				if (!other.getInverse(*this))
-					memset(M, 0, 16*sizeof(T));
+					std::fill_n(M, 16, 0);
 				break;
 			case EM4CONST_INVERSE_TRANSPOSED:
 				if (!other.getInverse(*this))
-					memset(M, 0, 16*sizeof(T));
+					std::fill_n(M, 16, 0);
 				else
 					*this=getTransposed();
 				break;
@@ -1054,7 +1055,7 @@ namespace core
 	template <class T>
 	inline CMatrix4<T>& CMatrix4<T>::makeIdentity()
 	{
-		memset(M, 0, 16*sizeof(T));
+		std::fill_n(M, 16, 0);
 		M[0] = M[5] = M[10] = M[15] = (T)1;
 #if defined ( USE_MATRIX_TEST )
 		definitelyIdentityMatrix=true;
@@ -1525,7 +1526,7 @@ namespace core
 	{
 		if (this==&other)
 			return *this;
-		memcpy(M, other.M, 16*sizeof(T));
+		std::copy_n(other.M, 16, M);
 #if defined ( USE_MATRIX_TEST )
 		definitelyIdentityMatrix=other.definitelyIdentityMatrix;
 #endif
@@ -2332,7 +2333,7 @@ namespace core
 	template <class T>
 	inline CMatrix4<T>& CMatrix4<T>::setM(const T* data)
 	{
-		memcpy(M,data, 16*sizeof(T));
+		std::copy_n(data, 16, M);
 
 #if defined ( USE_MATRIX_TEST )
 		definitelyIdentityMatrix=false;

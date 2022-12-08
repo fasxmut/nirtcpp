@@ -17,6 +17,7 @@
 #include <nirtcpp/fast_atof.hpp>
 #include <nirtcpp/coreutil.hpp>
 #include "os.hpp"
+#include <algorithm>
 
 namespace nirt
 {
@@ -90,7 +91,7 @@ IAnimatedMesh* COBJMeshFileLoader::createMesh(io::IReadFile* file)
 	const io::path relPath = FileSystem->getFileDir(fullName)+"/";
 
 	c8* buf = new c8[filesize];
-	memset(buf, 0, filesize);
+	std::fill_n(buf, filesize, 0);
 	file->read((void*)buf, filesize);
 	const c8* const bufEnd = buf+filesize;
 

@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CImageWriterTGA.hpp"
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_TGA_WRITER_
 
@@ -130,7 +131,7 @@ bool CImageWriterTGA::writeImage(io::IWriteFile *file, IImage *image,u32 param) 
 	STGAFooter imageFooter;
 	imageFooter.ExtensionOffset = 0;
 	imageFooter.DeveloperOffset = 0;
-	strncpy(imageFooter.Signature, "TRUEVISION-XFILE.", 18);
+	std::copy_n((const char *)"TRUEVISION-XFILE.\0", 18, (char *)imageFooter.Signature);
 
 	if (file->write(&imageFooter, sizeof(imageFooter)) < (s32)sizeof(imageFooter))
 		return false;

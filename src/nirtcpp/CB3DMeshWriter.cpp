@@ -5,6 +5,7 @@
 // TODO: replace printf's by logging messages
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_B3D_WRITER_
 
@@ -426,7 +427,7 @@ void CB3DMeshWriter::writeJointChunk(io::IWriteFile* file, ISkinnedMesh* mesh, I
             const s32 frame = static_cast<s32>(joint->RotationKeys[i].frame * animationSpeedMultiplier);
             const core::quaternion rot = joint->RotationKeys[i].rotation;
 
-            memcpy(floatBuffer, &frame, 4);
+			std::copy_n((const u8 *)&frame, 4, (u8 *)floatBuffer);
             floatBuffer[1] = rot.W;
             floatBuffer[2] = rot.X;
             floatBuffer[3] = rot.Y;

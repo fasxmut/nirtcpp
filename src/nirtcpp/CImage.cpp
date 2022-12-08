@@ -8,6 +8,7 @@
 #include "CBlit.hpp"
 #include "os.hpp"
 #include "SoftwareDriver2_helper.hpp"
+#include <algorithm>
 
 namespace nirt
 {
@@ -26,7 +27,7 @@ CImage::CImage(ECOLOR_FORMAT format, const core::dimension2d<u32>& size, void* d
 	{
 		const size_t dataSize = getDataSizeFromFormat(Format, Size.Width, Size.Height);
 		Data = new u8[align_next(dataSize,16)];
-		memcpy(Data, data, dataSize);
+		std::copy_n((const u8 *)data, dataSize, (u8 *)Data);
 		DeleteMemory = true;
 	}
 }
@@ -194,7 +195,7 @@ void CImage::copyToScaling(void* target, u32 width, u32 height, ECOLOR_FORMAT fo
 	{
 		if (pitch==Pitch)
 		{
-			memcpy(target, Data, (size_t)height*pitch);
+			std::copy_n((const u8 *)Data, (std::size_t)height*pitch, (u8 *)target);
 			return;
 		}
 		else
@@ -206,9 +207,9 @@ void CImage::copyToScaling(void* target, u32 width, u32 height, ECOLOR_FORMAT fo
 			for (u32 y=0; y<height; ++y)
 			{
 				// copy scanline
-				memcpy(tgtpos, srcpos, bwidth);
+				std::copy_n(srcpos, bwidth, tgtpos);
 				// clear pitch
-				memset(tgtpos+bwidth, 0, rest);
+				std::fill_n(tgtpos+bwidth, rest, 0);
 				tgtpos += pitch;
 				srcpos += Pitch;
 			}
@@ -335,7 +336,7 @@ void CImage::fill(const SColor &color)
 			const size_t size = getImageDataSizeInBytes();
 			for (size_t i=0; i<size; i+=3)
 			{
-				memcpy(Data+i, rgb, 3);
+				std::copy_n((const u8 *)rgb, 3, (u8 *)(Data+i));
 			}
 			return;
 		}
@@ -344,7 +345,7 @@ void CImage::fill(const SColor &color)
 		// TODO: Handle other formats
 			return;
 	}
-	memset32( Data, c, getImageDataSizeInBytes() );
+	fill32( Data, c, getImageDataSizeInBytes() );
 }
 
 void CImage::flip(bool topBottom, bool leftRight)

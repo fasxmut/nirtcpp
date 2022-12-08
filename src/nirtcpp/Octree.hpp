@@ -10,6 +10,7 @@
 #include <nirtcpp/aabbox3d.hpp>
 #include <nirtcpp/irrArray.hpp>
 #include <nirtcpp/CMeshBuffer.hpp>
+#include <algorithm>
 
 /**
 	Flags for Octree
@@ -245,7 +246,10 @@ private:
 					}
 
 					(*indices)[i].Indices.set_used(keepIndices.size());
-					memcpy( (*indices)[i].Indices.pointer(), keepIndices.pointer(), keepIndices.size()*sizeof(u16));
+					// non-const Lvalue reference checks type too.
+					u16 & from = *keepIndices.pointer();
+					u16 & to = *((*indices)[i].Indices.pointer());
+					std::copy_n(&from, keepIndices.size(), &to);
 					keepIndices.set_used(0);
 				}
 
@@ -297,8 +301,10 @@ private:
 
 					if (idxcnt)
 					{
-						memcpy(&idxdata[i].Indices[idxdata[i].CurrentSize],
-							&(*IndexData)[i].Indices[0], idxcnt * sizeof(s16));
+						// non-const Lvalue reference checks type too.
+						u16 & from = (*IndexData)[i].Indices[0];
+						u16 & to = idxdata[i].Indices[idxdata[i].CurrentSize];
+						std::copy_n(&from, idxcnt, &to);
 						idxdata[i].CurrentSize += idxcnt;
 					}
 				}
@@ -344,8 +350,10 @@ private:
 
 				if (idxcnt)
 				{
-					memcpy(&idxdata[i].Indices[idxdata[i].CurrentSize],
-						&(*IndexData)[i].Indices[0], idxcnt * sizeof(s16));
+					// non-const Lvalue reference checks type too.
+					u16 & from = (*IndexData)[i].Indices[0];
+					u16 & to = idxdata[i].Indices[idxdata[i].CurrentSize];
+					std::copy_n(&from, idxcnt, &to);
 					idxdata[i].CurrentSize += idxcnt;
 				}
 			}

@@ -4,6 +4,7 @@
 
 #include "CMemoryFile.hpp"
 #include <nirtcpp/irrString.hpp>
+#include <algorithm>
 
 namespace nirt
 {
@@ -38,7 +39,7 @@ size_t CMemoryReadFile::read(void* buffer, size_t sizeToRead)
 		return 0;
 
 	c8* p = (c8*)Buffer;
-	memcpy(buffer, p + Pos, amount);
+	std::copy_n(p+Pos, amount, (c8 *)buffer);
 
 	Pos += amount;
 
@@ -117,7 +118,7 @@ size_t CMemoryWriteFile::write(const void* buffer, size_t sizeToWrite)
 		return 0;
 
 	c8* p = (c8*)Buffer;
-	memcpy(p + Pos, buffer, amount);
+	std::copy_n((const c8 *)buffer, amount, p+Pos);
 
 	Pos += amount;
 

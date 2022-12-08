@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_DIRECT3D_9_
 
@@ -737,7 +738,7 @@ void CD3D9Texture::uploadTexture(void* data, u32 mipmapLevel, u32 layer)
 		return;
 	}
 
-	memcpy(lockRectangle.pBits, data, dataSize);
+	std::copy_n((const u8 *)data, dataSize, (u8 *)lockRectangle.pBits);
 
 	if (Texture)
 	{

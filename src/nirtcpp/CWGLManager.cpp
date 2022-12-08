@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in Nirtcpp.h
 
 #include "CWGLManager.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_WGL_MANAGER_
 
@@ -316,8 +318,8 @@ void CWGLManager::terminate()
 	if (CurrentContext.OpenGLWin32.HDc)
 		ReleaseDC((HWND)CurrentContext.OpenGLWin32.HWnd, (HDC)CurrentContext.OpenGLWin32.HDc);
 	if (PrimaryContext.OpenGLWin32.HDc && PrimaryContext.OpenGLWin32.HDc == CurrentContext.OpenGLWin32.HDc)
-		memset(&PrimaryContext, 0, sizeof(PrimaryContext));
-	memset(&CurrentContext, 0, sizeof(CurrentContext));
+		std::fill_n(reinterpret_cast<std::uint8_t *>(&PrimaryContext), sizeof PrimaryContext, 0);
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&CurrentContext), sizeof CurrentContext, 0);
 }
 
 bool CWGLManager::generateSurface()

@@ -20,7 +20,7 @@ namespace scene
 {
 
 
-//! Meshloader capable of loading .irrmesh meshes, the Nirtcpp Engine mesh format for static meshes
+//! Meshloader capable of loading .irrmesh meshes, the Irrlicht Engine mesh format for static meshes
 class CIrrMeshFileLoader : public IMeshLoader
 {
 public:

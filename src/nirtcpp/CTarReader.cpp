@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CTarReader.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef __NIRT_COMPILE_WITH_TAR_ARCHIVE_LOADER_
 
@@ -99,7 +101,7 @@ bool CArchiveLoaderTAR::isALoadableFileFormat(io::IReadFile* file) const
 	s32 checksum2=0;
 
 	// remember to blank the checksum field!
-	memset(fHead.Checksum, ' ', 8);
+	std::fill_n(reinterpret_cast<std::uint8_t *>(fHead.Checksum), 8, ' ');
 
 	// old header
 	for (u8* p = (u8*)(&fHead); p < (u8*)(&fHead.Magic[0]); ++p)

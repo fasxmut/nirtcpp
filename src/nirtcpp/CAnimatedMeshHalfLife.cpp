@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
 #ifdef _NIRT_COMPILE_WITH_HALFLIFE_LOADER_
 
 #include "CAnimatedMeshHalfLife.hpp"
@@ -1612,7 +1613,7 @@ void CAnimatedMeshHalfLife::setUpBones()
 		bonematrix[2][3] = pos[i][2];
 
 		if (bone[i].parent == -1) {
-			memcpy(BoneTransform[i], bonematrix, sizeof(f32) * 12);
+			std::copy_n((const f32 *)bonematrix, 12, (f32 *)BoneTransform[i]);
 		}
 		else {
 			R_ConcatTransforms (BoneTransform[bone[i].parent], bonematrix, BoneTransform[i]);

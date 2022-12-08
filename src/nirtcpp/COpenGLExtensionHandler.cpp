@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "COpenGLExtensionHandler.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
@@ -259,7 +261,7 @@ void COpenGLExtensionHandler::dumpFramebufferFormats() const
 			atts[0]=WGL_DRAW_TO_WINDOW_ARB;
 			for (int i=1; i<count; ++i)
 			{
-				memset(vals,0,sizeof(vals));
+				std::fill_n(reinterpret_cast<std::uint8_t *>(vals), sizeof vals, 0);
 #define tmplog(x,y) os::Printer::log(x, core::stringc(y).data())
 				const BOOL res = wglGetPixelFormatAttribiv_ARB(hdc,i,0,(UINT)nums,atts,vals);
 				if (FALSE==res)

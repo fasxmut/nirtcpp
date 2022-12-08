@@ -4,6 +4,8 @@
 
 #include <nirtcpp/IrrCompileConfig.hpp>
 #include "CSoftwareDriver2.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_BURNINGSVIDEO_
 
@@ -370,7 +372,7 @@ static void image_fill(nirt::video::IImage* image, const nirt::video::SColor& co
 	default:
 		break;
 	}
-	nirt::memset32_interlaced(image->getData(), c, image->getPitch(), image->getDimension().Height, interlaced);
+	nirt::fill32_interlaced(image->getData(), c, image->getPitch(), image->getDimension().Height, interlaced);
 }
 
 
@@ -585,7 +587,7 @@ CBurningVideoDriver::CBurningVideoDriver(const nirt::SNirtcppCreationParameters&
 
 	// create triangle renderers
 
-	memset(BurningShader, 0, sizeof(BurningShader));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(BurningShader), sizeof(BurningShader), 0);
 	//BurningShader[ETR_FLAT] = createTRFlat2(DepthBuffer);
 	//BurningShader[ETR_FLAT_WIRE] = createTRFlatWire2(DepthBuffer);
 	BurningShader[ETR_GOURAUD] = createTriangleRendererGouraud2(this);
@@ -988,7 +990,7 @@ bool CBurningVideoDriver::beginScene(u16 clearFlag, SColor clearColor, f32 clear
 
 	clearBuffers(clearFlag, clearColor, clearDepth, clearStencil);
 
-	//memset ( TransformationFlag, 0, sizeof ( TransformationFlag ) );
+	//std::fill_n(reinterpret_cast<std::uint8_t *>(TransformationFlag), sizeof TransformationFlag, 0);
 	return true;
 }
 
@@ -1357,7 +1359,7 @@ u32 clipToHyperPlane(
 
 			// copy current to out
 			//*out = *a;
-			memcpy_s4DVertexPair(out, a);
+			copy_s4DVertexPair(out, a);
 			b = out;
 
 			out += sizeof_s4DVertexPairRel;
@@ -1416,7 +1418,7 @@ u32 CBurningVideoDriver::clipToFrustum(const u32 vIn /*, const size_t clipmask_f
 		if (0 == (clipMask & ((size_t)1 << i)))
 		{
 			vOut = vIn;
-			memcpy_s4DVertexPair(v1, v0);
+			copy_s4DVertexPair(v1, v0);
 		}
 		else
 #endif
@@ -1678,7 +1680,7 @@ void CBurningVideoDriver::VertexCache_map_source_format()
 		os::Printer::log("BurningVideo vertex format unnecessary to large", ELL_WARNING);
 	}
 
-	//memcpy_vertex
+	// vertex memory copy
 	if (s0 != sizeof_s4DVertex || ((sizeof_s4DVertex * sizeof_s4DVertexPairRel) & 31))
 	{
 		os::Printer::log("BurningVideo vertex format compile problem", ELL_ERROR);
@@ -1794,8 +1796,8 @@ void CBurningVideoDriver::VertexCache_map_source_format()
 	Clipper_disjoint.resize(VERTEXCACHE_ELEMENT * 2);
 
 	TransformationStack = ETF_STACK_3D;
-	memset(TransformationFlag, 0, sizeof(TransformationFlag));
-	memset(Transformation_ETS_CLIPSCALE, 0, sizeof(Transformation_ETS_CLIPSCALE));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(TransformationFlag), sizeof(TransformationFlag), 0);
+	std::fill_n(reinterpret_cast<std::uint8_t *>(Transformation_ETS_CLIPSCALE), sizeof(Transformation_ETS_CLIPSCALE), 0);
 
 	Material.resetRenderStates = true;
 	Material.Fallback_MaterialType = EMT_SOLID;
@@ -2554,7 +2556,7 @@ void SVertexShader::setPrimitiveType(const scene::E_PRIMITIVE_TYPE primitiveType
 
 void SVertexShader::set_info_miss()
 {
-	//memset(info, VERTEXCACHE_MISS, sizeof(info));
+	//std::fill_n(reinterpret_cast<std::uint8_t *>(info), sizeof info, VERTEXCACHE_MISS);
 	for (size_t i = 0; i != VERTEXCACHE_ELEMENT; ++i)
 	{
 		info[i].hit = VERTEXCACHE_MISS;
@@ -2858,7 +2860,7 @@ void CBurningVideoDriver::drawVertexPrimitiveList(const void* vertices, u32 vert
 			// todo: clipping should reuse vertexcache (try to minimize clipping)
 			for (has_vertex_run = 0; has_vertex_run < VertexShader.primitiveHasVertex; ++has_vertex_run)
 			{
-				memcpy_s4DVertexPair(Clipper.data + s4DVertex_ofs(has_vertex_run), face[has_vertex_run]);
+				copy_s4DVertexPair(Clipper.data + s4DVertex_ofs(has_vertex_run), face[has_vertex_run]);
 			}
 
 			//clipping should happen in R^3 before perspective divide, avoid flipping points

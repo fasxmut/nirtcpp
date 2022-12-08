@@ -10,6 +10,7 @@
 #include <nirtcpp/IFileSystem.hpp>
 #include <nirtcpp/IVideoDriver.hpp>
 #include <nirtcpp/coreutil.hpp>
+#include <algorithm>
 
 namespace nirt
 {
@@ -55,7 +56,7 @@ namespace quake3
 			swapHeader ( 0 )
 	#endif
 			{
-				memcpy ( scriptDir, "scripts\x0", 8 );
+				std::copy_n("scripts\x0", 8, scriptDir);
 			}
 
 		video::E_MATERIAL_TYPE defaultLightMapMaterial;

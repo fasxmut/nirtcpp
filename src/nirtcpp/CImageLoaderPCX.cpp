@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CImageLoaderPCX.hpp"
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_PCX_LOADER_
 
@@ -138,7 +139,7 @@ IImage* CImageLoaderPCX::loadImage(io::IReadFile* file) const
 			file->read(&value, 1);
 		}
 		if (header.Planes==1)
-			memset(PCXData+offset, value, cnt);
+			std::fill_n(PCXData+offset, cnt, value); // PCXData is u8 *
 		else
 		{
 			for (u8 i=0; i<cnt; ++i)

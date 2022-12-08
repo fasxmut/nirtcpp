@@ -9,6 +9,7 @@
 #include <nirtcpp/irrString.hpp>
 #include <nirtcpp/irrArray.hpp>
 #include <nirtcpp/fast_atof.hpp>
+#include <algorithm>
 
 #ifdef _DEBUG
 #define NIRT_DEBUGPRINT(x) printf((x));
@@ -577,7 +578,7 @@ private:
 
 		// add zeros at end
 
-		memset(data8+size-4, 0, 4);
+		std::fill_n(data8+size-4, 4, 0);
 
 		char16* data16 = reinterpret_cast<char16*>(data8);
 		char32* data32 = reinterpret_cast<char32*>(data8);

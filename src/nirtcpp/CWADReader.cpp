@@ -4,6 +4,8 @@
 // Code contributed by skreamz
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
+#include <string>
 
 #ifdef __NIRT_COMPILE_WITH_WAD_ARCHIVE_LOADER_
 
@@ -71,7 +73,7 @@ IFileArchive* CArchiveLoaderWAD::createArchive(io::IReadFile* file, bool ignoreC
 bool CArchiveLoaderWAD::isALoadableFileFormat(io::IReadFile* file) const
 {
 	SWADFileHeader header;
-	memset(&header, 0, sizeof(header));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&header), sizeof header, 0);
 
 	file->read( &header.tag, 4 );
 
@@ -159,7 +161,7 @@ bool CWADReader::scanLocalHeader()
 	SWADFileEntryOriginal entry;
 	SWADFileEntry save;
 
-	memset(&Header, 0, sizeof(SWADFileHeader));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&Header), sizeof(SWADFileHeader), 0);
 	File->read(&Header, sizeof(SWADFileHeader));
 
 	if ( 0 == strncmp ( Header.tag, "WAD2", 4 ) )

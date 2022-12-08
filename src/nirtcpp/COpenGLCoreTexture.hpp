@@ -6,6 +6,8 @@
 #define NIRT_C_OGLCORE_TEXTURE_H_INCLUDED
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
+#include <type_traits>
 
 #if defined(_NIRT_COMPILE_WITH_OPENGL_) || defined(_NIRT_COMPILE_WITH_OGLES1_) || defined(_NIRT_COMPILE_WITH_OGLES2_)
 
@@ -288,9 +290,10 @@ public:
 
 					for (u32 i = 0; i < tmpImage->getDimension().Height; i += 2)
 					{
-						memcpy(tmpBuffer, srcA, pitch);
-						memcpy(srcA, srcB, pitch);
-						memcpy(srcB, tmpBuffer, pitch);
+						// It is safe that the type of *srcA, *srcB and *tmpBuffer, is the same type.
+						std::copy_n(srcA, pitch, tmpBuffer);
+						std::copy_n(srcB, pitch, srcA);
+						std::copy_n(tmpBuffer, pitch, srcB);
 						srcA += pitch;
 						srcB -= pitch;
 					}

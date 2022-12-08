@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CIrrDeviceLinux.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_X11_DEVICE_
 
@@ -1696,7 +1698,7 @@ bool CIrrDeviceLinux::activateJoysticks(core::array<SJoystickInfo> & joystickInf
 		fcntl( info.fd, F_SETFL, O_NONBLOCK );
 #endif
 
-		(void)memset(&info.persistentData, 0, sizeof(info.persistentData));
+		std::fill_n(reinterpret_cast<std::uint8_t *>(&info.persistentData), sizeof info.persistentData, 0);
 		info.persistentData.EventType = nirt::EET_JOYSTICK_INPUT_EVENT;
 		info.persistentData.JoystickEvent.Joystick = ActiveJoysticks.size();
 
@@ -2010,7 +2012,7 @@ void CIrrDeviceLinux::initXInput2()
 	// So we enable those and disable all other events for now.
 	XIEventMask eventMask;
 	unsigned char mask[XIMaskLen(XI_TouchEnd)];
-	memset(mask, 0, sizeof(mask));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(mask), sizeof mask, 0);
 	eventMask.deviceid = XIAllMasterDevices;
 	eventMask.mask_len = sizeof(mask);
 	eventMask.mask = mask;

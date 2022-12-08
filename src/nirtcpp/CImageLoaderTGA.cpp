@@ -3,6 +3,8 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CImageLoaderTGA.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_TGA_LOADER_
 
@@ -84,7 +86,7 @@ bool CImageLoaderTGA::isALoadableFileFormat(io::IReadFile* file) const
 		return false;
 
 	STGAFooter footer;
-	memset(&footer, 0, sizeof(STGAFooter));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(&footer), sizeof(STGAFooter), 0);
 	file->seek(file->getSize()-sizeof(STGAFooter));
 	file->read(&footer, sizeof(STGAFooter));
 	return (!strcmp(footer.Signature,"TRUEVISION-XFILE.")); // very old tgas are refused.

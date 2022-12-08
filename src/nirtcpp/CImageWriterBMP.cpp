@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CImageWriterBMP.hpp"
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_BMP_WRITER_
 
@@ -109,7 +110,7 @@ bool CImageWriterBMP::writeImage(io::IWriteFile* file, IImage* image, u32 param)
 
 	// allocate and clear memory for our scan line
 	u8* row_pointer = new u8[row_size];
-	memset(row_pointer, 0, row_size);
+	std::fill_n(row_pointer, row_size, 0);
 
 	// convert the image to 24-bit BGR and flip it over
 	s32 y;

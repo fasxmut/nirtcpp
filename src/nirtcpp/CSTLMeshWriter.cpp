@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_STL_WRITER_
 
@@ -73,7 +74,7 @@ bool CSTLMeshWriter::writeMeshBinary(io::IWriteFile* file, scene::IMesh* mesh, s
 	else
 	{
 		char* buf = new char[80];
-		memset(buf, 0, 80);
+		std::fill_n(buf, 80, 0);
 		file->write(name.data(),name.size());
 		file->write(buf,sizeleft);
 		delete [] buf;

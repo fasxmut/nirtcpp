@@ -18,7 +18,7 @@ namespace scene
 	name clashes with external mesh writers.*/
 	enum EMESH_WRITER_TYPE
 	{
-		//! Nirtcpp native mesh writer, for static .irrmesh files.
+		//! Irrlicht native mesh writer, for static .irrmesh files.
 		EMWT_NIRT_MESH     = MAKE_NIRT_ID('i','r','r','m'),
 
 		//! COLLADA mesh writer for .dae and .xml files

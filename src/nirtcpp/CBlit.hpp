@@ -6,6 +6,8 @@
 #define _C_BLIT_H_INCLUDED_
 
 #include "SoftwareDriver2_helper.hpp"
+#include <algorithm>
+#include <type_traits>
 
 namespace nirt
 {
@@ -531,16 +533,17 @@ static void executeBlit_TextureCopy_x_to_x( const SBlitJob * job )
 	}
 	else
 	{
-		const size_t widthPitch = job->width * job->dstPixelMul;
-		const void *src = (void*) job->src;
-		void *dst = (void*) job->dst;
+		const std::size_t widthPitch = job->width * job->dstPixelMul;
+		const u8 *src = (u8*) job->src;
+		u8 *dst = (u8*) job->dst;
 
 		for ( u32 dy = 0; dy < job->height; ++dy )
 		{
-			memcpy( dst, src, widthPitch);
+			// It is safe that the type of *src and *dst is the same type.
+			std::copy_n(src, widthPitch, dst);
 
-			src = (void*) ( (u8*) (src) + job->srcPitch );
-			dst = (void*) ( (u8*) (dst) + job->dstPitch );
+			src = (u8*) (src) + job->srcPitch;
+			dst = (u8*) (dst) + job->dstPitch;
 		}
 	}
 }
@@ -918,9 +921,12 @@ static void executeBlit_Color_16_to_16( const SBlitJob * job )
 	const u16 c = video::A8R8G8B8toA1R5G5B5(job->argb);
 	u16 *dst = (u16*) job->dst;
 
+	static_assert(sizeof *dst == 2);
+	static_assert(sizeof c == 2);
+
 	for ( u32 dy = 0; dy < job->height; ++dy )
 	{
-		memset16(dst, c, job->srcPitch);
+		std::fill_n(dst, job->srcPitch, c);
 		dst = (u16*) ( (u8*) (dst) + job->dstPitch );
 	}
 }
@@ -931,9 +937,12 @@ static void executeBlit_Color_32_to_32( const SBlitJob * job )
 {
 	u32 *dst = (u32*) job->dst;
 
+	static_assert(sizeof *dst == 4);
+	static_assert(sizeof job->argb == 4);
+
 	for ( u32 dy = 0; dy < job->height; ++dy )
 	{
-		memset32( dst, job->argb, job->srcPitch );
+		std::fill_n(dst, job->srcPitch, job->argb);
 		dst = (u32*) ( (u8*) (dst) + job->dstPitch );
 	}
 }

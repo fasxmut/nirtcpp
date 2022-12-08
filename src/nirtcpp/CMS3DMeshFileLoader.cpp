@@ -4,6 +4,9 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
+#include <string>
+
 #ifdef _NIRT_COMPILE_WITH_MS3D_LOADER_
 
 #include <nirtcpp/IReadFile.hpp>
@@ -248,7 +251,8 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	for (u16 tmp=0; tmp<numVertices; ++tmp)
 	{
 		//printf("&vertices[tmp].Vertex[0] = %p (%d)\n", &vertices[tmp].Vertex[0], (int)((long long)(&vertices[tmp].Vertex[0]) % 4));
-		memcpy(&vertices[tmp].Flags, pPtr, sizeof(struct MS3DVertex) - MS3DVERTEX_NUM_PAD_BYTES);
+		std::copy_n((const u8 *)pPtr, sizeof(struct MS3DVertex) - MS3DVERTEX_NUM_PAD_BYTES,
+			(u8 *)&vertices[tmp].Flags);
 #ifdef __BIG_ENDIAN__
 		vertices[tmp].Vertex[0] = os::Byteswap::byteswap(vertices[tmp].Vertex[0]);
 		vertices[tmp].Vertex[1] = os::Byteswap::byteswap(vertices[tmp].Vertex[1]);
@@ -278,7 +282,8 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	}
 	for (u16 tmp=0; tmp<numTriangles; ++tmp)
 	{
-		memcpy(&triangles[tmp].Flags, pPtr, sizeof(struct MS3DTriangle) - MS3DTRIANGLE_NUM_PAD_BYTES);
+		std::copy_n((const u8 *)pPtr, sizeof(struct MS3DTriangle)-MS3DTRIANGLE_NUM_PAD_BYTES,
+			(u8 *)&triangles[tmp].Flags);
 #ifdef __BIG_ENDIAN__
 		triangles[tmp].Flags = os::Byteswap::byteswap(triangles[tmp].Flags);
 		for (u16 j=0; j<3; ++j)
@@ -373,7 +378,8 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 	MS3DMaterial *material = new MS3DMaterial;
 	for (i=0; i<numMaterials; ++i)
 	{
-		memcpy(material, pPtr, sizeof(struct MS3DMaterial) - MS3DMATERIAL_NUM_PAD_BYTES);
+		std::copy_n((const u8 *)pPtr, sizeof(struct MS3DMaterial) - MS3DMATERIAL_NUM_PAD_BYTES,
+			reinterpret_cast<u8 *>(material));
 #ifdef __BIG_ENDIAN__
 		for (u16 j=0; j<4; ++j)
 			material->Ambient[j] = os::Byteswap::byteswap(material->Ambient[j]);
@@ -465,7 +471,8 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		u32 j;
 		MS3DJoint *pJoint = new MS3DJoint;
 		//printf("&pJoint->Rotation[0] = %p (%d)\n", &pJoint->Rotation[0], (int)((long long)(&pJoint->Rotation[0]) % 4));
-		memcpy(&pJoint->Flags, pPtr, sizeof(MS3DJoint) - MS3DJOINT_NUM_PAD_BYTES);
+		std::copy_n((const u8 *)pPtr, sizeof(MS3DJoint) - MS3DJOINT_NUM_PAD_BYTES,
+			reinterpret_cast<u8 *>(&pJoint->Flags));
 
 #ifdef __BIG_ENDIAN__
 		for (j=0; j<3; ++j)
@@ -518,7 +525,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		const u16 numRotationKeyframes = pJoint->NumRotationKeyframes;
 		for (j=0; j < numRotationKeyframes; ++j)
 		{
-			memcpy(kf, pPtr, sizeof(MS3DKeyframe));
+			std::copy_n((const u8 *)pPtr, sizeof(MS3DKeyframe), reinterpret_cast<u8 *>(kf));
 			//printf("rotation kf = %p (%d)\n", kf, (int)((long long)kf % 4));
 #ifdef __BIG_ENDIAN__
 			kf->Time = os::Byteswap::byteswap(kf->Time);
@@ -557,7 +564,7 @@ bool CMS3DMeshFileLoader::load(io::IReadFile* file)
 		const u16 numTranslationKeyframes = pJoint->NumTranslationKeyframes;
 		for (j=0; j<numTranslationKeyframes; ++j)
 		{
-			memcpy(kf, pPtr, sizeof(MS3DKeyframe));
+			std::copy_n((const u8 *)pPtr, sizeof(MS3DKeyframe), reinterpret_cast<u8 *>(kf));
 			//printf("translation kf = %p (%d)\n", kf, (int)((long long)kf % 4));
 
 #ifdef __BIG_ENDIAN__

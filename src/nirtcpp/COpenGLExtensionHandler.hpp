@@ -6,6 +6,7 @@
 #define NIRT_C_OPEN_GL_FEATURE_MAP_H_INCLUDED
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
@@ -1442,7 +1443,7 @@ inline void COpenGLExtensionHandler::irrGlClientActiveTexture(GLenum texture)
 inline void COpenGLExtensionHandler::extGlGenPrograms(GLsizei n, GLuint *programs)
 {
 	if (programs)
-		memset(programs,0,n*sizeof(GLuint));
+		std::fill_n(programs, n, 0);
 #ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 	if (pGlGenProgramsARB)
 		pGlGenProgramsARB(n, programs);
@@ -2246,7 +2247,7 @@ inline void COpenGLExtensionHandler::irrGlDeleteFramebuffers(GLsizei n, const GL
 inline void COpenGLExtensionHandler::irrGlGenFramebuffers(GLsizei n, GLuint *framebuffers)
 {
 	if (framebuffers)
-		memset(framebuffers,0,n*sizeof(GLuint));
+		std::fill_n(framebuffers, n, 0);
 #ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 	if (pGlGenFramebuffers)
 		pGlGenFramebuffers(n, framebuffers);
@@ -2331,7 +2332,7 @@ inline void COpenGLExtensionHandler::irrGlDeleteRenderbuffers(GLsizei n, const G
 inline void COpenGLExtensionHandler::irrGlGenRenderbuffers(GLsizei n, GLuint *renderbuffers)
 {
 	if (renderbuffers)
-		memset(renderbuffers,0,n*sizeof(GLuint));
+		std::fill_n(renderbuffers, n, 0);
 #ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 	if (pGlGenRenderbuffers)
 		pGlGenRenderbuffers(n, renderbuffers);
@@ -2431,7 +2432,7 @@ inline void COpenGLExtensionHandler::irrGlDrawBuffers(GLsizei n, const GLenum *b
 inline void COpenGLExtensionHandler::extGlGenBuffers(GLsizei n, GLuint *buffers)
 {
 	if (buffers)
-		memset(buffers,0,n*sizeof(GLuint));
+		std::fill_n(buffers, n, 0);
 #ifdef _NIRT_OPENGL_USE_EXTPOINTER_
 	if (pGlGenBuffersARB)
 		pGlGenBuffersARB(n, buffers);
@@ -3186,7 +3187,7 @@ inline void COpenGLExtensionHandler::extGlCreateTextures(GLenum target, GLsizei 
         if (pGlCreateTextures)
             pGlCreateTextures(target,n,textures);
         else if (textures)
-            memset(textures,0,n*sizeof(GLuint));
+			std::fill_n(textures, n, 0);
 #elif defined(GL_VERSION_4_5)
         glCreateTextures(target,n,textures);
 #endif // _NIRT_OPENGL_USE_EXTPOINTER_

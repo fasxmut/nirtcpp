@@ -5,6 +5,7 @@
 #include "COpenGLDriver.hpp"
 #include "CNullDriver.hpp"
 #include <nirtcpp/IContextManager.hpp>
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
@@ -391,7 +392,8 @@ bool COpenGLDriver::updateVertexHardwareBuffer(SHWBufferLink_opengl *HWBuffer)
 	{
 		//buffer vertex data, and convert colors...
 		buffer.set_used(vertexSize * vertexCount);
-		memcpy(buffer.pointer(), vertices, vertexSize * vertexCount);
+		std::copy_n(static_cast<const c8 *>(vertices), vertexSize*vertexCount,
+			static_cast<c8 *>(buffer.pointer()));
 		vbuf = buffer.const_pointer();
 
 		// in order to convert the colors into opengl format (RGBA)
@@ -1974,7 +1976,8 @@ bool COpenGLDriver::disableTextures(u32 fromStage)
 //! creates a matrix in supplied GLfloat array to pass to OpenGL
 inline void COpenGLDriver::getGLMatrix(GLfloat gl_matrix[16], const core::matrix4& m)
 {
-	memcpy(gl_matrix, m.pointer(), 16 * sizeof(f32));
+	static_assert(sizeof(f32) == sizeof(GLfloat));
+	std::copy_n((f32 *)m.pointer(), 16, gl_matrix);
 }
 
 
@@ -4045,17 +4048,20 @@ IImage* COpenGLDriver::createScreenShot(video::ECOLOR_FORMAT format, video::E_RE
 		u8* tmpBuffer = new u8[pitch];
 		for (u32 i=0; i < ScreenSize.Height; i += 2)
 		{
-			memcpy(tmpBuffer, pixels, pitch);
+			// u8 *
+			std::copy_n(pixels, pitch, tmpBuffer);
 //			for (u32 j=0; j<pitch; ++j)
 //			{
 //				pixels[j]=(u8)(p2[j]*255.f);
 //			}
-			memcpy(pixels, p2, pitch);
+			// u8 *
+			std::copy_n(p2, pitch, pixels);
 //			for (u32 j=0; j<pitch; ++j)
 //			{
 //				p2[j]=(u8)(tmpBuffer[j]*255.f);
 //			}
-			memcpy(p2, tmpBuffer, pitch);
+			// u8 *
+			std::copy_n(tmpBuffer, pitch, p2);
 			pixels += pitch;
 			p2 -= pitch;
 		}

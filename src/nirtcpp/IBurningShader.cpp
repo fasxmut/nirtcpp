@@ -360,7 +360,7 @@ s32 IBurningShader::getShaderConstantID(EBurningUniformFlags flags, const c8* na
 		return -1;
 
 	BurningUniform add;
-	tiny_strcpy(add.name, name);
+	copy_str_tiny(add.name, name);
 	add.type = flags;
 
 	s32 index = UniformInfo.linear_search(add);
@@ -427,7 +427,7 @@ s32 IBurningShader::getPixelShaderConstantID(const c8* name)
 void IBurningShader::setVertexShaderConstant(const f32* data, s32 startRegister, s32 constantAmount)
 {
 	c8 name[BL_ACTIVE_UNIFORM_MAX_LENGTH];
-	tiny_strcpy(name, tiny_itoa(startRegister, 10));
+	copy_str_tiny(name, tiny_itoa(startRegister, 10));
 
 	setShaderConstantID(BL_VERTEX_FLOAT, getShaderConstantID(BL_VERTEX_PROGRAM, name), data, constantAmount*4);
 }
@@ -435,7 +435,7 @@ void IBurningShader::setVertexShaderConstant(const f32* data, s32 startRegister,
 void IBurningShader::setPixelShaderConstant(const f32* data, s32 startRegister, s32 constantAmount)
 {
 	c8 name[BL_ACTIVE_UNIFORM_MAX_LENGTH];
-	tiny_strcpy(name, tiny_itoa(startRegister, 10));
+	copy_str_tiny(name, tiny_itoa(startRegister, 10));
 
 	setShaderConstantID(BL_FRAGMENT_FLOAT, getShaderConstantID(BL_FRAGMENT_PROGRAM, name), data, constantAmount*4);
 }

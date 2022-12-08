@@ -5,6 +5,8 @@
 #include <nirtcpp/IrrCompileConfig.hpp>
 #include "CZBuffer.hpp"
 #include <nirtcpp/irrString.hpp>
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_SOFTWARE_
 
@@ -38,7 +40,7 @@ CZBuffer::~CZBuffer()
 //! clears the zbuffer
 void CZBuffer::clear()
 {
-	memset(Buffer, 0, (BufferEnd-Buffer)*sizeof(TZBufferType));
+	std::fill_n(reinterpret_cast<std::uint8_t *>(Buffer), (BufferEnd-Buffer)*sizeof(TZBufferType), 0);
 }
 
 

@@ -4,6 +4,7 @@
 
 #include "COctreeTriangleSelector.hpp"
 #include <nirtcpp/ISceneNode.hpp>
+#include <algorithm>
 
 #include "os.hpp"
 
@@ -116,8 +117,9 @@ void COctreeTriangleSelector::constructOctree(SOctreeNode* node)
 					keepTriangles.push_back(node->Triangles[i]);
 				}
 			}
-			memcpy(node->Triangles.pointer(), keepTriangles.pointer(),
-				sizeof(core::triangle3df)*keepTriangles.size());
+			std::copy_n((const u8 *)keepTriangles.pointer(),
+				sizeof(core::triangle3df)*keepTriangles.size(),
+				(u8 *)node->Triangles.pointer());
 
 			node->Triangles.set_used(keepTriangles.size());
 			keepTriangles.set_used(0);

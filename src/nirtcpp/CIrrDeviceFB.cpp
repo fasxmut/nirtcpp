@@ -4,6 +4,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "CIrrDeviceFB.hpp"
+#include <algorithm>
 
 #ifdef _NIRT_COMPILE_WITH_FB_DEVICE_
 
@@ -136,7 +137,7 @@ bool CIrrDeviceFB::createWindow(const core::dimension2d<u32>& windowSize, u32 bi
 	snprintf_nirt(buf, 256, "Original resolution: %d x %d\nARGB%d%d%d%d\n",oldscreeninfo.xres,oldscreeninfo.yres,
 		oldscreeninfo.transp.length,oldscreeninfo.red.length,oldscreeninfo.green.length,oldscreeninfo.blue.length);
 		os::Printer::log(buf);
-	memcpy(&fbscreeninfo, &oldscreeninfo, sizeof(struct fb_var_screeninfo));
+	std::copy_n((const u8 *)&oldscreeninfo, sizeof(struct fb_var_screeninfo), (u8 *)&fbscreeninfo);
 	if (CreationParams.DriverType != video::EDT_NULL)
 	{
 		fbscreeninfo.xres = fbscreeninfo.xres_virtual = CreationParams.WindowSize.Width;

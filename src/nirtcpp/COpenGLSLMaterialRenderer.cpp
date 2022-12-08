@@ -11,6 +11,8 @@
 // merged this into Nirtcpp 0.14, thanks to him for his work.
 
 #include "COpenGLSLMaterialRenderer.hpp"
+#include <algorithm>
+#include <string>
 
 #ifdef _NIRT_COMPILE_WITH_OPENGL_
 
@@ -470,7 +472,7 @@ bool COpenGLSLMaterialRenderer::linkProgram()
 		for (GLint i=0; i < num; ++i)
 		{
 			SUniformInfo ui;
-			memset(buf, 0, maxlen);
+			std::fill_n(buf, maxlen, 0);
 
 			GLint size;
 			Driver->extGlGetActiveUniform(Program2, i, maxlen, 0, &size, &ui.type, reinterpret_cast<GLchar*>(buf));
@@ -547,7 +549,7 @@ bool COpenGLSLMaterialRenderer::linkProgram()
 		for (int i=0; i < num; ++i)
 		{
 			SUniformInfo ui;
-			memset(buf, 0, maxlen);
+			std::fill_n(buf, maxlen, 0);
 
 			GLint size;
 			Driver->extGlGetActiveUniformARB(Program, i, maxlen, 0, &size, &ui.type, reinterpret_cast<GLcharARB*>(buf));

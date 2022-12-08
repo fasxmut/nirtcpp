@@ -3,6 +3,9 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include <nirtcpp/IrrCompileConfig.hpp>
+#include <algorithm>
+#include <string>
+
 #ifdef _NIRT_COMPILE_WITH_PLY_LOADER_
 
 #include "CPLYMeshFileLoader.hpp"
@@ -452,7 +455,7 @@ bool CPLYMeshFileLoader::allocateBuffer()
 		return false;
 
 	// blank memory
-	memset(Buffer, 0, PLY_INPUT_BUFFER_SIZE);
+	std::fill_n(reinterpret_cast<std::uint8_t *>(Buffer), PLY_INPUT_BUFFER_SIZE, 0);
 
 	StartPointer = Buffer;
 	EndPointer = Buffer;
@@ -477,7 +480,7 @@ void CPLYMeshFileLoader::fillBuffer()
 	if (length && StartPointer != Buffer)
 	{
 		// copy the remaining data to the start of the buffer
-		memcpy(Buffer, StartPointer, length);
+		std::copy_n((const u8 *)StartPointer, length, (u8 *)Buffer);
 	}
 	// reset start position
 	StartPointer = Buffer;
@@ -499,7 +502,7 @@ void CPLYMeshFileLoader::fillBuffer()
 		if (count != PLY_INPUT_BUFFER_SIZE - length)
 		{
 			// blank the rest of the memory
-			memset(EndPointer, 0, Buffer + PLY_INPUT_BUFFER_SIZE - EndPointer);
+			std::fill_n(reinterpret_cast<std::uint8_t *>(EndPointer), Buffer + PLY_INPUT_BUFFER_SIZE - EndPointer, 0);
 
 			// end of file
 			EndOfFile = true;

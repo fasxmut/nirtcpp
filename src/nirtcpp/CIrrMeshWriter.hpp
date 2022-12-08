@@ -21,7 +21,7 @@ namespace scene
 
 	//! class to write meshes, implementing a IrrMesh (.irrmesh, .xml) writer
 	/** This writer implementation has been originally developed for irrEdit and then
-	merged out to the Nirtcpp Engine */
+	merged out to the Irrlicht Engine */
 	class CIrrMeshWriter : public IMeshWriter
 	{
 	public:

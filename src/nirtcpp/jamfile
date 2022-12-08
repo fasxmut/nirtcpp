@@ -69,11 +69,11 @@ LINKOBJ = $(IRRMESHOBJ) $(IRROBJ) $(IRRPARTICLEOBJ) $(IRRANIMOBJ)
 	$(BZIP2OBJ) $(EXTRAOBJ)
 	;
 
-# After enough testing, this '-U__STRICT_ANSI__' will be removed. 
+# (todo) After enough testing, this '-U__STRICT_ANSI__' will be removed. 
 # Read line 28~30 of CFileSystem.cpp, about __STRICT_ANSI__
 # For all targets (all os, all link type)
+	#-U__STRICT_ANSI__
 cxxflags_all =
-	-U__STRICT_ANSI__
 	-DNIRTCPP_EXPORTS=1
 	-Wall -pipe -fno-exceptions -fno-rtti
 	-DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES -DPNG_ARM_NEON_OPT=0
