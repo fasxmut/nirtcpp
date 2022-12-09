@@ -14,3 +14,16 @@ irrlicht-logos/irrlichtlogoalpha2.tga
 
 
 
+These media files in q3dm6ish.pk3 are copied from Open-Area:
+------------------------------------------------------------------------
+maps/q3dm6ish.bsp
+textures/base_ceiling/metceil1d.jpg
+textures/base_floor/clang_floor.jpg
+textures/base_floor/clangspot2.tga
+textures/base_trim/yellow_rustbx128.jpg
+textures/base_wall/bluemetal2.jpg
+textures/base_wall/concrete_dark.jpg
+textures/skies/xtoxicsky_q3ctf3.jpg
+
+
+

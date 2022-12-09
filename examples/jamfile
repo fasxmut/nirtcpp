@@ -1,6 +1,8 @@
+echo "Build examples ..." ;
+
 project examples
 	: requirements <library>../src/nirtcpp//nirtcpp
 ;
 
 build-project 01.hello_world ;
-
+build-project 02.display_quake3_map ;

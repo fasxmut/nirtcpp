@@ -3,6 +3,7 @@
 // For conditions of distribution and use, see copyright notice in nirtcpp/nirtcpp.hpp
 
 #include "COSOperator.hpp"
+#include <algorithm>
 
 #ifdef _NIRT_WINDOWS_API_
 #ifndef _NIRT_XBOX_PLATFORM_
@@ -77,9 +78,9 @@ void COSOperator::copyToClipboard(const c8* text) const
 		if ( buffer )
 		{
 			char * ptr;
-			for (ptr=text; *ptr; ++ptr);
+			for (ptr=(char *)text; *ptr; ++ptr);
 			std::size_t size = ptr-(char *)text;
-			std::copy_n((char *)text, size, buffer);
+			std::copy_n((const char *)text, size, buffer);
 			std::fill_n(buffer+size, 1, '\0');
 		}
 		GlobalUnlock(clipbuffer);
