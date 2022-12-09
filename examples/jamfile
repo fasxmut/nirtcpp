@@ -6,3 +6,5 @@ project examples
 
 build-project 01.hello_world ;
 build-project 02.display_quake3_map ;
+build-project 03.collision_detection ;
+

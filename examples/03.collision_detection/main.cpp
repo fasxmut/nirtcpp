@@ -1,5 +1,5 @@
 /*
-This program loads a quake3 map.
+This program loads a quake3 map as world map, and create collision detection between user (camera) and the world map.
 */
 
 #include <nirtcpp.hpp>
@@ -22,7 +22,7 @@ try {
 	);
 	if (!device)
 		throw std::runtime_error{"Can not create nirt::NirtcppDevice!"};
-	device->setWindowCaption(L"Display Quake3 Map");
+	device->setWindowCaption(L"Collision Detection of Nirtcpp");
 
 	nirt::video::IVideoDriver * driver = device->getVideoDriver();
 	nirt::scene::ISceneManager * smgr = device->getSceneManager();
@@ -42,7 +42,7 @@ try {
 		smgr->getMesh(map_name.data()), // Mesh
 		nullptr, // Parent Node
 		-1, // id
-		128, // Minimal polygons per node, less polys, more nodes to be splitted into.
+		128, // Minimal Polygons Per-Node
 		false // Still Add this node if the mesh is empty?
 	);
 
@@ -53,22 +53,33 @@ try {
 	map_node->setPosition(nirt::core::vector3df{0});
 
 	nirt::scene::ICameraSceneNode * fps_camera = smgr->addCameraSceneNodeFPS(
-		nullptr, // Parent Node
-		100.0f, // Rotation Speed
-		0.5f, // Move Speed
-		-1, // id
-		nullptr, // Key Map Array: SKeyMap *
-		0, // Key Map Array Size
-		false, // Disable Vertical Movement ?
-		5.0f, // Jump Speed
-		false, // Invert Mouse ?
-		true // Active ?
+		nullptr, 100.0f, 0.5f, -1, nullptr, 0, false, 5.0f, false, true
 	);
+	fps_camera->setPosition(nirt::core::vector3df{0, 0, -100});
 
 	nirt::gui::ICursorControl * cursor = device->getCursorControl();
 	cursor->setVisible(false); // Hide mouse cursor
 
-	fps_camera->setPosition(nirt::core::vector3df{0, 0, -100});
+	// Irrlicht triangle selector is used for collision detection.
+	nirt::scene::ITriangleSelector * selector = smgr->createTriangleSelector(
+		map_node->getMesh(), // Where the triangles are taken.
+		map_node, // Node of which visibility and transformation are used.
+		128 // Minimal polygons per node, less polys, more nodes to be splitted into.
+	);
+	// BOOST_ASSERT(map_node->getTriangleSelector() == nullptr);
+	// Set the triangle selector of the scene node (world map).
+	map_node->setTriangleSelector(selector);
+
+	// Create collision detection animator.
+	nirt::scene::ISceneNodeAnimator * collision_detection = smgr->createCollisionResponseAnimator(
+		selector,
+		fps_camera,
+		nirt::core::vector3df{5, 40, 5}, // Bounding Box Radius (ellipsoid Radius)
+		nirt::core::vector3df{0, -1000, 0}, // Gravity in X, Y, Z directions.
+		nirt::core::vector3df{0, 20, 0}, // Ellipsoid Translation.
+		0.005f // Sliding Value
+	);
+	fps_camera->addAnimator(collision_detection); // You need to add the collision animator to the node.
 
 	while (device->run()) {
 		if (device->isWindowActive()) {
