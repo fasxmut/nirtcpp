@@ -76,7 +76,11 @@ void COSOperator::copyToClipboard(const c8* text) const
 		buffer = (char*)GlobalLock(clipbuffer);
 		if ( buffer )
 		{
-			strcpy(buffer, text);
+			char * ptr;
+			for (ptr=text; *ptr; ++ptr);
+			std::size_t size = ptr-(char *)text;
+			std::copy_n((char *)text, size, buffer);
+			std::fill_n(buffer+size, 1, '\0');
 		}
 		GlobalUnlock(clipbuffer);
 		SetClipboardData(CF_TEXT, clipbuffer);

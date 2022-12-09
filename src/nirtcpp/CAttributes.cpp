@@ -96,6 +96,7 @@ void CAttributes::getAttributeAsString(const c8* attributeName, char* target) co
 	{
 		core::stringc str = att->getString();
 		std::copy_n(str.data(), str.size(), target);
+		std::fill_n(target+str.size(), 1, '\0');
 	}
 	else
 		target[0] = 0;
@@ -164,6 +165,7 @@ void CAttributes::getAttributeAsStringW(const c8* attributeName, wchar_t* target
 	{
 		core::stringw str = att->getStringW();
 		std::copy_n(str.data(), str.size(), target);
+		std::fill_n(target+str.size(), 1, L'\0');
 	}
 	else
 		target[0] = 0;

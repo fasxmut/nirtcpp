@@ -687,7 +687,13 @@ video::ITexture* CMY3DMeshFileLoader::readEmbeddedLightmap(io::IReadFile* file, 
 
 	file->read(&texDataHeader, sizeof(SMyTexDataHeader));
 
-	strcpy(texDataHeader.Name, namebuf);
+	{
+		char * ptr;
+		for (ptr = namebuf; *ptr; ++ptr);
+		std::size_t size = ptr-namebuf;
+		std::copy_n(namebuf, size, (char *)texDataHeader.Name);
+		std::fill_n((char *)texDataHeader.Name+size, 1, '\0');
+	}
 
 	char LightMapName[255];
 	sprintf(LightMapName,"My3D.Lightmap.%d",++LightMapIndex);
