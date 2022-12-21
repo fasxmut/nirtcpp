@@ -14,6 +14,15 @@ irrlicht-logos/irrlichtlogoalpha2.tga
 
 
 
+These media files are copied from Alien-Arena:
+------------------------------------------------------------------------
+sound/dm-eternal.ogg
+sound/haste.wav
+sound/lava_in.wav
+sound/seeker.wav
+
+
+
 These media files in q3dm6ish.pk3 are copied from Open-Area:
 ------------------------------------------------------------------------
 maps/q3dm6ish.bsp
@@ -24,6 +33,71 @@ textures/base_trim/yellow_rustbx128.jpg
 textures/base_wall/bluemetal2.jpg
 textures/base_wall/concrete_dark.jpg
 textures/skies/xtoxicsky_q3ctf3.jpg
+
+
+
+These media files in oa_koth2.pk3 are copied from Open-Area:
+------------------------------------------------------------------------
+./maps/oa_koth2.bsp
+./models/mapobjects/cosmoflash/menhir1.tga
+./models/mapobjects/cosmoflash/menhir2.tga
+./textures/cosmo_block/ns_brick1.tga
+./textures/evil4_walls/drk_brnbrick.jpg
+./textures/acc_dm5/stntiles_dirty.jpg
+./textures/acc_dm5/tiles_moss.jpg
+./textures/e7/e7panelwood2.jpg
+./textures/acc_dm5/rust.jpg
+./textures/cosmo_block/ns_brick2.tga
+./textures/acc_dm5/stnlarge_dirty.jpg
+./textures/acc_dm5/wall_dirty.jpg
+./textures/cosmo_light/triangle1.tga
+./textures/base_trim/pewter_shiney.jpg
+./textures/cosmo_block/ns_brick6.tga
+./textures/acc_dm5/stonesteps_dirty.jpg
+./textures/acc_dm5/mud02.jpg
+./textures/acc_dm5/stnsqr_dirty.jpg
+./textures/acc_dm5/doorarch.jpg
+./textures/acc_dm5/mud02b.jpg
+./textures/gothic_floor/largerblock3b3dim.jpg
+./textures/gothic_trim/pitted_rust_small.jpg
+./textures/cosmo_trim/beton3.tga
+./textures/cosmo_block/ns_brick3.tga
+./textures/acc_dm5/stntiles_moss2.jpg
+./textures/cosmo_block/ns_brick5.tga
+./textures/cosmo_trim/cryptdoor1.tga
+./textures/cosmo_block/ns_brick4.tga
+./textures/gothic_trim/border7.jpg
+./textures/gothic_floor/metalbridge06.jpg
+./textures/acc_dm5/flame.tga
+./textures/acc_dm5/sand.jpg
+./textures/gothic_floor/q1metal7_97.jpg
+./textures/oquartz/greenstone.jpg
+./textures/gothic_trim/pitted_rust2.jpg
+./textures/cosmo_floor/bfloor3.tga
+./textures/sfx/flame1.tga
+./textures/cosmo_trim/leaves4.tga
+./textures/acc_dm5/woodenbarrier.tga
+./textures/cosmo_sfx/flag_oa_brown1.tga
+./textures/cosmo_trim/leaves3.tga
+./textures/cosmo_sfx/flag_scimitar_brown1.tga
+./textures/cosmo_trim/leaves1.tga
+./textures/cosmo_trim/leaves2.tga
+./textures/cosmo_sfx/cobweb1.tga
+./models/mapobjects/cosmoflash/torch1.tga
+./models/mapobjects/cosmoflash/fountain1.jpg
+./models/mapobjects/cosmoflash/cholder1a.tga
+./textures/cosmo_light/dmask1.tga
+./textures/cosmo_light/dmask1_b.tga
+./textures/acc_dm5/lum1C.tga
+./textures/acc_dm5/lum1A.tga
+./textures/acc_dm5/lum1B.tga
+./gfx/fx/detail/d_sandy.tga
+./textures/cosmo_sfx/diamond_b.tga
+./textures/base_trim/tinfx.jpg
+./textures/evil8_fx/e8jumpspawn02red.jpg
+./textures/sfx/jc2.jpg
+./textures/sfx2/b_blur.jpg
+./textures/sfx/jcb2.tga
 
 
 

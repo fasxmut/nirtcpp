@@ -1,0 +1,4 @@
+echo "Build quake3_map_shader ..." ;
+
+exe main : main.cpp ;
+

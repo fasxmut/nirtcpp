@@ -1,0 +1,6 @@
+echo "Build quake3_engine ..." ;
+
+project quake3_engine ;
+
+build-project quake3_map_shader ;
+
